@@ -1,0 +1,548 @@
+# FPL 2026/27 machine-readable rule catalogue
+# WP-01. Status values: confirmed | inherited | provisional | disputed | retired
+# Rules are data — never hard-code these values into optimiser or agent code.
+
+meta:
+  season: "2026-27"
+  ruleset_id: "2026-27-v0.1"
+  verified_at: "2026-07-21"
+  notes: >
+    Confirmed items reflect Premier League announcements of July 2026.
+    Inherited and provisional items must be re-verified when FPL 2026/27 launches.
+
+# ---------------------------------------------------------------------------
+# Squad
+# ---------------------------------------------------------------------------
+squad:
+  - rule_id: squad.initial_budget
+    category: squad
+    description: Initial team value budget at season start
+    value: 100.0
+    unit: million_gbp
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: squad.size
+    category: squad
+    description: Total players in a squad
+    value: 15
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: squad.position_counts
+    category: squad
+    description: Required squad composition by position
+    value:
+      GKP: 2
+      DEF: 5
+      MID: 5
+      FWD: 3
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: squad.max_per_club
+    category: squad
+    description: Maximum players from one Premier League club
+    value: 3
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Line-up
+# ---------------------------------------------------------------------------
+lineup:
+  - rule_id: lineup.starting_xi_size
+    category: lineup
+    description: Number of players in the starting XI
+    value: 11
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: lineup.formation_constraints
+    category: lineup
+    description: Legal starting XI formation bounds
+    value:
+      GKP: {min: 1, max: 1}
+      DEF: {min: 3, max: 5}
+      MID: {min: 2, max: 5}
+      FWD: {min: 1, max: 3}
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: lineup.captain_required
+    category: lineup
+    description: Exactly one captain must be named from the starting XI
+    value: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: lineup.vice_captain_required
+    category: lineup
+    description: Exactly one vice-captain must be named from the starting XI
+    value: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: lineup.bench_order
+    category: lineup
+    description: Four bench players with an ordered priority for automatic substitution
+    value:
+      bench_size: 4
+      ordered: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Transfers
+# ---------------------------------------------------------------------------
+transfers:
+  - rule_id: transfers.free_per_gameweek
+    category: transfers
+    description: Free transfers awarded each Gameweek
+    value: 1
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174907"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: transfers.max_banked
+    category: transfers
+    description: Maximum free transfers that may be banked
+    value: 5
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    verified_at: "2026-07-21"
+    launch_verification_required: false
+
+  - rule_id: transfers.hit_cost
+    category: transfers
+    description: Point cost of each transfer beyond the free allowance
+    value: 4
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174907"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: transfers.afcon_exceptional_topup
+    category: transfers
+    description: Exceptional AFCON free-transfer top-up
+    value: false
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    verified_at: "2026-07-21"
+    notes: Explicitly not awarded in 2026/27
+
+  - rule_id: transfers.wildcard_free_hit_retain_banked
+    category: transfers
+    description: Banked free transfers are retained when Wildcard or Free Hit is played
+    value: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174900/fpl-basics-explained-how-to-use-your-chips"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Prices
+# ---------------------------------------------------------------------------
+prices:
+  - rule_id: prices.selling_half_profit
+    category: prices
+    description: >
+      Selling price equals purchase price plus half of any price rise
+      (rounded down to the nearest 0.1), or current price if lower than purchase
+    value:
+      rise_share_kept: 0.5
+      round_down_to: 0.1
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174907"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Chips
+# ---------------------------------------------------------------------------
+chips:
+  - rule_id: chips.sets_per_season
+    category: chips
+    description: Two identical chip sets, one per half-season
+    value:
+      sets: 2
+      chips_per_set: [wildcard, free_hit, triple_captain, bench_boost]
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    verified_at: "2026-07-21"
+
+  - rule_id: chips.first_half_expiry
+    category: chips
+    description: First-half chips expire at the Gameweek 19 deadline
+    value:
+      expires_at_gameweek: 19
+      expires_at: "2026-01-02T13:30:00Z"
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    verified_at: "2026-07-21"
+
+  - rule_id: chips.one_per_gameweek
+    category: chips
+    description: At most one chip may be active in a Gameweek
+    value: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174900/fpl-basics-explained-how-to-use-your-chips"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: chips.gw1_and_boundary_restrictions
+    category: chips
+    description: Restrictions on Wildcard/Free Hit use in Gameweek 1 and adjacent half-season Gameweeks
+    value: pending_launch_detail
+    status: provisional
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174900/fpl-basics-explained-how-to-use-your-chips"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+    notes: Exact boundary wording must be confirmed at launch
+
+# ---------------------------------------------------------------------------
+# Scoring
+# ---------------------------------------------------------------------------
+scoring:
+  - rule_id: scoring.minutes
+    category: scoring
+    description: Appearance points by minutes played
+    value:
+      under_60: 1
+      at_least_60: 2
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.goals
+    category: scoring
+    description: Points per goal by position
+    value:
+      GKP: 10
+      DEF: 6
+      MID: 5
+      FWD: 4
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.assists
+    category: scoring
+    description: Points per assist
+    value: 3
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.clean_sheet
+    category: scoring
+    description: Clean-sheet points by position (requires 60+ minutes)
+    value:
+      GKP: 4
+      DEF: 4
+      MID: 1
+      FWD: 0
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.saves
+    category: scoring
+    description: Goalkeeper save points
+    value:
+      points_per_n_saves: 1
+      n_saves: 3
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.penalty_save
+    category: scoring
+    description: Points for a penalty save
+    value: 5
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.penalty_miss
+    category: scoring
+    description: Points for a penalty miss
+    value: -2
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.goals_conceded
+    category: scoring
+    description: Goalkeeper/defender concession penalty
+    value:
+      points_per_n_conceded: -1
+      n_conceded: 2
+      applies_to: [GKP, DEF]
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.cards_and_own_goals
+    category: scoring
+    description: Negative event points
+    value:
+      yellow_card: -1
+      red_card: -3
+      own_goal: -2
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: scoring.captain_multiplier
+    category: scoring
+    description: Captain score multiplier (Triple Captain uses 3)
+    value:
+      normal: 2
+      triple_captain: 3
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174900/fpl-basics-explained-how-to-use-your-chips"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Defensive contributions
+# ---------------------------------------------------------------------------
+defensive_contributions:
+  - rule_id: defensive_contributions.thresholds
+    category: defensive_contributions
+    description: Position-specific defensive-contribution thresholds and cap
+    value:
+      DEF:
+        actions: [clearances, blocks, interceptions, tackles]
+        threshold: 10
+        points: 2
+      MID:
+        actions: [clearances, blocks, interceptions, tackles, recoveries]
+        threshold: 12
+        points: 2
+      FWD:
+        actions: [clearances, blocks, interceptions, tackles, recoveries]
+        threshold: 12
+        points: 2
+      max_points_per_match: 2
+      goalkeepers_eligible: false
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    secondary_source_url: "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring"
+    verified_at: "2026-07-21"
+    notes: Confirmed to remain for 2026/27; thresholds inherited from 2025/26 scoring page
+
+# ---------------------------------------------------------------------------
+# Bonus / BPS
+# ---------------------------------------------------------------------------
+bonus:
+  - rule_id: bonus.award
+    category: bonus
+    description: Top three BPS scorers receive 3, 2 and 1 bonus points with stated tie rules
+    value:
+      awards: [3, 2, 1]
+      tie_rules:
+        - "tie for first: both get 3, third gets 1"
+        - "tie for second: first gets 3, tied get 2 each"
+        - "tie for third: first gets 3, second gets 2, tied get 1 each"
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679946/whats-new-in-202627-fantasy-changes-to-bonus-points-system"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+  - rule_id: bonus.bps_2026_27_changes
+    category: bonus
+    description: 2026/27 BPS metric revisions
+    value:
+      tackled_penalty_removed: true
+      cbi_bps_per_n: 3
+      gk_any_save_bps: 2
+      gk_save_inside_box_extra_bps: 1
+      gk_save_outside_box_metric_removed: true
+      gk_big_chance_save_extra_bps: 1
+      gk_penalty_save_bps: 7
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679946/whats-new-in-202627-fantasy-changes-to-bonus-points-system"
+    verified_at: "2026-07-21"
+
+  - rule_id: bonus.projected_from_minute
+    category: bonus
+    description: Projected bonus points appear from approximately 20 minutes into matches
+    value:
+      approx_minute: 20
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    verified_at: "2026-07-21"
+
+# ---------------------------------------------------------------------------
+# Automatic substitutions
+# ---------------------------------------------------------------------------
+automatic_substitutions:
+  - rule_id: automatic_substitutions.formation_preserving
+    category: automatic_substitutions
+    description: >
+      Non-playing starters are replaced from the ordered bench in a way that
+      preserves a legal formation; goalkeeper substitutions are separate
+    value:
+      formation_preserving: true
+      goalkeeper_separate: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Captain fallback
+# ---------------------------------------------------------------------------
+captain_fallback:
+  - rule_id: captain_fallback.vice_on_zero_minutes
+    category: captain_fallback
+    description: Vice-captain receives the captain multiplier only when the captain records zero minutes
+    value: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Fixtures
+# ---------------------------------------------------------------------------
+fixtures:
+  - rule_id: fixtures.blank_and_double
+    category: fixtures
+    description: Blank and Double Gameweeks arise from cup, European and rescheduling events
+    value:
+      supports_blank: true
+      supports_double: true
+      revisioned: true
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Corrections / finalisation
+# ---------------------------------------------------------------------------
+corrections:
+  - rule_id: corrections.gameweek_lock
+    category: corrections
+    description: Gameweek scores become final at 09:00 UK time the morning after the final match
+    value:
+      lock_local_time: "09:00"
+      timezone: "Europe/London"
+      relative_to: "morning_after_final_match"
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    verified_at: "2026-07-21"
+
+# ---------------------------------------------------------------------------
+# Deadlines
+# ---------------------------------------------------------------------------
+deadlines:
+  - rule_id: deadlines.relative_to_opening_fixture
+    category: deadlines
+    description: Gameweek deadline is 90 minutes before the opening fixture
+    value:
+      minutes_before_opening_fixture: 90
+    status: inherited
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team"
+    verified_at: "2026-07-21"
+    launch_verification_required: true
+
+# ---------------------------------------------------------------------------
+# Exceptional events
+# ---------------------------------------------------------------------------
+exceptional_events:
+  - rule_id: exceptional_events.afcon_2026_27
+    category: exceptional_events
+    description: No exceptional AFCON transfer award in 2026/27
+    value:
+      afcon_transfer_topup: false
+    status: confirmed
+    effective_from: "2026-07-20"
+    source_url: "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627"
+    verified_at: "2026-07-21"
+
+# ---------------------------------------------------------------------------
+# Unresolved / launch checklist
+# ---------------------------------------------------------------------------
+launch_verification_checklist:
+  - squad.initial_budget
+  - squad.size
+  - squad.position_counts
+  - squad.max_per_club
+  - lineup.formation_constraints
+  - transfers.free_per_gameweek
+  - transfers.hit_cost
+  - prices.selling_half_profit
+  - chips.gw1_and_boundary_restrictions
+  - deadlines.relative_to_opening_fixture
+  - scoring.* (confirm unchanged vs 2025/26 page)
+  - defensive_contributions.thresholds (confirm still 10/12)

@@ -1,0 +1,160 @@
+# Rule golden cases for WP-01 / Section 21.1
+# Each case exercises a rule family. Expected outcomes are validated by the
+# deterministic rules engine (WP-06); this file is the catalogue of cases.
+
+meta:
+  season: "2026-27"
+  ruleset_id: "2026-27-v0.1"
+  created_at: "2026-07-21"
+
+cases:
+  - case_id: squad.valid_composition
+    family: squad
+    description: Legal 15-player squad within budget and club limit
+    expect: pass
+
+  - case_id: squad.over_budget
+    family: squad
+    description: Squad purchase cost exceeds initial budget
+    expect: fail
+    rule_ids: [squad.initial_budget]
+
+  - case_id: squad.club_limit_breach
+    family: squad
+    description: Four players from one club
+    expect: fail
+    rule_ids: [squad.max_per_club]
+
+  - case_id: squad.wrong_position_counts
+    family: squad
+    description: 1 GKP / 6 DEF / 5 MID / 3 FWD
+    expect: fail
+    rule_ids: [squad.position_counts]
+
+  - case_id: lineup.valid_3421
+    family: lineup
+    description: Legal 3-4-2-1 style XI with captain and ordered bench
+    expect: pass
+
+  - case_id: lineup.too_few_defenders
+    family: lineup
+    description: Starting XI with only two defenders
+    expect: fail
+    rule_ids: [lineup.formation_constraints]
+
+  - case_id: lineup.missing_captain
+    family: lineup
+    description: Starting XI without a captain
+    expect: fail
+    rule_ids: [lineup.captain_required]
+
+  - case_id: transfers.within_free_allowance
+    family: transfers
+    description: One transfer with one free transfer available
+    expect: pass
+
+  - case_id: transfers.hit_applied
+    family: transfers
+    description: Two transfers with one free → four-point hit
+    expect: pass_with_hit
+    rule_ids: [transfers.hit_cost]
+    expected_hit_cost: 4
+
+  - case_id: transfers.bank_cap
+    family: transfers
+    description: Cannot bank more than five free transfers
+    expect: capped_at
+    rule_ids: [transfers.max_banked]
+    expected_banked: 5
+
+  - case_id: prices.selling_half_profit
+    family: prices
+    description: Bought at 10.0, now 10.5 → sells at 10.2
+    expect: selling_price
+    rule_ids: [prices.selling_half_profit]
+    inputs: {purchase: 10.0, current: 10.5}
+    expected_selling_price: 10.2
+
+  - case_id: prices.selling_at_loss
+    family: prices
+    description: Bought at 10.0, now 9.5 → sells at 9.5
+    expect: selling_price
+    rule_ids: [prices.selling_half_profit]
+    inputs: {purchase: 10.0, current: 9.5}
+    expected_selling_price: 9.5
+
+  - case_id: chips.one_per_gameweek
+    family: chips
+    description: Cannot play Bench Boost and Triple Captain in the same Gameweek
+    expect: fail
+    rule_ids: [chips.one_per_gameweek]
+
+  - case_id: chips.first_half_expiry
+    family: chips
+    description: First-half Wildcard unavailable after Gameweek 19 deadline
+    expect: fail
+    rule_ids: [chips.first_half_expiry]
+
+  - case_id: scoring.minutes_and_goal_mid
+    family: scoring
+    description: Midfielder 90 minutes + 1 goal + 1 assist = 2+5+3 = 10 before bonus
+    expect: points
+    rule_ids: [scoring.minutes, scoring.goals, scoring.assists]
+    expected_points: 10
+
+  - case_id: scoring.defensive_contribution_def
+    family: defensive_contributions
+    description: Defender with 10 CBIT earns +2; 20 CBIT still +2
+    expect: points
+    rule_ids: [defensive_contributions.thresholds]
+    expected_points: 2
+
+  - case_id: scoring.defensive_contribution_mid_below
+    family: defensive_contributions
+    description: Midfielder with 11 CBIRT earns 0 defensive-contribution points
+    expect: points
+    rule_ids: [defensive_contributions.thresholds]
+    expected_points: 0
+
+  - case_id: bonus.tie_for_first
+    family: bonus
+    description: Two players tied top BPS both receive 3; third receives 1
+    expect: bonus_awards
+    rule_ids: [bonus.award]
+    expected_awards: [3, 3, 1]
+
+  - case_id: autosub.formation_preserving
+    family: automatic_substitutions
+    description: Non-playing DEF replaced by bench DEF, not by bench MID that would break formation
+    expect: pass
+    rule_ids: [automatic_substitutions.formation_preserving]
+
+  - case_id: captain.fallback_on_zero_minutes
+    family: captain_fallback
+    description: Captain 0 minutes → vice-captain receives multiplier
+    expect: pass
+    rule_ids: [captain_fallback.vice_on_zero_minutes]
+
+  - case_id: captain.no_fallback_when_captain_played
+    family: captain_fallback
+    description: Captain played 1 minute → vice-captain does not receive multiplier
+    expect: pass
+    rule_ids: [captain_fallback.vice_on_zero_minutes]
+
+  - case_id: fixtures.blank_gameweek
+    family: fixtures
+    description: Club with no fixture contributes zero from those players that Gameweek
+    expect: pass
+    rule_ids: [fixtures.blank_and_double]
+
+  - case_id: corrections.provisional_then_final
+    family: corrections
+    description: Provisional points may differ from final lock at 09:00 UK next morning
+    expect: pass
+    rule_ids: [corrections.gameweek_lock]
+
+  - case_id: deadlines.ninety_minutes
+    family: deadlines
+    description: Deadline is opening kickoff minus 90 minutes
+    expect: pass
+    rule_ids: [deadlines.relative_to_opening_fixture]
