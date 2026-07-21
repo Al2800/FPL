@@ -1,0 +1,160 @@
+{
+  "seasons": {
+    "2022-23": {
+      "season": "2022-23",
+      "minutes": {
+        "season": "2022-23",
+        "n": 25932,
+        "start_prob_naive_brier": 0.1290394107666204,
+        "start_prob_rolling_brier": 0.10379203796591993,
+        "expected_minutes_mae": 15.764858304625774,
+        "naive_beats_rolling": false
+      },
+      "player_events": {
+        "season": "2022-23",
+        "n": 24759,
+        "rolling_points_mae": 1.106318241178292,
+        "rolling_points_rmse": 2.1853908873793517,
+        "fixture_adj_mae": 1.1043970542698278,
+        "vaastav_xP_same_gw_mae": 0.954570055333414,
+        "vaastav_xP_note": "Same-GW xP from merged_gw \u2014 not a pre-deadline snapshot; official ep_next/FDR deferred until WP-04-style pre-deadline captures exist."
+      },
+      "elo": {
+        "season": "2022-23",
+        "n_matches": 380,
+        "home_win_log_loss": 0.6059266552339807,
+        "note": "Walk-forward Elo using only pre-match ratings; draws excluded from binary log-loss."
+      },
+      "odds_implied": {
+        "season": "2022-23",
+        "n_matches": 380,
+        "multiclass_log_loss": 0.9661582704386319,
+        "odds_timing_label": "closing_or_unspecified",
+        "note": "football-data.co.uk 1X2 odds are typically closing/unspecified \u2014 not guaranteed pre-deadline. Live capture needed for true decision-time baseline."
+      }
+    },
+    "2023-24": {
+      "season": "2023-24",
+      "minutes": {
+        "season": "2023-24",
+        "n": 29067,
+        "start_prob_naive_brier": 0.11114838132590223,
+        "start_prob_rolling_brier": 0.09087409712757191,
+        "expected_minutes_mae": 14.434806749158076,
+        "naive_beats_rolling": false
+      },
+      "player_events": {
+        "season": "2023-24",
+        "n": 27787,
+        "rolling_points_mae": 1.0083132400043187,
+        "rolling_points_rmse": 2.1250846319810175,
+        "fixture_adj_mae": 1.0070998428521731,
+        "vaastav_xP_same_gw_mae": 0.8422643682297477,
+        "vaastav_xP_note": "Same-GW xP from merged_gw \u2014 not a pre-deadline snapshot; official ep_next/FDR deferred until WP-04-style pre-deadline captures exist."
+      },
+      "elo": {
+        "season": "2023-24",
+        "n_matches": 380,
+        "home_win_log_loss": 0.6043831662223881,
+        "note": "Walk-forward Elo using only pre-match ratings; draws excluded from binary log-loss."
+      },
+      "odds_implied": {
+        "season": "2023-24",
+        "n_matches": 380,
+        "multiclass_log_loss": 0.9092124760895899,
+        "odds_timing_label": "closing_or_unspecified",
+        "note": "football-data.co.uk 1X2 odds are typically closing/unspecified \u2014 not guaranteed pre-deadline. Live capture needed for true decision-time baseline."
+      }
+    },
+    "2024-25": {
+      "season": "2024-25",
+      "minutes": {
+        "season": "2024-25",
+        "n": 26989,
+        "start_prob_naive_brier": 0.12768164807884694,
+        "start_prob_rolling_brier": 0.10239339436210892,
+        "expected_minutes_mae": 15.462717321048492,
+        "naive_beats_rolling": false
+      },
+      "player_events": {
+        "season": "2024-25",
+        "n": 25714,
+        "rolling_points_mae": 1.109752145394208,
+        "rolling_points_rmse": 2.233604468312273,
+        "fixture_adj_mae": 1.1112095226984005,
+        "vaastav_xP_same_gw_mae": 0.9382943143812709,
+        "vaastav_xP_note": "Same-GW xP from merged_gw \u2014 not a pre-deadline snapshot; official ep_next/FDR deferred until WP-04-style pre-deadline captures exist."
+      },
+      "elo": {
+        "season": "2024-25",
+        "n_matches": 380,
+        "home_win_log_loss": 0.6247134483354633,
+        "note": "Walk-forward Elo using only pre-match ratings; draws excluded from binary log-loss."
+      },
+      "odds_implied": {
+        "season": "2024-25",
+        "n_matches": 380,
+        "multiclass_log_loss": 0.9707576734366715,
+        "odds_timing_label": "closing_or_unspecified",
+        "note": "football-data.co.uk 1X2 odds are typically closing/unspecified \u2014 not guaranteed pre-deadline. Live capture needed for true decision-time baseline."
+      }
+    }
+  },
+  "summary": {
+    "start_prob_naive_brier": {
+      "mean": 0.12262314672378986,
+      "seasons_n": 3,
+      "values": [
+        0.1290394107666204,
+        0.11114838132590223,
+        0.12768164807884694
+      ]
+    },
+    "start_prob_rolling_brier": {
+      "mean": 0.09901984315186692,
+      "seasons_n": 3,
+      "values": [
+        0.10379203796591993,
+        0.09087409712757191,
+        0.10239339436210892
+      ]
+    },
+    "rolling_points_mae": {
+      "mean": 1.0747945421922729,
+      "seasons_n": 3,
+      "values": [
+        1.106318241178292,
+        1.0083132400043187,
+        1.109752145394208
+      ]
+    },
+    "fixture_adj_mae": {
+      "mean": 1.0742354732734671,
+      "seasons_n": 3,
+      "values": [
+        1.1043970542698278,
+        1.0070998428521731,
+        1.1112095226984005
+      ]
+    },
+    "elo_home_win_log_loss": {
+      "mean": 0.6116744232639441,
+      "seasons_n": 3,
+      "values": [
+        0.6059266552339807,
+        0.6043831662223881,
+        0.6247134483354633
+      ]
+    },
+    "odds_multiclass_log_loss": {
+      "mean": 0.9487094733216311,
+      "seasons_n": 3,
+      "values": [
+        0.9661582704386319,
+        0.9092124760895899,
+        0.9707576734366715
+      ]
+    }
+  },
+  "data_root": "/workspace/data/raw/vaastav/Fantasy-Premier-League/data"
+}

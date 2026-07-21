@@ -25,6 +25,7 @@ python3 -m pip install -e ".[dev]"
 python3 -m pytest tests/ -q
 python3 -m scripts.run_skeleton          # one synthetic historical Gameweek end-to-end
 python3 -m scripts.run_snapshot          # capture bootstrap-static + fixtures into data/raw/fpl/
+python3 -m scripts.run_wp05_eval         # baseline metrics → docs/data-sources/wp05/ (needs local historical data)
 ```
 
 Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/gameweeks/skeleton-gw3/`.
@@ -40,7 +41,8 @@ Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/game
 | WP-06 Rules/scoring engine | Core scoring + validator families covered; official-points sample deferred |
 | Snapshotter | Runnable (daily cadence documented) |
 | Walking skeleton | Runnable and reproducible |
-| WP-05 / WP-07+ | Not started |
+| WP-05 Baseline forecasting | Baselines + time-based eval — `docs/data-sources/wp05/` |
+| WP-07+ | Not started |
 
 ## Repository layout
 
