@@ -1,0 +1,321 @@
+{
+  "horizon_gameweeks": 1,
+  "input_fingerprint": "10347158edb7251da3d03f8831e83d38bf6c6af00dd2f9576454a0641df2eabf",
+  "n_all_candidates_capped": 50,
+  "n_candidates": 123,
+  "output_fingerprint": "fc6553966fe4cb4c676086223bbbab6685d2c61bd924060124fe5ba00439a39e",
+  "plans": {
+    "bank_transfer": {
+      "bank_after": 0.5,
+      "hit_cost": 0,
+      "lineup": {
+        "bench_ids": [
+          "2",
+          "6",
+          "5",
+          "12"
+        ],
+        "captain_id": "9",
+        "formation": {
+          "DEF": 3,
+          "FWD": 3,
+          "MID": 4
+        },
+        "starting_xi_ids": [
+          "1",
+          "7",
+          "3",
+          "4",
+          "9",
+          "8",
+          "10",
+          "11",
+          "14",
+          "13",
+          "15"
+        ],
+        "vice_captain_id": "14"
+      },
+      "objective": 54.9,
+      "strategy": "bank_transfer",
+      "transfers": [],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    },
+    "free_transfer": {
+      "bank_after": 0.5,
+      "hit_cost": 0,
+      "lineup": {
+        "bench_ids": [
+          "2",
+          "15",
+          "6",
+          "5"
+        ],
+        "captain_id": "16",
+        "formation": {
+          "DEF": 3,
+          "FWD": 2,
+          "MID": 5
+        },
+        "starting_xi_ids": [
+          "1",
+          "7",
+          "3",
+          "4",
+          "16",
+          "9",
+          "8",
+          "10",
+          "11",
+          "14",
+          "13"
+        ],
+        "vice_captain_id": "9"
+      },
+      "objective": 60.4,
+      "strategy": "free_transfer",
+      "transfers": [
+        {
+          "player_in_id": "16",
+          "player_out_id": "12"
+        }
+      ],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    },
+    "highest_ev": {
+      "bank_after": 0.5,
+      "hit_cost": 0,
+      "lineup": {
+        "bench_ids": [
+          "2",
+          "15",
+          "6",
+          "5"
+        ],
+        "captain_id": "16",
+        "formation": {
+          "DEF": 3,
+          "FWD": 2,
+          "MID": 5
+        },
+        "starting_xi_ids": [
+          "1",
+          "7",
+          "3",
+          "4",
+          "16",
+          "9",
+          "8",
+          "10",
+          "11",
+          "14",
+          "13"
+        ],
+        "vice_captain_id": "9"
+      },
+      "objective": 60.4,
+      "strategy": "highest_ev",
+      "transfers": [
+        {
+          "player_in_id": "16",
+          "player_out_id": "12"
+        }
+      ],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    },
+    "hit": {
+      "bank_after": 1.0,
+      "hit_cost": 4,
+      "lineup": {
+        "bench_ids": [
+          "2",
+          "6",
+          "5",
+          "12"
+        ],
+        "captain_id": "16",
+        "formation": {
+          "DEF": 3,
+          "FWD": 3,
+          "MID": 4
+        },
+        "starting_xi_ids": [
+          "1",
+          "7",
+          "3",
+          "4",
+          "16",
+          "9",
+          "8",
+          "10",
+          "18",
+          "14",
+          "13"
+        ],
+        "vice_captain_id": "18"
+      },
+      "objective": 59.3,
+      "strategy": "hit",
+      "transfers": [
+        {
+          "player_in_id": "16",
+          "player_out_id": "11"
+        },
+        {
+          "player_in_id": "18",
+          "player_out_id": "15"
+        }
+      ],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    },
+    "no_hit": {
+      "bank_after": 0.5,
+      "hit_cost": 0,
+      "lineup": {
+        "bench_ids": [
+          "2",
+          "15",
+          "6",
+          "5"
+        ],
+        "captain_id": "16",
+        "formation": {
+          "DEF": 3,
+          "FWD": 2,
+          "MID": 5
+        },
+        "starting_xi_ids": [
+          "1",
+          "7",
+          "3",
+          "4",
+          "16",
+          "9",
+          "8",
+          "10",
+          "11",
+          "14",
+          "13"
+        ],
+        "vice_captain_id": "9"
+      },
+      "objective": 60.4,
+      "strategy": "free_transfer",
+      "transfers": [
+        {
+          "player_in_id": "16",
+          "player_out_id": "12"
+        }
+      ],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    },
+    "no_transfer": {
+      "bank_after": 0.5,
+      "hit_cost": 0,
+      "lineup": {
+        "bench_ids": [
+          "2",
+          "6",
+          "5",
+          "12"
+        ],
+        "captain_id": "9",
+        "formation": {
+          "DEF": 3,
+          "FWD": 3,
+          "MID": 4
+        },
+        "starting_xi_ids": [
+          "1",
+          "7",
+          "3",
+          "4",
+          "9",
+          "8",
+          "10",
+          "11",
+          "14",
+          "13",
+          "15"
+        ],
+        "vice_captain_id": "14"
+      },
+      "objective": 54.9,
+      "strategy": "no_transfer",
+      "transfers": [],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    }
+  },
+  "ruleset_id": "2026-27-v0.1",
+  "ruleset_note": null,
+  "selected": {
+    "bank_after": 0.5,
+    "hit_cost": 0,
+    "lineup": {
+      "bench_ids": [
+        "2",
+        "15",
+        "6",
+        "5"
+      ],
+      "captain_id": "16",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "1",
+        "7",
+        "3",
+        "4",
+        "16",
+        "9",
+        "8",
+        "10",
+        "11",
+        "14",
+        "13"
+      ],
+      "vice_captain_id": "9"
+    },
+    "objective": 60.4,
+    "strategy": "highest_ev",
+    "transfers": [
+      {
+        "player_in_id": "16",
+        "player_out_id": "12"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "solver_version": "wp07-transparent-v0.1"
+}
