@@ -1,0 +1,31 @@
+# Data (raw snapshots, normalised outputs, quarantine) — never committed
+data/
+
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+secrets/
+
+# Browser sessions and computer-use artefacts
+browser-state/
+screenshots/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Databases
+*.duckdb
+*.sqlite
+*.db
+
+# OS / editor
+.DS_Store
