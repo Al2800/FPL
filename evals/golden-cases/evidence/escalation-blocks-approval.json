@@ -1,0 +1,24 @@
+{
+  "case_id": "evidence-escalation-gate",
+  "description": "Challenger escalation outcomes control automatic approval (plan §13.4).",
+  "reviews": [
+    {
+      "review_id": "rv_esc",
+      "agent_run_id": "ar_challenger_1",
+      "escalation_outcome": "escalation",
+      "notes": "Conflicting line-ups unresolved",
+      "observed_at": "2026-07-21T11:00:00Z",
+      "available_at": "2026-07-21T11:00:00Z",
+      "provenance": {
+        "source_ids": ["challenger-agent"],
+        "transformation_version": "0.1.0",
+        "agent_run_id": "ar_challenger_1"
+      }
+    }
+  ],
+  "expect": {
+    "automatic_approval_allowed": false,
+    "requires_human_review": true,
+    "unresolved_challenges": ["rv_esc"]
+  }
+}

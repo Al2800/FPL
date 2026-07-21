@@ -44,7 +44,8 @@ Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/game
 | Walking skeleton | Runnable and reproducible |
 | WP-05 Baseline forecasting | Baselines + time-based eval — `docs/data-sources/wp05/` |
 | WP-07 Optimisation | Transparent solver + golden case — `docs/optimisation/wp07-status.md` |
-| WP-08+ | Not started |
+| WP-08 Evidence pipeline | Record lifecycle + escalation/injection — `docs/evidence/wp08-status.md` |
+| WP-09+ | Not started |
 
 ## Repository layout
 

@@ -161,6 +161,11 @@ entities:
   schema: evidence/decision_signals.json
   temporal: true
   example: examples/decision_signals.json
+- entity: proposed_adjustments
+  section: '9.4'
+  schema: evidence/proposed_adjustments.json
+  temporal: true
+  example: examples/proposed_adjustments.json
 - entity: forecast_runs
   section: '9.5'
   schema: decisions/forecast_runs.json
