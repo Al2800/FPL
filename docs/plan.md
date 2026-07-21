@@ -1701,7 +1701,7 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 5. ~~Profile historical datasets for usable event-level and pre-deadline features (WP-04).~~ Done — see `docs/data-sources/wp04/`.
 6. ~~Build a rules validator before building an LLM recommendation workflow.~~ Core validator/scoring in place (WP-06); expand golden-case runner and finalised-GW sample checks next.
 7. Select a small set of historical Gameweeks for end-to-end replay — **candidates listed in** `docs/data-sources/wp04/news-recoverability.md` (structured-only).
-8. Establish deterministic baselines before measuring agent value (WP-05).
+8. ~~Establish deterministic baselines before measuring agent value (WP-05).~~ Done — see `docs/data-sources/wp05/` (official `ep_next`/FDR deferred to pre-deadline snapshots).
 9. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
 10. Manually assemble World Cup 2026 priors into `control/identities/world-cup-2026-priors.csv` once elimination/minutes are final (Section 7.7). **Approach brief for the collecting agent:** `docs/handover-world-cup-priors.md`.
 
