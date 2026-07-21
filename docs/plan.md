@@ -431,7 +431,9 @@ Historical replay must use only observations available before the relevant deadl
 
 Defensive-contribution scoring began in 2025/26, leaving limited directly comparable history. Modelling requires clearances, blocks, interceptions, tackles and, for midfielders and forwards, ball recoveries.
 
-Detailed defensive data must not be used until its provenance and permitted use are understood.
+Because these actions now score FPL points, the official endpoints have exposed the relevant per-player counts since 2025/26 (`defensive_contribution`, `clearances_blocks_interceptions`, `tackles`, `recoveries`). Subject to launch verification, Tier 1 therefore covers the scoring-relevant defensive counts, and third-party sources such as FBref are enrichment and cross-checks, not launch prerequisites.
+
+Detailed third-party defensive data must not be used until its provenance and permitted use are understood.
 
 ### 7.4 Personal financial state
 
@@ -712,7 +714,7 @@ Initial baselines should include:
 - per-90 event rates;
 - simple fixture adjustments;
 - official FPL expected-points field (`ep_next`) and Fixture Difficulty Rating where safely captured before the deadline;
-- odds-implied projections built from pre-deadline match, clean-sheet and anytime-goalscorer odds — the market's own calibrated forecast and likely the strongest cheap baseline;
+- odds-implied projections built from pre-deadline match, clean-sheet and anytime-goalscorer odds — the market's own calibrated forecast and likely the strongest cheap baseline (player-prop odds have thin historical coverage, so historical clean-sheet probabilities are derived from match and totals odds where props are unavailable);
 - Poisson or Elo-based team-strength model;
 - simple expected-minutes heuristics.
 
@@ -1690,17 +1692,20 @@ The following require explicit decisions before or during Phase 0:
 
 Already complete: the repository exists, this plan lives at `docs/plan.md`, and `AGENTS.md` defines permissions, source restrictions and work-package boundaries.
 
-1. Complete WP-01 and WP-02 before enabling any automated collectors.
-2. Start the Phase 1 walking skeleton in parallel: one historical Gameweek end-to-end with crude models (Section 18).
-3. Re-check official 2026/27 rules and API schemas when FPL launches.
-4. Create the canonical schemas and point-in-time contract.
-5. Set the two numbers that size everything downstream: the weekly operating-effort budget (Phase 0) and the detectable-effect-size estimate (Section 17.6).
-6. Profile historical datasets for usable event-level and pre-deadline features.
-7. Build a rules validator before building an LLM recommendation workflow.
-8. Select a small set of historical Gameweeks for end-to-end replay.
-9. Establish deterministic baselines before measuring agent value.
-10. Decide the multi-manager cohort question (Open Decision 15) before Gameweek 1 if recruitment is intended.
-11. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+Steps marked **(human)** need the project owner and cannot be delegated to agents; they are the likeliest stall points and should be resolved first.
+
+1. **(human)** Answer Open Decisions 1–2 (private use; permitted retention) — the hard gate on all raw-data collection — and record them as architecture decision records.
+2. Complete WP-01 and WP-02 before enabling any automated collectors. A registry entry for the official FPL endpoints alone is sufficient to start the snapshotter once the gate clears: day-one snapshotting is the most time-critical deliverable in the plan (Section 17.6) and must not wait for the full registry.
+3. Start the Phase 1 walking skeleton in parallel: one historical Gameweek end-to-end with crude models (Section 18).
+4. Re-check official 2026/27 rules and API schemas when FPL launches.
+5. Create the canonical schemas and point-in-time contract.
+6. **(human)** Set the two numbers that size everything downstream: the weekly operating-effort budget (Phase 0) and the detectable-effect-size estimate (Section 17.6).
+7. Profile historical datasets for usable event-level and pre-deadline features.
+8. Build a rules validator before building an LLM recommendation workflow.
+9. Select a small set of historical Gameweeks for end-to-end replay.
+10. Establish deterministic baselines before measuring agent value.
+11. **(human)** Decide the multi-manager cohort question (Open Decision 15) before Gameweek 1 if recruitment is intended.
+12. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
 
 ---
 
