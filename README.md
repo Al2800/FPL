@@ -27,6 +27,7 @@ python3 -m scripts.run_skeleton          # one synthetic historical Gameweek end
 python3 -m scripts.run_snapshot          # capture bootstrap-static + fixtures into data/raw/fpl/
 python3 -m scripts.run_wp05_eval         # baseline metrics → docs/data-sources/wp05/ (needs local historical data)
 python3 -m scripts.run_optimiser evals/golden-cases/optimiser-gw3-input.json
+python3 -m scripts.run_replay                  # Gameweek Decision Record via replay harness
 ```
 
 Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/gameweeks/skeleton-gw3/`.
@@ -45,7 +46,8 @@ Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/game
 | WP-05 Baseline forecasting | Baselines + time-based eval — `docs/data-sources/wp05/` |
 | WP-07 Optimisation | Transparent solver + golden case — `docs/optimisation/wp07-status.md` |
 | WP-08 Evidence pipeline | Record lifecycle + escalation/injection — `docs/evidence/wp08-status.md` |
-| WP-09+ | Not started |
+| WP-09 Decision record / replay | GDR schema + harness — `docs/evaluation/wp09-status.md` |
+| WP-10+ | Not started |
 
 ## Repository layout
 

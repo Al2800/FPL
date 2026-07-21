@@ -231,3 +231,8 @@ entities:
   schema: decisions/retrospectives.json
   temporal: true
   example: examples/retrospectives.json
+- entity: gameweek_decision_records
+  section: '9.5'
+  schema: decisions/gameweek_decision_records.json
+  temporal: true
+  example: examples/gameweek_decision_records.json

@@ -69,6 +69,7 @@ SECTION_9_ENTITIES = {
     "executions",
     "decision_outcomes",
     "retrospectives",
+    "gameweek_decision_records",
 }
 
 
