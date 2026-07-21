@@ -1,0 +1,22 @@
+# Structured-only historical replay pilot set (plan §26 item 7)
+# Source: docs/data-sources/wp04/news-recoverability.md
+# Mode: structured-data strategies only — no evidence/news reconstruction.
+
+meta:
+  selected_at: "2026-07-21"
+  evidence_mode: structured_only
+  notes: >
+    These Gameweeks are the recommended pilot set for multi-season structured
+    replay. Until historical manager-state fixtures exist per GW, the harness
+    reuses the synthetic optimiser input labelled by season/GW for volume and
+    determinism checks.
+
+pilots:
+  - season: "2023-24"
+    gameweeks: [1, 10, 20, 30, 38]
+  - season: "2024-25"
+    gameweeks: [1, 10, 20, 30]
+
+harness:
+  solver_input: evals/golden-cases/optimiser-gw3-input.json
+  strategy: label_and_replay_synthetic_until_manager_states_exist

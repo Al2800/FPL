@@ -3,13 +3,13 @@
 A reproducible decision laboratory that uses official Fantasy Premier League (FPL) as a controlled environment for studying how AI agents make decisions under uncertainty. It compares deterministic analytics, optimisation, single-agent reasoning and multi-agent orchestration using point-in-time evidence and auditable outcomes.
 
 **Target season:** FPL 2026/27
-**Current status:** Phase 0/1 — governance cleared; rules catalogue and source registry in place; FPL snapshotter and walking skeleton runnable.
+**Current status:** Phase 1 packages WP-01…WP-10 complete; live advisory prep (snapshots, manager-state entry, Proposed ADR ratification).
 
 ## Start here
 
 - [Project plan](docs/plan.md) — research questions, data strategy, architecture, evaluation and roadmap.
 - [AGENTS.md](AGENTS.md) — permissions, source restrictions and work-package boundaries.
-- [Handover brief](docs/handover-brief.md) — first implementation scope (registry, snapshotter, skeleton).
+- [Handover brief](docs/handover-brief.md) — post–WP-10 live advisory prep.
 - [Decisions](docs/decisions/) — accepted and proposed architecture decision records.
 
 ## Core principle
@@ -28,6 +28,8 @@ python3 -m scripts.run_snapshot          # capture bootstrap-static + fixtures i
 python3 -m scripts.run_wp05_eval         # baseline metrics → docs/data-sources/wp05/ (needs local historical data)
 python3 -m scripts.run_optimiser evals/golden-cases/optimiser-gw3-input.json
 python3 -m scripts.run_replay                  # Gameweek Decision Record via replay harness
+python3 -m scripts.run_rules_golden            # 24 rules golden cases
+python3 -m scripts.run_replay_pilot_set        # WP-04 structured pilot GW labels
 ```
 
 Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/gameweeks/skeleton-gw3/`.

@@ -1,0 +1,30 @@
+{
+  "$schema_note": "Manual manager-state entry template (ADR-0005). Copy per Gameweek; do not commit secrets.",
+  "season": "2026-27",
+  "gameweek": 1,
+  "observed_at": "2026-08-01T10:00:00Z",
+  "available_at": "2026-08-01T10:00:00Z",
+  "deadline": "2026-08-01T11:00:00Z",
+  "decision_cutoff": "2026-08-01T10:30:00Z",
+  "bank": 0.0,
+  "free_transfers": 1,
+  "chips_available": [
+    "wildcard_fh",
+    "free_hit_fh",
+    "triple_captain_fh",
+    "bench_boost_fh"
+  ],
+  "squad": [
+    {
+      "player_id": "REPLACE",
+      "fpl_code": null,
+      "web_name": "REPLACE",
+      "position": "GKP",
+      "club_id": "REPLACE",
+      "purchase_price": 4.5,
+      "selling_price": 4.5,
+      "now_cost": 4.5
+    }
+  ],
+  "notes": "Fill 15 players; prices in £m. Feed into solver input / GDR manager_state."
+}

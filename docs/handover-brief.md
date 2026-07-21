@@ -1,37 +1,32 @@
-# Handover brief: first implementation agent
+# Handover brief: post–WP-10 (live advisory prep)
 
-**Date:** 21 July 2026
-**Scope:** Section 26 steps 1 and 2 only — the FPL-endpoint registry entry, the snapshotter, and the walking skeleton. Nothing else until these run.
+**Date:** 21 July 2026  
+**Context:** Work packages WP-01…WP-10 are on `main`. This brief replaces the original “first implementation” brief for the next agent.
 
 ## Read first
 
-`AGENTS.md`, then `docs/plan.md` — especially Sections 6 (sources and registry), 10.1 (raw layer), 15 (operating cycle), 17.6 (why day-one capture is time-critical), 18 Phase 1 (walking skeleton) and 26 (sequencing). Decisions already taken are in `docs/decisions/` and are not to be relitigated.
+`AGENTS.md`, `docs/plan.md` §§15–17 and 25–26, `docs/architecture/deferred/README.md`, Proposed ADRs 0011–0016.
 
-## Task 1 — FPL-endpoint registry entry (WP-02, minimal)
+## What is done
 
-- Create `control/sources/source-registry.yaml` with one enabled entry: the official FPL JSON endpoints, completing every Section 6.2 field.
-- `licence_status` and `allowed_use` must reflect ADR-0001 and ADR-0002: private, non-commercial analysis; local retention; no redistribution.
-- Other sources may be drafted but stay `enabled: false` until their terms are reviewed (WP-02 proper).
+- Rules catalogue + golden runner: `python3 -m scripts.run_rules_golden`
+- Source registry (FPL enabled); snapshotter; schemas; WP-05 baselines; optimiser; evidence lifecycle; GDR + replay harness; deferred interface notes
+- Structured replay pilot set: `evals/replay-set/structured-pilot-gameweeks.yaml` → `python3 -m scripts.run_replay_pilot_set`
+- Manual manager-state template: `control/templates/manager-state-entry.json`
 
-## Task 2 — Snapshotter
+## What to do next (implementation)
 
-- Scheduled local capture of `bootstrap-static` and `fixtures` (add `event/{gw}/live` once the season runs) into `data/raw/fpl/`, per Section 10.1: immutable files carrying request URL, HTTP status, `observed_at`, content hash, source-registry version and schema-detection result.
-- The endpoints may still be down pre-launch (Section 6.1): handle 404s and off-season resets gracefully and begin capturing the moment they return. Failed and unexpected responses are still operational evidence — keep them.
-- Raw data stays out of Git (`.gitignore` already excludes `data/`).
+1. **Day-one live capture** — keep `scripts.run_snapshot` on a schedule; treat 403/empty bodies as retained evidence; promote schema notes when bootstrap is stable.
+2. **Wire manager state** — fill the template each GW; convert to optimiser `SolverInput` + GDR (small adapter script).
+3. **Attach post-GW outcomes** — `replay_gameweek(..., attach_outcome_points=...)` or equivalent on live GDRs.
+4. **Do not** enable new collectors or LLM agents until OD8 secrets exist and ADRs are ratified as needed.
 
-## Task 3 — Walking skeleton (Phase 1 milestone)
+## Owner-only (do not invent)
 
-One historical Gameweek end-to-end with crude components: historical snapshot in → normalised tables → naive projections → deterministic squad/transfer validation → one candidate plan → a rendered Gameweek Decision Record (Section 16), reproducible on rerun. Crude is expected; end-to-end is the point.
-
-## Acceptance
-
-- The registry entry satisfies the WP-02 "Done when" for this one source.
-- The snapshotter runs on a schedule and its outputs carry all Section 10.1 metadata.
-- The skeleton replays one historical Gameweek and its decision record reproduces on rerun (Section 3.2, criterion 6).
+- Ratify Proposed ADRs 0011–0016  
+- Recruit ~5 cohort managers (ADR-0009)  
+- Choose LLM/Codex provider + secrets (Open Decision 8)  
 
 ## Hard boundaries
 
-- No other collectors enabled. No LLM calls and no API keys — nothing in this brief needs them.
-- No credentials or raw data in Git. Python; Parquet and DuckDB; SQLite for operational state (ADR-0008).
-- Rules are data (`control/rules/`) even in crude form — do not hard-code budget, formation or transfer values (AGENTS.md rule 1).
-- Open Decisions 6–14 are not yours to settle: where the work forces a choice (for example the orchestration substrate), implement the simplest thing that works — plain Python — and record an ADR proposal for owner ratification.
+Same as `AGENTS.md`: rules-as-data, no unregistered collection, point-in-time discipline, LLMs propose only, no secrets in Git, no deferred-feature implementation (WP-10 notes only).
