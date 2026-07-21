@@ -1,26 +1,35 @@
-# Data planes stay out of version control (plan sections 8.2, 20; ADR-0002)
+# Data (raw snapshots, normalised outputs, quarantine) — never committed (plan sections 8.2, 20; ADR-0002)
 data/
 
-# Secrets, credentials and browser state (plan section 22.3)
+# Secrets and credentials (plan section 22.3)
 .env
 .env.*
 *.pem
+*.key
 credentials/
+credentials*.json
+secrets/
+
+# Browser sessions and computer-use artefacts
 browser-state/
 screenshots/
 
-# Local databases and operational state
-*.sqlite
-*.sqlite3
-*.duckdb
-
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
 venv/
+*.egg-info/
 .pytest_cache/
 .ruff_cache/
-*.egg-info/
 dist/
 build/
+
+# Databases and operational state
+*.duckdb
+*.sqlite
+*.sqlite3
+*.db
+
+# OS / editor
+.DS_Store
