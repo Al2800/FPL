@@ -1071,7 +1071,7 @@ A single live season is too noisy to distinguish five strategies: one captaincy 
 - **historical replay across multiple seasons is the primary evidence** for comparing structured-data strategies, with the live season as validation; for evidence-dependent agent strategies this relationship inverts (see the asymmetry below);
 - comparisons are **paired per decision** — same Gameweek, same information set, different strategy — never unpaired season totals;
 - decisions are **decomposed into sub-decisions** (captaincy, individual transfers, bench order, chip timing) to multiply the effective sample count;
-- before any difference is claimed, a **detectable-effect-size estimate** derived from simulated point distributions must state how many decisions are needed to distinguish, for example, a 0.5-point-per-Gameweek advantage (0.5 points per Gameweek is the provisionally adopted minimum meaningful difference — ADR-0004);
+- before any difference is claimed, a **detectable-effect-size estimate** derived from simulated point distributions must state how many decisions are needed to distinguish a 0.5-point-per-Gameweek advantage (accepted minimum meaningful difference — ADR-0004);
 - **the project operates one live FPL entry**: FPL terms permit one account per person, so the project's own parallel strategies are evaluated in shadow against the same live data snapshots. A recruited cohort of consenting managers, each a real person with their own single account, is the compliant route to parallel live entries (Section 17.7).
 
 Replay is the measurement instrument, not a source of decision value: it generates statistical confidence about strategies, while the decision value itself comes from the data and models of Sections 6 and 11. Two consequences bound how much to invest in it:
@@ -1681,7 +1681,7 @@ The following require explicit decisions before or during Phase 0. Decisions tak
 9. What is the human risk preference: conservative, balanced or experimental? **Decided — balanced by default, with the aggressive/differential alternative selectable each Gameweek (ADR-0006).**
 10. What evidence threshold is required before an agent may propose an expected-minutes adjustment?
 11. What number of live Gameweeks constitutes sufficient stability before browser dry-run work begins?
-12. Which orchestration substrate (plain Python, a workflow engine, an agent framework) will run the pipeline, and how are agent traces captured, versioned and replayed?
+12. Which orchestration substrate (plain Python, a workflow engine, an agent framework) will run the pipeline, and how are agent traces captured, versioned and replayed? **Decided — plain Python modules and scripts for Phase 0/1; agent traces as JSONL by run ID (ADR-0010).**
 13. What are the per-Gameweek cost and latency budgets for agent runs (Section 13.5)?
 14. What planning horizon does the optimiser target (single Gameweek versus a rolling multi-Gameweek horizon), and how are future Gameweeks discounted?
 15. Will a multi-manager live cohort (Section 17.7) be recruited for 2026/27, and under what protocol — strategy assignment, starting-squad standardisation and adherence logging? **Decided — yes, approximately five managers, one strategy each, protocol agreed before Gameweek 1; recruitment owned by the project owner (ADR-0009).**
@@ -1707,7 +1707,6 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 Human tasks that cannot be delegated, with their triggers:
 
 - **(human, before Gameweek 1)** Recruit the approximately five cohort managers and agree the Section 17.7 protocol (ADR-0009).
-- **(human, when the first power analysis is available)** Confirm the provisional 0.5-points-per-Gameweek minimum meaningful effect size (ADR-0004).
 - **(human, before any evidence or challenger agent work begins)** Select LLM provider(s) and add keys as environment secrets (Open Decision 8). Collectors, the snapshotter and the walking skeleton do not need them.
 
 The standing brief for the next implementation agent is `docs/handover-brief.md`.
