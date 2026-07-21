@@ -1,0 +1,47 @@
+{
+  "case_id": "evidence-conflict-lineups",
+  "description": "Two conflicting predicted line-ups must be surfaced as a conflict, not merged.",
+  "claims": [
+    {
+      "claim_id": "cl_a",
+      "document_id": "doc_a",
+      "claim_text": "Source A predicts Player X starts",
+      "confidence": 0.7,
+      "expires_at": "2026-08-01T12:00:00Z",
+      "observed_at": "2026-07-21T10:00:00Z",
+      "available_at": "2026-07-21T10:00:00Z",
+      "published_at": "2026-07-21T09:00:00Z",
+      "provenance": {
+        "source_ids": ["lineup-source-a"],
+        "transformation_version": "0.1.0"
+      }
+    },
+    {
+      "claim_id": "cl_b",
+      "document_id": "doc_b",
+      "claim_text": "Source B predicts Player X benched",
+      "confidence": 0.65,
+      "expires_at": "2026-08-01T12:00:00Z",
+      "observed_at": "2026-07-21T10:05:00Z",
+      "available_at": "2026-07-21T10:05:00Z",
+      "published_at": "2026-07-21T09:30:00Z",
+      "provenance": {
+        "source_ids": ["lineup-source-b"],
+        "transformation_version": "0.1.0"
+      }
+    }
+  ],
+  "conflict": {
+    "conflict_id": "cf_lineup_x",
+    "claim_ids": ["cl_a", "cl_b"],
+    "description": "Predicted start vs bench for Player X",
+    "provenance": {
+      "source_ids": ["lineup-source-a", "lineup-source-b"],
+      "transformation_version": "0.1.0"
+    }
+  },
+  "expect": {
+    "claims_remain_distinct": true,
+    "merged_claim_forbidden": true
+  }
+}

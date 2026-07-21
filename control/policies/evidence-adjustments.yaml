@@ -1,0 +1,25 @@
+# Evidence adjustment policy (Open Decision 10 — Proposed defaults)
+
+# Agents may propose adjustments only when these thresholds are met.
+# Orchestration applies accepted adjustments; agents never write forecasts directly.
+
+meta:
+  policy_id: evidence-adjustments-v0.1
+  status: proposed
+  decides: Open Decision 10
+
+thresholds:
+  min_claim_confidence: 0.55
+  min_adjustment_confidence: 0.6
+  max_start_probability_delta: 0.25
+  require_citation: true
+  require_expires_at: true
+
+# Stale relative to decision deadline
+staleness:
+  reject_if_published_after_deadline: true
+  warn_if_age_hours_gt: 72
+
+injection:
+  # Patterns that quarantine a passage; claims from quarantined text cannot become adjustments
+  block_adjustment_from_quarantined: true

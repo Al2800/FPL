@@ -1,0 +1,23 @@
+{
+  "adjustment_id": "adj_1",
+  "signal_ids": ["sig_1"],
+  "player_uid": "pl_x",
+  "target": "start_probability",
+  "before_value": 0.72,
+  "after_value": 0.61,
+  "unit": "probability",
+  "status": "proposed",
+  "confidence": 0.65,
+  "rationale": "Trained but start not confirmed",
+  "expires_at": "2026-07-22T12:00:00Z",
+  "observed_at": "2026-07-21T12:00:00Z",
+  "available_at": "2026-07-21T12:00:00Z",
+  "published_at": "2026-07-21T12:00:00Z",
+  "provenance": {
+    "source_ids": ["fpl-official-endpoints"],
+    "transformation_version": "0.1.0",
+    "ruleset_id": "2026-27-v0.1",
+    "prompt_version": "evidence-extract-v0",
+    "agent_run_id": "ar_demo"
+  }
+}

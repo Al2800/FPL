@@ -54,6 +54,7 @@ SECTION_9_ENTITIES = {
     "claim_entities",
     "claim_conflicts",
     "decision_signals",
+    "proposed_adjustments",
     # 9.5
     "forecast_runs",
     "player_projections",
