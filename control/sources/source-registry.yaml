@@ -1,0 +1,117 @@
+# Source registry — plan Section 6.2
+# No collector may be enabled without a complete entry and resolved licence_status.
+# ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
+
+registry_version: "0.1.0"
+updated_at: "2026-07-21"
+
+sources:
+  - source_id: fpl-official-endpoints
+    owner: Premier League / Fantasy Premier League
+    source_type: api
+    authority: canonical
+    terms_url: "https://www.premierleague.com/terms-and-conditions"
+    licence_status: restricted
+    allowed_use: private_analysis_local_retention_no_redistribution
+    authentication: none
+    collection_method: api
+    expected_cadence: daily_and_pre_deadline
+    max_staleness: "6h"
+    failure_policy: use_cache_and_report
+    retention_policy: local_indefinite_private_per_ADR-0002
+    attribution: "Fantasy Premier League (fantasy.premierleague.com)"
+    enabled: true
+    review_date: "2026-09-01"
+    notes: >
+      Unofficial/unsupported as a developer API. Endpoints may 404 off-season.
+      Capture bootstrap-static and fixtures from day one; event/{gw}/live once live.
+      licence_status is restricted (not prohibited): private local snapshots permitted
+      under ADR-0001/0002; redistribution is not.
+    endpoints:
+      - "https://fantasy.premierleague.com/api/bootstrap-static/"
+      - "https://fantasy.premierleague.com/api/fixtures/"
+      - "https://fantasy.premierleague.com/api/element-summary/{player_id}/"
+      - "https://fantasy.premierleague.com/api/event/{gw}/live/"
+      - "https://fantasy.premierleague.com/api/entry/{manager_id}/"
+
+  - source_id: fpl-official-rules-news
+    owner: Premier League
+    source_type: html
+    authority: canonical
+    terms_url: "https://www.premierleague.com/terms-and-conditions"
+    licence_status: restricted
+    allowed_use: private_analysis_citation_snapshots
+    authentication: none
+    collection_method: manual
+    expected_cadence: on_announcement
+    max_staleness: "n/a"
+    failure_policy: require_manual_confirmation
+    retention_policy: link_and_local_snapshot_of_cited_pages
+    attribution: "Premier League"
+    enabled: false
+    review_date: "2026-08-15"
+    notes: >
+      Manual citation for rules YAML. Automated HTML collection stays disabled
+      until a permitted-fetch review is complete. Alternative: manual entry into
+      control/rules/ (already in use for WP-01).
+
+  - source_id: fpl-authenticated-manager-state
+    owner: Premier League / Fantasy Premier League
+    source_type: api
+    authority: canonical
+    terms_url: "https://www.premierleague.com/terms-and-conditions"
+    licence_status: unknown
+    allowed_use: private_manager_state_only
+    authentication: browser_session
+    collection_method: manual
+    expected_cadence: pre_deadline
+    max_staleness: "1h"
+    failure_policy: require_manual_confirmation
+    retention_policy: local_private_per_ADR-0002
+    attribution: "Fantasy Premier League (own entry)"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      ADR-0005: manager state is entered manually initially. Authenticated capture
+      remains disabled. Alternative: manual entry via the Gameweek Decision Record
+      workflow; public entry/{id} endpoints may cross-check where permitted.
+
+  - source_id: official-club-communications
+    owner: Premier League clubs
+    source_type: html
+    authority: canonical
+    terms_url: per_club
+    licence_status: unknown
+    allowed_use: private_analysis_citation_only
+    authentication: none
+    collection_method: manual
+    expected_cadence: daily_in_season
+    max_staleness: "24h"
+    failure_policy: degrade
+    retention_policy: metadata_and_citations_only_until_reviewed
+    attribution: "Named club"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Unstructured injury/return/tactical comments. Bulk collection disabled.
+      Alternative: manual linked evidence entries in the evidence pipeline (WP-08).
+
+  - source_id: official-competition-schedules
+    owner: Premier League / FA / UEFA / FIFA
+    source_type: file
+    authority: canonical
+    terms_url: per_competition
+    licence_status: unknown
+    allowed_use: private_analysis
+    authentication: none
+    collection_method: manual
+    expected_cadence: on_revision
+    max_staleness: "24h"
+    failure_policy: require_manual_confirmation
+    retention_policy: local_fixture_revision_ledger
+    attribution: "Named competition"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Cups and European fixtures drive blanks/doubles. Alternative until enabled:
+      FPL fixtures endpoint (fpl-official-endpoints) plus manual revision notes.

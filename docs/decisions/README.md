@@ -13,3 +13,7 @@ Decisions with trade-offs are recorded here (see `AGENTS.md`). Statuses: **Propo
 | [0007](0007-download-historical-datasets-locally.md) | Historical datasets downloaded locally | Accepted |
 | [0008](0008-duckdb-parquet-season-one.md) | DuckDB plus Parquet for season one | Accepted |
 | [0009](0009-multi-manager-cohort.md) | Multi-manager live cohort of about five managers | Accepted |
+<<<<<<< HEAD
+| [0010](0010-plain-python-orchestration.md) | Plain Python as the initial orchestration substrate | Proposed |
+=======
+>>>>>>> origin/main

@@ -1,0 +1,23 @@
+Gameweek: 3
+Decision cutoff: 2024-08-30T10:00:00Z
+Deadline: 2024-08-30T11:00:00Z
+Ruleset: 2026-27-v0.1
+Data quality: Synthetic fixture; crude models; walking skeleton
+
+Recommendation:
+  Strategy: no_transfer
+  Captain: MidB
+  Vice-captain: FwdB
+  Starting XI: KeeperA, DefE, DefA, DefB, MidB, MidA, MidC, MidD, FwdB, FwdA, FwdC
+  Expected XI points (crude): 46.66
+
+Expected advantage over current setup: n/a (no-transfer baseline)
+Confidence: Low — walking skeleton
+Principal uncertainty: Crude expected-minutes and points model
+
+Validation:
+  Squad: passed
+  Line-up: passed
+
+Approval: Pending human
+Execution: Manual in initial phase
