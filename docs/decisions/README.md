@@ -14,3 +14,5 @@ Decisions with trade-offs are recorded here (see `AGENTS.md`). Statuses: **Propo
 | [0008](0008-duckdb-parquet-season-one.md) | DuckDB plus Parquet for season one | Accepted |
 | [0009](0009-multi-manager-cohort.md) | Multi-manager live cohort of about five managers | Accepted |
 | [0010](0010-plain-python-orchestration.md) | Plain Python as the initial orchestration substrate | Accepted |
+| [0011](0011-transparent-internal-optimiser.md) | Smaller transparent internal optimiser (Open Decision 7) | Proposed |
+| [0012](0012-single-gameweek-horizon.md) | Single-Gameweek optimiser horizon for Phase 1 (Open Decision 14) | Proposed |

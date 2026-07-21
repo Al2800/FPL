@@ -1676,17 +1676,17 @@ The following require explicit decisions before or during Phase 0. Decisions tak
 4. Is DuckDB plus Parquet sufficient for the first season? **Decided — yes (ADR-0008).**
 5. Is manager state entered manually initially or read through an authenticated session? **Decided — manual entry initially; automated capture reviewed in later phases (ADR-0005).**
 6. Which historical seasons have sufficiently reliable event-level data?
-7. Should the initial optimiser be adapted from `open-fpl-solver` or built as a smaller transparent model?
+7. Should the initial optimiser be adapted from `open-fpl-solver` or built as a smaller transparent model? **Proposed — smaller transparent internal model (ADR-0011).**
 8. Which model providers, including local models, will be compared? **Open — must be decided, with keys added as environment secrets, before any evidence or challenger agent work begins (Section 26); nothing earlier needs them.**
 9. What is the human risk preference: conservative, balanced or experimental? **Decided — balanced by default, with the aggressive/differential alternative selectable each Gameweek (ADR-0006).**
 10. What evidence threshold is required before an agent may propose an expected-minutes adjustment?
 11. What number of live Gameweeks constitutes sufficient stability before browser dry-run work begins?
 12. Which orchestration substrate (plain Python, a workflow engine, an agent framework) will run the pipeline, and how are agent traces captured, versioned and replayed? **Decided — plain Python modules and scripts for Phase 0/1; agent traces as JSONL by run ID (ADR-0010).**
 13. What are the per-Gameweek cost and latency budgets for agent runs (Section 13.5)?
-14. What planning horizon does the optimiser target (single Gameweek versus a rolling multi-Gameweek horizon), and how are future Gameweeks discounted?
+14. What planning horizon does the optimiser target (single Gameweek versus a rolling multi-Gameweek horizon), and how are future Gameweeks discounted? **Proposed — single-Gameweek for Phase 1 (ADR-0012).**
 15. Will a multi-manager live cohort (Section 17.7) be recruited for 2026/27, and under what protocol — strategy assignment, starting-squad standardisation and adherence logging? **Decided — yes, approximately five managers, one strategy each, protocol agreed before Gameweek 1; recruitment owned by the project owner (ADR-0009).**
 
-Open Decisions 6, 7 and 10–14 are technical: the implementing agent proposes an answer as an architecture decision record for owner ratification rather than waiting on it.
+Open Decisions 6, 10–11 and 13 remain technical: the implementing agent proposes an answer as an architecture decision record for owner ratification rather than waiting on it. Decisions 7 and 14 have Proposed ADRs awaiting ratification.
 
 ---
 
@@ -1702,8 +1702,9 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 6. ~~Build a rules validator before building an LLM recommendation workflow.~~ Core validator/scoring in place (WP-06); expand golden-case runner and finalised-GW sample checks next.
 7. Select a small set of historical Gameweeks for end-to-end replay — **candidates listed in** `docs/data-sources/wp04/news-recoverability.md` (structured-only).
 8. ~~Establish deterministic baselines before measuring agent value (WP-05).~~ Done — see `docs/data-sources/wp05/` (official `ep_next`/FDR deferred to pre-deadline snapshots).
-9. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
-10. Manually assemble World Cup 2026 priors into `control/identities/world-cup-2026-priors.csv` once elimination/minutes are final (Section 7.7). **Approach brief for the collecting agent:** `docs/handover-world-cup-priors.md`.
+9. ~~Implement the deterministic optimiser and record Open Decisions 7 and 14 (WP-07).~~ Done — see `docs/optimisation/wp07-status.md`; ADRs 0011/0012 Proposed for ratification.
+10. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+11. Manually assemble World Cup 2026 priors into `control/identities/world-cup-2026-priors.csv` once elimination/minutes are final (Section 7.7). **Approach brief for the collecting agent:** `docs/handover-world-cup-priors.md`. ~~CSV assembled — see `control/identities/world-cup-2026-priors.csv`.~~
 
 Human tasks that cannot be delegated, with their triggers:
 
