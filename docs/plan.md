@@ -1703,7 +1703,7 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 7. Select a small set of historical Gameweeks for end-to-end replay — **candidates listed in** `docs/data-sources/wp04/news-recoverability.md` (structured-only).
 8. Establish deterministic baselines before measuring agent value (WP-05).
 9. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
-10. Manually assemble World Cup 2026 priors into `control/identities/world-cup-2026-priors-template.csv` once elimination/minutes are final (Section 7.7).
+10. Manually assemble World Cup 2026 priors into `control/identities/world-cup-2026-priors.csv` once elimination/minutes are final (Section 7.7). **Approach brief for the collecting agent:** `docs/handover-world-cup-priors.md`.
 
 Human tasks that cannot be delegated, with their triggers:
 

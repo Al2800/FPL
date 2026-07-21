@@ -13,6 +13,8 @@
 | [training-targets.md](training-targets.md) | Targets per model component |
 | [summary.json](summary.json) | Machine-readable headline metrics |
 | [world-cup-2026-priors-template.csv](../../control/identities/world-cup-2026-priors-template.csv) | Manual template for §7.7 priors |
+| [World Cup priors approach](../handover-world-cup-priors.md) | Staged agent brief to assemble the priors CSV |
+| [World Cup priors provenance](world-cup-2026-priors.md) | Checklist and post-fill notes |
 
 ## Reproduction
 

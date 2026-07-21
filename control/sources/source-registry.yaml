@@ -260,7 +260,10 @@ sources:
     review_date: "2026-08-15"
     notes: >
       Per-player tournament minutes, elimination dates, return-to-training.
-      Manual one-off assembly for GW1–5 priors (Section 7.7). Not automated.
-      Alternative until assembled: increased early-season uncertainty for
-      tournament participants (named list from squad announcements).
+      Automated bulk collection stays disabled. Assembly method is the staged
+      manual/citation workflow in docs/handover-world-cup-priors.md (Stages 0–5).
+      Preferred inputs: FIFA results for elimination dates; FPL bootstrap for PL
+      join keys; openfootball/worldcup.json only as a cross-check against FIFA.
+      Output: control/identities/world-cup-2026-priors.csv (committed derived table).
+      Interim alternative: binary participant flag + nation elimination date only.
 
