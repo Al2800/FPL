@@ -1071,7 +1071,7 @@ A single live season is too noisy to distinguish five strategies: one captaincy 
 - **historical replay across multiple seasons is the primary evidence** for comparing structured-data strategies, with the live season as validation; for evidence-dependent agent strategies this relationship inverts (see the asymmetry below);
 - comparisons are **paired per decision** — same Gameweek, same information set, different strategy — never unpaired season totals;
 - decisions are **decomposed into sub-decisions** (captaincy, individual transfers, bench order, chip timing) to multiply the effective sample count;
-- before any difference is claimed, a **detectable-effect-size estimate** derived from simulated point distributions must state how many decisions are needed to distinguish, for example, a 0.5-point-per-Gameweek advantage;
+- before any difference is claimed, a **detectable-effect-size estimate** derived from simulated point distributions must state how many decisions are needed to distinguish, for example, a 0.5-point-per-Gameweek advantage (0.5 points per Gameweek is the provisionally adopted minimum meaningful difference — ADR-0004);
 - **the project operates one live FPL entry**: FPL terms permit one account per person, so the project's own parallel strategies are evaluated in shadow against the same live data snapshots. A recruited cohort of consenting managers, each a real person with their own single account, is the compliant route to parallel live entries (Section 17.7).
 
 Replay is the measurement instrument, not a source of decision value: it generates statistical confidence about strategies, while the decision value itself comes from the data and models of Sections 6 and 11. Two consequences bound how much to invest in it:
@@ -1119,7 +1119,7 @@ Deliverables:
 - identity-resolution strategy;
 - architecture decision records, including the orchestration-substrate decision (Section 25, item 12);
 - initial evaluation definitions, including the statistical-power design (Section 17.6);
-- weekly operating-effort budget: an explicit estimate of hours per Gameweek the human loop is allowed to cost.
+- weekly operating-effort budget: an explicit estimate of hours per Gameweek the human loop is allowed to cost. **Set — two hours per Gameweek at season start, reducing to one, with further reduction as automation earns trust (ADR-0003).**
 
 Exit criteria:
 
@@ -1127,7 +1127,7 @@ Exit criteria:
 - prohibited or unresolved collectors are disabled;
 - rules carry a source and confidence status;
 - decision-time filtering is specified;
-- Open Decisions 1 and 2 (private use and permitted retention) are answered and act as a hard gate on raw-data collection.
+- Open Decisions 1 and 2 (private use and permitted retention) are answered and act as a hard gate on raw-data collection. **Answered 21 July 2026 (ADR-0001, ADR-0002) — the gate is cleared.**
 
 Phase 0 governance must not consume the pre-season: the Phase 1 walking skeleton may begin in parallel once the source registry covers the sources it needs.
 
@@ -1668,44 +1668,49 @@ Agents contributing to the project should work against explicit, non-overlapping
 
 ## 25. Open decisions
 
-The following require explicit decisions before or during Phase 0:
+The following require explicit decisions before or during Phase 0. Decisions taken are annotated below and recorded in `docs/decisions/`.
 
-1. Is the project entirely private and non-commercial?
-2. Which FPL and Premier League data may be retained locally, and for how long?
-3. Will historical raw datasets be downloaded or referenced through local user-provided paths?
-4. Is DuckDB plus Parquet sufficient for the first season?
-5. Is manager state entered manually initially or read through an authenticated session?
+1. Is the project entirely private and non-commercial? **Decided — yes (ADR-0001).**
+2. Which FPL and Premier League data may be retained locally, and for how long? **Decided — raw FPL and fixture/odds snapshots retained locally, indefinitely, for private research; no redistribution; kept out of Git (ADR-0002).**
+3. Will historical raw datasets be downloaded or referenced through local user-provided paths? **Decided — downloaded locally into version-control-ignored paths, respecting each source's licence (ADR-0007).**
+4. Is DuckDB plus Parquet sufficient for the first season? **Decided — yes (ADR-0008).**
+5. Is manager state entered manually initially or read through an authenticated session? **Decided — manual entry initially; automated capture reviewed in later phases (ADR-0005).**
 6. Which historical seasons have sufficiently reliable event-level data?
 7. Should the initial optimiser be adapted from `open-fpl-solver` or built as a smaller transparent model?
-8. Which model providers, including local models, will be compared?
-9. What is the human risk preference: conservative, balanced or experimental?
+8. Which model providers, including local models, will be compared? **Open — must be decided, with keys added as environment secrets, before any evidence or challenger agent work begins (Section 26); nothing earlier needs them.**
+9. What is the human risk preference: conservative, balanced or experimental? **Decided — balanced by default, with the aggressive/differential alternative selectable each Gameweek (ADR-0006).**
 10. What evidence threshold is required before an agent may propose an expected-minutes adjustment?
 11. What number of live Gameweeks constitutes sufficient stability before browser dry-run work begins?
 12. Which orchestration substrate (plain Python, a workflow engine, an agent framework) will run the pipeline, and how are agent traces captured, versioned and replayed?
 13. What are the per-Gameweek cost and latency budgets for agent runs (Section 13.5)?
 14. What planning horizon does the optimiser target (single Gameweek versus a rolling multi-Gameweek horizon), and how are future Gameweeks discounted?
-15. Will a multi-manager live cohort (Section 17.7) be recruited for 2026/27, and under what protocol — strategy assignment, starting-squad standardisation and adherence logging?
+15. Will a multi-manager live cohort (Section 17.7) be recruited for 2026/27, and under what protocol — strategy assignment, starting-squad standardisation and adherence logging? **Decided — yes, approximately five managers, one strategy each, protocol agreed before Gameweek 1; recruitment owned by the project owner (ADR-0009).**
+
+Open Decisions 6, 7 and 10–14 are technical: the implementing agent proposes an answer as an architecture decision record for owner ratification rather than waiting on it.
 
 ---
 
 ## 26. Immediate next steps
 
-Already complete: the repository exists, this plan lives at `docs/plan.md`, and `AGENTS.md` defines permissions, source restrictions and work-package boundaries.
+Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGENTS.md` defines permissions and boundaries, and the Phase 0 human gates are answered and recorded in `docs/decisions/` — private non-commercial use (ADR-0001), retention (ADR-0002), the effort budget (ADR-0003), manager-state entry (ADR-0005), risk preference (ADR-0006), historical-data handling (ADR-0007), storage (ADR-0008) and the multi-manager cohort (ADR-0009). Raw-data collection is no longer gated on governance answers.
 
-Steps marked **(human)** need the project owner and cannot be delegated to agents; they are the likeliest stall points and should be resolved first.
+1. Complete WP-01 and WP-02 before enabling any automated collectors. A registry entry for the official FPL endpoints alone is sufficient to start the snapshotter: day-one snapshotting is the most time-critical deliverable in the plan (Section 17.6) and must not wait for the full registry.
+2. Start the Phase 1 walking skeleton in parallel: one historical Gameweek end-to-end with crude models (Section 18).
+3. Re-check official 2026/27 rules and API schemas when FPL launches.
+4. Create the canonical schemas and point-in-time contract.
+5. Profile historical datasets for usable event-level and pre-deadline features.
+6. Build a rules validator before building an LLM recommendation workflow.
+7. Select a small set of historical Gameweeks for end-to-end replay.
+8. Establish deterministic baselines before measuring agent value.
+9. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
 
-1. **(human)** Answer Open Decisions 1–2 (private use; permitted retention) — the hard gate on all raw-data collection — and record them as architecture decision records.
-2. Complete WP-01 and WP-02 before enabling any automated collectors. A registry entry for the official FPL endpoints alone is sufficient to start the snapshotter once the gate clears: day-one snapshotting is the most time-critical deliverable in the plan (Section 17.6) and must not wait for the full registry.
-3. Start the Phase 1 walking skeleton in parallel: one historical Gameweek end-to-end with crude models (Section 18).
-4. Re-check official 2026/27 rules and API schemas when FPL launches.
-5. Create the canonical schemas and point-in-time contract.
-6. **(human)** Set the two numbers that size everything downstream: the weekly operating-effort budget (Phase 0) and the detectable-effect-size estimate (Section 17.6).
-7. Profile historical datasets for usable event-level and pre-deadline features.
-8. Build a rules validator before building an LLM recommendation workflow.
-9. Select a small set of historical Gameweeks for end-to-end replay.
-10. Establish deterministic baselines before measuring agent value.
-11. **(human)** Decide the multi-manager cohort question (Open Decision 15) before Gameweek 1 if recruitment is intended.
-12. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+Human tasks that cannot be delegated, with their triggers:
+
+- **(human, before Gameweek 1)** Recruit the approximately five cohort managers and agree the Section 17.7 protocol (ADR-0009).
+- **(human, when the first power analysis is available)** Confirm the provisional 0.5-points-per-Gameweek minimum meaningful effect size (ADR-0004).
+- **(human, before any evidence or challenger agent work begins)** Select LLM provider(s) and add keys as environment secrets (Open Decision 8). Collectors, the snapshotter and the walking skeleton do not need them.
+
+The standing brief for the next implementation agent is `docs/handover-brief.md`.
 
 ---
 
