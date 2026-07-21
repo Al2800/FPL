@@ -1698,11 +1698,12 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 2. ~~Start the Phase 1 walking skeleton.~~ Done (synthetic GW).
 3. Re-check official 2026/27 rules and API schemas when FPL launches — **in progress:** live bootstrap schema notes captured in `docs/data-sources/fpl-endpoint-schema-notes.md`; inherited rules still need promotion after full launch verification.
 4. ~~Create the canonical schemas and point-in-time contract.~~ Done (WP-03).
-5. Profile historical datasets for usable event-level and pre-deadline features (WP-04).
+5. ~~Profile historical datasets for usable event-level and pre-deadline features (WP-04).~~ Done — see `docs/data-sources/wp04/`.
 6. ~~Build a rules validator before building an LLM recommendation workflow.~~ Core validator/scoring in place (WP-06); expand golden-case runner and finalised-GW sample checks next.
-7. Select a small set of historical Gameweeks for end-to-end replay.
+7. Select a small set of historical Gameweeks for end-to-end replay — **candidates listed in** `docs/data-sources/wp04/news-recoverability.md` (structured-only).
 8. Establish deterministic baselines before measuring agent value (WP-05).
 9. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+10. Manually assemble World Cup 2026 priors into `control/identities/world-cup-2026-priors-template.csv` once elimination/minutes are final (Section 7.7).
 
 Human tasks that cannot be delegated, with their triggers:
 

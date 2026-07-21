@@ -21,10 +21,12 @@ def test_tier1_sources_registered_with_all_fields():
             assert field in by_id[source_id], f"{source_id} missing {field}"
 
 
-def test_only_fpl_endpoints_enabled():
+def test_only_assessment_sources_enabled():
     registry = load_registry()
-    enabled = [s["source_id"] for s in registry["sources"] if s["enabled"]]
-    assert enabled == ["fpl-official-endpoints"]
+    enabled = sorted(s["source_id"] for s in registry["sources"] if s["enabled"])
+    assert enabled == sorted(
+        ["fpl-official-endpoints", "football-data-co-uk", "vaastav-fpl"]
+    )
 
 
 def test_disabled_sources_have_alternative_or_gap_note():

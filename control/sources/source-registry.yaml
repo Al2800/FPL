@@ -2,7 +2,7 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.1.0"
+registry_version: "0.2.0"
 updated_at: "2026-07-21"
 
 sources:
@@ -115,3 +115,152 @@ sources:
     notes: >
       Cups and European fixtures drive blanks/doubles. Alternative until enabled:
       FPL fixtures endpoint (fpl-official-endpoints) plus manual revision notes.
+
+  # --- Tier 2: historical / community (plan Section 6.1) ---
+
+  - source_id: vaastav-fpl
+    owner: vaastav (community mirror of FPL-derived CSVs)
+    source_type: file
+    authority: secondary
+    terms_url: "https://github.com/vaastav/Fantasy-Premier-League"
+    licence_status: restricted
+    allowed_use: private_analysis_local_only_no_redistribution
+    authentication: none
+    collection_method: download
+    expected_cadence: irregular
+    max_staleness: "n/a"
+    failure_policy: stop
+    retention_policy: local_gitignored_per_ADR-0007
+    attribution: "vaastav/Fantasy-Premier-League (underlying data: Fantasy Premier League / Understat)"
+    enabled: true
+    review_date: "2026-09-01"
+    notes: >
+      Code under MIT; underlying data property of FPL/Understat per upstream LICENSE.
+      Enabled only for private local download and profiling under ADR-0001/0007 —
+      not for redistribution. Known risk: historical xP may leak post-match info.
+      Weekly updates have slowed/stopped for recent seasons; treat as archival.
+
+  - source_id: fpl-core-insights
+    owner: olbauday / FPL-Core-Insights
+    source_type: file
+    authority: secondary
+    terms_url: "https://github.com/olbauday/FPL-Core-Insights"
+    licence_status: unknown
+    allowed_use: private_analysis_pending_rights_review
+    authentication: none
+    collection_method: download
+    expected_cadence: irregular
+    max_staleness: "n/a"
+    failure_policy: stop
+    retention_policy: local_gitignored_pending_review
+    attribution: "FPL-Core-Insights"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      2025/26 detailed actions / cups / Europe / Elo claimed. Provenance of
+      Opta-like fields unresolved. Alternative: official FPL endpoints + FBref
+      once terms allow. Gap accepted until rights review.
+
+  - source_id: football-data-co-uk
+    owner: football-data.co.uk
+    source_type: file
+    authority: secondary
+    terms_url: "https://www.football-data.co.uk/disclaimer.php"
+    licence_status: restricted
+    allowed_use: private_analysis_with_attribution
+    authentication: none
+    collection_method: download
+    expected_cadence: seasonal
+    max_staleness: "n/a"
+    failure_policy: degrade
+    retention_policy: local_gitignored_with_attribution
+    attribution: "football-data.co.uk"
+    enabled: true
+    review_date: "2026-09-01"
+    notes: >
+      Historical results and odds CSVs. Private analysis with attribution;
+      do not republish their files. Enabled for local WP-04/WP-05 baseline work.
+
+  - source_id: clubelo
+    owner: ClubElo / Lars Rønn Olsen
+    source_type: api
+    authority: secondary
+    terms_url: "http://clubelo.com/"
+    licence_status: unknown
+    allowed_use: private_analysis_pending_review
+    authentication: none
+    collection_method: api
+    expected_cadence: daily
+    max_staleness: "7d"
+    failure_policy: degrade
+    retention_policy: local_pending_review
+    attribution: "ClubElo"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Team-strength baseline candidate. Alternative: odds-implied and simple Elo
+      fitted on football-data.co.uk results.
+
+  - source_id: understat
+    owner: Understat
+    source_type: html
+    authority: secondary
+    terms_url: "https://understat.com/"
+    licence_status: unknown
+    allowed_use: unresolved
+    authentication: none
+    collection_method: permitted_fetch
+    expected_cadence: daily
+    max_staleness: "24h"
+    failure_policy: stop
+    retention_policy: none_until_reviewed
+    attribution: "Understat"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      No supported public API; collection and reuse terms unresolved.
+      Alternative: official FPL stats and football-data match results. Gap accepted.
+
+  - source_id: fbref
+    owner: Sports Reference / StatsBomb-derived via FBref
+    source_type: html
+    authority: secondary
+    terms_url: "https://www.sports-reference.com/termsofuse.html"
+    licence_status: restricted
+    allowed_use: private_analysis_pending_terms_review
+    authentication: none
+    collection_method: permitted_fetch
+    expected_cadence: weekly
+    max_staleness: "7d"
+    failure_policy: stop
+    retention_policy: none_until_reviewed
+    attribution: "FBref / Sports Reference"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Defensive-action enrichment candidate. Official FPL already exposes
+      scoring-relevant DC counts (Section 7.3) — FBref is not a launch blocker.
+      Alternative: official defensive_contribution fields. Gap accepted for bulk fetch.
+
+  - source_id: world-cup-2026
+    owner: FIFA / official tournament sources
+    source_type: file
+    authority: secondary
+    terms_url: per_source
+    licence_status: unknown
+    allowed_use: private_analysis_one_off_priors
+    authentication: none
+    collection_method: manual
+    expected_cadence: one_off
+    max_staleness: "n/a"
+    failure_policy: require_manual_confirmation
+    retention_policy: local_derived_priors_only
+    attribution: "FIFA / named official sources"
+    enabled: false
+    review_date: "2026-08-15"
+    notes: >
+      Per-player tournament minutes, elimination dates, return-to-training.
+      Manual one-off assembly for GW1–5 priors (Section 7.7). Not automated.
+      Alternative until assembled: increased early-season uncertainty for
+      tournament participants (named list from squad announcements).
+
