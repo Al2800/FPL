@@ -1,6 +1,10 @@
 # Data (raw snapshots, normalised outputs, quarantine) — never committed (plan sections 8.2, 20; ADR-0002)
+<<<<<<< HEAD
 data/**
 !data/README.md
+=======
+data/
+>>>>>>> origin/main
 
 # Secrets and credentials (plan section 22.3)
 .env
