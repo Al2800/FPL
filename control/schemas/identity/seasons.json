@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/seasons.json",
+  "title": "Season",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "season_id",
+    "competition_uid",
+    "label",
+    "provenance"
+  ],
+  "properties": {
+    "season_id": {
+      "type": "string"
+    },
+    "competition_uid": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "starts_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "ends_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

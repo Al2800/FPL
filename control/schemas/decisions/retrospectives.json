@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/retrospectives.json",
+  "title": "Retrospective",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "retro_id",
+    "gameweek",
+    "process_notes",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "retro_id": {
+      "type": "string"
+    },
+    "gameweek": {
+      "type": "integer"
+    },
+    "process_notes": {
+      "type": "string"
+    },
+    "lessons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

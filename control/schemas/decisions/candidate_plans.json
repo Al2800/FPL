@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/candidate_plans.json",
+  "title": "Candidate plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plan_id",
+    "strategy",
+    "starting_xi",
+    "captain_uid",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "plan_id": {
+      "type": "string"
+    },
+    "optimizer_run_id": {
+      "type": "string"
+    },
+    "strategy": {
+      "type": "string"
+    },
+    "transfers": {
+      "type": "array"
+    },
+    "hit_cost": {
+      "type": "integer"
+    },
+    "captain_uid": {
+      "type": "string"
+    },
+    "starting_xi": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

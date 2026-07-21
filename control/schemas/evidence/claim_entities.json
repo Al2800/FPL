@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/claim_entities.json",
+  "title": "Claim entity link",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "claim_id",
+    "entity_type",
+    "entity_uid",
+    "provenance"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string"
+    },
+    "entity_type": {
+      "type": "string"
+    },
+    "entity_uid": {
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

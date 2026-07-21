@@ -1,0 +1,39 @@
+{
+  "title": "Cross-season identity resolution worked example",
+  "description": "The same person appears under different FPL element IDs across seasons; internal player_uid is stable.",
+  "player": {
+    "player_uid": "pl_demo_striker",
+    "display_name": "Demo Striker"
+  },
+  "identities": [
+    {
+      "season": "2024-25",
+      "source_id": "fpl-official-endpoints",
+      "source_player_id": "301",
+      "team_source_id": "7",
+      "position": "FWD"
+    },
+    {
+      "season": "2025-26",
+      "source_id": "fpl-official-endpoints",
+      "source_player_id": "418",
+      "team_source_id": "7",
+      "position": "MID",
+      "notes": "Position reclassification"
+    }
+  ],
+  "resolution_rule": "Match on normalised name + date of birth when available; otherwise name + prior-club tenure overlap; require human confirm on ambiguity.",
+  "team": {
+    "team_uid": "tm_demo",
+    "identities": [
+      {
+        "season": "2024-25",
+        "source_team_id": "7"
+      },
+      {
+        "season": "2025-26",
+        "source_team_id": "7"
+      }
+    ]
+  }
+}

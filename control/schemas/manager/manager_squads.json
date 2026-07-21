@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/manager_squads.json",
+  "title": "Manager squad membership",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manager_id",
+    "player_uid",
+    "purchase_price",
+    "as_of",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "manager_id": {
+      "type": "string"
+    },
+    "player_uid": {
+      "type": "string"
+    },
+    "purchase_price": {
+      "$ref": "../_defs.json#/$defs/money"
+    },
+    "selling_price": {
+      "$ref": "../_defs.json#/$defs/money"
+    },
+    "as_of": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

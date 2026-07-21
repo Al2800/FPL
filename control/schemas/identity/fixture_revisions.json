@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/fixture_revisions.json",
+  "title": "Fixture revision event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "revision_id",
+    "fixture_uid",
+    "revision_seq",
+    "change_type",
+    "payload",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "revision_id": {
+      "type": "string"
+    },
+    "fixture_uid": {
+      "type": "string"
+    },
+    "revision_seq": {
+      "type": "integer"
+    },
+    "change_type": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

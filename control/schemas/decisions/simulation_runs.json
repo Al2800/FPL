@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/simulation_runs.json",
+  "title": "Simulation run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "n_paths",
+    "forecast_run_id",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "n_paths": {
+      "type": "integer"
+    },
+    "forecast_run_id": {
+      "type": "string"
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/agent_reviews.json",
+  "title": "Agent review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_id",
+    "agent_run_id",
+    "escalation_outcome",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "review_id": {
+      "type": "string"
+    },
+    "agent_run_id": {
+      "type": "string"
+    },
+    "escalation_outcome": {
+      "type": "string",
+      "enum": [
+        "dismissed",
+        "confidence_downgrade",
+        "forced_re_run",
+        "escalation"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}
