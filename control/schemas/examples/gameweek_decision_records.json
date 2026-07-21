@@ -1,0 +1,80 @@
+{
+  "record_id": "gdr_skeleton_gw3",
+  "gameweek": 3,
+  "season": "2024-25",
+  "fixture_id": "skeleton-gw3-synthetic-2024-25",
+  "decision_cutoff": "2024-08-30T10:00:00Z",
+  "deadline": "2024-08-30T11:00:00Z",
+  "ruleset_id": "2026-27-v0.1",
+  "data_quality": "Synthetic fixture; structured-data replay",
+  "degraded": false,
+  "manager_state": {
+    "bank": 0.5,
+    "free_transfers": 1,
+    "chips_available": ["wildcard_fh", "free_hit_fh", "triple_captain_fh", "bench_boost_fh"],
+    "squad_player_ids": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+  },
+  "projections_summary": {
+    "n_players": 15,
+    "model_versions": ["naive_expected_points_v0"],
+    "principal_uncertainty": "Crude expected-minutes"
+  },
+  "candidate_plans": [
+    {"strategy": "no_transfer", "objective": 54.0, "hit_cost": 0, "transfers": []},
+    {"strategy": "highest_ev", "objective": 60.4, "hit_cost": 0, "transfers": [{"player_out_id": "12", "player_in_id": "16"}]}
+  ],
+  "recommendation": {
+    "strategy": "highest_ev",
+    "transfers": [{"player_out_id": "12", "player_in_id": "16"}],
+    "hit_cost": 0,
+    "chip": null,
+    "captain_name": "MidStar",
+    "vice_captain_name": "MidB",
+    "lineup": {
+      "captain_id": "16",
+      "vice_captain_id": "9",
+      "starting_xi_ids": ["1", "3", "4", "7", "17", "8", "9", "10", "16", "13", "14"],
+      "bench_ids": ["2", "5", "6", "15"],
+      "expected_xi_points": 60.4
+    }
+  },
+  "baseline_comparison": {
+    "do_nothing_objective": 54.0,
+    "recommended_objective": 60.4,
+    "expected_advantage": 6.4,
+    "notes": "Recommended vs no-transfer plan on recorded objectives"
+  },
+  "alternatives": {
+    "conservative": {"strategy": "no_transfer", "objective": 54.0},
+    "aggressive": {"strategy": "hit", "objective": 58.0}
+  },
+  "evidence": {
+    "supporting_claim_ids": [],
+    "conflicting_claim_ids": [],
+    "conflict_ids": [],
+    "proposed_adjustment_ids": []
+  },
+  "validation": {
+    "squad": {"ok": true},
+    "lineup": {"ok": true}
+  },
+  "approval": {
+    "status": "pending",
+    "notes": "Awaiting human"
+  },
+  "execution": {
+    "mode": "manual",
+    "notes": "Advisory Phase 1"
+  },
+  "outcome": null,
+  "retrospective": null,
+  "confidence": "Low — synthetic",
+  "principal_uncertainty": "Crude projections",
+  "observed_at": "2026-07-21T12:00:00Z",
+  "available_at": "2026-07-21T12:00:00Z",
+  "provenance": {
+    "source_ids": ["synthetic-fixture"],
+    "transformation_version": "0.1.0",
+    "ruleset_id": "2026-27-v0.1"
+  }
+}

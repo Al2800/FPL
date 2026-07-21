@@ -1675,7 +1675,7 @@ The following require explicit decisions before or during Phase 0. Decisions tak
 3. Will historical raw datasets be downloaded or referenced through local user-provided paths? **Decided — downloaded locally into version-control-ignored paths, respecting each source's licence (ADR-0007).**
 4. Is DuckDB plus Parquet sufficient for the first season? **Decided — yes (ADR-0008).**
 5. Is manager state entered manually initially or read through an authenticated session? **Decided — manual entry initially; automated capture reviewed in later phases (ADR-0005).**
-6. Which historical seasons have sufficiently reliable event-level data?
+6. Which historical seasons have sufficiently reliable event-level data? **Proposed — 2022-23…2024-25 primary; see ADR-0014.**
 7. Should the initial optimiser be adapted from `open-fpl-solver` or built as a smaller transparent model? **Proposed — smaller transparent internal model (ADR-0011).**
 8. Which model providers, including local models, will be compared? **Open — must be decided, with keys added as environment secrets, before any evidence or challenger agent work begins (Section 26); nothing earlier needs them.**
 9. What is the human risk preference: conservative, balanced or experimental? **Decided — balanced by default, with the aggressive/differential alternative selectable each Gameweek (ADR-0006).**
@@ -1686,7 +1686,7 @@ The following require explicit decisions before or during Phase 0. Decisions tak
 14. What planning horizon does the optimiser target (single Gameweek versus a rolling multi-Gameweek horizon), and how are future Gameweeks discounted? **Proposed — single-Gameweek for Phase 1 (ADR-0012).**
 15. Will a multi-manager live cohort (Section 17.7) be recruited for 2026/27, and under what protocol — strategy assignment, starting-squad standardisation and adherence logging? **Decided — yes, approximately five managers, one strategy each, protocol agreed before Gameweek 1; recruitment owned by the project owner (ADR-0009).**
 
-Open Decisions 6, 11 and 13 remain technical: the implementing agent proposes an answer as an architecture decision record for owner ratification rather than waiting on it. Decisions 7, 10 and 14 have Proposed ADRs awaiting ratification.
+Open Decisions 11 and 13 remain technical: the implementing agent proposes an answer as an architecture decision record for owner ratification rather than waiting on it. Decisions 6, 7, 10 and 14 have Proposed ADRs awaiting ratification.
 
 ---
 
@@ -1704,8 +1704,10 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 8. ~~Establish deterministic baselines before measuring agent value (WP-05).~~ Done — see `docs/data-sources/wp05/` (official `ep_next`/FDR deferred to pre-deadline snapshots).
 9. ~~Implement the deterministic optimiser and record Open Decisions 7 and 14 (WP-07).~~ Done — see `docs/optimisation/wp07-status.md`; ADRs 0011/0012 Proposed for ratification.
 10. ~~Define the evidence lifecycle interfaces and escalation/injection tests (WP-08).~~ Done — see `docs/evidence/wp08-status.md`; live LLM agents still wait on Open Decision 8.
-11. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
-12. World Cup 2026 priors CSV assembled — see `control/identities/world-cup-2026-priors.csv` (brief: `docs/handover-world-cup-priors.md`).
+11. ~~Gameweek Decision Record, baseline comparison and replay harness (WP-09).~~ Done — see `docs/evaluation/wp09-status.md`.
+12. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+13. World Cup 2026 priors CSV assembled — see `control/identities/world-cup-2026-priors.csv` (brief: `docs/handover-world-cup-priors.md`).
+14. ~~WP-10 deferred-feature interface notes~~ — next package after WP-09.
 
 Human tasks that cannot be delegated, with their triggers:
 
