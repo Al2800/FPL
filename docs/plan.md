@@ -1,9 +1,28 @@
 # FPL Agentic Decision Laboratory
 
-**Status:** Initial project plan, revised 21 July 2026 following first review  
+**Status:** Initial project plan, revised 21 July 2026 (first review; replay scoping and multi-manager cohort; clarity and acceptance-criteria pass)  
 **Plan date:** 21 July 2026  
 **Target season:** Fantasy Premier League 2026/27  
 **Primary purpose:** A reproducible test environment for data management, forecasting, optimisation, AI-agent orchestration, human oversight and controlled computer-use automation.
+
+---
+
+## How to read this plan
+
+| Need | Where |
+|---|---|
+| Why the project exists and how success is defined | Sections 1–4 |
+| Rules-as-data and source-governance constraints that bind all work | Sections 5–6 |
+| Known data problems the design must solve | Section 7 |
+| What is being built: architecture, data model, processing, models, optimiser, agents, evidence | Sections 8–14 |
+| How the system operates in season and what it outputs | Sections 15–16 |
+| How every component is evaluated, including the statistical design | Section 17 |
+| Build order, with per-phase exit criteria | Section 18 |
+| Deliberately deferred capabilities | Section 19 |
+| Concrete work packages, each with acceptance criteria | Section 24 |
+| Open decisions and immediate next steps | Sections 25–26 |
+
+FPL and project-specific terms are defined in Appendix A.
 
 ---
 
@@ -48,6 +67,18 @@ Supporting questions include:
 6. When does orchestration complexity cease to justify its cost and latency?
 7. Can a computer-use agent execute an approved decision safely and verify the result?
 8. Which findings transfer to enterprise decision systems outside fantasy football?
+
+Each question has a designated home in the plan:
+
+| Question | Addressed by | Primary evidence |
+|---|---|---|
+| 1, 2 | Phase 3 experiment; Sections 17.6–17.7 | Multi-season replay for structured-data strategies; live paired shadow evaluation and the multi-manager cohort for evidence-dependent strategies |
+| 3 | Section 7.1 benchmarking; WP-05; Phase 3–4 ablations | Per-source accuracy against naive baselines |
+| 4 | Sections 4.2, 13 and 21.4; success criterion 6 in Section 3.2 | Agent golden cases and deterministic validation |
+| 5 | Sections 9.4 and 14; WP-08 | Evidence-lifecycle records and conflict handling |
+| 6 | Sections 13.5 and 17.4; Phase 3 | Cost and latency reported per decision |
+| 7 | Phases 7–8; Section 17.5 | Dry-run and execution audit metrics |
+| 8 | Retrospectives and evaluation reports | Qualitative synthesis at season end |
 
 ---
 
@@ -101,7 +132,7 @@ The same Gameweek should eventually be evaluated through parallel strategies:
 4. specialised multi-agent review;
 5. human decision.
 
-The project will measure whether additional agents improve decision quality enough to justify their cost and complexity.
+The project will measure whether additional agents improve decision quality enough to justify their cost and complexity. The comparison design — its statistical-power constraints, what replay can and cannot fairly evaluate, and the multi-manager live cohort — is defined in Sections 17.6 and 17.7.
 
 ### 4.2 Point-in-time reproducibility
 
@@ -1051,7 +1082,7 @@ Replay is the measurement instrument, not a source of decision value: it generat
 FPL terms permit one account per person; they do not prevent several people from each running their own account under an agreed protocol. A recruited cohort of consenting managers, each assigned one strategy, provides live evidence that shadow evaluation structurally cannot:
 
 - real execution effects — actual price changes, selling prices and rank movements, which shadow strategies never pay;
-- adherence behaviour — whether humans actually follow recommendations is itself a research question (strategy 5) and is only observable in live accounts;
+- adherence behaviour — whether humans actually follow recommendations is itself a research question (strategy 5 in Section 4.1) and is only observable in live accounts;
 - paired live comparisons — same Gameweek, same information snapshots, different strategies, matching the design above.
 
 Protocol requirements:
@@ -1122,6 +1153,14 @@ Deliverables:
 - **walking-skeleton milestone:** one historical Gameweek end-to-end with crude models, delivered early rather than after all other Phase 1 items;
 - **historical orchestration pilot:** as soon as replay works, run agent and non-agent strategies on replayed Gameweeks — the core research question must not wait for Phase 3. Agent-condition results from this pilot validate the harness plumbing; because historical data lacks the pre-deadline news environment (Section 17.6), they are smoke tests, not evidence of agent value.
 
+Exit criteria:
+
+- the eight initial success criteria (Section 3.2) are each demonstrated on replayed Gameweeks;
+- one complete Gameweek Decision Record is produced end-to-end — raw snapshot to rendered record — for a replayed or live deadline, and reproduced from its recorded inputs and versions by rerun;
+- the deterministic validator rejects every invalid rule golden case (Section 21.1);
+- the historical orchestration pilot has produced at least one paired agent-versus-non-agent comparison, reported as smoke-test evidence;
+- no deliverable requires undocumented manual intervention to run.
+
 Explicitly not activated in Phase 1:
 
 - unrestricted full-article collection;
@@ -1178,6 +1217,14 @@ Deliverables:
 - model-graded qualitative checks where appropriate;
 - cost, latency and decision-quality comparison;
 - ablation tests removing individual agents or data sources.
+
+Exit criteria:
+
+- the detectable-effect-size estimate (Section 17.6) was recorded before any comparative results were examined;
+- every strategy has run on the full fixed evaluation set with paired, sub-decision-level metrics;
+- cost and latency per strategy are reported alongside decision quality;
+- ablations attribute observed differences to specific agents or data sources;
+- a written conclusion states whether orchestration justified its cost — a null result is an acceptable finding and must be reported with the same rigour.
 
 ### Phase 4 — Extended data and retrieval
 
@@ -1524,12 +1571,16 @@ Agents contributing to the project should work against explicit, non-overlapping
 - create rule golden cases;
 - update after FPL launch.
 
+**Done when:** every category in Section 5.3 has versioned 2026/27 entries with status, source and verification date; golden cases cover each rule family; unresolved rules are explicitly listed as `inherited` or `provisional` rather than omitted.
+
 ### WP-02: Source governance
 
 - populate the source registry;
 - review terms, licences and attribution;
 - recommend permitted collection methods;
 - document disabled sources and alternatives.
+
+**Done when:** every source named in Section 6.1 has a registry entry completing all Section 6.2 fields; each collector's enabled state follows its `licence_status`; each disabled source has a documented alternative or an accepted gap.
 
 ### WP-03: Canonical data model
 
@@ -1538,6 +1589,8 @@ Agents contributing to the project should work against explicit, non-overlapping
 - define manager state;
 - define evidence and decision records;
 - publish schemas and examples.
+
+**Done when:** every entity in Section 9 has a published schema; temporal entities carry the four point-in-time timestamps (Section 7.2); identity resolution is demonstrated on worked cross-season examples; each schema ships with a valid example record.
 
 ### WP-04: Historical-data assessment
 
@@ -1550,6 +1603,8 @@ Agents contributing to the project should work against explicit, non-overlapping
 - assess which historical Gameweeks have recoverable point-in-time news (archived bootstrap snapshots with `news` fields, Wayback captures) and report where evidence-dependent replay is honestly feasible (Section 17.6);
 - recommend usable training targets.
 
+**Done when:** each candidate dataset has a written profile covering coverage, gaps, licence and leakage risk; identity-match rates are measured and reported; the point-in-time news assessment states which Gameweeks support evidence-dependent replay; training targets are recommended per model component.
+
 ### WP-05: Baseline forecasting
 
 - implement expected-minutes baseline;
@@ -1560,6 +1615,8 @@ Agents contributing to the project should work against explicit, non-overlapping
 - establish time-based evaluation;
 - document calibration.
 
+**Done when:** every baseline in Section 11.2 runs under time-based evaluation with reported error and calibration; each start-probability source is benchmarked against the naive baseline; results reproduce from committed code and versioned data references.
+
 ### WP-06: Rules and scoring engine
 
 - validate squads and transfers;
@@ -1567,12 +1624,16 @@ Agents contributing to the project should work against explicit, non-overlapping
 - implement chip and automatic-substitution rules;
 - provide deterministic tests.
 
+**Done when:** the validator passes all rule golden cases (Section 21.1); the scoring engine reproduces official points on sampled finalised Gameweeks within a documented tolerance (Section 5.5); every discrepancy is explained or filed as a defect.
+
 ### WP-07: Optimisation
 
 - assess adaptation of `open-fpl-solver` versus a smaller internal model;
 - implement current-squad, financial and transfer constraints;
 - generate baseline candidate plans;
 - retain reproducible solver inputs and outputs.
+
+**Done when:** the solver choice (Open Decision 7) is recorded as an architecture decision record; generated plans satisfy every hard constraint in Section 12.1 across golden cases; a saved solver input reproduces its output exactly.
 
 ### WP-08: Evidence pipeline
 
@@ -1582,6 +1643,8 @@ Agents contributing to the project should work against explicit, non-overlapping
 - define challenger escalation outcomes and their effect on approval (Section 13.4);
 - create injection-resistant extraction tests.
 
+**Done when:** document, claim, signal and adjustment records round-trip with citations and expiry; conflicting claims are represented and surfaced rather than merged; injection golden cases (Section 21.4) pass; challenger escalation outcomes are enforced in the approval path.
+
 ### WP-09: Decision record and evaluation
 
 - define Gameweek Decision Record schema;
@@ -1589,11 +1652,15 @@ Agents contributing to the project should work against explicit, non-overlapping
 - implement retrospective metrics;
 - create historical replay harness.
 
+**Done when:** the Gameweek Decision Record schema captures every element in Section 3.1; the harness replays a full historical Gameweek cheaply enough to run the volumes implied by Section 17.6; baseline comparison and retrospective metrics compute from recorded data alone.
+
 ### WP-10: Deferred-feature designs
 
 - produce interface-only designs for vector retrieval, rival analysis, price strategy, live monitoring and execution;
 - avoid implementing them during Phase 1;
 - identify prerequisites and activation criteria.
+
+**Done when:** every feature in Section 19 marked as anticipated has an interface-only design note stating prerequisites and activation criteria, with no implementation code.
 
 ---
 
@@ -1621,16 +1688,19 @@ The following require explicit decisions before or during Phase 0:
 
 ## 26. Immediate next steps
 
-1. Create the repository and copy this plan to `docs/plan.md`.
-2. Add an `AGENTS.md` defining permissions, source restrictions and work-package boundaries.
-3. Complete WP-01 and WP-02 before enabling any automated collectors.
-4. Re-check official 2026/27 rules and API schemas when FPL launches.
-5. Create the canonical schemas and point-in-time contract.
+Already complete: the repository exists, this plan lives at `docs/plan.md`, and `AGENTS.md` defines permissions, source restrictions and work-package boundaries.
+
+1. Complete WP-01 and WP-02 before enabling any automated collectors.
+2. Start the Phase 1 walking skeleton in parallel: one historical Gameweek end-to-end with crude models (Section 18).
+3. Re-check official 2026/27 rules and API schemas when FPL launches.
+4. Create the canonical schemas and point-in-time contract.
+5. Set the two numbers that size everything downstream: the weekly operating-effort budget (Phase 0) and the detectable-effect-size estimate (Section 17.6).
 6. Profile historical datasets for usable event-level and pre-deadline features.
 7. Build a rules validator before building an LLM recommendation workflow.
 8. Select a small set of historical Gameweeks for end-to-end replay.
 9. Establish deterministic baselines before measuring agent value.
-10. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+10. Decide the multi-manager cohort question (Open Decision 15) before Gameweek 1 if recruitment is intended.
+11. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
 
 ---
 
@@ -1680,3 +1750,32 @@ Governed data
 ```
 
 This preserves the wider ambition while keeping the initial build focused, measurable and safe.
+
+---
+
+## Appendix A. Glossary
+
+FPL terms:
+
+- **Gameweek (GW)** — one FPL scoring round, locked at a deadline before its opening fixture.
+- **Chips** — once-per-half-season powers: Wildcard (unlimited free transfers for one Gameweek), Free Hit (temporary one-Gameweek squad), Bench Boost (bench players score), Triple Captain (captain scores treble).
+- **BPS** — Bonus Points System, the per-match index that awards the 3, 2 and 1 bonus points.
+- **FDR** — the official Fixture Difficulty Rating published through the FPL endpoints.
+- **Blank / Double Gameweek** — a Gameweek in which a club has no fixture, or two.
+- **Point hit** — the four-point cost of each transfer beyond the free allowance.
+- **Selling price** — the amount recovered when selling a player under the half-profit rule; differs from current price.
+- **Effective ownership (EO)** — the proportion of rival managers owning (and captaining) a player; deferred to Phase 5.
+- **`ep_this` / `ep_next`** — official expected-points fields on the player endpoints, usable only if captured pre-deadline.
+- **xG / xA** — expected goals and expected assists, chance-quality measures from shot models.
+
+Project terms:
+
+- **Point-in-time contract** — the four timestamps of Section 7.2 plus the rule that decisions may only use records with `available_at <= deadline`.
+- **Replay** — re-running the whole decision pipeline against a historical deadline using only information available at that time (Section 21.3).
+- **Shadow evaluation** — running a strategy against live data snapshots and scoring it without operating a live FPL entry for it.
+- **Structured-data strategy** — a strategy whose inputs survive in historical datasets (statistical baseline, forecast plus optimiser); fairly evaluable by replay (Section 17.6).
+- **Evidence-dependent strategy** — a strategy that also consumes the pre-deadline news environment (agent conditions); historical replay structurally understates it (Section 17.6).
+- **Walking skeleton** — the earliest end-to-end pipeline: one historical Gameweek through crude versions of every component (Phase 1).
+- **Gameweek Decision Record** — the auditable per-Gameweek output defined in Sections 3.1 and 16.
+- **Multi-manager cohort** — recruited managers, each running their own single account under an assigned strategy (Section 17.7).
+- **ADR** — architecture decision record, stored in `docs/decisions/`.
