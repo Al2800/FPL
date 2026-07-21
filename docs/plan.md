@@ -1694,14 +1694,14 @@ Open Decisions 6, 7 and 10–14 are technical: the implementing agent proposes a
 
 Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGENTS.md` defines permissions and boundaries, and the Phase 0 human gates are answered and recorded in `docs/decisions/` — private non-commercial use (ADR-0001), retention (ADR-0002), the effort budget (ADR-0003), manager-state entry (ADR-0005), risk preference (ADR-0006), historical-data handling (ADR-0007), storage (ADR-0008) and the multi-manager cohort (ADR-0009). Raw-data collection is no longer gated on governance answers.
 
-1. Complete WP-01 and WP-02 before enabling any automated collectors. A registry entry for the official FPL endpoints alone is sufficient to start the snapshotter: day-one snapshotting is the most time-critical deliverable in the plan (Section 17.6) and must not wait for the full registry.
-2. Start the Phase 1 walking skeleton in parallel: one historical Gameweek end-to-end with crude models (Section 18).
-3. Re-check official 2026/27 rules and API schemas when FPL launches.
-4. Create the canonical schemas and point-in-time contract.
-5. Profile historical datasets for usable event-level and pre-deadline features.
-6. Build a rules validator before building an LLM recommendation workflow.
+1. ~~Complete WP-01 and WP-02 before enabling any automated collectors.~~ Done for Tier 1 / FPL endpoints.
+2. ~~Start the Phase 1 walking skeleton.~~ Done (synthetic GW).
+3. Re-check official 2026/27 rules and API schemas when FPL launches — **in progress:** live bootstrap schema notes captured in `docs/data-sources/fpl-endpoint-schema-notes.md`; inherited rules still need promotion after full launch verification.
+4. ~~Create the canonical schemas and point-in-time contract.~~ Done (WP-03).
+5. Profile historical datasets for usable event-level and pre-deadline features (WP-04).
+6. ~~Build a rules validator before building an LLM recommendation workflow.~~ Core validator/scoring in place (WP-06); expand golden-case runner and finalised-GW sample checks next.
 7. Select a small set of historical Gameweeks for end-to-end replay.
-8. Establish deterministic baselines before measuring agent value.
+8. Establish deterministic baselines before measuring agent value (WP-05).
 9. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
 
 Human tasks that cannot be delegated, with their triggers:

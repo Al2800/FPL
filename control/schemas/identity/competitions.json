@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/competitions.json",
+  "title": "Competition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "competition_uid",
+    "name",
+    "provenance"
+  ],
+  "properties": {
+    "competition_uid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

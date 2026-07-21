@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/manager_gameweek_picks.json",
+  "title": "Manager gameweek picks",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manager_id",
+    "season_id",
+    "gameweek",
+    "starting_xi",
+    "bench",
+    "captain_uid",
+    "vice_captain_uid",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "manager_id": {
+      "type": "string"
+    },
+    "season_id": {
+      "type": "string"
+    },
+    "gameweek": {
+      "type": "integer"
+    },
+    "starting_xi": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bench": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "captain_uid": {
+      "type": "string"
+    },
+    "vice_captain_uid": {
+      "type": "string"
+    },
+    "active_chip": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

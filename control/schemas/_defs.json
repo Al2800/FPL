@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/_defs.json",
+  "title": "Shared definitions",
+  "$defs": {
+    "iso_datetime": {
+      "type": "string",
+      "description": "UTC timestamp in ISO-8601 form ending with Z",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "point_in_time": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "published_at": { "$ref": "#/$defs/iso_datetime" },
+        "observed_at": { "$ref": "#/$defs/iso_datetime" },
+        "effective_at": { "$ref": "#/$defs/iso_datetime" },
+        "finalised_at": { "$ref": "#/$defs/iso_datetime" },
+        "available_at": { "$ref": "#/$defs/iso_datetime" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_ids"],
+      "properties": {
+        "source_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "content_hash_sha256": { "type": "string" },
+        "transformation_version": { "type": "string" },
+        "ruleset_id": { "type": "string" },
+        "model_version": { "type": "string" },
+        "prompt_version": { "type": "string" },
+        "agent_run_id": { "type": "string" }
+      }
+    },
+    "position": {
+      "type": "string",
+      "enum": ["GKP", "DEF", "MID", "FWD"]
+    },
+    "money": {
+      "type": "number",
+      "description": "FPL value in millions of GBP (0.1 increments; avoid binary float checks in schema)"
+    }
+  }
+}

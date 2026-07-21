@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/club_managers.json",
+  "title": "Club manager tenure",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manager_uid",
+    "team_uid",
+    "name",
+    "appointed_at",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "manager_uid": {
+      "type": "string"
+    },
+    "team_uid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "appointed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "departed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

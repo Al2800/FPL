@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/extracted_claims.json",
+  "title": "Extracted claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "claim_id",
+    "document_id",
+    "claim_text",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string"
+    },
+    "document_id": {
+      "type": "string"
+    },
+    "claim_text": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "expires_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

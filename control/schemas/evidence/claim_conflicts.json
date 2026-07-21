@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/claim_conflicts.json",
+  "title": "Claim conflict",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "conflict_id",
+    "claim_ids",
+    "description",
+    "provenance"
+  ],
+  "properties": {
+    "conflict_id": {
+      "type": "string"
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

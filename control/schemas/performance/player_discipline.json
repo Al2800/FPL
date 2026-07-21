@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/player_discipline.json",
+  "title": "Player discipline",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "player_uid",
+    "season_id",
+    "yellow_cards",
+    "observed_at",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "player_uid": {
+      "type": "string"
+    },
+    "season_id": {
+      "type": "string"
+    },
+    "competition_uid": {
+      "type": "string"
+    },
+    "yellow_cards": {
+      "type": "integer"
+    },
+    "red_cards": {
+      "type": "integer"
+    },
+    "suspension_matches_remaining": {
+      "type": "integer"
+    },
+    "published_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "observed_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "effective_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "finalised_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "available_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

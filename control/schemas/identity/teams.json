@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/teams.json",
+  "title": "Team",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "team_uid",
+    "name",
+    "short_name",
+    "provenance"
+  ],
+  "properties": {
+    "team_uid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "short_name": {
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}

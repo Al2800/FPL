@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/players.json",
+  "title": "Player",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "player_uid",
+    "display_name",
+    "provenance"
+  ],
+  "properties": {
+    "player_uid": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "known_as": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "string"
+    },
+    "nationality": {
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "../_defs.json#/$defs/provenance"
+    }
+  }
+}
