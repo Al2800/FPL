@@ -1035,11 +1035,35 @@ For later execution phases:
 
 A single live season is too noisy to distinguish five strategies: one captaincy differential can swing more points than a season of marginal model improvements. The comparison design must confront this directly:
 
-- **historical replay across multiple seasons is the primary evidence** for strategy comparisons; the live season is validation, not the experiment;
+- **historical replay across multiple seasons is the primary evidence** for comparing structured-data strategies, with the live season as validation; for evidence-dependent agent strategies this relationship inverts (see the asymmetry below);
 - comparisons are **paired per decision** — same Gameweek, same information set, different strategy — never unpaired season totals;
 - decisions are **decomposed into sub-decisions** (captaincy, individual transfers, bench order, chip timing) to multiply the effective sample count;
 - before any difference is claimed, a **detectable-effect-size estimate** derived from simulated point distributions must state how many decisions are needed to distinguish, for example, a 0.5-point-per-Gameweek advantage;
-- **multiple live FPL entries per strategy are not used**: FPL terms permit one account per person, so parallel strategies are evaluated in shadow against the same live data snapshots.
+- **the project operates one live FPL entry**: FPL terms permit one account per person, so the project's own parallel strategies are evaluated in shadow against the same live data snapshots. A recruited cohort of consenting managers, each a real person with their own single account, is the compliant route to parallel live entries (Section 17.7).
+
+Replay is the measurement instrument, not a source of decision value: it generates statistical confidence about strategies, while the decision value itself comes from the data and models of Sections 6 and 11. Two consequences bound how much to invest in it:
+
+- **Replay has an evidence asymmetry.** Historical datasets preserve structured statistics, not the pre-deadline news environment — press conferences, injury reports and predicted line-ups as they looked at the time. Multi-season replay can therefore fairly compare the structured-data strategies (statistical baseline, forecast plus optimiser, horizon and chip-timing policies) but will structurally understate evidence-dependent agent strategies, which draw precisely on the material history does not preserve. Evidence-dependent comparisons lean instead on live-season paired shadow evaluation and the multi-manager cohort, accepting that confidence accrues more slowly there.
+- **Do not over-invest in historical evidence reconstruction.** The time-critical, irreplaceable investment is day-one live capture (Section 6.1): this season's pre-deadline snapshots become the first replay corpus that is complete for evidence-dependent strategies. The replay harness itself must be cheap per run, since hundreds of replayed Gameweeks are expected, but reconstructing historical news environments (archived pages, Wayback captures) is limited to a feasibility assessment in WP-04, not a build commitment.
+
+### 17.7 Multi-manager live cohort
+
+FPL terms permit one account per person; they do not prevent several people from each running their own account under an agreed protocol. A recruited cohort of consenting managers, each assigned one strategy, provides live evidence that shadow evaluation structurally cannot:
+
+- real execution effects — actual price changes, selling prices and rank movements, which shadow strategies never pay;
+- adherence behaviour — whether humans actually follow recommendations is itself a research question (strategy 5) and is only observable in live accounts;
+- paired live comparisons — same Gameweek, same information snapshots, different strategies, matching the design above.
+
+Protocol requirements:
+
+- each participant is a real person operating exactly one account, consistent with FPL terms;
+- informed participation: managers know which strategy they follow and what is recorded about their decisions;
+- one strategy per manager, assigned before Gameweek 1;
+- standardised starting squads, or the initial divergence recorded so later comparisons can condition on it;
+- adherence logged per decision — followed, partially followed or overridden — with overrides retained as human-behaviour data rather than discarded;
+- cohort results are supporting evidence: the sample is small, so they complement, and never replace, replay and shadow evaluation.
+
+No participant credentials or personal data enter the repository or model context (Section 22.3).
 
 ---
 
@@ -1096,7 +1120,7 @@ Deliverables:
 - manual decision and outcome journal;
 - historical replay for selected Gameweeks;
 - **walking-skeleton milestone:** one historical Gameweek end-to-end with crude models, delivered early rather than after all other Phase 1 items;
-- **historical orchestration pilot:** as soon as replay works, run agent and non-agent strategies on replayed Gameweeks — the core research question must not wait for Phase 3.
+- **historical orchestration pilot:** as soon as replay works, run agent and non-agent strategies on replayed Gameweeks — the core research question must not wait for Phase 3. Agent-condition results from this pilot validate the harness plumbing; because historical data lacks the pre-deadline news environment (Section 17.6), they are smoke tests, not evidence of agent value.
 
 Explicitly not activated in Phase 1:
 
@@ -1144,7 +1168,7 @@ Parallel shadow strategies:
 4. specialised multi-agent workflow;
 5. human selection.
 
-Primary statistical evidence comes from the multi-season historical replay corpus (Section 17.6); the live season provides validation only.
+Primary statistical evidence for the structured-data strategies comes from the multi-season historical replay corpus (Section 17.6). For evidence-dependent agent strategies, replay is structurally incomplete, so the live season — paired shadow evaluation plus the multi-manager cohort where recruited (Section 17.7) — provides the primary evidence, with the project's own live entry serving as validation.
 
 Deliverables:
 
@@ -1258,7 +1282,7 @@ Possible scope:
 - strict limits on transfers and point hits;
 - no autonomous chip use initially;
 - kill switch and manual override;
-- separate experimental FPL entry only if explicitly permitted — FPL terms allow one account per person, so parallel live entries are assumed prohibited and shadow evaluation remains the default.
+- separate experimental FPL entry only if explicitly permitted — FPL terms allow one account per person, so additional entries operated by the same person are assumed prohibited; shadow evaluation remains the default and the recruited multi-manager cohort (Section 17.7) is the compliant route to parallel live entries.
 
 This phase is optional and should not be treated as the expected destination of the initial project.
 
@@ -1483,6 +1507,8 @@ Once a final proposal is approved:
 | Weekly operating burden causes mid-season abandonment | Explicit effort budget, walking skeleton, automation of the routine loop |
 | Underpowered strategy comparisons | Replay-scale evaluation, paired sub-decision metrics and effect-size estimates (Section 17.6) |
 | Governance overhead consumes the pre-season | Walking skeleton runs in parallel with Phase 0; legal gate limited to Open Decisions 1–2 |
+| Over-investment in historical replay at the expense of live capture | Replay scoped to structured-data strategies; historical news reconstruction limited to a WP-04 feasibility assessment; day-one live snapshotting prioritised (Section 17.6) |
+| Cohort managers deviate from assigned strategies | Adherence logging per decision; overrides retained as human-behaviour data; cohort treated as supporting evidence only (Section 17.7) |
 
 ---
 
@@ -1521,6 +1547,7 @@ Agents contributing to the project should work against explicit, non-overlapping
 - assemble 2026 World Cup minutes and elimination data as pre-season priors;
 - test player/team identity matching;
 - quantify look-ahead and snapshot limitations;
+- assess which historical Gameweeks have recoverable point-in-time news (archived bootstrap snapshots with `news` fields, Wayback captures) and report where evidence-dependent replay is honestly feasible (Section 17.6);
 - recommend usable training targets.
 
 ### WP-05: Baseline forecasting
@@ -1588,6 +1615,7 @@ The following require explicit decisions before or during Phase 0:
 12. Which orchestration substrate (plain Python, a workflow engine, an agent framework) will run the pipeline, and how are agent traces captured, versioned and replayed?
 13. What are the per-Gameweek cost and latency budgets for agent runs (Section 13.5)?
 14. What planning horizon does the optimiser target (single Gameweek versus a rolling multi-Gameweek horizon), and how are future Gameweeks discounted?
+15. Will a multi-manager live cohort (Section 17.7) be recruited for 2026/27, and under what protocol — strategy assignment, starting-squad standardisation and adherence logging?
 
 ---
 
