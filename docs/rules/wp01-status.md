@@ -21,4 +21,4 @@
 
 ## Next
 
-Re-run verification against live FPL rules pages and API schemas when 2026/27 launches; promote inherited → confirmed or revise.
+Re-run verification against live FPL rules pages and API schemas when 2026/27 launches; promote inherited → confirmed or revise. Residual log: `docs/data-sources/launch-reverification.md`. Golden runner: `python3 -m scripts.run_rules_golden`.

@@ -1696,19 +1696,20 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 
 1. ~~Complete WP-01 and WP-02 before enabling any automated collectors.~~ Done for Tier 1 / FPL endpoints.
 2. ~~Start the Phase 1 walking skeleton.~~ Done (synthetic GW).
-3. Re-check official 2026/27 rules and API schemas when FPL launches — **in progress:** live bootstrap schema notes captured in `docs/data-sources/fpl-endpoint-schema-notes.md`; inherited rules still need promotion after full launch verification.
+3. Re-check official 2026/27 rules and API schemas when FPL launches — **partial:** live schema notes + residual re-verification log in `docs/data-sources/launch-reverification.md`; inherited rules still await stable bootstrap + rules-page promotion.
 4. ~~Create the canonical schemas and point-in-time contract.~~ Done (WP-03).
 5. ~~Profile historical datasets for usable event-level and pre-deadline features (WP-04).~~ Done — see `docs/data-sources/wp04/`.
-6. ~~Build a rules validator before building an LLM recommendation workflow.~~ Core validator/scoring in place (WP-06); expand golden-case runner and finalised-GW sample checks next.
-7. Select a small set of historical Gameweeks for end-to-end replay — **candidates listed in** `docs/data-sources/wp04/news-recoverability.md` (structured-only).
+6. ~~Build a rules validator before building an LLM recommendation workflow.~~ Done — validator/scoring + `scripts/run_rules_golden` (24/24).
+7. ~~Select a small set of historical Gameweeks for end-to-end replay.~~ Done — `evals/replay-set/structured-pilot-gameweeks.yaml` + `scripts/run_replay_pilot_set`.
 8. ~~Establish deterministic baselines before measuring agent value (WP-05).~~ Done — see `docs/data-sources/wp05/` (official `ep_next`/FDR deferred to pre-deadline snapshots).
 9. ~~Implement the deterministic optimiser and record Open Decisions 7 and 14 (WP-07).~~ Done — see `docs/optimisation/wp07-status.md`; ADRs 0011/0012 Proposed for ratification.
 10. ~~Define the evidence lifecycle interfaces and escalation/injection tests (WP-08).~~ Done — see `docs/evidence/wp08-status.md`; live LLM agents still wait on Open Decision 8.
 11. ~~Gameweek Decision Record, baseline comparison and replay harness (WP-09).~~ Done — see `docs/evaluation/wp09-status.md`.
 12. ~~Deferred-feature interface designs (WP-10).~~ Done — see `docs/architecture/deferred/`.
-13. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+13. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied — template at `control/templates/manager-state-entry.json`.
 14. World Cup 2026 priors CSV assembled — see `control/identities/world-cup-2026-priors.csv`.
 15. **Owner:** ratify Proposed ADRs 0011–0016; recruit cohort (ADR-0009); choose LLM provider/secrets (OD8) before evidence agents.
+16. **Next implementation focus:** day-one live snapshot cadence, manager-state → solver adapter, post-GW outcome attachment — see `docs/handover-brief.md`.
 
 Human tasks that cannot be delegated, with their triggers:
 
