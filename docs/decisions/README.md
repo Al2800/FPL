@@ -18,3 +18,5 @@ Decisions with trade-offs are recorded here (see `AGENTS.md`). Statuses: **Propo
 | [0012](0012-single-gameweek-horizon.md) | Single-Gameweek optimiser horizon for Phase 1 (Open Decision 14) | Proposed |
 | [0013](0013-evidence-adjustment-threshold.md) | Minimum evidence threshold for proposed adjustments (Open Decision 10) | Proposed |
 | [0014](0014-historical-seasons-event-data.md) | Historical seasons with reliable event-level data (Open Decision 6) | Proposed |
+| [0015](0015-browser-dry-run-stability.md) | Stability threshold before browser dry-run (Open Decision 11) | Proposed |
+| [0016](0016-agent-runtime-budgets.md) | Per-Gameweek agent cost and latency budgets (Open Decision 13) | Proposed |

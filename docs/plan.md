@@ -1680,13 +1680,13 @@ The following require explicit decisions before or during Phase 0. Decisions tak
 8. Which model providers, including local models, will be compared? **Open — must be decided, with keys added as environment secrets, before any evidence or challenger agent work begins (Section 26); nothing earlier needs them.**
 9. What is the human risk preference: conservative, balanced or experimental? **Decided — balanced by default, with the aggressive/differential alternative selectable each Gameweek (ADR-0006).**
 10. What evidence threshold is required before an agent may propose an expected-minutes adjustment? **Proposed — policy thresholds in `control/policies/evidence-adjustments.yaml` (ADR-0013).**
-11. What number of live Gameweeks constitutes sufficient stability before browser dry-run work begins?
+11. What number of live Gameweeks constitutes sufficient stability before browser dry-run work begins? **Proposed — four consecutive stable advisory Gameweeks (ADR-0015).**
 12. Which orchestration substrate (plain Python, a workflow engine, an agent framework) will run the pipeline, and how are agent traces captured, versioned and replayed? **Decided — plain Python modules and scripts for Phase 0/1; agent traces as JSONL by run ID (ADR-0010).**
-13. What are the per-Gameweek cost and latency budgets for agent runs (Section 13.5)?
+13. What are the per-Gameweek cost and latency budgets for agent runs (Section 13.5)? **Proposed — stage timeouts and T-90m degrade rule (ADR-0016); currency caps when OD8 provider is chosen.**
 14. What planning horizon does the optimiser target (single Gameweek versus a rolling multi-Gameweek horizon), and how are future Gameweeks discounted? **Proposed — single-Gameweek for Phase 1 (ADR-0012).**
 15. Will a multi-manager live cohort (Section 17.7) be recruited for 2026/27, and under what protocol — strategy assignment, starting-squad standardisation and adherence logging? **Decided — yes, approximately five managers, one strategy each, protocol agreed before Gameweek 1; recruitment owned by the project owner (ADR-0009).**
 
-Open Decisions 11 and 13 remain technical: the implementing agent proposes an answer as an architecture decision record for owner ratification rather than waiting on it. Decisions 6, 7, 10 and 14 have Proposed ADRs awaiting ratification.
+Open Decisions 6, 7, 10, 11, 13 and 14 have Proposed ADRs awaiting ratification. Open Decision 8 (LLM provider) remains a human gate before live evidence/challenger agents.
 
 ---
 
@@ -1705,9 +1705,10 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 9. ~~Implement the deterministic optimiser and record Open Decisions 7 and 14 (WP-07).~~ Done — see `docs/optimisation/wp07-status.md`; ADRs 0011/0012 Proposed for ratification.
 10. ~~Define the evidence lifecycle interfaces and escalation/injection tests (WP-08).~~ Done — see `docs/evidence/wp08-status.md`; live LLM agents still wait on Open Decision 8.
 11. ~~Gameweek Decision Record, baseline comparison and replay harness (WP-09).~~ Done — see `docs/evaluation/wp09-status.md`.
-12. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
-13. World Cup 2026 priors CSV assembled — see `control/identities/world-cup-2026-priors.csv` (brief: `docs/handover-world-cup-priors.md`).
-14. ~~WP-10 deferred-feature interface notes~~ — next package after WP-09.
+12. ~~Deferred-feature interface designs (WP-10).~~ Done — see `docs/architecture/deferred/`.
+13. Operate in manual-entry advisory mode until the later execution prerequisites are satisfied.
+14. World Cup 2026 priors CSV assembled — see `control/identities/world-cup-2026-priors.csv`.
+15. **Owner:** ratify Proposed ADRs 0011–0016; recruit cohort (ADR-0009); choose LLM provider/secrets (OD8) before evidence agents.
 
 Human tasks that cannot be delegated, with their triggers:
 

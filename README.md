@@ -47,7 +47,8 @@ Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/game
 | WP-07 Optimisation | Transparent solver + golden case — `docs/optimisation/wp07-status.md` |
 | WP-08 Evidence pipeline | Record lifecycle + escalation/injection — `docs/evidence/wp08-status.md` |
 | WP-09 Decision record / replay | GDR schema + harness — `docs/evaluation/wp09-status.md` |
-| WP-10+ | Not started |
+| WP-10 Deferred interfaces | Interface-only notes — `docs/architecture/deferred/` |
+| Phase 1 packages | WP-01…WP-10 complete pending Proposed ADR ratifications |
 
 ## Repository layout
 
