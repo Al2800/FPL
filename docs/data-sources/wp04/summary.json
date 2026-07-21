@@ -1,0 +1,117 @@
+{
+  "wp": "WP-04",
+  "profiled_at": "2026-07-21T16:49:44Z",
+  "vaastav_seasons": [
+    "2016-17",
+    "2017-18",
+    "2018-19",
+    "2019-20",
+    "2020-21",
+    "2021-22",
+    "2022-23",
+    "2023-24",
+    "2024-25",
+    "2025-26"
+  ],
+  "identity_matches": [
+    {
+      "from": "2016-17",
+      "to": "2017-18",
+      "method": "fpl_code",
+      "n_a": 683,
+      "n_b": 647,
+      "matched": 435,
+      "match_rate_of_earlier": 0.637,
+      "match_rate_of_later": 0.672
+    },
+    {
+      "from": "2017-18",
+      "to": "2018-19",
+      "method": "fpl_code",
+      "n_a": 647,
+      "n_b": 624,
+      "matched": 421,
+      "match_rate_of_earlier": 0.651,
+      "match_rate_of_later": 0.675
+    },
+    {
+      "from": "2018-19",
+      "to": "2019-20",
+      "method": "fpl_code",
+      "n_a": 624,
+      "n_b": 666,
+      "matched": 430,
+      "match_rate_of_earlier": 0.689,
+      "match_rate_of_later": 0.646
+    },
+    {
+      "from": "2019-20",
+      "to": "2020-21",
+      "method": "fpl_code",
+      "n_a": 666,
+      "n_b": 713,
+      "matched": 455,
+      "match_rate_of_earlier": 0.683,
+      "match_rate_of_later": 0.638
+    },
+    {
+      "from": "2020-21",
+      "to": "2021-22",
+      "method": "fpl_code",
+      "n_a": 713,
+      "n_b": 737,
+      "matched": 466,
+      "match_rate_of_earlier": 0.654,
+      "match_rate_of_later": 0.632
+    },
+    {
+      "from": "2021-22",
+      "to": "2022-23",
+      "method": "fpl_code",
+      "n_a": 737,
+      "n_b": 778,
+      "matched": 467,
+      "match_rate_of_earlier": 0.634,
+      "match_rate_of_later": 0.6
+    },
+    {
+      "from": "2022-23",
+      "to": "2023-24",
+      "method": "fpl_code",
+      "n_a": 778,
+      "n_b": 865,
+      "matched": 526,
+      "match_rate_of_earlier": 0.676,
+      "match_rate_of_later": 0.608
+    },
+    {
+      "from": "2023-24",
+      "to": "2024-25",
+      "method": "fpl_code",
+      "n_a": 865,
+      "n_b": 804,
+      "matched": 513,
+      "match_rate_of_earlier": 0.593,
+      "match_rate_of_later": 0.638
+    },
+    {
+      "from": "2024-25",
+      "to": "2025-26",
+      "method": "fpl_code",
+      "n_a": 804,
+      "n_b": 841,
+      "matched": 534,
+      "match_rate_of_earlier": 0.664,
+      "match_rate_of_later": 0.635
+    }
+  ],
+  "football_data_files": [
+    "E0_1920.csv",
+    "E0_2021.csv",
+    "E0_2122.csv",
+    "E0_2223.csv",
+    "E0_2324.csv",
+    "E0_2425.csv"
+  ],
+  "news_feasibility": "low_without_external_archives"
+}

@@ -36,10 +36,11 @@ Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/game
 | WP-01 Rules audit | Draft complete — launch re-verification pending |
 | WP-02 Source governance (Tier 1) | Complete for Section 6.1; only FPL endpoints enabled |
 | WP-03 Canonical data model | Schemas + point-in-time contract + examples |
+| WP-04 Historical-data assessment | Profiles + identity rates + news feasibility in `docs/data-sources/wp04/` |
 | WP-06 Rules/scoring engine | Core scoring + validator families covered; official-points sample deferred |
 | Snapshotter | Runnable (daily cadence documented) |
 | Walking skeleton | Runnable and reproducible |
-| WP-04 / WP-05 / WP-07+ | Not started |
+| WP-05 / WP-07+ | Not started |
 
 ## Repository layout
 
