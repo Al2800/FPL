@@ -60,3 +60,13 @@ def required_categories() -> list[str]:
         "deadlines",
         "exceptional_events",
     ]
+
+
+# Imported after the loader primitives are defined because rules_activation
+# compiles the indexed catalogue while this module remains the public API.
+from src.scoring.rules_activation import (  # noqa: E402,F401
+    RulesetActivationError,
+    assert_ruleset_activatable,
+    build_ruleset_activation,
+    ruleset_semantic_diff,
+)

@@ -40,7 +40,7 @@
     },
     "policy_arm": {"$ref": "#/$defs/policy_arm"},
     "season": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$"},
-    "gameweek": {"type": "integer", "minimum": 1, "maximum": 39},
+    "gameweek": {"type": "integer", "minimum": 1, "maximum": 99},
     "ruleset_id": {"type": "string", "minLength": 1},
     "ruleset_sha256": {"$ref": "#/$defs/sha256"},
     "previous_state_sha256": {
@@ -55,7 +55,7 @@
       "items": {"$ref": "#/$defs/player"}
     },
     "bank": {"type": "number", "minimum": 0},
-    "free_transfers": {"type": "integer", "minimum": 0, "maximum": 5},
+    "free_transfers": {"type": "integer", "minimum": 0, "maximum": 99},
     "chips_available": {
       "type": "array",
       "uniqueItems": true,
@@ -70,20 +70,13 @@
         "required": ["chip", "gameweek"],
         "properties": {
           "chip": {"$ref": "#/$defs/chip"},
-          "gameweek": {"type": "integer", "minimum": 1, "maximum": 38}
+          "gameweek": {"type": "integer", "minimum": 1, "maximum": 98}
         }
       }
     },
     "cumulative_points": {"type": "integer"},
     "content_sha256": {"$ref": "#/$defs/sha256"}
   },
-  "allOf": [
-    {
-      "if": {"properties": {"status": {"const": "season_complete"}}},
-      "then": {"properties": {"gameweek": {"const": 39}}},
-      "else": {"properties": {"gameweek": {"maximum": 38}}}
-    }
-  ],
   "$defs": {
     "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
     "policy_arm": {
@@ -95,18 +88,7 @@
         "human_decision"
       ]
     },
-    "chip": {
-      "enum": [
-        "wildcard_fh",
-        "free_hit_fh",
-        "triple_captain_fh",
-        "bench_boost_fh",
-        "wildcard_sh",
-        "free_hit_sh",
-        "triple_captain_sh",
-        "bench_boost_sh"
-      ]
-    },
+    "chip": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_(fh|sh)$"},
     "player": {
       "type": "object",
       "additionalProperties": false,

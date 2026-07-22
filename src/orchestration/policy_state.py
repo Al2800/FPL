@@ -11,7 +11,7 @@ from typing import Any, Iterable, Mapping
 
 from jsonschema import Draft202012Validator, FormatChecker
 
-from src.scoring.rules_loader import get_rule
+from src.scoring.rules_loader import assert_ruleset_activatable
 from src.scoring.validator import selling_price, validate_squad
 
 
@@ -26,16 +26,6 @@ POLICY_ARMS = (
     "evidence_agent",
     "evidence_challenger",
     "human_decision",
-)
-CHIP_ORDER = (
-    "wildcard_fh",
-    "free_hit_fh",
-    "triple_captain_fh",
-    "bench_boost_fh",
-    "wildcard_sh",
-    "free_hit_sh",
-    "triple_captain_sh",
-    "bench_boost_sh",
 )
 
 
@@ -103,14 +93,21 @@ def _require_price_step(value: Any, label: str) -> float:
 
 
 
-def _ordered_chips(chips: Iterable[str]) -> list[str]:
+def _chip_order(profile: Mapping[str, Any]) -> list[str]:
+    return [chip for chip_set in profile["chip_sets"] for chip in chip_set["chips"]]
+
+
+def _ordered_chips(
+    chips: Iterable[str], profile: Mapping[str, Any]
+) -> list[str]:
     values = [str(chip) for chip in chips]
     if len(set(values)) != len(values):
         raise PolicyStateError("chips_available contains duplicates")
-    unknown = sorted(set(values) - set(CHIP_ORDER))
+    configured = _chip_order(profile)
+    unknown = sorted(set(values) - set(configured))
     if unknown:
         raise PolicyStateError(f"Unknown chips: {unknown}")
-    return [chip for chip in CHIP_ORDER if chip in values]
+    return [chip for chip in configured if chip in values]
 
 
 def _rules_identity(rules: Mapping[str, Any], ruleset_sha256: str) -> tuple[str, str]:
@@ -124,6 +121,24 @@ def _rules_identity(rules: Mapping[str, Any], ruleset_sha256: str) -> tuple[str,
         raise PolicyStateError("ruleset_sha256 must be a lower-case SHA-256")
     return ruleset_id, ruleset_sha256
 
+
+
+def _activation_profile(
+    rules: Mapping[str, Any],
+    ruleset_sha256: str,
+    compatibility_policy: Iterable[Mapping[str, Any]] = (),
+) -> dict[str, Any]:
+    mode = (
+        "historical_replay"
+        if rules.get("meta", {}).get("replay_status") == "validated"
+        else "live"
+    )
+    return assert_ruleset_activatable(
+        rules,
+        ruleset_sha256,
+        mode=mode,
+        compatibility_policy=compatibility_policy,
+    )["transition_profile"]
 
 def _hard_squad_errors(squad: list[dict[str, Any]], rules: Mapping[str, Any]) -> list[str]:
     result = validate_squad(squad, rules=dict(rules))
@@ -168,7 +183,11 @@ def _normalise_squad(
     return squad
 
 
-def _validate_state(state: dict[str, Any], rules: Mapping[str, Any] | None = None) -> None:
+def _validate_state(
+    state: dict[str, Any],
+    rules: Mapping[str, Any] | None = None,
+    profile: Mapping[str, Any] | None = None,
+) -> None:
     _validate_schema(state, STATE_SCHEMA_PATH, "policy state")
     if state_hash(state) != state["content_sha256"]:
         raise PolicyStateError("Policy state content hash mismatch")
@@ -177,6 +196,23 @@ def _validate_state(state: dict[str, Any], rules: Mapping[str, Any] | None = Non
         raise PolicyStateError("Policy state squad player IDs must be unique")
     if rules is not None:
         _normalise_squad(state["squad"], rules)
+    if profile is not None:
+        terminal = int(profile["terminal_state_gameweek"])
+        regular = int(profile["regular_gameweeks"])
+        gameweek = int(state["gameweek"])
+        if state["status"] == "season_complete" and gameweek != terminal:
+            raise PolicyStateError("Season-complete state is not at the configured terminal")
+        if state["status"] == "active" and not 1 <= gameweek <= regular:
+            raise PolicyStateError("Active state is outside configured regular Gameweeks")
+        if int(state["free_transfers"]) > int(profile["max_banked"]):
+            raise PolicyStateError("Policy state exceeds configured transfer bank")
+        configured_chips = set(_chip_order(profile))
+        recorded_chips = set(state["chips_available"]) | {
+            item["chip"] for item in state["chip_history"]
+        }
+        unknown_chips = sorted(recorded_chips - configured_chips)
+        if unknown_chips:
+            raise PolicyStateError(f"Policy state contains unknown chips: {unknown_chips}")
 
 
 def _validate_transition(transition: dict[str, Any]) -> None:
@@ -191,10 +227,12 @@ def initialise_policy_states(
     policy_arms: Iterable[str] = POLICY_ARMS,
     rules: Mapping[str, Any],
     ruleset_sha256: str,
+    compatibility_policy: Iterable[Mapping[str, Any]] = (),
 ) -> dict[str, dict[str, Any]]:
     """Clone one controlled Gameweek-1 seed into independent arm states."""
 
     ruleset_id, ruleset_hash = _rules_identity(rules, ruleset_sha256)
+    profile = _activation_profile(rules, ruleset_hash, compatibility_policy)
     if str(seed.get("season")) != str(rules["meta"].get("season")):
         raise PolicyStateError("Seed season does not match active ruleset")
     if int(seed.get("gameweek", 0)) != 1:
@@ -215,13 +253,13 @@ def initialise_policy_states(
     if bank < 0:
         raise PolicyStateError("Initial bank cannot be negative")
     free_transfers = int(seed["free_transfers"])
-    max_banked = int(get_rule(dict(rules), "transfers.max_banked")["value"])
+    max_banked = int(profile["max_banked"])
     if free_transfers < 0 or free_transfers > max_banked:
         raise PolicyStateError("Initial free transfers outside active rules")
-    chips = _ordered_chips(seed["chips_available"])
-    if chips != list(CHIP_ORDER):
-        raise PolicyStateError("Gameweek 1 seed must explicitly contain all eight chips")
-    initial_budget = float(get_rule(dict(rules), "squad.initial_budget")["value"])
+    chips = _ordered_chips(seed["chips_available"], profile)
+    if chips != _chip_order(profile):
+        raise PolicyStateError("Gameweek 1 seed must contain every configured chip")
+    initial_budget = float(profile["initial_budget"])
     initial_value = sum(player["purchase_price"] for player in squad) + bank
     if abs(initial_value - initial_budget) > 1e-9:
         raise PolicyStateError(
@@ -266,7 +304,7 @@ def initialise_policy_states(
             "cumulative_points": 0,
         }
         state["content_sha256"] = state_hash(state)
-        _validate_state(state, rules)
+        _validate_state(state, rules, profile)
         states[arm] = state
     return states
 
@@ -294,26 +332,66 @@ def _market_index(market: Mapping[str, Any] | Iterable[Mapping[str, Any]]) -> di
 
 
 def _validate_chip(
-    chip: str | None, gameweek: int, state: Mapping[str, Any]
+    chip: str | None,
+    gameweek: int,
+    state: Mapping[str, Any],
+    profile: Mapping[str, Any],
 ) -> str | None:
     if chip is None:
         return None
     chip = str(chip)
     if chip not in state["chips_available"]:
         raise PolicyStateError(f"Chip {chip!r} is not available to this policy arm")
-    half = chip.rsplit("_", 1)[-1]
-    if (gameweek <= 19 and half != "fh") or (gameweek >= 20 and half != "sh"):
+    active_set = next(
+        (row for row in profile["chip_sets"] if chip in row["chips"]), None
+    )
+    if active_set is None or not (
+        active_set["start_gameweek"] <= gameweek <= active_set["end_gameweek"]
+    ):
         raise PolicyStateError(f"Chip {chip!r} is unavailable in Gameweek {gameweek}")
     base = chip.rsplit("_", 1)[0]
-    if gameweek == 1 and base in {"wildcard", "free_hit"}:
-        raise PolicyStateError(f"{base} cannot be played in Gameweek 1")
-    if base == "free_hit" and gameweek == 20:
+    boundaries = profile["chip_boundary_restrictions"]
+    if base == "wildcard" and gameweek in boundaries["wildcard_unavailable_gameweeks"]:
+        raise PolicyStateError(f"{base} cannot be played in Gameweek {gameweek}")
+    if base == "free_hit" and gameweek in boundaries["free_hit_unavailable_gameweeks"]:
+        raise PolicyStateError(f"{base} cannot be played in Gameweek {gameweek}")
+    adjacent = boundaries["free_hit_cannot_span_adjacent_gameweeks"]
+    if base == "free_hit" and gameweek == adjacent[1]:
         if any(
-            item["chip"].startswith("free_hit_") and item["gameweek"] == 19
+            item["chip"].startswith("free_hit_")
+            and item["gameweek"] == adjacent[0]
             for item in state["chip_history"]
         ):
-            raise PolicyStateError("Free Hit cannot be played in both Gameweek 19 and 20")
+            raise PolicyStateError(
+                f"Free Hit cannot be played in both Gameweek {adjacent[0]} and {adjacent[1]}"
+            )
     return chip
+
+
+def _next_free_transfers(
+    *,
+    available: int,
+    used: int,
+    chip_base: str | None,
+    next_gameweek: int,
+    profile: Mapping[str, Any],
+) -> int:
+    unlimited = chip_base in {"wildcard", "free_hit"}
+    if unlimited and profile["retain_banked_on_wildcard_free_hit"]:
+        result = available
+    else:
+        result = min(
+            int(profile["max_banked"]),
+            max(0, available - used)
+            + int(profile["free_transfers_per_gameweek"]),
+        )
+    for event in profile["exceptional_transfer_events"]:
+        if (
+            event["kind"] == "free_transfer_top_up"
+            and next_gameweek == event["gameweek"]
+        ):
+            result = int(event["top_up_to"])
+    return result
 
 
 def _refresh_squad(
@@ -353,12 +431,14 @@ def transition_policy_state(
     next_market: Mapping[str, Any] | Iterable[Mapping[str, Any]],
     rules: Mapping[str, Any],
     ruleset_sha256: str,
+    compatibility_policy: Iterable[Mapping[str, Any]] = (),
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Return an audited successor without mutating any supplied value."""
 
-    current = deepcopy(dict(state))
-    _validate_state(current, rules)
     ruleset_id, ruleset_hash = _rules_identity(rules, ruleset_sha256)
+    profile = _activation_profile(rules, ruleset_hash, compatibility_policy)
+    current = deepcopy(dict(state))
+    _validate_state(current, rules, profile)
     if current["status"] == "season_complete":
         raise PolicyStateError("Cannot transition a season-complete policy state")
     if current["ruleset_id"] != ruleset_id or current["ruleset_sha256"] != ruleset_hash:
@@ -390,7 +470,7 @@ def transition_policy_state(
         raise PolicyStateError("gross_points must be an integer")
 
     gameweek = int(current["gameweek"])
-    active_chip = _validate_chip(decision.get("active_chip"), gameweek, current)
+    active_chip = _validate_chip(decision.get("active_chip"), gameweek, current, profile)
     chip_base = active_chip.rsplit("_", 1)[0] if active_chip else None
     decision_prices = _market_index(decision_market)
     future_prices = _market_index(next_market)
@@ -455,22 +535,20 @@ def transition_policy_state(
     candidate_squad = _normalise_squad(working.values(), rules)
 
     transfer_count = len(audited_moves)
-    hit_per_transfer = int(get_rule(dict(rules), "transfers.hit_cost")["value"])
+    hit_per_transfer = int(profile["hit_cost"])
     unlimited = chip_base in {"wildcard", "free_hit"}
     hit_cost = 0 if unlimited else max(
         0, transfer_count - int(current["free_transfers"])
     ) * hit_per_transfer
-    max_banked = int(get_rule(dict(rules), "transfers.max_banked")["value"])
-    if unlimited:
-        next_free_transfers = int(current["free_transfers"])
-    else:
-        unused = max(0, int(current["free_transfers"]) - transfer_count)
-        next_free_transfers = min(max_banked, unused + 1)
 
     next_gameweek = gameweek + 1
-    afcon = get_rule(dict(rules), "transfers.afcon_exceptional_topup")["value"]
-    if next_gameweek == int(afcon["gameweek"]):
-        next_free_transfers = int(afcon["top_up_to"])
+    next_free_transfers = _next_free_transfers(
+        available=int(current["free_transfers"]),
+        used=transfer_count,
+        chip_base=chip_base,
+        next_gameweek=next_gameweek,
+        profile=profile,
+    )
 
     temporary_hash = None
     if chip_base == "free_hit":
@@ -487,9 +565,15 @@ def transition_policy_state(
     if active_chip is not None:
         chips.remove(active_chip)
         history.append({"chip": active_chip, "gameweek": gameweek})
-    if next_gameweek == 20:
-        chips = [chip for chip in chips if not chip.endswith("_fh")]
-    chips = _ordered_chips(chips)
+    expired = {
+        chip
+        for chip_set in profile["chip_sets"]
+        if next_gameweek > chip_set["end_gameweek"]
+        for chip in chip_set["chips"]
+    }
+    chips = _ordered_chips(
+        (chip for chip in chips if chip not in expired), profile
+    )
 
     transition_id = (
         f"state-transition:{current['season']}:gw{gameweek:02d}:"
@@ -503,7 +587,11 @@ def transition_policy_state(
             f"policy-state:{current['origin']['seed_id']}:{current['policy_arm']}:"
             f"gw{next_gameweek:02d}:{proposal_hash[:12]}"
         ),
-        "status": "season_complete" if next_gameweek == 39 else "active",
+        "status": (
+            "season_complete"
+            if next_gameweek == profile["terminal_state_gameweek"]
+            else "active"
+        ),
         "origin": deepcopy(current["origin"]),
         "policy_arm": current["policy_arm"],
         "season": current["season"],
@@ -520,7 +608,7 @@ def transition_policy_state(
         "cumulative_points": int(current["cumulative_points"]) + net_points,
     }
     successor["content_sha256"] = state_hash(successor)
-    _validate_state(successor, rules)
+    _validate_state(successor, rules, profile)
 
     transition = {
         "schema_version": "1.0",

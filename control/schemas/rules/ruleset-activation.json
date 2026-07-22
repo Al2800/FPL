@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-agent.local/schemas/rules/ruleset-activation.json",
+  "title": "FPL ruleset activation report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "activatable",
+    "season",
+    "ruleset_id",
+    "ruleset_sha256",
+    "compatibility_policy",
+    "blockers",
+    "transition_profile"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "mode": {"enum": ["historical_replay", "live"]},
+    "activatable": {"type": "boolean"},
+    "season": {"type": "string", "minLength": 3},
+    "ruleset_id": {"type": "string", "minLength": 3},
+    "ruleset_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "compatibility_policy": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/compatibilityApproval"}
+    },
+    "blockers": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/blocker"}
+    },
+    "transition_profile": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/transitionProfile"}
+      ]
+    }
+  },
+  "$defs": {
+    "compatibilityApproval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule_id", "status", "rationale", "approved_by", "approved_at"],
+      "properties": {
+        "rule_id": {"type": "string", "minLength": 3},
+        "status": {"const": "inherited"},
+        "rationale": {"type": "string", "minLength": 10},
+        "approved_by": {"type": "string", "minLength": 1},
+        "approved_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "rule_id", "message"],
+      "properties": {
+        "code": {
+          "enum": [
+            "invalid_ruleset_identity",
+            "missing_rule",
+            "unconfirmed_rule",
+            "invalid_compatibility_policy",
+            "malformed_rule_value",
+            "inconsistent_rules"
+          ]
+        },
+        "rule_id": {"type": ["string", "null"]},
+        "message": {"type": "string", "minLength": 3}
+      }
+    },
+    "positionCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["GKP", "DEF", "MID", "FWD"],
+      "properties": {
+        "GKP": {"type": "integer", "minimum": 0},
+        "DEF": {"type": "integer", "minimum": 0},
+        "MID": {"type": "integer", "minimum": 0},
+        "FWD": {"type": "integer", "minimum": 0}
+      }
+    },
+    "exceptionalEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "gameweek", "top_up_to"],
+      "properties": {
+        "kind": {"const": "free_transfer_top_up"},
+        "gameweek": {"type": "integer", "minimum": 1},
+        "top_up_to": {"type": "integer", "minimum": 1}
+      }
+    },
+    "chipSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "suffix", "start_gameweek", "end_gameweek", "chips"],
+      "properties": {
+        "index": {"type": "integer", "minimum": 1},
+        "suffix": {"enum": ["fh", "sh"]},
+        "start_gameweek": {"type": "integer", "minimum": 1},
+        "end_gameweek": {"type": "integer", "minimum": 1},
+        "chips": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 3}
+        }
+      }
+    },
+    "boundaryRestrictions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wildcard_unavailable_gameweeks",
+        "free_hit_unavailable_gameweeks",
+        "free_hit_cannot_span_adjacent_gameweeks"
+      ],
+      "properties": {
+        "wildcard_unavailable_gameweeks": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 1}
+        },
+        "free_hit_unavailable_gameweeks": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 1}
+        },
+        "free_hit_cannot_span_adjacent_gameweeks": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "transitionProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_budget",
+        "squad_size",
+        "position_counts",
+        "max_per_club",
+        "free_transfers_per_gameweek",
+        "max_banked",
+        "hit_cost",
+        "retain_banked_on_wildcard_free_hit",
+        "selling_rise_share_kept",
+        "selling_round_down_to",
+        "exceptional_transfer_events",
+        "one_chip_per_gameweek",
+        "chip_sets",
+        "chip_boundary_restrictions",
+        "regular_gameweeks",
+        "terminal_state_gameweek"
+      ],
+      "properties": {
+        "initial_budget": {"type": "number", "exclusiveMinimum": 0},
+        "squad_size": {"type": "integer", "minimum": 1},
+        "position_counts": {"$ref": "#/$defs/positionCounts"},
+        "max_per_club": {"type": "integer", "minimum": 1},
+        "free_transfers_per_gameweek": {"type": "integer", "minimum": 0},
+        "max_banked": {"type": "integer", "minimum": 1},
+        "hit_cost": {"type": "integer", "minimum": 0},
+        "retain_banked_on_wildcard_free_hit": {"type": "boolean"},
+        "selling_rise_share_kept": {"type": "number", "minimum": 0, "maximum": 1},
+        "selling_round_down_to": {"type": "number", "exclusiveMinimum": 0},
+        "exceptional_transfer_events": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/exceptionalEvent"}
+        },
+        "one_chip_per_gameweek": {"type": "boolean"},
+        "chip_sets": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/chipSet"}
+        },
+        "chip_boundary_restrictions": {"$ref": "#/$defs/boundaryRestrictions"},
+        "regular_gameweeks": {"type": "integer", "minimum": 1},
+        "terminal_state_gameweek": {"type": "integer", "minimum": 2}
+      }
+    }
+  }
+}
