@@ -1,0 +1,33 @@
+policy_version: "1.0"
+transformation_version: "deadline-view/1.0"
+description: >-
+  Explicit source precedence and missing-data behavior for cutoff-safe feature
+  materialisation. Candidate order is authoritative; no implicit source fallback
+  or value imputation is permitted.
+features:
+  ownership_percent:
+    required: true
+    on_missing: stop
+    candidates:
+      - source_id: fpl-official-endpoints
+        field_name: selected_by_percent
+  fixture_state:
+    required: true
+    on_missing: stop
+    candidates:
+      - source_id: fpl-official-endpoints
+        field_name: fixture
+      - source_id: football-data-co-uk
+        field_name: match_result
+  player_status:
+    required: false
+    on_missing: record_degraded
+    candidates:
+      - source_id: fpl-official-endpoints
+        field_name: player_status
+  external_match_result:
+    required: false
+    on_missing: record_degraded
+    candidates:
+      - source_id: football-data-co-uk
+        field_name: match_result

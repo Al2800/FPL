@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-agentic-decision-lab.local/schemas/data/temporal-observation.json",
+  "title": "Temporal observation envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "observation_version",
+    "observation_id",
+    "policy_version",
+    "source_id",
+    "field_name",
+    "entity_id",
+    "source_record_id",
+    "event_at",
+    "published_at",
+    "observed_at",
+    "ingested_at",
+    "effective_at",
+    "finalised_at",
+    "available_at",
+    "value",
+    "correction_of"
+  ],
+  "properties": {
+    "observation_version": {"const": "1.0"},
+    "observation_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "policy_version": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "field_name": {"type": "string", "minLength": 1},
+    "entity_id": {"type": "string", "minLength": 1},
+    "source_record_id": {"type": ["string", "null"]},
+    "event_at": {"$ref": "#/$defs/optionalTimestamp"},
+    "published_at": {"$ref": "#/$defs/optionalTimestamp"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "ingested_at": {"type": "string", "format": "date-time"},
+    "effective_at": {"$ref": "#/$defs/optionalTimestamp"},
+    "finalised_at": {"$ref": "#/$defs/optionalTimestamp"},
+    "available_at": {"type": "string", "format": "date-time"},
+    "value": {},
+    "correction_of": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "$defs": {
+    "optionalTimestamp": {
+      "oneOf": [
+        {"type": "string", "format": "date-time"},
+        {"type": "null"}
+      ]
+    }
+  }
+}

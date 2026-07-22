@@ -1,0 +1,32 @@
+policy_version: "1.0"
+description: >-
+  Source- and field-specific rules for the earliest instant at which an
+  observation may enter a decision. All strategies are conservative maxima.
+sources:
+  fpl-official-endpoints:
+    fields:
+      selected_by_percent:
+        strategy: latest_of
+        timestamps: [observed_at, ingested_at]
+      player_news:
+        strategy: latest_of
+        timestamps: [published_at, observed_at, ingested_at]
+        when_missing:
+          published_at: use_ingested_at
+      fixture:
+        strategy: latest_of
+        timestamps: [effective_at, observed_at, ingested_at]
+        when_missing:
+          effective_at: retain_missing
+      player_status:
+        strategy: latest_of
+        timestamps: [published_at, observed_at, ingested_at]
+        when_missing:
+          published_at: use_ingested_at
+  football-data-co-uk:
+    fields:
+      match_result:
+        strategy: latest_of
+        timestamps: [finalised_at, observed_at, ingested_at]
+        when_missing:
+          finalised_at: use_ingested_at

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-agent-lab.local/schemas/data/source-snapshot-manifest.json",
+  "title": "Source snapshot manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version", "manifest_id", "content_identity", "source_id",
+    "acquisition_mode", "origin", "observed_at", "source_registry_version",
+    "acquisition_status", "content_hash_sha256", "bytes", "body_file",
+    "schema_detection", "http_status", "request_url", "error", "failure"
+  ],
+  "properties": {
+    "manifest_version": { "const": "1.0" },
+    "manifest_id": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "content_identity": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "source_id": { "type": "string", "minLength": 1 },
+    "acquisition_mode": { "enum": ["live", "fixture"] },
+    "origin": { "type": "string", "minLength": 1 },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "source_registry_version": { "type": "string", "minLength": 1 },
+    "acquisition_status": { "enum": ["success", "http_error", "transport_error"] },
+    "content_hash_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "bytes": { "type": "integer", "minimum": 0 },
+    "body_file": { "type": "string", "pattern": "^[^/\\\\]+$" },
+    "schema_detection": { "type": "object" },
+    "http_status": { "type": ["integer", "null"], "minimum": 0, "maximum": 599 },
+    "request_url": { "type": ["string", "null"] },
+    "error": { "type": ["string", "null"] },
+    "failure": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["category", "type", "message"],
+          "properties": {
+            "category": { "enum": ["http", "transport"] },
+            "type": { "type": "string", "minLength": 1 },
+            "message": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    }
+  }
+}

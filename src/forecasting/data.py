@@ -11,6 +11,22 @@ DEFAULT_VAASTAV = REPO / "data" / "raw" / "vaastav" / "Fantasy-Premier-League" /
 
 # Never use same-GW xP as a feature for that GW's points (WP-04).
 LEAKY_SAME_GW_FEATURES = {"xP", "total_points", "bonus", "bps"}
+START_COLUMNS = ("started", "starts", "is_starting")
+
+
+def recorded_start_indicator(df: pd.DataFrame) -> pd.Series:
+    """Return an explicit start indicator, or nullable unknown when unavailable.
+
+    Minutes are deliberately not used: a start is a line-up event, not a
+    threshold on playing time.
+    """
+    for column in START_COLUMNS:
+        if column in df.columns:
+            values = pd.to_numeric(df[column], errors="coerce")
+            return values.map(lambda value: float(value > 0) if pd.notna(value) else pd.NA).astype(
+                "Float64"
+            )
+    return pd.Series(pd.NA, index=df.index, dtype="Float64")
 
 
 def list_seasons(root: Path | None = None) -> list[str]:
@@ -38,9 +54,10 @@ def load_merged_gw(season: str, root: Path | None = None) -> pd.DataFrame:
 def add_lagged_features(df: pd.DataFrame) -> pd.DataFrame:
     """Within each player-season, lag outcome-like fields so GW t uses only ≤ t-1 info."""
     out = df.sort_values(["season", "element", "round"]).copy()
+    out["started"] = recorded_start_indicator(out)
     g = out.groupby(["season", "element"], sort=False)
     out["minutes_lag1"] = g["minutes"].shift(1)
-    out["started_lag1"] = (out["minutes_lag1"] >= 60).astype(float)
+    out["started_lag1"] = g["started"].shift(1)
     out["points_lag1"] = g["total_points"].shift(1)
     out["minutes_roll3"] = g["minutes"].transform(lambda s: s.shift(1).rolling(3, min_periods=1).mean())
     out["points_roll3"] = g["total_points"].transform(lambda s: s.shift(1).rolling(3, min_periods=1).mean())

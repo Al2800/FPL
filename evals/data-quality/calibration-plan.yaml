@@ -1,0 +1,11 @@
+calibration_plan_version: "1.0"
+description: >-
+  Review criteria for deciding whether empirical quality-gate evidence is mature
+  enough for an owner to consider a versioned production-policy change. These are
+  not production data thresholds and never update policy automatically.
+promotion_criteria:
+  minimum_cases_total: 20
+  minimum_cases_per_segment: 5
+  required_evidence_modes: [historical_replay, live_shadow]
+  max_false_quarantine_rate: 0.01
+  max_false_admission_rate: 0.005

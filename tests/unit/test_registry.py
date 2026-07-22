@@ -11,6 +11,15 @@ TIER1_SOURCE_IDS = [
     "official-competition-schedules",
 ]
 
+BENCHMARK_CANDIDATE_IDS = [
+    "betfair-historical",
+    "clubelo",
+    "official-lineups-minutes",
+    "statsbomb-open",
+    "commercial-epl-event-data",
+    "football-data-org",
+]
+
 
 def test_tier1_sources_registered_with_all_fields():
     registry = load_registry()
@@ -27,6 +36,25 @@ def test_only_assessment_sources_enabled():
     assert enabled == sorted(
         ["fpl-official-endpoints", "football-data-co-uk", "vaastav-fpl"]
     )
+
+
+def test_benchmark_candidates_are_complete_and_disabled():
+    registry = load_registry()
+    by_id = {s["source_id"]: s for s in registry["sources"]}
+    for source_id in BENCHMARK_CANDIDATE_IDS:
+        assert source_id in by_id
+        assert by_id[source_id]["enabled"] is False
+        for field in REQUIRED_FIELDS:
+            assert field in by_id[source_id], f"{source_id} missing {field}"
+
+
+def test_statsbomb_is_prototyping_only_and_commercial_data_needs_ablation():
+    registry = load_registry()
+    by_id = {s["source_id"]: s for s in registry["sources"]}
+    assert "method_prototyping" in by_id["statsbomb-open"]["allowed_use"]
+    commercial = by_id["commercial-epl-event-data"]
+    assert commercial["licence_status"] == "unknown"
+    assert "ablation" in commercial["notes"].lower()
 
 
 def test_disabled_sources_have_alternative_or_gap_note():
@@ -50,3 +78,11 @@ def test_assert_collectable_blocks_disabled():
         assert False, "expected PermissionError"
     except PermissionError:
         pass
+
+
+
+def test_free_results_alternative_does_not_bypass_governance():
+    source = get_source("football-data-org")
+    assert source["enabled"] is False
+    assert source["authentication"] == "api_token"
+    assert "odds" in source["notes"].lower()
