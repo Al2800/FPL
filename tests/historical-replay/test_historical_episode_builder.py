@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import hashlib
-import hashlib
 import json
 from pathlib import Path
 
@@ -15,6 +14,7 @@ from src.orchestration.historical_episode_builder import (
     HistoricalEpisodeError,
     build_historical_episodes,
 )
+from src.scoring.rules_loader import ruleset_bytes, ruleset_sha256
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -243,12 +243,13 @@ def test_builds_schema_valid_distinct_observed_and_hidden_episodes(tmp_path: Pat
     episode = json.loads((out_dir / "gw-02" / "episode-manifest.json").read_text())
     Draft202012Validator(schema, format_checker=FormatChecker()).validate(episode)
     rules_path = ROOT / "control/rules/2025-26.yaml"
-    rules_hash = hashlib.sha256(rules_path.read_bytes()).hexdigest()
+    rules_hash = ruleset_sha256(rules_path)
     assert episode["ruleset"] == {
         "ruleset_id": "2025-26-v1.0",
         "content_sha256": rules_hash,
     }
     assert hashlib.sha256((out_dir / "gw-02" / "ruleset.yaml").read_bytes()).hexdigest() == rules_hash
+    assert (out_dir / "gw-02" / "ruleset.yaml").read_bytes() == ruleset_bytes(rules_path)
 
     observed = json.loads((out_dir / "gw-02" / "observed.json").read_text())
     hidden = json.loads((out_dir / "gw-02" / "hidden-outcome.json").read_text())

@@ -30,6 +30,8 @@ python3 -m scripts.run_optimiser evals/golden-cases/optimiser-gw3-input.json
 python3 -m scripts.run_replay                  # Gameweek Decision Record via replay harness
 python3 -m scripts.run_rules_golden            # 24 rules golden cases
 python3 -m scripts.run_replay_pilot_set        # WP-04 structured pilot GW labels
+python3 -m scripts.inventory_data_estate       # scan data/raw → data-estate inventory
+python3 -m scripts.build_warehouse             # Parquet + DuckDB under data/warehouse/
 ```
 
 Raw snapshots stay under `data/` (gitignored). The skeleton writes `reports/gameweeks/skeleton-gw3/`.

@@ -21,6 +21,7 @@ from src.scoring.rules_loader import (
     assert_ruleset_activatable,
     get_rule,
     load_rules,
+    ruleset_sha256,
 )
 
 
@@ -132,14 +133,14 @@ def test_current_live_catalogue_is_rejected_before_initial_state_creation():
             seed,
             policy_arms=POLICY_ARMS,
             rules=rules,
-            ruleset_sha256=hashlib.sha256(LIVE_PATH.read_bytes()).hexdigest(),
+            ruleset_sha256=ruleset_sha256(LIVE_PATH),
         )
 
 
 def test_full_transfer_recurrence_matrix_and_unlimited_chip_retention():
     historical = assert_ruleset_activatable(
         load_rules(HISTORICAL_PATH),
-        hashlib.sha256(HISTORICAL_PATH.read_bytes()).hexdigest(),
+        ruleset_sha256(HISTORICAL_PATH),
         mode="historical_replay",
     )["transition_profile"]
     live_rules = _confirmed_live_rules()
@@ -171,7 +172,7 @@ def test_full_transfer_recurrence_matrix_and_unlimited_chip_retention():
 def test_afcon_event_is_historical_only_without_type_or_season_conditionals():
     historical = assert_ruleset_activatable(
         load_rules(HISTORICAL_PATH),
-        hashlib.sha256(HISTORICAL_PATH.read_bytes()).hexdigest(),
+        ruleset_sha256(HISTORICAL_PATH),
         mode="historical_replay",
     )["transition_profile"]
     live_rules = _confirmed_live_rules()

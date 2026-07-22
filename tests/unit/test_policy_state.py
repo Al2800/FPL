@@ -20,7 +20,7 @@ from src.orchestration.policy_state import (
     transition_hash,
     transition_policy_state,
 )
-from src.scoring.rules_loader import load_rules
+from src.scoring.rules_loader import load_rules, ruleset_sha256
 from src.scoring.validator import selling_price
 
 
@@ -29,7 +29,7 @@ RULES_PATH = ROOT / "control/rules/2025-26.yaml"
 STATE_SCHEMA = ROOT / "control/schemas/benchmark/policy-state.json"
 TRANSITION_SCHEMA = ROOT / "control/schemas/benchmark/state-transition.json"
 RULES = load_rules(RULES_PATH)
-RULES_HASH = hashlib.sha256(RULES_PATH.read_bytes()).hexdigest()
+RULES_HASH = ruleset_sha256(RULES_PATH)
 
 
 def _players() -> list[dict[str, object]]:

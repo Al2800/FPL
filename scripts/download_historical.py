@@ -55,8 +55,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--football-data", action="store_true")
     parser.add_argument(
         "--fd-seasons",
-        default="1920,2021,2122,2223,2324,2425",
-        help="Comma-separated football-data season codes",
+        default="1516,1617,1718,1819,1920,2021,2122,2223,2324,2425",
+        help="Comma-separated football-data season codes (mmz4281 path)",
     )
     args = parser.parse_args(argv)
     if not args.vaastav and not args.football_data:

@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 from jsonschema import Draft202012Validator, FormatChecker
 
-from src.scoring.rules_loader import index_rules, load_rules
+from src.scoring.rules_loader import index_rules, load_rules, ruleset_bytes
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -151,9 +151,9 @@ def _write_immutable_bytes(path: Path, payload: bytes) -> None:
 
 
 def _validated_ruleset(path: Path, season: str) -> tuple[dict[str, Any], str, bytes]:
-    """Load a fully resolved catalogue for the season and return its exact digest."""
+    """Load a fully resolved catalogue for the season and return its canonical evidence digest."""
 
-    payload = path.read_bytes()
+    payload = ruleset_bytes(path)
     rules = load_rules(path)
     meta = rules.get("meta", {})
     if meta.get("season") != season:

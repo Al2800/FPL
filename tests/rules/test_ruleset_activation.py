@@ -17,6 +17,7 @@ from src.scoring.rules_loader import (
     get_rule,
     load_rules,
     ruleset_semantic_diff,
+    ruleset_sha256,
 )
 
 
@@ -27,7 +28,7 @@ SCHEMA_PATH = ROOT / "control/schemas/rules/ruleset-activation.json"
 
 
 def _sha(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return ruleset_sha256(path)
 
 
 def _approval(rule_id: str) -> dict[str, str]:

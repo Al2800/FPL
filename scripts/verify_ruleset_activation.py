@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 from typing import Sequence
@@ -12,6 +11,7 @@ from src.scoring.rules_loader import (
     build_ruleset_activation,
     load_rules,
     ruleset_semantic_diff,
+    ruleset_sha256,
 )
 
 
@@ -50,9 +50,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     loaded: list[tuple[dict, str]] = []
     activations = []
     for path in args.rulesets:
-        raw = path.read_bytes()
         rules = load_rules(path)
-        digest = hashlib.sha256(raw).hexdigest()
+        digest = ruleset_sha256(path)
         mode = (
             "historical_replay"
             if rules.get("meta", {}).get("replay_status") == "validated"
