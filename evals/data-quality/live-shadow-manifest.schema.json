@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-agent-lab.local/evals/data-quality/live-shadow-manifest.schema.json",
+  "title": "Non-executing live-shadow comparison manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["shadow_manifest_version", "shadow_id", "captured_at", "episode_cutoff", "source_snapshot_ids", "quality_report_ids", "unrestricted_feature_view_id", "shadow_gated_feature_view_id", "execution_mode", "browser_actions", "account_writes", "decision_comparison"],
+  "properties": {
+    "shadow_manifest_version": {"const": "1.0"},
+    "shadow_id": {"type": "string", "minLength": 1},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "episode_cutoff": {"type": "string", "format": "date-time"},
+    "source_snapshot_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "quality_report_ids": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "uniqueItems": true},
+    "unrestricted_feature_view_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "shadow_gated_feature_view_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "execution_mode": {"const": "no_execution"},
+    "browser_actions": {"const": false},
+    "account_writes": {"const": false},
+    "decision_comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unrestricted_action_id", "gated_action_id", "outcome_revealed_at"],
+      "properties": {
+        "unrestricted_action_id": {"type": ["string", "null"]},
+        "gated_action_id": {"type": ["string", "null"]},
+        "outcome_revealed_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    }
+  }
+}

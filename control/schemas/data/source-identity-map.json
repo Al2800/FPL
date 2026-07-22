@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-agent-lab.local/schemas/data/source-identity-map.json",
+  "title": "Cross-source identity resolution report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["mapping_version", "mapping_id", "catalog_version", "season", "source_ids", "records", "metrics"],
+  "properties": {
+    "mapping_version": { "const": "1.0" },
+    "mapping_id": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "catalog_version": { "type": "string", "minLength": 1 },
+    "season": { "type": "string", "minLength": 1 },
+    "source_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["input_index", "entity_type", "source_id", "source_entity_id", "source_name", "status", "canonical_id", "resolution_method", "confidence", "candidates"],
+        "properties": {
+          "input_index": { "type": "integer", "minimum": 0 },
+          "entity_type": { "enum": ["player", "team", "fixture"] },
+          "source_id": { "type": "string", "minLength": 1 },
+          "source_entity_id": { "type": "string" },
+          "source_name": { "type": "string" },
+          "status": { "enum": ["resolved", "review", "unresolved"] },
+          "canonical_id": { "type": ["string", "null"] },
+          "resolution_method": { "enum": ["exact_source_id", "exact_alias"] },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "candidates": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "resolved", "review", "unresolved", "match_rate"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "resolved": { "type": "integer", "minimum": 0 },
+        "review": { "type": "integer", "minimum": 0 },
+        "unresolved": { "type": "integer", "minimum": 0 },
+        "match_rate": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

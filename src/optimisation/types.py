@@ -6,7 +6,7 @@ from dataclasses import asdict, dataclass, field
 from typing import Any
 
 
-SOLVER_VERSION = "wp07-transparent-v0.1"
+SOLVER_VERSION = "wp07-safe-pool-v0.2"
 
 
 @dataclass(frozen=True)
@@ -52,6 +52,8 @@ class SolverInput:
     sell_pool_per_pos: int = 5
     buy_pool_per_pos: int = 8
     allow_hits: bool = True
+    ruleset_mismatch_policy: str = "fail_closed"
+    availability_policy: str = "available_only"
     solver_version: str = SOLVER_VERSION
 
     def as_dict(self) -> dict[str, Any]:
@@ -71,6 +73,8 @@ class SolverInput:
             "sell_pool_per_pos": self.sell_pool_per_pos,
             "buy_pool_per_pos": self.buy_pool_per_pos,
             "allow_hits": self.allow_hits,
+            "ruleset_mismatch_policy": self.ruleset_mismatch_policy,
+            "availability_policy": self.availability_policy,
             "solver_version": self.solver_version,
         }
 
@@ -92,5 +96,7 @@ class SolverInput:
             sell_pool_per_pos=int(data.get("sell_pool_per_pos", 5)),
             buy_pool_per_pos=int(data.get("buy_pool_per_pos", 8)),
             allow_hits=bool(data.get("allow_hits", True)),
+            ruleset_mismatch_policy=str(data.get("ruleset_mismatch_policy", "fail_closed")),
+            availability_policy=str(data.get("availability_policy", "available_only")),
             solver_version=str(data.get("solver_version", SOLVER_VERSION)),
         )

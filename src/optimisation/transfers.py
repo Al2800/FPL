@@ -134,11 +134,21 @@ def enumerate_transfer_sets(
     n_transfers: int,
     sell_pool_per_pos: int,
     buy_pool_per_pos: int,
+    bank: float,
+    availability_policy: str,
+    rules: dict[str, Any] | None = None,
 ) -> list[list[tuple[str, str]]]:
-    """Deterministic list of same-position transfer combinations of size n."""
+    """Deterministic transfer combinations from a finance-safe declared pool.
+
+    Market rows are filtered by a conservative affordability upper bound before
+    expected-points truncation. This prevents an unaffordable headline player
+    from occupying a limited pool slot while a lower-ranked feasible player is
+    silently discarded.
+    """
     if n_transfers <= 0:
         return [[]]
 
+    rules = rules or load_rules()
     owned_ids = {p["player_id"] for p in owned}
     by_pos: dict[str, list[dict[str, Any]]] = {}
     for p in owned:
@@ -148,9 +158,23 @@ def enumerate_transfer_sets(
         by_pos[pos] = by_pos[pos][:sell_pool_per_pos]
 
     buy_by_pos: dict[str, list[dict[str, Any]]] = {}
+    sale_values = sorted(
+        (
+            selling_price(float(p["purchase_price"]), float(p["now_cost"]), rules)
+            for p in owned
+        ),
+        reverse=True,
+    )
+    # Safe upper bound: no single incoming player in a feasible n-transfer set
+    # can cost more than bank plus all sale proceeds available to that set.
+    affordability_upper_bound = float(bank) + sum(sale_values[:n_transfers])
     for p in market.values():
         pid = str(p["player_id"])
         if pid in owned_ids:
+            continue
+        if availability_policy == "available_only" and p.get("status") != "a":
+            continue
+        if float(p["now_cost"]) > affordability_upper_bound + 1e-9:
             continue
         pos = p["position"]
         buy_by_pos.setdefault(pos, []).append(p)

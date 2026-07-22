@@ -21,4 +21,12 @@
 
 ## Next
 
+## Longitudinal activation warning
+
+The catalogue being present does not make the longitudinal engine live-ready. `docs/rules/season-transition-ledger.md` records every known stateful rule that can compound across Gameweeks and the activation evidence required for 2026/27.
+
+Current blocker: the historical policy-state transition reads `transfers.afcon_exceptional_topup` as a 2025/26 `{gameweek, top_up_to}` object, while the confirmed 2026/27 value is `false`. Chip boundaries and the terminal Gameweek are also still encoded in Python. A typed, ruleset-driven preflight and cross-season differential suite must land before activation.
+
+Historical replay must continue to inject and hash `2025-26.yaml`; live execution must never switch merely because `2026-27.yaml` is the default loader.
+
 Re-run verification against live FPL rules pages and API schemas when 2026/27 launches; promote inherited → confirmed or revise. Residual log: `docs/data-sources/launch-reverification.md`. Golden runner: `python3 -m scripts.run_rules_golden`.

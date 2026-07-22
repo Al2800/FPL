@@ -6,17 +6,7 @@ from typing import Any
 
 import pandas as pd
 
-from src.scoring.validator import validate_lineup, validate_squad
-
-
-FORMATION_ORDER = [
-    {"DEF": 3, "MID": 4, "FWD": 3},
-    {"DEF": 3, "MID": 5, "FWD": 2},
-    {"DEF": 4, "MID": 4, "FWD": 2},
-    {"DEF": 4, "MID": 3, "FWD": 3},
-    {"DEF": 5, "MID": 3, "FWD": 2},
-    {"DEF": 5, "MID": 4, "FWD": 1},
-]
+from src.scoring.validator import legal_formations, validate_lineup, validate_squad
 
 
 def choose_starting_xi(squad: pd.DataFrame) -> dict[str, Any]:
@@ -29,7 +19,7 @@ def choose_starting_xi(squad: pd.DataFrame) -> dict[str, Any]:
     best: dict[str, Any] | None = None
     best_score = float("-inf")
 
-    for formation in FORMATION_ORDER:
+    for formation in legal_formations():
         selected = [gkp.iloc[0]]
         used = {gkp.iloc[0]["player_id"]}
         ok = True

@@ -6,9 +6,11 @@
 ## Checklist
 
 - [x] Expected-minutes baseline + naive “started last GW”
-- [x] Rolling start-prob benchmarked vs naive (rolling wins on Brier)
-- [x] Team-strength Elo (football-data.co.uk)
-- [x] Player-event rolling / per-90 / crude fixture adj
+- [x] Recorded-start target separated from minutes played
+- [x] Rolling start-prob benchmarked with Brier, log-loss and calibration
+- [x] Team-strength Elo with normalised home/draw/away probabilities
+- [x] Player-event probabilities with Brier, log-loss and calibration
+- [x] Walk-forward fixture adjustment using prior rounds only
 - [x] Odds-implied 1X2 baseline (closing/unspecified label)
 - [x] Time-based eval harness + JSON report (`docs/data-sources/wp05/`)
 - [ ] Official `ep_next` / FDR vs odds — deferred to pre-deadline snapshot corpus
@@ -17,3 +19,8 @@
 ## Verdict
 
 WP-05 core baselines are in place for structured-data replay. Live official fields and true pre-deadline odds remain Phase 1 capture work, not blockers for WP-07 optimiser scaffolding.
+
+The committed v0.1 evaluation report predates the corrected target and scoring
+definitions. It must be regenerated from the local governed datasets before its
+numeric values are used in benchmark conclusions. API tests demonstrate that a
+caller-supplied vaastav root now propagates through every child evaluation.

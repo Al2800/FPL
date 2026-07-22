@@ -21,11 +21,11 @@ FATIGUE_START_MULT = {
 
 
 def naive_started_last(df: pd.DataFrame) -> pd.Series:
-    """P(start) = 1 if minutes_lag1 >= 60 else 0 (undefined → 0.5)."""
-    lag = df.get("minutes_lag1")
+    """P(start) = the prior recorded line-up start (undefined → 0.5)."""
+    lag = df.get("started_lag1")
     if lag is None:
-        raise ValueError("minutes_lag1 required — call add_lagged_features first")
-    p = pd.Series(np.where(lag.isna(), 0.5, (lag >= 60).astype(float)), index=df.index)
+        raise ValueError("started_lag1 required — call add_lagged_features first")
+    p = pd.Series(np.where(lag.isna(), 0.5, lag.astype(float)), index=df.index)
     return p
 
 
@@ -75,10 +75,10 @@ def expected_minutes_from_start_prob(start_prob: pd.Series, typical_minutes: flo
     return (start_prob * typical_minutes).round(1)
 
 
-def build_minutes_frame(season: str) -> pd.DataFrame:
-    df = add_lagged_features(load_merged_gw(season))
+def build_minutes_frame(season: str, *, root: Path | None = None) -> pd.DataFrame:
+    df = add_lagged_features(load_merged_gw(season, root=root))
     df["start_prob_naive"] = naive_started_last(df)
     df["start_prob_rolling"] = rolling_minutes_start_prob(df)
-    df["y_started"] = (df["minutes"] >= 60).astype(int)
+    df["y_started"] = df["started"]
     df["y_minutes"] = df["minutes"]
     return df
