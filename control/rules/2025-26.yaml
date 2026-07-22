@@ -1,0 +1,398 @@
+# FPL 2025/26 machine-readable rules used by Benchmark v0 historical replay.
+# Values are encoded from dated official Premier League material. Historical
+# outcomes remain authoritative where Opta/FPL adjudication cannot be replayed.
+
+meta:
+  season: "2025-26"
+  ruleset_id: "2025-26-v1.0"
+  replay_status: validated
+  verified_at: "2026-07-22"
+  evidence_policy: contemporaneous_official_premier_league
+  notes: >
+    This catalogue governs Classic FPL only. It excludes FPL Challenge. All
+    decision constraints and point values needed by Benchmark v0 are resolved.
+
+squad:
+  - rule_id: squad.initial_budget
+    category: squad
+    description: Initial squad budget
+    value: 100.0
+    unit: million_gbp
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174419"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: squad.size
+    category: squad
+    description: Total players in a squad
+    value: 15
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174419"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: squad.position_counts
+    category: squad
+    description: Required squad composition
+    value: {GKP: 2, DEF: 5, MID: 5, FWD: 3}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174419"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: squad.max_per_club
+    category: squad
+    description: Maximum players from one club
+    value: 3
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174419"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+lineup:
+  - rule_id: lineup.starting_xi_size
+    category: lineup
+    description: Players selected to start
+    value: 11
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: lineup.formation_constraints
+    category: lineup
+    description: Legal starting formation bounds
+    value:
+      GKP: {min: 1, max: 1}
+      DEF: {min: 3, max: 5}
+      MID: {min: 2, max: 5}
+      FWD: {min: 1, max: 3}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: lineup.captain_required
+    category: lineup
+    description: A captain must be selected from the starting XI
+    value: true
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: lineup.vice_captain_required
+    category: lineup
+    description: A different vice-captain must be selected from the starting XI
+    value: true
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: lineup.bench_order
+    category: lineup
+    description: One goalkeeper and three ordered outfield substitutes
+    value: {bench_size: 4, ordered: true}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+transfers:
+  - rule_id: transfers.free_per_gameweek
+    category: transfers
+    description: Free transfers awarded each Gameweek
+    value: 1
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174907"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: transfers.max_banked
+    category: transfers
+    description: Maximum rolled free transfers
+    value: 5
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174907"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: transfers.hit_cost
+    category: transfers
+    description: Cost of each transfer beyond the free allowance
+    value: 4
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174907"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: transfers.afcon_exceptional_topup
+    category: transfers
+    description: Free transfers were topped up to five for Gameweek 16
+    value: {gameweek: 16, top_up_to: 5}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362102/whats-new-in-202526-fantasy-extra-transfers-for-afcon"
+    source_published_at: "2025-10-18"
+    verified_at: "2026-07-22"
+  - rule_id: transfers.wildcard_free_hit_retain_banked
+    category: transfers
+    description: Wildcard and Free Hit retain banked transfers
+    value: true
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174900"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+prices:
+  - rule_id: prices.selling_half_profit
+    category: prices
+    description: Keep 0.1 of selling value per 0.2 rise; absorb every 0.1 fall
+    value: {rise_share_kept: 0.5, round_down_to: 0.1}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174907"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+chips:
+  - rule_id: chips.sets_per_season
+    category: chips
+    description: One set of four chips in each half of the season
+    value:
+      sets: 2
+      chips_per_set: [wildcard, free_hit, triple_captain, bench_boost]
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362027"
+    source_published_at: "2025-07-18"
+    verified_at: "2026-07-22"
+  - rule_id: chips.first_half_expiry
+    category: chips
+    description: First set expires at the Gameweek 19 deadline
+    value:
+      expires_at_gameweek: 19
+      expires_at: "2025-12-30T18:30:00Z"
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362027"
+    source_published_at: "2025-07-18"
+    verified_at: "2026-07-22"
+  - rule_id: chips.one_per_gameweek
+    category: chips
+    description: At most one chip may be active in a Gameweek
+    value: true
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174900"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: chips.boundary_restrictions
+    category: chips
+    description: Wildcard unavailable in GW1; Free Hit unavailable in GW1 and both GW19/GW20
+    value:
+      wildcard_unavailable_gameweeks: [1]
+      free_hit_unavailable_gameweeks: [1]
+      free_hit_cannot_span_adjacent_gameweeks: [19, 20]
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174900"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: chips.assistant_manager_available
+    category: chips
+    description: Assistant Manager chip was removed for 2025/26
+    value: false
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362211/all-you-need-to-know-about-changes-to-fantasy-for-202526"
+    source_published_at: "2025-07-19"
+    verified_at: "2026-07-22"
+
+scoring:
+  - rule_id: scoring.minutes
+    category: scoring
+    description: Appearance points by minutes played, excluding stoppage time for threshold
+    value: {under_60: 1, at_least_60: 2}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.goals
+    category: scoring
+    description: Goal points by position
+    value: {GKP: 10, DEF: 6, MID: 5, FWD: 4}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.assists
+    category: scoring
+    description: Points for each official FPL assist
+    value: 3
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.assist_definition_2025_26
+    category: scoring
+    description: Simplified deflection, error and handball assist rules introduced in 2025/26
+    value:
+      deflected_pass_inside_box_max_defensive_touches: 1
+      defensive_pass_touch_disqualifies: true
+      scorer_loses_and_regains_possession_disqualifies: true
+      outside_box_requires_intended_target_or_destination: true
+      forced_handball_requirement_removed: true
+      second_attempt_after_own_rebound_disqualifies: true
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362187"
+    source_published_at: "2025-07-18"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.clean_sheet
+    category: scoring
+    description: Clean-sheet points after at least 60 minutes
+    value: {GKP: 4, DEF: 4, MID: 1, FWD: 0}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.saves
+    category: scoring
+    description: One point per three goalkeeper saves
+    value: {points_per_n_saves: 1, n_saves: 3}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.penalty_save
+    category: scoring
+    description: Points for a penalty save
+    value: 5
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.penalty_miss
+    category: scoring
+    description: Points for a penalty miss
+    value: -2
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.goals_conceded
+    category: scoring
+    description: Goalkeeper and defender concession penalty
+    value: {points_per_n_conceded: -1, n_conceded: 2, applies_to: [GKP, DEF]}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.cards_and_own_goals
+    category: scoring
+    description: Negative event points
+    value: {yellow_card: -1, red_card: -3, own_goal: -2}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174909"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+  - rule_id: scoring.captain_multiplier
+    category: scoring
+    description: Captain and Triple Captain multipliers
+    value: {normal: 2, triple_captain: 3}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174900"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+defensive_contributions:
+  - rule_id: defensive_contributions.thresholds
+    category: defensive_contributions
+    description: Position-specific action sets, thresholds and per-match cap
+    value:
+      DEF: {actions: [clearances, blocks, interceptions, tackles], threshold: 10, points: 2}
+      MID: {actions: [clearances, blocks, interceptions, tackles, recoveries], threshold: 12, points: 2}
+      FWD: {actions: [clearances, blocks, interceptions, tackles, recoveries], threshold: 12, points: 2}
+      max_points_per_match: 2
+      goalkeepers_eligible: false
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4361991/whats-new-in-202526-fantasy-defensive-contributions"
+    source_published_at: "2025-07-18"
+    verified_at: "2026-07-22"
+
+bonus:
+  - rule_id: bonus.award
+    category: bonus
+    description: Top BPS positions receive 3, 2 and 1 with official tie handling
+    value:
+      awards: [3, 2, 1]
+      tie_rules:
+        - "tie for first: tied leaders get 3 and next distinct rank gets 1"
+        - "tie for second: leader gets 3 and tied second get 2"
+        - "tie for third: first gets 3, second gets 2 and tied third get 1"
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362127/whats-new-in-202526-fantasy-changes-to-bonus-points-system"
+    source_published_at: "2025-07-19"
+    verified_at: "2026-07-22"
+  - rule_id: bonus.bps_2025_26_changes
+    category: bonus
+    description: BPS metric changes introduced for 2025/26
+    value:
+      goalkeeper_save_inside_box_bps: 3
+      goalkeeper_save_outside_box_bps: 2
+      penalty_save_base_bps: 8
+      goal_line_clearance_bps: 9
+      penalty_goal_bps: 12
+      non_penalty_goal_bps: {GKP: 12, DEF: 12, MID: 18, FWD: 24}
+      tackle_won_bps: 2
+      successful_tackles_net_metric_removed: true
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362127/whats-new-in-202526-fantasy-changes-to-bonus-points-system"
+    source_published_at: "2025-07-19"
+    verified_at: "2026-07-22"
+
+automatic_substitutions:
+  - rule_id: automatic_substitutions.formation_preserving
+    category: automatic_substitutions
+    description: Played bench players replace zero-minute starters in order while preserving formation
+    value: {formation_preserving: true, goalkeeper_separate: true}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+captain_fallback:
+  - rule_id: captain_fallback.vice_on_zero_minutes
+    category: captain_fallback
+    description: Vice-captain receives multiplier only when captain does not play
+    value: true
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+fixtures:
+  - rule_id: fixtures.blank_and_double
+    category: fixtures
+    description: Rescheduling permits blank and double Gameweeks
+    value: {supports_blank: true, supports_double: true, revisioned: true}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174900"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+corrections:
+  - rule_id: corrections.gameweek_lock
+    category: corrections
+    description: Normal Gameweeks locked approximately one hour after the final whistle
+    value: {minutes_after_final_whistle: 60}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4659732/gameweek-38-scores-to-remain-provisional-until-post-match-reviews-completed"
+    source_published_at: "2026-05-22"
+    verified_at: "2026-07-22"
+    notes: Gameweek 38 was an announced exception and is represented by observed official outcomes.
+
+deadlines:
+  - rule_id: deadlines.relative_to_opening_fixture
+    category: deadlines
+    description: Deadline is 90 minutes before the opening fixture
+    value: {minutes_before_opening_fixture: 90}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/2174899/1000"
+    source_published_at: "2025-07-01"
+    verified_at: "2026-07-22"
+
+exceptional_events:
+  - rule_id: exceptional_events.afcon_2025_26
+    category: exceptional_events
+    description: Gameweek 16 AFCON transfer top-up
+    value: {gameweek: 16, transfer_top_up_to: 5}
+    status: confirmed
+    source_url: "https://www.premierleague.com/en/news/4362102/whats-new-in-202526-fantasy-extra-transfers-for-afcon"
+    source_published_at: "2025-10-18"
+    verified_at: "2026-07-22"

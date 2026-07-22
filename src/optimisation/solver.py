@@ -106,11 +106,37 @@ def _evaluate_squad(
 def solve(solver_input: SolverInput) -> dict[str, Any]:
     """Return candidate plans and a selected highest-EV plan. Deterministic."""
     rules = load_rules()
+    if solver_input.ruleset_mismatch_policy not in {"fail_closed", "allow_loaded"}:
+        raise ValueError(
+            "ruleset_mismatch_policy must be 'fail_closed' or 'allow_loaded'"
+        )
+    if solver_input.availability_policy not in {"available_only", "include_all"}:
+        raise ValueError("availability_policy must be 'available_only' or 'include_all'")
+    if solver_input.horizon_gameweeks != 1 or solver_input.discount_factors != [1.0]:
+        raise ValueError(
+            "This solver supports only horizon_gameweeks=1 with discount_factors=[1.0]"
+        )
+    if not 0 <= solver_input.max_transfers <= 3:
+        raise ValueError("max_transfers must be between 0 and 3 for this solver")
+    if solver_input.sell_pool_per_pos < 1 or solver_input.buy_pool_per_pos < 1:
+        raise ValueError("candidate pool limits must be positive")
+    if solver_input.solver_version != SOLVER_VERSION:
+        raise ValueError(
+            f"input solver_version={solver_input.solver_version} differs from {SOLVER_VERSION}"
+        )
+    if solver_input.active_chip and solver_input.active_chip not in solver_input.chips_available:
+        raise ValueError("active_chip must be present in chips_available")
+
     if solver_input.ruleset_id and solver_input.ruleset_id != rules["meta"]["ruleset_id"]:
-        # Soft warning only — still solve under loaded rules
+        if solver_input.ruleset_mismatch_policy == "fail_closed":
+            raise ValueError(
+                f"input ruleset_id={solver_input.ruleset_id} "
+                f"differs from loaded {rules['meta']['ruleset_id']}"
+            )
         ruleset_note = (
             f"input ruleset_id={solver_input.ruleset_id} "
-            f"differs from loaded {rules['meta']['ruleset_id']}"
+            f"differs from loaded {rules['meta']['ruleset_id']}; "
+            "explicit allow_loaded policy applied"
         )
     else:
         ruleset_note = None
@@ -147,7 +173,7 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
             banked["strategy"] = "bank_transfer"
             candidates.append(banked)
 
-    max_t = min(solver_input.max_transfers, 3)
+    max_t = solver_input.max_transfers
     free = solver_input.free_transfers
 
     for n in range(1, max_t + 1):
@@ -166,6 +192,9 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
             n_transfers=n,
             sell_pool_per_pos=solver_input.sell_pool_per_pos,
             buy_pool_per_pos=solver_input.buy_pool_per_pos,
+            bank=solver_input.bank,
+            availability_policy=solver_input.availability_policy,
+            rules=rules,
         )
         for moves in move_sets:
             applied = apply_transfers(
@@ -210,8 +239,9 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
             pass
 
     # Stable sort: objective desc, fewer transfers, strategy name, transfer ids
+    unique_candidates = list(uniq.values())
     ranked = sorted(
-        candidates,
+        unique_candidates,
         key=lambda c: (
             -c["objective"],
             len(c["transfers"]),
@@ -229,13 +259,24 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
     if highest:
         highest["strategy"] = "highest_ev"
 
+        highest["optimality"] = "highest_ev_in_declared_candidate_pool"
     output = {
         "solver_version": SOLVER_VERSION,
         "ruleset_id": rules["meta"]["ruleset_id"],
         "horizon_gameweeks": solver_input.horizon_gameweeks,
         "input_fingerprint": fingerprint(solver_input.as_dict()),
         "ruleset_note": ruleset_note,
-        "n_candidates": len(candidates),
+        "n_candidates": len(unique_candidates),
+        "search_scope": {
+            "optimality": "highest_ev_in_declared_candidate_pool",
+            "global_optimality_guaranteed": False,
+            "max_transfers": solver_input.max_transfers,
+            "sell_pool_per_pos": solver_input.sell_pool_per_pos,
+            "buy_pool_per_pos": solver_input.buy_pool_per_pos,
+            "affordability_filter_before_ranking": True,
+            "ruleset_mismatch_policy": solver_input.ruleset_mismatch_policy,
+            "availability_policy": solver_input.availability_policy,
+        },
         "selected": highest,
         "plans": {
             "highest_ev": highest,

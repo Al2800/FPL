@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from src.optimisation.io import fingerprint, load_solver_input
 from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
@@ -80,3 +82,74 @@ def test_allow_hits_false_caps_search() -> None:
     out = solve(SolverInput.from_dict(data))
     for c in out["all_candidates"]:
         assert c["hit_cost"] == 0
+
+
+def test_affordability_is_applied_before_buy_pool_truncation() -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data["max_transfers"] = 1
+    data["buy_pool_per_pos"] = 1
+    for player in data["players"]:
+        if player["player_id"] == "16":
+            player["now_cost"] = 20.0
+            player["expected_points"] = 100.0
+        elif player["player_id"] == "19":
+            player["now_cost"] = 5.0
+            player["expected_points"] = 6.9
+
+    out = solve(SolverInput.from_dict(data))
+
+    assert out["selected"]["transfers"] == [
+        {"player_out_id": "12", "player_in_id": "19"}
+    ]
+    assert out["search_scope"]["affordability_filter_before_ranking"] is True
+
+
+def test_ruleset_mismatch_fails_closed_unless_explicitly_allowed() -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data["ruleset_id"] = "different-rules"
+    with pytest.raises(ValueError, match="differs from loaded"):
+        solve(SolverInput.from_dict(data))
+
+    data["ruleset_mismatch_policy"] = "allow_loaded"
+    out = solve(SolverInput.from_dict(data))
+    assert "explicit allow_loaded policy applied" in out["ruleset_note"]
+    assert out["search_scope"]["ruleset_mismatch_policy"] == "allow_loaded"
+
+
+def test_unavailable_buy_is_excluded_by_recorded_policy() -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data["max_transfers"] = 1
+    for player in data["players"]:
+        if player["player_id"] == "16":
+            player["status"] = "i"
+            player["expected_points"] = 100.0
+
+    out = solve(SolverInput.from_dict(data))
+
+    incoming = {
+        transfer["player_in_id"]
+        for candidate in out["all_candidates"]
+        for transfer in candidate["transfers"]
+    }
+    assert "16" not in incoming
+    assert out["search_scope"]["availability_policy"] == "available_only"
+
+
+def test_unsupported_single_gameweek_controls_fail_instead_of_being_inert() -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data["horizon_gameweeks"] = 2
+    data["discount_factors"] = [1.0, 0.9]
+    with pytest.raises(ValueError, match="supports only horizon_gameweeks=1"):
+        solve(SolverInput.from_dict(data))
+
+    data = load_solver_input(GOLDEN).as_dict()
+    data["active_chip"] = "bench_boost_fh"
+    data["chips_available"] = []
+    with pytest.raises(ValueError, match="active_chip"):
+        solve(SolverInput.from_dict(data))
+
+
+def test_selected_plan_is_not_labelled_as_a_global_optimum() -> None:
+    out = solve(load_solver_input(GOLDEN))
+    assert out["selected"]["optimality"] == "highest_ev_in_declared_candidate_pool"
+    assert out["search_scope"]["global_optimality_guaranteed"] is False

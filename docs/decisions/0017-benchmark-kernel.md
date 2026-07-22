@@ -1,7 +1,8 @@
 # ADR-0017: Fixed episode contract for the benchmark kernel
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-07-22
+**Ratified:** 2026-07-22
 **Owners:** Project owner
 **Related:** ADR-0004, ADR-0009, ADR-0010, ADR-0016; `docs/evaluation/benchmark-protocol.md`
 
@@ -25,6 +26,12 @@ The fixed arms are naive baseline, forecast plus optimiser, evidence agent,
 evidence agent plus challenger, and human decision. The observed episode hash is
 the pairing key. Outcome data is held outside the policy process until a valid
 proposal has passed deterministic rules validation and been frozen.
+
+The observed episode hash is SHA-256 over the canonical JSON projection defined
+by the benchmark protocol. It includes every decision-relevant observed input
+and experimental constraint, but excludes the hidden-outcome reference, policy
+outputs, evaluation records and run-generated timestamps. This makes the hash a
+stable information-parity key rather than a fingerprint of later results.
 
 Historical replay is the primary comparison surface for structured-data arms.
 Live paired shadow evaluation is the primary comparison surface for
@@ -60,11 +67,11 @@ Costs and limitations:
 
 ## Ratification checklist
 
-- [ ] Approve the five fixed policy arms.
-- [ ] Approve observed episode hash as the pairing key.
-- [ ] Approve outcome reveal only after deterministic validation and freeze.
-- [ ] Approve the historical/live evidence asymmetry.
-- [ ] Approve version 1.0 schemas as the dependency contract for episode builders.
+- [x] Approve the five fixed policy arms.
+- [x] Approve observed episode hash as the pairing key.
+- [x] Approve outcome reveal only after deterministic validation and freeze.
+- [x] Approve the historical/live evidence asymmetry.
+- [x] Approve version 1.0 schemas as the dependency contract for episode builders.
 
-Dependent episode-builder beads may be implemented against the proposal, but
-must not merge until this ADR is marked `Accepted` or amended by the owner.
+Ratified by the project owner on 22 July 2026. Dependent episode-builder beads
+may now implement and merge against contract version 1.0.

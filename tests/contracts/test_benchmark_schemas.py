@@ -200,5 +200,6 @@ def test_protocol_and_adr_name_all_human_gates() -> None:
     adr = (ROOT / "docs" / "decisions" / "0017-benchmark-kernel.md").read_text(
         encoding="utf-8"
     )
-    assert "**Status:** Proposed" in adr
-    assert "must not merge until this ADR is marked `Accepted`" in adr
+    assert "**Status:** Accepted" in adr
+    assert "canonical JSON projection" in adr
+    assert "Dependent episode-builder beads" in adr

@@ -13,7 +13,9 @@
   "sell_pool_per_pos": 4,
   "buy_pool_per_pos": 6,
   "allow_hits": true,
-  "solver_version": "wp07-transparent-v0.1",
+  "ruleset_mismatch_policy": "fail_closed",
+  "availability_policy": "available_only",
+  "solver_version": "wp07-safe-pool-v0.2",
   "players": [
     {"player_id": "1", "web_name": "KeeperA", "position": "GKP", "club_id": "1", "now_cost": 4.5, "purchase_price": 4.5, "expected_points": 3.2, "status": "a"},
     {"player_id": "2", "web_name": "KeeperB", "position": "GKP", "club_id": "2", "now_cost": 4.0, "purchase_price": 4.0, "expected_points": 2.1, "status": "a"},

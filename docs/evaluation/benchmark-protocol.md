@@ -31,6 +31,21 @@ violating that ordering is quarantined rather than repaired. The observed
 episode hash is the pairing key: arms with different observed hashes are not a
 paired comparison.
 
+### Observed episode hash
+
+The pairing hash is SHA-256 over a canonical JSON projection of the observed
+decision state. Canonical JSON uses UTF-8, lexicographically sorted object keys,
+stable schema-defined array ordering and no insignificant whitespace. The
+projection includes the episode identity, season and Gameweek, cutoff and
+deadline, code and ruleset versions, observed artefact references, manager
+state, features, forecast uncertainty, allowed tools, resource budget and fixed
+arm set.
+
+The projection excludes `hidden_outcome_ref`, realised outcomes, policy outputs,
+evaluation records and run-generated timestamps. Those records link back to the
+episode hash but cannot alter it. Any decision-relevant input change creates a
+new hash; two arms are paired only when their hashes are byte-for-byte equal.
+
 ## Policy arms
 
 Every fixed evaluation set runs these five arms:

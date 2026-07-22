@@ -1,0 +1,32 @@
+meta:
+  season: "2025-26"
+  ruleset_id: "2025-26-v1.0"
+  created_at: "2026-07-22"
+
+cases:
+  - {case_id: squad.valid_composition, family: squad, expect: pass}
+  - {case_id: lineup.valid_343, family: lineup, expect: pass}
+  - {case_id: transfers.hit_applied, family: transfers, expect: 4}
+  - {case_id: transfers.bank_cap, family: transfers, expect: 5}
+  - case_id: transfers.afcon_top_up_gw16
+    family: exceptional_events
+    expect: {gameweek: 16, top_up_to: 5}
+  - {case_id: prices.selling_half_profit, family: prices, expect: 10.2}
+  - {case_id: chips.first_half_expiry, family: chips, expect: gameweek_19}
+  - {case_id: scoring.midfielder_goal_and_assist, family: scoring, expect: 10}
+  - case_id: assists.single_deflection_inside_box
+    family: scoring
+    expect: awarded_if_touch_is_not_pass
+  - {case_id: defensive_contributions.defender_ten, family: defensive_contributions, expect: 2}
+  - case_id: bonus.penalty_goal_twelve_bps
+    family: bonus
+    expect: 12
+  - {case_id: automatic_substitutions.preserve_formation, family: automatic_substitutions, expect: pass}
+  - {case_id: captain_fallback.zero_minutes, family: captain_fallback, expect: vice_captain}
+  - {case_id: fixtures.blank_and_double, family: fixtures, expect: supported}
+  - case_id: corrections.one_hour_after_final_whistle
+    family: corrections
+    expect: {minutes: 60}
+  - case_id: deadlines.ninety_minutes
+    family: deadlines
+    expect: {minutes_before_opening_fixture: 90}
