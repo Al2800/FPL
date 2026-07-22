@@ -48,6 +48,33 @@ cases:
     expect: fail
     rule_ids: [lineup.captain_required]
 
+  - case_id: lineup.valid_451
+    family: lineup
+    description: Legal 4-5-1 XI with complementary bench
+    expect: pass
+    rule_ids: [lineup.formation_constraints, lineup.bench_order]
+
+  - case_id: lineup.valid_523
+    family: lineup
+    description: Legal 5-2-3 XI with complementary bench
+    expect: pass
+    rule_ids: [lineup.formation_constraints, lineup.bench_order]
+
+  - case_id: lineup.duplicate_player
+    family: lineup
+    description: A player cannot occupy two places in the starting XI
+    expect: fail
+
+  - case_id: lineup.xi_bench_overlap
+    family: lineup
+    description: Starting XI and bench must be disjoint
+    expect: fail
+
+  - case_id: lineup.invalid_bench_composition
+    family: lineup
+    description: XI and bench together must retain full squad position composition
+    expect: fail
+
   - case_id: transfers.within_free_allowance
     family: transfers
     description: One transfer with one free transfer available
@@ -146,15 +173,27 @@ cases:
     description: Club with no fixture contributes zero from those players that Gameweek
     expect: pass
     rule_ids: [fixtures.blank_and_double]
+    inputs: {fixture_points: []}
+    expected_points: 0
 
   - case_id: corrections.provisional_then_final
     family: corrections
     description: Provisional points may differ from final lock at 09:00 UK next morning
     expect: pass
     rule_ids: [corrections.gameweek_lock]
+    inputs:
+      observations:
+        - {available_at: "2026-08-18T22:00:00Z", status: provisional, points: 54}
+        - {available_at: "2026-08-19T08:00:00Z", status: final, points: 56}
+      before_final: "2026-08-18T23:00:00Z"
+      after_final: "2026-08-19T09:00:00Z"
+    expected_before: {status: provisional, points: 54}
+    expected_after: {status: final, points: 56}
 
   - case_id: deadlines.ninety_minutes
     family: deadlines
     description: Deadline is opening kickoff minus 90 minutes
     expect: pass
     rule_ids: [deadlines.relative_to_opening_fixture]
+    inputs: {opening_kickoff: "2026-08-15T14:00:00Z"}
+    expected_deadline: "2026-08-15T12:30:00Z"

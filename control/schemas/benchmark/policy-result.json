@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/benchmark/policy-result.json",
+  "title": "Frozen benchmark policy result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "episode_id",
+    "run_id",
+    "policy_arm",
+    "execution_status",
+    "observed_episode_sha256",
+    "started_at",
+    "completed_at",
+    "versions",
+    "budget",
+    "trace_ref",
+    "proposal",
+    "outcome_access"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "episode_id": {"type": "string", "minLength": 3},
+    "run_id": {"type": "string", "minLength": 3},
+    "policy_arm": {
+      "enum": [
+        "naive_baseline",
+        "forecast_optimizer",
+        "evidence_agent",
+        "evidence_challenger",
+        "human_decision"
+      ]
+    },
+    "execution_status": {"enum": ["completed", "degraded"]},
+    "degraded_reason": {"type": "string", "minLength": 1},
+    "observed_episode_sha256": {"$ref": "#/$defs/sha256"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code_commit", "ruleset_id", "policy_version", "tool_versions"],
+      "properties": {
+        "code_commit": {"$ref": "#/$defs/git_commit"},
+        "ruleset_id": {"type": "string", "minLength": 1},
+        "policy_version": {"type": "string", "minLength": 1},
+        "model_id": {"type": "string", "minLength": 1},
+        "prompt_version": {"type": "string", "minLength": 1},
+        "tool_versions": {
+          "type": "object",
+          "minProperties": 0,
+          "additionalProperties": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["limit", "used"],
+      "properties": {
+        "limit": {"$ref": "#/$defs/resource_usage"},
+        "used": {"$ref": "#/$defs/resource_usage"}
+      }
+    },
+    "trace_ref": {"$ref": "#/$defs/artifact_ref"},
+    "proposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proposal_id",
+        "gdr_ref",
+        "content_sha256",
+        "validation",
+        "frozen_at"
+      ],
+      "properties": {
+        "proposal_id": {"type": "string", "minLength": 1},
+        "gdr_ref": {"$ref": "#/$defs/artifact_ref"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
+        "validation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "rule_validation_ref"],
+          "properties": {
+            "status": {"const": "passed"},
+            "rule_validation_ref": {"$ref": "#/$defs/artifact_ref"}
+          }
+        },
+        "frozen_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "outcome_access": {"const": "sealed_until_proposal_frozen"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"execution_status": {"const": "degraded"}}},
+      "then": {"required": ["degraded_reason"]},
+      "else": {"not": {"required": ["degraded_reason"]}}
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "git_commit": {"type": "string", "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"},
+    "artifact_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "content_sha256"],
+      "properties": {
+        "artifact_id": {"type": "string", "minLength": 1},
+        "content_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "resource_usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wall_clock_seconds", "tool_calls", "tokens", "cost_currency", "cost"],
+      "properties": {
+        "wall_clock_seconds": {"type": "number", "minimum": 0},
+        "tool_calls": {"type": "integer", "minimum": 0},
+        "tokens": {"type": "integer", "minimum": 0},
+        "cost_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "cost": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

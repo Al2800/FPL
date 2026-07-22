@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +14,7 @@ from src.scoring.engine import (
     captain_points,
     score_match_stats,
 )
+from src.scoring.rules_loader import get_rule, load_rules
 from src.scoring.validator import (
     banked_transfers,
     defensive_contribution_points,
@@ -52,6 +54,19 @@ def _legal_squad(*, club_override: dict[int, int] | None = None, prices: dict[in
         price = prices.get(pid, 4.5 if pos == "GKP" else 5.0 if pos == "DEF" else 6.0 if pos == "MID" else 7.0)
         rows.append(_player(pid, pos, club, price))
     return rows
+
+
+def _lineup_for(formation: dict[str, int]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    squad = _legal_squad()
+    by_position = {
+        position: [player for player in squad if player["position"] == position]
+        for position in ("GKP", "DEF", "MID", "FWD")
+    }
+    xi = [by_position["GKP"][0]]
+    for position in ("DEF", "MID", "FWD"):
+        xi.extend(by_position[position][: formation[position]])
+    xi_ids = {player["player_id"] for player in xi}
+    return xi, [player for player in squad if player["player_id"] not in xi_ids]
 
 
 def load_golden_cases(path: Path | None = None) -> dict[str, Any]:
@@ -115,6 +130,39 @@ def _dispatch(case: dict[str, Any]) -> tuple[bool, str]:
         xi = [squad[0]] + squad[2:5] + squad[7:11] + squad[12:15]
         bench = [squad[1], squad[5], squad[6], squad[11]]
         r = validate_lineup(xi, bench, captain_id=None, vice_captain_id="3")
+        return (not r.ok), str(r.errors)
+
+    if cid in {"lineup.valid_451", "lineup.valid_523"}:
+        formation = (
+            {"DEF": 4, "MID": 5, "FWD": 1}
+            if cid.endswith("451")
+            else {"DEF": 5, "MID": 2, "FWD": 3}
+        )
+        xi, bench = _lineup_for(formation)
+        r = validate_lineup(
+            xi,
+            bench,
+            captain_id=xi[0]["player_id"],
+            vice_captain_id=xi[1]["player_id"],
+        )
+        return r.ok, str(r.errors)
+
+    if cid == "lineup.duplicate_player":
+        xi, bench = _lineup_for({"DEF": 3, "MID": 4, "FWD": 3})
+        xi[-1] = dict(xi[-1], player_id=xi[-2]["player_id"])
+        r = validate_lineup(xi, bench, captain_id=xi[0]["player_id"], vice_captain_id=xi[1]["player_id"])
+        return (not r.ok), str(r.errors)
+
+    if cid == "lineup.xi_bench_overlap":
+        xi, bench = _lineup_for({"DEF": 3, "MID": 4, "FWD": 3})
+        bench[0] = dict(bench[0], player_id=xi[0]["player_id"])
+        r = validate_lineup(xi, bench, captain_id=xi[0]["player_id"], vice_captain_id=xi[1]["player_id"])
+        return (not r.ok), str(r.errors)
+
+    if cid == "lineup.invalid_bench_composition":
+        xi, bench = _lineup_for({"DEF": 3, "MID": 4, "FWD": 3})
+        bench[0] = dict(bench[0], position="MID")
+        r = validate_lineup(xi, bench, captain_id=xi[0]["player_id"], vice_captain_id=xi[1]["player_id"])
         return (not r.ok), str(r.errors)
 
     if cid == "transfers.within_free_allowance":
@@ -200,13 +248,37 @@ def _dispatch(case: dict[str, Any]) -> tuple[bool, str]:
         pts, who = captain_points(5, 1, 8)
         return pts == 10 and who == "captain", f"{pts},{who}"
 
-    if cid in {
-        "fixtures.blank_gameweek",
-        "corrections.provisional_then_final",
-        "deadlines.ninety_minutes",
-    }:
-        # Catalogue / documentation cases — assert rule exists in YAML catalogue
-        return True, "catalogue_acknowledged"
+    if cid == "fixtures.blank_gameweek":
+        cfg = get_rule(load_rules(), "fixtures.blank_and_double")["value"]
+        total = sum(int(points) for points in case["inputs"]["fixture_points"])
+        ok = cfg["supports_blank"] and total == int(case["expected_points"])
+        return ok, f"supports_blank={cfg['supports_blank']}, points={total}"
+
+    if cid == "corrections.provisional_then_final":
+        cfg = get_rule(load_rules(), "corrections.gameweek_lock")["value"]
+        observations = case["inputs"]["observations"]
+
+        def latest_at(cutoff: str) -> dict[str, Any]:
+            available = [row for row in observations if row["available_at"] <= cutoff]
+            return max(available, key=lambda row: row["available_at"])
+
+        before = latest_at(case["inputs"]["before_final"])
+        after = latest_at(case["inputs"]["after_final"])
+        ok = (
+            cfg["lock_local_time"] == "09:00"
+            and before == case["expected_before"] | {"available_at": before["available_at"]}
+            and after == case["expected_after"] | {"available_at": after["available_at"]}
+        )
+        return ok, f"before={before}, after={after}"
+
+    if cid == "deadlines.ninety_minutes":
+        minutes = int(
+            get_rule(load_rules(), "deadlines.relative_to_opening_fixture")["value"]
+            ["minutes_before_opening_fixture"]
+        )
+        kickoff = datetime.fromisoformat(case["inputs"]["opening_kickoff"].replace("Z", "+00:00"))
+        deadline = (kickoff - timedelta(minutes=minutes)).isoformat().replace("+00:00", "Z")
+        return deadline == case["expected_deadline"], f"deadline={deadline}"
 
     return False, f"unhandled case_id={cid} expect={expect}"
 
