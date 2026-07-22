@@ -1710,6 +1710,7 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 14. World Cup 2026 priors CSV assembled — see `control/identities/world-cup-2026-priors.csv`.
 15. **Owner:** ratify Proposed ADRs 0011–0016; recruit cohort (ADR-0009); choose LLM provider/secrets (OD8) before evidence agents.
 16. **Next implementation focus:** day-one live snapshot cadence, manager-state → solver adapter, post-GW outcome attachment — see `docs/handover-brief.md`.
+17. **Data estate:** local warehouse + inventory — see `docs/data-sources/data-estate/` (deepen vaastav/football-data before enabling new scrapers).
 
 Human tasks that cannot be delegated, with their triggers:
 

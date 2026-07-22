@@ -1,0 +1,246 @@
+{
+  "raw_root": "/workspace/data/raw",
+  "total_bytes": 305809764,
+  "vaastav": {
+    "present": true,
+    "source_id": "vaastav-fpl",
+    "bytes": 228509270,
+    "seasons": [
+      {
+        "season": "2016-17",
+        "bytes": 14111148,
+        "merged_gw_rows": 23679,
+        "has_understat": false,
+        "understat_files": 0,
+        "player_dirs": 683,
+        "used_by_wp05": false
+      },
+      {
+        "season": "2017-18",
+        "bytes": 13405441,
+        "merged_gw_rows": 22467,
+        "has_understat": false,
+        "understat_files": 0,
+        "player_dirs": 647,
+        "used_by_wp05": false
+      },
+      {
+        "season": "2018-19",
+        "bytes": 14508056,
+        "merged_gw_rows": 21790,
+        "has_understat": false,
+        "understat_files": 0,
+        "player_dirs": 624,
+        "used_by_wp05": false
+      },
+      {
+        "season": "2019-20",
+        "bytes": 10299548,
+        "merged_gw_rows": 22560,
+        "has_understat": true,
+        "understat_files": 22,
+        "player_dirs": 666,
+        "used_by_wp05": false
+      },
+      {
+        "season": "2020-21",
+        "bytes": 11799353,
+        "merged_gw_rows": 24365,
+        "has_understat": true,
+        "understat_files": 24,
+        "player_dirs": 713,
+        "used_by_wp05": false
+      },
+      {
+        "season": "2021-22",
+        "bytes": 25128777,
+        "merged_gw_rows": 25447,
+        "has_understat": true,
+        "understat_files": 736,
+        "player_dirs": 737,
+        "used_by_wp05": false
+      },
+      {
+        "season": "2022-23",
+        "bytes": 23380394,
+        "merged_gw_rows": 26505,
+        "has_understat": true,
+        "understat_files": 575,
+        "player_dirs": 778,
+        "used_by_wp05": true
+      },
+      {
+        "season": "2023-24",
+        "bytes": 27447326,
+        "merged_gw_rows": 29725,
+        "has_understat": true,
+        "understat_files": 798,
+        "player_dirs": 869,
+        "used_by_wp05": true
+      },
+      {
+        "season": "2024-25",
+        "bytes": 27449762,
+        "merged_gw_rows": 27605,
+        "has_understat": true,
+        "understat_files": 789,
+        "player_dirs": 805,
+        "used_by_wp05": true
+      },
+      {
+        "season": "2025-26",
+        "bytes": 17696821,
+        "merged_gw_rows": 29757,
+        "has_understat": false,
+        "understat_files": 0,
+        "player_dirs": 843,
+        "used_by_wp05": false
+      }
+    ],
+    "cross_season_files": [
+      "master_team_list.csv",
+      "cleaned_merged_seasons_team_aggregated.csv",
+      "cleaned_merged_seasons.csv",
+      "world_cup_2026.csv"
+    ],
+    "usage_today": {
+      "wp05": "merged_gw for 2022-23..2024-25 only",
+      "unused_locally": [
+        "per-player history CSVs",
+        "understat/ xG mirrors (already on disk via vaastav; not in models yet)",
+        "seasons before 2022-23 for WP-05 eval",
+        "cleaned_merged_seasons*.csv"
+      ]
+    }
+  },
+  "football_data": {
+    "present": true,
+    "source_id": "football-data-co-uk",
+    "bytes": 1469663,
+    "files": [
+      {
+        "file": "E0_1516.csv",
+        "bytes": 100656,
+        "rows": 380,
+        "n_cols": 65
+      },
+      {
+        "file": "E0_1617.csv",
+        "bytes": 99990,
+        "rows": 380,
+        "n_cols": 65
+      },
+      {
+        "file": "E0_1718.csv",
+        "bytes": 100734,
+        "rows": 380,
+        "n_cols": 65
+      },
+      {
+        "file": "E0_1819.csv",
+        "bytes": 96144,
+        "rows": 380,
+        "n_cols": 62
+      },
+      {
+        "file": "E0_1920.csv",
+        "bytes": 175475,
+        "rows": 380,
+        "n_cols": 106
+      },
+      {
+        "file": "E0_2021.csv",
+        "bytes": 175815,
+        "rows": 380,
+        "n_cols": 106
+      },
+      {
+        "file": "E0_2122.csv",
+        "bytes": 175363,
+        "rows": 380,
+        "n_cols": 106
+      },
+      {
+        "file": "E0_2223.csv",
+        "bytes": 176180,
+        "rows": 380,
+        "n_cols": 106
+      },
+      {
+        "file": "E0_2324.csv",
+        "bytes": 172196,
+        "rows": 380,
+        "n_cols": 106
+      },
+      {
+        "file": "E0_2425.csv",
+        "bytes": 197110,
+        "rows": 380,
+        "n_cols": 120
+      }
+    ],
+    "usage_today": {
+      "wp05": "Elo + 1X2 odds for seasons mapped in team_strength.SEASON_FILES",
+      "gap": "Only a handful of E0 season files; older seasons not yet downloaded"
+    }
+  },
+  "fpl_snapshots": {
+    "present": true,
+    "source_id": "fpl-official-endpoints",
+    "bytes": 9874751,
+    "snapshots": [
+      {
+        "id": "20260721T155242Z",
+        "bytes": 2966431,
+        "files": [
+          "api_fixtures.json",
+          "api_bootstrap-static.meta.json",
+          "api_fixtures.meta.json",
+          "api_bootstrap-static.json"
+        ]
+      },
+      {
+        "id": "20260721T160527Z",
+        "bytes": 2966433,
+        "files": [
+          "api_fixtures.json",
+          "api_bootstrap-static.meta.json",
+          "api_fixtures.meta.json",
+          "api_bootstrap-static.json"
+        ]
+      },
+      {
+        "id": "20260721T171247Z",
+        "bytes": 1991906,
+        "files": [
+          "api_bootstrap-static.meta.json",
+          "api_bootstrap-static.json"
+        ]
+      },
+      {
+        "id": "20260721T171248Z",
+        "bytes": 974747,
+        "files": [
+          "api_fixtures.json",
+          "api_fixtures.meta.json"
+        ]
+      },
+      {
+        "id": "20260721T202402Z",
+        "bytes": 975234,
+        "files": [
+          "api_fixtures.json",
+          "api_bootstrap-static.meta.json",
+          "api_fixtures.meta.json",
+          "api_bootstrap-static.json"
+        ]
+      }
+    ],
+    "usage_today": "Snapshotter / schema notes; not yet a full pre-deadline feature store"
+  },
+  "world_cup": {
+    "present": true,
+    "bytes": 237386,
+    "committed_priors": "control/identities/world-cup-2026-priors.csv"
+  }
+}

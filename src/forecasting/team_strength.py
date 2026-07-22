@@ -11,6 +11,10 @@ DEFAULT_FD = REPO / "data" / "raw" / "football-data"
 
 # football-data season code → approx end year label
 SEASON_FILES = {
+    "2015-16": "E0_1516.csv",
+    "2016-17": "E0_1617.csv",
+    "2017-18": "E0_1718.csv",
+    "2018-19": "E0_1819.csv",
     "2019-20": "E0_1920.csv",
     "2020-21": "E0_2021.csv",
     "2021-22": "E0_2122.csv",
