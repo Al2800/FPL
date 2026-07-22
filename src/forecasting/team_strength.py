@@ -36,8 +36,13 @@ def load_results(season: str, root: Path | None = None) -> pd.DataFrame:
     return df.sort_values("Date")
 
 
-def fit_elo(results: pd.DataFrame, k: float = 20.0, home_adv: float = 60.0) -> tuple[dict[str, float], pd.DataFrame]:
-    """Walk forward Elo; return final ratings and per-match pre-match expectations."""
+def fit_elo(
+    results: pd.DataFrame,
+    k: float = 20.0,
+    home_adv: float = 60.0,
+    draw_factor: float = 0.8,
+) -> tuple[dict[str, float], pd.DataFrame]:
+    """Walk-forward three-way Elo with coherent home/draw/away probabilities."""
     ratings: dict[str, float] = {}
     rows = []
 
@@ -47,8 +52,14 @@ def fit_elo(results: pd.DataFrame, k: float = 20.0, home_adv: float = 60.0) -> t
     for _, m in results.iterrows():
         home, away = m["HomeTeam"], m["AwayTeam"]
         rh, ra = get(home), get(away)
-        exp_home = 1.0 / (1.0 + 10 ** (-((rh + home_adv) - ra) / 400.0))
-        exp_away = 1.0 - exp_home
+        home_strength = 10 ** ((rh + home_adv) / 400.0)
+        away_strength = 10 ** (ra / 400.0)
+        draw_strength = draw_factor * (home_strength * away_strength) ** 0.5
+        normalizer = home_strength + draw_strength + away_strength
+        exp_home = home_strength / normalizer
+        exp_draw = draw_strength / normalizer
+        exp_away = away_strength / normalizer
+        exp_score_home = exp_home + 0.5 * exp_draw
         # Outcome: 1 home win, 0.5 draw, 0 away win
         if m["FTHG"] > m["FTAG"]:
             score_h = 1.0
@@ -62,7 +73,7 @@ def fit_elo(results: pd.DataFrame, k: float = 20.0, home_adv: float = 60.0) -> t
                 "HomeTeam": home,
                 "AwayTeam": away,
                 "exp_home_win": exp_home,
-                "exp_draw_proxy": 0.0,  # Elo win-prob only; draw via odds elsewhere
+                "exp_draw": exp_draw,
                 "exp_away_win": exp_away,
                 "goals_home": m["FTHG"],
                 "goals_away": m["FTAG"],
@@ -70,19 +81,49 @@ def fit_elo(results: pd.DataFrame, k: float = 20.0, home_adv: float = 60.0) -> t
                 "rating_away_pre": ra,
             }
         )
-        ratings[home] = rh + k * (score_h - exp_home)
-        ratings[away] = ra + k * ((1.0 - score_h) - exp_away)
+        ratings[home] = rh + k * (score_h - exp_score_home)
+        ratings[away] = ra + k * ((1.0 - score_h) - (1.0 - exp_score_home))
 
     return ratings, pd.DataFrame(rows)
 
 
-def elo_log_loss(match_frame: pd.DataFrame) -> float:
-    """Binary home-win vs not using exp_home_win vs (FTHG>FTAG). Draws excluded."""
+def elo_multiclass_log_loss(match_frame: pd.DataFrame) -> float:
+    """Three-way log loss over home wins, draws and away wins."""
     import numpy as np
 
-    m = match_frame[match_frame["goals_home"] != match_frame["goals_away"]].copy()
-    if m.empty:
+    if match_frame.empty:
         return float("nan")
-    y = (m["goals_home"] > m["goals_away"]).astype(float)
-    p = m["exp_home_win"].clip(1e-6, 1 - 1e-6)
-    return float(-(y * np.log(p) + (1 - y) * np.log(1 - p)).mean())
+    probabilities = []
+    for _, row in match_frame.iterrows():
+        if row["goals_home"] > row["goals_away"]:
+            probabilities.append(row["exp_home_win"])
+        elif row["goals_home"] < row["goals_away"]:
+            probabilities.append(row["exp_away_win"])
+        else:
+            probabilities.append(row["exp_draw"])
+    return float(-np.log(np.clip(probabilities, 1e-6, 1.0)).mean())
+
+
+def elo_multiclass_brier(match_frame: pd.DataFrame) -> float:
+    """Mean multiclass Brier score for the coherent three-way probabilities."""
+    import numpy as np
+
+    if match_frame.empty:
+        return float("nan")
+    losses = []
+    for _, row in match_frame.iterrows():
+        actual = np.array(
+            [
+                float(row["goals_home"] > row["goals_away"]),
+                float(row["goals_home"] == row["goals_away"]),
+                float(row["goals_home"] < row["goals_away"]),
+            ]
+        )
+        predicted = np.array([row["exp_home_win"], row["exp_draw"], row["exp_away_win"]])
+        losses.append(float(((predicted - actual) ** 2).sum()))
+    return float(np.mean(losses))
+
+
+def elo_log_loss(match_frame: pd.DataFrame) -> float:
+    """Compatibility alias for the corrected multiclass Elo score."""
+    return elo_multiclass_log_loss(match_frame)

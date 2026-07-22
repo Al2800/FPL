@@ -31,6 +31,27 @@ class ValidationResult:
         }
 
 
+def legal_formations(rules: dict[str, Any] | None = None) -> list[dict[str, int]]:
+    """Enumerate every legal outfield formation from the active ruleset."""
+    rules = rules or load_rules()
+    xi_size = int(get_rule(rules, "lineup.starting_xi_size")["value"])
+    constraints = get_rule(rules, "lineup.formation_constraints")["value"]
+    goalkeeper = constraints["GKP"]
+    if goalkeeper["min"] != goalkeeper["max"]:
+        raise ValueError("lineup.formation_constraints: goalkeeper count must be fixed")
+    outfield_size = xi_size - int(goalkeeper["min"])
+
+    formations: list[dict[str, int]] = []
+    for defenders in range(constraints["DEF"]["min"], constraints["DEF"]["max"] + 1):
+        for midfielders in range(constraints["MID"]["min"], constraints["MID"]["max"] + 1):
+            for forwards in range(constraints["FWD"]["min"], constraints["FWD"]["max"] + 1):
+                if defenders + midfielders + forwards == outfield_size:
+                    formations.append(
+                        {"DEF": defenders, "MID": midfielders, "FWD": forwards}
+                    )
+    return formations
+
+
 def selling_price(purchase: float, current: float, rules: dict[str, Any] | None = None) -> float:
     """Half-profit selling price, rounded down to 0.1."""
     rules = rules or load_rules()
@@ -63,6 +84,10 @@ def validate_squad(
 
     if len(players) != size:
         result.errors.append(f"squad.size: expected {size}, got {len(players)}")
+
+    player_ids = [str(p["player_id"]) for p in players]
+    if len(set(player_ids)) != len(player_ids):
+        result.errors.append("squad.player_unique: player IDs must be unique")
 
     counts = Counter(p["position"] for p in players)
     for pos, expected in positions.items():
@@ -117,7 +142,19 @@ def validate_lineup(
     if get_rule(rules, "lineup.vice_captain_required")["value"] and not vice_captain_id:
         result.errors.append("lineup.vice_captain_required: vice-captain missing")
 
-    start_ids = {p["player_id"] for p in starting_xi}
+    start_id_list = [str(p["player_id"]) for p in starting_xi]
+    bench_id_list = [str(p["player_id"]) for p in bench]
+    start_ids = set(start_id_list)
+    bench_ids = set(bench_id_list)
+    if len(start_ids) != len(start_id_list):
+        result.errors.append("lineup.player_unique: starting XI player IDs must be unique")
+    if len(bench_ids) != len(bench_id_list):
+        result.errors.append("lineup.player_unique: bench player IDs must be unique")
+    if start_ids & bench_ids:
+        result.errors.append("lineup.xi_bench_disjoint: starting XI and bench must be disjoint")
+
+    captain_id = str(captain_id) if captain_id is not None else None
+    vice_captain_id = str(vice_captain_id) if vice_captain_id is not None else None
     if captain_id and captain_id not in start_ids:
         result.errors.append("lineup.captain_required: captain must be in starting XI")
     if vice_captain_id and vice_captain_id not in start_ids:
@@ -129,6 +166,15 @@ def validate_lineup(
         result.errors.append(
             f"lineup.bench_order: expected bench size {bench_rule['bench_size']}, got {len(bench)}"
         )
+
+    full_position_counts = get_rule(rules, "squad.position_counts")["value"]
+    selected_counts = Counter(p["position"] for p in starting_xi + bench)
+    for pos, expected in full_position_counts.items():
+        if selected_counts.get(pos, 0) != expected:
+            result.errors.append(
+                "lineup.bench_composition: "
+                f"XI plus bench {pos} expected {expected}, got {selected_counts.get(pos, 0)}"
+            )
 
     result.ok = not result.errors
     return result

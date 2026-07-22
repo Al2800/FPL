@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Any
 
@@ -11,10 +12,22 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_RULES_PATH = REPO_ROOT / "control" / "rules" / "2026-27.yaml"
 
 
+def ruleset_bytes(path: Path | None = None) -> bytes:
+    """Return canonical evidence bytes independent of checkout line endings."""
+
+    rules_path = path or DEFAULT_RULES_PATH
+    return rules_path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
+def ruleset_sha256(path: Path | None = None) -> str:
+    """Hash the canonical ruleset evidence bytes."""
+
+    return hashlib.sha256(ruleset_bytes(path)).hexdigest()
+
+
 def load_rules(path: Path | None = None) -> dict[str, Any]:
     rules_path = path or DEFAULT_RULES_PATH
-    with rules_path.open(encoding="utf-8") as fh:
-        data = yaml.safe_load(fh)
+    data = yaml.safe_load(ruleset_bytes(rules_path).decode("utf-8"))
     if not isinstance(data, dict) or "meta" not in data:
         raise ValueError(f"Invalid rules file: {rules_path}")
     return data
@@ -60,3 +73,13 @@ def required_categories() -> list[str]:
         "deadlines",
         "exceptional_events",
     ]
+
+
+# Imported after the loader primitives are defined because rules_activation
+# compiles the indexed catalogue while this module remains the public API.
+from src.scoring.rules_activation import (  # noqa: E402,F401
+    RulesetActivationError,
+    assert_ruleset_activatable,
+    build_ruleset_activation,
+    ruleset_semantic_diff,
+)

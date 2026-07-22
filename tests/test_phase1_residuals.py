@@ -16,6 +16,9 @@ def test_rules_golden_runner_all_pass() -> None:
     assert report["failed"] == [], report["failed"]
     assert report["passed"] == report["n"]
     assert report["n"] >= 20
+    assert all(
+        result["detail"] != "catalogue_acknowledged" for result in report["results"]
+    )
 
 
 def test_replay_pilot_set_lists_wp04_gameweeks() -> None:

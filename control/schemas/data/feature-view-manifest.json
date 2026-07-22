@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-agent-lab.local/schemas/data/feature-view-manifest.json",
+  "title": "Deadline-safe feature view manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["feature_view_version", "feature_view_id", "episode_id", "cutoff", "policy_version", "transformation_version", "status", "features", "degraded_features", "included_observation_ids", "source_snapshot_ids", "quality_reports"],
+  "properties": {
+    "feature_view_version": {"const": "1.0"},
+    "feature_view_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "episode_id": {"type": "string", "minLength": 1},
+    "cutoff": {"type": "string", "format": "date-time"},
+    "policy_version": {"type": "string", "minLength": 1},
+    "transformation_version": {"type": "string", "minLength": 1},
+    "status": {"enum": ["complete", "degraded"]},
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["feature_name", "entity_id", "value", "source_id", "field_name", "observation_id", "snapshot_id", "quality_report_id", "available_at", "observed_at", "selection_method"],
+        "properties": {
+          "feature_name": {"type": "string", "minLength": 1},
+          "entity_id": {"type": "string", "minLength": 1},
+          "value": {},
+          "source_id": {"type": "string", "minLength": 1},
+          "field_name": {"type": "string", "minLength": 1},
+          "observation_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "snapshot_id": {"type": "string", "minLength": 1},
+          "quality_report_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "available_at": {"type": "string", "format": "date-time"},
+          "observed_at": {"type": "string", "format": "date-time"},
+          "selection_method": {"enum": ["preferred_source", "fallback_source"]}
+        }
+      }
+    },
+    "degraded_features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["feature_name", "entity_id", "required", "reason", "preferred_source_id", "selected_source_id", "details"],
+        "properties": {
+          "feature_name": {"type": "string", "minLength": 1},
+          "entity_id": {"type": "string", "minLength": 1},
+          "required": {"type": "boolean"},
+          "reason": {"enum": ["missing_required_feature", "missing_optional_feature", "fallback_source"]},
+          "preferred_source_id": {"type": "string", "minLength": 1},
+          "selected_source_id": {"type": ["string", "null"]},
+          "details": {"type": "object"}
+        }
+      }
+    },
+    "included_observation_ids": {"type": "array", "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "uniqueItems": true},
+    "source_snapshot_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "quality_reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "report_id", "quality_policy_version", "quality_mode", "snapshot_id", "evaluated_at", "recommended_disposition", "enforced_disposition", "admissible", "degraded_capabilities"],
+        "properties": {
+          "source_id": {"type": "string", "minLength": 1},
+          "report_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "quality_policy_version": {"type": "string", "minLength": 1},
+          "quality_mode": {"enum": ["observe_only", "shadow", "enforce"]},
+          "snapshot_id": {"type": "string", "minLength": 1},
+          "evaluated_at": {"type": "string", "format": "date-time"},
+          "recommended_disposition": {"enum": ["pass", "degrade", "quarantine", "stop"]},
+          "enforced_disposition": {"enum": ["pass", "degrade", "quarantine", "stop"]},
+          "admissible": {"type": "boolean"},
+          "degraded_capabilities": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        }
+      }
+    }
+  }
+}

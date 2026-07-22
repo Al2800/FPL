@@ -1,0 +1,72 @@
+policy_version: "1.0"
+default_mode: observe_only
+description: >-
+  Conservative detection with staged enforcement. Observe-only and shadow modes
+  retain all records while measuring the disposition that enforcement would apply.
+sources:
+  fpl-official-endpoints:
+    required: true
+    gates:
+      acquisition:
+        failure_disposition: stop
+        enforce: true
+      schema:
+        failure_disposition: quarantine
+        enforce: true
+      freshness:
+        max_age_seconds: 21600
+        failure_disposition: degrade
+        enforce: false
+      coverage:
+        denominator: expected_entity_ids
+        min_rate: 1.0
+        missing_denominator_disposition: degrade
+        failure_disposition: quarantine
+        enforce: false
+      duplicates:
+        natural_key_fields: [source_id, field_name, entity_id, available_at]
+        exact_disposition: pass
+        conflicting_disposition: quarantine
+        enforce_exact: false
+        enforce_conflicting: true
+      identity:
+        min_match_rate: 1.0
+        missing_report_disposition: degrade
+        failure_disposition: quarantine
+        enforce: true
+      disagreement:
+        failure_disposition: degrade
+        enforce: false
+  football-data-co-uk:
+    required: false
+    gates:
+      acquisition:
+        failure_disposition: degrade
+        enforce: false
+      schema:
+        failure_disposition: quarantine
+        enforce: true
+      freshness:
+        max_age_seconds: 31536000
+        failure_disposition: degrade
+        enforce: false
+      coverage:
+        denominator: expected_entity_ids
+        min_rate: 0.95
+        missing_denominator_disposition: degrade
+        failure_disposition: degrade
+        enforce: false
+      duplicates:
+        natural_key_fields: [source_id, field_name, entity_id, available_at]
+        exact_disposition: pass
+        conflicting_disposition: quarantine
+        enforce_exact: false
+        enforce_conflicting: true
+      identity:
+        min_match_rate: 0.98
+        missing_report_disposition: degrade
+        failure_disposition: degrade
+        enforce: false
+      disagreement:
+        failure_disposition: degrade
+        enforce: false

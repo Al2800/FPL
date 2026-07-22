@@ -2,8 +2,8 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.2.0"
-updated_at: "2026-07-21"
+registry_version: "0.3.0"
+updated_at: "2026-07-22"
 
 sources:
   - source_id: fpl-official-endpoints
@@ -24,7 +24,12 @@ sources:
     review_date: "2026-09-01"
     notes: >
       Unofficial/unsupported as a developer API. Endpoints may 404 off-season.
-      Capture bootstrap-static and fixtures from day one; event/{gw}/live once live.
+      Tier 0. Capture bootstrap-static and fixtures daily and at T-48h/T-8h/T-2h;
+      they contain the pre-deadline price, status, news and ownership fields.
+      Capture event/{gw}/live after lock and retain immutable raw snapshots plus
+      hashes. Public entry history, picks and transfers may reconcile final outcomes;
+      authenticated purchase price, selling price, free transfers and chip state stay
+      manual while fpl-authenticated-manager-state is disabled.
       licence_status is restricted (not prohibited): private local snapshots permitted
       under ADR-0001/0002; redistribution is not.
     endpoints:
@@ -116,6 +121,28 @@ sources:
       Cups and European fixtures drive blanks/doubles. Alternative until enabled:
       FPL fixtures endpoint (fpl-official-endpoints) plus manual revision notes.
 
+  - source_id: official-lineups-minutes
+    owner: Premier League / FA / UEFA / FIFA / clubs
+    source_type: html
+    authority: canonical
+    terms_url: per_competition_or_club
+    licence_status: unknown
+    allowed_use: private_analysis_citation_only_pending_review
+    authentication: none
+    collection_method: manual
+    expected_cadence: post_match
+    max_staleness: "24h"
+    failure_policy: degrade
+    retention_policy: metadata_and_citations_only_until_reviewed
+    attribution: "Named official competition or club"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Tier 2 expected-minutes evidence: official starting line-ups, substitutions,
+      return-to-training and minutes across league, cup, Europe and internationals.
+      Automated collection is disabled. Alternative: FPL live minutes plus manual
+      citation records; missing external workload remains an explicit evidence gap.
+
   # --- Tier 2: historical / community (plan Section 6.1) ---
 
   - source_id: vaastav-fpl
@@ -180,6 +207,56 @@ sources:
     notes: >
       Historical results and odds CSVs. Private analysis with attribution;
       do not republish their files. Enabled for local WP-04/WP-05 baseline work.
+      Odds are not accepted as pre-deadline evidence unless a field has a usable
+      timestamp strictly before the episode cutoff; otherwise use only as a
+      closing-market comparator.
+
+  - source_id: football-data-org
+    owner: football-data.org
+    source_type: api
+    authority: secondary
+    terms_url: "https://www.football-data.org/client/register"
+    licence_status: restricted
+    allowed_use: private_analysis_pending_registration_and_terms_review
+    authentication: api_token
+    collection_method: api
+    expected_cadence: daily
+    max_staleness: "24h"
+    failure_policy: degrade
+    retention_policy: none_until_terms_reviewed
+    attribution: "football-data.org"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Free-tier candidate for an independent fixtures, results and tables
+      cross-check; it does not replace historical bookmaker odds or event data.
+      Registration, rate limits and retention terms require review. Alternative:
+      canonical FPL fixtures plus football-data.co.uk local assessment.
+
+  - source_id: betfair-historical
+    owner: Betfair
+    source_type: file
+    authority: secondary
+    terms_url: "https://historicdata.betfair.com/"
+    licence_status: restricted
+    allowed_use: private_analysis_pending_package_and_terms_review
+    authentication: betfair_account
+    collection_method: download
+    expected_cadence: bounded_historical_acquisition
+    max_staleness: "n/a"
+    failure_policy: degrade
+    retention_policy: none_until_package_and_terms_approved
+    attribution: "Betfair Historical Data"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Tier 1 candidate for timestamped exchange prices. Select the last market
+      update strictly before each episode cutoff and record package, market ID and
+      timestamp. The BASIC package is advertised as free at one-minute intervals
+      without volume, which is potentially sufficient for deadline-price features;
+      account access and reuse terms still require owner review.
+      Alternative: football-data closing odds as a labelled non-point-in-time
+      comparator; the pre-deadline market baseline remains a gap.
 
   - source_id: clubelo
     owner: ClubElo / Lars Rønn Olsen
@@ -198,8 +275,56 @@ sources:
     enabled: false
     review_date: "2026-09-01"
     notes: >
-      Team-strength baseline candidate. Alternative: odds-implied and simple Elo
-      fitted on football-data.co.uk results.
+      Tier 1 team-strength baseline candidate. Ratings are derived from results and
+      omit national cups. Historical rating availability and reuse terms must be
+      verified before use; a current rating must never be backfilled into an older
+      episode. Alternative: odds-implied and simple Elo fitted point-in-time on
+      football-data.co.uk results.
+
+  - source_id: statsbomb-open
+    owner: StatsBomb
+    source_type: file
+    authority: secondary
+    terms_url: "https://github.com/statsbomb/open-data"
+    licence_status: restricted
+    allowed_use: private_method_prototyping_with_required_attribution
+    authentication: none
+    collection_method: download
+    expected_cadence: bounded_experiment
+    max_staleness: "n/a"
+    failure_policy: stop
+    retention_policy: none_until_experiment_approved_then_local_gitignored
+    attribution: "StatsBomb"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Tier 3 method-prototyping source with competitions, matches, events, line-ups
+      and selected 360 data. It is not assumed to cover the target EPL seasons and
+      is not a default production feature dependency. Alternative: aggregate FPL
+      and match-result features; event enrichment remains an accepted gap.
+
+  - source_id: commercial-epl-event-data
+    owner: to_be_selected
+    source_type: api
+    authority: secondary
+    terms_url: pending_vendor_selection
+    licence_status: unknown
+    allowed_use: unresolved
+    authentication: vendor_credentials
+    collection_method: api
+    expected_cadence: pending
+    max_staleness: "pending"
+    failure_policy: stop
+    retention_policy: none_until_contract_approved
+    attribution: "Pending vendor"
+    enabled: false
+    review_date: "2026-09-01"
+    notes: >
+      Tier 3. Do not select or purchase a commercial EPL event feed unless a
+      reproducible ablation shows that Tier 0-2 features are the material benchmark
+      bottleneck and the expected decision-value gain justifies cost and rights.
+      Alternative: StatsBomb open data for method prototyping; production event
+      coverage remains a deliberate gap.
 
   - source_id: understat
     owner: Understat

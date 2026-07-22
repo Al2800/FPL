@@ -1,0 +1,60 @@
+catalog_version: "1.0"
+updated_at: "2026-07-22"
+
+aliases:
+  - entity_type: team
+    canonical_id: team:arsenal
+    source_id: fpl-official-endpoints
+    source_entity_id: "1"
+    alias: Arsenal
+    seasons: ["2026-27"]
+    valid_from: "2026-07-01"
+    valid_to: "2027-06-30"
+  - entity_type: team
+    canonical_id: team:arsenal
+    source_id: football-data-co-uk
+    source_entity_id: Arsenal
+    alias: Arsenal
+    seasons: ["2026-27"]
+    valid_from: "2026-07-01"
+    valid_to: "2027-06-30"
+  - entity_type: team
+    canonical_id: team:manchester-united
+    source_id: fpl-official-endpoints
+    source_entity_id: "13"
+    alias: Manchester United
+    seasons: ["2026-27"]
+    valid_from: "2026-07-01"
+    valid_to: "2027-06-30"
+  - entity_type: team
+    canonical_id: team:manchester-united
+    source_id: football-data-co-uk
+    source_entity_id: Man United
+    alias: Man United
+    seasons: ["2026-27"]
+    valid_from: "2026-07-01"
+    valid_to: "2027-06-30"
+  - entity_type: player
+    canonical_id: player:bukayo-saka
+    source_id: fpl-official-endpoints
+    source_entity_id: "1"
+    alias: Bukayo Saka
+    seasons: ["2026-27"]
+    valid_from: "2026-07-01"
+    valid_to: "2027-06-30"
+  - entity_type: fixture
+    canonical_id: fixture:2026-08-15:arsenal:manchester-united
+    source_id: fpl-official-endpoints
+    source_entity_id: "1"
+    alias: Arsenal v Manchester United
+    seasons: ["2026-27"]
+    valid_from: "2026-07-01"
+    valid_to: "2027-06-30"
+  - entity_type: fixture
+    canonical_id: fixture:2026-08-15:arsenal:manchester-united
+    source_id: football-data-co-uk
+    source_entity_id: "2026-08-15|Arsenal|Man United"
+    alias: Arsenal v Man United
+    seasons: ["2026-27"]
+    valid_from: "2026-07-01"
+    valid_to: "2027-06-30"

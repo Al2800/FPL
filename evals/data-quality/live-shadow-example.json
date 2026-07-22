@@ -1,0 +1,18 @@
+{
+  "shadow_manifest_version": "1.0",
+  "shadow_id": "shadow:2026-27:gw1",
+  "captured_at": "2026-08-14T10:30:00Z",
+  "episode_cutoff": "2026-08-14T11:00:00Z",
+  "source_snapshot_ids": ["snapshot:fpl:gw1:t-30m"],
+  "quality_report_ids": ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
+  "unrestricted_feature_view_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "shadow_gated_feature_view_id": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "execution_mode": "no_execution",
+  "browser_actions": false,
+  "account_writes": false,
+  "decision_comparison": {
+    "unrestricted_action_id": "hold",
+    "gated_action_id": "hold",
+    "outcome_revealed_at": null
+  }
+}
