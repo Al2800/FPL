@@ -21,5 +21,7 @@ fpl-snapshot = "src.ingestion.snapshot_fpl:main"
 fpl-skeleton = "src.orchestration.walking_skeleton:main"
 
 [tool.pytest.ini_options]
+minversion = "8.0"
 testpaths = ["tests"]
 pythonpath = ["."]
+addopts = ["--strict-config", "--strict-markers", "-ra"]
