@@ -1,25 +1,458 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://fpl-lab.local/schemas/agent_runs.json",
-  "title": "Agent run",
+  "title": "Replayable agent run",
+  "description": "Hash-addressed trace contract. Raw secrets, cookies, personal data, prompts and response bodies are forbidden.",
   "type": "object",
   "additionalProperties": false,
   "required": [
+    "schema_version",
     "run_id",
+    "episode_id",
+    "observed_episode_sha256",
+    "snapshot_ids",
     "agent_role",
+    "policy_arm",
+    "provider",
+    "model",
+    "versions",
+    "inputs",
+    "output",
+    "tool_calls",
+    "model_calls",
+    "budget",
+    "execution_status",
+    "degradation",
+    "privacy",
+    "trace_path",
     "observed_at",
     "available_at",
     "provenance"
   ],
   "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
     "run_id": {
-      "type": "string"
+      "type": "string",
+      "minLength": 3
+    },
+    "episode_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "observed_episode_sha256": {
+      "$ref": "#sha256"
+    },
+    "snapshot_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "agent_role": {
-      "type": "string"
+      "enum": [
+        "evidence",
+        "challenger",
+        "orchestrator"
+      ]
+    },
+    "policy_arm": {
+      "enum": [
+        "evidence_agent",
+        "evidence_challenger"
+      ]
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_id",
+        "api_surface"
+      ],
+      "properties": {
+        "provider_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "api_surface": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_id",
+        "model_version",
+        "temperature"
+      ],
+      "properties": {
+        "model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code_commit",
+        "ruleset_id",
+        "prompt",
+        "policy",
+        "tools"
+      ],
+      "properties": {
+        "code_commit": {
+          "type": "string",
+          "pattern": "^(?:[a-f0-9]{40}|[a-f0-9]{64})$"
+        },
+        "ruleset_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "prompt_id",
+            "version",
+            "content_sha256"
+          ],
+          "properties": {
+            "prompt_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "content_sha256": {
+              "$ref": "#sha256"
+            }
+          }
+        },
+        "policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policy_id",
+            "version",
+            "content_sha256"
+          ],
+          "properties": {
+            "policy_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "content_sha256": {
+              "$ref": "#sha256"
+            }
+          }
+        },
+        "tools": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool_id",
+              "version",
+              "access",
+              "contract_sha256"
+            ],
+            "properties": {
+              "tool_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "access": {
+                "enum": [
+                  "read_only",
+                  "propose_only"
+                ]
+              },
+              "contract_sha256": {
+                "$ref": "#sha256"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_sha256",
+        "rendered_prompt_sha256",
+        "context_refs"
+      ],
+      "properties": {
+        "input_sha256": {
+          "$ref": "#sha256"
+        },
+        "rendered_prompt_sha256": {
+          "$ref": "#sha256"
+        },
+        "context_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#artifact_ref"
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "output_sha256",
+        "response_ref",
+        "structured_output_ref"
+      ],
+      "properties": {
+        "output_sha256": {
+          "$ref": "#sha256"
+        },
+        "response_ref": {
+          "$ref": "#artifact_ref"
+        },
+        "structured_output_ref": {
+          "$ref": "#artifact_ref"
+        }
+      }
+    },
+    "tool_calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "call_id",
+          "tool_id",
+          "tool_version",
+          "arguments_sha256",
+          "status",
+          "started_at",
+          "completed_at",
+          "result_ref"
+        ],
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "call_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tool_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tool_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments_sha256": {
+            "$ref": "#sha256"
+          },
+          "status": {
+            "enum": [
+              "completed",
+              "failed",
+              "denied"
+            ]
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "completed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "result_ref": {
+            "$ref": "#artifact_ref"
+          },
+          "failure": {
+            "$ref": "#failure"
+          }
+        }
+      }
+    },
+    "model_calls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "call_id",
+          "request_sha256",
+          "response_sha256",
+          "cached_response_ref",
+          "cache_hit",
+          "input_tokens",
+          "output_tokens"
+        ],
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "call_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "request_sha256": {
+            "$ref": "#sha256"
+          },
+          "response_sha256": {
+            "$ref": "#sha256"
+          },
+          "cached_response_ref": {
+            "$ref": "#artifact_ref"
+          },
+          "cache_hit": {
+            "type": "boolean"
+          },
+          "input_tokens": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "output_tokens": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "limit",
+        "used",
+        "exhausted"
+      ],
+      "properties": {
+        "limit": {
+          "$ref": "#resource_usage"
+        },
+        "used": {
+          "$ref": "#resource_usage"
+        },
+        "exhausted": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "wall_clock",
+              "tool_calls",
+              "input_tokens",
+              "output_tokens",
+              "total_tokens",
+              "cost"
+            ]
+          }
+        }
+      }
+    },
+    "execution_status": {
+      "enum": [
+        "completed",
+        "degraded",
+        "failed"
+      ]
+    },
+    "failure": {
+      "$ref": "#failure"
+    },
+    "degradation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "used"
+      ],
+      "properties": {
+        "used": {
+          "type": "boolean"
+        },
+        "fallback_arm": {
+          "const": "forecast_optimizer"
+        },
+        "reason_code": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]{3,80}$"
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "redaction_status",
+        "prohibited_data_detected",
+        "forbidden_categories"
+      ],
+      "properties": {
+        "redaction_status": {
+          "const": "passed"
+        },
+        "prohibited_data_detected": {
+          "const": false
+        },
+        "forbidden_categories": {
+          "const": [
+            "credentials",
+            "cookies",
+            "tokens",
+            "personal_data"
+          ]
+        }
+      }
     },
     "trace_path": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^reports/traces/(?!.*\\.\\.)[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*\\.jsonl$"
     },
     "published_at": {
       "$ref": "../_defs.json#/$defs/iso_datetime"
@@ -38,6 +471,202 @@
     },
     "provenance": {
       "$ref": "../_defs.json#/$defs/provenance"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "execution_status": {
+            "enum": [
+              "degraded",
+              "failed"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "failure"
+        ]
+      },
+      "else": {
+        "not": {
+          "required": [
+            "failure"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution_status": {
+            "const": "degraded"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "degradation": {
+            "properties": {
+              "used": {
+                "const": true
+              }
+            },
+            "required": [
+              "fallback_arm",
+              "reason_code"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution_status": {
+            "const": "completed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "degradation": {
+            "properties": {
+              "used": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "$anchor": "sha256"
+    },
+    "artifact_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "content_sha256"
+      ],
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_sha256": {
+          "$ref": "#sha256"
+        }
+      },
+      "$anchor": "artifact_ref"
+    },
+    "resource_usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wall_clock_ms",
+        "tool_calls",
+        "input_tokens",
+        "output_tokens",
+        "total_tokens",
+        "cost"
+      ],
+      "properties": {
+        "wall_clock_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tool_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "currency",
+            "amount"
+          ],
+          "properties": {
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "amount": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      },
+      "$anchor": "resource_usage"
+    },
+    "failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "stage",
+        "message_code",
+        "retriable"
+      ],
+      "properties": {
+        "category": {
+          "enum": [
+            "timeout",
+            "tool_failure",
+            "source_failure",
+            "budget_exhaustion",
+            "provider_failure",
+            "invalid_output",
+            "policy_denial"
+          ]
+        },
+        "stage": {
+          "enum": [
+            "planning",
+            "model_call",
+            "tool_call",
+            "evidence_validation",
+            "proposal",
+            "challenger",
+            "unknown"
+          ]
+        },
+        "message_code": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]{3,80}$"
+        },
+        "retriable": {
+          "type": "boolean"
+        },
+        "tool_call_id": {
+          "type": "string"
+        },
+        "source_id": {
+          "type": "string"
+        }
+      },
+      "$anchor": "failure"
     }
   }
 }
