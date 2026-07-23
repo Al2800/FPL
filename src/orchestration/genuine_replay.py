@@ -11,10 +11,14 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from src.evaluation.outcome_scorer import score_revealed_outcome
+from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.replay_adapter import build_replay_solver_input
 from src.optimisation.io import fingerprint
 from src.optimisation.solver import solve
-from src.orchestration.historical_feature_state import build_feature_state
+from src.orchestration.historical_feature_state import (
+    build_feature_state,
+    feature_state_hash,
+)
 from src.orchestration.policy_state import (
     POLICY_ARMS,
     initialise_policy_states,
@@ -32,6 +36,7 @@ class GenuineReplayError(ValueError):
 TRANSFER_VALUE_POLICY = "expected_hit_avoidance_v1"
 PROBABILITY_EXTRA_TRANSFER_NEEDED = 0.5
 FUTURE_TRANSFER_DISCOUNT = 0.9
+REPO = Path(__file__).resolve().parents[2]
 
 
 def _canonical_json(value: Any) -> str:
@@ -608,6 +613,455 @@ def prepare_historical_gameweek(
     return summary
 
 
+def _load_reviewed_gw2_setup(
+    setup_dir: Path,
+    *,
+    previous_summary: Mapping[str, Any],
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    feature_state = _read_json(setup_dir / "shared-feature-state.json")
+    solver_input = _read_json(setup_dir / "shared-option-value-engine-input.json")
+    solver_output = _read_json(setup_dir / "shared-option-value-engine-output.json")
+    comparison = _read_json(setup_dir / "forecast-option-value-comparison.json")
+    review = _read_json(setup_dir / "transfer-option-value-review.json")
+    if feature_state.get("content_sha256") != feature_state_hash(feature_state):
+        raise GenuineReplayError("Reviewed GW2 feature-state hash mismatch")
+    if (
+        feature_state["content_sha256"]
+        != previous_summary["next_feature_state_sha256"]
+    ):
+        raise GenuineReplayError(
+            "Reviewed GW2 feature state differs from the GW1 handoff"
+        )
+    if comparison.get("content_sha256") != artifact_hash(comparison):
+        raise GenuineReplayError("Reviewed GW2 comparison hash mismatch")
+    if review.get("content_sha256") != artifact_hash(review):
+        raise GenuineReplayError("Reviewed GW2 policy-review hash mismatch")
+    if review.get("comparison_sha256") != comparison["content_sha256"]:
+        raise GenuineReplayError("GW2 review does not bind the comparison")
+    lineage = comparison.get("lineage", {})
+    if lineage.get("solver_input_sha256") != fingerprint(solver_input):
+        raise GenuineReplayError("Reviewed GW2 solver-input hash mismatch")
+    if lineage.get("solver_output_sha256") != fingerprint(solver_output):
+        raise GenuineReplayError("Reviewed GW2 solver-output hash mismatch")
+    if solver_input.get("transfer_value_policy") != TRANSFER_VALUE_POLICY:
+        raise GenuineReplayError("Reviewed GW2 transfer-value policy mismatch")
+    if solver_input.get("probability_extra_transfer_needed") != (
+        PROBABILITY_EXTRA_TRANSFER_NEEDED
+    ):
+        raise GenuineReplayError("Reviewed GW2 transfer-need probability mismatch")
+    if solver_input.get("future_transfer_discount") != FUTURE_TRANSFER_DISCOUNT:
+        raise GenuineReplayError("Reviewed GW2 transfer discount mismatch")
+    if review.get("assessment", {}).get("policy_is_fitted_on_gw2") is not False:
+        raise GenuineReplayError("Reviewed GW2 policy provenance is not admissible")
+    if any(
+        artifact.get(flag) is not False
+        for artifact in (comparison, review)
+        for flag in (
+            "contains_hidden_outcome",
+            "contains_validated_plan",
+            "contains_state_transition",
+        )
+    ):
+        raise GenuineReplayError("Reviewed GW2 setup crosses the freeze boundary")
+    return feature_state, solver_input, solver_output
+
+
+def _load_outcomes_after_all_plans_freeze(
+    episode_dir: Path,
+    *,
+    frozen_plans: Mapping[str, Mapping[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    if set(frozen_plans) != set(POLICY_ARMS):
+        raise GenuineReplayError(
+            "Hidden outcome access requires one frozen plan for every policy arm"
+        )
+    if any(
+        plan.get("validation", {}).get("status") != "passed"
+        or not plan.get("content_sha256")
+        or not plan.get("frozen_at")
+        for plan in frozen_plans.values()
+    ):
+        raise GenuineReplayError(
+            "Hidden outcome access requires validated, frozen policy plans"
+        )
+    return _load_episode(episode_dir)
+
+
+def _gw2_strategy(arm: str) -> str:
+    return {
+        "naive_baseline": "do_nothing_bank_transfers",
+        "forecast_optimizer": "live_faithful_option_value",
+        "evidence_agent": "structured_fallback_no_admissible_evidence",
+        "evidence_challenger": (
+            "structured_fallback_no_admissible_challenger_evidence"
+        ),
+        "human_decision": "structured_fallback_no_recorded_human_choice",
+    }[arm]
+
+
+def _gw2_decision_record(
+    *,
+    manifest: Mapping[str, Any],
+    feature_state: Mapping[str, Any],
+    state: Mapping[str, Any],
+    plan: Mapping[str, Any],
+    outcome: Mapping[str, Any],
+    transition: Mapping[str, Any],
+    solver_input: Mapping[str, Any],
+    solver_output: Mapping[str, Any],
+) -> dict[str, Any]:
+    names = {
+        str(row["player_id"]): str(row.get("web_name") or row["player_id"])
+        for row in solver_input["players"]
+    }
+    no_transfer = solver_output["plans"]["no_transfer"]
+    strategy = _gw2_strategy(str(state["policy_arm"]))
+    selected_objective = float(solver_output["selected"]["objective"])
+    no_transfer_objective = float(no_transfer["objective"])
+    candidates = [
+        {
+            "strategy": f"{count}_transfers",
+            "objective": float(candidate["objective"]),
+            "hit_cost": int(candidate["hit_cost"]),
+            "transfers": deepcopy(candidate["transfers"]),
+        }
+        for count, candidate in solver_output["best_by_transfer_count"].items()
+    ]
+    return build_decision_record(
+        {
+            "record_id": (
+                f"gdr:{manifest['season']}:gw{manifest['gameweek']:02d}:"
+                f"{state['policy_arm']}"
+            ),
+            "gameweek": int(manifest["gameweek"]),
+            "season": str(manifest["season"]),
+            "fixture_id": str(manifest["episode_id"]),
+            "decision_cutoff": str(manifest["cutoff"]),
+            "deadline": str(manifest["deadline"]),
+            "ruleset_id": str(manifest["ruleset"]["ruleset_id"]),
+            "validated_plan": deepcopy(dict(plan)),
+            "data_quality": (
+                "Locked structured forecast; historical unstructured evidence "
+                "and recorded human choice unavailable"
+            ),
+            "degraded": True,
+            "manager_state": {
+                "bank": state["bank"],
+                "free_transfers": state["free_transfers"],
+                "chips_available": list(state["chips_available"]),
+                "squad_player_ids": [
+                    row["player_id"] for row in state["squad"]
+                ],
+            },
+            "projections_summary": {
+                "n_players": len(solver_input["players"]),
+                "model_versions": ["live-faithful-v1"],
+                "principal_uncertainty": (
+                    "Transfer flexibility uses an explicit expected-hit-"
+                    "avoidance bridge rather than future player forecasts"
+                ),
+            },
+            "candidate_plans": candidates,
+            "recommendation": {
+                "strategy": strategy,
+                "objective": selected_objective,
+                "captain_name": names[plan["lineup"]["captain_id"]],
+                "vice_captain_name": names[
+                    plan["lineup"]["vice_captain_id"]
+                ],
+                "validated_plan_sha256": plan["content_sha256"],
+            },
+            "baseline_comparison": {
+                "do_nothing_objective": no_transfer_objective,
+                "recommended_objective": selected_objective,
+                "expected_advantage": round(
+                    selected_objective - no_transfer_objective, 4
+                ),
+                "notes": (
+                    "Planning objectives include the declared transfer-option "
+                    "term; immediate objectives remain in the solver artefact"
+                ),
+            },
+            "alternatives": {
+                "conservative": deepcopy(
+                    solver_output["best_by_transfer_count"].get("0")
+                ),
+                "aggressive": deepcopy(
+                    solver_output["best_by_transfer_count"].get("2")
+                ),
+            },
+            "evidence": {
+                "supporting_claim_ids": [],
+                "conflicting_claim_ids": [],
+                "conflict_ids": [],
+                "proposed_adjustment_ids": [],
+            },
+            "validation": {
+                "squad": {"ok": True},
+                "lineup": {"ok": True},
+                "chips_ok": True,
+                "validated_plan_sha256": plan["content_sha256"],
+            },
+            "approval": {
+                "status": "approved",
+                "approver": "reviewed_structured_replay_policy",
+                "notes": (
+                    "No post-deadline evidence; evidence/human arms use the "
+                    "declared structured fallback"
+                ),
+            },
+            "execution": {
+                "mode": "dry_run",
+                "notes": "Historical replay; no external account action",
+            },
+            "outcome": {
+                "points": outcome["gross_points"],
+                "notes": "Official hidden outcome revealed after all arm freezes",
+                "finalised_at": outcome["revealed_at"],
+            },
+            "retrospective": {
+                "process_notes": "Reviewed GW2 chronological checkpoint",
+                "lessons": list(feature_state["limitations"]),
+                "metrics": {
+                    "gross_points": outcome["gross_points"],
+                    "net_points": transition["net_points"],
+                    "substitutions": len(outcome["substitutions"]),
+                },
+            },
+            "confidence": "Locked structured forecast with explicit option-value policy",
+            "principal_uncertainty": (
+                "No admissible historical press, injury, odds, agent or human "
+                "proposal was available for this checkpoint"
+            ),
+            "observed_at": str(manifest["cutoff"]),
+            "available_at": str(manifest["cutoff"]),
+            "finalised_at": str(outcome["revealed_at"]),
+            "provenance": {
+                "source_ids": [
+                    "benchmark-v0-observed",
+                    "live-faithful-v1-locked",
+                    "expected-hit-avoidance-v1",
+                ],
+                "transformation_version": "genuine-replay-v2",
+                "ruleset_id": str(manifest["ruleset"]["ruleset_id"]),
+            },
+        },
+        validate=True,
+    )
+
+
+def finalise_historical_gameweek_two(
+    *,
+    season: str,
+    episode_root: Path,
+    output_root: Path,
+    code_commit: str,
+    reviewed_setup_dir: Path | None = None,
+) -> dict[str, Any]:
+    """Freeze, reveal, score and transition the reviewed GW2 checkpoint."""
+    if len(code_commit) != 40:
+        raise GenuineReplayError("code_commit must be a full 40-character Git SHA")
+    previous_dir = output_root / "gw-01"
+    previous_summary = _read_json(previous_dir / "run-summary.json")
+    if previous_summary.get("next_state_gameweek") != 2:
+        raise GenuineReplayError("GW1 checkpoint does not hand off to GW2")
+    setup_dir = reviewed_setup_dir or (
+        REPO / "reports" / "benchmarks" / season / "gw-02" / "setup"
+    )
+    feature_state, solver_input, solver_output = _load_reviewed_gw2_setup(
+        setup_dir,
+        previous_summary=previous_summary,
+    )
+    observed_episode = _load_observed_episode(episode_root / "gw-02")
+    manifest = observed_episode["manifest"]
+    if manifest["season"] != season or manifest["gameweek"] != 2:
+        raise GenuineReplayError("Episode root does not contain requested GW2")
+    if solver_input.get("season") != season or solver_input.get("gameweek") != 2:
+        raise GenuineReplayError("Reviewed solver input is not the requested GW2")
+    rules = observed_episode["rules"]
+    rules_hash = str(manifest["ruleset"]["content_sha256"])
+    decision_market = {
+        str(row["player_id"]): dict(row) for row in solver_input["players"]
+    }
+    frozen_plans: dict[str, dict[str, Any]] = {}
+    states: dict[str, dict[str, Any]] = {}
+    for arm in POLICY_ARMS:
+        state = _read_json(previous_dir / arm / "next-policy-state.json")
+        if state["content_sha256"] != previous_summary["arms"][arm][
+            "next_state_sha256"
+        ]:
+            raise GenuineReplayError(f"GW2 opening state hash mismatch for {arm}")
+        if state["policy_arm"] != arm or state["gameweek"] != 2:
+            raise GenuineReplayError(f"GW2 opening state identity mismatch for {arm}")
+        if sorted(row["player_id"] for row in state["squad"]) != sorted(
+            solver_input["squad_player_ids"]
+        ):
+            raise GenuineReplayError(f"Reviewed solver squad differs for {arm}")
+        candidate = (
+            solver_output["plans"]["no_transfer"]
+            if arm == "naive_baseline"
+            else solver_output["selected"]
+        )
+        states[arm] = state
+        frozen_plans[arm] = validate_and_freeze_plan(
+            episode_id=str(manifest["episode_id"]),
+            policy_arm=arm,
+            state=state,
+            candidate=candidate,
+            decision_market=decision_market,
+            active_chip=None,
+            frozen_at=str(manifest["deadline"]),
+            rules=rules,
+            ruleset_sha256=rules_hash,
+        )
+
+    gameweek_dir = output_root / "gw-02"
+    for arm in POLICY_ARMS:
+        arm_dir = gameweek_dir / arm
+        _write_json(arm_dir / "policy-state-before.json", states[arm])
+        _write_json(arm_dir / "validated-plan.json", frozen_plans[arm])
+
+    revealed_episode = _load_outcomes_after_all_plans_freeze(
+        episode_root / "gw-02",
+        frozen_plans=frozen_plans,
+    )
+    next_observed = _load_observed_episode(episode_root / "gw-03")
+    next_feature_state = build_feature_state(
+        episode_manifest=next_observed["manifest"],
+        observed=next_observed["observed"],
+        identity_map=next_observed["identity"],
+        previous_state=feature_state,
+    )
+    next_market = _market(next_feature_state)
+    identity_hash = _stable_hash(revealed_episode["identity"])
+    identity = _identity_index(revealed_episode["identity"])
+    revealed_at = _reveal_time(
+        revealed_episode["hidden"], str(manifest["created_at"])
+    )
+    arm_summaries: dict[str, Any] = {}
+    action_hashes: set[str] = set()
+    for arm in POLICY_ARMS:
+        state = states[arm]
+        plan = frozen_plans[arm]
+        outcome = score_revealed_outcome(
+            plan,
+            revealed_episode["hidden"],
+            revealed_at=revealed_at,
+            rules=rules,
+            ruleset_sha256=rules_hash,
+            player_identity_map=identity,
+            identity_map_sha256=identity_hash,
+        )
+        successor, transition = transition_policy_state(
+            state,
+            plan,
+            outcome,
+            decision_market=decision_market,
+            next_market=next_market,
+            rules=rules,
+            ruleset_sha256=rules_hash,
+        )
+        record = _gw2_decision_record(
+            manifest=manifest,
+            feature_state=feature_state,
+            state=state,
+            plan=plan,
+            outcome=outcome,
+            transition=transition,
+            solver_input=solver_input,
+            solver_output=solver_output,
+        )
+        action_projection = {
+            "transfers": plan["transfers"],
+            "lineup": plan["lineup"],
+            "active_chip": plan["active_chip"],
+            "finance": plan["finance"],
+        }
+        action_hashes.add(fingerprint(action_projection))
+        arm_dir = gameweek_dir / arm
+        _write_json(arm_dir / "policy-state-before.json", state)
+        _write_json(arm_dir / "validated-plan.json", plan)
+        _write_json(arm_dir / "decision-record.json", record)
+        _write_json(arm_dir / "realised-outcome.json", outcome)
+        _write_json(arm_dir / "state-transition.json", transition)
+        _write_json(arm_dir / "next-policy-state.json", successor)
+        arm_summaries[arm] = {
+            "strategy": _gw2_strategy(arm),
+            "plan_sha256": plan["content_sha256"],
+            "outcome_sha256": outcome["content_sha256"],
+            "transition_sha256": transition["content_sha256"],
+            "next_state_sha256": successor["content_sha256"],
+            "transfers": plan["finance"]["transfer_count"],
+            "hit_cost": plan["finance"]["hit_cost"],
+            "active_chip": plan["active_chip"],
+            "captain_id": plan["lineup"]["captain_id"],
+            "vice_captain_id": plan["lineup"]["vice_captain_id"],
+            "substitutions": outcome["substitutions"],
+            "gross_points": outcome["gross_points"],
+            "net_points": transition["net_points"],
+            "cumulative_points": successor["cumulative_points"],
+            "bank": successor["bank"],
+            "free_transfers": successor["free_transfers"],
+        }
+
+    summary: dict[str, Any] = {
+        "schema_version": "1.0",
+        "run_mode": "genuine_historical_checkpoint",
+        "season": season,
+        "decisions_completed_through_gameweek": 2,
+        "next_state_gameweek": 3,
+        "contains_next_gameweek_decision": False,
+        "code_commit": code_commit,
+        "episode_id": manifest["episode_id"],
+        "observed_sha256": manifest["observed"]["feature_snapshot_ref"][
+            "content_sha256"
+        ],
+        "hidden_outcome_sha256": manifest["hidden_outcome_ref"][
+            "content_sha256"
+        ],
+        "identity_map_sha256": identity_hash,
+        "ruleset": deepcopy(manifest["ruleset"]),
+        "feature_state_sha256": feature_state["content_sha256"],
+        "next_feature_state_sha256": next_feature_state["content_sha256"],
+        "reviewed_solver_input_sha256": fingerprint(solver_input),
+        "reviewed_solver_output_sha256": fingerprint(solver_output),
+        "limitations": sorted(
+            set(feature_state["limitations"])
+            | {
+                "No admissible historical unstructured evidence was reconstructed",
+                "No recorded historical human decision was available",
+                "Transfer option value is a bridge, not a multiweek player forecast",
+            }
+        ),
+        "shared_action_count": len(action_hashes),
+        "arms": arm_summaries,
+    }
+    summary["content_sha256"] = fingerprint(summary)
+    _write_json(gameweek_dir / "run-summary.json", summary)
+    _write_json(
+        gameweek_dir / "shared-context.json",
+        {
+            "episode_id": manifest["episode_id"],
+            "observed_sha256": summary["observed_sha256"],
+            "hidden_outcome_sha256": summary["hidden_outcome_sha256"],
+            "identity_map_sha256": identity_hash,
+            "ruleset": summary["ruleset"],
+            "feature_state_sha256": summary["feature_state_sha256"],
+            "next_feature_state_sha256": summary[
+                "next_feature_state_sha256"
+            ],
+            "reviewed_solver_input_sha256": summary[
+                "reviewed_solver_input_sha256"
+            ],
+            "reviewed_solver_output_sha256": summary[
+                "reviewed_solver_output_sha256"
+            ],
+            "limitations": summary["limitations"],
+        },
+    )
+    return summary
+
+
 def run_historical_replay(
     *,
     season: str,
@@ -617,10 +1071,17 @@ def run_historical_replay(
     stop_after_gameweek: int,
     code_commit: str,
 ) -> dict[str, Any]:
-    """Run one reviewed historical checkpoint; currently GW1 only."""
+    """Run one explicitly reviewed historical checkpoint."""
+    if start_gameweek == 2 and stop_after_gameweek == 2:
+        return finalise_historical_gameweek_two(
+            season=season,
+            episode_root=episode_root,
+            output_root=output_root,
+            code_commit=code_commit,
+        )
     if start_gameweek != 1 or stop_after_gameweek != 1:
         raise GenuineReplayError(
-            "This reviewed checkpoint implements Gameweek 1 only"
+            "Reviewed checkpoints currently support GW1 or GW2 one at a time"
         )
     if len(code_commit) != 40:
         raise GenuineReplayError("code_commit must be a full 40-character Git SHA")

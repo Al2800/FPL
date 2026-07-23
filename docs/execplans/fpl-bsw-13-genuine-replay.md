@@ -23,6 +23,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-23 22:39Z) Rendered a self-contained GW1 HTML review and verified it through a read-only server bound to the Tailscale interface.
 - [x] (2026-07-23 22:46Z) Implemented the sealed GW2 preparation boundary: identical engine input/output, five isolated opening states, explicit policy briefs, no hidden-outcome read, and no frozen proposal/transition.
 - [x] (2026-07-23 22:46Z) Stopped GW2 at review after diagnostics exposed severe single-Gameweek outcome chasing; created `FPL-5iu` for early-season prior/shrinkage calibration.
+- [x] (2026-07-24 00:49Z) Resumed the bead after `FPL-5iu`, the structured-data gate, and `FPL-k21` closed; the reviewed GW2 setup now uses the locked live-faithful forecast and explicit transfer-option policy.
+- [x] (2026-07-24 01:00Z) Freeze all five GW2 arm plans from the reviewed setup before opening the hidden partition, score the official outcome, and advance five independent states to GW3.
+- [ ] Prove GW2 rerun determinism and the fail-closed outcome-access boundary, then persist and review the real checkpoint.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -48,6 +51,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: the first GW2 rolling forecast is not decision-grade.
   Evidence: only completed GW1 is available, so `historical-rolling-v1` assigns Ballard 17 EP, Semenyo 15 and Wood 13 by carrying their single realised score forward. The optimiser searches 102,391 valid candidates, captains Ballard and recommends three transfers including a four-point hit, raising its objective from 68 to 110. This is mechanically consistent but statistically unstable.
 
+- Observation: checkpoint provenance must be generated after the producing code is committed.
+  Evidence: the first successful GW2 development run correctly scored and transitioned every arm but recorded parent commit `68ec402`, because the finaliser itself was still uncommitted. That run was preserved as ignored development evidence; the tracked checkpoint is generated only from the implementation commit.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -65,6 +71,14 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Decision: replay artefacts are organized by season, Gameweek, and policy arm, with shared episode/feature references in a Gameweek summary.
   Rationale: this exposes parity across arms, prevents state borrowing, and makes one-Gameweek review possible without scanning a monolithic season result.
   Date/Author: 2026-07-23 / Codex.
+
+- Decision: GW2 consumes the committed, hash-bound option-value setup as a reviewed pre-deadline model cache.
+  Rationale: forecast calibration and data completeness have already been locked without 2025/26 outcomes. Recomputing them inside the outcome runner would blur the freeze/reveal boundary and make the replay depend on ignored raw training directories.
+  Date/Author: 2026-07-24 / Codex.
+
+- Decision: evidence-agent and human arms use an explicit structured fallback in GW2 when no admissible cached historical proposal exists.
+  Rationale: inventing retrospective news or a human choice would introduce leakage. Each arm still freezes a plan bound to its own state and records the degraded fallback; agent capability is evaluated later with timestamped evidence.
+  Date/Author: 2026-07-24 / Codex.
 
 ## Outcomes & Retrospective
 
@@ -185,3 +199,5 @@ Revision note (2026-07-23): Initial ExecPlan created after claiming the replay b
 Revision note (2026-07-23): Updated after the first genuine checkpoint. Records the 56-point result, the Unicode source-hash defect found by the contract test, the exact persisted artefacts, and the explicit separation of deterministic replay output from performance timing.
 
 Revision note (2026-07-23): Added the GW1 HTML review and GW2 sealed-setup boundary. Records the early-season forecast instability found before freeze, the resulting `FPL-5iu` calibration bead, and the decision not to reveal or score GW2 until the forecast treatment is reviewed.
+
+Revision note (2026-07-24): Resumed after forecast/data/transfer-option review. The GW2 finaliser will consume the committed reviewed setup, freeze every arm before hidden-outcome access, and advance one reviewed Gameweek only.
