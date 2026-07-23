@@ -8,11 +8,18 @@ from pathlib import Path
 
 from src.optimisation.io import load_solver_input, save_json
 from src.optimisation.solver import solve
+from src.scoring.rules_loader import load_rules, ruleset_sha256
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input_json", type=Path, help="Solver input JSON path")
+    parser.add_argument(
+        "--rules",
+        type=Path,
+        required=True,
+        help="Exact season rules YAML governing this solve",
+    )
     parser.add_argument(
         "--out",
         type=Path,
@@ -21,7 +28,11 @@ def main() -> int:
     )
     args = parser.parse_args()
     inp = load_solver_input(args.input_json)
-    out = solve(inp)
+    out = solve(
+        inp,
+        rules=load_rules(args.rules),
+        ruleset_sha256=ruleset_sha256(args.rules),
+    )
     dest = args.out or args.input_json.with_suffix(".output.json")
     save_json(dest, out)
     selected = out.get("selected") or {}

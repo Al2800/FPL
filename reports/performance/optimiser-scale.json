@@ -1,0 +1,64 @@
+{
+  "method": {
+    "latency": "five warm-process perf_counter samples after one warmup",
+    "memory": "separate tracemalloc run; profiler overhead excluded from latency",
+    "percentiles": "linear interpolation",
+    "scope": "full declared pool through plan evaluation and bounded ranking"
+  },
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "widths": [
+    {
+      "cumulative_valid_candidates_including_no_transfer": 122,
+      "declared_layer_candidates": 120,
+      "deterministic": true,
+      "max_transfers": 1,
+      "output_fingerprint": "1dd1334ef56a0b95dae89f8cc914fb7a568abd55b4f53236c2b45ff7ddcab90f",
+      "python_heap_peak_bytes": 97952,
+      "retained_ranked_candidates": 50,
+      "samples": 5,
+      "throughput_candidates_per_second": 10595.612,
+      "wall_ms": {
+        "mean": 11.514,
+        "p50": 11.068,
+        "p95": 14.082,
+        "p99": 14.629
+      }
+    },
+    {
+      "cumulative_valid_candidates_including_no_transfer": 5978,
+      "declared_layer_candidates": 5856,
+      "deterministic": true,
+      "max_transfers": 2,
+      "output_fingerprint": "57608507a606870a5e5b9b8b48879496f4fc4351df696688b214f847377d4cd5",
+      "python_heap_peak_bytes": 128184,
+      "retained_ranked_candidates": 50,
+      "samples": 5,
+      "throughput_candidates_per_second": 12277.835,
+      "wall_ms": {
+        "mean": 486.894,
+        "p50": 447.177,
+        "p95": 615.135,
+        "p99": 646.649
+      }
+    },
+    {
+      "cumulative_valid_candidates_including_no_transfer": 157650,
+      "declared_layer_candidates": 151672,
+      "deterministic": true,
+      "max_transfers": 3,
+      "output_fingerprint": "cf257118a0b298deced5bbb30117e51e99535a6fec275d7646d459bab801a05e",
+      "python_heap_peak_bytes": 146968,
+      "retained_ranked_candidates": 50,
+      "samples": 5,
+      "throughput_candidates_per_second": 8460.935,
+      "wall_ms": {
+        "mean": 18632.693,
+        "p50": 18609.752,
+        "p95": 18738.89,
+        "p99": 18759.852
+      }
+    }
+  ]
+}

@@ -169,7 +169,9 @@ def test_plan_generator_can_select_previously_missing_formations(position_points
             value = value[position_seen[pos]]
         position_seen[pos] += 1
         rows.append({**player, "expected_points": value})
-    assert choose_starting_xi(pd.DataFrame(rows))["formation"] == expected
+    assert choose_starting_xi(
+        pd.DataFrame(rows), rules=load_rules()
+    )["formation"] == expected
 
 
 def test_club_limit_and_chip_rules():

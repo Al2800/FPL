@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
+from bisect import insort
+from collections import Counter
+from collections.abc import Mapping, Sequence
 from typing import Any
 
-import pandas as pd
-
 from src.optimisation.io import fingerprint
-from src.optimisation.simple_plan import choose_starting_xi
+from src.optimisation.simple_plan import choose_starting_xi_rows
 from src.optimisation.transfers import (
     apply_transfers,
     enumerate_transfer_sets,
@@ -15,8 +16,8 @@ from src.optimisation.transfers import (
     owned_records,
 )
 from src.optimisation.types import SOLVER_VERSION, SolverInput
-from src.scoring.rules_loader import load_rules
-from src.scoring.validator import validate_chips, validate_lineup, validate_squad
+from src.scoring.rules_loader import get_rule
+from src.scoring.validator import legal_formations, validate_chips
 
 
 def _objective(
@@ -49,36 +50,23 @@ def _evaluate_squad(
     bank: float,
     strategy: str,
     active_chip: str | None,
-    gameweek: int,
-    rules: dict[str, Any],
+    formations: Sequence[Mapping[str, int]],
+    position_counts: Mapping[str, int],
+    max_per_club: int,
+    chip_ok: bool,
 ) -> dict[str, Any] | None:
-    # Skip initial-budget trap for in-season squads
-    for row in squad_rows:
-        row.setdefault("selling_price", row.get("now_cost", row["purchase_price"]))
-
-    squad_val = validate_squad(squad_rows, bank=bank, rules=rules)
-    hard = [e for e in squad_val.errors if "initial_budget" not in e]
-    if hard:
+    if len(squad_rows) != 15 or len({str(row["player_id"]) for row in squad_rows}) != 15:
+        return None
+    positions = Counter(str(row["position"]) for row in squad_rows)
+    if any(positions.get(position, 0) != expected for position, expected in position_counts.items()):
+        return None
+    clubs = Counter(str(row["club_id"]) for row in squad_rows)
+    if any(count > max_per_club for count in clubs.values()) or not chip_ok:
         return None
 
-    chip_val = validate_chips([active_chip] if active_chip else [], gameweek=gameweek, rules=rules)
-    if not chip_val.ok:
-        return None
-
-    df = pd.DataFrame(squad_rows)
     try:
-        lineup = choose_starting_xi(df)
+        lineup = choose_starting_xi_rows(squad_rows, formations=formations)
     except ValueError:
-        return None
-
-    lineup_val = validate_lineup(
-        lineup["starting_xi"],
-        lineup["bench"],
-        captain_id=lineup["captain_id"],
-        vice_captain_id=lineup["vice_captain_id"],
-        rules=rules,
-    )
-    if not lineup_val.ok:
         return None
 
     obj = _objective(lineup, hit_cost=hit_cost, active_chip=active_chip)
@@ -98,14 +86,23 @@ def _evaluate_squad(
         "validation": {
             "squad_ok": True,
             "lineup_ok": True,
-            "chips_ok": chip_val.ok,
+            "chips_ok": chip_ok,
         },
     }
 
 
-def solve(solver_input: SolverInput) -> dict[str, Any]:
+def solve(
+    solver_input: SolverInput,
+    *,
+    rules: Mapping[str, Any],
+    ruleset_sha256: str,
+) -> dict[str, Any]:
     """Return candidate plans and a selected highest-EV plan. Deterministic."""
-    rules = load_rules()
+    rules_dict = dict(rules)
+    if len(ruleset_sha256) != 64 or any(
+        character not in "0123456789abcdef" for character in ruleset_sha256
+    ):
+        raise ValueError("ruleset_sha256 must be a lower-case SHA-256")
     if solver_input.ruleset_mismatch_policy not in {"fail_closed", "allow_loaded"}:
         raise ValueError(
             "ruleset_mismatch_policy must be 'fail_closed' or 'allow_loaded'"
@@ -127,15 +124,15 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
     if solver_input.active_chip and solver_input.active_chip not in solver_input.chips_available:
         raise ValueError("active_chip must be present in chips_available")
 
-    if solver_input.ruleset_id and solver_input.ruleset_id != rules["meta"]["ruleset_id"]:
+    if solver_input.ruleset_id and solver_input.ruleset_id != rules_dict["meta"]["ruleset_id"]:
         if solver_input.ruleset_mismatch_policy == "fail_closed":
             raise ValueError(
                 f"input ruleset_id={solver_input.ruleset_id} "
-                f"differs from loaded {rules['meta']['ruleset_id']}"
+                f"differs from loaded {rules_dict['meta']['ruleset_id']}"
             )
         ruleset_note = (
             f"input ruleset_id={solver_input.ruleset_id} "
-            f"differs from loaded {rules['meta']['ruleset_id']}; "
+            f"differs from loaded {rules_dict['meta']['ruleset_id']}; "
             "explicit allow_loaded policy applied"
         )
     else:
@@ -146,14 +143,52 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
         if pid not in market:
             raise KeyError(f"squad player {pid} missing from market")
 
-    owned = owned_records(solver_input.squad_player_ids, market)
+    owned = owned_records(
+        solver_input.squad_player_ids, market, rules=rules_dict
+    )
     # Attach purchase prices from input players when present
     for row in owned:
         src = market[row["player_id"]]
         if src.get("purchase_price") is not None:
             row["purchase_price"] = float(src["purchase_price"])
 
-    candidates: list[dict[str, Any]] = []
+    formations = legal_formations(rules_dict)
+    position_counts = get_rule(rules_dict, "squad.position_counts")["value"]
+    max_per_club = int(get_rule(rules_dict, "squad.max_per_club")["value"])
+    hit_cost_per_transfer = int(get_rule(rules_dict, "transfers.hit_cost")["value"])
+    chip_validation = validate_chips(
+        [solver_input.active_chip] if solver_input.active_chip else [],
+        gameweek=solver_input.gameweek,
+        rules=rules_dict,
+    )
+    top_ranked: list[tuple[tuple[Any, ...], int, dict[str, Any]]] = []
+    by_strategy: dict[str, dict[str, Any]] = {}
+    candidate_count = 0
+
+    def rank_key(candidate: Mapping[str, Any]) -> tuple[Any, ...]:
+        return (
+            -float(candidate["objective"]),
+            len(candidate["transfers"]),
+            str(candidate["strategy"]),
+            tuple(
+                (transfer["player_out_id"], transfer["player_in_id"])
+                for transfer in candidate["transfers"]
+            ),
+        )
+
+    def consider(candidate: dict[str, Any] | None) -> None:
+        nonlocal candidate_count
+        if candidate is None:
+            return
+        candidate_count += 1
+        strategy = str(candidate["strategy"])
+        if strategy not in by_strategy or rank_key(candidate) < rank_key(
+            by_strategy[strategy]
+        ):
+            by_strategy[strategy] = candidate
+        insort(top_ranked, (rank_key(candidate), candidate_count, candidate))
+        if len(top_ranked) > 50:
+            top_ranked.pop()
 
     # --- no_transfer / bank_transfer ---
     base = _evaluate_squad(
@@ -163,15 +198,17 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
         bank=solver_input.bank,
         strategy="no_transfer",
         active_chip=solver_input.active_chip,
-        gameweek=solver_input.gameweek,
-        rules=rules,
+        formations=formations,
+        position_counts=position_counts,
+        max_per_club=max_per_club,
+        chip_ok=chip_validation.ok,
     )
     if base:
-        candidates.append(base)
+        consider(base)
         if solver_input.free_transfers > 0:
             banked = dict(base)
             banked["strategy"] = "bank_transfer"
-            candidates.append(banked)
+            consider(banked)
 
     max_t = solver_input.max_transfers
     free = solver_input.free_transfers
@@ -194,7 +231,7 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
             buy_pool_per_pos=solver_input.buy_pool_per_pos,
             bank=solver_input.bank,
             availability_policy=solver_input.availability_policy,
-            rules=rules,
+            rules=rules_dict,
         )
         for moves in move_sets:
             applied = apply_transfers(
@@ -203,7 +240,8 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
                 market,
                 bank=solver_input.bank,
                 free_transfers=effective_free,
-                rules=rules,
+                max_per_club=max_per_club,
+                hit_cost_per_transfer=hit_cost_per_transfer,
             )
             if not applied:
                 continue
@@ -217,44 +255,15 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
                 bank=applied["bank"],
                 strategy=strategy,
                 active_chip=solver_input.active_chip,
-                gameweek=solver_input.gameweek,
-                rules=rules,
+                formations=formations,
+                position_counts=position_counts,
+                max_per_club=max_per_club,
+                chip_ok=chip_validation.ok,
             )
-            if plan:
-                candidates.append(plan)
+            consider(plan)
 
-    # Deduplicate by (transfers tuple, chip) keeping first (deterministic order)
-    uniq: dict[tuple[Any, ...], dict[str, Any]] = {}
-    for c in candidates:
-        key = (
-            tuple((t["player_out_id"], t["player_in_id"]) for t in c["transfers"]),
-            c["strategy"] if c["strategy"] in {"no_transfer", "bank_transfer"} else "xfer",
-            c["hit_cost"],
-        )
-        # Prefer richer strategy labels on identical transfer sets
-        if key not in uniq:
-            uniq[key] = c
-        elif c["strategy"] == "bank_transfer" and uniq[key]["strategy"] == "no_transfer":
-            # keep both via different keys — already handled
-            pass
-
-    # Stable sort: objective desc, fewer transfers, strategy name, transfer ids
-    unique_candidates = list(uniq.values())
-    ranked = sorted(
-        unique_candidates,
-        key=lambda c: (
-            -c["objective"],
-            len(c["transfers"]),
-            c["strategy"],
-            tuple((t["player_out_id"], t["player_in_id"]) for t in c["transfers"]),
-        ),
-    )
-
-    by_strategy: dict[str, dict[str, Any]] = {}
-    for c in ranked:
-        by_strategy.setdefault(c["strategy"], c)
-
-    selected = ranked[0] if ranked else None
+    top_candidates = [entry[2] for entry in top_ranked]
+    selected = top_candidates[0] if top_candidates else None
     highest = dict(selected) if selected else None
     if highest:
         highest["strategy"] = "highest_ev"
@@ -262,11 +271,12 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
         highest["optimality"] = "highest_ev_in_declared_candidate_pool"
     output = {
         "solver_version": SOLVER_VERSION,
-        "ruleset_id": rules["meta"]["ruleset_id"],
+        "ruleset_id": rules_dict["meta"]["ruleset_id"],
+        "ruleset_sha256": ruleset_sha256,
         "horizon_gameweeks": solver_input.horizon_gameweeks,
         "input_fingerprint": fingerprint(solver_input.as_dict()),
         "ruleset_note": ruleset_note,
-        "n_candidates": len(unique_candidates),
+        "n_candidates": candidate_count,
         "search_scope": {
             "optimality": "highest_ev_in_declared_candidate_pool",
             "global_optimality_guaranteed": False,
@@ -276,6 +286,10 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
             "affordability_filter_before_ranking": True,
             "ruleset_mismatch_policy": solver_input.ruleset_mismatch_policy,
             "availability_policy": solver_input.availability_policy,
+            "candidate_generation": "lazy",
+            "retained_ranked_candidates": len(top_candidates),
+            "full_rebuild_search": False,
+            "wildcard_free_hit_hit_accounting": True,
         },
         "selected": highest,
         "plans": {
@@ -288,7 +302,7 @@ def solve(solver_input: SolverInput) -> dict[str, Any]:
             "free_transfer": by_strategy.get("free_transfer"),
             "hit": by_strategy.get("hit"),
         },
-        "all_candidates": ranked[:50],  # cap for artefact size
+        "all_candidates": top_candidates,
     }
     output["output_fingerprint"] = fingerprint(
         {k: output[k] for k in ("solver_version", "selected", "plans") if k in output}

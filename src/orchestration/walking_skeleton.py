@@ -44,7 +44,7 @@ def run_skeleton(fixture_path: Path, out_dir: Path) -> dict[str, Any]:
         projected.loc[mask, "purchase_price"] = row["purchase_price"]
         projected.loc[mask, "club_id"] = str(row["club_id"])
 
-    plan = no_transfer_plan(squad_meta, projected)
+    plan = no_transfer_plan(squad_meta, projected, rules=rules)
     lineup = plan["lineup"]
     id_to_name = dict(zip(projected["player_id"], projected["web_name"]))
     rules_hash = ruleset_sha256()

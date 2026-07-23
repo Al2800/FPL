@@ -29,10 +29,12 @@ from typing import Any, Callable
 from src.optimisation.io import load_solver_input
 from src.optimisation.solver import solve
 from src.orchestration.replay_harness import replay_gameweek
+from src.scoring.rules_loader import load_rules, ruleset_sha256
 
 
 REPO = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO / "evals" / "golden-cases" / "optimiser-gw3-input.json"
+DEFAULT_RULES = REPO / "control" / "rules" / "2026-27.yaml"
 DEFAULT_EPISODES = REPO / "data" / "benchmark-v0" / "episodes" / "v2" / "2025-26"
 DEFAULT_OUT = REPO / "reports" / "performance" / "core-baseline.json"
 
@@ -243,10 +245,14 @@ def _measure(workload: Workload, *, iterations: int, warmups: int) -> dict[str, 
 
 def _workloads() -> dict[str, Workload]:
     solver_input = load_solver_input(DEFAULT_INPUT)
+    rules = load_rules(DEFAULT_RULES)
+    rules_hash = ruleset_sha256(DEFAULT_RULES)
     episode_paths = sorted(DEFAULT_EPISODES.glob("gw-*/observed.json"))
 
     def solver_golden() -> dict[str, Any]:
-        output = solve(solver_input)
+        output = solve(
+            solver_input, rules=rules, ruleset_sha256=rules_hash
+        )
         return {
             "input_fingerprint": output["input_fingerprint"],
             "output_fingerprint": output["output_fingerprint"],

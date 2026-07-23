@@ -48,6 +48,7 @@ def _lineup_names(solver_input_players: list[dict[str, Any]], lineup: dict[str, 
 def replay_gameweek(
     solver_input_path: Path,
     *,
+    rules_path: Path | None = None,
     out_dir: Path | None = None,
     decision_cutoff: str | None = None,
     deadline: str | None = None,
@@ -56,9 +57,15 @@ def replay_gameweek(
 ) -> dict[str, Any]:
     """Run optimiser → Gameweek Decision Record → optional retrospective metrics."""
     t0 = time.perf_counter()
-    rules = load_rules()
     solver_input = load_solver_input(solver_input_path)
-    solver_out = solve(solver_input)
+    active_rules_path = rules_path or (
+        REPO / "control" / "rules" / f"{solver_input.season}.yaml"
+    )
+    rules = load_rules(active_rules_path)
+    rules_hash = ruleset_sha256(active_rules_path)
+    solver_out = solve(
+        solver_input, rules=rules, ruleset_sha256=rules_hash
+    )
     baseline = baseline_comparison_from_solver(solver_out)
     selected = solver_out["selected"]
     if not selected:
@@ -88,7 +95,6 @@ def replay_gameweek(
     dl = deadline or ("2024-08-30T11:00:00Z" if solver_input.gameweek == 3 else cutoff)
 
     observed = "2026-07-21T18:00:00Z"
-    rules_hash = ruleset_sha256()
     market = {
         str(player["player_id"]): {
             "player_id": str(player["player_id"]),
