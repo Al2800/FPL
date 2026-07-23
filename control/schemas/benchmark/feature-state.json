@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/benchmark/feature-state.json",
+  "title": "Historical replay feature state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "feature_state_id",
+    "content_sha256",
+    "episode_id",
+    "season",
+    "gameweek",
+    "cutoff",
+    "status",
+    "limitations",
+    "lineage",
+    "fixtures",
+    "players"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "feature_state_id": {"type": "string", "minLength": 3},
+    "content_sha256": {"$ref": "#/$defs/sha256"},
+    "episode_id": {"type": "string", "minLength": 3},
+    "season": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$"},
+    "gameweek": {"type": "integer", "minimum": 1, "maximum": 38},
+    "cutoff": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["complete", "degraded"]},
+    "limitations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "lineage": {"$ref": "#/$defs/lineage"},
+    "fixtures": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "players": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/player"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "nullable_sha256": {
+      "oneOf": [
+        {"$ref": "#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "dataset_sha256",
+        "observed_sha256",
+        "identity_map_sha256",
+        "ruleset_id",
+        "ruleset_sha256",
+        "previous_feature_state_sha256",
+        "history_chain_sha256",
+        "model_version",
+        "model_sha256",
+        "seed_sha256"
+      ],
+      "properties": {
+        "dataset_id": {"type": "string", "minLength": 1},
+        "dataset_sha256": {"$ref": "#/$defs/sha256"},
+        "observed_sha256": {"$ref": "#/$defs/sha256"},
+        "identity_map_sha256": {"$ref": "#/$defs/sha256"},
+        "ruleset_id": {"type": "string", "minLength": 1},
+        "ruleset_sha256": {"$ref": "#/$defs/sha256"},
+        "previous_feature_state_sha256": {"$ref": "#/$defs/nullable_sha256"},
+        "history_chain_sha256": {"$ref": "#/$defs/sha256"},
+        "model_version": {"type": "string", "minLength": 1},
+        "model_sha256": {"$ref": "#/$defs/sha256"},
+        "seed_sha256": {"$ref": "#/$defs/nullable_sha256"}
+      }
+    },
+    "quote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "now_cost",
+        "source_gameweek",
+        "age_gameweeks",
+        "price_confidence"
+      ],
+      "properties": {
+        "now_cost": {"type": "number", "minimum": 0},
+        "source_gameweek": {"type": "integer", "minimum": 0, "maximum": 38},
+        "age_gameweeks": {"type": "integer", "minimum": 0, "maximum": 38},
+        "price_confidence": {
+          "enum": [
+            "official_published_scout_price",
+            "historical_post_gameweek_export"
+          ]
+        }
+      }
+    },
+    "history": {
+      "type": "object",
+      "required": [
+        "gameweek",
+        "fixture_count",
+        "fixture_ids",
+        "name",
+        "position",
+        "club_id",
+        "started",
+        "price",
+        "minutes",
+        "total_points"
+      ],
+      "properties": {
+        "gameweek": {"type": "integer", "minimum": 1, "maximum": 38},
+        "fixture_count": {"type": "integer", "minimum": 1},
+        "fixture_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "integer"}
+        },
+        "name": {"type": "string", "minLength": 1},
+        "position": {"enum": ["GKP", "DEF", "MID", "FWD"]},
+        "club_id": {"type": "string", "minLength": 1},
+        "started": {"type": "integer", "minimum": 0, "maximum": 1},
+        "price": {"type": "number", "minimum": 0},
+        "minutes": {"type": "number", "minimum": 0},
+        "total_points": {"type": "number"}
+      },
+      "additionalProperties": {"type": "number"}
+    },
+    "fixture_component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fixture_id",
+        "opponent_club_id",
+        "was_home",
+        "difficulty",
+        "expected_minutes",
+        "expected_points"
+      ],
+      "properties": {
+        "fixture_id": {"type": "integer"},
+        "opponent_club_id": {"type": "string", "minLength": 1},
+        "was_home": {"type": "boolean"},
+        "difficulty": {"type": "integer", "minimum": 1, "maximum": 5},
+        "expected_minutes": {"type": "number", "minimum": 0},
+        "expected_points": {"type": "number"}
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_version",
+        "status",
+        "rolling_gameweeks",
+        "start_probability",
+        "expected_minutes",
+        "expected_points",
+        "fixture_count",
+        "fixture_components"
+      ],
+      "properties": {
+        "model_version": {"const": "historical-rolling-v1"},
+        "status": {
+          "enum": ["controlled_seed_no_forecast", "rolling_prior_gameweeks"]
+        },
+        "rolling_gameweeks": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {"type": "integer", "minimum": 1, "maximum": 38}
+        },
+        "start_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "expected_minutes": {"type": "number", "minimum": 0},
+        "expected_points": {"type": "number"},
+        "fixture_count": {"type": "integer", "minimum": 0},
+        "fixture_components": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/fixture_component"}
+        }
+      }
+    },
+    "player": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "player_id",
+        "name",
+        "position",
+        "club_id",
+        "quote",
+        "history",
+        "projection",
+        "limitations"
+      ],
+      "properties": {
+        "player_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "position": {"enum": ["GKP", "DEF", "MID", "FWD"]},
+        "club_id": {"type": "string", "minLength": 1},
+        "quote": {"$ref": "#/$defs/quote"},
+        "history": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/history"}
+        },
+        "projection": {"$ref": "#/$defs/projection"},
+        "limitations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
