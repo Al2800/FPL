@@ -1,0 +1,28 @@
+{
+  "case_id": "bench-boost",
+  "active_chip": "bench_boost_fh",
+  "player_outcomes": [
+    {"element": 1, "fixture": 301, "position": "GK", "minutes": 90, "total_points": 1},
+    {"element": 2, "fixture": 301, "position": "GK", "minutes": 90, "total_points": 1},
+    {"element": 4, "fixture": 302, "position": "DEF", "minutes": 90, "total_points": 1},
+    {"element": 5, "fixture": 302, "position": "DEF", "minutes": 90, "total_points": 1},
+    {"element": 6, "fixture": 302, "position": "DEF", "minutes": 90, "total_points": 1},
+    {"element": 7, "fixture": 302, "position": "DEF", "minutes": 90, "total_points": 1},
+    {"element": 16, "fixture": 303, "position": "DEF", "minutes": 90, "total_points": 1},
+    {"element": 8, "fixture": 304, "position": "MID", "minutes": 90, "total_points": 5},
+    {"element": 9, "fixture": 304, "position": "MID", "minutes": 90, "total_points": 1},
+    {"element": 10, "fixture": 305, "position": "MID", "minutes": 90, "total_points": 1},
+    {"element": 11, "fixture": 305, "position": "MID", "minutes": 90, "total_points": 1},
+    {"element": 12, "fixture": 305, "position": "MID", "minutes": 90, "total_points": 1},
+    {"element": 13, "fixture": 306, "position": "FWD", "minutes": 90, "total_points": 1},
+    {"element": 14, "fixture": 306, "position": "FWD", "minutes": 90, "total_points": 1},
+    {"element": 15, "fixture": 306, "position": "FWD", "minutes": 90, "total_points": 1}
+  ],
+  "expected": {
+    "gross_points": 24,
+    "captain_player_id": "8",
+    "captain_multiplier": 2,
+    "bench_points": 4,
+    "substitutions": []
+  }
+}

@@ -86,6 +86,12 @@ def _rewrite_refs(obj, defs):
         if set(obj.keys()) == {"$ref"} and "/$defs/" in obj["$ref"]:
             name = obj["$ref"].split("/$defs/")[-1]
             return defs[name]
+        if obj.get("$ref") == "../benchmark/validated-plan.json":
+            return json.loads(
+                (SCHEMAS / "benchmark/validated-plan.json").read_text(
+                    encoding="utf-8"
+                )
+            )
         return {k: _rewrite_refs(v, defs) for k, v in obj.items()}
     if isinstance(obj, list):
         return [_rewrite_refs(v, defs) for v in obj]

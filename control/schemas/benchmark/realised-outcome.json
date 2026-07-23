@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl.local/schemas/benchmark/realised-outcome.json",
+  "title": "Realised Gameweek outcome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "outcome_id",
+    "episode_id",
+    "season",
+    "gameweek",
+    "plan_id",
+    "plan_sha256",
+    "ruleset",
+    "source_outcome_sha256",
+    "revealed_at",
+    "aggregated_players",
+    "effective_lineup_ids",
+    "substitutions",
+    "captain",
+    "bench_points",
+    "gross_points",
+    "content_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "outcome_id": {"type": "string", "minLength": 1},
+    "episode_id": {"type": "string", "minLength": 1},
+    "season": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$"},
+    "gameweek": {"type": "integer", "minimum": 1, "maximum": 38},
+    "plan_id": {"type": "string", "minLength": 1},
+    "plan_sha256": {"$ref": "#/$defs/sha256"},
+    "ruleset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruleset_id", "content_sha256"],
+      "properties": {
+        "ruleset_id": {"type": "string", "minLength": 1},
+        "content_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "source_outcome_sha256": {"$ref": "#/$defs/sha256"},
+    "revealed_at": {"type": "string", "format": "date-time"},
+    "aggregated_players": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["player_id", "position", "minutes", "total_points"],
+        "properties": {
+          "player_id": {"type": "string", "minLength": 1},
+          "position": {"enum": ["GKP", "DEF", "MID", "FWD"]},
+          "minutes": {"type": "integer", "minimum": 0},
+          "total_points": {"type": "integer"}
+        }
+      }
+    },
+    "effective_lineup_ids": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 15,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "substitutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["player_out_id", "player_in_id"],
+        "properties": {
+          "player_out_id": {"type": "string", "minLength": 1},
+          "player_in_id": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "captain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "player_id",
+        "multiplier",
+        "raw_points",
+        "total_minutes",
+        "extra_points"
+      ],
+      "properties": {
+        "source": {"enum": ["captain", "vice_captain", "none"]},
+        "player_id": {"type": ["string", "null"]},
+        "multiplier": {"type": "integer", "minimum": 1, "maximum": 3},
+        "raw_points": {"type": "integer"},
+        "total_minutes": {"type": "integer", "minimum": 0},
+        "extra_points": {"type": "integer"}
+      }
+    },
+    "bench_points": {"type": "integer"},
+    "gross_points": {"type": "integer"},
+    "content_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

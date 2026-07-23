@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from src.orchestration.validated_plan import validate_plan_integrity
+
 try:
     from jsonschema import Draft202012Validator
 except ImportError:  # pragma: no cover
@@ -20,8 +22,8 @@ SECTION_31_FIELDS = {
     "manager_state": ["manager_state"],
     "projections": ["projections_summary"],
     "candidate_strategies": ["candidate_plans"],
-    "recommended_xi_captain_bench": ["recommendation"],
-    "optional_chip": ["recommendation"],
+    "recommended_xi_captain_bench": ["validated_plan"],
+    "optional_chip": ["validated_plan"],
     "expected_gain_vs_do_nothing": ["baseline_comparison"],
     "alternative_plans": ["alternatives"],
     "evidence": ["evidence"],
@@ -35,11 +37,16 @@ def _load_gdr_schema() -> dict[str, Any]:
     schemas = REPO / "control" / "schemas"
     schema = json.loads((schemas / SCHEMA_REL).read_text(encoding="utf-8"))
     defs = json.loads((schemas / "_defs.json").read_text(encoding="utf-8"))["$defs"]
+    plan_schema = json.loads(
+        (schemas / "benchmark" / "validated-plan.json").read_text(encoding="utf-8")
+    )
 
     def rewrite(obj: Any) -> Any:
         if isinstance(obj, dict):
             if set(obj.keys()) == {"$ref"} and "/$defs/" in obj["$ref"]:
                 return defs[obj["$ref"].split("/$defs/")[-1]]
+            if obj.get("$ref") == "../benchmark/validated-plan.json":
+                return plan_schema
             return {k: rewrite(v) for k, v in obj.items()}
         if isinstance(obj, list):
             return [rewrite(v) for v in obj]
@@ -52,6 +59,14 @@ def validate_decision_record(record: dict[str, Any]) -> None:
     if Draft202012Validator is None:
         raise RuntimeError("jsonschema is required")
     Draft202012Validator(_load_gdr_schema()).validate(record)
+    plan = record["validated_plan"]
+    validate_plan_integrity(plan)
+    if record["recommendation"]["validated_plan_sha256"] != plan["content_sha256"]:
+        raise ValueError("Recommendation validated_plan_sha256 does not match plan")
+    if record["gameweek"] != plan["gameweek"] or record["season"] != plan["season"]:
+        raise ValueError("Decision record episode does not match validated plan")
+    if record["ruleset_id"] != plan["ruleset"]["ruleset_id"]:
+        raise ValueError("Decision record ruleset does not match validated plan")
 
 
 def section_31_coverage(record: dict[str, Any]) -> dict[str, bool]:
@@ -62,8 +77,8 @@ def section_31_coverage(record: dict[str, Any]) -> dict[str, bool]:
             # Present as keys (may be null until finalisation)
             out[label] = all(k in record for k in keys)
         elif label == "optional_chip":
-            out[label] = "recommendation" in record and "chip" in (
-                record.get("recommendation") or {}
+            out[label] = "validated_plan" in record and "active_chip" in (
+                record.get("validated_plan") or {}
             )
         else:
             out[label] = all(k in record and record[k] is not None for k in keys)
@@ -77,6 +92,7 @@ def build_decision_record(payload: dict[str, Any], *, validate: bool = False) ->
         "decision_cutoff",
         "deadline",
         "ruleset_id",
+        "validated_plan",
         "recommendation",
         "validation",
     ]
@@ -119,8 +135,6 @@ def build_decision_record(payload: dict[str, Any], *, validate: bool = False) ->
     record.setdefault("outcome", None)
     record.setdefault("retrospective", None)
     record.setdefault("projections_summary", {})
-    if "chip" not in record["recommendation"]:
-        record["recommendation"]["chip"] = None
     if validate:
         # Ensure timestamps/provenance for schema
         if "observed_at" not in record or "available_at" not in record or "provenance" not in record:
@@ -131,12 +145,9 @@ def build_decision_record(payload: dict[str, Any], *, validate: bool = False) ->
 
 def render_text(record: dict[str, Any]) -> str:
     rec = record["recommendation"]
-    lineup = rec.get("lineup", {})
-    xi = lineup.get("starting_xi") or []
-    if xi and isinstance(xi[0], dict):
-        xi_names = [p.get("web_name", p["player_id"]) for p in xi]
-    else:
-        xi_names = [str(x) for x in (lineup.get("starting_xi_ids") or [])]
+    plan = record["validated_plan"]
+    lineup = plan["lineup"]
+    xi_names = list(lineup["starting_xi_ids"])
     baseline = record.get("baseline_comparison") or {}
     approval = record.get("approval")
     if isinstance(approval, dict):
@@ -160,7 +171,7 @@ def render_text(record: dict[str, Any]) -> str:
         f"  Captain: {rec.get('captain_name', lineup.get('captain_id'))}",
         f"  Vice-captain: {rec.get('vice_captain_name', lineup.get('vice_captain_id'))}",
         f"  Starting XI: {', '.join(xi_names)}",
-        f"  Expected XI points: {lineup.get('expected_xi_points')}",
+        f"  Transfers: {len(plan['transfers'])}; hit cost: {plan['finance']['hit_cost']}",
         "",
         f"Expected advantage over do-nothing: {baseline.get('expected_advantage', record.get('expected_advantage', 'n/a'))}",
         f"Confidence: {record.get('confidence', 'n/a')}",

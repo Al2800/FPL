@@ -13,8 +13,9 @@ import time
 from pathlib import Path
 from typing import Any
 
-from src.optimisation.io import load_solver_input, save_json
+from src.optimisation.io import fingerprint, load_solver_input, save_json
 from src.optimisation.solver import solve
+from src.orchestration.validated_plan import validate_and_freeze_plan
 from src.reporting.baseline_comparison import (
     attach_retrospective,
     baseline_comparison_from_solver,
@@ -24,7 +25,7 @@ from src.reporting.decision_record import (
     section_31_coverage,
     write_decision_record,
 )
-from src.scoring.rules_loader import load_rules
+from src.scoring.rules_loader import load_rules, ruleset_sha256
 
 REPO = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT = REPO / "evals" / "golden-cases" / "optimiser-gw3-input.json"
@@ -87,6 +88,54 @@ def replay_gameweek(
     dl = deadline or ("2024-08-30T11:00:00Z" if solver_input.gameweek == 3 else cutoff)
 
     observed = "2026-07-21T18:00:00Z"
+    rules_hash = ruleset_sha256()
+    market = {
+        str(player["player_id"]): {
+            "player_id": str(player["player_id"]),
+            "position": player["position"],
+            "club_id": str(player["club_id"]),
+            "now_cost": player["now_cost"],
+        }
+        for player in solver_input.players
+    }
+    owned = {
+        str(player["player_id"]): player
+        for player in solver_input.players
+        if str(player["player_id"]) in solver_input.squad_player_ids
+    }
+    predecessor = {
+        "policy_arm": "forecast_optimizer",
+        "season": solver_input.season,
+        "gameweek": solver_input.gameweek,
+        "ruleset_id": rules["meta"]["ruleset_id"],
+        "ruleset_sha256": rules_hash,
+        "squad": [
+            {
+                "player_id": player_id,
+                "position": owned[player_id]["position"],
+                "club_id": str(owned[player_id]["club_id"]),
+                "purchase_price": owned[player_id].get(
+                    "purchase_price", owned[player_id]["now_cost"]
+                ),
+            }
+            for player_id in solver_input.squad_player_ids
+        ],
+        "bank": solver_input.bank,
+        "free_transfers": solver_input.free_transfers,
+        "chips_available": list(solver_input.chips_available),
+    }
+    predecessor["content_sha256"] = fingerprint(predecessor)
+    validated_plan = validate_and_freeze_plan(
+        episode_id=f"smoke:{solver_input_path.stem}:gw{solver_input.gameweek:02d}",
+        policy_arm="forecast_optimizer",
+        state=predecessor,
+        candidate=selected,
+        decision_market=market,
+        active_chip=solver_input.active_chip,
+        frozen_at=cutoff,
+        rules=rules,
+        ruleset_sha256=rules_hash,
+    )
     record = build_decision_record(
         {
             "record_id": f"gdr_replay_gw{solver_input.gameweek}",
@@ -96,6 +145,7 @@ def replay_gameweek(
             "decision_cutoff": cutoff,
             "deadline": dl,
             "ruleset_id": rules["meta"]["ruleset_id"],
+            "validated_plan": validated_plan,
             "data_quality": "Structured-data replay; no news corpus",
             "degraded": False,
             "manager_state": {
@@ -112,12 +162,10 @@ def replay_gameweek(
             "candidate_plans": plans_summary,
             "recommendation": {
                 "strategy": selected.get("strategy", "highest_ev"),
-                "transfers": selected.get("transfers") or [],
-                "hit_cost": selected.get("hit_cost", 0),
-                "chip": solver_input.active_chip,
+                "objective": selected["objective"],
                 "captain_name": cap_name,
                 "vice_captain_name": vice_name,
-                "lineup": selected["lineup"],
+                "validated_plan_sha256": validated_plan["content_sha256"],
             },
             "baseline_comparison": baseline,
             "alternatives": {
@@ -186,9 +234,9 @@ def replay_gameweek(
         "ruleset_id": record["ruleset_id"],
         "recommendation": {
             "strategy": record["recommendation"]["strategy"],
-            "transfers": record["recommendation"]["transfers"],
-            "lineup": record["recommendation"]["lineup"],
+            "validated_plan_sha256": record["recommendation"]["validated_plan_sha256"],
         },
+        "validated_plan_sha256": record["validated_plan"]["content_sha256"],
         "baseline_comparison": record["baseline_comparison"],
         "input_fingerprint": solver_out.get("input_fingerprint"),
     }

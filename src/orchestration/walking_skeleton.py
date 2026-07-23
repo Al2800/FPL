@@ -10,9 +10,11 @@ from typing import Any
 
 from src.forecasting.naive import naive_expected_points
 from src.normalisation.players import filter_available, players_from_skeleton_fixture
+from src.optimisation.io import fingerprint
 from src.optimisation.simple_plan import no_transfer_plan
+from src.orchestration.validated_plan import validate_and_freeze_plan
 from src.reporting.decision_record import build_decision_record, write_decision_record
-from src.scoring.rules_loader import load_rules
+from src.scoring.rules_loader import load_rules, ruleset_sha256
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_FIXTURE = REPO_ROOT / "evals" / "golden-cases" / "skeleton-gw3-fixture.json"
@@ -45,6 +47,63 @@ def run_skeleton(fixture_path: Path, out_dir: Path) -> dict[str, Any]:
     plan = no_transfer_plan(squad_meta, projected)
     lineup = plan["lineup"]
     id_to_name = dict(zip(projected["player_id"], projected["web_name"]))
+    rules_hash = ruleset_sha256()
+    market = {
+        str(row["player_id"]): {
+            "player_id": str(row["player_id"]),
+            "position": row["position"],
+            "club_id": str(row["club_id"]),
+            "now_cost": row["now_cost"],
+        }
+        for row in projected.to_dict(orient="records")
+    }
+    squad_by_id = {str(row["player_id"]): row for row in squad_meta}
+    predecessor = {
+        "policy_arm": "walking_skeleton",
+        "season": fixture["season"],
+        "gameweek": int(fixture["gameweek"]),
+        "ruleset_id": rules["meta"]["ruleset_id"],
+        "ruleset_sha256": rules_hash,
+        "squad": [
+            {
+                "player_id": player_id,
+                "position": market[player_id]["position"],
+                "club_id": market[player_id]["club_id"],
+                "purchase_price": squad_by_id[player_id]["purchase_price"],
+            }
+            for player_id in squad_by_id
+        ],
+        "bank": fixture["manager_state"]["bank"],
+        "free_transfers": fixture["manager_state"]["free_transfers"],
+        "chips_available": fixture["manager_state"]["chips_available"],
+    }
+    predecessor["content_sha256"] = fingerprint(predecessor)
+    validated_plan = validate_and_freeze_plan(
+        episode_id=f"walking-skeleton:{fixture['fixture_id']}",
+        policy_arm="walking_skeleton",
+        state=predecessor,
+        candidate={
+            "transfers": [],
+            "bank_after": fixture["manager_state"]["bank"],
+            "hit_cost": 0,
+            "lineup": {
+                "formation": lineup["formation"],
+                "starting_xi_ids": [
+                    str(player["player_id"]) for player in lineup["starting_xi"]
+                ],
+                "bench_ids": [
+                    str(player["player_id"]) for player in lineup["bench"]
+                ],
+                "captain_id": lineup["captain_id"],
+                "vice_captain_id": lineup["vice_captain_id"],
+            },
+        },
+        decision_market=market,
+        active_chip=None,
+        frozen_at=cutoff,
+        rules=rules,
+        ruleset_sha256=rules_hash,
+    )
 
     record = build_decision_record(
         {
@@ -54,15 +113,14 @@ def run_skeleton(fixture_path: Path, out_dir: Path) -> dict[str, Any]:
             "decision_cutoff": cutoff,
             "deadline": deadline,
             "ruleset_id": rules["meta"]["ruleset_id"],
+            "validated_plan": validated_plan,
             "data_quality": "Synthetic fixture; crude models; walking skeleton",
             "manager_state": fixture.get("manager_state"),
             "recommendation": {
                 "strategy": plan["strategy"],
-                "transfers": plan["transfers"],
-                "hit_cost": plan["hit_cost"],
                 "captain_name": id_to_name.get(lineup["captain_id"], lineup["captain_id"]),
                 "vice_captain_name": id_to_name.get(lineup["vice_captain_id"], lineup["vice_captain_id"]),
-                "lineup": lineup,
+                "validated_plan_sha256": validated_plan["content_sha256"],
             },
             "expected_advantage": "n/a (no-transfer baseline)",
             "confidence": "Low — walking skeleton",
@@ -120,7 +178,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Wrote decision record to {args.out / 'decision-record.json'}")
     print(f"repro_hash={record['repro_hash']}")
     print(f"squad_ok={record['validation']['squad']['ok']} lineup_ok={record['validation']['lineup']['ok']}")
-    print(f"captain={record['recommendation']['captain_name']} xi_ep={record['recommendation']['lineup']['expected_xi_points']}")
+    print(f"captain={record['recommendation']['captain_name']} plan={record['validated_plan']['content_sha256']}")
     return 0
 
 

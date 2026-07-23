@@ -81,7 +81,15 @@ def _transition_for(
 ) -> tuple[dict, dict]:
     return transition_policy_state(
         state,
-        BASE["_decision"](state, transfers=transfers, chip=chip, salt=salt),
+        BASE["_decision"](
+            state,
+            transfers=transfers,
+            chip=chip,
+            salt=salt,
+            decision_market=decision_market or BASE["_market"](),
+            rules=rules,
+            rules_hash=digest,
+        ),
         BASE["_outcome"](state),
         decision_market=decision_market or BASE["_market"](),
         next_market=next_market or BASE["_market"](),
@@ -102,10 +110,10 @@ def test_refactor_preserves_exact_historical_state_and_transition_hashes():
         salt="open-gw2-with-used-transfer",
     )
     assert state["content_sha256"] == (
-        "2c439118e69d6d730a8e76b9b978edd2bcb6388a15d3e81a3bb4709864083bed"
+        "1a681a55b40c065c9144169c6838cc6e7fcede22e9965eddb0cb80b267078ac0"
     )
     assert first["content_sha256"] == (
-        "61930485b2a83a9ce9f4060f7a9e6ed244b3b51c8c69761251baf5e6394561c0"
+        "79a1bf22194cb8a7df9b2a1824f5b5f0291bff097970f688a5d69581acb95924"
     )
     state, second = BASE["_transition"](
         state,
@@ -117,10 +125,10 @@ def test_refactor_preserves_exact_historical_state_and_transition_hashes():
         next_market=BASE["_market"](next_week=True),
     )
     assert state["content_sha256"] == (
-        "a532e31e89c2e08156c1fd3ecfc3ce7f566c8d0cc41177939d1d566cf7532c97"
+        "53c7c4b23d5d6e935ab4037f4205836466e66851e7aca625bf44094e64a41249"
     )
     assert second["content_sha256"] == (
-        "a932d51c530dbfc8115263e7480c2e5dc20fa673cad4159b7062c328d45a97c1"
+        "a6d00fcb16d683c4892ee415bc6e274e4a6cb229ad3702979e1744a3816a6214"
     )
 
 

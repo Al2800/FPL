@@ -23,8 +23,8 @@ def test_skeleton_reproduces_identical_hash(tmp_path):
 
 def test_skeleton_selects_captain_from_starting_xi(tmp_path):
     record = run_skeleton(FIXTURE, tmp_path / "run")
-    lineup = record["recommendation"]["lineup"]
-    xi_ids = {p["player_id"] for p in lineup["starting_xi"]}
+    lineup = record["validated_plan"]["lineup"]
+    xi_ids = set(lineup["starting_xi_ids"])
     assert lineup["captain_id"] in xi_ids
     assert lineup["vice_captain_id"] in xi_ids
     assert lineup["captain_id"] != lineup["vice_captain_id"]

@@ -1,0 +1,27 @@
+{
+  "case_id": "normal-autosub",
+  "active_chip": null,
+  "player_outcomes": [
+    {"element": 1, "fixture": 101, "position": "GK", "minutes": 90, "total_points": 2},
+    {"element": 2, "fixture": 101, "position": "GK", "minutes": 90, "total_points": 4},
+    {"element": 4, "fixture": 102, "position": "DEF", "minutes": 0, "total_points": 0},
+    {"element": 5, "fixture": 102, "position": "DEF", "minutes": 90, "total_points": 6},
+    {"element": 6, "fixture": 102, "position": "DEF", "minutes": 90, "total_points": 4},
+    {"element": 7, "fixture": 102, "position": "DEF", "minutes": 90, "total_points": 1},
+    {"element": 16, "fixture": 103, "position": "DEF", "minutes": 90, "total_points": 2},
+    {"element": 8, "fixture": 104, "position": "MID", "minutes": 90, "total_points": 5},
+    {"element": 9, "fixture": 104, "position": "MID", "minutes": 90, "total_points": 3},
+    {"element": 10, "fixture": 105, "position": "MID", "minutes": 90, "total_points": 2},
+    {"element": 11, "fixture": 105, "position": "MID", "minutes": 90, "total_points": 1},
+    {"element": 12, "fixture": 105, "position": "MID", "minutes": 90, "total_points": 3},
+    {"element": 13, "fixture": 106, "position": "FWD", "minutes": 90, "total_points": 2},
+    {"element": 14, "fixture": 106, "position": "FWD", "minutes": 90, "total_points": 6},
+    {"element": 15, "fixture": 106, "position": "FWD", "minutes": 90, "total_points": 2}
+  ],
+  "expected": {
+    "gross_points": 40,
+    "captain_player_id": "8",
+    "captain_multiplier": 2,
+    "substitutions": [{"player_out_id": "4", "player_in_id": "6"}]
+  }
+}

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
@@ -20,6 +19,7 @@ from src.orchestration.policy_state import (
     transition_hash,
     transition_policy_state,
 )
+from src.orchestration.validated_plan import validate_and_freeze_plan
 from src.scoring.rules_loader import load_rules, ruleset_sha256
 from src.scoring.validator import selling_price
 
@@ -129,19 +129,59 @@ def _decision(
     transfers: list[dict[str, str]] | None = None,
     chip: str | None = None,
     salt: str = "a",
+    decision_market: dict | None = None,
+    rules: dict | None = None,
+    rules_hash: str | None = None,
 ) -> dict[str, object]:
     gameweek = state["gameweek"]
     day = datetime(2025, 8, 1, tzinfo=timezone.utc) + timedelta(days=gameweek)
-    return {
-        "episode_id": f"benchmark-v0:2025-26:gw{gameweek:02d}:manager-neutral",
-        "policy_arm": state["policy_arm"],
-        "gameweek": gameweek,
-        "previous_state_sha256": state["content_sha256"],
-        "proposal_sha256": hashlib.sha256(f"{salt}:{gameweek}".encode()).hexdigest(),
-        "frozen_at": day.isoformat().replace("+00:00", "Z"),
-        "transfers": transfers or [],
-        "active_chip": chip,
+    market = decision_market or _market()
+    active_rules = rules or RULES
+    active_hash = rules_hash or RULES_HASH
+    moves = transfers or []
+    post_ids = [str(row["player_id"]) for row in state["squad"]]
+    for move in moves:
+        post_ids[post_ids.index(str(move["player_out_id"]))] = str(move["player_in_id"])
+    positions = {player_id: str(market[player_id]["position"]) for player_id in post_ids}
+    by_position = {
+        position: sorted(
+            (player_id for player_id in post_ids if positions[player_id] == position),
+            key=int,
+        )
+        for position in ("GKP", "DEF", "MID", "FWD")
     }
+    xi_ids = (
+        by_position["GKP"][:1]
+        + by_position["DEF"][:3]
+        + by_position["MID"][:4]
+        + by_position["FWD"][:3]
+    )
+    bench_ids = [
+        player_id
+        for position in ("GKP", "DEF", "MID", "FWD")
+        for player_id in by_position[position]
+        if player_id not in xi_ids
+    ]
+    return validate_and_freeze_plan(
+        episode_id=f"benchmark-v0:{state['season']}:gw{gameweek:02d}:manager-neutral:{salt}",
+        policy_arm=state["policy_arm"],
+        state=state,
+        candidate={
+            "transfers": moves,
+            "lineup": {
+                "formation": {"DEF": 3, "MID": 4, "FWD": 3},
+                "starting_xi_ids": xi_ids,
+                "bench_ids": bench_ids,
+                "captain_id": by_position["MID"][0],
+                "vice_captain_id": by_position["MID"][1],
+            },
+        },
+        decision_market=market,
+        active_chip=chip,
+        frozen_at=day.isoformat().replace("+00:00", "Z"),
+        rules=active_rules,
+        ruleset_sha256=active_hash,
+    )
 
 
 def _outcome(state: dict, *, gross_points: int = 60) -> dict[str, object]:
@@ -165,11 +205,28 @@ def _transition(
     salt: str = "a",
     gross_points: int = 60,
 ) -> tuple[dict, dict]:
+    active_decision_market = decision_market or _market()
+    if state["status"] == "season_complete":
+        return transition_policy_state(
+            state,
+            {},
+            _outcome(state, gross_points=gross_points),
+            decision_market=active_decision_market,
+            next_market=next_market or _market(),
+            rules=RULES,
+            ruleset_sha256=RULES_HASH,
+        )
     return transition_policy_state(
         state,
-        _decision(state, transfers=transfers, chip=chip, salt=salt),
+        _decision(
+            state,
+            transfers=transfers,
+            chip=chip,
+            salt=salt,
+            decision_market=active_decision_market,
+        ),
         _outcome(state, gross_points=gross_points),
-        decision_market=decision_market or _market(),
+        decision_market=active_decision_market,
         next_market=next_market or _market(),
         rules=RULES,
         ruleset_sha256=RULES_HASH,
@@ -381,12 +438,12 @@ def test_same_transition_sequence_reproduces_identical_hashes():
 @pytest.mark.parametrize(
     ("mutation", "message"),
     [
-        ("wrong_arm", "policy arm"),
-        ("wrong_predecessor", "predecessor"),
+        ("wrong_arm", "integrity"),
+        ("wrong_predecessor", "integrity"),
         ("early_reveal", "after proposal freeze"),
         ("wrong_position", "same position"),
-        ("unaffordable", "insufficient bank"),
-        ("missing_chip", "not available"),
+        ("unaffordable", "integrity"),
+        ("missing_chip", "integrity"),
     ],
 )
 def test_invalid_or_impossible_transitions_fail_closed(mutation: str, message: str):

@@ -1,0 +1,25 @@
+{
+  "case_id": "double-triple-captain",
+  "active_chip": "triple_captain_fh",
+  "player_outcomes": [
+    {"element": 1, "fixture": 201, "position": "GK", "minutes": 90, "total_points": 2},
+    {"element": 4, "fixture": 202, "position": "DEF", "minutes": 90, "total_points": 2},
+    {"element": 5, "fixture": 202, "position": "DEF", "minutes": 90, "total_points": 2},
+    {"element": 16, "fixture": 203, "position": "DEF", "minutes": 90, "total_points": 2},
+    {"element": 8, "fixture": 204, "position": "MID", "minutes": 0, "total_points": 0},
+    {"element": 8, "fixture": 205, "position": "MID", "minutes": 30, "total_points": 6},
+    {"element": 9, "fixture": 204, "position": "MID", "minutes": 90, "total_points": 3},
+    {"element": 10, "fixture": 206, "position": "MID", "minutes": 90, "total_points": 2},
+    {"element": 11, "fixture": 206, "position": "MID", "minutes": 90, "total_points": 2},
+    {"element": 13, "fixture": 207, "position": "FWD", "minutes": 90, "total_points": 2},
+    {"element": 14, "fixture": 207, "position": "FWD", "minutes": 90, "total_points": 2},
+    {"element": 15, "fixture": 207, "position": "FWD", "minutes": 90, "total_points": 2}
+  ],
+  "expected": {
+    "gross_points": 39,
+    "captain_player_id": "8",
+    "captain_multiplier": 3,
+    "captain_total_minutes": 30,
+    "substitutions": []
+  }
+}

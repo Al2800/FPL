@@ -11,6 +11,10 @@ from typing import Any, Iterable, Mapping
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+from src.orchestration.validated_plan import (
+    ValidatedPlanError,
+    validate_plan_integrity,
+)
 from src.scoring.rules_loader import assert_ruleset_activatable
 from src.scoring.validator import selling_price, validate_squad
 
@@ -424,7 +428,7 @@ def _refresh_squad(
 
 def transition_policy_state(
     state: Mapping[str, Any],
-    decision: Mapping[str, Any],
+    plan: Mapping[str, Any],
     outcome: Mapping[str, Any],
     *,
     decision_market: Mapping[str, Any] | Iterable[Mapping[str, Any]],
@@ -441,26 +445,31 @@ def transition_policy_state(
     _validate_state(current, rules, profile)
     if current["status"] == "season_complete":
         raise PolicyStateError("Cannot transition a season-complete policy state")
+    try:
+        validate_plan_integrity(
+            plan,
+            expected_state=current,
+            rules=rules,
+            ruleset_sha256=ruleset_hash,
+        )
+    except ValidatedPlanError as exc:
+        raise PolicyStateError(f"Validated plan integrity failed: {exc}") from exc
     if current["ruleset_id"] != ruleset_id or current["ruleset_sha256"] != ruleset_hash:
         raise PolicyStateError("Policy state ruleset does not match active rules")
-    if str(decision.get("policy_arm")) != current["policy_arm"]:
-        raise PolicyStateError("Decision policy arm does not own this state")
-    if int(decision.get("gameweek", 0)) != current["gameweek"]:
-        raise PolicyStateError("Decision Gameweek does not match policy state")
-    if decision.get("previous_state_sha256") != current["content_sha256"]:
-        raise PolicyStateError("Decision predecessor does not match current state")
-    episode_id = str(decision.get("episode_id", ""))
+    if str(plan.get("policy_arm")) != current["policy_arm"]:
+        raise PolicyStateError("Plan policy arm does not own this state")
+    if int(plan.get("gameweek", 0)) != current["gameweek"]:
+        raise PolicyStateError("Plan Gameweek does not match policy state")
+    if plan.get("previous_state_sha256") != current["content_sha256"]:
+        raise PolicyStateError("Plan predecessor does not match current state")
+    episode_id = str(plan.get("episode_id", ""))
     if len(episode_id) < 3:
         raise PolicyStateError("Decision requires an episode_id")
     outcome_id = str(outcome.get("outcome_id", ""))
     if len(outcome_id) < 3:
         raise PolicyStateError("Revealed outcome requires an outcome_id")
-    proposal_hash = str(decision.get("proposal_sha256", ""))
-    if len(proposal_hash) != 64 or any(
-        char not in "0123456789abcdef" for char in proposal_hash
-    ):
-        raise PolicyStateError("proposal_sha256 must be a lower-case SHA-256")
-    frozen_at = _parse_timestamp(decision.get("frozen_at"), "frozen_at")
+    proposal_hash = str(plan["content_sha256"])
+    frozen_at = _parse_timestamp(plan.get("frozen_at"), "frozen_at")
     revealed_at = _parse_timestamp(outcome.get("revealed_at"), "revealed_at")
     if revealed_at <= frozen_at:
         raise PolicyStateError("Outcome must be revealed after proposal freeze")
@@ -468,9 +477,11 @@ def transition_policy_state(
         outcome.get("gross_points"), int
     ):
         raise PolicyStateError("gross_points must be an integer")
+    if outcome.get("plan_sha256") not in (None, proposal_hash):
+        raise PolicyStateError("Outcome does not belong to validated plan")
 
     gameweek = int(current["gameweek"])
-    active_chip = _validate_chip(decision.get("active_chip"), gameweek, current, profile)
+    active_chip = _validate_chip(plan.get("active_chip"), gameweek, current, profile)
     chip_base = active_chip.rsplit("_", 1)[0] if active_chip else None
     decision_prices = _market_index(decision_market)
     future_prices = _market_index(next_market)
@@ -484,7 +495,7 @@ def transition_policy_state(
         if _require_price_step(quote["now_cost"], "now_cost") != player["current_price"]:
             raise PolicyStateError(f"Decision market is stale for owned player {player_id}")
 
-    raw_moves = [dict(move) for move in decision.get("transfers", [])]
+    raw_moves = [dict(move) for move in plan.get("transfers", [])]
     out_ids = [str(move.get("player_out_id")) for move in raw_moves]
     in_ids = [str(move.get("player_in_id")) for move in raw_moves]
     if len(set(out_ids)) != len(out_ids) or len(set(in_ids)) != len(in_ids):
@@ -540,6 +551,17 @@ def transition_policy_state(
     hit_cost = 0 if unlimited else max(
         0, transfer_count - int(current["free_transfers"])
     ) * hit_per_transfer
+    if audited_moves != list(plan["transfers"]):
+        raise PolicyStateError("Plan transfer audit differs from transition recomputation")
+    expected_finance = {
+        "bank_before": _round_price(float(current["bank"])),
+        "bank_after": bank,
+        "free_transfers_before": int(current["free_transfers"]),
+        "transfer_count": transfer_count,
+        "hit_cost": hit_cost,
+    }
+    if dict(plan["finance"]) != expected_finance:
+        raise PolicyStateError("Plan finance differs from transition recomputation")
 
     next_gameweek = gameweek + 1
     next_free_transfers = _next_free_transfers(
@@ -622,7 +644,7 @@ def transition_policy_state(
         "ruleset_sha256": ruleset_hash,
         "previous_state_sha256": current["content_sha256"],
         "proposal_sha256": proposal_hash,
-        "proposal_frozen_at": str(decision["frozen_at"]),
+        "proposal_frozen_at": str(plan["frozen_at"]),
         "outcome_id": outcome_id,
         "outcome_revealed_at": str(outcome["revealed_at"]),
         "moves": audited_moves,

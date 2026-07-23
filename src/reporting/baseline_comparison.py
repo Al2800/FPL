@@ -63,11 +63,12 @@ def retrospective_metrics(
 ) -> dict[str, Any]:
     """Compute §17.3-style metrics using only recorded GDR fields (+ optional outcomes)."""
     baseline = record.get("baseline_comparison") or {}
+    plan = record.get("validated_plan") or {}
     rec = record.get("recommendation") or {}
     metrics: dict[str, Any] = {
         "expected_advantage_vs_do_nothing": baseline.get("expected_advantage"),
-        "hit_cost": rec.get("hit_cost", 0),
-        "n_transfers": len(rec.get("transfers") or []),
+        "hit_cost": (plan.get("finance") or {}).get("hit_cost", 0),
+        "n_transfers": len(plan.get("transfers") or []),
         "strategy": rec.get("strategy"),
         "validation_squad_ok": (record.get("validation") or {}).get("squad", {}).get("ok"),
         "validation_lineup_ok": (record.get("validation") or {}).get("lineup", {}).get("ok"),

@@ -13,6 +13,7 @@
     "deadline",
     "ruleset_id",
     "manager_state",
+    "validated_plan",
     "recommendation",
     "baseline_comparison",
     "validation",
@@ -28,6 +29,7 @@
     "decision_cutoff": { "$ref": "../_defs.json#/$defs/iso_datetime" },
     "deadline": { "$ref": "../_defs.json#/$defs/iso_datetime" },
     "ruleset_id": { "type": "string" },
+    "validated_plan": { "$ref": "../benchmark/validated-plan.json" },
     "data_quality": { "type": "string" },
     "degraded": { "type": "boolean" },
     "manager_state": {
@@ -72,15 +74,14 @@
     },
     "recommendation": {
       "type": "object",
-      "required": ["strategy", "lineup"],
+      "additionalProperties": false,
+      "required": ["strategy", "validated_plan_sha256"],
       "properties": {
         "strategy": { "type": "string" },
-        "transfers": { "type": "array" },
-        "hit_cost": { "type": "integer" },
-        "chip": { "type": ["string", "null"] },
+        "objective": { "type": "number" },
         "captain_name": { "type": "string" },
         "vice_captain_name": { "type": "string" },
-        "lineup": { "type": "object" }
+        "validated_plan_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
       }
     },
     "baseline_comparison": {
