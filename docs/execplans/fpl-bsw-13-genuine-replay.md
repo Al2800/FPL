@@ -19,7 +19,10 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-23 22:26Z) Replaced the synthetic pilot loop and added season/start/stop/episode-root options to the module CLI.
 - [x] (2026-07-23 22:27Z) Ran GW1 only: all arms scored 56, used no transfers/chip/substitutions, retained £0.0m, banked two free transfers, and advanced independently to opening GW2 states.
 - [x] (2026-07-23 22:30Z) Passed 42 historical-replay tests and 303 complete repository tests; `git diff --check` also passed.
-- [ ] Commit/push the GW1 checkpoint, confirm CI, and pause for review before any GW2 decision.
+- [x] (2026-07-23 22:33Z) Committed/pushed the GW1 checkpoint and confirmed GitHub CI on Python 3.11–3.14.
+- [x] (2026-07-23 22:39Z) Rendered a self-contained GW1 HTML review and verified it through a read-only server bound to the Tailscale interface.
+- [x] (2026-07-23 22:46Z) Implemented the sealed GW2 preparation boundary: identical engine input/output, five isolated opening states, explicit policy briefs, no hidden-outcome read, and no frozen proposal/transition.
+- [x] (2026-07-23 22:46Z) Stopped GW2 at review after diagnostics exposed severe single-Gameweek outcome chasing; created `FPL-5iu` for early-season prior/shrinkage calibration.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -41,6 +44,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Observation: the governed XI scored 56 points, while first unused outfield substitute Rodon scored 7.
   Evidence: every starter played, so no automatic substitution was legal. Palmer scored 3 and therefore added 3 captain points; Reijnders led the XI with 10.
+
+- Observation: the first GW2 rolling forecast is not decision-grade.
+  Evidence: only completed GW1 is available, so `historical-rolling-v1` assigns Ballard 17 EP, Semenyo 15 and Wood 13 by carrying their single realised score forward. The optimiser searches 102,391 valid candidates, captains Ballard and recommends three transfers including a four-point hit, raising its objective from 68 to 110. This is mechanically consistent but statistically unstable.
 
 ## Decision Log
 
@@ -65,6 +71,8 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 The first genuine checkpoint is complete locally. It contains one shared official-Scout action bound independently to five arm states, five frozen plans and realised outcomes, and five successor states at the opening of GW2. Every arm scored 56 net points and banked a second free transfer. No GW2 proposal, outcome, or policy choice exists.
 
 The checkpoint exposed and fixed one provenance mismatch between episode and scorer canonicalisation. It also demonstrates why the replay must preserve actual decisions: Rodon's 7 bench points remain unused because all XI players appeared. The result is reproducible across two output roots and the full repository suite passes. Policy divergence and solver inputs intentionally begin at the reviewed GW2 checkpoint.
+
+GW2 is now prepared but explicitly review-blocked. The setup path never opens `hidden-outcome.json`, gives every arm the same structured engine input/output, and binds each policy brief to its own opening state. The raw rolling output remains a useful ablation, but it will not be frozen as the benchmark forecast until `FPL-5iu` establishes and evaluates a point-in-time early-season prior or shrinkage policy.
 
 ## Context and Orientation
 
@@ -175,3 +183,5 @@ The return value is a deterministic run summary plus non-hash timing metadata. T
 Revision note (2026-07-23): Initial ExecPlan created after claiming the replay bead and mapping the real GW1 seam. It records one-Gameweek checkpoints, controlled shared GW1 action, canonical identity resolution, and the distinction between opening the next state and making the next decision.
 
 Revision note (2026-07-23): Updated after the first genuine checkpoint. Records the 56-point result, the Unicode source-hash defect found by the contract test, the exact persisted artefacts, and the explicit separation of deterministic replay output from performance timing.
+
+Revision note (2026-07-23): Added the GW1 HTML review and GW2 sealed-setup boundary. Records the early-season forecast instability found before freeze, the resulting `FPL-5iu` calibration bead, and the decision not to reveal or score GW2 until the forecast treatment is reviewed.

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FPL Benchmark · 2025-26 · GW1</title>
+  <style>
+    :root {
+      --ink: #13231d;
+      --muted: #5e6f67;
+      --paper: #f3f1e9;
+      --panel: rgba(255,255,255,.84);
+      --line: #d6d9cf;
+      --green: #0b6b4f;
+      --green-dark: #084f3d;
+      --lime: #d8f24a;
+      --blue: #3157d5;
+      --orange: #e47932;
+      --shadow: 0 24px 70px rgba(19,35,29,.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 90% 0%, rgba(216,242,74,.45), transparent 26rem),
+        radial-gradient(circle at 0% 40%, rgba(49,87,213,.12), transparent 28rem),
+        var(--paper);
+      font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 64px 0 32px; }
+    .eyebrow {
+      display: inline-flex; gap: 9px; align-items: center;
+      color: var(--green-dark); font-size: 12px; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 3px; background: var(--lime); }
+    h1 { font-size: clamp(40px, 8vw, 88px); line-height: .94; letter-spacing: -.065em; margin: 20px 0 24px; max-width: 900px; }
+    .lede { max-width: 760px; color: var(--muted); font-size: 18px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; margin-top: 36px; }
+    .score-card {
+      min-height: 270px; border-radius: 26px; padding: 32px;
+      background: var(--green-dark); color: white; box-shadow: var(--shadow);
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .score-card::after {
+      content: ""; position: absolute; width: 240px; height: 240px; border: 44px solid rgba(216,242,74,.18);
+      border-radius: 50%; right: -70px; top: -70px;
+    }
+    .score-label, .metric-label { text-transform: uppercase; letter-spacing: .12em; font-size: 11px; font-weight: 800; opacity: .75; }
+    .score { font-size: 112px; line-height: .75; font-weight: 850; letter-spacing: -.08em; }
+    .score span { font-size: 18px; letter-spacing: 0; margin-left: 12px; opacity: .7; }
+    .score-note { width: 70%; color: rgba(255,255,255,.75); }
+    .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .metric {
+      border-radius: 20px; padding: 22px; background: var(--panel);
+      border: 1px solid rgba(255,255,255,.8); box-shadow: 0 10px 30px rgba(19,35,29,.06);
+    }
+    .metric-value { font-size: 32px; font-weight: 800; letter-spacing: -.04em; margin-top: 5px; }
+    section { padding: 34px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    h2 { font-size: clamp(27px, 4vw, 44px); letter-spacing: -.045em; margin: 0; }
+    .section-note { max-width: 500px; color: var(--muted); }
+    .panel { background: var(--panel); border: 1px solid rgba(255,255,255,.85); border-radius: 24px; padding: 24px; box-shadow: 0 14px 40px rgba(19,35,29,.07); }
+    .pitch {
+      padding: 34px 20px; border-radius: 22px;
+      background:
+        linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px),
+        linear-gradient(135deg, #117254, #09533e);
+      background-size: 42px 42px, 42px 42px, auto;
+      border: 4px solid rgba(255,255,255,.65);
+    }
+    .pitch-row { display: flex; justify-content: center; gap: 12px; margin: 18px 0; flex-wrap: wrap; }
+    .player-card {
+      width: 142px; min-height: 108px; background: rgba(255,255,255,.94);
+      border-radius: 14px; padding: 13px; color: var(--ink);
+      box-shadow: 0 10px 24px rgba(0,0,0,.15); position: relative;
+    }
+    .player-name { font-weight: 800; font-size: 14px; min-height: 42px; }
+    .player-meta { font-size: 11px; color: var(--muted); }
+    .player-points { margin-top: 3px; color: var(--green-dark); font-size: 25px; font-weight: 850; }
+    .player-points span { font-size: 11px; color: var(--muted); font-weight: 650; }
+    .badge { display: inline-grid; place-items: center; margin-left: 5px; width: 19px; height: 19px; border-radius: 50%; color: white; font-size: 10px; }
+    .captain { background: var(--orange); } .vice { background: var(--blue); }
+    .bench { display: grid; grid-template-columns: repeat(4, 142px); justify-content: center; gap: 12px; margin-top: 18px; }
+    .bench .player-card { border: 1px solid var(--line); box-shadow: none; }
+    .bench-title { text-align: center; color: var(--muted); font-weight: 750; margin-top: 20px; }
+    .callout {
+      margin-top: 18px; padding: 17px 19px; border-left: 5px solid var(--orange);
+      background: #fff4e9; border-radius: 0 14px 14px 0;
+    }
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; counter-reset: stage; }
+    .stage { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 21px; }
+    .stage::before { counter-increment: stage; content: "0" counter(stage); display: block; color: var(--green); font-size: 12px; font-weight: 900; margin-bottom: 24px; }
+    .stage strong { display: block; font-size: 17px; margin-bottom: 7px; }
+    .stage p { margin: 0; color: var(--muted); font-size: 13px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 780px; }
+    th, td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-size: 10px; }
+    td:first-child { font-weight: 750; } code { font: 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .state-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
+    .state-item { padding: 15px; border-radius: 14px; background: #edf3ee; }
+    .state-item strong { display: block; font-size: 23px; letter-spacing: -.03em; }
+    .limitations { columns: 2; padding-left: 20px; color: var(--muted); }
+    .limitations li { break-inside: avoid; margin: 0 0 9px; }
+    .hashes { display: grid; gap: 11px; }
+    .hash-row { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .hash-row span { color: var(--muted); }
+    .hash-row code { overflow-wrap: anywhere; }
+    footer { padding: 42px 0 70px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 820px) {
+      .hero-grid, .two-col { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .bench { grid-template-columns: repeat(2, 142px); }
+      .limitations { columns: 1; }
+      .score { font-size: 90px; }
+    }
+    @media (max-width: 480px) {
+      .shell { width: min(100% - 20px, 1180px); }
+      header { padding-top: 40px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .player-card { width: 126px; }
+      .bench { grid-template-columns: repeat(2, 126px); }
+      .hash-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <div class="eyebrow">Benchmark V0 · Genuine historical replay</div>
+    <h1>Gameweek 1<br>checkpoint review</h1>
+    <p class="lede">A governed opening squad, frozen before the deadline, scored only after the official outcome was revealed, then advanced into five isolated policy states for Gameweek 2.</p>
+    <div class="hero-grid">
+      <article class="score-card">
+        <div class="score-label">Official Scout seed · Net score</div>
+        <div class="score">56<span>points</span></div>
+        <div class="score-note">One shared opening action. Five independently hashed benchmark arms. No hindsight correction.</div>
+      </article>
+      <div class="metrics">
+        <article class="metric"><div class="metric-label">Transfers</div><div class="metric-value">0</div></article>
+        <article class="metric"><div class="metric-label">Hit cost</div><div class="metric-value">−0</div></article>
+        <article class="metric"><div class="metric-label">Autosubs</div><div class="metric-value">0</div></article>
+        <article class="metric"><div class="metric-label">GW2 free transfers</div><div class="metric-value">2</div></article>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell">
+      <div class="section-head">
+        <div><div class="eyebrow">The decision</div><h2>Starting XI and realised points</h2></div>
+        <p class="section-note">The card values are raw FPL points. Palmer's three points are counted a second time through captaincy.</p>
+      </div>
+      <div class="panel">
+        <div class="pitch"><div class="pitch-row"><article class="player-card"><div class="player-name">Sanchez</div><div class="player-meta">GKP · 90 min</div><div class="player-points">8<span> pts</span></div></article></div><div class="pitch-row"><article class="player-card"><div class="player-name">Murillo</div><div class="player-meta">DEF · 90 min</div><div class="player-points">2<span> pts</span></div></article><article class="player-card"><div class="player-name">Pedro Porro</div><div class="player-meta">DEF · 90 min</div><div class="player-points">6<span> pts</span></div></article><article class="player-card"><div class="player-name">Tarkowski</div><div class="player-meta">DEF · 90 min</div><div class="player-points">4<span> pts</span></div></article></div><div class="pitch-row"><article class="player-card"><div class="player-name">Salah<span class="badge vice">V</span></div><div class="player-meta">MID · 90 min</div><div class="player-points">8<span> pts</span></div></article><article class="player-card"><div class="player-name">Palmer<span class="badge captain">C</span></div><div class="player-meta">MID · 90 min</div><div class="player-points">3<span> pts</span></div></article><article class="player-card"><div class="player-name">B.Fernandes</div><div class="player-meta">MID · 90 min</div><div class="player-points">2<span> pts</span></div></article><article class="player-card"><div class="player-name">Anderson</div><div class="player-meta">MID · 90 min</div><div class="player-points">6<span> pts</span></div></article><article class="player-card"><div class="player-name">Reijnders</div><div class="player-meta">MID · 90 min</div><div class="player-points">10<span> pts</span></div></article></div><div class="pitch-row"><article class="player-card"><div class="player-name">Watkins</div><div class="player-meta">FWD · 90 min</div><div class="player-points">2<span> pts</span></div></article><article class="player-card"><div class="player-name">Joao Pedro</div><div class="player-meta">FWD · 72 min</div><div class="player-points">2<span> pts</span></div></article></div></div>
+        <div class="bench-title">Ordered bench</div>
+        <div class="bench"><article class="player-card"><div class="player-name">Dubravka</div><div class="player-meta">GKP · 90 min</div><div class="player-points">2<span> pts</span></div></article><article class="player-card"><div class="player-name">Marc Guiu</div><div class="player-meta">FWD · 0 min</div><div class="player-points">0<span> pts</span></div></article><article class="player-card"><div class="player-name">Rodon</div><div class="player-meta">DEF · 90 min</div><div class="player-points">7<span> pts</span></div></article><article class="player-card"><div class="player-name">Senesi</div><div class="player-meta">DEF · 90 min</div><div class="player-points">2<span> pts</span></div></article></div>
+        <div class="callout"><strong>Seven points stayed on the bench.</strong> Rodon returned 7, but every starting player appeared, so the engine correctly made no automatic substitution.</div>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="section-head">
+        <div><div class="eyebrow">Temporal boundary</div><h2>What the checkpoint proves</h2></div>
+      </div>
+      <div class="timeline">
+        <article class="stage"><strong>Observed episode</strong><p>Only deadline-safe structured inputs and the governed Scout seed were visible.</p></article>
+        <article class="stage"><strong>Plan frozen</strong><p>2025-08-15 17:30:00 UTC. Exact XI, ordered bench, captain and chip state were hashed.</p></article>
+        <article class="stage"><strong>Outcome revealed</strong><p>2025-08-18 23:00:00 UTC. Official element IDs were resolved through the immutable identity map.</p></article>
+        <article class="stage"><strong>State advanced</strong><p>Points, prices, bank, transfers and chips moved independently into opening GW2 state.</p></article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="section-head">
+        <div><div class="eyebrow">Policy isolation</div><h2>Five arms, one controlled start</h2></div>
+        <p class="section-note">The action is intentionally identical in GW1. Different hashes prove each arm owns its plan and successor state. Policy divergence begins in GW2.</p>
+      </div>
+      <div class="panel table-wrap">
+        <table>
+          <thead><tr><th>Policy arm</th><th>Points</th><th>Transfers</th><th>GW2 FT</th><th>Plan hash</th><th>Next-state hash</th></tr></thead>
+          <tbody><tr><td>Evidence Agent</td><td>56</td><td>0</td><td>2</td><td><code>d260e402c72f…</code></td><td><code>485a2e3e0f9f…</code></td></tr><tr><td>Evidence Challenger</td><td>56</td><td>0</td><td>2</td><td><code>9bbea681d371…</code></td><td><code>072a3d4ad638…</code></td></tr><tr><td>Forecast Optimizer</td><td>56</td><td>0</td><td>2</td><td><code>93257226febd…</code></td><td><code>60896414454e…</code></td></tr><tr><td>Human Decision</td><td>56</td><td>0</td><td>2</td><td><code>a15f3be5c6b6…</code></td><td><code>8f5deb10a600…</code></td></tr><tr><td>Naive Baseline</td><td>56</td><td>0</td><td>2</td><td><code>691cdf6c22ee…</code></td><td><code>297410ec65d8…</code></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="two-col">
+        <article class="panel">
+          <div class="eyebrow">GW2 handoff</div>
+          <h2>Ready, not decided</h2>
+          <p>No Gameweek 2 proposal or outcome exists yet. This is the state each arm will start from before its policy is invoked.</p>
+          <div class="state-grid">
+            <div class="state-item"><span>Squad</span><strong>15 players</strong></div>
+            <div class="state-item"><span>Bank</span><strong>£0.0m</strong></div>
+            <div class="state-item"><span>Free transfers</span><strong>2</strong></div>
+            <div class="state-item"><span>Cumulative</span><strong>56 pts</strong></div>
+          </div>
+          <p><strong>Available chips:</strong> Wildcard Fh, Free Hit Fh, Triple Captain Fh, Bench Boost Fh, Wildcard Sh, Free Hit Sh, Triple Captain Sh, Bench Boost Sh</p>
+        </article>
+        <article class="panel">
+          <div class="eyebrow">Known constraints</div>
+          <h2>Evidence limits</h2>
+          <ul class="limitations"><li>cold start no prior gameweek</li><li>controlled gw1 seed no historical forecast</li><li>final export fixture revision not archived</li><li>fixture deadline derived as first kickoff minus 90 minutes</li><li>historical control seed not a 2026 27 selection policy</li><li>historical manager state unavailable</li><li>historical news unavailable</li><li>historical prices not deadline snapshots</li><li>published editorial seed not a manager account snapshot</li><li>unshifted vaastav xP excluded</li><li>untimestamped market odds excluded</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="section-head">
+        <div><div class="eyebrow">Reproducibility</div><h2>Bound inputs and outputs</h2></div>
+      </div>
+      <div class="panel hashes">
+        <div class="hash-row"><span>Code commit</span><code>b9c4cfd647dbce80c886656b293d415f6b1191e8</code></div>
+        <div class="hash-row"><span>Observed episode</span><code>89231e927ab0e01ddbd190db7fb3c7fcbe7064ca7aaf6d855814d776e373d923</code></div>
+        <div class="hash-row"><span>Hidden outcome</span><code>b82f4f2288426d905da7c28fc9148374eca9c02e9d18cb30b181a7747cfff549</code></div>
+        <div class="hash-row"><span>Identity map</span><code>b402a0a2d110bcc55c7077425a1d363e1b486e19bb4ea95a65c5e6431eae33c6</code></div>
+        <div class="hash-row"><span>Ruleset</span><code>376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809</code></div>
+        <div class="hash-row"><span>Feature state</span><code>7b60b73374191dd3ab27c37ac4f2e954f15c80abf3f03f042d15be6655200d12</code></div>
+        <div class="hash-row"><span>Run summary</span><code>460cb98d419fc42e10556d5dd84733331b3ac0ff6282018cb1f6cf8a8cef5e7a</code></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    FPL Agentic Decision Laboratory · benchmark-v0:2025-26:gw01:manager-neutral · Report generated from committed deterministic artifacts.
+  </footer>
+</body>
+</html>

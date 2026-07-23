@@ -28,6 +28,8 @@ python3 -m scripts.run_snapshot          # capture bootstrap-static + fixtures i
 python3 -m scripts.run_wp05_eval         # baseline metrics → docs/data-sources/wp05/ (needs local historical data)
 python3 -m scripts.run_optimiser evals/golden-cases/optimiser-gw3-input.json
 python3 -m scripts.run_replay --season 2025-26 --stop-after-gameweek 1
+python3 -m scripts.render_replay_report             # self-contained GW1 HTML review
+python3 -m scripts.prepare_replay_gameweek --gameweek 2
 python3 -m scripts.run_rules_golden            # 24 rules golden cases
 python3 -m scripts.run_replay_pilot_set --stop-after-gameweek 1
 python3 -m scripts.inventory_data_estate       # scan data/raw → data-estate inventory

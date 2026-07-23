@@ -11,7 +11,9 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from src.evaluation.outcome_scorer import score_revealed_outcome
+from src.forecasting.replay_adapter import build_replay_solver_input
 from src.optimisation.io import fingerprint
+from src.optimisation.solver import solve
 from src.orchestration.historical_feature_state import build_feature_state
 from src.orchestration.policy_state import (
     POLICY_ARMS,
@@ -50,22 +52,17 @@ def _read_json(path: Path) -> dict[str, Any]:
     return value
 
 
-def _load_episode(directory: Path) -> dict[str, dict[str, Any]]:
+def _load_observed_episode(directory: Path) -> dict[str, dict[str, Any]]:
     bundle = {
         "manifest": _read_json(directory / "episode-manifest.json"),
         "observed": _read_json(directory / "observed.json"),
         "identity": _read_json(directory / "identity-map.json"),
-        "hidden": _read_json(directory / "hidden-outcome.json"),
     }
     manifest = bundle["manifest"]
     if manifest["observed"]["feature_snapshot_ref"]["content_sha256"] != _stable_hash(
         bundle["observed"]
     ):
         raise GenuineReplayError("Observed partition hash differs from manifest")
-    if manifest["hidden_outcome_ref"]["content_sha256"] != _stable_hash(
-        bundle["hidden"]
-    ):
-        raise GenuineReplayError("Hidden outcome hash differs from manifest")
     identity_hash = _stable_hash(bundle["identity"])
     if bundle["observed"]["identity_map_ref"]["content_sha256"] != identity_hash:
         raise GenuineReplayError("Identity-map hash differs from observed partition")
@@ -73,6 +70,16 @@ def _load_episode(directory: Path) -> dict[str, dict[str, Any]]:
     if ruleset_sha256(rules_path) != manifest["ruleset"]["content_sha256"]:
         raise GenuineReplayError("Ruleset hash differs from manifest")
     bundle["rules"] = load_rules(rules_path)
+    return bundle
+
+
+def _load_episode(directory: Path) -> dict[str, dict[str, Any]]:
+    bundle = _load_observed_episode(directory)
+    bundle["hidden"] = _read_json(directory / "hidden-outcome.json")
+    if bundle["manifest"]["hidden_outcome_ref"][
+        "content_sha256"
+    ] != _stable_hash(bundle["hidden"]):
+        raise GenuineReplayError("Hidden outcome hash differs from manifest")
     return bundle
 
 
@@ -279,6 +286,297 @@ def _write_json(path: Path, value: Mapping[str, Any]) -> None:
         return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
+
+
+def _policy_brief(
+    *,
+    arm: str,
+    manifest: Mapping[str, Any],
+    state: Mapping[str, Any],
+    feature_state: Mapping[str, Any],
+    solver_input_sha256: str,
+    solver_output_sha256: str,
+    solver_output: Mapping[str, Any],
+) -> dict[str, Any]:
+    selected = solver_output["selected"]
+    no_transfer = solver_output["plans"]["no_transfer"]
+    common = {
+        "schema_version": "1.0",
+        "policy_arm": arm,
+        "season": manifest["season"],
+        "gameweek": manifest["gameweek"],
+        "episode_id": manifest["episode_id"],
+        "status": "prepared_awaiting_policy_proposal",
+        "outcome_access": "sealed_not_loaded",
+        "proposal_frozen": False,
+        "starting_state_sha256": state["content_sha256"],
+        "observed_sha256": manifest["observed"]["feature_snapshot_ref"][
+            "content_sha256"
+        ],
+        "feature_state_sha256": feature_state["content_sha256"],
+        "solver_input_sha256": solver_input_sha256,
+        "solver_output_sha256": solver_output_sha256,
+        "shared_engine_baseline": {
+            "selected_strategy": selected["strategy"],
+            "objective": selected["objective"],
+            "transfers": selected["transfers"],
+            "lineup": selected["lineup"],
+            "no_transfer_objective": no_transfer["objective"],
+            "candidate_count": solver_output["n_candidates"],
+        },
+    }
+    policies = {
+        "naive_baseline": {
+            "execution_mode": "deterministic",
+            "decision_rule": (
+                "Use the engine's no-transfer lineup and bank available "
+                "transfers; never inspect agent evidence."
+            ),
+            "proposed_source": "shared_engine_baseline.no_transfer",
+            "fallback": None,
+            "review_gate": "confirm_naive_rule_before_freeze",
+        },
+        "forecast_optimizer": {
+            "execution_mode": "deterministic",
+            "decision_rule": (
+                "Use the highest expected-points legal plan in the declared "
+                "candidate pool."
+            ),
+            "proposed_source": "shared_engine_baseline.selected",
+            "fallback": None,
+            "review_gate": "inspect_selected_plan_before_freeze",
+        },
+        "evidence_agent": {
+            "execution_mode": "degraded_historical_evidence",
+            "decision_rule": (
+                "Receive the identical engine baseline and permit only cited, "
+                "pre-deadline evidence adjustments."
+            ),
+            "proposed_source": "awaiting_bounded_agent_run",
+            "fallback": "shared_engine_baseline.selected",
+            "review_gate": "decide_admissible_gw2_evidence_before_agent_run",
+        },
+        "evidence_challenger": {
+            "execution_mode": "degraded_historical_evidence",
+            "decision_rule": (
+                "Review the evidence-agent proposal against the same engine "
+                "baseline and evidence cutoff; record accept, amend or reject."
+            ),
+            "proposed_source": "awaiting_agent_then_challenger",
+            "fallback": "shared_engine_baseline.selected",
+            "review_gate": "decide_admissible_gw2_evidence_before_agent_run",
+        },
+        "human_decision": {
+            "execution_mode": "historical_record_required",
+            "decision_rule": (
+                "Use only a demonstrably pre-deadline recorded human choice "
+                "from this observed episode."
+            ),
+            "proposed_source": "unavailable_pending_historical_record",
+            "fallback": None,
+            "review_gate": (
+                "exclude_or_mark_missing; do_not_reconstruct_with_hindsight"
+            ),
+        },
+    }
+    common["policy"] = policies[arm]
+    common["content_sha256"] = fingerprint(common)
+    return common
+
+
+def prepare_historical_gameweek(
+    *,
+    season: str,
+    gameweek: int,
+    episode_root: Path,
+    previous_checkpoint_dir: Path,
+    output_root: Path,
+    code_commit: str,
+) -> dict[str, Any]:
+    """Prepare a sealed policy workspace without reading the outcome payload."""
+
+    if gameweek != 2:
+        raise GenuineReplayError(
+            "The reviewed setup boundary currently implements Gameweek 2 only"
+        )
+    if len(code_commit) != 40:
+        raise GenuineReplayError("code_commit must be a full 40-character Git SHA")
+
+    gw1 = _load_observed_episode(episode_root / "gw-01")
+    current = _load_observed_episode(episode_root / f"gw-{gameweek:02d}")
+    manifest = current["manifest"]
+    if manifest["season"] != season or manifest["gameweek"] != gameweek:
+        raise GenuineReplayError("Episode root does not contain requested Gameweek")
+
+    seed_path = (
+        Path(__file__).resolve().parents[2]
+        / "control"
+        / "seeds"
+        / season
+        / "official-scout-gw1.json"
+    )
+    seed = _read_json(seed_path)
+    feature_gw1 = build_feature_state(
+        episode_manifest=gw1["manifest"],
+        observed=gw1["observed"],
+        identity_map=gw1["identity"],
+        seed=seed,
+    )
+    feature_current = build_feature_state(
+        episode_manifest=manifest,
+        observed=current["observed"],
+        identity_map=current["identity"],
+        previous_state=feature_gw1,
+    )
+
+    previous_summary = _read_json(previous_checkpoint_dir / "run-summary.json")
+    if previous_summary["next_feature_state_sha256"] != feature_current[
+        "content_sha256"
+    ]:
+        raise GenuineReplayError(
+            "GW2 feature state differs from the prior checkpoint handoff"
+        )
+
+    rules = current["rules"]
+    rules_hash = str(manifest["ruleset"]["content_sha256"])
+    states: dict[str, dict[str, Any]] = {}
+    inputs: dict[str, dict[str, Any]] = {}
+    input_hashes: set[str] = set()
+    for arm in POLICY_ARMS:
+        state = _read_json(
+            previous_checkpoint_dir / arm / "next-policy-state.json"
+        )
+        expected_hash = previous_summary["arms"][arm]["next_state_sha256"]
+        if state["content_sha256"] != expected_hash:
+            raise GenuineReplayError(
+                f"Opening state differs from GW1 summary for {arm}"
+            )
+        if state["policy_arm"] != arm or state["gameweek"] != gameweek:
+            raise GenuineReplayError(f"Opening state identity mismatch for {arm}")
+        solver_input = build_replay_solver_input(
+            feature_state=feature_current,
+            policy_state=state,
+            max_transfers=3,
+        )
+        input_value = solver_input.as_dict()
+        states[arm] = state
+        inputs[arm] = input_value
+        input_hashes.add(fingerprint(input_value))
+    if len(input_hashes) != 1:
+        raise GenuineReplayError(
+            "GW2 controlled arms do not have an identical engine input"
+        )
+
+    shared_input = inputs[POLICY_ARMS[0]]
+    shared_input_sha256 = fingerprint(shared_input)
+    engine_output = solve(
+        build_replay_solver_input(
+            feature_state=feature_current,
+            policy_state=states[POLICY_ARMS[0]],
+            max_transfers=3,
+        ),
+        rules=rules,
+        ruleset_sha256=rules_hash,
+    )
+    engine_output_sha256 = fingerprint(engine_output)
+
+    setup_dir = output_root / f"gw-{gameweek:02d}" / "setup"
+    _write_json(setup_dir / "shared-feature-state.json", feature_current)
+    _write_json(setup_dir / "shared-engine-input.json", shared_input)
+    _write_json(setup_dir / "shared-engine-output.json", engine_output)
+    brief_hashes: dict[str, str] = {}
+    for arm in POLICY_ARMS:
+        arm_dir = setup_dir / "arms" / arm
+        brief = _policy_brief(
+            arm=arm,
+            manifest=manifest,
+            state=states[arm],
+            feature_state=feature_current,
+            solver_input_sha256=shared_input_sha256,
+            solver_output_sha256=engine_output_sha256,
+            solver_output=engine_output,
+        )
+        _write_json(arm_dir / "starting-policy-state.json", states[arm])
+        _write_json(arm_dir / "decision-brief.json", brief)
+        brief_hashes[arm] = brief["content_sha256"]
+
+    selected = engine_output["selected"]
+    no_transfer = engine_output["plans"]["no_transfer"]
+    history_gameweeks = sorted(
+        {
+            int(row["gameweek"])
+            for player in feature_current["players"]
+            for row in player["history"]
+        }
+    )
+    cold_start_blocked = len(history_gameweeks) < 3
+    summary: dict[str, Any] = {
+        "schema_version": "1.0",
+        "status": (
+            "prepared_review_blocked"
+            if cold_start_blocked
+            else "prepared_not_frozen"
+        ),
+        "season": season,
+        "gameweek": gameweek,
+        "episode_id": manifest["episode_id"],
+        "code_commit": code_commit,
+        "outcome_access": "sealed_not_loaded",
+        "contains_hidden_outcome": False,
+        "contains_validated_plan": False,
+        "contains_state_transition": False,
+        "observed_sha256": manifest["observed"]["feature_snapshot_ref"][
+            "content_sha256"
+        ],
+        "feature_state_sha256": feature_current["content_sha256"],
+        "ruleset": deepcopy(manifest["ruleset"]),
+        "shared_engine_input": True,
+        "solver_input_sha256": shared_input_sha256,
+        "solver_output_sha256": engine_output_sha256,
+        "candidate_count": engine_output["n_candidates"],
+        "projection_diagnostics": {
+            "model_version": feature_current["lineage"]["model_version"],
+            "completed_history_gameweeks": history_gameweeks,
+            "history_gameweek_count": len(history_gameweeks),
+            "configured_rolling_window": 3,
+            "maximum_player_expected_points": max(
+                float(player["projection"]["expected_points"])
+                for player in feature_current["players"]
+            ),
+            "cold_start_risk": (
+                "severe_single_gameweek_outcome_chasing"
+                if cold_start_blocked
+                else "rolling_window_populated"
+            ),
+            "freeze_recommendation": (
+                "blocked_pending_prior_or_shrinkage_policy"
+                if cold_start_blocked
+                else "eligible_for_policy_review"
+            ),
+        },
+        "engine_selected": {
+            "objective": selected["objective"],
+            "transfers": selected["transfers"],
+            "lineup": selected["lineup"],
+        },
+        "engine_no_transfer": {
+            "objective": no_transfer["objective"],
+            "transfers": no_transfer["transfers"],
+            "lineup": no_transfer["lineup"],
+        },
+        "policy_brief_sha256": brief_hashes,
+        "review_gates": [
+            "resolve early-season projection prior and shrinkage policy",
+            "confirm naive no-transfer policy",
+            "inspect forecast-optimiser transfer and lineup",
+            "define admissible pre-deadline historical evidence",
+            "decide treatment of unavailable historical human choice",
+        ],
+        "limitations": feature_current["limitations"],
+    }
+    summary["content_sha256"] = fingerprint(summary)
+    _write_json(setup_dir / "setup-summary.json", summary)
+    return summary
 
 
 def run_historical_replay(
