@@ -8,6 +8,7 @@ from src.forecasting.calibrate_live_faithful import (
     ForecastParameters,
     build_calibration_cases,
     evaluate_cases,
+    predictions,
     select_parameters,
 )
 
@@ -80,3 +81,45 @@ def test_parameter_selection_is_deterministic() -> None:
         "cameo_minutes": [10, 18],
     }
     assert select_parameters(cases, **kwargs) == select_parameters(cases, **kwargs)
+
+
+def test_future_event_change_cannot_change_earlier_event_history() -> None:
+    prior = _rows([5, 5, 5])
+    prior["expected_goals"] = [0.2, 0.2, 0.2]
+    original = _rows([2, 2, 2])
+    original["expected_goals"] = [0.1, 0.2, 0.3]
+    changed = original.copy()
+    changed.loc[changed["GW"] == 3, "expected_goals"] = 99
+    first = build_calibration_cases(
+        prior_rows=prior,
+        target_rows=original,
+        prior_season="2023-24",
+        target_season="2024-25",
+    )
+    second = build_calibration_cases(
+        prior_rows=prior,
+        target_rows=changed,
+        prior_season="2023-24",
+        target_season="2024-25",
+    )
+    assert first.loc[first["GW"] <= 3, "current_expected_goals"].tolist() == second.loc[
+        second["GW"] <= 3, "current_expected_goals"
+    ].tolist()
+
+
+def test_zero_component_weights_reproduce_component_free_ablation() -> None:
+    cases = build_calibration_cases(
+        prior_rows=_rows([5] * 5),
+        target_rows=_rows([6, 4, 2, 3, 5]),
+        prior_season="2023-24",
+        target_season="2024-25",
+    )
+    baseline = predictions(cases, ForecastParameters(900, 2, 10))
+    changed = cases.copy()
+    changed["base_expected_goals_per_90"] = 100
+    changed["group_expected_goals_per_90"] = 100
+    changed["recent_minutes_per_fixture"] = 1
+    ablation = predictions(changed, ForecastParameters(900, 2, 10))
+    assert baseline["live_faithful_expected_points"].tolist() == ablation[
+        "live_faithful_expected_points"
+    ].tolist()

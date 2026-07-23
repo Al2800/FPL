@@ -132,3 +132,32 @@ def test_checked_in_reliability_comparison_remains_sealed_and_unfrozen() -> None
     assert review["reliability_calibrated"]["maximum_expected_points"] < 17
     assert review["reliability_calibrated"]["hit_cost"] == 0
     assert review["assessment"]["freeze_recommendation"].startswith("remain_unfrozen")
+
+
+def test_feature_complete_comparison_resets_all_promoted_teams_and_stays_sealed() -> None:
+    setup = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02" / "setup"
+    comparison = json.loads(
+        (setup / "forecast-feature-complete-comparison.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    review = json.loads(
+        (setup / "feature-complete-review.json").read_text(encoding="utf-8")
+    )
+    assert comparison["content_sha256"] == artifact_hash(comparison)
+    assert review["content_sha256"] == artifact_hash(review)
+    assert comparison["forecast_diagnostics"]["team_fallbacks"] == [
+        "team:2025-26:11",
+        "team:2025-26:17",
+        "team:2025-26:3",
+    ]
+    assert review["sealed_gw2"]["promoted_fallback_teams"] == [
+        "Burnley",
+        "Leeds",
+        "Sunderland",
+    ]
+    assert comparison["forecast_diagnostics"]["event_model_weight"] == 0
+    assert comparison["forecast_diagnostics"]["recent_minutes_weight"] == 0.5
+    assert review["contains_hidden_outcome"] is False
+    assert review["contains_validated_plan"] is False
+    assert review["contains_state_transition"] is False

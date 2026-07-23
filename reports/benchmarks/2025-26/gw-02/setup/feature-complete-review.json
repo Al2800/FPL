@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "status": "prepared_review_not_frozen",
+  "forecast_comparison_file": "forecast-feature-complete-comparison.json",
+  "forecast_sha256": "1746877da87bd2a4b37a46618ce30879ad8f059fad2b93faf2295894ce4931d1",
+  "calibration_report_sha256": "ffb4c4293917eadcdb7b98e2cd4448eaaffd413bdc3d3e6850e260076c815fb4",
+  "component_decisions": {
+    "event_decomposition": "rejected_by_training_selection",
+    "event_model_weight": 0.0,
+    "recent_minutes_trajectory": "selected",
+    "recent_minutes_weight": 0.5,
+    "promoted_team_recency": "selected_by_safety_contract"
+  },
+  "locked_validation_gw2_5": {
+    "all_market": {
+      "raw_mae": 1.1345536287732818,
+      "live_mae": 1.2153531030641873,
+      "raw_rmse": 2.2367165394292523,
+      "live_rmse": 1.9626511320095867,
+      "live_expected_minutes_mae": 18.65006134028113,
+      "live_top15_precision": 0.26666666666666666
+    },
+    "actionable_pool": {
+      "raw_mae": 1.4437520771020274,
+      "live_mae": 1.4253182372431366,
+      "raw_rmse": 2.536132485682498,
+      "live_rmse": 2.2125516035901445,
+      "live_expected_minutes_mae": 20.363874445746,
+      "live_top15_precision": 0.26666666666666666
+    }
+  },
+  "sealed_gw2": {
+    "maximum_expected_points": 8.78,
+    "captain": "Mohamed Salah",
+    "transfers": 2,
+    "hit_cost": 0,
+    "selected_objective": 61.33,
+    "no_transfer_objective": 58.23,
+    "single_gameweek_transfer_uplift": 3.1,
+    "promoted_fallback_teams": [
+      "Burnley",
+      "Leeds",
+      "Sunderland"
+    ]
+  },
+  "assessment": {
+    "structured_data_gate": "satisfied",
+    "remaining_issue": "single_gameweek_solver_has_no_option_value_for_banked_transfers",
+    "next_bead": "FPL-k21",
+    "freeze_recommendation": "remain_unfrozen_pending_transfer_option_value"
+  },
+  "contains_hidden_outcome": false,
+  "contains_validated_plan": false,
+  "contains_state_transition": false,
+  "content_sha256": "bfe77b9d98e6cd95cbcdd9ed7b1f11168a10917f82f6aad56b2fd8e8f3aa11fd"
+}

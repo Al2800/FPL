@@ -36,8 +36,8 @@ from src.forecasting.team_strength import SEASON_FILES, load_results
 
 DEFAULT_VAASTAV = REPO / "data" / "raw" / "vaastav" / "Fantasy-Premier-League" / "data"
 DEFAULT_FOOTBALL_DATA = REPO / "data" / "raw" / "football-data"
-DEFAULT_REPORT = REPO / "reports" / "forecasting" / "live-faithful-v1-reliability-calibration.json"
-DEFAULT_CONFIG = REPO / "control" / "models" / "live-faithful-v1.reliability-calibrated.json"
+DEFAULT_REPORT = REPO / "reports" / "forecasting" / "live-faithful-v1-feature-complete-calibration.json"
+DEFAULT_CONFIG = REPO / "control" / "models" / "live-faithful-v1.feature-complete.json"
 
 
 def _canonical(value: Any) -> str:
@@ -175,11 +175,13 @@ def run(
     )
     selected, candidates = select_parameters(
         training_cases,
-        prior_equivalent_minutes=(720, 900, 1350),
-        start_prior_equivalent_matches=(2, 4),
-        cameo_minutes=(10, 18),
-        team_fixture_scale=(0.0, 0.25, 0.5),
-        player_prior_reliability_minutes=(450, 900, 1800),
+        prior_equivalent_minutes=(900, 1350),
+        start_prior_equivalent_matches=(2,),
+        cameo_minutes=(10,),
+        team_fixture_scale=(0.25,),
+        player_prior_reliability_minutes=(450, 900),
+        event_model_weight=(0.0, 0.25, 0.5),
+        recent_minutes_weight=(0.0, 0.25, 0.5),
     )
     training_evaluation = evaluate_cases(training_cases, selected)
     validation_evaluation = evaluate_cases(validation_cases, selected)
@@ -269,6 +271,19 @@ def run(
             "historical_unstructured_evidence_not_recoverable_at_full_coverage",
             "historical_odds_excluded_from_fit_without_predeadline_quote_timestamp",
         ],
+        "component_decisions": {
+            "event_model": (
+                "selected"
+                if candidates[0]["parameters"]["event_model_weight"] > 0
+                else "rejected_by_training_selection"
+            ),
+            "recent_minutes": (
+                "selected"
+                if candidates[0]["parameters"]["recent_minutes_weight"] > 0
+                else "rejected_by_training_selection"
+            ),
+            "selection_scope": "actionable_players_gw2_5",
+        },
         "model_config_sha256": config["content_sha256"],
     }
     report["content_sha256"] = artifact_hash(report)
@@ -296,6 +311,9 @@ def main(argv: list[str] | None = None) -> int:
         "selected": report["selection"]["selected_parameters"],
         "training": report["training"]["early_gw2_5"],
         "validation": report["locked_validation"]["early_gw2_5"],
+        "actionable_validation": report["locked_validation"][
+            "actionable_early_gw2_5"
+        ],
         "report_sha256": report["content_sha256"],
     }
     print(json.dumps(summary, indent=2, sort_keys=True))

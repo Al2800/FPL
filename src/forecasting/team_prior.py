@@ -197,6 +197,7 @@ def build_episode_team_prior(
     fixtures: Iterable[Mapping[str, Any]],
     prior_match_results: Iterable[Mapping[str, Any]],
     previous_ratings: Mapping[str, float],
+    previous_active_teams: Iterable[str],
     params: EloParameters,
     lineage: Mapping[str, Any],
 ) -> dict[str, Any]:
@@ -216,9 +217,13 @@ def build_episode_team_prior(
         name: 1500.0 + (float(rating) - 1500.0) * params.season_regression
         for name, rating in previous_ratings.items()
     }
+    active_previous = {str(team) for team in previous_active_teams}
     fallback_teams: set[str] = set()
     for team in teams_by_id.values():
-        if team["rating_name"] not in ratings:
+        if (
+            team["rating_name"] not in ratings
+            or team["rating_name"] not in active_previous
+        ):
             ratings[team["rating_name"]] = params.promoted_rating
             fallback_teams.add(team["canonical_id"])
 

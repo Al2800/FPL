@@ -56,6 +56,10 @@ The locked calibration selected 1,350 equivalent player minutes, two equivalent 
 
 The first sealed GW2 application exposed and rejected an unshrunk sparse-prior candidate that captained a marginal player. Reliability shrinkage reduced maximum expected points from 17.0 to 8.89, selected Mohamed Salah as captain and removed the four-point hit. The remaining two-transfer recommendation is not frozen because the single-Gameweek solver does not value carrying transfers forward; that policy gap is tracked separately as `FPL-k21`.
 
+The final structured-data gate tested a scoring-event decomposition using lagged xG, xA, clean sheets, saves, bonus and cards. Training selected an event weight of zero, so the component is retained as a rejected ablation rather than added merely because it is more detailed. A recent-three-Gameweek minutes trajectory was selected at weight 0.5. On locked 2024/25 GW2–5 it improved all-market RMSE to 1.963 and expected-minutes MAE to 18.65. In the predeadline-defined actionable pool it modestly improved MAE from 1.444 to 1.425 and RMSE from 2.536 to 2.213.
+
+Team recency now treats a club absent from the immediately preceding EPL season as promoted even when an older EPL rating exists. The sealed 2025/26 GW2 team prior therefore applies the promoted fallback to Burnley, Leeds and Sunderland. Lower-division evidence remains a declared future enhancement rather than an invented historical signal.
+
 ## 2026/27 live parity
 
 For the live season, capture immutable official launch prices, positions, availability and team assignments when the game launches. Record promoted/new-transfer fallback provenance. Capture odds at fixed pre-deadline intervals (initially T-24h, T-8h, T-2h and the final successful snapshot before deadline) with event, market, bookmaker/source and retrieval timestamps. Missing intervals degrade visibly.

@@ -16,6 +16,15 @@ class PlayerPriorError(ValueError):
 
 
 POSITION_MAP = {"GK": "GKP", "GKP": "GKP", "DEF": "DEF", "MID": "MID", "FWD": "FWD"}
+EVENT_FIELDS = (
+    "expected_goals",
+    "expected_assists",
+    "clean_sheets",
+    "saves",
+    "bonus",
+    "yellow_cards",
+    "red_cards",
+)
 
 
 def _number(value: Any, field: str) -> float:
@@ -68,13 +77,19 @@ def _rate(group: list[dict[str, Any]]) -> dict[str, Any]:
     starts = sum(row["started"] for row in group)
     fixtures = len(group)
     start_minutes = sum(row["minutes"] for row in group if row["started"])
-    return {
+    result = {
         "points_per_90": round(90.0 * points / minutes, 4) if minutes else 0.0,
         "start_probability": round(starts / fixtures, 4) if fixtures else 0.0,
         "minutes_per_start": round(start_minutes / starts, 1) if starts else 0.0,
         "sample_minutes": int(round(minutes)),
         "sample_fixtures": fixtures,
     }
+    for field in EVENT_FIELDS:
+        total = sum(row[field] for row in group)
+        result[f"{field}_per_90"] = (
+            round(90.0 * total / minutes, 6) if minutes else 0.0
+        )
+    return result
 
 
 def build_player_prior(
@@ -121,6 +136,19 @@ def build_player_prior(
             "started": started,
             "position": position,
             "price": price,
+            "expected_goals": _number(
+                row.get("expected_goals", row.get("goals_scored", 0)),
+                "expected_goals",
+            ),
+            "expected_assists": _number(
+                row.get("expected_assists", row.get("assists", 0)),
+                "expected_assists",
+            ),
+            "clean_sheets": _number(row.get("clean_sheets", 0), "clean_sheets"),
+            "saves": _number(row.get("saves", 0), "saves"),
+            "bonus": _number(row.get("bonus", 0), "bonus"),
+            "yellow_cards": _number(row.get("yellow_cards", 0), "yellow_cards"),
+            "red_cards": _number(row.get("red_cards", 0), "red_cards"),
         }
         normalised.append(item)
         player_groups[element].append(item)

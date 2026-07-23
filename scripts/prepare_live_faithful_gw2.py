@@ -37,7 +37,7 @@ SETUP = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02" / "setup"
 EPISODE = REPO / "data" / "benchmark-v0" / "episodes" / "v2" / "2025-26" / "gw-02"
 VAASTAV = REPO / "data" / "raw" / "vaastav" / "Fantasy-Premier-League" / "data"
 FOOTBALL_DATA = REPO / "data" / "raw" / "football-data"
-CONFIG = REPO / "control" / "models" / "live-faithful-v1.reliability-calibrated.json"
+CONFIG = REPO / "control" / "models" / "live-faithful-v1.feature-complete.json"
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -164,6 +164,8 @@ def run(
         fixtures=observed["fixtures"],
         prior_match_results=observed["prior_match_results"],
         previous_ratings=previous_ratings,
+        previous_active_teams=set(match_seasons[-1][1]["HomeTeam"])
+        | set(match_seasons[-1][1]["AwayTeam"]),
         params=elo_params,
         lineage=team_lineage,
     )
@@ -219,6 +221,13 @@ def run(
             ),
             "known_player_count": len(forecast["players"]),
             "team_fallbacks": team_prior["fallback_teams"],
+            "event_model_weight": config["event_model_weight"],
+            "event_model_decision": (
+                "selected"
+                if config["event_model_weight"] > 0
+                else "rejected_by_training_selection"
+            ),
+            "recent_minutes_weight": config["recent_minutes_weight"],
         },
         "lineage": {
             "player_prior_sha256": player_prior["content_sha256"],
@@ -229,12 +238,12 @@ def run(
         },
     }
     comparison["content_sha256"] = artifact_hash(comparison)
-    _write_once(setup_dir / "shared-reliability-player-prior.json", player_prior)
-    _write_once(setup_dir / "shared-reliability-team-prior.json", team_prior)
-    _write_once(setup_dir / "shared-reliability-forecast.json", forecast)
-    _write_once(setup_dir / "shared-reliability-engine-input.json", solver_input.as_dict())
-    _write_once(setup_dir / "shared-reliability-engine-output.json", output)
-    _write_once(setup_dir / "forecast-reliability-comparison.json", comparison)
+    _write_once(setup_dir / "shared-feature-complete-player-prior.json", player_prior)
+    _write_once(setup_dir / "shared-feature-complete-team-prior.json", team_prior)
+    _write_once(setup_dir / "shared-feature-complete-forecast.json", forecast)
+    _write_once(setup_dir / "shared-feature-complete-engine-input.json", solver_input.as_dict())
+    _write_once(setup_dir / "shared-feature-complete-engine-output.json", output)
+    _write_once(setup_dir / "forecast-feature-complete-comparison.json", comparison)
     return comparison
 
 

@@ -14,6 +14,15 @@ import pandas as pd
 
 POSITION_MAP = {"GK": "GKP", "GKP": "GKP", "DEF": "DEF", "MID": "MID", "FWD": "FWD"}
 DEFAULT_BANDS = ((0.0, 5.5), (5.5, 7.5), (7.5, 10.0), (10.0, 20.0))
+EVENT_FIELDS = (
+    "expected_goals",
+    "expected_assists",
+    "clean_sheets",
+    "saves",
+    "bonus",
+    "yellow_cards",
+    "red_cards",
+)
 
 
 class CalibrationError(ValueError):
@@ -27,6 +36,8 @@ class ForecastParameters:
     cameo_minutes: float
     team_fixture_scale: float = 0.0
     player_prior_reliability_minutes: float = 0.0
+    event_model_weight: float = 0.0
+    recent_minutes_weight: float = 0.0
 
 
 def _sha256(path: Path) -> str:
@@ -84,6 +95,14 @@ def load_season_rows(
         raise CalibrationError(f"{season} has unknown positions")
     for field in ("minutes", "total_points", "value", "GW", "fixture", "code"):
         frame[field] = pd.to_numeric(frame[field], errors="raise")
+    if "expected_goals" not in frame:
+        frame["expected_goals"] = frame.get("goals_scored", 0)
+    if "expected_assists" not in frame:
+        frame["expected_assists"] = frame.get("assists", 0)
+    for field in EVENT_FIELDS:
+        if field not in frame:
+            frame[field] = 0.0
+        frame[field] = pd.to_numeric(frame[field], errors="coerce").fillna(0.0)
     start_source = "recorded"
     if "starts" not in frame.columns:
         # This is used only for the 2021/22 prior, never as a target label.
@@ -109,6 +128,9 @@ def _prior_tables(
     bands: Iterable[Iterable[float]],
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     frame = rows.copy()
+    for field in EVENT_FIELDS:
+        if field not in frame:
+            frame[field] = 0.0
     first = (
         frame.sort_values(["GW", "fixture"], kind="stable")
         .groupby("code", sort=False)
@@ -120,6 +142,10 @@ def _prior_tables(
         prior_starts=("starts", "sum"),
         prior_fixtures=("fixture", "count"),
         prior_start_minutes=("minutes", lambda values: float(values[frame.loc[values.index, "starts"].fillna(0) > 0].sum())),
+        **{
+            f"prior_{field}": (field, "sum")
+            for field in EVENT_FIELDS
+        },
     )
     grouped = grouped.join(first)
     grouped["price"] = grouped["value"] / 10.0
@@ -137,6 +163,12 @@ def _prior_tables(
         grouped["prior_start_minutes"] / grouped["prior_starts"],
         np.nan,
     )
+    for field in EVENT_FIELDS:
+        grouped[f"prior_{field}_per_90"] = np.where(
+            grouped["prior_minutes"] > 0,
+            90.0 * grouped[f"prior_{field}"] / grouped["prior_minutes"],
+            0.0,
+        )
 
     valid = grouped[
         grouped["prior_points_per_90"].notna()
@@ -157,6 +189,14 @@ def _prior_tables(
                         group["prior_start_minutes"].sum() / max(group["prior_starts"].sum(), 1)
                     ),
                     "fallback_players": int(len(group)),
+                    **{
+                        f"fallback_{field}_per_90": float(
+                            90.0
+                            * group[f"prior_{field}"].sum()
+                            / max(group["prior_minutes"].sum(), 1)
+                        )
+                        for field in EVENT_FIELDS
+                    },
                 }
             ),
             include_groups=False,
@@ -177,6 +217,14 @@ def _prior_tables(
                     "position_minutes_per_start": float(
                         group["prior_start_minutes"].sum() / max(group["prior_starts"].sum(), 1)
                     ),
+                    **{
+                        f"position_{field}_per_90": float(
+                            90.0
+                            * group[f"prior_{field}"].sum()
+                            / max(group["prior_minutes"].sum(), 1)
+                        )
+                        for field in EVENT_FIELDS
+                    },
                 }
             ),
             include_groups=False,
@@ -198,6 +246,9 @@ def build_calibration_cases(
 
     prior, fallback, position_fallback = _prior_tables(prior_rows, bands=bands)
     target = target_rows.copy()
+    for field in EVENT_FIELDS:
+        if field not in target:
+            target[field] = 0.0
     target["price"] = target["value"] / 10.0
     target["price_band"] = target["price"].map(lambda value: _price_band(float(value), bands))
     grouped = (
@@ -215,6 +266,10 @@ def build_calibration_cases(
                 else "fixture",
                 "mean" if "expected_result_score" in target.columns else (lambda _: 0.5),
             ),
+            **{
+                f"actual_{field}": (field, "sum")
+                for field in EVENT_FIELDS
+            },
         )
         .reset_index()
         .sort_values(["GW", "code"], kind="stable")
@@ -227,6 +282,7 @@ def build_calibration_cases(
                 "prior_start_probability",
                 "prior_minutes_per_start",
                 "prior_minutes",
+                *[f"prior_{field}_per_90" for field in EVENT_FIELDS],
             ]
         ],
         on="code",
@@ -266,6 +322,15 @@ def build_calibration_cases(
         ),
     ):
         grouped[destination] = grouped[exact].fillna(grouped[band]).fillna(grouped[position])
+    for field in EVENT_FIELDS:
+        grouped[f"base_{field}_per_90"] = grouped[
+            f"prior_{field}_per_90"
+        ].fillna(grouped[f"fallback_{field}_per_90"]).fillna(
+            grouped[f"position_{field}_per_90"]
+        )
+        grouped[f"group_{field}_per_90"] = grouped[
+            f"fallback_{field}_per_90"
+        ].fillna(grouped[f"position_{field}_per_90"])
     grouped["group_points_per_90"] = grouped["fallback_points_per_90"].fillna(
         grouped["position_points_per_90"]
     )
@@ -290,6 +355,14 @@ def build_calibration_cases(
         player["current_points"] = player["actual_points"].cumsum().shift(fill_value=0)
         player["current_matches"] = player["fixture_count"].cumsum().shift(fill_value=0)
         player["current_starts"] = player["actual_started"].cumsum().shift(fill_value=0)
+        for field in EVENT_FIELDS:
+            player[f"current_{field}"] = (
+                player[f"actual_{field}"].cumsum().shift(fill_value=0)
+            )
+        per_fixture_minutes = player["actual_minutes"] / player["fixture_count"].clip(lower=1)
+        player["recent_minutes_per_fixture"] = (
+            per_fixture_minutes.shift().rolling(3, min_periods=1).mean()
+        )
         rolling = player["actual_points"].shift().rolling(3, min_periods=1).mean()
         player["raw_rolling_expected_points"] = rolling.fillna(2.0) * player["fixture_count"]
         outputs.append(player)
@@ -321,6 +394,12 @@ def predictions(cases: pd.DataFrame, params: ForecastParameters) -> pd.DataFrame
         reliability * frame["base_minutes_per_start"]
         + (1.0 - reliability) * frame["group_minutes_per_start"]
     )
+    base_event_rates: dict[str, pd.Series] = {}
+    for field in EVENT_FIELDS:
+        base_event_rates[field] = (
+            reliability * frame[f"base_{field}_per_90"]
+            + (1.0 - reliability) * frame[f"group_{field}_per_90"]
+        )
     current_rate = np.where(
         frame["current_minutes"] > 0,
         90.0 * frame["current_points"] / frame["current_minutes"],
@@ -338,6 +417,11 @@ def predictions(cases: pd.DataFrame, params: ForecastParameters) -> pd.DataFrame
     expected_minutes_each = (
         posterior_start * base_minutes_per_start
         + (1.0 - posterior_start) * params.cameo_minutes
+    )
+    expected_minutes_each = (
+        (1.0 - params.recent_minutes_weight) * expected_minutes_each
+        + params.recent_minutes_weight
+        * frame["recent_minutes_per_fixture"].fillna(expected_minutes_each)
     )
     prior_minutes_each = (
         base_start * base_minutes_per_start
@@ -363,6 +447,39 @@ def predictions(cases: pd.DataFrame, params: ForecastParameters) -> pd.DataFrame
         1.3,
     )
     frame["live_faithful_expected_points"] *= frame["team_multiplier"]
+    position_goal_points = frame["position"].map(
+        {"GKP": 6.0, "DEF": 6.0, "MID": 5.0, "FWD": 4.0}
+    )
+    position_cs_points = frame["position"].map(
+        {"GKP": 4.0, "DEF": 4.0, "MID": 1.0, "FWD": 0.0}
+    )
+    event_rates: dict[str, pd.Series] = {}
+    for field in EVENT_FIELDS:
+        current_rate = np.where(
+            frame["current_minutes"] > 0,
+            90.0 * frame[f"current_{field}"] / frame["current_minutes"],
+            base_event_rates[field],
+        )
+        event_rates[field] = (
+            base_event_rates[field] * params.prior_equivalent_minutes
+            + current_rate * frame["current_minutes"]
+        ) / (params.prior_equivalent_minutes + frame["current_minutes"])
+    appearance_points = (1.0 + posterior_start) * frame["fixture_count"]
+    event_expected = appearance_points + (
+        event_rates["expected_goals"] * position_goal_points
+        + event_rates["expected_assists"] * 3.0
+        + event_rates["clean_sheets"] * position_cs_points
+        + np.where(frame["position"] == "GKP", event_rates["saves"] / 3.0, 0.0)
+        + event_rates["bonus"]
+        - event_rates["yellow_cards"]
+        - 3.0 * event_rates["red_cards"]
+    ) * expected_minutes_each / 90.0 * frame["fixture_count"]
+    frame["event_expected_points"] = event_expected * frame["team_multiplier"]
+    frame["rate_expected_points"] = frame["live_faithful_expected_points"]
+    frame["live_faithful_expected_points"] = (
+        (1.0 - params.event_model_weight) * frame["rate_expected_points"]
+        + params.event_model_weight * frame["event_expected_points"]
+    )
     return frame
 
 
@@ -391,7 +508,20 @@ def _metrics(frame: pd.DataFrame, prediction: str) -> dict[str, Any]:
 def evaluate_cases(cases: pd.DataFrame, params: ForecastParameters) -> dict[str, Any]:
     frame = predictions(cases, params)
     early = frame[(frame["GW"] >= 2) & (frame["GW"] <= 5)]
-    result: dict[str, Any] = {"parameters": asdict(params), "all": {}, "early_gw2_5": {}}
+    actionable = frame[
+        (frame["base_start_probability"] >= 0.25)
+        | (frame["current_minutes"] > 0)
+    ]
+    early_actionable = actionable[
+        (actionable["GW"] >= 2) & (actionable["GW"] <= 5)
+    ]
+    result: dict[str, Any] = {
+        "parameters": asdict(params),
+        "all": {},
+        "early_gw2_5": {},
+        "actionable": {},
+        "actionable_early_gw2_5": {},
+    }
     for prediction in (
         "raw_rolling_expected_points",
         "prior_only_expected_points",
@@ -399,13 +529,19 @@ def evaluate_cases(cases: pd.DataFrame, params: ForecastParameters) -> dict[str,
     ):
         result["all"][prediction] = _metrics(frame, prediction)
         result["early_gw2_5"][prediction] = _metrics(early, prediction)
+        result["actionable"][prediction] = _metrics(actionable, prediction)
+        result["actionable_early_gw2_5"][prediction] = _metrics(
+            early_actionable, prediction
+        )
     return result
 
 
 def calibration_objective(evaluation: Mapping[str, Any]) -> float:
     """Rank configurations on early points first, with minutes/start as tie-breakers."""
 
-    metrics = evaluation["early_gw2_5"]["live_faithful_expected_points"]
+    metrics = evaluation["actionable_early_gw2_5"][
+        "live_faithful_expected_points"
+    ]
     return float(
         metrics["mae"]
         + 0.01 * metrics["expected_minutes_mae"]
@@ -421,6 +557,8 @@ def select_parameters(
     cameo_minutes: Iterable[float],
     team_fixture_scale: Iterable[float] = (0.0,),
     player_prior_reliability_minutes: Iterable[float] = (0.0,),
+    event_model_weight: Iterable[float] = (0.0,),
+    recent_minutes_weight: Iterable[float] = (0.0,),
 ) -> tuple[ForecastParameters, list[dict[str, Any]]]:
     """Select deterministically from a declared grid using training cases only."""
 
@@ -430,21 +568,25 @@ def select_parameters(
             for cameo in cameo_minutes:
                 for team_scale in team_fixture_scale:
                     for reliability in player_prior_reliability_minutes:
-                        params = ForecastParameters(
-                            float(minutes),
-                            float(starts),
-                            float(cameo),
-                            float(team_scale),
-                            float(reliability),
-                        )
-                        evaluation = evaluate_cases(cases, params)
-                        candidates.append(
-                            {
-                                "parameters": asdict(params),
-                                "objective": calibration_objective(evaluation),
-                                "training": evaluation,
-                            }
-                        )
+                        for event_weight in event_model_weight:
+                            for recent_weight in recent_minutes_weight:
+                                params = ForecastParameters(
+                                    float(minutes),
+                                    float(starts),
+                                    float(cameo),
+                                    float(team_scale),
+                                    float(reliability),
+                                    float(event_weight),
+                                    float(recent_weight),
+                                )
+                                evaluation = evaluate_cases(cases, params)
+                                candidates.append(
+                                    {
+                                        "parameters": asdict(params),
+                                        "objective": calibration_objective(evaluation),
+                                        "training": evaluation,
+                                    }
+                                )
     candidates.sort(
         key=lambda row: (
             row["objective"],

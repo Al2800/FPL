@@ -59,6 +59,7 @@ def test_episode_prior_marks_promoted_fallback_and_is_hashed() -> None:
         fixtures=[{"id": 11, "team_h": 1, "team_a": 2}],
         prior_match_results=[],
         previous_ratings={"A": 1550},
+        previous_active_teams={"A"},
         params=PARAMS,
         lineage={"source": "test"},
     )
@@ -90,9 +91,31 @@ def test_same_or_post_cutoff_result_fails_closed() -> None:
                 }
             ],
             previous_ratings={"A": 1500, "B": 1500},
+            previous_active_teams={"A", "B"},
             params=PARAMS,
             lineage={},
         )
+
+
+def test_old_rating_is_reset_when_team_was_absent_last_season() -> None:
+    identity = {
+        "teams": [
+            {"fpl_team_id": 1, "fpl_name": "A", "canonical_id": "team:a"},
+            {"fpl_team_id": 2, "fpl_name": "C", "canonical_id": "team:c"},
+        ]
+    }
+    result = build_episode_team_prior(
+        season="2025-26",
+        cutoff="2025-08-22T17:30:00Z",
+        identity_map=identity,
+        fixtures=[{"id": 11, "team_h": 1, "team_a": 2}],
+        prior_match_results=[],
+        previous_ratings={"A": 1550, "C": 1600},
+        previous_active_teams={"A"},
+        params=PARAMS,
+        lineage={},
+    )
+    assert result["fallback_teams"] == ["team:c"]
 
 
 def test_player_fixtures_join_pre_match_scores_by_date_and_alias() -> None:

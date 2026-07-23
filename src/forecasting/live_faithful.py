@@ -151,16 +151,23 @@ def _select_prior(
                 "points_per_90",
                 "start_probability",
                 "minutes_per_start",
+                "expected_goals_per_90",
+                "expected_assists_per_90",
+                "clean_sheets_per_90",
+                "saves_per_90",
+                "bonus_per_90",
+                "yellow_cards_per_90",
+                "red_cards_per_90",
             ):
                 selected[field] = (
                     reliability * _number(
-                        selected.get(field),
+                        selected.get(field, 0),
                         f"player_prior.{field}",
                         minimum=-100 if field == "points_per_90" else 0,
                     )
                     + (1.0 - reliability)
                     * _number(
-                        fallback.get(field),
+                        fallback.get(field, 0),
                         f"fallback.{field}",
                         minimum=-100 if field == "points_per_90" else 0,
                     )
@@ -226,6 +233,35 @@ def _forecast_player(
         prior_rate * equivalent_minutes + current_rate * current_minutes
     ) / (equivalent_minutes + current_minutes)
 
+    event_sources = {
+        "expected_goals": "expected_goals",
+        "expected_assists": "expected_assists",
+        "clean_sheets": "clean_sheets",
+        "saves": "saves",
+        "bonus": "bonus",
+        "yellow_cards": "yellow_cards",
+        "red_cards": "red_cards",
+    }
+    posterior_events: dict[str, float] = {}
+    for event, history_field in event_sources.items():
+        prior_event_rate = _number(
+            prior.get(f"{event}_per_90", 0),
+            f"{event}_per_90",
+        )
+        current_total = sum(
+            _number(row.get(history_field, 0), f"history.{history_field}")
+            for row in history
+        )
+        current_event_rate = (
+            90.0 * current_total / current_minutes
+            if current_minutes
+            else prior_event_rate
+        )
+        posterior_events[event] = (
+            prior_event_rate * equivalent_minutes
+            + current_event_rate * current_minutes
+        ) / (equivalent_minutes + current_minutes)
+
     current_matches = len(history)
     current_starts = sum(int(_number(row.get("started", 0), "history.started") > 0) for row in history)
     start_weight = _number(
@@ -242,6 +278,24 @@ def _forecast_player(
     expected_minutes_per_fixture = (
         start_probability * minutes_per_start
         + (1.0 - start_probability) * cameo_minutes
+    )
+    recent_history = history[-3:]
+    recent_fixture_count = sum(
+        max(1, int(row.get("fixture_count", 1))) for row in recent_history
+    )
+    recent_minutes_per_fixture = (
+        sum(_number(row.get("minutes", 0), "history.minutes") for row in recent_history)
+        / recent_fixture_count
+        if recent_fixture_count
+        else expected_minutes_per_fixture
+    )
+    recent_minutes_weight = _bounded(
+        _number(config.get("recent_minutes_weight", 0), "recent_minutes_weight"),
+        (0, 1),
+    )
+    expected_minutes_per_fixture = (
+        (1.0 - recent_minutes_weight) * expected_minutes_per_fixture
+        + recent_minutes_weight * recent_minutes_per_fixture
     )
 
     position = str(player["position"])
@@ -263,6 +317,12 @@ def _forecast_player(
         raise LiveFaithfulForecastError("fixture multiplier bounds are reversed")
 
     components: list[dict[str, Any]] = []
+    event_model_weight = _bounded(
+        _number(config.get("event_model_weight", 0), "event_model_weight"),
+        (0, 1),
+    )
+    goal_points = {"GKP": 6.0, "DEF": 6.0, "MID": 5.0, "FWD": 4.0}[position]
+    clean_sheet_points = {"GKP": 4.0, "DEF": 4.0, "MID": 1.0, "FWD": 0.0}[position]
     for raw_fixture in player.get("projection", {}).get("fixture_components", []):
         fixture = deepcopy(dict(raw_fixture))
         fixture_id = int(fixture["fixture_id"])
@@ -277,8 +337,38 @@ def _forecast_player(
             attack_weight * attack + (1.0 - attack_weight) * defence,
             multiplier_bounds,
         )
-        expected_points = posterior_rate * expected_minutes_per_fixture / 90.0
-        expected_points *= team_multiplier
+        rate_expected_points = (
+            posterior_rate * expected_minutes_per_fixture / 90.0 * team_multiplier
+        )
+        appearance_points = 1.0 + start_probability
+        attacking_points = (
+            posterior_events["expected_goals"] * goal_points
+            + posterior_events["expected_assists"] * 3.0
+        ) * expected_minutes_per_fixture / 90.0 * attack
+        defensive_points = (
+            posterior_events["clean_sheets"] * clean_sheet_points
+        ) * expected_minutes_per_fixture / 90.0 * defence
+        save_points = (
+            posterior_events["saves"] / 3.0
+            if position == "GKP"
+            else 0.0
+        ) * expected_minutes_per_fixture / 90.0
+        residual_points = (
+            posterior_events["bonus"]
+            - posterior_events["yellow_cards"]
+            - 3.0 * posterior_events["red_cards"]
+        ) * expected_minutes_per_fixture / 90.0
+        event_expected_points = (
+            appearance_points
+            + attacking_points
+            + defensive_points
+            + save_points
+            + residual_points
+        )
+        expected_points = (
+            (1.0 - event_model_weight) * rate_expected_points
+            + event_model_weight * event_expected_points
+        )
         components.append(
             {
                 "fixture_id": fixture_id,
@@ -287,6 +377,9 @@ def _forecast_player(
                 "expected_minutes": round(expected_minutes_per_fixture, 1),
                 "posterior_points_per_90": round(posterior_rate, 4),
                 "team_multiplier": round(team_multiplier, 4),
+                "rate_expected_points": round(rate_expected_points, 4),
+                "event_expected_points": round(event_expected_points, 4),
+                "event_model_weight": round(event_model_weight, 4),
                 "expected_points": round(expected_points, 2),
             }
         )
@@ -310,6 +403,11 @@ def _forecast_player(
         ),
         "start_probability": round(start_probability, 4),
         "posterior_points_per_90": round(posterior_rate, 4),
+        "recent_minutes_per_fixture": round(recent_minutes_per_fixture, 1),
+        "recent_minutes_weight": round(recent_minutes_weight, 4),
+        "posterior_event_rates": {
+            key: round(value, 6) for key, value in sorted(posterior_events.items())
+        },
         "expected_points": round(sum(row["expected_points"] for row in components), 2),
         "fixture_count": len(components),
         "fixture_components": components,
