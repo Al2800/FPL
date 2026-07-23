@@ -19,7 +19,9 @@ from src.optimisation.io import fingerprint
 ROOT = Path(__file__).resolve().parents[2]
 INPUT = ROOT / "evals/golden-cases/optimiser-gw3-input.json"
 OUTPUT = ROOT / "evals/golden-cases/optimiser-gw3-input.output.json"
-EPISODES = ROOT / "data/benchmark-v0/episodes/v2/2025-26"
+EPISODE_INDEX = (
+    ROOT / "evals/episodes/structured/benchmark-v0-index-v2.json"
+)
 
 
 def test_percentile_contract_is_ordered_and_interpolated():
@@ -55,11 +57,13 @@ def test_committed_solver_output_is_bound_to_input_and_domain_invariants():
     assert selected["lineup"]["captain_id"] != selected["lineup"]["vice_captain_id"]
 
 
-def test_historical_observed_scan_has_one_distinct_partition_per_gameweek():
-    paths = sorted(EPISODES.glob("gw-*/observed.json"))
-    rows = [json.loads(path.read_text(encoding="utf-8")) for path in paths]
+def test_historical_episode_index_has_one_distinct_partition_per_gameweek():
+    index = json.loads(EPISODE_INDEX.read_text(encoding="utf-8"))
+    rows = index["episodes"]
+    assert index["episode_count"] == 38
     assert len(rows) == 38
     assert sorted(row["gameweek"] for row in rows) == list(range(1, 39))
     assert len({row["episode_id"] for row in rows}) == 38
+    assert len({row["observed_partition_sha256"] for row in rows}) == 38
     assert all("player_outcomes" not in row for row in rows)
     assert all("hidden_outcome" not in row for row in rows)
