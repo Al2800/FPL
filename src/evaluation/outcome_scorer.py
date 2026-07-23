@@ -5,6 +5,8 @@ from __future__ import annotations
 from collections import Counter
 from copy import deepcopy
 from datetime import datetime
+import hashlib
+import json
 from typing import Any, Mapping
 
 from src.optimisation.io import fingerprint
@@ -23,6 +25,19 @@ def realised_outcome_hash(outcome: Mapping[str, Any]) -> str:
     body = deepcopy(dict(outcome))
     body.pop("content_sha256", None)
     return fingerprint(body)
+
+
+def _source_payload_hash(value: Mapping[str, Any]) -> str:
+    """Match the immutable episode builder's UTF-8 canonical JSON contract."""
+
+    payload = json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def _timestamp(value: Any, field: str) -> datetime:
@@ -90,6 +105,8 @@ def score_revealed_outcome(
     revealed_at: str,
     rules: Mapping[str, Any],
     ruleset_sha256: str,
+    player_identity_map: Mapping[int | str, str] | None = None,
+    identity_map_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Aggregate official rows and score one immutable frozen plan."""
     try:
@@ -107,6 +124,27 @@ def score_revealed_outcome(
     if _timestamp(revealed_at, "revealed_at") <= _timestamp(plan["frozen_at"], "frozen_at"):
         raise OutcomeScoringError("Outcome must be revealed after plan freeze")
 
+    identity = (
+        {str(source): str(target) for source, target in player_identity_map.items()}
+        if player_identity_map is not None
+        else None
+    )
+    if identity is not None:
+        if identity_map_sha256 is None:
+            raise OutcomeScoringError(
+                "identity_map_sha256 is required with player_identity_map"
+            )
+        if len(identity_map_sha256) != 64 or any(
+            character not in "0123456789abcdef"
+            for character in identity_map_sha256
+        ):
+            raise OutcomeScoringError(
+                "identity_map_sha256 must be a lower-case SHA-256"
+            )
+    resolved_identity_hash = identity_map_sha256 or fingerprint(
+        {"identity": "native_player_ids"}
+    )
+
     squad = {row["player_id"]: dict(row) for row in plan["squad_after"]}
     aggregate = {
         player_id: {
@@ -119,7 +157,15 @@ def score_revealed_outcome(
     }
     seen: set[tuple[str, str]] = set()
     for row in hidden_outcome.get("player_outcomes", []):
-        player_id = str(row.get("element", row.get("player_id")))
+        source_player_id = str(row.get("element", row.get("player_id")))
+        if identity is not None:
+            if source_player_id not in identity:
+                raise OutcomeScoringError(
+                    f"Outcome player identity is unresolved: {source_player_id}"
+                )
+            player_id = identity[source_player_id]
+        else:
+            player_id = source_player_id
         fixture_id = str(row.get("fixture"))
         key = (player_id, fixture_id)
         if key in seen:
@@ -182,7 +228,7 @@ def score_revealed_outcome(
         applied_multiplier = multiplier
     bench_points = sum(aggregate[player_id]["total_points"] for player_id in bench_ids)
 
-    source_hash = fingerprint(hidden_outcome)
+    source_hash = _source_payload_hash(hidden_outcome)
     result: dict[str, Any] = {
         "schema_version": "1.0",
         "outcome_id": f"realised-outcome:{plan['episode_id']}:{plan['policy_arm']}",
@@ -193,6 +239,7 @@ def score_revealed_outcome(
         "plan_sha256": plan["content_sha256"],
         "ruleset": deepcopy(plan["ruleset"]),
         "source_outcome_sha256": source_hash,
+        "identity_map_sha256": resolved_identity_hash,
         "revealed_at": str(revealed_at),
         "aggregated_players": [
             aggregate[player_id] for player_id in sorted(aggregate)

@@ -27,9 +27,9 @@ python3 -m scripts.run_skeleton          # one synthetic historical Gameweek end
 python3 -m scripts.run_snapshot          # capture bootstrap-static + fixtures into data/raw/fpl/
 python3 -m scripts.run_wp05_eval         # baseline metrics → docs/data-sources/wp05/ (needs local historical data)
 python3 -m scripts.run_optimiser evals/golden-cases/optimiser-gw3-input.json
-python3 -m scripts.run_replay                  # Gameweek Decision Record via replay harness
+python3 -m scripts.run_replay --season 2025-26 --stop-after-gameweek 1
 python3 -m scripts.run_rules_golden            # 24 rules golden cases
-python3 -m scripts.run_replay_pilot_set        # WP-04 structured pilot GW labels
+python3 -m scripts.run_replay_pilot_set --stop-after-gameweek 1
 python3 -m scripts.inventory_data_estate       # scan data/raw → data-estate inventory
 python3 -m scripts.build_warehouse             # Parquet + DuckDB under data/warehouse/
 ```

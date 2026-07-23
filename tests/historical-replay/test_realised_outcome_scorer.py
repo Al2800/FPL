@@ -9,12 +9,16 @@ from pathlib import Path
 import pytest
 from jsonschema import Draft202012Validator, FormatChecker
 
+from src.optimisation.io import fingerprint
 from src.evaluation.outcome_scorer import (
     OutcomeScoringError,
     realised_outcome_hash,
     score_revealed_outcome,
 )
-from src.orchestration.validated_plan import validate_and_freeze_plan
+from src.orchestration.validated_plan import (
+    validate_and_freeze_plan,
+    validated_plan_hash,
+)
 from src.scoring.rules_loader import load_rules, ruleset_sha256
 
 
@@ -234,3 +238,57 @@ def test_outcome_boundary_fails_closed(mutation: str, message: str) -> None:
             rules=RULES,
             ruleset_sha256=RULES_HASH,
         )
+
+
+def test_official_element_ids_resolve_to_canonical_plan_players() -> None:
+    plan = _plan(None)
+    canonical = deepcopy(plan)
+    mapping = {
+        str(index): f"canonical:{index}"
+        for index in range(1, 17)
+    }
+    for player in canonical["squad_after"]:
+        player["player_id"] = mapping[player["player_id"]]
+    for field in ("starting_xi_ids", "bench_ids"):
+        canonical["lineup"][field] = [
+            mapping[player_id] for player_id in canonical["lineup"][field]
+        ]
+    canonical["lineup"]["captain_id"] = mapping[
+        canonical["lineup"]["captain_id"]
+    ]
+    canonical["lineup"]["vice_captain_id"] = mapping[
+        canonical["lineup"]["vice_captain_id"]
+    ]
+    canonical["validation"]["content_sha256"] = fingerprint(
+        {
+            "episode_id": canonical["episode_id"],
+            "policy_arm": canonical["policy_arm"],
+            "season": canonical["season"],
+            "gameweek": canonical["gameweek"],
+            "previous_state_sha256": canonical["previous_state_sha256"],
+            "ruleset": canonical["ruleset"],
+            "transfers": canonical["transfers"],
+            "squad_after": canonical["squad_after"],
+            "lineup": canonical["lineup"],
+            "active_chip": canonical["active_chip"],
+            "finance": canonical["finance"],
+            "checks": canonical["validation"]["checks"],
+        }
+    )
+    canonical["content_sha256"] = validated_plan_hash(canonical)
+    case = json.loads(
+        (GOLDEN / "normal-autosub.json").read_text(encoding="utf-8")
+    )
+    identity_hash = "1" * 64
+    result = score_revealed_outcome(
+        canonical,
+        _hidden(case["player_outcomes"]),
+        revealed_at="2025-08-25T09:00:00Z",
+        rules=RULES,
+        ruleset_sha256=RULES_HASH,
+        player_identity_map=mapping,
+        identity_map_sha256=identity_hash,
+    )
+    assert result["gross_points"] == case["expected"]["gross_points"]
+    assert result["captain"]["player_id"] == mapping["8"]
+    assert result["identity_map_sha256"] == identity_hash

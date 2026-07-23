@@ -14,6 +14,7 @@
     "plan_sha256",
     "ruleset",
     "source_outcome_sha256",
+    "identity_map_sha256",
     "revealed_at",
     "aggregated_players",
     "effective_lineup_ids",
@@ -41,6 +42,7 @@
       }
     },
     "source_outcome_sha256": {"$ref": "#/$defs/sha256"},
+    "identity_map_sha256": {"$ref": "#/$defs/sha256"},
     "revealed_at": {"type": "string", "format": "date-time"},
     "aggregated_players": {
       "type": "array",
