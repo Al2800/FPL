@@ -5,6 +5,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any, Mapping
 
+from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.types import SolverInput
 from src.orchestration.historical_feature_state import feature_state_hash
 
@@ -17,12 +18,14 @@ def build_replay_solver_input(
     *,
     feature_state: Mapping[str, Any],
     policy_state: Mapping[str, Any],
+    forecast_view: Mapping[str, Any] | None = None,
     max_transfers: int = 3,
 ) -> SolverInput:
-    """Return the full known market with arm-owned finance and purchase history."""
+    """Return the known market using an explicitly selected forecast view."""
 
     features = deepcopy(dict(feature_state))
     policy = deepcopy(dict(policy_state))
+    forecast = deepcopy(dict(forecast_view)) if forecast_view is not None else None
     if features.get("content_sha256") != feature_state_hash(features):
         raise ReplayAdapterError("Feature state content hash mismatch")
     for field in ("season", "gameweek"):
@@ -39,6 +42,32 @@ def build_replay_solver_input(
     known = {
         str(row["player_id"]): row for row in features.get("players", [])
     }
+    selected: dict[str, dict[str, Any]] | None = None
+    if forecast is not None:
+        if forecast.get("content_sha256") != artifact_hash(forecast):
+            raise ReplayAdapterError("Forecast view content hash mismatch")
+        for field in ("season", "gameweek"):
+            if forecast.get(field) != features.get(field):
+                raise ReplayAdapterError(
+                    f"Forecast view {field} does not match feature state"
+                )
+        if (
+            forecast.get("lineage", {}).get("feature_state_sha256")
+            != features["content_sha256"]
+        ):
+            raise ReplayAdapterError("Forecast view does not reference feature state")
+        selected = {}
+        for row in forecast.get("players", []):
+            player_id = str(row["player_id"])
+            if player_id in selected:
+                raise ReplayAdapterError(
+                    f"Forecast view contains duplicate player: {player_id}"
+                )
+            selected[player_id] = row
+        if set(selected) != set(known):
+            raise ReplayAdapterError(
+                "Forecast view player market differs from feature state"
+            )
     missing = sorted(set(owned) - set(known))
     if missing:
         raise ReplayAdapterError(f"Feature market missing owned player(s): {missing}")
@@ -49,6 +78,11 @@ def build_replay_solver_input(
         if "now_cost" not in quote:
             raise ReplayAdapterError(f"Known player has no market quote: {player_id}")
         owner = owned.get(player_id)
+        projection = (
+            selected[player_id]
+            if selected is not None
+            else player["projection"]
+        )
         if owner is not None:
             if str(owner["position"]) != str(player["position"]):
                 raise ReplayAdapterError(
@@ -71,7 +105,7 @@ def build_replay_solver_input(
                 "club_id": str(player["club_id"]),
                 "now_cost": round(float(quote["now_cost"]), 1),
                 "expected_points": round(
-                    float(player["projection"]["expected_points"]), 2
+                    float(projection["expected_points"]), 2
                 ),
                 "purchase_price": (
                     round(float(owner["purchase_price"]), 1)
@@ -81,15 +115,30 @@ def build_replay_solver_input(
                 "web_name": str(player["name"]),
                 "status": "a",
                 "expected_minutes": float(
-                    player["projection"]["expected_minutes"]
+                    projection["expected_minutes"]
                 ),
                 "start_probability": float(
-                    player["projection"]["start_probability"]
+                    projection["start_probability"]
                 ),
                 "price_source_gameweek": int(quote["source_gameweek"]),
                 "price_age_gameweeks": int(quote["age_gameweeks"]),
                 "price_confidence": str(quote["price_confidence"]),
                 "feature_state_sha256": str(features["content_sha256"]),
+                "forecast_view_sha256": (
+                    str(forecast["content_sha256"])
+                    if forecast is not None
+                    else None
+                ),
+                "forecast_model_version": (
+                    str(forecast["model_version"])
+                    if forecast is not None
+                    else str(player["projection"]["model_version"])
+                ),
+                "forecast_model_status": (
+                    str(forecast["model_status"])
+                    if forecast is not None
+                    else "baseline"
+                ),
             }
         )
 

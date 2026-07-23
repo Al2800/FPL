@@ -1,0 +1,25 @@
+{
+  "model_version": "live-faithful-v1",
+  "status": "provisional_pending_calibration",
+  "prior_equivalent_minutes": 900.0,
+  "start_prior_equivalent_matches": 8.0,
+  "cameo_minutes": 18.0,
+  "price_bands": [
+    [0.0, 5.5],
+    [5.5, 7.5],
+    [7.5, 10.0],
+    [10.0, 20.0]
+  ],
+  "fixture_multiplier_bounds": [0.7, 1.3],
+  "position_attack_weight": {
+    "GKP": 0.0,
+    "DEF": 0.2,
+    "MID": 0.85,
+    "FWD": 1.0
+  },
+  "optional_components": {
+    "timestamped_odds": "degrade_when_absent",
+    "unstructured_evidence": "degrade_when_absent"
+  },
+  "content_sha256": "782af62fd8b5c22d27827845599b538555046985269efb9acd5cf3ea1ac42465"
+}

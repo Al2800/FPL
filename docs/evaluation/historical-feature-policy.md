@@ -11,6 +11,9 @@ The adapter therefore consumes only `episode-manifest.json`, `observed.json`,
 Gameweek 1 only, the governed official Scout seed. It has no hidden-outcome
 parameter and does not read `hidden-outcome.json`.
 
+The richer candidate projection is governed separately in
+`docs/evaluation/live-faithful-forecast-policy.md`.
+
 ## Chronology
 
 An observed Gameweek `t` episode carries player fixture rows from completed
