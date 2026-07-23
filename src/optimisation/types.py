@@ -52,12 +52,15 @@ class SolverInput:
     sell_pool_per_pos: int = 5
     buy_pool_per_pos: int = 8
     allow_hits: bool = True
+    transfer_value_policy: str = "none"
+    probability_extra_transfer_needed: float = 0.5
+    future_transfer_discount: float = 0.9
     ruleset_mismatch_policy: str = "fail_closed"
     availability_policy: str = "available_only"
     solver_version: str = SOLVER_VERSION
 
     def as_dict(self) -> dict[str, Any]:
-        return {
+        value = {
             "season": self.season,
             "gameweek": self.gameweek,
             "ruleset_id": self.ruleset_id,
@@ -77,6 +80,17 @@ class SolverInput:
             "availability_policy": self.availability_policy,
             "solver_version": self.solver_version,
         }
+        if self.transfer_value_policy != "none":
+            value.update(
+                {
+                    "transfer_value_policy": self.transfer_value_policy,
+                    "probability_extra_transfer_needed": (
+                        self.probability_extra_transfer_needed
+                    ),
+                    "future_transfer_discount": self.future_transfer_discount,
+                }
+            )
+        return value
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SolverInput:
@@ -96,6 +110,13 @@ class SolverInput:
             sell_pool_per_pos=int(data.get("sell_pool_per_pos", 5)),
             buy_pool_per_pos=int(data.get("buy_pool_per_pos", 8)),
             allow_hits=bool(data.get("allow_hits", True)),
+            transfer_value_policy=str(data.get("transfer_value_policy", "none")),
+            probability_extra_transfer_needed=float(
+                data.get("probability_extra_transfer_needed", 0.5)
+            ),
+            future_transfer_discount=float(
+                data.get("future_transfer_discount", 0.9)
+            ),
             ruleset_mismatch_policy=str(data.get("ruleset_mismatch_policy", "fail_closed")),
             availability_policy=str(data.get("availability_policy", "available_only")),
             solver_version=str(data.get("solver_version", SOLVER_VERSION)),

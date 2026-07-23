@@ -20,6 +20,9 @@ def build_replay_solver_input(
     policy_state: Mapping[str, Any],
     forecast_view: Mapping[str, Any] | None = None,
     max_transfers: int = 3,
+    transfer_value_policy: str = "none",
+    probability_extra_transfer_needed: float = 0.5,
+    future_transfer_discount: float = 0.9,
 ) -> SolverInput:
     """Return the known market using an explicitly selected forecast view."""
 
@@ -153,4 +156,9 @@ def build_replay_solver_input(
         active_chip=policy.get("active_chip"),
         chips_available=[str(value) for value in policy.get("chips_available", [])],
         max_transfers=int(max_transfers),
+        transfer_value_policy=str(transfer_value_policy),
+        probability_extra_transfer_needed=float(
+            probability_extra_transfer_needed
+        ),
+        future_transfer_discount=float(future_transfer_discount),
     )

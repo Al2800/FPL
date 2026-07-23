@@ -1,0 +1,80 @@
+{
+  "assessment": {
+    "freeze_recommendation": "review_policy_assumptions_then_freeze_gw2_setup",
+    "full_multiweek_forecast": false,
+    "policy_is_fitted_on_gw2": false,
+    "purpose": "explicit bridge policy for transfer flexibility until cutoff-safe multi-Gameweek player forecasts exist",
+    "selected_transfer_count": 0
+  },
+  "comparison_sha256": "8c912876b8f549643f454d65e5eb065a28becb7cff6a2f0ee83c3bbfcdd10ec9",
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "63f6faa73559afca077f3e2f51d11d8bf1dde5f80ba0187bc3043808f9350a87",
+  "declared_assumptions": {
+    "free_per_gameweek": 1,
+    "future_transfer_discount": 0.9,
+    "hit_cost_per_transfer": 4,
+    "interpretation": "expected discounted hit avoided per retained transfer; not a multi-Gameweek player forecast",
+    "max_banked": 5,
+    "option_unit_value": 1.8,
+    "policy": "expected_hit_avoidance_v1",
+    "probability_extra_transfer_needed": 0.5
+  },
+  "gameweek": 2,
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "sensitivity": {
+    "adjacent_action_breakpoints": [
+      {
+        "between_transfer_counts": [
+          0,
+          1
+        ],
+        "option_unit_value": 1.67,
+        "probability_at_declared_discount": 0.4639
+      },
+      {
+        "between_transfer_counts": [
+          1,
+          2
+        ],
+        "option_unit_value": 1.43,
+        "probability_at_declared_discount": 0.3972
+      }
+    ],
+    "sweep": [
+      {
+        "option_unit_value": 0.0,
+        "planning_objective": 61.33,
+        "probability_extra_transfer_needed": 0.0,
+        "selected_transfer_count": 2
+      },
+      {
+        "option_unit_value": 0.9,
+        "planning_objective": 61.33,
+        "probability_extra_transfer_needed": 0.25,
+        "selected_transfer_count": 2
+      },
+      {
+        "option_unit_value": 1.8,
+        "planning_objective": 61.83,
+        "probability_extra_transfer_needed": 0.5,
+        "selected_transfer_count": 0
+      },
+      {
+        "option_unit_value": 2.7,
+        "planning_objective": 63.63,
+        "probability_extra_transfer_needed": 0.75,
+        "selected_transfer_count": 0
+      },
+      {
+        "option_unit_value": 3.6,
+        "planning_objective": 65.43,
+        "probability_extra_transfer_needed": 1.0,
+        "selected_transfer_count": 0
+      }
+    ]
+  },
+  "status": "ready_for_human_review_before_replay"
+}

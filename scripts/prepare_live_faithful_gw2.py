@@ -61,7 +61,7 @@ def _write_once(path: Path, value: dict[str, Any]) -> None:
 def _selection(output: dict[str, Any], names: dict[str, str]) -> dict[str, Any]:
     selected = output["selected"]
     lineup = selected["lineup"]
-    return {
+    value = {
         "objective": selected["objective"],
         "strategy": selected["strategy"],
         "hit_cost": selected["hit_cost"],
@@ -82,6 +82,97 @@ def _selection(output: dict[str, Any], names: dict[str, str]) -> dict[str, Any]:
             for player_id in lineup["starting_xi_ids"]
         ],
     }
+    for field in (
+        "immediate_objective",
+        "transfer_option_value",
+        "next_gameweek_free_transfers",
+        "banked_option_units",
+    ):
+        if field in selected:
+            value[field] = selected[field]
+    return value
+
+
+def _count_plan(
+    candidate: dict[str, Any], names: dict[str, str]
+) -> dict[str, Any]:
+    return {
+        "transfer_count": len(candidate["transfers"]),
+        "immediate_objective": candidate["immediate_objective"],
+        "transfer_option_value": candidate["transfer_option_value"],
+        "planning_objective": candidate["objective"],
+        "next_gameweek_free_transfers": candidate[
+            "next_gameweek_free_transfers"
+        ],
+        "transfers": [
+            {
+                **move,
+                "player_out_name": names[move["player_out_id"]],
+                "player_in_name": names[move["player_in_id"]],
+            }
+            for move in candidate["transfers"]
+        ],
+    }
+
+
+def _sensitivity(
+    plans: dict[str, dict[str, Any]],
+    *,
+    hit_cost: int,
+    future_discount: float,
+) -> dict[str, Any]:
+    rows = []
+    for probability in (0.0, 0.25, 0.5, 0.75, 1.0):
+        unit_value = hit_cost * probability * future_discount
+        ranked = sorted(
+            plans.values(),
+            key=lambda candidate: (
+                -(
+                    float(candidate["immediate_objective"])
+                    + int(candidate["banked_option_units"]) * unit_value
+                ),
+                len(candidate["transfers"]),
+            ),
+        )
+        selected = ranked[0]
+        rows.append(
+            {
+                "probability_extra_transfer_needed": probability,
+                "option_unit_value": round(unit_value, 4),
+                "selected_transfer_count": len(selected["transfers"]),
+                "planning_objective": round(
+                    float(selected["immediate_objective"])
+                    + int(selected["banked_option_units"]) * unit_value,
+                    4,
+                ),
+            }
+        )
+
+    breakpoints = []
+    ordered = [plans[key] for key in sorted(plans, key=int)]
+    for lower, higher in zip(ordered, ordered[1:]):
+        unit_difference = int(lower["banked_option_units"]) - int(
+            higher["banked_option_units"]
+        )
+        if unit_difference <= 0:
+            continue
+        value = (
+            float(higher["immediate_objective"])
+            - float(lower["immediate_objective"])
+        ) / unit_difference
+        breakpoints.append(
+            {
+                "between_transfer_counts": [
+                    len(lower["transfers"]),
+                    len(higher["transfers"]),
+                ],
+                "option_unit_value": round(value, 4),
+                "probability_at_declared_discount": round(
+                    value / (hit_cost * future_discount), 4
+                ),
+            }
+        )
+    return {"sweep": rows, "adjacent_action_breakpoints": breakpoints}
 
 
 def run(
@@ -238,12 +329,91 @@ def run(
         },
     }
     comparison["content_sha256"] = artifact_hash(comparison)
+
+    option_input = build_replay_solver_input(
+        feature_state=feature_state,
+        policy_state=policy,
+        forecast_view=forecast,
+        max_transfers=3,
+        transfer_value_policy="expected_hit_avoidance_v1",
+        probability_extra_transfer_needed=0.5,
+        future_transfer_discount=0.9,
+    )
+    option_output = solve(
+        option_input,
+        rules=rules,
+        ruleset_sha256=str(manifest["ruleset"]["content_sha256"]),
+    )
+    option_plans = option_output["best_by_transfer_count"]
+    sensitivity = _sensitivity(
+        option_plans,
+        hit_cost=int(option_output["transfer_value_policy"]["hit_cost_per_transfer"]),
+        future_discount=float(
+            option_output["transfer_value_policy"]["future_transfer_discount"]
+        ),
+    )
+    option_comparison = {
+        "schema_version": "1.0",
+        "season": "2025-26",
+        "gameweek": 2,
+        "status": "sealed_setup_option_value_review",
+        "contains_hidden_outcome": False,
+        "contains_validated_plan": False,
+        "contains_state_transition": False,
+        "feature_state_sha256": feature_state["content_sha256"],
+        "selected": _selection(option_output, names),
+        "plans_by_transfer_count": {
+            count: _count_plan(candidate, names)
+            for count, candidate in option_plans.items()
+        },
+        "policy": option_output["transfer_value_policy"],
+        "sensitivity": sensitivity,
+        "lineage": {
+            "forecast_sha256": forecast["content_sha256"],
+            "model_config_sha256": config["content_sha256"],
+            "solver_input_sha256": fingerprint(option_input.as_dict()),
+            "solver_output_sha256": fingerprint(option_output),
+        },
+    }
+    option_comparison["content_sha256"] = artifact_hash(option_comparison)
+    option_review = {
+        "schema_version": "1.0",
+        "season": "2025-26",
+        "gameweek": 2,
+        "status": "ready_for_human_review_before_replay",
+        "contains_hidden_outcome": False,
+        "contains_validated_plan": False,
+        "contains_state_transition": False,
+        "comparison_sha256": option_comparison["content_sha256"],
+        "assessment": {
+            "policy_is_fitted_on_gw2": False,
+            "full_multiweek_forecast": False,
+            "purpose": (
+                "explicit bridge policy for transfer flexibility until "
+                "cutoff-safe multi-Gameweek player forecasts exist"
+            ),
+            "selected_transfer_count": len(
+                option_output["selected"]["transfers"]
+            ),
+            "freeze_recommendation": (
+                "review_policy_assumptions_then_freeze_gw2_setup"
+            ),
+        },
+        "declared_assumptions": option_output["transfer_value_policy"],
+        "sensitivity": sensitivity,
+    }
+    option_review["content_sha256"] = artifact_hash(option_review)
+
     _write_once(setup_dir / "shared-feature-complete-player-prior.json", player_prior)
     _write_once(setup_dir / "shared-feature-complete-team-prior.json", team_prior)
     _write_once(setup_dir / "shared-feature-complete-forecast.json", forecast)
     _write_once(setup_dir / "shared-feature-complete-engine-input.json", solver_input.as_dict())
     _write_once(setup_dir / "shared-feature-complete-engine-output.json", output)
     _write_once(setup_dir / "forecast-feature-complete-comparison.json", comparison)
+    _write_once(setup_dir / "shared-option-value-engine-input.json", option_input.as_dict())
+    _write_once(setup_dir / "shared-option-value-engine-output.json", option_output)
+    _write_once(setup_dir / "forecast-option-value-comparison.json", option_comparison)
+    _write_once(setup_dir / "transfer-option-value-review.json", option_review)
     return comparison
 
 

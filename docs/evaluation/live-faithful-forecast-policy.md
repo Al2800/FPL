@@ -60,6 +60,24 @@ The final structured-data gate tested a scoring-event decomposition using lagged
 
 Team recency now treats a club absent from the immediately preceding EPL season as promoted even when an older EPL rating exists. The sealed 2025/26 GW2 team prior therefore applies the promoted fallback to Burnley, Leeds and Sunderland. Lower-division evidence remains a declared future enhancement rather than an invented historical signal.
 
+## Transfer option value
+
+Until cutoff-safe multi-Gameweek player forecasts exist, the optimiser uses the
+opt-in `expected_hit_avoidance_v1` bridge from ADR-0020. The immediate
+Gameweek objective is preserved separately. Each transfer banked above the
+ordinary weekly award receives the expected discounted value of avoiding a
+future hit: four-point hit cost × 0.50 probability of needing the extra move ×
+0.90 discount = 1.80 points.
+
+Those assumptions were declared without inspecting GW2 outcomes. They are not
+model calibration. The sealed GW2 immediate objectives are 58.23, 59.90 and
+61.33 for zero, one and two transfers. The action changes from two to one at
+1.43 points per retained transfer, and from one to zero at 1.67. The declared
+1.80 policy therefore banks both transfers, with a 61.83 planning objective,
+while exposing every alternative and breakpoint for review. This policy
+addresses transfer churn only; it does not solve chip timing or replace a real
+multi-Gameweek forecast.
+
 ## 2026/27 live parity
 
 For the live season, capture immutable official launch prices, positions, availability and team assignments when the game launches. Record promoted/new-transfer fallback provenance. Capture odds at fixed pre-deadline intervals (initially T-24h, T-8h, T-2h and the final successful snapshot before deadline) with event, market, bookmaker/source and retrieval timestamps. Missing intervals degrade visibly.

@@ -109,6 +109,17 @@ def solve(
         )
     if solver_input.availability_policy not in {"available_only", "include_all"}:
         raise ValueError("availability_policy must be 'available_only' or 'include_all'")
+    if solver_input.transfer_value_policy not in {
+        "none",
+        "expected_hit_avoidance_v1",
+    }:
+        raise ValueError(
+            "transfer_value_policy must be 'none' or 'expected_hit_avoidance_v1'"
+        )
+    if not 0.0 <= solver_input.probability_extra_transfer_needed <= 1.0:
+        raise ValueError("probability_extra_transfer_needed must be between 0 and 1")
+    if not 0.0 <= solver_input.future_transfer_discount <= 1.0:
+        raise ValueError("future_transfer_discount must be between 0 and 1")
     if solver_input.horizon_gameweeks != 1 or solver_input.discount_factors != [1.0]:
         raise ValueError(
             "This solver supports only horizon_gameweeks=1 with discount_factors=[1.0]"
@@ -156,6 +167,19 @@ def solve(
     position_counts = get_rule(rules_dict, "squad.position_counts")["value"]
     max_per_club = int(get_rule(rules_dict, "squad.max_per_club")["value"])
     hit_cost_per_transfer = int(get_rule(rules_dict, "transfers.hit_cost")["value"])
+    free_per_gameweek = int(
+        get_rule(rules_dict, "transfers.free_per_gameweek")["value"]
+    )
+    max_banked = int(get_rule(rules_dict, "transfers.max_banked")["value"])
+    option_policy_active = (
+        solver_input.transfer_value_policy == "expected_hit_avoidance_v1"
+    )
+    option_unit_value = round(
+        hit_cost_per_transfer
+        * solver_input.probability_extra_transfer_needed
+        * solver_input.future_transfer_discount,
+        4,
+    )
     chip_validation = validate_chips(
         [solver_input.active_chip] if solver_input.active_chip else [],
         gameweek=solver_input.gameweek,
@@ -163,6 +187,7 @@ def solve(
     )
     top_ranked: list[tuple[tuple[Any, ...], int, dict[str, Any]]] = []
     by_strategy: dict[str, dict[str, Any]] = {}
+    by_transfer_count: dict[int, dict[str, Any]] = {}
     candidate_count = 0
 
     def rank_key(candidate: Mapping[str, Any]) -> tuple[Any, ...]:
@@ -180,12 +205,48 @@ def solve(
         nonlocal candidate_count
         if candidate is None:
             return
+        if option_policy_active:
+            transfer_count = len(candidate["transfers"])
+            if solver_input.active_chip and (
+                "wildcard" in solver_input.active_chip
+                or "free_hit" in solver_input.active_chip
+            ):
+                next_free_transfers = solver_input.free_transfers
+            else:
+                next_free_transfers = min(
+                    max_banked,
+                    max(0, solver_input.free_transfers - transfer_count)
+                    + free_per_gameweek,
+                )
+            banked_option_units = max(
+                0, next_free_transfers - free_per_gameweek
+            )
+            immediate = float(
+                candidate.get("immediate_objective", candidate["objective"])
+            )
+            transfer_option_value = round(
+                banked_option_units * option_unit_value, 4
+            )
+            candidate.update(
+                {
+                    "immediate_objective": immediate,
+                    "next_gameweek_free_transfers": next_free_transfers,
+                    "banked_option_units": banked_option_units,
+                    "transfer_option_value": transfer_option_value,
+                    "objective": round(immediate + transfer_option_value, 4),
+                }
+            )
         candidate_count += 1
         strategy = str(candidate["strategy"])
         if strategy not in by_strategy or rank_key(candidate) < rank_key(
             by_strategy[strategy]
         ):
             by_strategy[strategy] = candidate
+        transfer_count = len(candidate["transfers"])
+        if transfer_count not in by_transfer_count or rank_key(
+            candidate
+        ) < rank_key(by_transfer_count[transfer_count]):
+            by_transfer_count[transfer_count] = candidate
         insort(top_ranked, (rank_key(candidate), candidate_count, candidate))
         if len(top_ranked) > 50:
             top_ranked.pop()
@@ -304,6 +365,26 @@ def solve(
         },
         "all_candidates": top_candidates,
     }
+    if option_policy_active:
+        output["transfer_value_policy"] = {
+            "policy": solver_input.transfer_value_policy,
+            "hit_cost_per_transfer": hit_cost_per_transfer,
+            "probability_extra_transfer_needed": (
+                solver_input.probability_extra_transfer_needed
+            ),
+            "future_transfer_discount": solver_input.future_transfer_discount,
+            "option_unit_value": option_unit_value,
+            "free_per_gameweek": free_per_gameweek,
+            "max_banked": max_banked,
+            "interpretation": (
+                "expected discounted hit avoided per retained transfer; "
+                "not a multi-Gameweek player forecast"
+            ),
+        }
+        output["best_by_transfer_count"] = {
+            str(count): candidate
+            for count, candidate in sorted(by_transfer_count.items())
+        }
     output["output_fingerprint"] = fingerprint(
         {k: output[k] for k in ("solver_version", "selected", "plans") if k in output}
     )

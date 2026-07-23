@@ -82,6 +82,91 @@ def test_saved_input_round_trip() -> None:
     assert out1["output_fingerprint"] == out2["output_fingerprint"]
 
 
+def test_transfer_option_policy_is_explicit_and_decomposes_objective() -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data.update(
+        {
+            "free_transfers": 2,
+            "max_transfers": 2,
+            "transfer_value_policy": "expected_hit_avoidance_v1",
+            "probability_extra_transfer_needed": 0.5,
+            "future_transfer_discount": 0.9,
+        }
+    )
+
+    out = _solve(SolverInput.from_dict(data))
+    legacy_data = dict(data)
+    legacy_data.pop("transfer_value_policy")
+    legacy_data.pop("probability_extra_transfer_needed")
+    legacy_data.pop("future_transfer_discount")
+    legacy = _solve(SolverInput.from_dict(legacy_data))
+
+    assert out["transfer_value_policy"]["option_unit_value"] == 1.8
+    assert set(out["best_by_transfer_count"]) == {"0", "1", "2"}
+    assert (
+        out["best_by_transfer_count"]["0"]["immediate_objective"]
+        == legacy["plans"]["no_transfer"]["objective"]
+    )
+    for transfer_count, candidate in out["best_by_transfer_count"].items():
+        assert len(candidate["transfers"]) == int(transfer_count)
+        assert candidate["objective"] == round(
+            candidate["immediate_objective"]
+            + candidate["transfer_option_value"],
+            4,
+        )
+        assert candidate["next_gameweek_free_transfers"] == 3 - int(
+            transfer_count
+        )
+        assert candidate["banked_option_units"] == 2 - int(transfer_count)
+
+
+def test_transfer_option_policy_respects_bank_cap() -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data.update(
+        {
+            "free_transfers": 5,
+            "max_transfers": 1,
+            "transfer_value_policy": "expected_hit_avoidance_v1",
+        }
+    )
+
+    out = _solve(SolverInput.from_dict(data))
+
+    zero = out["best_by_transfer_count"]["0"]
+    one = out["best_by_transfer_count"]["1"]
+    assert zero["next_gameweek_free_transfers"] == 5
+    assert one["next_gameweek_free_transfers"] == 5
+    assert zero["transfer_option_value"] == one["transfer_option_value"]
+
+
+def test_inactive_transfer_option_policy_preserves_legacy_output_shape() -> None:
+    out = _solve(load_solver_input(GOLDEN))
+
+    assert "transfer_value_policy" not in out
+    assert "best_by_transfer_count" not in out
+    assert "immediate_objective" not in out["selected"]
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "message"),
+    [
+        ("transfer_value_policy", "magic", "transfer_value_policy"),
+        ("probability_extra_transfer_needed", -0.1, "probability"),
+        ("probability_extra_transfer_needed", 1.1, "probability"),
+        ("future_transfer_discount", -0.1, "discount"),
+        ("future_transfer_discount", 1.1, "discount"),
+    ],
+)
+def test_transfer_option_policy_rejects_invalid_controls(
+    field: str, value: object, message: str
+) -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data[field] = value
+
+    with pytest.raises(ValueError, match=message):
+        _solve(SolverInput.from_dict(data))
+
+
 def test_allow_hits_false_caps_search() -> None:
     inp = load_solver_input(GOLDEN)
     data = inp.as_dict()

@@ -29,6 +29,11 @@ class GenuineReplayError(ValueError):
     """Raised when a historical checkpoint cannot be reproduced safely."""
 
 
+TRANSFER_VALUE_POLICY = "expected_hit_avoidance_v1"
+PROBABILITY_EXTRA_TRANSFER_NEEDED = 0.5
+FUTURE_TRANSFER_DISCOUNT = 0.9
+
+
 def _canonical_json(value: Any) -> str:
     return json.dumps(
         value,
@@ -319,6 +324,10 @@ def _policy_brief(
         "shared_engine_baseline": {
             "selected_strategy": selected["strategy"],
             "objective": selected["objective"],
+            "immediate_objective": selected.get(
+                "immediate_objective", selected["objective"]
+            ),
+            "transfer_option_value": selected.get("transfer_option_value", 0.0),
             "transfers": selected["transfers"],
             "lineup": selected["lineup"],
             "no_transfer_objective": no_transfer["objective"],
@@ -457,6 +466,11 @@ def prepare_historical_gameweek(
             feature_state=feature_current,
             policy_state=state,
             max_transfers=3,
+            transfer_value_policy=TRANSFER_VALUE_POLICY,
+            probability_extra_transfer_needed=(
+                PROBABILITY_EXTRA_TRANSFER_NEEDED
+            ),
+            future_transfer_discount=FUTURE_TRANSFER_DISCOUNT,
         )
         input_value = solver_input.as_dict()
         states[arm] = state
@@ -474,6 +488,11 @@ def prepare_historical_gameweek(
             feature_state=feature_current,
             policy_state=states[POLICY_ARMS[0]],
             max_transfers=3,
+            transfer_value_policy=TRANSFER_VALUE_POLICY,
+            probability_extra_transfer_needed=(
+                PROBABILITY_EXTRA_TRANSFER_NEEDED
+            ),
+            future_transfer_discount=FUTURE_TRANSFER_DISCOUNT,
         ),
         rules=rules,
         ruleset_sha256=rules_hash,
@@ -556,11 +575,21 @@ def prepare_historical_gameweek(
         },
         "engine_selected": {
             "objective": selected["objective"],
+            "immediate_objective": selected.get(
+                "immediate_objective", selected["objective"]
+            ),
+            "transfer_option_value": selected.get("transfer_option_value", 0.0),
             "transfers": selected["transfers"],
             "lineup": selected["lineup"],
         },
         "engine_no_transfer": {
             "objective": no_transfer["objective"],
+            "immediate_objective": no_transfer.get(
+                "immediate_objective", no_transfer["objective"]
+            ),
+            "transfer_option_value": no_transfer.get(
+                "transfer_option_value", 0.0
+            ),
             "transfers": no_transfer["transfers"],
             "lineup": no_transfer["lineup"],
         },
