@@ -29,7 +29,8 @@
       ]
     },
     "notes": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "published_at": {
       "$ref": "../_defs.json#/$defs/iso_datetime"
@@ -49,5 +50,21 @@
     "provenance": {
       "$ref": "../_defs.json#/$defs/provenance"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "escalation_outcome": {
+            "const": "dismissed"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "notes"
+        ]
+      }
+    }
+  ]
 }

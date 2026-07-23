@@ -14,6 +14,7 @@
     "status",
     "confidence",
     "expires_at",
+    "published_at",
     "observed_at",
     "available_at",
     "provenance"
@@ -43,10 +44,18 @@
       ]
     },
     "before_value": {
-      "type": ["number", "string", "boolean"]
+      "type": [
+        "number",
+        "string",
+        "boolean"
+      ]
     },
     "after_value": {
-      "type": ["number", "string", "boolean"]
+      "type": [
+        "number",
+        "string",
+        "boolean"
+      ]
     },
     "unit": {
       "type": "string"

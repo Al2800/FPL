@@ -8,6 +8,8 @@ from pathlib import Path
 import pytest
 
 from src.evidence.lifecycle import (
+    assess_claim_for_decision,
+    evaluate_approval_path,
     evaluate_challenger_outcomes,
     extract_claims_safe,
     load_policy,
@@ -17,6 +19,7 @@ from src.evidence.lifecycle import (
     make_signal,
     merge_claims_forbidden,
     propose_adjustment,
+    resolve_conflict,
     round_trip,
     scan_injection,
     utc_now,
@@ -32,6 +35,7 @@ def test_lifecycle_round_trip_example_chain() -> None:
         source_id="manual-entry",
         body="Player X trained today and will be assessed",
         title="PC notes",
+        published_at="2026-07-21T11:30:00Z",
         observed_at="2026-07-21T12:00:00Z",
     )
     claim = make_claim(
@@ -40,6 +44,7 @@ def test_lifecycle_round_trip_example_chain() -> None:
         claim_text="Player X trained today and will be assessed",
         confidence=0.7,
         expires_at="2026-07-22T12:00:00Z",
+        published_at=doc["published_at"],
         observed_at="2026-07-21T12:00:00Z",
         provenance={"source_ids": ["manual-entry"], "transformation_version": "0.1.0"},
     )
@@ -48,6 +53,7 @@ def test_lifecycle_round_trip_example_chain() -> None:
         claim_ids=[claim["claim_id"]],
         interpretation="Availability uncertain; start not confirmed",
         player_uid="pl_x",
+        published_at=claim["published_at"],
         observed_at="2026-07-21T12:00:00Z",
     )
     adj = propose_adjustment(
@@ -90,6 +96,7 @@ def test_injection_golden_quarantines_and_blocks_adjustment() -> None:
         body=case["body"],
         title=case["document"]["title"],
         url=case["document"]["url"],
+        published_at="2026-07-21T11:30:00Z",
         observed_at="2026-07-21T12:00:00Z",
     )
     result = extract_claims_safe(
@@ -162,3 +169,153 @@ def test_forced_rerun_blocks_approval() -> None:
     gate = evaluate_challenger_outcomes([review])
     assert gate.force_rerun
     assert not gate.automatic_approval_allowed
+
+
+
+def _eligible_claim(*, expires_at: str = "2026-08-02T12:00:00Z") -> dict:
+    return make_claim(
+        claim_id="cl_temporal",
+        document_id="doc_temporal",
+        claim_text="Player X is expected to start",
+        confidence=0.8,
+        expires_at=expires_at,
+        published_at="2026-08-01T09:00:00Z",
+        observed_at="2026-08-01T10:00:00Z",
+    )
+
+
+def test_publication_time_never_defaults_to_observation_time() -> None:
+    doc = make_document(
+        document_id="doc_unknown_publication",
+        source_id="manual-entry",
+        body="Publication time unknown",
+        observed_at="2026-08-01T10:00:00Z",
+    )
+    assert "published_at" not in doc
+    with pytest.raises(ValueError, match="published_at is required"):
+        make_claim(
+            claim_id="cl_unknown_publication",
+            document_id=doc["document_id"],
+            claim_text="Publication time unknown",
+            confidence=0.8,
+            expires_at="2026-08-02T12:00:00Z",
+            observed_at="2026-08-01T10:00:00Z",
+        )
+
+
+def test_expired_claim_is_ineligible_and_cannot_support_adjustment() -> None:
+    claim = _eligible_claim(expires_at="2026-08-01T11:00:00Z")
+    result = assess_claim_for_decision(claim, "2026-08-01T12:00:00Z")
+    assert not result.eligible
+    assert "expired" in result.reasons
+    with pytest.raises(ValueError, match="ineligible supporting evidence"):
+        propose_adjustment(
+            adjustment_id="adj_expired_evidence",
+            signal_ids=["sig_temporal"],
+            target="start_probability",
+            before_value=0.6,
+            after_value=0.7,
+            confidence=0.8,
+            expires_at="2026-08-01T13:00:00Z",
+            decision_at="2026-08-01T12:00:00Z",
+            supporting_claims=[claim],
+        )
+
+
+def test_required_missing_challenger_review_blocks_approval() -> None:
+    gate = evaluate_challenger_outcomes([], review_required=True)
+    assert not gate.automatic_approval_allowed
+    assert gate.requires_human_review
+    assert gate.unresolved_challenges == ["missing_required_challenger_review"]
+
+
+def test_expired_evidence_and_unresolved_conflict_fail_closed() -> None:
+    claim = _eligible_claim(expires_at="2026-08-01T11:00:00Z")
+    conflict = make_conflict(
+        conflict_id="cf_temporal",
+        claim_ids=["cl_temporal", "cl_other"],
+        description="Start versus bench",
+    )
+    gate = evaluate_approval_path(
+        claims=[claim],
+        conflicts=[conflict],
+        reviews=[],
+        decision_at="2026-08-01T12:00:00Z",
+        review_required=True,
+    )
+    assert not gate.automatic_approval_allowed
+    assert any(item.startswith("evidence:cl_temporal:expired") for item in gate.unresolved_challenges)
+    assert "conflict:cf_temporal" in gate.unresolved_challenges
+
+
+def test_conflict_resolves_only_through_policy_outcome() -> None:
+    conflict = make_conflict(
+        conflict_id="cf_resolution",
+        claim_ids=["cl_a", "cl_b"],
+        description="Start versus bench",
+    )
+    with pytest.raises(ValueError, match="invalid escalation_outcome"):
+        resolve_conflict(
+            conflict,
+            escalation_outcome="silently_merge",
+            review_id="rv_bad",
+            resolution_notes="Not allowed",
+        )
+    resolved = resolve_conflict(
+        conflict,
+        escalation_outcome="confidence_downgrade",
+        review_id="rv_resolution",
+        resolution_notes="Both claims remain visible; confidence reduced",
+    )
+    assert resolved["status"] == "resolved"
+    assert resolved["resolution_outcome"] == "confidence_downgrade"
+
+
+def test_structured_boundary_blocks_disallowed_tool_without_phrase_canary() -> None:
+    case = json.loads((GOLDEN / "structured-tool-boundary.json").read_text(encoding="utf-8"))
+    doc = make_document(body=case["body"], **case["document"])
+    result = extract_claims_safe(
+        document=doc,
+        body=case["body"],
+        claim_specs=case["claim_specs"],
+        requested_tools=case["requested_tools"],
+    )
+    assert result["quarantined"] is case["expect"]["document_quarantined"]
+    assert [claim["claim_id"] for claim in result["claims"]] == case["expect"]["accepted_claim_ids"]
+    assert case["expect"]["boundary_violation"] in result["quarantine"]["boundary_violations"]
+
+
+
+def test_clean_grounded_extraction_with_allowed_tool_is_not_quarantined() -> None:
+    body = "Player X trained normally and is available for selection."
+    doc = make_document(
+        document_id="doc_clean_boundary",
+        source_id="manual-entry",
+        body=body,
+        published_at="2026-08-01T09:00:00Z",
+        observed_at="2026-08-01T10:00:00Z",
+    )
+    result = extract_claims_safe(
+        document=doc,
+        body=body,
+        claim_specs=[
+            {
+                "claim_id": "cl_clean_boundary",
+                "claim_text": "Player X trained normally and is available for selection",
+                "confidence": 0.8,
+                "expires_at": "2026-08-02T12:00:00Z",
+            }
+        ],
+        requested_tools=["read_document"],
+    )
+    assert not result["quarantined"]
+    assert [claim["claim_id"] for claim in result["claims"]] == ["cl_clean_boundary"]
+
+
+def test_old_but_unexpired_claim_warns_without_being_rejected() -> None:
+    claim = _eligible_claim(expires_at="2026-08-10T12:00:00Z")
+    claim["published_at"] = "2026-07-20T09:00:00Z"
+    result = assess_claim_for_decision(claim, "2026-08-01T12:00:00Z")
+    assert result.eligible
+    assert result.reasons == []
+    assert result.warnings == ["published_age_exceeds_warning_threshold"]

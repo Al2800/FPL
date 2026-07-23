@@ -20,6 +20,28 @@ staleness:
   reject_if_published_after_deadline: true
   warn_if_age_hours_gt: 72
 
+challenger:
+  required_for_evidence_adjustments: true
+  unresolved_review_blocks_approval: true
+
+conflicts:
+  unresolved_blocks_adjustment: true
+  allowed_resolution_outcomes:
+    - dismissed
+    - confidence_downgrade
+    - forced_re_run
+    - escalation
+
+extraction:
+  # Retrieved content is untrusted data. Extractor output is schema/grounding
+  # checked and may request only these read-only tools.
+  allowed_read_only_tools:
+    - read_document
+    - resolve_player_identity
+    - read_source_metadata
+  require_grounded_text: true
+  max_claims_per_document: 50
+
 injection:
-  # Patterns that quarantine a passage; claims from quarantined text cannot become adjustments
+  # Phrase scanning remains defence-in-depth, behind the structured boundary.
   block_adjustment_from_quarantined: true

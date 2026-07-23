@@ -8,6 +8,7 @@
     "conflict_id",
     "claim_ids",
     "description",
+    "status",
     "provenance"
   ],
   "properties": {
@@ -18,13 +19,55 @@
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "minItems": 2,
+      "uniqueItems": true
     },
     "description": {
       "type": "string"
     },
     "provenance": {
       "$ref": "../_defs.json#/$defs/provenance"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "unresolved",
+        "resolved"
+      ]
+    },
+    "resolution_outcome": {
+      "type": "string",
+      "enum": [
+        "dismissed",
+        "confidence_downgrade",
+        "forced_re_run",
+        "escalation"
+      ]
+    },
+    "resolved_by_review_id": {
+      "type": "string"
+    },
+    "resolution_notes": {
+      "type": "string"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "resolved"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "resolution_outcome",
+          "resolved_by_review_id",
+          "resolution_notes"
+        ]
+      }
+    }
+  ]
 }

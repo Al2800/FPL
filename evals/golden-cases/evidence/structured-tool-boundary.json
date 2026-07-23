@@ -1,0 +1,27 @@
+{
+  "case_id": "evidence-structured-tool-boundary",
+  "description": "Benign-looking retrieved text cannot request a write-capable tool or emit ungrounded claims.",
+  "body": "Player X trained normally and is available for selection.",
+  "document": {
+    "document_id": "doc_tool_boundary",
+    "source_id": "manual-entry",
+    "published_at": "2026-08-01T09:00:00Z",
+    "observed_at": "2026-08-01T10:00:00Z"
+  },
+  "claim_specs": [
+    {
+      "claim_id": "cl_tool_boundary",
+      "claim_text": "Player X trained normally and is available for selection",
+      "confidence": 0.8,
+      "expires_at": "2026-08-02T12:00:00Z"
+    }
+  ],
+  "requested_tools": [
+    "apply_projection_adjustment"
+  ],
+  "expect": {
+    "document_quarantined": true,
+    "accepted_claim_ids": [],
+    "boundary_violation": "disallowed_tool:apply_projection_adjustment"
+  }
+}
