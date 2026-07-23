@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpl-lab.local/schemas/benchmark/pending-outcome.json",
+  "title": "Sealed pending live FPL outcome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pending_outcome_version", "outcome_id", "episode_id", "season",
+    "gameweek", "status", "reveal_after", "contains_outcome_values",
+    "content_sha256"
+  ],
+  "properties": {
+    "pending_outcome_version": {"const": "1.0"},
+    "outcome_id": {"type": "string", "minLength": 3},
+    "episode_id": {"type": "string", "minLength": 3},
+    "season": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$"},
+    "gameweek": {"type": "integer", "minimum": 1, "maximum": 99},
+    "status": {"const": "pending"},
+    "reveal_after": {"const": "proposal_frozen"},
+    "contains_outcome_values": {"const": false},
+    "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

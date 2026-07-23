@@ -1,5 +1,6 @@
 {
-  "$schema_note": "Manual manager-state entry template (ADR-0005). Copy per Gameweek; do not commit secrets.",
+  "$schema_note": "Manual live-shadow input (ADR-0005). Replace every placeholder from the official pre-deadline FPL view; never add an account ID, cookie, token, password, or other secret.",
+  "manager_id": "manager-pseudonym",
   "season": "2026-27",
   "gameweek": 1,
   "observed_at": "2026-08-01T10:00:00Z",
@@ -12,19 +13,29 @@
     "wildcard_fh",
     "free_hit_fh",
     "triple_captain_fh",
-    "bench_boost_fh"
+    "bench_boost_fh",
+    "wildcard_sh",
+    "free_hit_sh",
+    "triple_captain_sh",
+    "bench_boost_sh"
   ],
+  "chip_history": [],
   "squad": [
-    {
-      "player_id": "REPLACE",
-      "fpl_code": null,
-      "web_name": "REPLACE",
-      "position": "GKP",
-      "club_id": "REPLACE",
-      "purchase_price": 4.5,
-      "selling_price": 4.5,
-      "now_cost": 4.5
-    }
+    {"player_id": "REPLACE-01", "fpl_code": 1, "web_name": "REPLACE", "position": "GKP", "club_id": "REPLACE", "purchase_price": 4.5, "selling_price": 4.5, "now_cost": 4.5},
+    {"player_id": "REPLACE-02", "fpl_code": 2, "web_name": "REPLACE", "position": "GKP", "club_id": "REPLACE", "purchase_price": 4.5, "selling_price": 4.5, "now_cost": 4.5},
+    {"player_id": "REPLACE-03", "fpl_code": 3, "web_name": "REPLACE", "position": "DEF", "club_id": "REPLACE", "purchase_price": 4.5, "selling_price": 4.5, "now_cost": 4.5},
+    {"player_id": "REPLACE-04", "fpl_code": 4, "web_name": "REPLACE", "position": "DEF", "club_id": "REPLACE", "purchase_price": 4.5, "selling_price": 4.5, "now_cost": 4.5},
+    {"player_id": "REPLACE-05", "fpl_code": 5, "web_name": "REPLACE", "position": "DEF", "club_id": "REPLACE", "purchase_price": 4.5, "selling_price": 4.5, "now_cost": 4.5},
+    {"player_id": "REPLACE-06", "fpl_code": 6, "web_name": "REPLACE", "position": "DEF", "club_id": "REPLACE", "purchase_price": 4.5, "selling_price": 4.5, "now_cost": 4.5},
+    {"player_id": "REPLACE-07", "fpl_code": 7, "web_name": "REPLACE", "position": "DEF", "club_id": "REPLACE", "purchase_price": 4.5, "selling_price": 4.5, "now_cost": 4.5},
+    {"player_id": "REPLACE-08", "fpl_code": 8, "web_name": "REPLACE", "position": "MID", "club_id": "REPLACE", "purchase_price": 8.0, "selling_price": 8.0, "now_cost": 8.0},
+    {"player_id": "REPLACE-09", "fpl_code": 9, "web_name": "REPLACE", "position": "MID", "club_id": "REPLACE", "purchase_price": 8.0, "selling_price": 8.0, "now_cost": 8.0},
+    {"player_id": "REPLACE-10", "fpl_code": 10, "web_name": "REPLACE", "position": "MID", "club_id": "REPLACE", "purchase_price": 8.0, "selling_price": 8.0, "now_cost": 8.0},
+    {"player_id": "REPLACE-11", "fpl_code": 11, "web_name": "REPLACE", "position": "MID", "club_id": "REPLACE", "purchase_price": 8.0, "selling_price": 8.0, "now_cost": 8.0},
+    {"player_id": "REPLACE-12", "fpl_code": 12, "web_name": "REPLACE", "position": "MID", "club_id": "REPLACE", "purchase_price": 8.0, "selling_price": 8.0, "now_cost": 8.0},
+    {"player_id": "REPLACE-13", "fpl_code": 13, "web_name": "REPLACE", "position": "FWD", "club_id": "REPLACE", "purchase_price": 9.5, "selling_price": 9.5, "now_cost": 9.5},
+    {"player_id": "REPLACE-14", "fpl_code": 14, "web_name": "REPLACE", "position": "FWD", "club_id": "REPLACE", "purchase_price": 9.5, "selling_price": 9.5, "now_cost": 9.5},
+    {"player_id": "REPLACE-15", "fpl_code": 15, "web_name": "REPLACE", "position": "FWD", "club_id": "REPLACE", "purchase_price": 9.5, "selling_price": 9.5, "now_cost": 9.5}
   ],
-  "notes": "Fill 15 players; prices in £m. Feed into solver input / GDR manager_state."
+  "notes": "For GW1, purchase prices plus bank must equal the active ruleset initial budget. Later Gameweeks require complete chip history, purchase prices, bank, and a verified free-transfer state."
 }
