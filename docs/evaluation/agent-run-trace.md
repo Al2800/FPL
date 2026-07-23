@@ -1,7 +1,7 @@
 # Agent-run trace contract
 
-**Status:** Phase 1 benchmark contract  
-**Schema version:** 1.0  
+**Status:** Phase 1 benchmark contract
+**Schema version:** 1.0
 **Applies to:** `evidence_agent` and `evidence_challenger` benchmark arms
 
 ## Purpose

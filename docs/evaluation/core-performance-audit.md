@@ -1,8 +1,8 @@
 # Core capacity and genuine-replay readiness audit
 
-**Date:** 23 July 2026  
-**Audit bead:** `FPL-60q`  
-**Genuine replay bead:** `FPL-bsw.13`  
+**Date:** 23 July 2026
+**Audit bead:** `FPL-60q`
+**Genuine replay bead:** `FPL-bsw.13`
 **Scope:** evidence-backed capacity check plus end-to-end process, data and
 algorithm readiness for the 2025/26 Benchmark v0 replay and 2026/27 live use.
 
