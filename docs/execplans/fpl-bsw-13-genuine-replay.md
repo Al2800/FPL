@@ -25,7 +25,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-23 22:46Z) Stopped GW2 at review after diagnostics exposed severe single-Gameweek outcome chasing; created `FPL-5iu` for early-season prior/shrinkage calibration.
 - [x] (2026-07-24 00:49Z) Resumed the bead after `FPL-5iu`, the structured-data gate, and `FPL-k21` closed; the reviewed GW2 setup now uses the locked live-faithful forecast and explicit transfer-option policy.
 - [x] (2026-07-24 01:00Z) Freeze all five GW2 arm plans from the reviewed setup before opening the hidden partition, score the official outcome, and advance five independent states to GW3.
-- [ ] Prove GW2 rerun determinism and the fail-closed outcome-access boundary, then persist and review the real checkpoint.
+- [x] (2026-07-24 01:03Z) Prove GW2 rerun determinism and the fail-closed outcome-access boundary, then persist and review the real checkpoint.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -86,7 +86,19 @@ The first genuine checkpoint is complete locally. It contains one shared officia
 
 The checkpoint exposed and fixed one provenance mismatch between episode and scorer canonicalisation. It also demonstrates why the replay must preserve actual decisions: Rodon's 7 bench points remain unused because all XI players appeared. The result is reproducible across two output roots and the full repository suite passes. Policy divergence and solver inputs intentionally begin at the reviewed GW2 checkpoint.
 
-GW2 is now prepared but explicitly review-blocked. The setup path never opens `hidden-outcome.json`, gives every arm the same structured engine input/output, and binds each policy brief to its own opening state. The raw rolling output remains a useful ablation, but it will not be frozen as the benchmark forecast until `FPL-5iu` establishes and evaluates a point-in-time early-season prior or shrinkage policy.
+GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
+was generated from implementation commit `eb65cef`. Every arm used the same
+reviewed structured action—zero transfers, Salah captain and Palmer
+vice-captain—but each plan, outcome, transition and successor is bound to its
+own arm state. Palmer did not play, so first forward substitute Marc Guiu
+entered. The squad scored 59 gross/net points, reached 115 cumulative points,
+retained £0.0m and advanced with three free transfers.
+
+There is intentionally no policy-performance divergence yet. The evidence,
+challenger and human arms explicitly fell back to the structured plan because
+no admissible historical unstructured proposal or recorded human decision was
+available. Treating that parity as an agent result would be incorrect; it is a
+chronology/state/reproducibility result. GW3 has not been prepared or decided.
 
 ## Context and Orientation
 
