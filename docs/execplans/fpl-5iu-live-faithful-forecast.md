@@ -16,10 +16,10 @@ The model specification and its weights will be selected using seasons before 20
 - [x] (2026-07-23 23:46Z) Defined the versioned point-in-time prior and forecast-component contracts, including fail-closed content and cutoff lineage.
 - [x] (2026-07-23 23:50Z) Added tests for shrinkage, expected-minutes integration, position/price fallbacks, bounded team adjustments, blanks/doubles, optional-feed degradation and explicit replay-view selection.
 - [x] (2026-07-23 23:50Z) Implemented the completed-season player-prior builder and pure live-faithful forecast composer without changing the raw rolling ablation.
-- [ ] Build a pre-2025/26 calibration dataset and select fixed shrinkage/team parameters using time-ordered evaluation.
-- [ ] Rebuild the sealed GW2 setup with both model outputs and compare transfer, captain and lineup stability.
-- [ ] Document 2026/27 parity and hand the remaining collection work to `FPL-dnr`.
-- [ ] Run focused/full tests, commit/push, close `FPL-5iu`, reactivate `FPL-bsw.13`, and pause for model/decision review before freezing GW2.
+- [x] (2026-07-24 00:03Z) Built the pinned pre-2025/26 calibration set, trained on 2022/23–2023/24 and opened 2024/25 once as locked validation.
+- [x] (2026-07-24 00:08Z) Rebuilt sealed GW2 with raw and reliability-calibrated outputs; rejected the sparse-prior candidate, retained the corrected comparison, and kept the decision unfrozen.
+- [x] (2026-07-24 00:09Z) Documented 2026/27 parity; immutable launch inputs and fixed-interval odds capture remain tracked by `FPL-dnr`.
+- [x] (2026-07-24 00:11Z) Passed 329 tests and prepared the reviewed artifact set for commit/push; GW2 remains unfrozen pending `FPL-k21`.
 
 ## Surprises & Discoveries
 
@@ -37,6 +37,15 @@ The model specification and its weights will be selected using seasons before 20
 
 - Observation: separating a forecast view from the chronological feature state gives a clean ablation boundary.
   Evidence: `src/forecasting/replay_adapter.py` now defaults to the unchanged rolling projection and uses a richer view only when its full player market, feature-state lineage and content hash validate.
+
+- Observation: whole-market MAE overweights inactive zero-point players relative to the optimiser's ranking problem.
+  Evidence: on locked 2024/25 GW2–5, raw rolling MAE is 1.135 versus 1.393 for the reliability model, while reliability improves RMSE from 2.237 to 2.039 and top-15 precision from 0.15 to 0.25. Promotion is recorded as a ranking/large-error trade-off, not an MAE win.
+
+- Observation: individual per-90 priors require their own sample reliability shrinkage.
+  Evidence: the first sealed candidate captained Vitor Reis and selected marginal players. Adding a training-selected 450-minute cohort shrinkage produces a maximum 8.89 EP and Salah captain without inspecting GW2 outcome.
+
+- Observation: after forecast correction, transfer option value is the next material policy gap.
+  Evidence: the corrected single-GW solver spends two free transfers for 3.36 immediate EP because banking has no future objective value. `FPL-k21` tracks this separately.
 
 ## Decision Log
 
@@ -66,7 +75,9 @@ The model specification and its weights will be selected using seasons before 20
 
 ## Outcomes & Retrospective
 
-Implementation is in progress. The first milestone will establish contracts and executable synthetic examples. The principal external prerequisite is restoration or approved reacquisition of the registered pre-2025/26 raw data before weights can be locked and the real GW2 setup can be regenerated.
+The cold-start forecast objective is complete. Registered sources were restored at vaastav commit `f2090d378ebd1b0c3d14884770dde95f38c50a0d` and fingerprinted. The model was trained before 2024/25, validated once on 2024/25, and applied to sealed GW2 without reading its outcome. Reliability shrinkage corrected both the raw GW1-chasing failure and a sparse-prior failure found during setup review.
+
+The corrected GW2 proposal remains intentionally unfrozen. The forecast now yields plausible magnitude/captaincy and no hit, but the optimiser spends two free transfers for 3.36 one-week EP because it lacks banked-transfer option value. That is a new, separately scoped policy task (`FPL-k21`), rather than grounds to retune the forecast against GW2.
 
 ## Context and Orientation
 

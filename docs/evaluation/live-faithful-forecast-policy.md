@@ -52,6 +52,10 @@ Report player-week MAE/RMSE, expected-minutes MAE, start Brier score, calibratio
 
 2025/26 is the untouched end-to-end test season. It validates chronology, state, reproducibility and decisions; it is not a source of fitted weights. GW2 remains sealed until calibration is complete.
 
+The locked calibration selected 1,350 equivalent player minutes, two equivalent start observations, a 10-minute cameo assumption, a 0.25 team-fixture scale and 450 reliability minutes for shrinking sparse individual priors toward their position/price cohort. On 2024/25 Gameweeks 2–5, this worsened whole-market MAE (1.393 versus 1.135 raw rolling) but improved RMSE (2.039 versus 2.237) and top-15 precision (0.25 versus 0.15). This is a documented decision-ranking/large-error trade-off, not a claim of universal forecast improvement.
+
+The first sealed GW2 application exposed and rejected an unshrunk sparse-prior candidate that captained a marginal player. Reliability shrinkage reduced maximum expected points from 17.0 to 8.89, selected Mohamed Salah as captain and removed the four-point hit. The remaining two-transfer recommendation is not frozen because the single-Gameweek solver does not value carrying transfers forward; that policy gap is tracked separately as `FPL-k21`.
+
 ## 2026/27 live parity
 
 For the live season, capture immutable official launch prices, positions, availability and team assignments when the game launches. Record promoted/new-transfer fallback provenance. Capture odds at fixed pre-deadline intervals (initially T-24h, T-8h, T-2h and the final successful snapshot before deadline) with event, market, bookmaker/source and retrieval timestamps. Missing intervals degrade visibly.

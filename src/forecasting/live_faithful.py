@@ -116,20 +116,9 @@ def _select_prior(
     by_code: Mapping[int, dict[str, Any]],
     fallbacks: Mapping[str, Any],
     price_bands: list[list[float]],
+    reliability_minutes: float,
 ) -> tuple[dict[str, Any], dict[str, Any], list[str]]:
     position = str(player["position"])
-    if fpl_code in by_code:
-        selected = deepcopy(by_code[fpl_code])
-        if str(selected.get("position")) != position:
-            raise LiveFaithfulForecastError(
-                f"Prior position mismatch for FPL code {fpl_code}"
-            )
-        lineage = {
-            "source": "fpl_code",
-            "fpl_code": fpl_code,
-            "sample_minutes": int(_number(selected.get("sample_minutes"), "sample_minutes")),
-        }
-        return selected, lineage, []
     price = _number(player.get("quote", {}).get("now_cost"), "quote.now_cost")
     band = None
     for index, raw_band in enumerate(price_bands):
@@ -147,10 +136,48 @@ def _select_prior(
         raise LiveFaithfulForecastError(
             f"No player prior or position fallback for {player['player_id']}"
         )
-    selected = deepcopy(dict(fallbacks[fallback_key]))
+    fallback = deepcopy(dict(fallbacks[fallback_key]))
+    fallback_reason = "no_fpl_code_prior"
+    if fpl_code in by_code:
+        selected = deepcopy(by_code[fpl_code])
+        if str(selected.get("position")) == position:
+            sample_minutes = _number(selected.get("sample_minutes"), "sample_minutes")
+            reliability = (
+                sample_minutes / (sample_minutes + reliability_minutes)
+                if reliability_minutes > 0
+                else 1.0
+            )
+            for field in (
+                "points_per_90",
+                "start_probability",
+                "minutes_per_start",
+            ):
+                selected[field] = (
+                    reliability * _number(
+                        selected.get(field),
+                        f"player_prior.{field}",
+                        minimum=-100 if field == "points_per_90" else 0,
+                    )
+                    + (1.0 - reliability)
+                    * _number(
+                        fallback.get(field),
+                        f"fallback.{field}",
+                        minimum=-100 if field == "points_per_90" else 0,
+                    )
+                )
+            lineage = {
+                "source": "fpl_code",
+                "fpl_code": fpl_code,
+                "sample_minutes": int(sample_minutes),
+                "reliability_weight": round(reliability, 6),
+                "reliability_fallback_key": fallback_key,
+            }
+            return selected, lineage, []
+        fallback_reason = "position_changed_since_prior"
+    selected = fallback
     lineage = {
         "source": "position_price_fallback" if ":" in fallback_key else "position_fallback",
-        "reason": "no_fpl_code_prior",
+        "reason": fallback_reason,
         "fpl_code": fpl_code,
         "fallback_key": fallback_key,
         "sample_minutes": int(_number(selected.get("sample_minutes"), "sample_minutes")),
@@ -173,15 +200,24 @@ def _forecast_player(
         by_code=priors,
         fallbacks=fallbacks,
         price_bands=list(config.get("price_bands", [])),
+        reliability_minutes=_number(
+            config.get("player_prior_reliability_minutes", 0),
+            "player_prior_reliability_minutes",
+        ),
     )
-    prior_rate = _number(prior.get("points_per_90"), "points_per_90")
+    prior_rate = _number(
+        prior.get("points_per_90"), "points_per_90", minimum=-100
+    )
     prior_start = _bounded(_number(prior.get("start_probability"), "start_probability"), (0, 1))
     minutes_per_start = _bounded(
         _number(prior.get("minutes_per_start"), "minutes_per_start"), (1, 90)
     )
     history = list(player.get("history", []))
     current_minutes = sum(_number(row.get("minutes", 0), "history.minutes") for row in history)
-    current_points = sum(_number(row.get("total_points", 0), "history.total_points") for row in history)
+    current_points = sum(
+        _number(row.get("total_points", 0), "history.total_points", minimum=-100)
+        for row in history
+    )
     current_rate = 90.0 * current_points / current_minutes if current_minutes else prior_rate
     equivalent_minutes = _number(
         config.get("prior_equivalent_minutes"), "prior_equivalent_minutes", minimum=1
@@ -262,7 +298,12 @@ def _forecast_player(
         "position": position,
         "club_id": str(player["club_id"]),
         "raw_rolling_expected_points": round(
-            _number(raw_projection.get("expected_points", 0), "raw expected_points"), 2
+            _number(
+                raw_projection.get("expected_points", 0),
+                "raw expected_points",
+                minimum=-100,
+            ),
+            2,
         ),
         "expected_minutes": round(
             sum(row["expected_minutes"] for row in components), 1

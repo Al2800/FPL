@@ -1,0 +1,51 @@
+{
+  "calibration": {
+    "locked_validation_season": "2024-25",
+    "selection_objective": "early_gw2_5_mae + 0.01*expected_minutes_mae + 0.5*start_brier",
+    "source_commit": "f2090d378ebd1b0c3d14884770dde95f38c50a0d",
+    "source_lineage_sha256": "e7591243dcd933e2d79d248c49d3cd807324d3cdac8eaab1e663d7930b67e891",
+    "team_component_status": "pending_cutoff_safe_calibration",
+    "training_target_seasons": [
+      "2022-23",
+      "2023-24"
+    ]
+  },
+  "cameo_minutes": 10.0,
+  "content_sha256": "95748ed09fe6653b54d6ff713511ca81f6212fbab30e313a3744e9cd4782d2f2",
+  "fixture_multiplier_bounds": [
+    0.7,
+    1.3
+  ],
+  "model_version": "live-faithful-v1",
+  "optional_components": {
+    "timestamped_odds": "degrade_when_absent",
+    "unstructured_evidence": "degrade_when_absent"
+  },
+  "position_attack_weight": {
+    "DEF": 0.2,
+    "FWD": 1.0,
+    "GKP": 0.0,
+    "MID": 0.85
+  },
+  "price_bands": [
+    [
+      0.0,
+      5.5
+    ],
+    [
+      5.5,
+      7.5
+    ],
+    [
+      7.5,
+      10.0
+    ],
+    [
+      10.0,
+      20.0
+    ]
+  ],
+  "prior_equivalent_minutes": 900.0,
+  "start_prior_equivalent_matches": 2.0,
+  "status": "cold_start_calibrated_team_pending"
+}

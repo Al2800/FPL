@@ -154,6 +154,7 @@ def _config() -> dict:
             "prior_equivalent_minutes": 900.0,
             "start_prior_equivalent_matches": 8.0,
             "cameo_minutes": 18.0,
+            "player_prior_reliability_minutes": 900.0,
             "price_bands": [[0, 5.5], [5.5, 7.5], [7.5, 10], [10, 20]],
             "fixture_multiplier_bounds": [0.7, 1.3],
             "position_attack_weight": {
@@ -213,6 +214,15 @@ def test_unmatched_player_uses_declared_position_fallback() -> None:
     assert player["prior"]["fallback_key"] == "MID:7.5-10"
     assert player["prior"]["reason"] == "no_fpl_code_prior"
     assert "player_prior_position_price_fallback" in player["limitations"]
+
+
+def test_position_reclassification_uses_current_position_fallback() -> None:
+    prior = _player_prior()
+    prior["players"][0]["position"] = "FWD"
+    prior["content_sha256"] = artifact_hash(prior)
+    player = _build(player_prior=prior)["players"][0]
+    assert player["prior"]["source"] == "position_price_fallback"
+    assert player["prior"]["reason"] == "position_changed_since_prior"
 
 
 def test_duplicate_fpl_code_prior_fails_closed() -> None:

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "status": "prepared_review_not_frozen",
+  "forecast_comparison_file": "forecast-reliability-comparison.json",
+  "forecast_sha256": "70f8b5ac151780b3777d3bf8baef5f2f425d37d3c0c2422d7407edd7f0155b94",
+  "calibration_report_sha256": "6970864195c818d3fb01214f5ec51db51022bf2012d8d7cb742e211eb91de689",
+  "raw_rolling": {
+    "maximum_expected_points": 17.0,
+    "captain": "Daniel Ballard",
+    "transfers": 3,
+    "hit_cost": 4,
+    "selected_objective": 110.0
+  },
+  "reliability_calibrated": {
+    "maximum_expected_points": 8.89,
+    "captain": "Mohamed Salah",
+    "transfers": 2,
+    "hit_cost": 0,
+    "selected_objective": 57.98,
+    "no_transfer_objective": 54.62,
+    "single_gameweek_transfer_uplift": 3.36
+  },
+  "assessment": {
+    "cold_start_chasing": "resolved_by_sample_reliability_shrinkage",
+    "captaincy": "plausible",
+    "hit_policy": "no_hit_recommended",
+    "remaining_issue": "single_gameweek_solver_has_no_option_value_for_banked_transfers",
+    "follow_up_bead": "FPL-k21",
+    "freeze_recommendation": "remain_unfrozen_pending_transfer_option_value_review"
+  },
+  "locked_validation_tradeoff": {
+    "early_gw2_5_raw_mae": 1.1345536287732818,
+    "early_gw2_5_live_mae": 1.3929106704388432,
+    "early_gw2_5_raw_rmse": 2.2367165394292523,
+    "early_gw2_5_live_rmse": 2.0389076845731156,
+    "early_gw2_5_raw_top15_precision": 0.15,
+    "early_gw2_5_live_top15_precision": 0.25,
+    "interpretation": "The model trades worse whole-market MAE for better large-error control and decision-ranking precision; it is not a blanket MAE improvement."
+  },
+  "contains_hidden_outcome": false,
+  "contains_validated_plan": false,
+  "contains_state_transition": false,
+  "content_sha256": "ce94e6cbc554a81786b5de78f8c0193ee6a580f3b5db910f8104b1c74d2a1a84"
+}

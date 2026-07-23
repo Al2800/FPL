@@ -1,0 +1,659 @@
+{
+  "content_sha256": "bde780fc0b92e88e4e4d36b31f7cd6be9ec995a73007e186aafee2c47564bddf",
+  "limitations": [
+    "2021-22_prior_start_flag_uses_minutes_ge_60_because_recorded_starts_absent",
+    "historical_unstructured_evidence_not_recoverable_at_full_coverage",
+    "historical_odds_excluded_from_fit_without_predeadline_quote_timestamp"
+  ],
+  "locked_validation": {
+    "all": {
+      "live_faithful_expected_points": {
+        "expected_minutes_mae": 22.547540415242864,
+        "mae": 1.3737805936279006,
+        "n": 26919,
+        "rmse": 2.234798283103694,
+        "start_brier": 0.11644387497281244,
+        "top15_precision": 0.1385964912280702
+      },
+      "prior_only_expected_points": {
+        "mae": 1.6777478539888837,
+        "n": 26919,
+        "rmse": 2.4466312206072405
+      },
+      "raw_rolling_expected_points": {
+        "mae": 1.1012419975977314,
+        "n": 26919,
+        "rmse": 2.1929514727836303
+      }
+    },
+    "early_gw2_5": {
+      "live_faithful_expected_points": {
+        "expected_minutes_mae": 22.62254534953394,
+        "mae": 1.4149468570722754,
+        "n": 2595,
+        "rmse": 2.199508222908081,
+        "start_brier": 0.11201415548695223,
+        "top15_precision": 0.18333333333333332
+      },
+      "prior_only_expected_points": {
+        "mae": 1.6177579015179921,
+        "n": 2595,
+        "rmse": 2.3804881119779147
+      },
+      "raw_rolling_expected_points": {
+        "mae": 1.1345536287732818,
+        "n": 2595,
+        "rmse": 2.2367165394292523
+      }
+    },
+    "parameters": {
+      "cameo_minutes": 10.0,
+      "prior_equivalent_minutes": 900.0,
+      "start_prior_equivalent_matches": 2.0,
+      "team_fixture_scale": 0.25
+    }
+  },
+  "locked_validation_decision_diagnostics": {
+    "by_gameweek": [
+      {
+        "gameweek": 1,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 10.913,
+        "players": 616,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 2.0,
+        "raw_vs_live_top15_overlap": 0.0
+      },
+      {
+        "gameweek": 2,
+        "live_actual_top15_precision": 0.2667,
+        "live_max_expected_points": 11.377,
+        "players": 627,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 14.0,
+        "raw_vs_live_top15_overlap": 0.2
+      },
+      {
+        "gameweek": 3,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 10.512,
+        "players": 648,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 12.0,
+        "raw_vs_live_top15_overlap": 0.3333
+      },
+      {
+        "gameweek": 4,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 11.513,
+        "players": 659,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 13.667,
+        "raw_vs_live_top15_overlap": 0.4
+      },
+      {
+        "gameweek": 5,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 11.345,
+        "players": 661,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 15.667,
+        "raw_vs_live_top15_overlap": 0.4667
+      },
+      {
+        "gameweek": 6,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 11.19,
+        "players": 664,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 13.0,
+        "raw_vs_live_top15_overlap": 0.4
+      },
+      {
+        "gameweek": 7,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 10.961,
+        "players": 666,
+        "raw_actual_top15_precision": 0.0,
+        "raw_max_expected_points": 12.0,
+        "raw_vs_live_top15_overlap": 0.3333
+      },
+      {
+        "gameweek": 8,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 10.917,
+        "players": 667,
+        "raw_actual_top15_precision": 0.0,
+        "raw_max_expected_points": 13.0,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 9,
+        "live_actual_top15_precision": 0.4,
+        "live_max_expected_points": 10.165,
+        "players": 670,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 11.0,
+        "raw_vs_live_top15_overlap": 0.2
+      },
+      {
+        "gameweek": 10,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 11.271,
+        "players": 674,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 9.333,
+        "raw_vs_live_top15_overlap": 0.2667
+      },
+      {
+        "gameweek": 11,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 11.096,
+        "players": 678,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 10.333,
+        "raw_vs_live_top15_overlap": 0.2
+      },
+      {
+        "gameweek": 12,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 11.576,
+        "players": 684,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 11.0,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 13,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 10.385,
+        "players": 690,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 12.0,
+        "raw_vs_live_top15_overlap": 0.0667
+      },
+      {
+        "gameweek": 14,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 10.798,
+        "players": 693,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 13.333,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 15,
+        "live_actual_top15_precision": 0.3333,
+        "live_max_expected_points": 10.805,
+        "players": 630,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 11.333,
+        "raw_vs_live_top15_overlap": 0.2
+      },
+      {
+        "gameweek": 16,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 11.354,
+        "players": 701,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 14.667,
+        "raw_vs_live_top15_overlap": 0.3333
+      },
+      {
+        "gameweek": 17,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 10.836,
+        "players": 701,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 12.0,
+        "raw_vs_live_top15_overlap": 0.3333
+      },
+      {
+        "gameweek": 18,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 11.626,
+        "players": 705,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 14.667,
+        "raw_vs_live_top15_overlap": 0.2
+      },
+      {
+        "gameweek": 19,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 11.073,
+        "players": 709,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 12.0,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 20,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 11.439,
+        "players": 711,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 15.333,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 21,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 10.701,
+        "players": 724,
+        "raw_actual_top15_precision": 0.2667,
+        "raw_max_expected_points": 10.667,
+        "raw_vs_live_top15_overlap": 0.3333
+      },
+      {
+        "gameweek": 22,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 11.089,
+        "players": 729,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 10.667,
+        "raw_vs_live_top15_overlap": 0.4
+      },
+      {
+        "gameweek": 23,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 11.584,
+        "players": 736,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 14.0,
+        "raw_vs_live_top15_overlap": 0.2667
+      },
+      {
+        "gameweek": 24,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 21.803,
+        "players": 742,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 14.333,
+        "raw_vs_live_top15_overlap": 0.3333
+      },
+      {
+        "gameweek": 25,
+        "live_actual_top15_precision": 0.2667,
+        "live_max_expected_points": 22.486,
+        "players": 759,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 26.667,
+        "raw_vs_live_top15_overlap": 0.3333
+      },
+      {
+        "gameweek": 26,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 11.231,
+        "players": 763,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 19.0,
+        "raw_vs_live_top15_overlap": 0.2667
+      },
+      {
+        "gameweek": 27,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 11.248,
+        "players": 764,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 21.0,
+        "raw_vs_live_top15_overlap": 0.2
+      },
+      {
+        "gameweek": 28,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 11.76,
+        "players": 769,
+        "raw_actual_top15_precision": 0.2667,
+        "raw_max_expected_points": 13.333,
+        "raw_vs_live_top15_overlap": 0.2667
+      },
+      {
+        "gameweek": 29,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 10.752,
+        "players": 623,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 10.333,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 30,
+        "live_actual_top15_precision": 0.0,
+        "live_max_expected_points": 11.46,
+        "players": 771,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 12.0,
+        "raw_vs_live_top15_overlap": 0.0667
+      },
+      {
+        "gameweek": 31,
+        "live_actual_top15_precision": 0.0,
+        "live_max_expected_points": 11.018,
+        "players": 772,
+        "raw_actual_top15_precision": 0.0,
+        "raw_max_expected_points": 10.0,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 32,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 12.569,
+        "players": 778,
+        "raw_actual_top15_precision": 0.4,
+        "raw_max_expected_points": 16.0,
+        "raw_vs_live_top15_overlap": 0.2
+      },
+      {
+        "gameweek": 33,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 11.892,
+        "players": 779,
+        "raw_actual_top15_precision": 0.1333,
+        "raw_max_expected_points": 16.667,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 34,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 11.552,
+        "players": 629,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 13.333,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 35,
+        "live_actual_top15_precision": 0.2,
+        "live_max_expected_points": 10.771,
+        "players": 781,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 11.667,
+        "raw_vs_live_top15_overlap": 0.0667
+      },
+      {
+        "gameweek": 36,
+        "live_actual_top15_precision": 0.0667,
+        "live_max_expected_points": 10.77,
+        "players": 781,
+        "raw_actual_top15_precision": 0.2,
+        "raw_max_expected_points": 9.333,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 37,
+        "live_actual_top15_precision": 0.0,
+        "live_max_expected_points": 10.796,
+        "players": 781,
+        "raw_actual_top15_precision": 0.0,
+        "raw_max_expected_points": 12.0,
+        "raw_vs_live_top15_overlap": 0.1333
+      },
+      {
+        "gameweek": 38,
+        "live_actual_top15_precision": 0.1333,
+        "live_max_expected_points": 11.229,
+        "players": 784,
+        "raw_actual_top15_precision": 0.0667,
+        "raw_max_expected_points": 10.667,
+        "raw_vs_live_top15_overlap": 0.0667
+      }
+    ],
+    "early_gw2_5": {
+      "max_live_expected_points": 11.513,
+      "max_raw_expected_points": 15.667,
+      "mean_live_actual_top15_precision": 0.1833,
+      "mean_raw_actual_top15_precision": 0.15,
+      "mean_raw_vs_live_top15_overlap": 0.35
+    }
+  },
+  "model_config_sha256": "7bf85056a274434a08341f033eaed76e5d072eacf38f342aae55307223abbf08",
+  "report_id": "live-faithful-v1-cold-start-calibration",
+  "schema_version": "1.0",
+  "selection": {
+    "grid_size": 288,
+    "selected_objective": 1.694261790463001,
+    "selected_parameters": {
+      "cameo_minutes": 10.0,
+      "prior_equivalent_minutes": 900.0,
+      "start_prior_equivalent_matches": 2.0,
+      "team_fixture_scale": 0.25
+    },
+    "top_10": [
+      {
+        "objective": 1.694261790463001,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 900.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.25
+        },
+        "rank": 1
+      },
+      {
+        "objective": 1.6942789019046232,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 1350.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.25
+        },
+        "rank": 2
+      },
+      {
+        "objective": 1.6943918435325556,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 1800.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.25
+        },
+        "rank": 3
+      },
+      {
+        "objective": 1.6945075932051425,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 720.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.25
+        },
+        "rank": 4
+      },
+      {
+        "objective": 1.6959528294049788,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 450.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.25
+        },
+        "rank": 5
+      },
+      {
+        "objective": 1.6991531778228068,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 270.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.25
+        },
+        "rank": 6
+      },
+      {
+        "objective": 1.7035757975870907,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 1800.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.5
+        },
+        "rank": 7
+      },
+      {
+        "objective": 1.7036187049052904,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 1350.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.5
+        },
+        "rank": 8
+      },
+      {
+        "objective": 1.70386153152811,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 900.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.0
+        },
+        "rank": 9
+      },
+      {
+        "objective": 1.703905735584666,
+        "parameters": {
+          "cameo_minutes": 10.0,
+          "prior_equivalent_minutes": 720.0,
+          "start_prior_equivalent_matches": 2.0,
+          "team_fixture_scale": 0.0
+        },
+        "rank": 10
+      }
+    ]
+  },
+  "source_commit": "f2090d378ebd1b0c3d14884770dde95f38c50a0d",
+  "source_lineage": {
+    "2021-22": {
+      "excluded_assistant_manager_rows": 0,
+      "merged_gw_sha256": "6cf30d3b9fb0bc594486c8a675eeccc209264550a01ba126b4733a2d2da70d21",
+      "players_raw_sha256": "78e185fb0b5c81f58c2b89f232358b1097bededc9852d4171edaea2e9d3bd887",
+      "row_count": 25447,
+      "season": "2021-22",
+      "start_source": "minutes_ge_60_prior_fallback"
+    },
+    "2022-23": {
+      "excluded_assistant_manager_rows": 0,
+      "merged_gw_sha256": "b97460b11372173c3a70adec2230e46338dd91e7878dbe041892fe924a21a454",
+      "players_raw_sha256": "a874c12817bbf4d454e60a5765629742b528d4ad0c2f39f56e4fc89640605f7f",
+      "row_count": 26505,
+      "season": "2022-23",
+      "start_source": "recorded"
+    },
+    "2023-24": {
+      "excluded_assistant_manager_rows": 0,
+      "merged_gw_sha256": "76cda38a4379a03b46ff50e66c659b807508aeec9d85b4aea2f1e33f1633cfa7",
+      "players_raw_sha256": "43d8cf5efb3d901f2499558c40b392b7f0ee22afe28030f36266ad29024c63d9",
+      "row_count": 29725,
+      "season": "2023-24",
+      "start_source": "recorded"
+    },
+    "2024-25": {
+      "excluded_assistant_manager_rows": 322,
+      "merged_gw_sha256": "95f61a568f21e05bd44e676fdf78ef1c4fcd8926480f2aaf5da5db4675f989f0",
+      "players_raw_sha256": "75686051b265cbe7755ac71213ecaad21b26ee1cc46a8bafbba19c39ce894b05",
+      "row_count": 27283,
+      "season": "2024-25",
+      "start_source": "recorded"
+    },
+    "football_data": {
+      "2020-21": {
+        "file": "E0_2021.csv",
+        "row_count": 380,
+        "sha256": "5afe63f69401457b8354eaacee24f9a3e520b3c3af6329564a9783e20d789c62"
+      },
+      "2021-22": {
+        "file": "E0_2122.csv",
+        "row_count": 380,
+        "sha256": "335afcbabeb2939fa10ab39ba3e8215072d0b577cb8d0705c1e44c56e934e703"
+      },
+      "2022-23": {
+        "file": "E0_2223.csv",
+        "row_count": 380,
+        "sha256": "8442792d3b614c94ea3cf381bd2736805889cc1713169035368fff19c3d02380"
+      },
+      "2023-24": {
+        "file": "E0_2324.csv",
+        "row_count": 380,
+        "sha256": "b2e057b0ed959f198b0f63d2391c01239f3608e6de5db68edab3f88e04d07ff3"
+      },
+      "2024-25": {
+        "file": "E0_2425.csv",
+        "row_count": 380,
+        "sha256": "d0c8ce4a96d886cf60cf101f570f4a3893844226f91c7bd769eb568c49edbfa4"
+      }
+    }
+  },
+  "split": {
+    "forbidden_fit_seasons": [
+      "2024-25",
+      "2025-26"
+    ],
+    "locked_validation_season": "2024-25",
+    "training_target_seasons": [
+      "2022-23",
+      "2023-24"
+    ]
+  },
+  "team_selection": {
+    "fixture_scale_selected_with_player_training": 0.25,
+    "grid_size": 324,
+    "locked_validation_log_loss": 0.9910030923283217,
+    "selected_parameters": {
+      "draw_factor": 0.6,
+      "fixture_scale": 0.5,
+      "home_advantage": 80.0,
+      "k": 40.0,
+      "promoted_rating": 1450.0,
+      "season_regression": 1.0
+    },
+    "training_log_loss": 0.9604226309162917
+  },
+  "training": {
+    "all": {
+      "live_faithful_expected_points": {
+        "expected_minutes_mae": 25.74165437639562,
+        "mae": 1.3388173224023765,
+        "n": 53699,
+        "rmse": 2.3405883839685573,
+        "start_brier": 0.11921719034731852,
+        "top15_precision": 0.1105263157894737
+      },
+      "prior_only_expected_points": {
+        "mae": 1.6243861027548074,
+        "n": 53699,
+        "rmse": 2.4721139861633663
+      },
+      "raw_rolling_expected_points": {
+        "mae": 1.1422590116513653,
+        "n": 53699,
+        "rmse": 2.294901260683859
+      }
+    },
+    "early_gw2_5": {
+      "live_faithful_expected_points": {
+        "expected_minutes_mae": 26.67711437791646,
+        "mae": 1.3858265637163092,
+        "n": 5082,
+        "rmse": 2.341463839002567,
+        "start_brier": 0.0833281659350545,
+        "top15_precision": 0.11666666666666667
+      },
+      "prior_only_expected_points": {
+        "mae": 1.5432530768954433,
+        "n": 5082,
+        "rmse": 2.395659965669015
+      },
+      "raw_rolling_expected_points": {
+        "mae": 1.2163846254755346,
+        "n": 5082,
+        "rmse": 2.440796205457765
+      }
+    },
+    "parameters": {
+      "cameo_minutes": 10.0,
+      "prior_equivalent_minutes": 900.0,
+      "start_prior_equivalent_matches": 2.0,
+      "team_fixture_scale": 0.25
+    }
+  }
+}
