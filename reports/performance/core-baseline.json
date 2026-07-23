@@ -1,0 +1,943 @@
+{
+  "environment": {
+    "episode_observed_bytes": 27910118,
+    "episode_observed_files": 38,
+    "executable": "C:\\Users\\Alastair\\FPL\\.venv\\Scripts\\python.exe",
+    "input_bytes": 3754,
+    "logical_cpus": 16,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "method": {
+    "cpu": "process_time; profiler disabled; warm process",
+    "cpu_profile": "separate cProfile run; project frames only",
+    "io": "separate Windows GetProcessIoCounters run",
+    "latency": "perf_counter; profiler disabled; warm process",
+    "memory": "separate tracemalloc plus 2ms Windows RSS sampling run",
+    "percentiles": "linear interpolation over per-operation samples",
+    "warning": "Instrumented runs are diagnostic and are not latency baselines."
+  },
+  "schema_version": "1.0",
+  "workloads": [
+    {
+      "cpu_ms": {
+        "p50": 9687.5,
+        "p95": 10814.062,
+        "p99": 10975.312
+      },
+      "cpu_profile": [
+        {
+          "cumulative_ms": 22885.139,
+          "file": "profile_core_performance.py",
+          "function": "solver_golden",
+          "line": 248,
+          "own_ms": 0.196,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_ms": 22884.943,
+          "file": "solver.py",
+          "function": "solve",
+          "line": 106,
+          "own_ms": 7.844,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_ms": 22768.017,
+          "file": "solver.py",
+          "function": "_evaluate_squad",
+          "line": 44,
+          "own_ms": 20.298,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 22568.942,
+          "file": "simple_plan.py",
+          "function": "choose_starting_xi",
+          "line": 12,
+          "own_ms": 219.97,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 10273.771,
+          "file": "rules_loader.py",
+          "function": "load_rules",
+          "line": 28,
+          "own_ms": 1.059,
+          "primitive_calls": 123,
+          "total_calls": 123
+        },
+        {
+          "cumulative_ms": 10199.366,
+          "file": "validator.py",
+          "function": "legal_formations",
+          "line": 34,
+          "own_ms": 2.643,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 32.967,
+          "file": "rules_loader.py",
+          "function": "ruleset_bytes",
+          "line": 15,
+          "own_ms": 0.694,
+          "primitive_calls": 123,
+          "total_calls": 123
+        },
+        {
+          "cumulative_ms": 32.547,
+          "file": "rules_loader.py",
+          "function": "get_rule",
+          "line": 51,
+          "own_ms": 1.743,
+          "primitive_calls": 2689,
+          "total_calls": 2689
+        },
+        {
+          "cumulative_ms": 30.804,
+          "file": "rules_loader.py",
+          "function": "index_rules",
+          "line": 36,
+          "own_ms": 26.623,
+          "primitive_calls": 2689,
+          "total_calls": 2689
+        },
+        {
+          "cumulative_ms": 24.075,
+          "file": "transfers.py",
+          "function": "apply_transfers",
+          "line": 47,
+          "own_ms": 4.247,
+          "primitive_calls": 121,
+          "total_calls": 121
+        },
+        {
+          "cumulative_ms": 20.482,
+          "file": "validator.py",
+          "function": "validate_lineup",
+          "line": 115,
+          "own_ms": 4.782,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 20.416,
+          "file": "validator.py",
+          "function": "validate_squad",
+          "line": 68,
+          "own_ms": 4.158,
+          "primitive_calls": 243,
+          "total_calls": 243
+        },
+        {
+          "cumulative_ms": 3.855,
+          "file": "validator.py",
+          "function": "selling_price",
+          "line": 55,
+          "own_ms": 0.533,
+          "primitive_calls": 255,
+          "total_calls": 255
+        },
+        {
+          "cumulative_ms": 3.186,
+          "file": "validator.py",
+          "function": "validate_chips",
+          "line": 212,
+          "own_ms": 0.624,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 2.538,
+          "file": "transfers.py",
+          "function": "enumerate_transfer_sets",
+          "line": 130,
+          "own_ms": 1.04,
+          "primitive_calls": 2,
+          "total_calls": 2
+        },
+        {
+          "cumulative_ms": 2.068,
+          "file": "solver.py",
+          "function": "_objective",
+          "line": 22,
+          "own_ms": 1.185,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 1.55,
+          "file": "validator.py",
+          "function": "transfer_hit_cost",
+          "line": 183,
+          "own_ms": 0.246,
+          "primitive_calls": 121,
+          "total_calls": 121
+        },
+        {
+          "cumulative_ms": 0.908,
+          "file": "validator.py",
+          "function": "<genexpr>",
+          "line": 104,
+          "own_ms": 0.908,
+          "primitive_calls": 3888,
+          "total_calls": 3888
+        },
+        {
+          "cumulative_ms": 0.739,
+          "file": "validator.py",
+          "function": "<genexpr>",
+          "line": 132,
+          "own_ms": 0.739,
+          "primitive_calls": 1464,
+          "total_calls": 1464
+        },
+        {
+          "cumulative_ms": 0.505,
+          "file": "validator.py",
+          "function": "<genexpr>",
+          "line": 92,
+          "own_ms": 0.505,
+          "primitive_calls": 3888,
+          "total_calls": 3888
+        }
+      ],
+      "description": "One warm deterministic solve of the committed 20-player, two-transfer fixture.",
+      "deterministic": true,
+      "instrumented_memory_io": {
+        "io_delta": {},
+        "oracle": {
+          "input_fingerprint": "b6ba560a8fbf1fc95562d50424b569279d4a1a6718c65b43a1d26964e8f96ece",
+          "n_candidates": 123,
+          "output_fingerprint": "a4605dc794cd45d6c2ea54071ba330d66bff88c52da7458e246df2592b412fec",
+          "selected": {
+            "bank_after": 0.5,
+            "hit_cost": 0,
+            "lineup": {
+              "bench_ids": [
+                "2",
+                "15",
+                "6",
+                "5"
+              ],
+              "captain_id": "16",
+              "formation": {
+                "DEF": 3,
+                "FWD": 2,
+                "MID": 5
+              },
+              "starting_xi_ids": [
+                "1",
+                "7",
+                "3",
+                "4",
+                "16",
+                "9",
+                "8",
+                "10",
+                "11",
+                "14",
+                "13"
+              ],
+              "vice_captain_id": "9"
+            },
+            "objective": 60.4,
+            "optimality": "highest_ev_in_declared_candidate_pool",
+            "strategy": "highest_ev",
+            "transfers": [
+              {
+                "player_in_id": "16",
+                "player_out_id": "12"
+              }
+            ],
+            "validation": {
+              "chips_ok": true,
+              "lineup_ok": true,
+              "squad_ok": true
+            }
+          }
+        },
+        "python_heap_current_bytes": 400865,
+        "python_heap_peak_bytes": 1427999,
+        "rss_after_bytes": null,
+        "rss_before_bytes": null,
+        "rss_sampled_peak_bytes": null,
+        "top_allocations": [
+          {
+            "blocks": 1450,
+            "bytes": 81200,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/yaml/composer.py",
+            "line": 135
+          },
+          {
+            "blocks": 845,
+            "bytes": 52720,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/managers.py",
+            "line": 2445
+          },
+          {
+            "blocks": 672,
+            "bytes": 48384,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/indexes/base.py",
+            "line": 8033
+          },
+          {
+            "blocks": 564,
+            "bytes": 28308,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/arrays/string_arrow.py",
+            "line": 310
+          },
+          {
+            "blocks": 500,
+            "bytes": 24000,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/managers.py",
+            "line": 2025
+          },
+          {
+            "blocks": 414,
+            "bytes": 19872,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/generic.py",
+            "line": 6219
+          },
+          {
+            "blocks": 359,
+            "bytes": 17591,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/series.py",
+            "line": 907
+          },
+          {
+            "blocks": 302,
+            "bytes": 16912,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 249
+          },
+          {
+            "blocks": 311,
+            "bytes": 14928,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/generic.py",
+            "line": 6206
+          },
+          {
+            "blocks": 201,
+            "bytes": 9648,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/flags.py",
+            "line": 65
+          },
+          {
+            "blocks": 122,
+            "bytes": 8784,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 245
+          },
+          {
+            "blocks": 123,
+            "bytes": 7872,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 229
+          },
+          {
+            "blocks": 136,
+            "bytes": 6966,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/arrays/arrow/array.py",
+            "line": 563
+          },
+          {
+            "blocks": 129,
+            "bytes": 6192,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/series.py",
+            "line": 743
+          },
+          {
+            "blocks": 123,
+            "bytes": 5904,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/arrays/string_arrow.py",
+            "line": 156
+          },
+          {
+            "blocks": 90,
+            "bytes": 4320,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/indexes/base.py",
+            "line": 8032
+          },
+          {
+            "blocks": 90,
+            "bytes": 4320,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/indexes/base.py",
+            "line": 1917
+          },
+          {
+            "blocks": 79,
+            "bytes": 3950,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/blocks.py",
+            "line": 182
+          },
+          {
+            "blocks": 30,
+            "bytes": 3600,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/yaml/constructor.py",
+            "line": 414
+          },
+          {
+            "blocks": 30,
+            "bytes": 3600,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/managers.py",
+            "line": 445
+          }
+        ]
+      },
+      "iterations": 7,
+      "name": "solver_golden",
+      "oracle_sha256": [
+        "fbf9ac66d4ce4dfef48e29cd86436b9e780ed71c9020b6cc0798cdcc8172a09e"
+      ],
+      "profiled_oracle_matches": true,
+      "throughput_units_per_second": 0.098,
+      "units_per_operation": 1,
+      "wall_ms": {
+        "max": 11471.694,
+        "mean": 10153.524,
+        "min": 9595.507,
+        "p50": 9775.22,
+        "p95": 11246.231,
+        "p99": 11426.601
+      },
+      "warmups": 1
+    },
+    {
+      "cpu_ms": {
+        "p50": 9968.75,
+        "p95": 10218.75,
+        "p99": 10256.25
+      },
+      "cpu_profile": [
+        {
+          "cumulative_ms": 24751.439,
+          "file": "profile_core_performance.py",
+          "function": "replay_golden",
+          "line": 257,
+          "own_ms": 0.189,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_ms": 24751.25,
+          "file": "replay_harness.py",
+          "function": "replay_gameweek",
+          "line": 47,
+          "own_ms": 0.257,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_ms": 24655.428,
+          "file": "solver.py",
+          "function": "solve",
+          "line": 106,
+          "own_ms": 7.639,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_ms": 24530.374,
+          "file": "solver.py",
+          "function": "_evaluate_squad",
+          "line": 44,
+          "own_ms": 20.053,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 24325.649,
+          "file": "simple_plan.py",
+          "function": "choose_starting_xi",
+          "line": 12,
+          "own_ms": 242.097,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 11030.523,
+          "file": "rules_loader.py",
+          "function": "load_rules",
+          "line": 28,
+          "own_ms": 1.338,
+          "primitive_calls": 124,
+          "total_calls": 124
+        },
+        {
+          "cumulative_ms": 10855.4,
+          "file": "validator.py",
+          "function": "legal_formations",
+          "line": 34,
+          "own_ms": 2.804,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 34.044,
+          "file": "rules_loader.py",
+          "function": "ruleset_bytes",
+          "line": 15,
+          "own_ms": 0.771,
+          "primitive_calls": 124,
+          "total_calls": 124
+        },
+        {
+          "cumulative_ms": 32.763,
+          "file": "rules_loader.py",
+          "function": "get_rule",
+          "line": 51,
+          "own_ms": 1.778,
+          "primitive_calls": 2689,
+          "total_calls": 2689
+        },
+        {
+          "cumulative_ms": 30.985,
+          "file": "rules_loader.py",
+          "function": "index_rules",
+          "line": 36,
+          "own_ms": 26.77,
+          "primitive_calls": 2689,
+          "total_calls": 2689
+        },
+        {
+          "cumulative_ms": 23.036,
+          "file": "transfers.py",
+          "function": "apply_transfers",
+          "line": 47,
+          "own_ms": 4.108,
+          "primitive_calls": 121,
+          "total_calls": 121
+        },
+        {
+          "cumulative_ms": 20.226,
+          "file": "validator.py",
+          "function": "validate_lineup",
+          "line": 115,
+          "own_ms": 4.499,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 19.951,
+          "file": "validator.py",
+          "function": "validate_squad",
+          "line": 68,
+          "own_ms": 3.853,
+          "primitive_calls": 243,
+          "total_calls": 243
+        },
+        {
+          "cumulative_ms": 3.747,
+          "file": "validator.py",
+          "function": "selling_price",
+          "line": 55,
+          "own_ms": 0.525,
+          "primitive_calls": 255,
+          "total_calls": 255
+        },
+        {
+          "cumulative_ms": 3.162,
+          "file": "validator.py",
+          "function": "validate_chips",
+          "line": 212,
+          "own_ms": 0.543,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 3.043,
+          "file": "decision_record.py",
+          "function": "build_decision_record",
+          "line": 73,
+          "own_ms": 0.008,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_ms": 3.033,
+          "file": "decision_record.py",
+          "function": "validate_decision_record",
+          "line": 51,
+          "own_ms": 0.036,
+          "primitive_calls": 1,
+          "total_calls": 1
+        },
+        {
+          "cumulative_ms": 2.568,
+          "file": "transfers.py",
+          "function": "enumerate_transfer_sets",
+          "line": 130,
+          "own_ms": 1.029,
+          "primitive_calls": 2,
+          "total_calls": 2
+        },
+        {
+          "cumulative_ms": 2.096,
+          "file": "solver.py",
+          "function": "_objective",
+          "line": 22,
+          "own_ms": 1.2,
+          "primitive_calls": 122,
+          "total_calls": 122
+        },
+        {
+          "cumulative_ms": 1.49,
+          "file": "validator.py",
+          "function": "transfer_hit_cost",
+          "line": 183,
+          "own_ms": 0.262,
+          "primitive_calls": 121,
+          "total_calls": 121
+        }
+      ],
+      "description": "One in-memory WP-09 replay; no artefact writes.",
+      "deterministic": true,
+      "instrumented_memory_io": {
+        "io_delta": {},
+        "oracle": {
+          "baseline_comparison": {
+            "do_nothing_objective": 54.9,
+            "expected_advantage": 5.5,
+            "notes": "From recorded optimiser candidate plans",
+            "recommended_objective": 60.4
+          },
+          "recommendation": {
+            "captain_name": "MidStar",
+            "chip": null,
+            "hit_cost": 0,
+            "lineup": {
+              "bench_ids": [
+                "2",
+                "15",
+                "6",
+                "5"
+              ],
+              "captain_id": "16",
+              "formation": {
+                "DEF": 3,
+                "FWD": 2,
+                "MID": 5
+              },
+              "starting_xi_ids": [
+                "1",
+                "7",
+                "3",
+                "4",
+                "16",
+                "9",
+                "8",
+                "10",
+                "11",
+                "14",
+                "13"
+              ],
+              "vice_captain_id": "9"
+            },
+            "strategy": "highest_ev",
+            "transfers": [
+              {
+                "player_in_id": "16",
+                "player_out_id": "12"
+              }
+            ],
+            "vice_captain_name": "MidB"
+          },
+          "repro_hash": "8810949d9f7ce0c019d588847c2832254bda2e86713f51de07780990d0cc810b"
+        },
+        "python_heap_current_bytes": 233082,
+        "python_heap_peak_bytes": 1261898,
+        "rss_after_bytes": null,
+        "rss_before_bytes": null,
+        "rss_sampled_peak_bytes": null,
+        "top_allocations": [
+          {
+            "blocks": 986,
+            "bytes": 55216,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/yaml/composer.py",
+            "line": 135
+          },
+          {
+            "blocks": 552,
+            "bytes": 27762,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/arrays/string_arrow.py",
+            "line": 310
+          },
+          {
+            "blocks": 324,
+            "bytes": 18032,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 230
+          },
+          {
+            "blocks": 318,
+            "bytes": 17680,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 249
+          },
+          {
+            "blocks": 327,
+            "bytes": 16023,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/series.py",
+            "line": 907
+          },
+          {
+            "blocks": 204,
+            "bytes": 14565,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/json/decoder.py",
+            "line": 361
+          },
+          {
+            "blocks": 122,
+            "bytes": 8784,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 245
+          },
+          {
+            "blocks": 140,
+            "bytes": 7170,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/arrays/arrow/array.py",
+            "line": 563
+          },
+          {
+            "blocks": 111,
+            "bytes": 7104,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 229
+          },
+          {
+            "blocks": 139,
+            "bytes": 6672,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/managers.py",
+            "line": 2025
+          },
+          {
+            "blocks": 98,
+            "bytes": 4704,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/generic.py",
+            "line": 6219
+          },
+          {
+            "blocks": 97,
+            "bytes": 4560,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/jsonschema/_types.py",
+            "line": 116
+          },
+          {
+            "blocks": 74,
+            "bytes": 3552,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/generic.py",
+            "line": 6206
+          },
+          {
+            "blocks": 27,
+            "bytes": 3240,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/managers.py",
+            "line": 445
+          },
+          {
+            "blocks": 25,
+            "bytes": 3000,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/yaml/constructor.py",
+            "line": 414
+          },
+          {
+            "blocks": 48,
+            "bytes": 2680,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/json/encoder.py",
+            "line": 261
+          },
+          {
+            "blocks": 51,
+            "bytes": 2550,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/blocks.py",
+            "line": 182
+          },
+          {
+            "blocks": 50,
+            "bytes": 2400,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/flags.py",
+            "line": 65
+          },
+          {
+            "blocks": 97,
+            "bytes": 2328,
+            "file": "C:/Users/Alastair/FPL/src/optimisation/solver.py",
+            "line": 246
+          },
+          {
+            "blocks": 42,
+            "bytes": 2058,
+            "file": "C:/Users/Alastair/FPL/.venv/Lib/site-packages/pandas/core/internals/blocks.py",
+            "line": 2387
+          }
+        ]
+      },
+      "iterations": 7,
+      "name": "replay_golden",
+      "oracle_sha256": [
+        "6616ec0e1494c6a5a938f931b825375773ea3877d4fb6a93c1e7f8d1e4083bea"
+      ],
+      "profiled_oracle_matches": true,
+      "throughput_units_per_second": 0.099,
+      "units_per_operation": 1,
+      "wall_ms": {
+        "max": 10522.436,
+        "mean": 10068.17,
+        "min": 9642.447,
+        "p50": 10217.207,
+        "p95": 10445.671,
+        "p99": 10507.083
+      },
+      "warmups": 1
+    },
+    {
+      "cpu_ms": {
+        "p50": 390.625,
+        "p95": 417.188,
+        "p99": 420.938
+      },
+      "cpu_profile": [
+        {
+          "cumulative_ms": 413.298,
+          "file": "profile_core_performance.py",
+          "function": "scan_observed_episodes",
+          "line": 265,
+          "own_ms": 34.414,
+          "primitive_calls": 1,
+          "total_calls": 1
+        }
+      ],
+      "description": "Read and decode all 38 immutable v2 observed partitions once.",
+      "deterministic": true,
+      "instrumented_memory_io": {
+        "io_delta": {},
+        "oracle": {
+          "bytes_read": 27910118,
+          "episode_count": 38,
+          "rows_sha256": "73cb2624d562f89da40fee5fc57c02eb7a5728be90328b27a131b72bf311ad44"
+        },
+        "python_heap_current_bytes": 8689,
+        "python_heap_peak_bytes": 6170627,
+        "rss_after_bytes": null,
+        "rss_before_bytes": null,
+        "rss_sampled_peak_bytes": null,
+        "top_allocations": [
+          {
+            "blocks": 177,
+            "bytes": 7480,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/json/decoder.py",
+            "line": 361
+          },
+          {
+            "blocks": 3,
+            "bytes": 440,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/threading.py",
+            "line": 975
+          },
+          {
+            "blocks": 2,
+            "bytes": 128,
+            "file": "C:/Users/Alastair/FPL/scripts/profile_core_performance.py",
+            "line": 273
+          },
+          {
+            "blocks": 2,
+            "bytes": 112,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/json/encoder.py",
+            "line": 261
+          },
+          {
+            "blocks": 1,
+            "bytes": 105,
+            "file": "C:/Users/Alastair/FPL/scripts/profile_core_performance.py",
+            "line": 287
+          },
+          {
+            "blocks": 1,
+            "bytes": 64,
+            "file": "C:/Users/Alastair/FPL/scripts/profile_core_performance.py",
+            "line": 282
+          },
+          {
+            "blocks": 1,
+            "bytes": 64,
+            "file": "C:/Users/Alastair/FPL/scripts/profile_core_performance.py",
+            "line": 271
+          },
+          {
+            "blocks": 1,
+            "bytes": 64,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/threading.py",
+            "line": 656
+          },
+          {
+            "blocks": 1,
+            "bytes": 64,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/json/encoder.py",
+            "line": 216
+          },
+          {
+            "blocks": 2,
+            "bytes": 56,
+            "file": "C:/Users/Alastair/FPL/scripts/profile_core_performance.py",
+            "line": 159
+          },
+          {
+            "blocks": 1,
+            "bytes": 56,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/threading.py",
+            "line": 352
+          },
+          {
+            "blocks": 1,
+            "bytes": 32,
+            "file": "C:/Users/Alastair/FPL/scripts/profile_core_performance.py",
+            "line": 270
+          },
+          {
+            "blocks": 1,
+            "bytes": 28,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/threading.py",
+            "line": 1025
+          },
+          {
+            "blocks": 1,
+            "bytes": 28,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/threading.py",
+            "line": 1021
+          },
+          {
+            "blocks": 1,
+            "bytes": 24,
+            "file": "C:/Users/Alastair/AppData/Local/Programs/Python/Python313/Lib/json/encoder.py",
+            "line": 225
+          }
+        ]
+      },
+      "iterations": 7,
+      "name": "episode_observed_scan",
+      "oracle_sha256": [
+        "560b5afd229136a03d8424c2e3f432214983b857a44cf73d170a7d89fe05a69c"
+      ],
+      "profiled_oracle_matches": true,
+      "throughput_units_per_second": 96.3,
+      "units_per_operation": 38,
+      "wall_ms": {
+        "max": 451.131,
+        "mean": 394.601,
+        "min": 353.603,
+        "p50": 396.457,
+        "p95": 444.15,
+        "p99": 449.735
+      },
+      "warmups": 1
+    }
+  ]
+}
