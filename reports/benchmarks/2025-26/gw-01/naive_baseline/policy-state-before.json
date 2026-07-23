@@ -1,0 +1,154 @@
+{
+  "bank": 0.0,
+  "chip_history": [],
+  "chips_available": [
+    "wildcard_fh",
+    "free_hit_fh",
+    "triple_captain_fh",
+    "bench_boost_fh",
+    "wildcard_sh",
+    "free_hit_sh",
+    "triple_captain_sh",
+    "bench_boost_sh"
+  ],
+  "content_sha256": "a9ccaaf13dd3c4d1e02c12acb2c4399f8cfe87857a179b86aa25ff6266967ec7",
+  "cumulative_points": 0,
+  "free_transfers": 1,
+  "gameweek": 1,
+  "origin": {
+    "seed_id": "benchmark-v0-official-scout-gw1",
+    "seed_sha256": "13b3d7e1f30356e23947c3fcdfa6c0b39f33897f269c29fe0301e508e4b9b272",
+    "type": "controlled_shared_seed"
+  },
+  "policy_arm": "naive_baseline",
+  "previous_state_sha256": null,
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "squad": [
+    {
+      "club_id": "team:2025-26:7",
+      "current_price": 5.0,
+      "player_id": "player:2025-26:220",
+      "position": "GKP",
+      "purchase_price": 5.0,
+      "selling_price": 5.0
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "current_price": 10.5,
+      "player_id": "player:2025-26:235",
+      "position": "MID",
+      "purchase_price": 10.5,
+      "selling_price": 10.5
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "current_price": 7.5,
+      "player_id": "player:2025-26:249",
+      "position": "FWD",
+      "purchase_price": 7.5,
+      "selling_price": 7.5
+    },
+    {
+      "club_id": "team:2025-26:17",
+      "current_price": 4.5,
+      "player_id": "player:2025-26:252",
+      "position": "FWD",
+      "purchase_price": 4.5,
+      "selling_price": 4.5
+    },
+    {
+      "club_id": "team:2025-26:9",
+      "current_price": 5.5,
+      "player_id": "player:2025-26:291",
+      "position": "DEF",
+      "purchase_price": 5.5,
+      "selling_price": 5.5
+    },
+    {
+      "club_id": "team:2025-26:11",
+      "current_price": 4.0,
+      "player_id": "player:2025-26:348",
+      "position": "DEF",
+      "purchase_price": 4.0,
+      "selling_price": 4.0
+    },
+    {
+      "club_id": "team:2025-26:12",
+      "current_price": 14.5,
+      "player_id": "player:2025-26:381",
+      "position": "MID",
+      "purchase_price": 14.5,
+      "selling_price": 14.5
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 5.5,
+      "player_id": "player:2025-26:427",
+      "position": "MID",
+      "purchase_price": 5.5,
+      "selling_price": 5.5
+    },
+    {
+      "club_id": "team:2025-26:14",
+      "current_price": 9.0,
+      "player_id": "player:2025-26:449",
+      "position": "MID",
+      "purchase_price": 9.0,
+      "selling_price": 9.0
+    },
+    {
+      "club_id": "team:2025-26:3",
+      "current_price": 4.0,
+      "player_id": "player:2025-26:470",
+      "position": "GKP",
+      "purchase_price": 4.0,
+      "selling_price": 4.0
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "current_price": 5.5,
+      "player_id": "player:2025-26:506",
+      "position": "DEF",
+      "purchase_price": 5.5,
+      "selling_price": 5.5
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "current_price": 5.5,
+      "player_id": "player:2025-26:517",
+      "position": "MID",
+      "purchase_price": 5.5,
+      "selling_price": 5.5
+    },
+    {
+      "club_id": "team:2025-26:18",
+      "current_price": 5.5,
+      "player_id": "player:2025-26:568",
+      "position": "DEF",
+      "purchase_price": 5.5,
+      "selling_price": 5.5
+    },
+    {
+      "club_id": "team:2025-26:2",
+      "current_price": 9.0,
+      "player_id": "player:2025-26:64",
+      "position": "FWD",
+      "purchase_price": 9.0,
+      "selling_price": 9.0
+    },
+    {
+      "club_id": "team:2025-26:4",
+      "current_price": 4.5,
+      "player_id": "player:2025-26:72",
+      "position": "DEF",
+      "purchase_price": 4.5,
+      "selling_price": 4.5
+    }
+  ],
+  "state_id": "policy-state:benchmark-v0-official-scout-gw1:naive_baseline:gw01:13b3d7e1f303",
+  "status": "active",
+  "transition_id": null
+}

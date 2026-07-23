@@ -1,0 +1,25 @@
+{
+  "episode_id": "benchmark-v0:2025-26:gw01:manager-neutral",
+  "feature_state_sha256": "7b60b73374191dd3ab27c37ac4f2e954f15c80abf3f03f042d15be6655200d12",
+  "hidden_outcome_sha256": "b82f4f2288426d905da7c28fc9148374eca9c02e9d18cb30b181a7747cfff549",
+  "identity_map_sha256": "b402a0a2d110bcc55c7077425a1d363e1b486e19bb4ea95a65c5e6431eae33c6",
+  "limitations": [
+    "cold_start_no_prior_gameweek",
+    "controlled_gw1_seed_no_historical_forecast",
+    "final_export_fixture_revision_not_archived",
+    "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+    "historical_control_seed_not_a_2026_27_selection_policy",
+    "historical_manager_state_unavailable",
+    "historical_news_unavailable",
+    "historical_prices_not_deadline_snapshots",
+    "published_editorial_seed_not_a_manager_account_snapshot",
+    "unshifted_vaastav_xP_excluded",
+    "untimestamped_market_odds_excluded"
+  ],
+  "next_feature_state_sha256": "ad5f7d70d1a1602178659faa7e9ba605c2cf17b750243a0114de495a90f06572",
+  "observed_sha256": "89231e927ab0e01ddbd190db7fb3c7fcbe7064ca7aaf6d855814d776e373d923",
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  }
+}

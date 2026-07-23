@@ -1,0 +1,279 @@
+{
+  "alternatives": {
+    "aggressive": null,
+    "conservative": null
+  },
+  "approval": {
+    "approver": "controlled_seed_policy",
+    "notes": "Published pre-deadline official Scout seed",
+    "status": "approved"
+  },
+  "available_at": "2025-08-15T17:30:00Z",
+  "baseline_comparison": {
+    "do_nothing_objective": 0.0,
+    "expected_advantage": 0.0,
+    "notes": "All arms share the governed GW1 seed; divergence begins GW2",
+    "recommended_objective": 0.0
+  },
+  "candidate_plans": [
+    {
+      "hit_cost": 0,
+      "objective": 0.0,
+      "strategy": "controlled_official_scout_seed",
+      "transfers": []
+    }
+  ],
+  "confidence": "Controlled seed; no statistical GW1 projection",
+  "data_quality": "Degraded structured replay; governed official GW1 seed",
+  "deadline": "2025-08-15T17:30:00Z",
+  "decision_cutoff": "2025-08-15T17:30:00Z",
+  "degraded": true,
+  "evidence": {
+    "conflict_ids": [],
+    "conflicting_claim_ids": [],
+    "proposed_adjustment_ids": [],
+    "supporting_claim_ids": [
+      "https://www.premierleague.com/en/news/4373986",
+      "https://www.premierleague.com/en/news/4373995/quick-fantasy-tips-your-basic-guide-to-gameweek-1"
+    ]
+  },
+  "execution": {
+    "mode": "dry_run",
+    "notes": "Historical replay; no external account action"
+  },
+  "finalised_at": "2025-08-18T23:00:00Z",
+  "fixture_id": "benchmark-v0:2025-26:gw01:manager-neutral",
+  "gameweek": 1,
+  "manager_state": {
+    "bank": 0.0,
+    "chips_available": [
+      "wildcard_fh",
+      "free_hit_fh",
+      "triple_captain_fh",
+      "bench_boost_fh",
+      "wildcard_sh",
+      "free_hit_sh",
+      "triple_captain_sh",
+      "bench_boost_sh"
+    ],
+    "free_transfers": 1,
+    "squad_player_ids": [
+      "player:2025-26:220",
+      "player:2025-26:235",
+      "player:2025-26:249",
+      "player:2025-26:252",
+      "player:2025-26:291",
+      "player:2025-26:348",
+      "player:2025-26:381",
+      "player:2025-26:427",
+      "player:2025-26:449",
+      "player:2025-26:470",
+      "player:2025-26:506",
+      "player:2025-26:517",
+      "player:2025-26:568",
+      "player:2025-26:64",
+      "player:2025-26:72"
+    ]
+  },
+  "observed_at": "2025-08-15T17:30:00Z",
+  "outcome": {
+    "finalised_at": "2025-08-18T23:00:00Z",
+    "notes": "Official hidden outcome revealed after plan freeze",
+    "points": 56
+  },
+  "principal_uncertainty": "Historical seed is an official editorial benchmark, not a reconstructed manager account",
+  "projections_summary": {
+    "model_versions": [
+      "historical-rolling-v1"
+    ],
+    "n_players": 15,
+    "principal_uncertainty": "GW1 uses the pre-deadline official Scout plan because no completed prior Gameweek exists"
+  },
+  "provenance": {
+    "ruleset_id": "2025-26-v1.0",
+    "source_ids": [
+      "benchmark-v0-observed",
+      "premier-league-official-editorial"
+    ],
+    "transformation_version": "genuine-replay-v1"
+  },
+  "recommendation": {
+    "captain_name": "Palmer",
+    "objective": 0.0,
+    "strategy": "controlled_official_scout_seed",
+    "validated_plan_sha256": "691cdf6c22ee738203d3d4547ec7e3957320365d61332f9ace1e68bca3c658b2",
+    "vice_captain_name": "Salah"
+  },
+  "record_id": "gdr:2025-26:gw01:naive_baseline",
+  "retrospective": {
+    "lessons": [
+      "cold_start_no_prior_gameweek",
+      "controlled_gw1_seed_no_historical_forecast",
+      "final_export_fixture_revision_not_archived",
+      "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+      "historical_manager_state_unavailable",
+      "historical_news_unavailable",
+      "historical_prices_not_deadline_snapshots",
+      "unshifted_vaastav_xP_excluded",
+      "untimestamped_market_odds_excluded"
+    ],
+    "metrics": {
+      "gross_points": 56,
+      "net_points": 56,
+      "substitutions": 0
+    },
+    "process_notes": "GW1 controlled shared-seed checkpoint"
+  },
+  "ruleset_id": "2025-26-v1.0",
+  "season": "2025-26",
+  "validated_plan": {
+    "active_chip": null,
+    "content_sha256": "691cdf6c22ee738203d3d4547ec7e3957320365d61332f9ace1e68bca3c658b2",
+    "episode_id": "benchmark-v0:2025-26:gw01:manager-neutral",
+    "finance": {
+      "bank_after": 0.0,
+      "bank_before": 0.0,
+      "free_transfers_before": 1,
+      "hit_cost": 0,
+      "transfer_count": 0
+    },
+    "frozen_at": "2025-08-15T17:30:00Z",
+    "gameweek": 1,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:252",
+        "player:2025-26:348",
+        "player:2025-26:72"
+      ],
+      "captain_id": "player:2025-26:235",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:506",
+        "player:2025-26:568",
+        "player:2025-26:291",
+        "player:2025-26:381",
+        "player:2025-26:235",
+        "player:2025-26:449",
+        "player:2025-26:517",
+        "player:2025-26:427",
+        "player:2025-26:64",
+        "player:2025-26:249"
+      ],
+      "vice_captain_id": "player:2025-26:381"
+    },
+    "plan_id": "validated-plan:benchmark-v0:2025-26:gw01:manager-neutral:naive_baseline",
+    "policy_arm": "naive_baseline",
+    "previous_state_sha256": "a9ccaaf13dd3c4d1e02c12acb2c4399f8cfe87857a179b86aa25ff6266967ec7",
+    "ruleset": {
+      "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "ruleset_id": "2025-26-v1.0"
+    },
+    "schema_version": "1.0",
+    "season": "2025-26",
+    "squad_after": [
+      {
+        "club_id": "team:2025-26:7",
+        "player_id": "player:2025-26:220",
+        "position": "GKP"
+      },
+      {
+        "club_id": "team:2025-26:7",
+        "player_id": "player:2025-26:235",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:7",
+        "player_id": "player:2025-26:249",
+        "position": "FWD"
+      },
+      {
+        "club_id": "team:2025-26:17",
+        "player_id": "player:2025-26:252",
+        "position": "FWD"
+      },
+      {
+        "club_id": "team:2025-26:9",
+        "player_id": "player:2025-26:291",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:11",
+        "player_id": "player:2025-26:348",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:12",
+        "player_id": "player:2025-26:381",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:13",
+        "player_id": "player:2025-26:427",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:14",
+        "player_id": "player:2025-26:449",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:3",
+        "player_id": "player:2025-26:470",
+        "position": "GKP"
+      },
+      {
+        "club_id": "team:2025-26:16",
+        "player_id": "player:2025-26:506",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:16",
+        "player_id": "player:2025-26:517",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:18",
+        "player_id": "player:2025-26:568",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:2",
+        "player_id": "player:2025-26:64",
+        "position": "FWD"
+      },
+      {
+        "club_id": "team:2025-26:4",
+        "player_id": "player:2025-26:72",
+        "position": "DEF"
+      }
+    ],
+    "transfers": [],
+    "validation": {
+      "checks": [
+        "predecessor_and_rules_bound",
+        "transfer_finance_recomputed",
+        "squad_legal",
+        "lineup_legal_and_ordered",
+        "chip_legal"
+      ],
+      "content_sha256": "25b5b3f15c2498b05d354a7a49c2271da4c9f5efb17c4ea9b4b15f2dfb02522a",
+      "status": "passed"
+    }
+  },
+  "validation": {
+    "chips_ok": true,
+    "lineup": {
+      "ok": true
+    },
+    "squad": {
+      "ok": true
+    },
+    "validated_plan_sha256": "691cdf6c22ee738203d3d4547ec7e3957320365d61332f9ace1e68bca3c658b2"
+  }
+}
