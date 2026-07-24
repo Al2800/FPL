@@ -78,7 +78,7 @@ def test_gw3_locked_forecast_setup_is_sealed_state_bound_and_reproducible(
     for arm, row in summary["arms"].items():
         assert row["selected"]["transfer_count"] == 0
         assert row["selected"]["captain_name"] == "Mohamed Salah"
-        assert row["selected"]["next_gameweek_free_transfers"] == 4
+        assert row["selected"]["next_gameweek_free_transfers"] == 3
         review = json.loads(
             (
                 tmp_path
@@ -118,9 +118,9 @@ def test_gw4_review_records_the_policy_candidate_each_arm_will_freeze(
     naive = summary["arms"]["naive_baseline"]["selected"]
     optimizer = summary["arms"]["forecast_optimizer"]["selected"]
     assert naive["transfer_count"] == 0
-    assert naive["next_gameweek_free_transfers"] == 5
+    assert naive["next_gameweek_free_transfers"] == 4
     assert optimizer["transfer_count"] == 2
-    assert optimizer["next_gameweek_free_transfers"] == 3
+    assert optimizer["next_gameweek_free_transfers"] == 2
     assert {
         (move["player_out_name"], move["player_in_name"])
         for move in optimizer["transfers"]

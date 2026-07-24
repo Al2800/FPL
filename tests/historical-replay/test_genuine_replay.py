@@ -103,6 +103,7 @@ def test_gw1_checkpoint_is_shared_real_and_stops_before_gw2(
         )
 
         assert state["policy_arm"] == arm
+        assert state["free_transfers"] == 0
         assert plan["previous_state_sha256"] == state["content_sha256"]
         assert plan["lineup"]["captain_id"] == "player:2025-26:235"
         assert plan["lineup"]["vice_captain_id"] == "player:2025-26:381"
@@ -114,6 +115,7 @@ def test_gw1_checkpoint_is_shared_real_and_stops_before_gw2(
         assert transition["next_state_sha256"] == successor["content_sha256"]
         assert successor["policy_arm"] == arm
         assert successor["gameweek"] == 2
+        assert successor["free_transfers"] == 1
         assert successor["cumulative_points"] == transition["net_points"]
 
 
@@ -159,7 +161,7 @@ def test_gw2_checkpoint_freezes_then_reveals_and_advances_independent_states(
     assert {row["cumulative_points"] for row in summary["arms"].values()} == {
         115
     }
-    assert {row["free_transfers"] for row in summary["arms"].values()} == {3}
+    assert {row["free_transfers"] for row in summary["arms"].values()} == {2}
     assert len(
         {row["next_state_sha256"] for row in summary["arms"].values()}
     ) == len(POLICY_ARMS)
@@ -187,6 +189,7 @@ def test_gw2_checkpoint_freezes_then_reveals_and_advances_independent_states(
         assert successor["previous_state_sha256"] == state["content_sha256"]
         assert successor["policy_arm"] == arm
         assert successor["gameweek"] == 3
+        assert successor["free_transfers"] == 2
 
 
 def test_gw2_hidden_partition_cannot_open_until_every_arm_is_frozen(
@@ -297,6 +300,7 @@ def test_gw3_checkpoint_consumes_reviewed_arm_setups_and_stops_before_gw4(
         assert successor["previous_state_sha256"] == state["content_sha256"]
         assert successor["policy_arm"] == arm
         assert successor["gameweek"] == 4
+        assert successor["free_transfers"] == 3
 
 
 def test_gw3_persists_every_frozen_plan_before_hidden_outcome_read(

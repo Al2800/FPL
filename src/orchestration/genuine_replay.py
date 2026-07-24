@@ -627,59 +627,6 @@ def prepare_historical_gameweek(
     return summary
 
 
-def _load_reviewed_gw2_setup(
-    setup_dir: Path,
-    *,
-    previous_summary: Mapping[str, Any],
-) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
-    feature_state = _read_json(setup_dir / "shared-feature-state.json")
-    solver_input = _read_json(setup_dir / "shared-option-value-engine-input.json")
-    solver_output = _read_json(setup_dir / "shared-option-value-engine-output.json")
-    comparison = _read_json(setup_dir / "forecast-option-value-comparison.json")
-    review = _read_json(setup_dir / "transfer-option-value-review.json")
-    if feature_state.get("content_sha256") != feature_state_hash(feature_state):
-        raise GenuineReplayError("Reviewed GW2 feature-state hash mismatch")
-    if (
-        feature_state["content_sha256"]
-        != previous_summary["next_feature_state_sha256"]
-    ):
-        raise GenuineReplayError(
-            "Reviewed GW2 feature state differs from the GW1 handoff"
-        )
-    if comparison.get("content_sha256") != artifact_hash(comparison):
-        raise GenuineReplayError("Reviewed GW2 comparison hash mismatch")
-    if review.get("content_sha256") != artifact_hash(review):
-        raise GenuineReplayError("Reviewed GW2 policy-review hash mismatch")
-    if review.get("comparison_sha256") != comparison["content_sha256"]:
-        raise GenuineReplayError("GW2 review does not bind the comparison")
-    lineage = comparison.get("lineage", {})
-    if lineage.get("solver_input_sha256") != fingerprint(solver_input):
-        raise GenuineReplayError("Reviewed GW2 solver-input hash mismatch")
-    if lineage.get("solver_output_sha256") != fingerprint(solver_output):
-        raise GenuineReplayError("Reviewed GW2 solver-output hash mismatch")
-    if solver_input.get("transfer_value_policy") != TRANSFER_VALUE_POLICY:
-        raise GenuineReplayError("Reviewed GW2 transfer-value policy mismatch")
-    if solver_input.get("probability_extra_transfer_needed") != (
-        PROBABILITY_EXTRA_TRANSFER_NEEDED
-    ):
-        raise GenuineReplayError("Reviewed GW2 transfer-need probability mismatch")
-    if solver_input.get("future_transfer_discount") != FUTURE_TRANSFER_DISCOUNT:
-        raise GenuineReplayError("Reviewed GW2 transfer discount mismatch")
-    if review.get("assessment", {}).get("policy_is_fitted_on_gw2") is not False:
-        raise GenuineReplayError("Reviewed GW2 policy provenance is not admissible")
-    if any(
-        artifact.get(flag) is not False
-        for artifact in (comparison, review)
-        for flag in (
-            "contains_hidden_outcome",
-            "contains_validated_plan",
-            "contains_state_transition",
-        )
-    ):
-        raise GenuineReplayError("Reviewed GW2 setup crosses the freeze boundary")
-    return feature_state, solver_input, solver_output
-
-
 def _load_reviewed_gameweek_setup(
     setup_dir: Path,
     *,
@@ -692,25 +639,7 @@ def _load_reviewed_gameweek_setup(
     dict[str, dict[str, Any]],
     dict[str, dict[str, Any]],
 ]:
-    """Load a reviewed setup without weakening the legacy GW2 contract."""
-    if gameweek == 2:
-        feature_state, solver_input, solver_output = _load_reviewed_gw2_setup(
-            setup_dir,
-            previous_summary=previous_summary,
-        )
-        states = {
-            arm: _read_json(
-                setup_dir / "arms" / arm / "starting-policy-state.json"
-            )
-            for arm in POLICY_ARMS
-        }
-        return (
-            feature_state,
-            states,
-            {arm: deepcopy(solver_input) for arm in POLICY_ARMS},
-            {arm: deepcopy(solver_output) for arm in POLICY_ARMS},
-        )
-
+    """Load one generic reviewed setup and verify every arm's lineage."""
     feature_state = _read_json(setup_dir / "shared-feature-state.json")
     forecast = _read_json(setup_dir / "shared-locked-forecast.json")
     summary = _read_json(setup_dir / "forecast-review-summary.json")

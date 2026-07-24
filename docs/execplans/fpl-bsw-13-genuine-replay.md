@@ -33,6 +33,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 02:43Z) Commit/push generic finaliser `4356ea7`, generate the canonical GW3 checkpoint from that exact commit, prove an idempotent rerun, and stop with no GW4 directory or decision.
 - [x] (2026-07-24 03:38Z) Generate GW4 in isolation, expose the first policy divergence, and correct setup review so each arm's `selected` candidate is exactly the candidate the finaliser will freeze.
 - [x] (2026-07-24 03:45Z) Commit/push selector `b9d095b`, generate the canonical sealed GW4 setup from that exact commit, prove idempotence and zero outcome/plan/transition artifacts, and pause before reveal.
+- [x] (2026-07-24 20:45Z) Diagnose the user-questioned four-transfer state as a season-start off-by-one: the seed supplied one pre-GW1 transfer and the normal transition awarded another.
+- [x] (2026-07-24 21:20Z) Correct the controlled seed to zero pre-deadline transfers, migrate GW2 to the generic reviewed-setup contract, and prove the full corrected chain in isolation: GW2/GW3/GW4 open with 1/2/3 transfers while points and football actions remain unchanged.
+- [ ] Commit the producing correction, preserve the invalid lineage as superseded evidence, regenerate canonical GW1–GW4 artifacts, and pass the full regression suite.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -76,6 +79,12 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: the generic setup initially displayed the solver-selected transfer plan as `selected` for the naive arm even though the finaliser correctly freezes the no-transfer policy.
   Evidence: the isolated GW4 summary labelled two transfers for all arms while `finalise_historical_gameweek` branches the naive arm to `plans.no_transfer`. A shared `select_policy_candidate` contract now drives both preparation and finalisation.
 
+- Observation: the initial controlled seed treated the normal GW2 transfer as if it already existed before GW1.
+  Evidence: `official-scout-gw1.json` set `free_transfers: 1`, then `_next_free_transfers` correctly added the official weekly award during GW1→GW2. The resulting 2/3/4 opening counts contradicted the official rule that the first transfer is given only after the first deadline.
+
+- Observation: correcting the transfer count does not change the reviewed actions through GW4.
+  Evidence: the isolated corrected replay scores 56/59/59 and still banks in GW2 and GW3. GW4 still prefers Palmer→Gakpo plus Anderson→Szoboszlai without a hit; only option-value levels and successor transfer counts change.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -112,6 +121,14 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Decision: setup review and outcome finalisation use one policy-candidate selector.
   Rationale: a reviewed proposal must be the exact proposal later frozen. The naive arm selects no transfer by definition; other arms currently use the reviewed solver selection or declared structured fallback.
+  Date/Author: 2026-07-24 / Codex.
+
+- Decision: represent the pre-GW1 controlled state with zero free transfers and let the ordinary transition award the first GW2 transfer.
+  Rationale: this matches the official timing rule without adding a hidden Gameweek special case to otherwise-correct transition arithmetic.
+  Date/Author: 2026-07-24 / Codex.
+
+- Decision: regenerate GW2 with the same generic reviewed-setup format used by GW3+.
+  Rationale: one loader and one lineage contract reduce special-case drift while preserving the locked pre-season forecast and option-value policy.
   Date/Author: 2026-07-24 / Codex.
 
 ## Outcomes & Retrospective

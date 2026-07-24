@@ -155,7 +155,7 @@ def test_gw3_setup_uses_only_completed_history_and_arm_owned_state(
         )
         assert state["policy_arm"] == arm
         assert state["gameweek"] == 3
-        assert engine_input["free_transfers"] == 3
+        assert engine_input["free_transfers"] == 2
         assert engine_input["squad_player_ids"] == [
             row["player_id"] for row in state["squad"]
         ]
