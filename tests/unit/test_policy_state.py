@@ -371,7 +371,7 @@ def test_player_club_change_can_create_a_temporary_club_limit_exception():
         salt="repair-club-change-overflow",
     )
     assert "club_limit_exceptions" not in repaired_state
-    assert repaired_transition["next_club_limit_exceptions"] == []
+    assert "next_club_limit_exceptions" not in repaired_transition
 
 
 def test_any_transfer_must_resolve_an_existing_club_limit_exception():

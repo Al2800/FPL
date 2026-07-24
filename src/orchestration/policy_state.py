@@ -693,9 +693,10 @@ def transition_policy_state(
         "hit_cost": hit_cost,
         "gross_points": gross_points,
         "net_points": net_points,
-        "next_club_limit_exceptions": next_club_limit_exceptions,
         "next_state_sha256": successor["content_sha256"],
     }
+    if next_club_limit_exceptions:
+        transition["next_club_limit_exceptions"] = next_club_limit_exceptions
     transition["content_sha256"] = transition_hash(transition)
     _validate_transition(transition)
     return successor, transition
