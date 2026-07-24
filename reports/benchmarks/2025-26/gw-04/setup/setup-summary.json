@@ -1,0 +1,140 @@
+{
+  "candidate_count": 76273,
+  "code_commit": "b9d095be2c5ba8a95e4852c7a0fbb71f6f38b9f7",
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "ed6b2919a679a30c142b029114a697636c682e1f28e2cafe127ca936232a725e",
+  "engine_no_transfer": {
+    "immediate_objective": 66.67,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:506",
+        "player:2025-26:235",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:249",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:291",
+        "player:2025-26:568",
+        "player:2025-26:381",
+        "player:2025-26:427",
+        "player:2025-26:449",
+        "player:2025-26:517",
+        "player:2025-26:249",
+        "player:2025-26:64"
+      ],
+      "vice_captain_id": "player:2025-26:72"
+    },
+    "objective": 73.87,
+    "transfer_option_value": 7.2,
+    "transfers": []
+  },
+  "engine_selected": {
+    "immediate_objective": 83.33,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:517",
+        "player:2025-26:64",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:7",
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:7",
+        "player:2025-26:8",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:568",
+        "player:2025-26:237",
+        "player:2025-26:381",
+        "player:2025-26:427",
+        "player:2025-26:449",
+        "player:2025-26:249"
+      ],
+      "vice_captain_id": "player:2025-26:249"
+    },
+    "objective": 85.13,
+    "transfer_option_value": 1.8,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:237",
+        "player_out_id": "player:2025-26:235"
+      },
+      {
+        "player_in_id": "player:2025-26:7",
+        "player_out_id": "player:2025-26:291"
+      },
+      {
+        "player_in_id": "player:2025-26:8",
+        "player_out_id": "player:2025-26:506"
+      }
+    ]
+  },
+  "episode_id": "benchmark-v0:2025-26:gw04:manager-neutral",
+  "feature_state_sha256": "085f584104617dae4f475214aa8cd2ef41cdd188cc99d99ad49c191edf6f1d4a",
+  "gameweek": 4,
+  "limitations": [
+    "final_export_fixture_revision_not_archived",
+    "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+    "historical_manager_state_unavailable",
+    "historical_news_unavailable",
+    "historical_prices_not_deadline_snapshots",
+    "unshifted_vaastav_xP_excluded",
+    "untimestamped_market_odds_excluded"
+  ],
+  "observed_sha256": "e3b061e3573e4f7fae99f867f4f5801c4cf331a2f473b47a972e1e0b77725482",
+  "outcome_access": "sealed_not_loaded",
+  "policy_brief_sha256": {
+    "evidence_agent": "0ed690948d5dabe5ea299af4de02e60615b15c594bc1ac721b7aadb44129c965",
+    "evidence_challenger": "ce45d9f63690bc361d7cfda39aed6776fd0e8e5c5f60f573f96c19032800011d",
+    "forecast_optimizer": "a4da05b5c4e68e298162f2516366369480d9e29aaaaa36a082def881aae6d494",
+    "human_decision": "9e7f1377c851ddb588311b890e6df8d920bff483b3111b74fe2a960fc85a1599",
+    "naive_baseline": "c08df97efddb5f2c7338cd68bddc2bc45de01afce2febd2850b8b8c43e08bc3c"
+  },
+  "projection_diagnostics": {
+    "cold_start_risk": "rolling_window_populated",
+    "completed_history_gameweeks": [
+      1,
+      2,
+      3
+    ],
+    "configured_rolling_window": 3,
+    "freeze_recommendation": "eligible_for_policy_review",
+    "history_gameweek_count": 3,
+    "maximum_player_expected_points": 9.33,
+    "model_version": "historical-rolling-v1"
+  },
+  "review_gates": [
+    "resolve early-season projection prior and shrinkage policy",
+    "confirm naive no-transfer policy",
+    "inspect forecast-optimiser transfer and lineup",
+    "define admissible pre-deadline historical evidence",
+    "decide treatment of unavailable historical human choice"
+  ],
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "shared_engine_input": true,
+  "solver_input_sha256": "2bc98983aaa1ca8bf5150a2653ad5be448cd489c977abde476b7839fd1b9c949",
+  "solver_output_sha256": "c900ec63b5d3a177082400f1c90168c50fd9c7ba59bf4054d5c4525484d839bf",
+  "status": "prepared_not_frozen"
+}

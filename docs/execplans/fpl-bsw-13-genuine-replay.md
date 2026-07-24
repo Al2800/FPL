@@ -32,7 +32,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 02:36Z) Prove in an isolated run that all five GW3 plans persist before outcome access, score 59 points, auto-substitute Konsa for Palmer, and advance isolated states to GW4 with four free transfers.
 - [x] (2026-07-24 02:43Z) Commit/push generic finaliser `4356ea7`, generate the canonical GW3 checkpoint from that exact commit, prove an idempotent rerun, and stop with no GW4 directory or decision.
 - [x] (2026-07-24 03:38Z) Generate GW4 in isolation, expose the first policy divergence, and correct setup review so each arm's `selected` candidate is exactly the candidate the finaliser will freeze.
-- [ ] Commit the shared policy-candidate selector from a passing regression suite, generate the canonical sealed GW4 setup from that commit, and pause before reveal.
+- [x] (2026-07-24 03:45Z) Commit/push selector `b9d095b`, generate the canonical sealed GW4 setup from that exact commit, prove idempotence and zero outcome/plan/transition artifacts, and pause before reveal.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
