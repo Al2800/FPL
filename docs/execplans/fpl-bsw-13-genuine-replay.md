@@ -38,6 +38,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 21:34Z) Commit producing correction `bbbba85`, preserve the invalid lineage in Git commit `365587a` plus the ignored local archive named by `superseded-lineages.json`, regenerate 225 canonical GW1–GW4 files, prove byte-identical rerun, and pass 57 historical plus 350 applicable repository tests.
 - [x] (2026-07-24 21:43Z) Reproduce and fix the GW4→GW5 state failure caused by Marc Guiu's Sunderland→Chelsea club refresh: record the official temporary club-limit exception, permit no-transfer carry, and require the next transfer action to restore the three-player limit.
 - [x] (2026-07-24 21:46Z) Finalise GW4 after all five plans froze: the four active arms scored 57 and reached 231 cumulative points; the naive bank arm scored 62 and reached 236, while carrying the explicit four-Chelsea exception into GW5.
+- [x] (2026-07-24 22:08Z) Extend the solver's zero-transfer seam for the official club-change exception without weakening any non-empty transfer candidate, then prove the real five-arm GW5 setup succeeds in isolation.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -93,6 +94,12 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: the first policy divergence lost five immediate points.
   Evidence: Palmer and Anderson scored 7 and 4 in the naive XI, while their replacements Gakpo and Szoboszlai scored 3 each. Captain Salah and every other effective starter were shared, producing 62 for naive versus 57 for the other four arms.
 
+- Observation: an exceptional four-club state still has an officially legal zero-transfer action, even though every non-empty transfer action must restore the normal limit.
+  Evidence: the first GW5 preflight produced no naive `no_transfer` candidate and failed while building its policy brief. Allowing the exception only in the solver's unchanged-squad evaluation restores that candidate; transfer enumeration and post-transfer evaluation remain strictly capped at three.
+
+- Observation: all five reviewed GW5 policies currently bank, but from different squads and objectives.
+  Evidence: active arms project 61.17 immediate and 64.77 planning points, carrying three transfers to GW6. Naive projects 56.64 immediate and 63.84 planning points, carrying the five-transfer cap while retaining the declared Chelsea exception.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -141,6 +148,10 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Decision: represent a club-change overflow explicitly on policy state rather than weakening the ordinary squad validator.
   Rationale: official FPL permits the exceptional squad to persist only until the manager next makes a transfer. Explicit metadata lets no-transfer banking remain legal, forces any later transfer set to restore the limit, and preserves strict validation for ordinary and initial squads.
+  Date/Author: 2026-07-24 / Codex.
+
+- Decision: allow a club-limit overflow only in the optimiser's zero-transfer base evaluation.
+  Rationale: this mirrors the official rule and preserves the baseline's meaning. Every enumerated transfer still flows through the unchanged strict club validator, and the plan-freeze boundary additionally requires matching exception metadata on the predecessor state.
   Date/Author: 2026-07-24 / Codex.
 
 ## Outcomes & Retrospective

@@ -64,6 +64,43 @@ def test_golden_plans_satisfy_hard_constraints() -> None:
     assert selected["objective"] >= out["plans"]["no_transfer"]["objective"]
 
 
+def test_club_change_overflow_allows_only_the_zero_transfer_exception() -> None:
+    data = load_solver_input(GOLDEN).as_dict()
+    data["max_transfers"] = 1
+    for player in data["players"]:
+        if player["player_id"] in {"2", "4"}:
+            player["club_id"] = "1"
+
+    out = _solve(SolverInput.from_dict(data))
+
+    assert out["plans"]["no_transfer"] is not None
+    assert out["plans"]["no_transfer"]["transfers"] == []
+    transferred = [
+        candidate
+        for candidate in out["all_candidates"]
+        if candidate["transfers"]
+    ]
+    assert transferred
+    owned_clubs = {
+        player["player_id"]: player["club_id"]
+        for player in data["players"]
+        if player["player_id"] in data["squad_player_ids"]
+    }
+    market_clubs = {
+        player["player_id"]: player["club_id"] for player in data["players"]
+    }
+    for candidate in transferred:
+        clubs = dict(owned_clubs)
+        for move in candidate["transfers"]:
+            clubs.pop(move["player_out_id"])
+            clubs[move["player_in_id"]] = market_clubs[move["player_in_id"]]
+        counts = {
+            club_id: list(clubs.values()).count(club_id)
+            for club_id in set(clubs.values())
+        }
+        assert max(counts.values()) <= 3
+
+
 def test_no_hit_never_exceeds_free_transfers() -> None:
     inp = load_solver_input(GOLDEN)
     out = _solve(inp)

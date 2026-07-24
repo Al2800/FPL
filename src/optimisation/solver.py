@@ -54,6 +54,7 @@ def _evaluate_squad(
     position_counts: Mapping[str, int],
     max_per_club: int,
     chip_ok: bool,
+    allow_club_limit_exception: bool = False,
 ) -> dict[str, Any] | None:
     if len(squad_rows) != 15 or len({str(row["player_id"]) for row in squad_rows}) != 15:
         return None
@@ -61,7 +62,13 @@ def _evaluate_squad(
     if any(positions.get(position, 0) != expected for position, expected in position_counts.items()):
         return None
     clubs = Counter(str(row["club_id"]) for row in squad_rows)
-    if any(count > max_per_club for count in clubs.values()) or not chip_ok:
+    club_limit_exceeded = any(
+        count > max_per_club for count in clubs.values()
+    )
+    if (
+        club_limit_exceeded
+        and not allow_club_limit_exception
+    ) or not chip_ok:
         return None
 
     try:
@@ -263,6 +270,7 @@ def solve(
         position_counts=position_counts,
         max_per_club=max_per_club,
         chip_ok=chip_validation.ok,
+        allow_club_limit_exception=True,
     )
     if base:
         consider(base)
