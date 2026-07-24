@@ -56,7 +56,7 @@
       "triple_captain_sh",
       "bench_boost_sh"
     ],
-    "free_transfers": 1,
+    "free_transfers": 0,
     "squad_player_ids": [
       "player:2025-26:220",
       "player:2025-26:235",
@@ -101,7 +101,7 @@
     "captain_name": "Palmer",
     "objective": 0.0,
     "strategy": "controlled_official_scout_seed",
-    "validated_plan_sha256": "93257226febdb71be5fb9b4eb1cb84d012b62b7a015610c032fc508e17ea449a",
+    "validated_plan_sha256": "5bdbb4bfbbad3ea2fd21ece27e41c44d620250b5e8c55f8fec716733f3fa39ab",
     "vice_captain_name": "Salah"
   },
   "record_id": "gdr:2025-26:gw01:forecast_optimizer",
@@ -128,12 +128,12 @@
   "season": "2025-26",
   "validated_plan": {
     "active_chip": null,
-    "content_sha256": "93257226febdb71be5fb9b4eb1cb84d012b62b7a015610c032fc508e17ea449a",
+    "content_sha256": "5bdbb4bfbbad3ea2fd21ece27e41c44d620250b5e8c55f8fec716733f3fa39ab",
     "episode_id": "benchmark-v0:2025-26:gw01:manager-neutral",
     "finance": {
       "bank_after": 0.0,
       "bank_before": 0.0,
-      "free_transfers_before": 1,
+      "free_transfers_before": 0,
       "hit_cost": 0,
       "transfer_count": 0
     },
@@ -169,7 +169,7 @@
     },
     "plan_id": "validated-plan:benchmark-v0:2025-26:gw01:manager-neutral:forecast_optimizer",
     "policy_arm": "forecast_optimizer",
-    "previous_state_sha256": "d608332bbe671d06db17b873d4d55ba622a9985fbfb84783f12974c5508f305f",
+    "previous_state_sha256": "9efca5664d5a00eac9926a8625ca09ee5b4eb40d2bd80efeb38336bffc04016c",
     "ruleset": {
       "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
       "ruleset_id": "2025-26-v1.0"
@@ -262,7 +262,7 @@
         "lineup_legal_and_ordered",
         "chip_legal"
       ],
-      "content_sha256": "6e516d8e618669b2592ffef176d1d4c7a94518223bde5f4d5329df873b0c61c5",
+      "content_sha256": "bc43e082237319592355b3b57e3c8e806ade4da0a3d825cc1d0d2b5080e4fbdd",
       "status": "passed"
     }
   },
@@ -274,6 +274,6 @@
     "squad": {
       "ok": true
     },
-    "validated_plan_sha256": "93257226febdb71be5fb9b4eb1cb84d012b62b7a015610c032fc508e17ea449a"
+    "validated_plan_sha256": "5bdbb4bfbbad3ea2fd21ece27e41c44d620250b5e8c55f8fec716733f3fa39ab"
   }
 }

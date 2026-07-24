@@ -2,14 +2,14 @@
   "contains_hidden_outcome": false,
   "contains_state_transition": false,
   "contains_validated_plan": false,
-  "content_sha256": "860b8c03e3228410f91f1a1044424ddb2fc95e4381aba9b6996e5fcf0adbddaf",
-  "feature_state_sha256": "085f584104617dae4f475214aa8cd2ef41cdd188cc99d99ad49c191edf6f1d4a",
-  "forecast_sha256": "1d250cb57da909b75282c3a1a2695dcde34b56215b59cbf9afd23a16e03f32c6",
+  "content_sha256": "70dd8fbb55f5fa36fefa6daa20181cc95573a91095c383bbfe166f55ac3d8248",
+  "feature_state_sha256": "1ead1a4409902c60939e149806694f28cec52a0ccc38ce9cfc13a95f700ad80a",
+  "forecast_sha256": "3e841fb46f90bd1138e2973c616a2d2528a4efa9ffe3a5365f103b40461ea329",
   "gameweek": 4,
   "lineage": {
     "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
-    "solver_input_sha256": "4252dd36ed3c80f650239c1da62b501ef36c15f2fe8146751324962c502c7eb0",
-    "solver_output_sha256": "ab327d115d43f92f35576817295cbc0b56d0efd2ff2d9b050b5e04c82478b0c0"
+    "solver_input_sha256": "ef077eb9ace6dfae5903c5f5aa5282c0f3c8417aa8024824f7752410f170922d",
+    "solver_output_sha256": "0c2efccfb5282200e063f5d4303cd04677081304406f15fac297e01e330cb28f"
   },
   "plans_by_transfer_count": {
     "0": {
@@ -17,8 +17,8 @@
       "captain_name": "Mohamed Salah",
       "hit_cost": 0,
       "immediate_objective": 56.12,
-      "next_gameweek_free_transfers": 5,
-      "planning_objective": 63.32,
+      "next_gameweek_free_transfers": 4,
+      "planning_objective": 61.52,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -66,7 +66,7 @@
         }
       ],
       "transfer_count": 0,
-      "transfer_option_value": 7.2,
+      "transfer_option_value": 5.4,
       "transfers": [],
       "vice_captain_id": "player:2025-26:249",
       "vice_captain_name": "João Pedro Junqueira de Jesus"
@@ -76,8 +76,8 @@
       "captain_name": "Mohamed Salah",
       "hit_cost": 0,
       "immediate_objective": 59.05,
-      "next_gameweek_free_transfers": 4,
-      "planning_objective": 64.45,
+      "next_gameweek_free_transfers": 3,
+      "planning_objective": 62.65,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -125,7 +125,7 @@
         }
       ],
       "transfer_count": 1,
-      "transfer_option_value": 5.4,
+      "transfer_option_value": 3.6,
       "transfers": [
         {
           "player_in_id": "player:2025-26:384",
@@ -142,8 +142,8 @@
       "captain_name": "Mohamed Salah",
       "hit_cost": 0,
       "immediate_objective": 61.43,
-      "next_gameweek_free_transfers": 3,
-      "planning_objective": 65.03,
+      "next_gameweek_free_transfers": 2,
+      "planning_objective": 63.23,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -191,7 +191,7 @@
         }
       ],
       "transfer_count": 2,
-      "transfer_option_value": 3.6,
+      "transfer_option_value": 1.8,
       "transfers": [
         {
           "player_in_id": "player:2025-26:384",
@@ -214,8 +214,8 @@
       "captain_name": "Mohamed Salah",
       "hit_cost": 0,
       "immediate_objective": 62.88,
-      "next_gameweek_free_transfers": 2,
-      "planning_objective": 64.68,
+      "next_gameweek_free_transfers": 1,
+      "planning_objective": 62.88,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -263,7 +263,7 @@
         }
       ],
       "transfer_count": 3,
-      "transfer_option_value": 1.8,
+      "transfer_option_value": 0.0,
       "transfers": [
         {
           "player_in_id": "player:2025-26:267",
@@ -296,8 +296,8 @@
     "captain_name": "Mohamed Salah",
     "hit_cost": 0,
     "immediate_objective": 61.43,
-    "next_gameweek_free_transfers": 3,
-    "planning_objective": 65.03,
+    "next_gameweek_free_transfers": 2,
+    "planning_objective": 63.23,
     "starting_xi": [
       {
         "name": "Robert Lynch Sánchez",
@@ -345,7 +345,7 @@
       }
     ],
     "transfer_count": 2,
-    "transfer_option_value": 3.6,
+    "transfer_option_value": 1.8,
     "transfers": [
       {
         "player_in_id": "player:2025-26:384",
@@ -364,7 +364,7 @@
     "vice_captain_name": "Cody Gakpo"
   },
   "selection_policy": "reviewed_solver_selected",
-  "state_sha256": "ea2d6db54dac3a9491c240ab8b0a16910fc52f1c7d528161bdb5978a34837f74",
+  "state_sha256": "37b6eaa708fcef3fd3b7bb6339b570428bf86b6817b3165ccfc681039a49a40c",
   "status": "sealed_setup_awaiting_human_review",
   "transfer_value_policy": {
     "free_per_gameweek": 1,

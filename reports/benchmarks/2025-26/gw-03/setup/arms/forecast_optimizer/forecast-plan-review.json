@@ -2,14 +2,14 @@
   "contains_hidden_outcome": false,
   "contains_state_transition": false,
   "contains_validated_plan": false,
-  "content_sha256": "2401468d6c1f87f521cf994e21241824dadfff47d8d5bc3b9594398ac8e6637b",
-  "feature_state_sha256": "3796732b130d70c02063d6deee33a2bfc993499ab568f354e316058d819a2eb7",
-  "forecast_sha256": "fe30ef4ca47f3c9362e5c4cc06c04314ba5c794aeea53130290d7cdaf692b54f",
+  "content_sha256": "a12b7503df1526a90a40b6c072241c90ad667a694dbb80b410bb622365ba9256",
+  "feature_state_sha256": "f91f910b515a3cbcf4c2d40b1d5e08c79109d8b1be390dee24c2ef4652da6114",
+  "forecast_sha256": "a6c8f64e4c5d3c0313a35fc1e6269247a576331a73bd872a06138d83ebd193f7",
   "gameweek": 3,
   "lineage": {
     "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
-    "solver_input_sha256": "786a9dd4a232a42997a60efc97e8dfe5f300df81033d8b6507a2c9668a2e0c92",
-    "solver_output_sha256": "85adbe2ace88a0c42aa24139febf4c8702ffbee3c667dc64b7972176f9b1c1a1"
+    "solver_input_sha256": "e2b5ed3aecf862b322b2d868f1ec9af6f687e94449903cfb90fd722d825298ec",
+    "solver_output_sha256": "567bee83d52aa3e372dead05f867bec2b9a900a33f4b7a7801b8543eb8172f18"
   },
   "plans_by_transfer_count": {
     "0": {
@@ -17,8 +17,8 @@
       "captain_name": "Mohamed Salah",
       "hit_cost": 0,
       "immediate_objective": 59.81,
-      "next_gameweek_free_transfers": 4,
-      "planning_objective": 65.21,
+      "next_gameweek_free_transfers": 3,
+      "planning_objective": 63.41,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -66,7 +66,7 @@
         }
       ],
       "transfer_count": 0,
-      "transfer_option_value": 5.4,
+      "transfer_option_value": 3.6,
       "transfers": [],
       "vice_captain_id": "player:2025-26:249",
       "vice_captain_name": "João Pedro Junqueira de Jesus"
@@ -76,8 +76,8 @@
       "captain_name": "Mohamed Salah",
       "hit_cost": 0,
       "immediate_objective": 61.43,
-      "next_gameweek_free_transfers": 3,
-      "planning_objective": 65.03,
+      "next_gameweek_free_transfers": 2,
+      "planning_objective": 63.23,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -125,7 +125,7 @@
         }
       ],
       "transfer_count": 1,
-      "transfer_option_value": 3.6,
+      "transfer_option_value": 1.8,
       "transfers": [
         {
           "player_in_id": "player:2025-26:119",
@@ -142,8 +142,8 @@
       "captain_name": "Mohamed Salah",
       "hit_cost": 0,
       "immediate_objective": 63.23,
-      "next_gameweek_free_transfers": 2,
-      "planning_objective": 65.03,
+      "next_gameweek_free_transfers": 1,
+      "planning_objective": 63.23,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -191,7 +191,7 @@
         }
       ],
       "transfer_count": 2,
-      "transfer_option_value": 1.8,
+      "transfer_option_value": 0.0,
       "transfers": [
         {
           "player_in_id": "player:2025-26:119",
@@ -212,10 +212,10 @@
     "3": {
       "captain_id": "player:2025-26:381",
       "captain_name": "Mohamed Salah",
-      "hit_cost": 0,
-      "immediate_objective": 64.51,
+      "hit_cost": 4,
+      "immediate_objective": 60.51,
       "next_gameweek_free_transfers": 1,
-      "planning_objective": 64.51,
+      "planning_objective": 60.51,
       "starting_xi": [
         {
           "name": "Robert Lynch Sánchez",
@@ -296,8 +296,8 @@
     "captain_name": "Mohamed Salah",
     "hit_cost": 0,
     "immediate_objective": 59.81,
-    "next_gameweek_free_transfers": 4,
-    "planning_objective": 65.21,
+    "next_gameweek_free_transfers": 3,
+    "planning_objective": 63.41,
     "starting_xi": [
       {
         "name": "Robert Lynch Sánchez",
@@ -345,12 +345,13 @@
       }
     ],
     "transfer_count": 0,
-    "transfer_option_value": 5.4,
+    "transfer_option_value": 3.6,
     "transfers": [],
     "vice_captain_id": "player:2025-26:249",
     "vice_captain_name": "João Pedro Junqueira de Jesus"
   },
-  "state_sha256": "99e21a8394635a0b97e12c8c7146ccfa3492eef3da8524c6362e5b64c59bc8c5",
+  "selection_policy": "reviewed_solver_selected",
+  "state_sha256": "7115dae85661ed44a0b01e71df245458cdd5bdb2d602b6c9f52946c13f1ea837",
   "status": "sealed_setup_awaiting_human_review",
   "transfer_value_policy": {
     "free_per_gameweek": 1,

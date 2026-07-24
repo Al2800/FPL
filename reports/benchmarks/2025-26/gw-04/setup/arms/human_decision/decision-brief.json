@@ -1,7 +1,7 @@
 {
-  "content_sha256": "9e7f1377c851ddb588311b890e6df8d920bff483b3111b74fe2a960fc85a1599",
+  "content_sha256": "1d99b2f50c6102c3e6541ebe84f92591dc10a21613da6d886f2dabd043bcebc4",
   "episode_id": "benchmark-v0:2025-26:gw04:manager-neutral",
-  "feature_state_sha256": "085f584104617dae4f475214aa8cd2ef41cdd188cc99d99ad49c191edf6f1d4a",
+  "feature_state_sha256": "1ead1a4409902c60939e149806694f28cec52a0ccc38ce9cfc13a95f700ad80a",
   "gameweek": 4,
   "observed_sha256": "e3b061e3573e4f7fae99f867f4f5801c4cf331a2f473b47a972e1e0b77725482",
   "outcome_access": "sealed_not_loaded",
@@ -47,10 +47,10 @@
       ],
       "vice_captain_id": "player:2025-26:249"
     },
-    "no_transfer_objective": 73.87,
-    "objective": 85.13,
+    "no_transfer_objective": 72.07,
+    "objective": 83.33,
     "selected_strategy": "highest_ev",
-    "transfer_option_value": 1.8,
+    "transfer_option_value": 0.0,
     "transfers": [
       {
         "player_in_id": "player:2025-26:237",
@@ -66,8 +66,8 @@
       }
     ]
   },
-  "solver_input_sha256": "2bc98983aaa1ca8bf5150a2653ad5be448cd489c977abde476b7839fd1b9c949",
-  "solver_output_sha256": "c900ec63b5d3a177082400f1c90168c50fd9c7ba59bf4054d5c4525484d839bf",
-  "starting_state_sha256": "ea2d6db54dac3a9491c240ab8b0a16910fc52f1c7d528161bdb5978a34837f74",
+  "solver_input_sha256": "5123592891ffd4d32bd42934ceb151dc6e6f2b2080a6647fe02fef25b6f137cb",
+  "solver_output_sha256": "63b75c2c2cf1267d63e4a27a493398e1c935684b2dac135e9ef6f91ef7aea4e1",
+  "starting_state_sha256": "37b6eaa708fcef3fd3b7bb6339b570428bf86b6817b3165ccfc681039a49a40c",
   "status": "prepared_awaiting_policy_proposal"
 }

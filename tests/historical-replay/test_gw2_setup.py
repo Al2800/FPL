@@ -161,89 +161,65 @@ def test_gw3_setup_uses_only_completed_history_and_arm_owned_state(
         ]
 
 
-def test_checked_in_reliability_comparison_remains_sealed_and_unfrozen() -> None:
-    setup = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02" / "setup"
-    comparison_path = setup / "forecast-reliability-comparison.json"
-    review_path = setup / "reliability-review.json"
-    if not comparison_path.exists():
-        pytest.skip("checked-in reliability comparison is unavailable")
-    comparison = json.loads(comparison_path.read_text(encoding="utf-8"))
-    review = json.loads(review_path.read_text(encoding="utf-8"))
-    assert comparison["content_sha256"] == artifact_hash(comparison)
-    assert review["content_sha256"] == artifact_hash(review)
-    for artifact in (comparison, review):
-        assert artifact["contains_hidden_outcome"] is False
-        assert artifact["contains_validated_plan"] is False
-        assert artifact["contains_state_transition"] is False
-    assert review["reliability_calibrated"]["maximum_expected_points"] < 17
-    assert review["reliability_calibrated"]["hit_cost"] == 0
-    assert review["assessment"]["freeze_recommendation"].startswith("remain_unfrozen")
+def test_checked_in_locked_forecast_remains_sealed_and_bounded() -> None:
+    setup = GW2 / "setup"
+    summary = json.loads(
+        (setup / "forecast-review-summary.json").read_text(encoding="utf-8")
+    )
+    assert summary["content_sha256"] == artifact_hash(summary)
+    assert summary["status"] == "sealed_setup_awaiting_human_review"
+    assert summary["forecast_diagnostics"]["maximum_expected_points"] < 17
+    assert summary["forecast_diagnostics"]["model_status"] == (
+        "structured_calibrated_locked_pre_2025_26"
+    )
+    assert summary["contains_hidden_outcome"] is False
+    assert summary["contains_validated_plan"] is False
+    assert summary["contains_state_transition"] is False
 
 
 def test_feature_complete_comparison_resets_all_promoted_teams_and_stays_sealed() -> None:
-    setup = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02" / "setup"
-    comparison = json.loads(
-        (setup / "forecast-feature-complete-comparison.json").read_text(
+    summary = json.loads(
+        (GW2 / "setup" / "forecast-review-summary.json").read_text(
             encoding="utf-8"
         )
     )
-    review = json.loads(
-        (setup / "feature-complete-review.json").read_text(encoding="utf-8")
-    )
-    assert comparison["content_sha256"] == artifact_hash(comparison)
-    assert review["content_sha256"] == artifact_hash(review)
-    assert comparison["forecast_diagnostics"]["team_fallbacks"] == [
+    assert summary["forecast_diagnostics"]["team_fallbacks"] == [
         "team:2025-26:11",
         "team:2025-26:17",
         "team:2025-26:3",
     ]
-    assert review["sealed_gw2"]["promoted_fallback_teams"] == [
-        "Burnley",
-        "Leeds",
-        "Sunderland",
-    ]
-    assert comparison["forecast_diagnostics"]["event_model_weight"] == 0
-    assert comparison["forecast_diagnostics"]["recent_minutes_weight"] == 0.5
-    assert review["contains_hidden_outcome"] is False
-    assert review["contains_validated_plan"] is False
-    assert review["contains_state_transition"] is False
+    assert summary["forecast_diagnostics"]["event_model_weight"] == 0
+    assert summary["forecast_diagnostics"]["recent_minutes_weight"] == 0.5
 
 
 def test_option_value_review_compares_transfer_counts_without_outcome_access() -> None:
-    setup = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02" / "setup"
-    comparison = json.loads(
-        (setup / "forecast-option-value-comparison.json").read_text(
-            encoding="utf-8"
-        )
+    setup = GW2 / "setup"
+    output = json.loads(
+        (
+            setup
+            / "arms"
+            / "forecast_optimizer"
+            / "reviewed-engine-output.json"
+        ).read_text(encoding="utf-8")
     )
     review = json.loads(
-        (setup / "transfer-option-value-review.json").read_text(encoding="utf-8")
+        (
+            setup
+            / "arms"
+            / "forecast_optimizer"
+            / "forecast-plan-review.json"
+        ).read_text(encoding="utf-8")
     )
 
-    assert comparison["content_sha256"] == artifact_hash(comparison)
     assert review["content_sha256"] == artifact_hash(review)
-    for artifact in (comparison, review):
-        assert artifact["contains_hidden_outcome"] is False
-        assert artifact["contains_validated_plan"] is False
-        assert artifact["contains_state_transition"] is False
+    assert review["contains_hidden_outcome"] is False
+    assert review["contains_validated_plan"] is False
+    assert review["contains_state_transition"] is False
     assert {
         count: row["immediate_objective"]
-        for count, row in comparison["plans_by_transfer_count"].items()
+        for count, row in output["best_by_transfer_count"].items()
         if count in {"0", "1", "2"}
-    } == {"0": 58.23, "1": 59.9, "2": 61.33}
-    assert comparison["selected"]["transfers"] == []
-    assert comparison["policy"]["option_unit_value"] == 1.8
-    assert review["assessment"]["policy_is_fitted_on_gw2"] is False
-    assert review["assessment"]["full_multiweek_forecast"] is False
-    assert review["sensitivity"]["adjacent_action_breakpoints"] == [
-        {
-            "between_transfer_counts": [0, 1],
-            "option_unit_value": 1.67,
-            "probability_at_declared_discount": 0.4639,
-        },
-        {
-            "between_transfer_counts": [1, 2],
-            "option_unit_value": 1.43,
-            "probability_at_declared_discount": 0.3972,
-        },
-    ]
+    } == {"0": 58.23, "1": 59.9, "2": 57.33}
+    assert output["selected"]["transfers"] == []
+    assert output["selected"]["next_gameweek_free_transfers"] == 2
+    assert output["transfer_value_policy"]["option_unit_value"] == 1.8

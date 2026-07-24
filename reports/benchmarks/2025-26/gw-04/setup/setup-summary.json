@@ -1,10 +1,10 @@
 {
   "candidate_count": 76273,
-  "code_commit": "b9d095be2c5ba8a95e4852c7a0fbb71f6f38b9f7",
+  "code_commit": "bbbba8526960e36f48a8782c088815d303286ba7",
   "contains_hidden_outcome": false,
   "contains_state_transition": false,
   "contains_validated_plan": false,
-  "content_sha256": "ed6b2919a679a30c142b029114a697636c682e1f28e2cafe127ca936232a725e",
+  "content_sha256": "baf16e69136c7fbab735ccdfc60a9c37fa3c79e7377e733130e5e283b7be1b46",
   "engine_no_transfer": {
     "immediate_objective": 66.67,
     "lineup": {
@@ -35,8 +35,8 @@
       ],
       "vice_captain_id": "player:2025-26:72"
     },
-    "objective": 73.87,
-    "transfer_option_value": 7.2,
+    "objective": 72.07,
+    "transfer_option_value": 5.4,
     "transfers": []
   },
   "engine_selected": {
@@ -69,8 +69,8 @@
       ],
       "vice_captain_id": "player:2025-26:249"
     },
-    "objective": 85.13,
-    "transfer_option_value": 1.8,
+    "objective": 83.33,
+    "transfer_option_value": 0.0,
     "transfers": [
       {
         "player_in_id": "player:2025-26:237",
@@ -87,7 +87,7 @@
     ]
   },
   "episode_id": "benchmark-v0:2025-26:gw04:manager-neutral",
-  "feature_state_sha256": "085f584104617dae4f475214aa8cd2ef41cdd188cc99d99ad49c191edf6f1d4a",
+  "feature_state_sha256": "1ead1a4409902c60939e149806694f28cec52a0ccc38ce9cfc13a95f700ad80a",
   "gameweek": 4,
   "limitations": [
     "final_export_fixture_revision_not_archived",
@@ -101,11 +101,11 @@
   "observed_sha256": "e3b061e3573e4f7fae99f867f4f5801c4cf331a2f473b47a972e1e0b77725482",
   "outcome_access": "sealed_not_loaded",
   "policy_brief_sha256": {
-    "evidence_agent": "0ed690948d5dabe5ea299af4de02e60615b15c594bc1ac721b7aadb44129c965",
-    "evidence_challenger": "ce45d9f63690bc361d7cfda39aed6776fd0e8e5c5f60f573f96c19032800011d",
-    "forecast_optimizer": "a4da05b5c4e68e298162f2516366369480d9e29aaaaa36a082def881aae6d494",
-    "human_decision": "9e7f1377c851ddb588311b890e6df8d920bff483b3111b74fe2a960fc85a1599",
-    "naive_baseline": "c08df97efddb5f2c7338cd68bddc2bc45de01afce2febd2850b8b8c43e08bc3c"
+    "evidence_agent": "f45a9cc46b2bfeaef814c20375c596397e6f113aae019a54630c234e83cfc20e",
+    "evidence_challenger": "996877bae5452434f21859e07907e74db6489c153d5193f9c6cb010c9181628b",
+    "forecast_optimizer": "a496d8c0d8483b1639e247e75704eea81c588aef180a46a809f213d1201d70fb",
+    "human_decision": "1d99b2f50c6102c3e6541ebe84f92591dc10a21613da6d886f2dabd043bcebc4",
+    "naive_baseline": "707153234b54d2b966d9afeae7ad945615a398b5db02338adc2df73af1db1a5f"
   },
   "projection_diagnostics": {
     "cold_start_risk": "rolling_window_populated",
@@ -134,7 +134,7 @@
   "schema_version": "1.0",
   "season": "2025-26",
   "shared_engine_input": true,
-  "solver_input_sha256": "2bc98983aaa1ca8bf5150a2653ad5be448cd489c977abde476b7839fd1b9c949",
-  "solver_output_sha256": "c900ec63b5d3a177082400f1c90168c50fd9c7ba59bf4054d5c4525484d839bf",
+  "solver_input_sha256": "5123592891ffd4d32bd42934ceb151dc6e6f2b2080a6647fe02fef25b6f137cb",
+  "solver_output_sha256": "63b75c2c2cf1267d63e4a27a493398e1c935684b2dac135e9ef6f91ef7aea4e1",
   "status": "prepared_not_frozen"
 }

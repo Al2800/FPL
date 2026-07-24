@@ -1,7 +1,7 @@
 {
-  "content_sha256": "809a105e28579ecca15d0ff52d9885092e0b86d25547fef91263015bc62c21f9",
+  "content_sha256": "75e295d0f1f2bec30fb4d8124d9061612167665d093ed241012f7a9a42727469",
   "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
-  "feature_state_sha256": "3796732b130d70c02063d6deee33a2bfc993499ab568f354e316058d819a2eb7",
+  "feature_state_sha256": "f91f910b515a3cbcf4c2d40b1d5e08c79109d8b1be390dee24c2ef4652da6114",
   "gameweek": 3,
   "observed_sha256": "a15d87643845e8cb7782fea4737eb6e1d566268f0af955ef6465b319343e3b49",
   "outcome_access": "sealed_not_loaded",
@@ -18,7 +18,7 @@
   "season": "2025-26",
   "shared_engine_baseline": {
     "candidate_count": 78984,
-    "immediate_objective": 96.0,
+    "immediate_objective": 92.0,
     "lineup": {
       "bench_ids": [
         "player:2025-26:470",
@@ -47,8 +47,8 @@
       ],
       "vice_captain_id": "player:2025-26:8"
     },
-    "no_transfer_objective": 69.9,
-    "objective": 96.0,
+    "no_transfer_objective": 68.1,
+    "objective": 92.0,
     "selected_strategy": "highest_ev",
     "transfer_option_value": 0.0,
     "transfers": [
@@ -66,8 +66,8 @@
       }
     ]
   },
-  "solver_input_sha256": "9202c2aee978df7351b12f95881a3485238dd51786ac0e6620d0cc4034acaf4d",
-  "solver_output_sha256": "b1b05f910e37ae6d41636434f47890f7bbfc5a4d117251f4a511d39d8406f23f",
-  "starting_state_sha256": "6d746f747b280e89009191d0373f2ad39a8ab66c0225d9d2d779fcac3c1d2fca",
+  "solver_input_sha256": "d9ebfd64c84f911f8c5435393e789d1587a8349fb6fe9243e0ebe693502841f6",
+  "solver_output_sha256": "9bfd9481ef4ed192b84851ff1f358b2925bccff78d0f7336009cbedbfa3b5ad8",
+  "starting_state_sha256": "04bed24571fff85e378e4af01b74e6f5b4bb578c48467a2d80841a23b7d31776",
   "status": "prepared_awaiting_policy_proposal"
 }

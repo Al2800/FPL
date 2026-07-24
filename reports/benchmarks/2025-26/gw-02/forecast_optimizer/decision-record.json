@@ -3,8 +3,8 @@
     "aggressive": {
       "bank_after": 0.0,
       "banked_option_units": 0,
-      "hit_cost": 0,
-      "immediate_objective": 61.33,
+      "hit_cost": 4,
+      "immediate_objective": 57.33,
       "lineup": {
         "bench_ids": [
           "player:2025-26:470",
@@ -34,8 +34,8 @@
         "vice_captain_id": "player:2025-26:235"
       },
       "next_gameweek_free_transfers": 1,
-      "objective": 61.33,
-      "strategy": "free_transfer",
+      "objective": 57.33,
+      "strategy": "hit",
       "transfer_option_value": 0.0,
       "transfers": [
         {
@@ -55,7 +55,7 @@
     },
     "conservative": {
       "bank_after": 0.0,
-      "banked_option_units": 2,
+      "banked_option_units": 1,
       "hit_cost": 0,
       "immediate_objective": 58.23,
       "lineup": {
@@ -86,10 +86,10 @@
         ],
         "vice_captain_id": "player:2025-26:235"
       },
-      "next_gameweek_free_transfers": 3,
-      "objective": 61.83,
+      "next_gameweek_free_transfers": 2,
+      "objective": 60.03,
       "strategy": "bank_transfer",
-      "transfer_option_value": 3.6,
+      "transfer_option_value": 1.8,
       "transfers": [],
       "validation": {
         "chips_ok": true,
@@ -105,21 +105,21 @@
   },
   "available_at": "2025-08-22T17:30:00Z",
   "baseline_comparison": {
-    "do_nothing_objective": 61.83,
+    "do_nothing_objective": 60.03,
     "expected_advantage": 0.0,
     "notes": "Planning objectives include the declared transfer-option term; immediate objectives remain in the solver artefact",
-    "recommended_objective": 61.83
+    "recommended_objective": 60.03
   },
   "candidate_plans": [
     {
       "hit_cost": 0,
-      "objective": 61.83,
+      "objective": 60.03,
       "strategy": "0_transfers",
       "transfers": []
     },
     {
       "hit_cost": 0,
-      "objective": 61.7,
+      "objective": 59.9,
       "strategy": "1_transfers",
       "transfers": [
         {
@@ -129,8 +129,8 @@
       ]
     },
     {
-      "hit_cost": 0,
-      "objective": 61.33,
+      "hit_cost": 4,
+      "objective": 57.33,
       "strategy": "2_transfers",
       "transfers": [
         {
@@ -144,8 +144,8 @@
       ]
     },
     {
-      "hit_cost": 4,
-      "objective": 58.81,
+      "hit_cost": 8,
+      "objective": 54.81,
       "strategy": "3_transfers",
       "transfers": [
         {
@@ -193,7 +193,7 @@
       "triple_captain_sh",
       "bench_boost_sh"
     ],
-    "free_transfers": 2,
+    "free_transfers": 1,
     "squad_player_ids": [
       "player:2025-26:220",
       "player:2025-26:235",
@@ -237,9 +237,9 @@
   },
   "recommendation": {
     "captain_name": "Mohamed Salah",
-    "objective": 61.83,
+    "objective": 60.03,
     "strategy": "live_faithful_option_value",
-    "validated_plan_sha256": "02805eb24ef6011db030a83f6e44244198d6f47743e908216565519d5bba9984",
+    "validated_plan_sha256": "b489394447a47e5508728766bc43551c418e0b5ff238d6d182cc8d49b610713a",
     "vice_captain_name": "Cole Palmer"
   },
   "record_id": "gdr:2025-26:gw02:forecast_optimizer",
@@ -264,12 +264,12 @@
   "season": "2025-26",
   "validated_plan": {
     "active_chip": null,
-    "content_sha256": "02805eb24ef6011db030a83f6e44244198d6f47743e908216565519d5bba9984",
+    "content_sha256": "b489394447a47e5508728766bc43551c418e0b5ff238d6d182cc8d49b610713a",
     "episode_id": "benchmark-v0:2025-26:gw02:manager-neutral",
     "finance": {
       "bank_after": 0.0,
       "bank_before": 0.0,
-      "free_transfers_before": 2,
+      "free_transfers_before": 1,
       "hit_cost": 0,
       "transfer_count": 0
     },
@@ -305,7 +305,7 @@
     },
     "plan_id": "validated-plan:benchmark-v0:2025-26:gw02:manager-neutral:forecast_optimizer",
     "policy_arm": "forecast_optimizer",
-    "previous_state_sha256": "60896414454e5be27abd85cd1e916dc56c2beebe68e0cc6f4df6a6cf0eb8ee1c",
+    "previous_state_sha256": "94c79902e22b81a95c565f20a318c4c850465de97ed1cadc077b0d177ea307f2",
     "ruleset": {
       "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
       "ruleset_id": "2025-26-v1.0"
@@ -398,7 +398,7 @@
         "lineup_legal_and_ordered",
         "chip_legal"
       ],
-      "content_sha256": "c949486164a516e8672dcbd3a0636233339aea9f481a9e4a8f3830ff8c0156ca",
+      "content_sha256": "f5392b749d39b41f8a6b2245defa8dfb3bd32b7bde7e59c6bad83207c5ab669e",
       "status": "passed"
     }
   },
@@ -410,6 +410,6 @@
     "squad": {
       "ok": true
     },
-    "validated_plan_sha256": "02805eb24ef6011db030a83f6e44244198d6f47743e908216565519d5bba9984"
+    "validated_plan_sha256": "b489394447a47e5508728766bc43551c418e0b5ff238d6d182cc8d49b610713a"
   }
 }

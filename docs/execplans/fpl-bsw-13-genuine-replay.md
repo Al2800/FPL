@@ -35,7 +35,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 03:45Z) Commit/push selector `b9d095b`, generate the canonical sealed GW4 setup from that exact commit, prove idempotence and zero outcome/plan/transition artifacts, and pause before reveal.
 - [x] (2026-07-24 20:45Z) Diagnose the user-questioned four-transfer state as a season-start off-by-one: the seed supplied one pre-GW1 transfer and the normal transition awarded another.
 - [x] (2026-07-24 21:20Z) Correct the controlled seed to zero pre-deadline transfers, migrate GW2 to the generic reviewed-setup contract, and prove the full corrected chain in isolation: GW2/GW3/GW4 open with 1/2/3 transfers while points and football actions remain unchanged.
-- [ ] Commit the producing correction, preserve the invalid lineage as superseded evidence, regenerate canonical GW1–GW4 artifacts, and pass the full regression suite.
+- [x] (2026-07-24 21:34Z) Commit producing correction `bbbba85`, preserve the invalid lineage in Git commit `365587a` plus the ignored local archive named by `superseded-lineages.json`, regenerate 225 canonical GW1–GW4 files, prove byte-identical rerun, and pass 57 historical plus 350 applicable repository tests.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -137,7 +137,9 @@ The first genuine checkpoint is complete locally. It contains one shared officia
 
 The checkpoint exposed and fixed one provenance mismatch between episode and scorer canonicalisation. It also demonstrates why the replay must preserve actual decisions: Rodon's 7 bench points remain unused because all XI players appeared. The result is reproducible across two output roots and the full repository suite passes. Policy divergence and solver inputs intentionally begin at the reviewed GW2 checkpoint.
 
-GW3 is now complete as the third genuine chronological checkpoint. The reviewed bank/no-transfer plan scored 59: Palmer did not appear, Ezri Konsa legally auto-substituted for him and contributed 14, Salah's captaincy added 3, and João Pedro scored 9 without needing the vice-captain fallback. All arms remain action-equivalent at 174 cumulative points but retain distinct state, plan, outcome and transition hashes. They open GW4 with £0.0m bank and four free transfers. The canonical rerun is byte-identical and no GW4 proposal has been created.
+GW3 is now complete as the third genuine chronological checkpoint. The reviewed bank/no-transfer plan scored 59: Palmer did not appear, Ezri Konsa legally auto-substituted for him and contributed 14, Salah's captaincy added 3, and João Pedro scored 9 without needing the vice-captain fallback. All arms remain action-equivalent at 174 cumulative points but retain distinct state, plan, outcome and transition hashes.
+
+The corrected lineage opens GW2/GW3/GW4 with 1/2/3 free transfers. Scores, substitutions, squads and reviewed actions through GW3 are unchanged. The corrected GW4 setup still recommends Palmer→Gakpo plus Anderson→Szoboszlai for the optimiser/fallback arms, now carrying two transfers to GW5; the naive arm banks and would carry four. The superseded lineage is recoverable from its recorded Git commit and preserved in an ignored local archive; the corrected 225-file tree reproduces byte-for-byte.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same

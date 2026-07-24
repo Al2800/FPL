@@ -1,11 +1,11 @@
 {
   "active_chip": null,
-  "content_sha256": "761a668e8deef1c4101e324eb5277d47d89e9b931cf54d9055acb860969f8dac",
+  "content_sha256": "18a53191ce2a9634401878e9a470bc53387f1db875ee10e9a3cc488f9886cfed",
   "episode_id": "benchmark-v0:2025-26:gw02:manager-neutral",
   "finance": {
     "bank_after": 0.0,
     "bank_before": 0.0,
-    "free_transfers_before": 2,
+    "free_transfers_before": 1,
     "hit_cost": 0,
     "transfer_count": 0
   },
@@ -41,7 +41,7 @@
   },
   "plan_id": "validated-plan:benchmark-v0:2025-26:gw02:manager-neutral:evidence_challenger",
   "policy_arm": "evidence_challenger",
-  "previous_state_sha256": "072a3d4ad638d4f704df75144d8d77fed894459d3652e028711bfeb8c4511536",
+  "previous_state_sha256": "c7fe9cc8d24e48b72455b2814a62feb1476bb71ad6b5c2cdc81d4a3d1e4f4bfd",
   "ruleset": {
     "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
     "ruleset_id": "2025-26-v1.0"
@@ -134,7 +134,7 @@
       "lineup_legal_and_ordered",
       "chip_legal"
     ],
-    "content_sha256": "31a4685bbc5fb14820c97e698c1bd800fd07dea8f6f54fe8c4f5a4693bd68b16",
+    "content_sha256": "497fc1511df4a6b133e2c29a42dc01af3247c70b08e0547dbfe571297b5b3a58",
     "status": "passed"
   }
 }

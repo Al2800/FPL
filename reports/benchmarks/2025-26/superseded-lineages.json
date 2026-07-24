@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "lineages": [
+    {
+      "id": "initial-free-transfer-off-by-one",
+      "status": "superseded",
+      "reason": "The controlled GW1 seed incorrectly supplied one free transfer before the first deadline, so the ordinary transition produced one excess transfer in every successor state.",
+      "source_commit": "365587a93679968f1423fc9b2c068963cd6a0795",
+      "corrected_by_commit": "bbbba8526960e36f48a8782c088815d303286ba7",
+      "affected_gameweeks": [1, 2, 3, 4],
+      "local_archive": "local-superseded/initial-free-transfer-off-by-one",
+      "outcomes_changed": false,
+      "football_actions_changed": false
+    }
+  ]
+}

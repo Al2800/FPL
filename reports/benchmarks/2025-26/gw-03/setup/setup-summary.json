@@ -1,10 +1,10 @@
 {
   "candidate_count": 78984,
-  "code_commit": "19837073f9d893e0e00b68d0a452a8b720861c2f",
+  "code_commit": "bbbba8526960e36f48a8782c088815d303286ba7",
   "contains_hidden_outcome": false,
   "contains_state_transition": false,
   "contains_validated_plan": false,
-  "content_sha256": "e387b9d0665837dbef35a1a61bd7a44fc065c2070bb185200c01211936c2e4b0",
+  "content_sha256": "dc35b7f535f4d97fe3fbec7b27a13f38dd997182ad9303ca77eda18677a17a5a",
   "engine_no_transfer": {
     "immediate_objective": 64.5,
     "lineup": {
@@ -35,12 +35,12 @@
       ],
       "vice_captain_id": "player:2025-26:381"
     },
-    "objective": 69.9,
-    "transfer_option_value": 5.4,
+    "objective": 68.1,
+    "transfer_option_value": 3.6,
     "transfers": []
   },
   "engine_selected": {
-    "immediate_objective": 96.0,
+    "immediate_objective": 92.0,
     "lineup": {
       "bench_ids": [
         "player:2025-26:470",
@@ -69,7 +69,7 @@
       ],
       "vice_captain_id": "player:2025-26:8"
     },
-    "objective": 96.0,
+    "objective": 92.0,
     "transfer_option_value": 0.0,
     "transfers": [
       {
@@ -87,7 +87,7 @@
     ]
   },
   "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
-  "feature_state_sha256": "3796732b130d70c02063d6deee33a2bfc993499ab568f354e316058d819a2eb7",
+  "feature_state_sha256": "f91f910b515a3cbcf4c2d40b1d5e08c79109d8b1be390dee24c2ef4652da6114",
   "gameweek": 3,
   "limitations": [
     "final_export_fixture_revision_not_archived",
@@ -101,11 +101,11 @@
   "observed_sha256": "a15d87643845e8cb7782fea4737eb6e1d566268f0af955ef6465b319343e3b49",
   "outcome_access": "sealed_not_loaded",
   "policy_brief_sha256": {
-    "evidence_agent": "96260fa8313d92985dd3e5a593d44aefa95f0d19ed537be7f8783185de71cdbf",
-    "evidence_challenger": "31747021080a5bde6264ff6cdc9abfda3596ef6f1fbe21dcc8448ca59e0bcbc6",
-    "forecast_optimizer": "7554872e0e0882f394afeb7a89de1f2343edf2e0c5a6f04ebce8e4bfc5564632",
-    "human_decision": "c2bf2f26a3d64591ef041e48b62a388f6ca92fb9e9a3bd43ae236648e5058bb8",
-    "naive_baseline": "809a105e28579ecca15d0ff52d9885092e0b86d25547fef91263015bc62c21f9"
+    "evidence_agent": "887ceb6811c55dd7bb3eb6674db9fd7c041d227aa99f83b6dbc08b7d0b5fdd08",
+    "evidence_challenger": "5e6f8c754df08aa99053d090ed6690caca733bafaab5995e08c6ea50cfe85df6",
+    "forecast_optimizer": "7b5065934a2fecc7430c1311c31c059acbfeb5f1867cc829ff7f7831aa35a697",
+    "human_decision": "99e125afbc651a7801ba929ecfc96d58c7c4ae504fc9d7fce2d65ee7f0fea9e0",
+    "naive_baseline": "75e295d0f1f2bec30fb4d8124d9061612167665d093ed241012f7a9a42727469"
   },
   "projection_diagnostics": {
     "cold_start_risk": "severe_single_gameweek_outcome_chasing",
@@ -133,7 +133,7 @@
   "schema_version": "1.0",
   "season": "2025-26",
   "shared_engine_input": true,
-  "solver_input_sha256": "9202c2aee978df7351b12f95881a3485238dd51786ac0e6620d0cc4034acaf4d",
-  "solver_output_sha256": "b1b05f910e37ae6d41636434f47890f7bbfc5a4d117251f4a511d39d8406f23f",
+  "solver_input_sha256": "d9ebfd64c84f911f8c5435393e789d1587a8349fb6fe9243e0ebe693502841f6",
+  "solver_output_sha256": "9bfd9481ef4ed192b84851ff1f358b2925bccff78d0f7336009cbedbfa3b5ad8",
   "status": "prepared_review_blocked"
 }
