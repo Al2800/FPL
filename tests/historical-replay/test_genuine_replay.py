@@ -42,6 +42,18 @@ def _run_through_gw2(output_root: Path) -> dict:
     )
 
 
+def _run_through_gw3(output_root: Path) -> dict:
+    _run_through_gw2(output_root)
+    return run_historical_replay(
+        season="2025-26",
+        episode_root=EPISODES,
+        output_root=output_root,
+        start_gameweek=3,
+        stop_after_gameweek=3,
+        code_commit="a" * 40,
+    )
+
+
 def _require_local_episodes() -> None:
     if not (EPISODES / "gw-01" / "episode-manifest.json").exists():
         pytest.skip("immutable benchmark-v0 episode bundle is not present")
@@ -119,7 +131,7 @@ def test_checkpoint_refuses_to_cross_unreviewed_gameweek_boundary(
 ) -> None:
     with pytest.raises(
         GenuineReplayError,
-        match="GW1 or GW2 one at a time",
+        match="exactly one Gameweek at a time",
     ):
         run_historical_replay(
             season="2025-26",
@@ -237,6 +249,113 @@ def test_gw2_checkpoint_is_reproducible(tmp_path: Path) -> None:
     second = _run_through_gw2(tmp_path / "second")
 
     assert second == first
+
+
+def test_gw3_checkpoint_consumes_reviewed_arm_setups_and_stops_before_gw4(
+    tmp_path: Path,
+) -> None:
+    _require_local_episodes()
+
+    summary = _run_through_gw3(tmp_path / "run")
+
+    assert summary["decisions_completed_through_gameweek"] == 3
+    assert summary["next_state_gameweek"] == 4
+    assert summary["contains_next_gameweek_decision"] is False
+    assert summary["shared_action_count"] == 1
+    assert set(summary["arms"]) == set(POLICY_ARMS)
+    assert len(
+        {row["next_state_sha256"] for row in summary["arms"].values()}
+    ) == len(POLICY_ARMS)
+    assert set(summary["reviewed_solver_input_sha256_by_arm"]) == set(
+        POLICY_ARMS
+    )
+    assert set(summary["reviewed_solver_output_sha256_by_arm"]) == set(
+        POLICY_ARMS
+    )
+    assert not (tmp_path / "run" / "gw-04").exists()
+
+    for arm in POLICY_ARMS:
+        arm_dir = tmp_path / "run" / "gw-03" / arm
+        state = json.loads(
+            (arm_dir / "policy-state-before.json").read_text(encoding="utf-8")
+        )
+        plan = json.loads(
+            (arm_dir / "validated-plan.json").read_text(encoding="utf-8")
+        )
+        outcome = json.loads(
+            (arm_dir / "realised-outcome.json").read_text(encoding="utf-8")
+        )
+        successor = json.loads(
+            (arm_dir / "next-policy-state.json").read_text(encoding="utf-8")
+        )
+        assert plan["previous_state_sha256"] == state["content_sha256"]
+        assert plan["transfers"] == []
+        assert plan["lineup"]["captain_id"] == "player:2025-26:381"
+        assert plan["lineup"]["vice_captain_id"] == "player:2025-26:249"
+        assert plan["frozen_at"] < outcome["revealed_at"]
+        assert outcome["plan_sha256"] == plan["content_sha256"]
+        assert successor["previous_state_sha256"] == state["content_sha256"]
+        assert successor["policy_arm"] == arm
+        assert successor["gameweek"] == 4
+
+
+def test_gw3_persists_every_frozen_plan_before_hidden_outcome_read(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _require_local_episodes()
+    output_root = tmp_path / "run"
+    _run_through_gw2(output_root)
+    original_read = replay_module._read_json
+    audited = False
+
+    def audited_read(path: Path) -> dict:
+        nonlocal audited
+        if path.name == "hidden-outcome.json" and path.parent.name == "gw-03":
+            audited = True
+            for arm in POLICY_ARMS:
+                assert (
+                    output_root / "gw-03" / arm / "validated-plan.json"
+                ).exists()
+        return original_read(path)
+
+    monkeypatch.setattr(replay_module, "_read_json", audited_read)
+    run_historical_replay(
+        season="2025-26",
+        episode_root=EPISODES,
+        output_root=output_root,
+        start_gameweek=3,
+        stop_after_gameweek=3,
+        code_commit="a" * 40,
+    )
+
+    assert audited is True
+
+
+def test_gw3_checkpoint_is_reproducible(tmp_path: Path) -> None:
+    _require_local_episodes()
+
+    first = _run_through_gw3(tmp_path / "first")
+    second = _run_through_gw3(tmp_path / "second")
+
+    assert second == first
+
+
+def test_gw3_refuses_to_run_without_the_gw2_handoff(tmp_path: Path) -> None:
+    _require_local_episodes()
+
+    with pytest.raises(
+        GenuineReplayError,
+        match="Required replay artefact is missing",
+    ):
+        run_historical_replay(
+            season="2025-26",
+            episode_root=EPISODES,
+            output_root=tmp_path / "run",
+            start_gameweek=3,
+            stop_after_gameweek=3,
+            code_commit="a" * 40,
+        )
 
 
 def test_documented_module_cli_writes_the_gw1_checkpoint(

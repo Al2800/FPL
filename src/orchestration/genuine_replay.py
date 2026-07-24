@@ -680,6 +680,146 @@ def _load_reviewed_gw2_setup(
     return feature_state, solver_input, solver_output
 
 
+def _load_reviewed_gameweek_setup(
+    setup_dir: Path,
+    *,
+    season: str,
+    gameweek: int,
+    previous_summary: Mapping[str, Any],
+) -> tuple[
+    dict[str, Any],
+    dict[str, dict[str, Any]],
+    dict[str, dict[str, Any]],
+    dict[str, dict[str, Any]],
+]:
+    """Load a reviewed setup without weakening the legacy GW2 contract."""
+    if gameweek == 2:
+        feature_state, solver_input, solver_output = _load_reviewed_gw2_setup(
+            setup_dir,
+            previous_summary=previous_summary,
+        )
+        states = {
+            arm: _read_json(
+                setup_dir / "arms" / arm / "starting-policy-state.json"
+            )
+            for arm in POLICY_ARMS
+        }
+        return (
+            feature_state,
+            states,
+            {arm: deepcopy(solver_input) for arm in POLICY_ARMS},
+            {arm: deepcopy(solver_output) for arm in POLICY_ARMS},
+        )
+
+    feature_state = _read_json(setup_dir / "shared-feature-state.json")
+    forecast = _read_json(setup_dir / "shared-locked-forecast.json")
+    summary = _read_json(setup_dir / "forecast-review-summary.json")
+    if feature_state.get("content_sha256") != feature_state_hash(feature_state):
+        raise GenuineReplayError(
+            f"Reviewed GW{gameweek} feature-state hash mismatch"
+        )
+    if (
+        feature_state["content_sha256"]
+        != previous_summary["next_feature_state_sha256"]
+    ):
+        raise GenuineReplayError(
+            f"Reviewed GW{gameweek} feature state differs from the prior handoff"
+        )
+    if summary.get("content_sha256") != artifact_hash(summary):
+        raise GenuineReplayError(
+            f"Reviewed GW{gameweek} setup-summary hash mismatch"
+        )
+    if summary.get("season") != season or summary.get("gameweek") != gameweek:
+        raise GenuineReplayError(
+            f"Reviewed setup is not {season} GW{gameweek}"
+        )
+    if summary.get("feature_state_sha256") != feature_state["content_sha256"]:
+        raise GenuineReplayError(
+            f"Reviewed GW{gameweek} summary does not bind the feature state"
+        )
+    if summary.get("forecast_sha256") != artifact_hash(forecast):
+        raise GenuineReplayError(
+            f"Reviewed GW{gameweek} summary does not bind the forecast"
+        )
+    if any(
+        summary.get(flag) is not False
+        for flag in (
+            "contains_hidden_outcome",
+            "contains_validated_plan",
+            "contains_state_transition",
+        )
+    ):
+        raise GenuineReplayError(
+            f"Reviewed GW{gameweek} setup crosses the freeze boundary"
+        )
+
+    states: dict[str, dict[str, Any]] = {}
+    solver_inputs: dict[str, dict[str, Any]] = {}
+    solver_outputs: dict[str, dict[str, Any]] = {}
+    for arm in POLICY_ARMS:
+        arm_dir = setup_dir / "arms" / arm
+        state = _read_json(arm_dir / "starting-policy-state.json")
+        solver_input = _read_json(arm_dir / "reviewed-engine-input.json")
+        solver_output = _read_json(arm_dir / "reviewed-engine-output.json")
+        review = _read_json(arm_dir / "forecast-plan-review.json")
+        arm_summary = summary.get("arms", {}).get(arm, {})
+        if review.get("content_sha256") != artifact_hash(review):
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} plan-review hash mismatch for {arm}"
+            )
+        if state.get("content_sha256") != arm_summary.get("state_sha256"):
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} state hash mismatch for {arm}"
+            )
+        if state.get("policy_arm") != arm or state.get("gameweek") != gameweek:
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} state identity mismatch for {arm}"
+            )
+        if review.get("state_sha256") != state["content_sha256"]:
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} review does not bind state for {arm}"
+            )
+        if review.get("feature_state_sha256") != feature_state["content_sha256"]:
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} review does not bind features for {arm}"
+            )
+        if review.get("forecast_sha256") != summary["forecast_sha256"]:
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} review does not bind forecast for {arm}"
+            )
+        if review.get("lineage", {}).get(
+            "solver_input_sha256"
+        ) != fingerprint(solver_input):
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} solver-input hash mismatch for {arm}"
+            )
+        if review.get("lineage", {}).get(
+            "solver_output_sha256"
+        ) != fingerprint(solver_output):
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} solver-output hash mismatch for {arm}"
+            )
+        if arm_summary.get("review_sha256") != review["content_sha256"]:
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} summary review mismatch for {arm}"
+            )
+        if any(
+            review.get(flag) is not False
+            for flag in (
+                "contains_hidden_outcome",
+                "contains_validated_plan",
+                "contains_state_transition",
+            )
+        ):
+            raise GenuineReplayError(
+                f"Reviewed GW{gameweek} arm crosses the freeze boundary: {arm}"
+            )
+        states[arm] = state
+        solver_inputs[arm] = solver_input
+        solver_outputs[arm] = solver_output
+    return feature_state, states, solver_inputs, solver_outputs
+
+
 def _load_outcomes_after_all_plans_freeze(
     episode_dir: Path,
     *,
@@ -701,7 +841,7 @@ def _load_outcomes_after_all_plans_freeze(
     return _load_episode(episode_dir)
 
 
-def _gw2_strategy(arm: str) -> str:
+def _replay_strategy(arm: str) -> str:
     return {
         "naive_baseline": "do_nothing_bank_transfers",
         "forecast_optimizer": "live_faithful_option_value",
@@ -713,7 +853,7 @@ def _gw2_strategy(arm: str) -> str:
     }[arm]
 
 
-def _gw2_decision_record(
+def _replay_decision_record(
     *,
     manifest: Mapping[str, Any],
     feature_state: Mapping[str, Any],
@@ -729,8 +869,13 @@ def _gw2_decision_record(
         for row in solver_input["players"]
     }
     no_transfer = solver_output["plans"]["no_transfer"]
-    strategy = _gw2_strategy(str(state["policy_arm"]))
-    selected_objective = float(solver_output["selected"]["objective"])
+    strategy = _replay_strategy(str(state["policy_arm"]))
+    recommended = (
+        no_transfer
+        if state["policy_arm"] == "naive_baseline"
+        else solver_output["selected"]
+    )
+    selected_objective = float(recommended["objective"])
     no_transfer_objective = float(no_transfer["objective"])
     candidates = [
         {
@@ -834,7 +979,9 @@ def _gw2_decision_record(
                 "finalised_at": outcome["revealed_at"],
             },
             "retrospective": {
-                "process_notes": "Reviewed GW2 chronological checkpoint",
+                "process_notes": (
+                    f"Reviewed GW{manifest['gameweek']} chronological checkpoint"
+                ),
                 "lessons": list(feature_state["limitations"]),
                 "metrics": {
                     "gross_points": outcome["gross_points"],
@@ -864,59 +1011,95 @@ def _gw2_decision_record(
     )
 
 
-def finalise_historical_gameweek_two(
+def finalise_historical_gameweek(
     *,
     season: str,
+    gameweek: int,
     episode_root: Path,
     output_root: Path,
     code_commit: str,
     reviewed_setup_dir: Path | None = None,
 ) -> dict[str, Any]:
-    """Freeze, reveal, score and transition the reviewed GW2 checkpoint."""
+    """Freeze, reveal, score and transition one reviewed checkpoint."""
     if len(code_commit) != 40:
         raise GenuineReplayError("code_commit must be a full 40-character Git SHA")
-    previous_dir = output_root / "gw-01"
+    if gameweek < 2:
+        raise GenuineReplayError("Reviewed finalisation begins at GW2")
+    previous_dir = output_root / f"gw-{gameweek - 1:02d}"
     previous_summary = _read_json(previous_dir / "run-summary.json")
-    if previous_summary.get("next_state_gameweek") != 2:
-        raise GenuineReplayError("GW1 checkpoint does not hand off to GW2")
+    if previous_summary.get("next_state_gameweek") != gameweek:
+        raise GenuineReplayError(
+            f"GW{gameweek - 1} checkpoint does not hand off to GW{gameweek}"
+        )
     setup_dir = reviewed_setup_dir or (
-        REPO / "reports" / "benchmarks" / season / "gw-02" / "setup"
+        REPO
+        / "reports"
+        / "benchmarks"
+        / season
+        / f"gw-{gameweek:02d}"
+        / "setup"
     )
-    feature_state, solver_input, solver_output = _load_reviewed_gw2_setup(
-        setup_dir,
-        previous_summary=previous_summary,
+    feature_state, reviewed_states, solver_inputs, solver_outputs = (
+        _load_reviewed_gameweek_setup(
+            setup_dir,
+            season=season,
+            gameweek=gameweek,
+            previous_summary=previous_summary,
+        )
     )
-    observed_episode = _load_observed_episode(episode_root / "gw-02")
+    observed_episode = _load_observed_episode(
+        episode_root / f"gw-{gameweek:02d}"
+    )
     manifest = observed_episode["manifest"]
-    if manifest["season"] != season or manifest["gameweek"] != 2:
-        raise GenuineReplayError("Episode root does not contain requested GW2")
-    if solver_input.get("season") != season or solver_input.get("gameweek") != 2:
-        raise GenuineReplayError("Reviewed solver input is not the requested GW2")
+    if manifest["season"] != season or manifest["gameweek"] != gameweek:
+        raise GenuineReplayError(
+            f"Episode root does not contain requested GW{gameweek}"
+        )
     rules = observed_episode["rules"]
     rules_hash = str(manifest["ruleset"]["content_sha256"])
-    decision_market = {
-        str(row["player_id"]): dict(row) for row in solver_input["players"]
-    }
+    decision_markets: dict[str, dict[str, dict[str, Any]]] = {}
     frozen_plans: dict[str, dict[str, Any]] = {}
     states: dict[str, dict[str, Any]] = {}
     for arm in POLICY_ARMS:
-        state = _read_json(previous_dir / arm / "next-policy-state.json")
+        solver_input = solver_inputs[arm]
+        solver_output = solver_outputs[arm]
+        if (
+            solver_input.get("season") != season
+            or solver_input.get("gameweek") != gameweek
+        ):
+            raise GenuineReplayError(
+                f"Reviewed solver input is not {season} GW{gameweek} for {arm}"
+            )
+        state = reviewed_states[arm]
         if state["content_sha256"] != previous_summary["arms"][arm][
             "next_state_sha256"
         ]:
-            raise GenuineReplayError(f"GW2 opening state hash mismatch for {arm}")
-        if state["policy_arm"] != arm or state["gameweek"] != 2:
-            raise GenuineReplayError(f"GW2 opening state identity mismatch for {arm}")
+            raise GenuineReplayError(
+                f"GW{gameweek} opening state hash mismatch for {arm}"
+            )
+        prior_state = _read_json(previous_dir / arm / "next-policy-state.json")
+        if state != prior_state:
+            raise GenuineReplayError(
+                f"GW{gameweek} reviewed state differs from prior handoff for {arm}"
+            )
+        if state["policy_arm"] != arm or state["gameweek"] != gameweek:
+            raise GenuineReplayError(
+                f"GW{gameweek} opening state identity mismatch for {arm}"
+            )
         if sorted(row["player_id"] for row in state["squad"]) != sorted(
             solver_input["squad_player_ids"]
         ):
             raise GenuineReplayError(f"Reviewed solver squad differs for {arm}")
+        decision_market = {
+            str(row["player_id"]): dict(row) for row in solver_input["players"]
+        }
         candidate = (
             solver_output["plans"]["no_transfer"]
             if arm == "naive_baseline"
             else solver_output["selected"]
         )
         states[arm] = state
+        decision_markets[arm] = decision_market
         frozen_plans[arm] = validate_and_freeze_plan(
             episode_id=str(manifest["episode_id"]),
             policy_arm=arm,
@@ -929,17 +1112,19 @@ def finalise_historical_gameweek_two(
             ruleset_sha256=rules_hash,
         )
 
-    gameweek_dir = output_root / "gw-02"
+    gameweek_dir = output_root / f"gw-{gameweek:02d}"
     for arm in POLICY_ARMS:
         arm_dir = gameweek_dir / arm
         _write_json(arm_dir / "policy-state-before.json", states[arm])
         _write_json(arm_dir / "validated-plan.json", frozen_plans[arm])
 
     revealed_episode = _load_outcomes_after_all_plans_freeze(
-        episode_root / "gw-02",
+        episode_root / f"gw-{gameweek:02d}",
         frozen_plans=frozen_plans,
     )
-    next_observed = _load_observed_episode(episode_root / "gw-03")
+    next_observed = _load_observed_episode(
+        episode_root / f"gw-{gameweek + 1:02d}"
+    )
     next_feature_state = build_feature_state(
         episode_manifest=next_observed["manifest"],
         observed=next_observed["observed"],
@@ -970,20 +1155,20 @@ def finalise_historical_gameweek_two(
             state,
             plan,
             outcome,
-            decision_market=decision_market,
+            decision_market=decision_markets[arm],
             next_market=next_market,
             rules=rules,
             ruleset_sha256=rules_hash,
         )
-        record = _gw2_decision_record(
+        record = _replay_decision_record(
             manifest=manifest,
             feature_state=feature_state,
             state=state,
             plan=plan,
             outcome=outcome,
             transition=transition,
-            solver_input=solver_input,
-            solver_output=solver_output,
+            solver_input=solver_inputs[arm],
+            solver_output=solver_outputs[arm],
         )
         action_projection = {
             "transfers": plan["transfers"],
@@ -1000,7 +1185,7 @@ def finalise_historical_gameweek_two(
         _write_json(arm_dir / "state-transition.json", transition)
         _write_json(arm_dir / "next-policy-state.json", successor)
         arm_summaries[arm] = {
-            "strategy": _gw2_strategy(arm),
+            "strategy": _replay_strategy(arm),
             "plan_sha256": plan["content_sha256"],
             "outcome_sha256": outcome["content_sha256"],
             "transition_sha256": transition["content_sha256"],
@@ -1018,12 +1203,18 @@ def finalise_historical_gameweek_two(
             "free_transfers": successor["free_transfers"],
         }
 
+    input_hashes = {
+        arm: fingerprint(solver_inputs[arm]) for arm in POLICY_ARMS
+    }
+    output_hashes = {
+        arm: fingerprint(solver_outputs[arm]) for arm in POLICY_ARMS
+    }
     summary: dict[str, Any] = {
         "schema_version": "1.0",
         "run_mode": "genuine_historical_checkpoint",
         "season": season,
-        "decisions_completed_through_gameweek": 2,
-        "next_state_gameweek": 3,
+        "decisions_completed_through_gameweek": gameweek,
+        "next_state_gameweek": gameweek + 1,
         "contains_next_gameweek_decision": False,
         "code_commit": code_commit,
         "episode_id": manifest["episode_id"],
@@ -1037,8 +1228,6 @@ def finalise_historical_gameweek_two(
         "ruleset": deepcopy(manifest["ruleset"]),
         "feature_state_sha256": feature_state["content_sha256"],
         "next_feature_state_sha256": next_feature_state["content_sha256"],
-        "reviewed_solver_input_sha256": fingerprint(solver_input),
-        "reviewed_solver_output_sha256": fingerprint(solver_output),
         "limitations": sorted(
             set(feature_state["limitations"])
             | {
@@ -1050,8 +1239,31 @@ def finalise_historical_gameweek_two(
         "shared_action_count": len(action_hashes),
         "arms": arm_summaries,
     }
+    if gameweek == 2:
+        summary["reviewed_solver_input_sha256"] = next(iter(input_hashes.values()))
+        summary["reviewed_solver_output_sha256"] = next(
+            iter(output_hashes.values())
+        )
+    else:
+        summary["reviewed_solver_input_sha256_by_arm"] = input_hashes
+        summary["reviewed_solver_output_sha256_by_arm"] = output_hashes
     summary["content_sha256"] = fingerprint(summary)
     _write_json(gameweek_dir / "run-summary.json", summary)
+    solver_lineage = (
+        {
+            "reviewed_solver_input_sha256": summary[
+                "reviewed_solver_input_sha256"
+            ],
+            "reviewed_solver_output_sha256": summary[
+                "reviewed_solver_output_sha256"
+            ],
+        }
+        if gameweek == 2
+        else {
+            "reviewed_solver_input_sha256_by_arm": input_hashes,
+            "reviewed_solver_output_sha256_by_arm": output_hashes,
+        }
+    )
     _write_json(
         gameweek_dir / "shared-context.json",
         {
@@ -1064,16 +1276,30 @@ def finalise_historical_gameweek_two(
             "next_feature_state_sha256": summary[
                 "next_feature_state_sha256"
             ],
-            "reviewed_solver_input_sha256": summary[
-                "reviewed_solver_input_sha256"
-            ],
-            "reviewed_solver_output_sha256": summary[
-                "reviewed_solver_output_sha256"
-            ],
             "limitations": summary["limitations"],
+            **solver_lineage,
         },
     )
     return summary
+
+
+def finalise_historical_gameweek_two(
+    *,
+    season: str,
+    episode_root: Path,
+    output_root: Path,
+    code_commit: str,
+    reviewed_setup_dir: Path | None = None,
+) -> dict[str, Any]:
+    """Compatibility wrapper for the reviewed GW2 checkpoint."""
+    return finalise_historical_gameweek(
+        season=season,
+        gameweek=2,
+        episode_root=episode_root,
+        output_root=output_root,
+        code_commit=code_commit,
+        reviewed_setup_dir=reviewed_setup_dir,
+    )
 
 
 def run_historical_replay(
@@ -1086,16 +1312,17 @@ def run_historical_replay(
     code_commit: str,
 ) -> dict[str, Any]:
     """Run one explicitly reviewed historical checkpoint."""
-    if start_gameweek == 2 and stop_after_gameweek == 2:
-        return finalise_historical_gameweek_two(
+    if start_gameweek == stop_after_gameweek and start_gameweek >= 2:
+        return finalise_historical_gameweek(
             season=season,
+            gameweek=start_gameweek,
             episode_root=episode_root,
             output_root=output_root,
             code_commit=code_commit,
         )
     if start_gameweek != 1 or stop_after_gameweek != 1:
         raise GenuineReplayError(
-            "Reviewed checkpoints currently support GW1 or GW2 one at a time"
+            "Reviewed checkpoints support exactly one Gameweek at a time"
         )
     if len(code_commit) != 40:
         raise GenuineReplayError("code_commit must be a full 40-character Git SHA")

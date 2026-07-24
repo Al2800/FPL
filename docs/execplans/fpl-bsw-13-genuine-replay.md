@@ -28,6 +28,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 01:03Z) Prove GW2 rerun determinism and the fail-closed outcome-access boundary, then persist and review the real checkpoint.
 - [x] (2026-07-24 01:25Z) Generalise the sealed preparation boundary for GW3+: one common cutoff-safe forecast plus state-bound optimiser inputs/outputs for every arm.
 - [x] (2026-07-24 01:31Z) Commit the reusable setup builder, generate the tracked sealed GW3 proposal from that commit, and pause for human review without opening GW3 outcomes.
+- [x] (2026-07-24 02:35Z) Generalise the finaliser to verify and consume arm-specific reviewed setups while retaining the legacy GW2 contract.
+- [x] (2026-07-24 02:36Z) Prove in an isolated run that all five GW3 plans persist before outcome access, score 59 points, auto-substitute Konsa for Palmer, and advance isolated states to GW4 with four free transfers.
+- [ ] Commit the generic finaliser from a passing regression suite, generate the canonical GW3 checkpoint from that producing commit, and pause before any GW4 decision.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -62,6 +65,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: banked-transfer value materially changes the GW3 action.
   Evidence: the development setup gives zero/one/two/three transfers immediate objectives 59.81/61.43/63.23/64.51. After valuing the retained transfer bank they become 65.21/65.03/65.03/64.51, so the reviewed policy narrowly banks and would carry four transfers to GW4.
 
+- Observation: the reviewed GW3 banking plan scores the same 59 points as GW2, but through a different realised path.
+  Evidence: Palmer records no appearance and Ezri Konsa, the first legal outfield substitute, enters automatically. Salah remains captain, João Pedro vice-captain, no hit is charged, cumulative points reach 174, and every arm opens GW4 with four free transfers.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -90,6 +96,10 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Decision: Gameweek setup persists a shared forecast but arm-specific solver inputs, outputs and reviews.
   Rationale: model evidence is common by experimental design, while squad, purchase history, bank, free transfers and chips belong to each arm. GW3 inputs happen to be identical, but the artifact layout must permit divergence without changing the contract.
+  Date/Author: 2026-07-24 / Codex.
+
+- Decision: checkpoint finalisation reads, verifies and records solver lineage per arm even when all arm payloads currently hash identically.
+  Rationale: shared hashes are an observed property of the current state, not a licence to share mutable policy state. This preserves correct execution once transfers, chips or evidence make the trajectories diverge.
   Date/Author: 2026-07-24 / Codex.
 
 ## Outcomes & Retrospective
