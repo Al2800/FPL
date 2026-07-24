@@ -27,7 +27,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 01:00Z) Freeze all five GW2 arm plans from the reviewed setup before opening the hidden partition, score the official outcome, and advance five independent states to GW3.
 - [x] (2026-07-24 01:03Z) Prove GW2 rerun determinism and the fail-closed outcome-access boundary, then persist and review the real checkpoint.
 - [x] (2026-07-24 01:25Z) Generalise the sealed preparation boundary for GW3+: one common cutoff-safe forecast plus state-bound optimiser inputs/outputs for every arm.
-- [ ] Commit the reusable setup builder, generate the tracked sealed GW3 proposal from that commit, and pause for human review without opening GW3 outcomes.
+- [x] (2026-07-24 01:31Z) Commit the reusable setup builder, generate the tracked sealed GW3 proposal from that commit, and pause for human review without opening GW3 outcomes.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -110,7 +110,16 @@ There is intentionally no policy-performance divergence yet. The evidence,
 challenger and human arms explicitly fell back to the structured plan because
 no admissible historical unstructured proposal or recorded human decision was
 available. Treating that parity as an agent result would be incorrect; it is a
-chronology/state/reproducibility result. GW3 has not been prepared or decided.
+chronology/state/reproducibility result.
+
+GW3 is now prepared from commit `1983707` and remains sealed. Its common
+forecast uses only completed GW1–2 history; each of the five state hashes binds
+its own optimiser review. The selected structured plan banks all three
+available transfers, captains Salah, vice-captains João Pedro and would carry
+four transfers into GW4. Its 65.21 planning objective leads the best one- and
+two-transfer alternatives by only 0.18 points. No plan is frozen and no GW3
+hidden outcome, realised outcome or state transition has been opened or
+created.
 
 ## Context and Orientation
 
