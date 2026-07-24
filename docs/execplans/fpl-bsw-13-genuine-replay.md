@@ -41,6 +41,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 22:08Z) Extend the solver's zero-transfer seam for the official club-change exception without weakening any non-empty transfer candidate, then prove the real five-arm GW5 setup succeeds in isolation.
 - [x] (2026-07-24 22:10Z) Generate the canonical 41-file sealed GW5 setup from commit `d1302c4`, prove a byte-identical rerun, and pass 353 applicable repository tests without accessing the hidden outcome.
 - [x] (2026-07-24 22:29Z) Finalise GW5 from the reviewed bank actions: active arms scored 46 and reached 277 cumulative; naive scored 49 and reached 285, with the expected 3/5 opening-GW6 transfer banks.
+- [x] (2026-07-24 22:34Z) Generate the canonical sealed GW6 setup from committed GW5 checkpoint `115e4cf`, prove a byte-identical 41-file rerun, and pass 353 applicable tests without opening GW6 outcomes.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -104,6 +105,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Observation: GW5 extended the naive arm's realised lead from five to eight points.
   Evidence: active arms scored 46 after Tarkowski replaced zero-minute Murillo; naive scored 49 after Rodon replaced Murillo. All arms banked, Salah remained captain, and no hit or chip affected the comparison.
+
+- Observation: the active GW6 bank decision is clear, while the naive policy deliberately ignores a costless-at-cap transfer improvement.
+  Evidence: active bank scores 66.52 planning points versus 66.14 for Sánchez→Pickford. Naive bank scores 65.14, but Palmer→Semenyo scores 67.79 because using one of five transfers still replenishes to the five-transfer cap for GW7. Naive nevertheless banks by benchmark definition.
 
 ## Decision Log
 
@@ -172,6 +176,8 @@ The corrected lineage opens GW2/GW3/GW4 with 1/2/3 free transfers. Scores, subst
 GW4 is now complete. The active structured action made two free transfers and scored 57, leaving those arms on 231 cumulative points with £1.8m bank and two free transfers. The naive arm banked, scored 62, and leads on 236 with four free transfers. Its GW5 state explicitly records four Chelsea players because Marc Guiu's club identity refreshed from Sunderland to Chelsea; it may continue without a transfer, but its next transfer action must restore the three-per-club limit. No GW5 decision has been prepared.
 
 GW5 is now complete. The active arms banked and scored 46, reaching 277 with three free transfers and £1.8m for GW6. Naive banked and scored 49, reaching 285 with the five-transfer cap and £0.0m. Murillo's zero minutes triggered legal but arm-specific automatic substitutions because the benches differ: Tarkowski entered for the active arms and Rodon for naive. No GW6 decision has yet been prepared.
+
+GW6 is prepared and sealed. Active arms bank three available transfers, project 61.12 immediate and 66.52 planning points, and would open GW7 with four. Naive banks at the five-transfer cap, projects 57.94 immediate and 65.14 planning points, and remains capped at five. All arms captain Salah and vice-captain João Pedro. No GW6 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same

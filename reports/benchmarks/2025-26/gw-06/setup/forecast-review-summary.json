@@ -1,0 +1,373 @@
+{
+  "arms": {
+    "evidence_agent": {
+      "review_sha256": "046fc2314a800adcb820e38864ebe90497aa2776684f58e1f448a8f763cb1168",
+      "selected": {
+        "captain_id": "player:2025-26:381",
+        "captain_name": "Mohamed Salah",
+        "hit_cost": 0,
+        "immediate_objective": 61.12,
+        "next_gameweek_free_transfers": 4,
+        "planning_objective": 66.52,
+        "starting_xi": [
+          {
+            "name": "Robert Lynch Sánchez",
+            "player_id": "player:2025-26:220"
+          },
+          {
+            "name": "James Tarkowski",
+            "player_id": "player:2025-26:291"
+          },
+          {
+            "name": "Pedro Porro Sauceda",
+            "player_id": "player:2025-26:568"
+          },
+          {
+            "name": "Marcos Senesi Barón",
+            "player_id": "player:2025-26:72"
+          },
+          {
+            "name": "Mohamed Salah",
+            "player_id": "player:2025-26:381"
+          },
+          {
+            "name": "Cody Gakpo",
+            "player_id": "player:2025-26:384"
+          },
+          {
+            "name": "Tijjani Reijnders",
+            "player_id": "player:2025-26:427"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Dominik Szoboszlai",
+            "player_id": "player:2025-26:387"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          },
+          {
+            "name": "Ollie Watkins",
+            "player_id": "player:2025-26:64"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 5.4,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:249",
+        "vice_captain_name": "João Pedro Junqueira de Jesus"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "f8dfd995a5fd8d7b57bd746b03ef3ec9470e095c2d7492d791c622916c8d88d6",
+      "solver_output_sha256": "4e1952105fc204207290ca2f00a586708126b2a3398a15690eae994c9e0cee4e",
+      "state_sha256": "d500835f04c8636c8bd907cbdb039bc98cb443dc633e664ca8ba001d29f69fc7"
+    },
+    "evidence_challenger": {
+      "review_sha256": "c4b4997a6ded0e8cec75b933bb7725271c1ca962f1e9c8d69299781a9fd2c1da",
+      "selected": {
+        "captain_id": "player:2025-26:381",
+        "captain_name": "Mohamed Salah",
+        "hit_cost": 0,
+        "immediate_objective": 61.12,
+        "next_gameweek_free_transfers": 4,
+        "planning_objective": 66.52,
+        "starting_xi": [
+          {
+            "name": "Robert Lynch Sánchez",
+            "player_id": "player:2025-26:220"
+          },
+          {
+            "name": "James Tarkowski",
+            "player_id": "player:2025-26:291"
+          },
+          {
+            "name": "Pedro Porro Sauceda",
+            "player_id": "player:2025-26:568"
+          },
+          {
+            "name": "Marcos Senesi Barón",
+            "player_id": "player:2025-26:72"
+          },
+          {
+            "name": "Mohamed Salah",
+            "player_id": "player:2025-26:381"
+          },
+          {
+            "name": "Cody Gakpo",
+            "player_id": "player:2025-26:384"
+          },
+          {
+            "name": "Tijjani Reijnders",
+            "player_id": "player:2025-26:427"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Dominik Szoboszlai",
+            "player_id": "player:2025-26:387"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          },
+          {
+            "name": "Ollie Watkins",
+            "player_id": "player:2025-26:64"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 5.4,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:249",
+        "vice_captain_name": "João Pedro Junqueira de Jesus"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "f8dfd995a5fd8d7b57bd746b03ef3ec9470e095c2d7492d791c622916c8d88d6",
+      "solver_output_sha256": "4e1952105fc204207290ca2f00a586708126b2a3398a15690eae994c9e0cee4e",
+      "state_sha256": "f9b9a8314d66cb4ebf739c20dee909c3b927c1025a22ecdc70d2d4cc4e176d5c"
+    },
+    "forecast_optimizer": {
+      "review_sha256": "0b5e7e90f73f3e4f120a46f984e8f3178a685d0915f41a3c8d63345e55a96959",
+      "selected": {
+        "captain_id": "player:2025-26:381",
+        "captain_name": "Mohamed Salah",
+        "hit_cost": 0,
+        "immediate_objective": 61.12,
+        "next_gameweek_free_transfers": 4,
+        "planning_objective": 66.52,
+        "starting_xi": [
+          {
+            "name": "Robert Lynch Sánchez",
+            "player_id": "player:2025-26:220"
+          },
+          {
+            "name": "James Tarkowski",
+            "player_id": "player:2025-26:291"
+          },
+          {
+            "name": "Pedro Porro Sauceda",
+            "player_id": "player:2025-26:568"
+          },
+          {
+            "name": "Marcos Senesi Barón",
+            "player_id": "player:2025-26:72"
+          },
+          {
+            "name": "Mohamed Salah",
+            "player_id": "player:2025-26:381"
+          },
+          {
+            "name": "Cody Gakpo",
+            "player_id": "player:2025-26:384"
+          },
+          {
+            "name": "Tijjani Reijnders",
+            "player_id": "player:2025-26:427"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Dominik Szoboszlai",
+            "player_id": "player:2025-26:387"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          },
+          {
+            "name": "Ollie Watkins",
+            "player_id": "player:2025-26:64"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 5.4,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:249",
+        "vice_captain_name": "João Pedro Junqueira de Jesus"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "f8dfd995a5fd8d7b57bd746b03ef3ec9470e095c2d7492d791c622916c8d88d6",
+      "solver_output_sha256": "4e1952105fc204207290ca2f00a586708126b2a3398a15690eae994c9e0cee4e",
+      "state_sha256": "33d0d5d6c81c530d65a18f487485da9375df9d000444fd54b163b0767e104a04"
+    },
+    "human_decision": {
+      "review_sha256": "537c474e9a695410a6a8dbbcc539b1393ad1d9be13a55bb537bfe365af80308d",
+      "selected": {
+        "captain_id": "player:2025-26:381",
+        "captain_name": "Mohamed Salah",
+        "hit_cost": 0,
+        "immediate_objective": 61.12,
+        "next_gameweek_free_transfers": 4,
+        "planning_objective": 66.52,
+        "starting_xi": [
+          {
+            "name": "Robert Lynch Sánchez",
+            "player_id": "player:2025-26:220"
+          },
+          {
+            "name": "James Tarkowski",
+            "player_id": "player:2025-26:291"
+          },
+          {
+            "name": "Pedro Porro Sauceda",
+            "player_id": "player:2025-26:568"
+          },
+          {
+            "name": "Marcos Senesi Barón",
+            "player_id": "player:2025-26:72"
+          },
+          {
+            "name": "Mohamed Salah",
+            "player_id": "player:2025-26:381"
+          },
+          {
+            "name": "Cody Gakpo",
+            "player_id": "player:2025-26:384"
+          },
+          {
+            "name": "Tijjani Reijnders",
+            "player_id": "player:2025-26:427"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Dominik Szoboszlai",
+            "player_id": "player:2025-26:387"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          },
+          {
+            "name": "Ollie Watkins",
+            "player_id": "player:2025-26:64"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 5.4,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:249",
+        "vice_captain_name": "João Pedro Junqueira de Jesus"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "f8dfd995a5fd8d7b57bd746b03ef3ec9470e095c2d7492d791c622916c8d88d6",
+      "solver_output_sha256": "4e1952105fc204207290ca2f00a586708126b2a3398a15690eae994c9e0cee4e",
+      "state_sha256": "b183d6964308f46f76cb0eb489674d85d8047baa5bc71824355469b82419be06"
+    },
+    "naive_baseline": {
+      "review_sha256": "059742b66198a06acd6bbe79ea469dd868090143995b573a6a3deee76685612c",
+      "selected": {
+        "captain_id": "player:2025-26:381",
+        "captain_name": "Mohamed Salah",
+        "hit_cost": 0,
+        "immediate_objective": 57.94,
+        "next_gameweek_free_transfers": 5,
+        "planning_objective": 65.14,
+        "starting_xi": [
+          {
+            "name": "Robert Lynch Sánchez",
+            "player_id": "player:2025-26:220"
+          },
+          {
+            "name": "James Tarkowski",
+            "player_id": "player:2025-26:291"
+          },
+          {
+            "name": "Pedro Porro Sauceda",
+            "player_id": "player:2025-26:568"
+          },
+          {
+            "name": "Marcos Senesi Barón",
+            "player_id": "player:2025-26:72"
+          },
+          {
+            "name": "Joe Rodon",
+            "player_id": "player:2025-26:348"
+          },
+          {
+            "name": "Mohamed Salah",
+            "player_id": "player:2025-26:381"
+          },
+          {
+            "name": "Tijjani Reijnders",
+            "player_id": "player:2025-26:427"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Elliot Anderson",
+            "player_id": "player:2025-26:517"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          },
+          {
+            "name": "Ollie Watkins",
+            "player_id": "player:2025-26:64"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 7.2,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:249",
+        "vice_captain_name": "João Pedro Junqueira de Jesus"
+      },
+      "selection_policy": "do_nothing_bank_transfers",
+      "solver_input_sha256": "5c8d9eca81828bad361ec4311c274d5cd24c41c965c47e234e0848199fdfa9f0",
+      "solver_output_sha256": "218510705be51ac5358a8a0600b69ca63529848dbf03f0c730ea172164c9a478",
+      "state_sha256": "2abad2208cbc836119375dc47970ceab13477aa0acee3d2e02b3ed7956dc7191"
+    }
+  },
+  "code_commit": "115e4cf77219171a9e0188b16abef956bd94f0af",
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "210c6a6a4231b0e8936a924417660b90ef06a3593c53d659b214db40a7fe1f23",
+  "feature_state_sha256": "28d031636dc7d6891731d0f912c6ba5f514192053c1ce56f88c2986570950df8",
+  "forecast_diagnostics": {
+    "availability_policy": "historical availability/news unavailable; market rows remain available and expected minutes carries the observable signal",
+    "event_model_weight": 0.0,
+    "maximum_expected_points": 8.38,
+    "model_status": "structured_calibrated_locked_pre_2025_26",
+    "model_version": "live-faithful-v1",
+    "recent_minutes_weight": 0.5,
+    "team_fallbacks": [
+      "team:2025-26:11",
+      "team:2025-26:17",
+      "team:2025-26:3"
+    ]
+  },
+  "forecast_sha256": "0fd55fd2004b9d5ed4f29472d1042dcb728c0062e0214d849b7291693605c3e1",
+  "gameweek": 6,
+  "limitations": [
+    "final_export_fixture_revision_not_archived",
+    "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+    "historical_manager_state_unavailable",
+    "historical_news_unavailable",
+    "historical_player_availability_status_unavailable",
+    "historical_prices_not_deadline_snapshots",
+    "historical_unstructured_evidence_not_reconstructed",
+    "unshifted_vaastav_xP_excluded",
+    "untimestamped_market_odds_excluded"
+  ],
+  "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "shared_forecast": true,
+  "shared_solver_input": false,
+  "shared_solver_output": false,
+  "status": "sealed_setup_awaiting_human_review"
+}
