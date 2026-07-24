@@ -26,6 +26,8 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 00:49Z) Resumed the bead after `FPL-5iu`, the structured-data gate, and `FPL-k21` closed; the reviewed GW2 setup now uses the locked live-faithful forecast and explicit transfer-option policy.
 - [x] (2026-07-24 01:00Z) Freeze all five GW2 arm plans from the reviewed setup before opening the hidden partition, score the official outcome, and advance five independent states to GW3.
 - [x] (2026-07-24 01:03Z) Prove GW2 rerun determinism and the fail-closed outcome-access boundary, then persist and review the real checkpoint.
+- [x] (2026-07-24 01:25Z) Generalise the sealed preparation boundary for GW3+: one common cutoff-safe forecast plus state-bound optimiser inputs/outputs for every arm.
+- [ ] Commit the reusable setup builder, generate the tracked sealed GW3 proposal from that commit, and pause for human review without opening GW3 outcomes.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -54,6 +56,12 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: checkpoint provenance must be generated after the producing code is committed.
   Evidence: the first successful GW2 development run correctly scored and transitioned every arm but recorded parent commit `68ec402`, because the finaliser itself was still uncommitted. That run was preserved as ignored development evidence; the tracked checkpoint is generated only from the implementation commit.
 
+- Observation: the historical episode does not contain deadline availability flags.
+  Evidence: GW3 observed data contains fixtures, lagged player features and prior results but no status/news field. The structured forecast can infer reduced expected minutes from Palmer's GW2 zero minutes, but it cannot know the contemporaneous injury explanation. The sealed review therefore records that every market row remains available and that historical unstructured evidence was not reconstructed.
+
+- Observation: banked-transfer value materially changes the GW3 action.
+  Evidence: the development setup gives zero/one/two/three transfers immediate objectives 59.81/61.43/63.23/64.51. After valuing the retained transfer bank they become 65.21/65.03/65.03/64.51, so the reviewed policy narrowly banks and would carry four transfers to GW4.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -78,6 +86,10 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Decision: evidence-agent and human arms use an explicit structured fallback in GW2 when no admissible cached historical proposal exists.
   Rationale: inventing retrospective news or a human choice would introduce leakage. Each arm still freezes a plan bound to its own state and records the degraded fallback; agent capability is evaluated later with timestamped evidence.
+  Date/Author: 2026-07-24 / Codex.
+
+- Decision: Gameweek setup persists a shared forecast but arm-specific solver inputs, outputs and reviews.
+  Rationale: model evidence is common by experimental design, while squad, purchase history, bank, free transfers and chips belong to each arm. GW3 inputs happen to be identical, but the artifact layout must permit divergence without changing the contract.
   Date/Author: 2026-07-24 / Codex.
 
 ## Outcomes & Retrospective

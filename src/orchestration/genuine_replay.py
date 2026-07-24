@@ -15,6 +15,7 @@ from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.replay_adapter import build_replay_solver_input
 from src.optimisation.io import fingerprint
 from src.optimisation.solver import solve
+from src.optimisation.types import SolverInput
 from src.orchestration.historical_feature_state import (
     build_feature_state,
     feature_state_hash,
@@ -409,38 +410,49 @@ def prepare_historical_gameweek(
 ) -> dict[str, Any]:
     """Prepare a sealed policy workspace without reading the outcome payload."""
 
-    if gameweek != 2:
+    if gameweek < 2:
         raise GenuineReplayError(
-            "The reviewed setup boundary currently implements Gameweek 2 only"
+            "Historical setup requires a completed predecessor Gameweek"
         )
     if len(code_commit) != 40:
         raise GenuineReplayError("code_commit must be a full 40-character Git SHA")
 
-    gw1 = _load_observed_episode(episode_root / "gw-01")
     current = _load_observed_episode(episode_root / f"gw-{gameweek:02d}")
     manifest = current["manifest"]
     if manifest["season"] != season or manifest["gameweek"] != gameweek:
         raise GenuineReplayError("Episode root does not contain requested Gameweek")
 
-    seed_path = (
-        Path(__file__).resolve().parents[2]
-        / "control"
-        / "seeds"
-        / season
-        / "official-scout-gw1.json"
-    )
-    seed = _read_json(seed_path)
-    feature_gw1 = build_feature_state(
-        episode_manifest=gw1["manifest"],
-        observed=gw1["observed"],
-        identity_map=gw1["identity"],
-        seed=seed,
-    )
+    if gameweek == 2:
+        gw1 = _load_observed_episode(episode_root / "gw-01")
+        seed_path = (
+            REPO
+            / "control"
+            / "seeds"
+            / season
+            / "official-scout-gw1.json"
+        )
+        seed = _read_json(seed_path)
+        previous_feature = build_feature_state(
+            episode_manifest=gw1["manifest"],
+            observed=gw1["observed"],
+            identity_map=gw1["identity"],
+            seed=seed,
+        )
+    else:
+        previous_feature = _read_json(
+            previous_checkpoint_dir / "setup" / "shared-feature-state.json"
+        )
+        if previous_feature.get("content_sha256") != feature_state_hash(
+            previous_feature
+        ):
+            raise GenuineReplayError(
+                "Previous checkpoint feature-state hash mismatch"
+            )
     feature_current = build_feature_state(
         episode_manifest=manifest,
         observed=current["observed"],
         identity_map=current["identity"],
-        previous_state=feature_gw1,
+        previous_state=previous_feature,
     )
 
     previous_summary = _read_json(previous_checkpoint_dir / "run-summary.json")
@@ -448,7 +460,7 @@ def prepare_historical_gameweek(
         "content_sha256"
     ]:
         raise GenuineReplayError(
-            "GW2 feature state differs from the prior checkpoint handoff"
+            "Feature state differs from the prior checkpoint handoff"
         )
 
     rules = current["rules"]
@@ -463,7 +475,7 @@ def prepare_historical_gameweek(
         expected_hash = previous_summary["arms"][arm]["next_state_sha256"]
         if state["content_sha256"] != expected_hash:
             raise GenuineReplayError(
-                f"Opening state differs from GW1 summary for {arm}"
+                f"Opening state differs from prior summary for {arm}"
             )
         if state["policy_arm"] != arm or state["gameweek"] != gameweek:
             raise GenuineReplayError(f"Opening state identity mismatch for {arm}")
@@ -481,44 +493,42 @@ def prepare_historical_gameweek(
         states[arm] = state
         inputs[arm] = input_value
         input_hashes.add(fingerprint(input_value))
-    if len(input_hashes) != 1:
-        raise GenuineReplayError(
-            "GW2 controlled arms do not have an identical engine input"
-        )
-
-    shared_input = inputs[POLICY_ARMS[0]]
-    shared_input_sha256 = fingerprint(shared_input)
-    engine_output = solve(
-        build_replay_solver_input(
-            feature_state=feature_current,
-            policy_state=states[POLICY_ARMS[0]],
-            max_transfers=3,
-            transfer_value_policy=TRANSFER_VALUE_POLICY,
-            probability_extra_transfer_needed=(
-                PROBABILITY_EXTRA_TRANSFER_NEEDED
-            ),
-            future_transfer_discount=FUTURE_TRANSFER_DISCOUNT,
-        ),
-        rules=rules,
-        ruleset_sha256=rules_hash,
-    )
-    engine_output_sha256 = fingerprint(engine_output)
+    input_sha256 = {arm: fingerprint(inputs[arm]) for arm in POLICY_ARMS}
+    output_cache: dict[str, dict[str, Any]] = {}
+    outputs: dict[str, dict[str, Any]] = {}
+    for arm in POLICY_ARMS:
+        input_hash = input_sha256[arm]
+        if input_hash not in output_cache:
+            output_cache[input_hash] = solve(
+                SolverInput.from_dict(inputs[arm]),
+                rules=rules,
+                ruleset_sha256=rules_hash,
+            )
+        outputs[arm] = output_cache[input_hash]
+    output_sha256 = {arm: fingerprint(outputs[arm]) for arm in POLICY_ARMS}
+    shared_engine = len(input_hashes) == 1
+    engine_output = outputs[POLICY_ARMS[0]]
 
     setup_dir = output_root / f"gw-{gameweek:02d}" / "setup"
     _write_json(setup_dir / "shared-feature-state.json", feature_current)
-    _write_json(setup_dir / "shared-engine-input.json", shared_input)
-    _write_json(setup_dir / "shared-engine-output.json", engine_output)
+    if shared_engine:
+        _write_json(
+            setup_dir / "shared-engine-input.json", inputs[POLICY_ARMS[0]]
+        )
+        _write_json(setup_dir / "shared-engine-output.json", engine_output)
     brief_hashes: dict[str, str] = {}
     for arm in POLICY_ARMS:
         arm_dir = setup_dir / "arms" / arm
+        _write_json(arm_dir / "engine-input.json", inputs[arm])
+        _write_json(arm_dir / "engine-output.json", outputs[arm])
         brief = _policy_brief(
             arm=arm,
             manifest=manifest,
             state=states[arm],
             feature_state=feature_current,
-            solver_input_sha256=shared_input_sha256,
-            solver_output_sha256=engine_output_sha256,
-            solver_output=engine_output,
+            solver_input_sha256=input_sha256[arm],
+            solver_output_sha256=output_sha256[arm],
+            solver_output=outputs[arm],
         )
         _write_json(arm_dir / "starting-policy-state.json", states[arm])
         _write_json(arm_dir / "decision-brief.json", brief)
@@ -554,9 +564,13 @@ def prepare_historical_gameweek(
         ],
         "feature_state_sha256": feature_current["content_sha256"],
         "ruleset": deepcopy(manifest["ruleset"]),
-        "shared_engine_input": True,
-        "solver_input_sha256": shared_input_sha256,
-        "solver_output_sha256": engine_output_sha256,
+        "shared_engine_input": shared_engine,
+        "solver_input_sha256": (
+            input_sha256[POLICY_ARMS[0]] if shared_engine else input_sha256
+        ),
+        "solver_output_sha256": (
+            output_sha256[POLICY_ARMS[0]] if shared_engine else output_sha256
+        ),
         "candidate_count": engine_output["n_candidates"],
         "projection_diagnostics": {
             "model_version": feature_current["lineage"]["model_version"],

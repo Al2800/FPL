@@ -8,7 +8,6 @@ import pytest
 import src.orchestration.genuine_replay as replay_module
 from src.forecasting.live_faithful import artifact_hash
 from src.orchestration.genuine_replay import (
-    GenuineReplayError,
     prepare_historical_gameweek,
 )
 from src.orchestration.policy_state import POLICY_ARMS
@@ -17,6 +16,7 @@ from src.orchestration.policy_state import POLICY_ARMS
 REPO = Path(__file__).resolve().parents[2]
 EPISODES = REPO / "data" / "benchmark-v0" / "episodes" / "v2" / "2025-26"
 GW1 = REPO / "reports" / "benchmarks" / "2025-26" / "gw-01"
+GW2 = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02"
 
 
 def _require_local_data() -> None:
@@ -114,16 +114,51 @@ def test_gw2_setup_reproduces(tmp_path: Path) -> None:
     assert _prepare(tmp_path / "one") == _prepare(tmp_path / "two")
 
 
-def test_setup_refuses_unreviewed_gw3(tmp_path: Path) -> None:
-    with pytest.raises(GenuineReplayError, match="Gameweek 2 only"):
-        prepare_historical_gameweek(
-            season="2025-26",
-            gameweek=3,
-            episode_root=EPISODES,
-            previous_checkpoint_dir=GW1,
-            output_root=tmp_path,
-            code_commit="b" * 40,
+def test_gw3_setup_uses_only_completed_history_and_arm_owned_state(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    requested_paths: list[Path] = []
+    original_read = replay_module._read_json
+
+    def audited_read(path: Path) -> dict:
+        requested_paths.append(path)
+        return original_read(path)
+
+    monkeypatch.setattr(replay_module, "_read_json", audited_read)
+    summary = prepare_historical_gameweek(
+        season="2025-26",
+        gameweek=3,
+        episode_root=EPISODES,
+        previous_checkpoint_dir=GW2,
+        output_root=tmp_path,
+        code_commit="b" * 40,
+    )
+
+    assert summary["gameweek"] == 3
+    assert summary["outcome_access"] == "sealed_not_loaded"
+    assert summary["feature_state_sha256"] == json.loads(
+        (GW2 / "run-summary.json").read_text(encoding="utf-8")
+    )["next_feature_state_sha256"]
+    assert summary["projection_diagnostics"]["completed_history_gameweeks"] == [
+        1,
+        2,
+    ]
+    assert not [path for path in requested_paths if path.name == "hidden-outcome.json"]
+    for arm in POLICY_ARMS:
+        arm_dir = tmp_path / "gw-03" / "setup" / "arms" / arm
+        state = json.loads(
+            (arm_dir / "starting-policy-state.json").read_text(encoding="utf-8")
         )
+        engine_input = json.loads(
+            (arm_dir / "engine-input.json").read_text(encoding="utf-8")
+        )
+        assert state["policy_arm"] == arm
+        assert state["gameweek"] == 3
+        assert engine_input["free_transfers"] == 3
+        assert engine_input["squad_player_ids"] == [
+            row["player_id"] for row in state["squad"]
+        ]
 
 
 def test_checked_in_reliability_comparison_remains_sealed_and_unfrozen() -> None:
