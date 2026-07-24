@@ -43,6 +43,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 22:29Z) Finalise GW5 from the reviewed bank actions: active arms scored 46 and reached 277 cumulative; naive scored 49 and reached 285, with the expected 3/5 opening-GW6 transfer banks.
 - [x] (2026-07-24 22:34Z) Generate the canonical sealed GW6 setup from committed GW5 checkpoint `115e4cf`, prove a byte-identical 41-file rerun, and pass 353 applicable tests without opening GW6 outcomes.
 - [x] (2026-07-24 23:19Z) Finalise GW6 from the sealed bank actions: active arms scored 31 and reached 308 cumulative; naive scored 35 and reached 320, with no automatic substitutions and 4/5 opening-GW7 transfer banks. Prove the completed checkpoint is byte-identical on rerun and pass 97 focused replay/state/scoring tests.
+- [x] (2026-07-24 23:23Z) Generate the canonical sealed GW7 setup from committed GW6 checkpoint `81424f0` and prove a byte-identical 41-file rerun. Active arms select Murillo→Gabriel by a narrow planning margin; naive banks at the five-transfer cap.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -113,6 +114,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW6 extended the naive arm's realised lead from eight to twelve points.
   Evidence: active arms scored 31 and reached 308 cumulative; naive scored 35 and reached 320. No arm needed an automatic substitution, took a hit, played a chip, or made a transfer.
 
+- Observation: the active GW7 transfer decision is positive but unusually close to adjacent transfer counts.
+  Evidence: Murillo→Gabriel scores 64.98 planning points, versus 64.96 for also upgrading Sánchez→Raya, 64.88 for the three-transfer route adding Semenyo, and 64.80 for banking. The selected one-transfer action preserves four transfers for GW8 and avoids spending extra option value for a lower total objective.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -182,6 +186,8 @@ GW4 is now complete. The active structured action made two free transfers and sc
 GW5 is now complete. The active arms banked and scored 46, reaching 277 with three free transfers and £1.8m for GW6. Naive banked and scored 49, reaching 285 with the five-transfer cap and £0.0m. Murillo's zero minutes triggered legal but arm-specific automatic substitutions because the benches differ: Tarkowski entered for the active arms and Rodon for naive. No GW6 decision has yet been prepared.
 
 GW6 is complete. Active arms banked, scored 31, and reached 308 cumulative with four free transfers and £1.8m for GW7. Naive banked, scored 35, and reached 320 with the five-transfer cap and £0.0m. No automatic substitutions were required. The completed checkpoint is byte-identical on rerun and the 97-test focused replay/state/scoring suite passes. No GW7 decision has yet been prepared.
+
+GW7 is prepared and sealed from committed GW6 checkpoint `81424f0`. Active arms select the free Murillo→Gabriel transfer, project 59.58 immediate and 64.98 planning points, and would retain four transfers for GW8. Naive banks, projects 54.58 immediate and 61.78 planning points, and remains capped at five. All arms captain Salah and vice-captain Watkins. The 41 setup files reproduce byte-for-byte; no GW7 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
