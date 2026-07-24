@@ -188,6 +188,79 @@ def test_plan_is_schema_valid_complete_deterministic_and_order_stable() -> None:
     ).validate(plan)
 
 
+def test_affordable_transfer_batch_is_independent_of_move_order() -> None:
+    market = decision_market()
+    market["17"] = {
+        "player_id": "17",
+        "position": "MID",
+        "club_id": "17",
+        "now_cost": 8.0,
+    }
+    market["18"] = {
+        "player_id": "18",
+        "position": "FWD",
+        "club_id": "18",
+        "now_cost": 10.0,
+    }
+    transfers = [
+        {"player_out_id": "8", "player_in_id": "17"},
+        {"player_out_id": "13", "player_in_id": "18"},
+    ]
+    batch_candidate = {
+        "strategy": "highest_ev",
+        "transfers": transfers,
+        "bank_after": 0.5,
+        "hit_cost": 4,
+        "lineup": {
+            "formation": {"DEF": 3, "MID": 4, "FWD": 3},
+            "starting_xi_ids": [
+                "1",
+                "3",
+                "4",
+                "5",
+                "17",
+                "9",
+                "10",
+                "11",
+                "18",
+                "14",
+                "15",
+            ],
+            "bench_ids": ["2", "6", "7", "12"],
+            "captain_id": "17",
+            "vice_captain_id": "9",
+        },
+    }
+
+    def freeze(candidate_transfers: list[dict[str, str]]) -> dict[str, object]:
+        proposal = deepcopy(batch_candidate)
+        proposal["transfers"] = candidate_transfers
+        return validate_and_freeze_plan(
+            episode_id="benchmark-v0:2025-26:gw02:manager-neutral",
+            policy_arm="forecast_optimizer",
+            state=policy_state(),
+            candidate=proposal,
+            decision_market=market,
+            active_chip=None,
+            frozen_at="2025-08-22T17:00:00Z",
+            rules=RULES,
+            ruleset_sha256=RULES_HASH,
+        )
+
+    upgrade_first = freeze(transfers)
+    downgrade_first = freeze(list(reversed(transfers)))
+
+    assert upgrade_first["finance"]["bank_after"] == 0.5
+    assert downgrade_first["finance"]["bank_after"] == 0.5
+    assert {
+        (move["player_out_id"], move["player_in_id"])
+        for move in upgrade_first["transfers"]
+    } == {
+        (move["player_out_id"], move["player_in_id"])
+        for move in downgrade_first["transfers"]
+    }
+
+
 @pytest.mark.parametrize(
     "mutation",
     [

@@ -201,8 +201,6 @@ def validate_and_freeze_plan(
         sale = _price(outgoing["selling_price"])
         purchase = _price(incoming["now_cost"])
         bank = _price(bank + sale - purchase)
-        if bank < 0:
-            raise ValidatedPlanError("Transfers exceed available bank")
         del owned[out_id]
         owned[in_id] = {
             "player_id": in_id,
@@ -221,6 +219,8 @@ def validate_and_freeze_plan(
                 "purchase_price": purchase,
             }
         )
+    if bank < 0:
+        raise ValidatedPlanError("Transfers exceed available bank")
 
     free_before = int(state["free_transfers"])
     hit = transfer_hit_cost(len(audited), free_before, rules_dict)
