@@ -39,6 +39,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 21:43Z) Reproduce and fix the GW4→GW5 state failure caused by Marc Guiu's Sunderland→Chelsea club refresh: record the official temporary club-limit exception, permit no-transfer carry, and require the next transfer action to restore the three-player limit.
 - [x] (2026-07-24 21:46Z) Finalise GW4 after all five plans froze: the four active arms scored 57 and reached 231 cumulative points; the naive bank arm scored 62 and reached 236, while carrying the explicit four-Chelsea exception into GW5.
 - [x] (2026-07-24 22:08Z) Extend the solver's zero-transfer seam for the official club-change exception without weakening any non-empty transfer candidate, then prove the real five-arm GW5 setup succeeds in isolation.
+- [x] (2026-07-24 22:10Z) Generate the canonical 41-file sealed GW5 setup from commit `d1302c4`, prove a byte-identical rerun, and pass 353 applicable repository tests without accessing the hidden outcome.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
