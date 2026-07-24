@@ -48,6 +48,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 23:28Z) Generate the canonical sealed GW8 setup from committed GW7 checkpoint `6fa0847` and prove a byte-identical 41-file rerun. Active arms select free Tarkowski→Timber and Bruno→Semenyo transfers; naive remains the no-transfer control.
 - [x] (2026-07-24 23:30Z) Finalise GW8 from the sealed plans: active arms scored 52 and reached 400 cumulative; naive scored 36 and reached 388. Prove the completed checkpoint is byte-identical on rerun and separate the latest-transfer return from the accumulated trajectory return.
 - [x] (2026-07-24 23:34Z) Generate the canonical sealed GW9 setup from committed GW8 checkpoint `5add3dc` and prove a byte-identical 41-file rerun. Both trajectories bank; active retains transfer option value over higher-immediate-score alternatives.
+- [x] (2026-07-24 23:36Z) Finalise GW9 from the sealed bank plans: active scored 53 and reached 453 cumulative; naive scored 54 and reached 442. Prove the completed checkpoint is byte-identical and attribute the one-point swing to the five divergent XI slots.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -133,6 +134,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW9 is a clear active bank after accounting for transfer option value.
   Evidence: bank scores 67.76 planning points. Watkins→Woltemade reaches 67.31, adding Reijnders→Mbeumo reaches 67.25, and a three-transfer route reaches 66.13; each improves immediate points but reduces the total planning objective.
 
+- Observation: GW9's five divergent starting slots almost exactly cancelled.
+  Evidence: active's Gabriel/Timber/Semenyo/Gakpo/Szoboszlai scored 30; naive's Tarkowski/Rodon/Porro/Bruno/Anderson scored 31. Every shared slot matched, producing naive's one-point weekly edge.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -212,6 +216,8 @@ GW8 is prepared and sealed from committed GW7 checkpoint `6fa0847`. Active arms 
 GW8 is complete. Active arms made the free Tarkowski→Timber and Bruno→Semenyo transfers, scored 52, and reached 400 cumulative with three free transfers and £2.0m for GW9. Naive banked, scored 36, and reached 388 with five free transfers and £0.0m. Active therefore moves from four points behind to twelve ahead, but the latest transfer pair returned −1 relative to the outgoing players; the gain came from earlier trajectory divergence. No substitutions, hits, or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW9 decision has been prepared.
 
 GW9 is prepared and sealed from committed GW8 checkpoint `5add3dc`. Active banks, projects 62.36 immediate and 67.76 planning points, and would grow to four transfers for GW10. Naive banks, projects 52.78 immediate and 59.98 planning points, and remains capped at five. All arms captain Salah; active vice-captains Semenyo while naive vice-captains João Pedro. The 41 setup files reproduce byte-for-byte; no GW9 hidden outcome, validated plan, or state transition exists.
+
+GW9 is complete. Active banked, scored 53, and reached 453 cumulative with four free transfers and £2.0m for GW10. Naive banked, scored 54, and reached 442 with five free transfers and £0.0m. Naive's one-point weekly edge came entirely from the five divergent XI slots; no substitutions, hits, or chips intervened. The completed checkpoint is byte-identical on rerun. No GW10 decision has yet been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
