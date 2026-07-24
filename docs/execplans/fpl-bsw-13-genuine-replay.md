@@ -31,6 +31,8 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 02:35Z) Generalise the finaliser to verify and consume arm-specific reviewed setups while retaining the legacy GW2 contract.
 - [x] (2026-07-24 02:36Z) Prove in an isolated run that all five GW3 plans persist before outcome access, score 59 points, auto-substitute Konsa for Palmer, and advance isolated states to GW4 with four free transfers.
 - [x] (2026-07-24 02:43Z) Commit/push generic finaliser `4356ea7`, generate the canonical GW3 checkpoint from that exact commit, prove an idempotent rerun, and stop with no GW4 directory or decision.
+- [x] (2026-07-24 03:38Z) Generate GW4 in isolation, expose the first policy divergence, and correct setup review so each arm's `selected` candidate is exactly the candidate the finaliser will freeze.
+- [ ] Commit the shared policy-candidate selector from a passing regression suite, generate the canonical sealed GW4 setup from that commit, and pause before reveal.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -68,6 +70,12 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: the reviewed GW3 banking plan scores the same 59 points as GW2, but through a different realised path.
   Evidence: Palmer records no appearance and Ezri Konsa, the first legal outfield substitute, enters automatically. Salah remains captain, João Pedro vice-captain, no hit is charged, cumulative points reach 174, and every arm opens GW4 with four free transfers.
 
+- Observation: GW4 is the first checkpoint where the naive and optimiser policies prescribe different actions.
+  Evidence: banking produces 56.12 immediate plus 7.20 option value for 63.32 planning points and five future transfers. Palmer-to-Gakpo plus Anderson-to-Szoboszlai produces 61.43 immediate plus 3.60 option value for 65.03 planning points and three future transfers. The latter wins by 1.71 without a hit.
+
+- Observation: the generic setup initially displayed the solver-selected transfer plan as `selected` for the naive arm even though the finaliser correctly freezes the no-transfer policy.
+  Evidence: the isolated GW4 summary labelled two transfers for all arms while `finalise_historical_gameweek` branches the naive arm to `plans.no_transfer`. A shared `select_policy_candidate` contract now drives both preparation and finalisation.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -100,6 +108,10 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Decision: checkpoint finalisation reads, verifies and records solver lineage per arm even when all arm payloads currently hash identically.
   Rationale: shared hashes are an observed property of the current state, not a licence to share mutable policy state. This preserves correct execution once transfers, chips or evidence make the trajectories diverge.
+  Date/Author: 2026-07-24 / Codex.
+
+- Decision: setup review and outcome finalisation use one policy-candidate selector.
+  Rationale: a reviewed proposal must be the exact proposal later frozen. The naive arm selects no transfer by definition; other arms currently use the reviewed solver selection or declared structured fallback.
   Date/Author: 2026-07-24 / Codex.
 
 ## Outcomes & Retrospective

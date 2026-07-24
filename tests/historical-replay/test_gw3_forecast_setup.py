@@ -14,6 +14,7 @@ from scripts.prepare_replay_gameweek import prepare
 REPO = Path(__file__).resolve().parents[2]
 EPISODES = REPO / "data" / "benchmark-v0" / "episodes" / "v2" / "2025-26"
 GW2 = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02"
+GW3 = REPO / "reports" / "benchmarks" / "2025-26" / "gw-03"
 
 
 def _require_local_data() -> None:
@@ -90,3 +91,41 @@ def test_gw3_locked_forecast_setup_is_sealed_state_bound_and_reproducible(
         )
         assert review["content_sha256"] == artifact_hash(review)
         assert review["state_sha256"] == row["state_sha256"]
+
+
+def test_gw4_review_records_the_policy_candidate_each_arm_will_freeze(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _require_local_data()
+    requested: list[Path] = []
+    original_read = replay_setup._read
+
+    def audited_read(path: Path) -> dict:
+        requested.append(path)
+        return original_read(path)
+
+    monkeypatch.setattr(replay_setup, "_read", audited_read)
+    summary = prepare(
+        season="2025-26",
+        gameweek=4,
+        episode_root=EPISODES,
+        output_root=tmp_path,
+        previous_checkpoint_dir=GW3,
+        code_commit="d" * 40,
+    )
+
+    naive = summary["arms"]["naive_baseline"]["selected"]
+    optimizer = summary["arms"]["forecast_optimizer"]["selected"]
+    assert naive["transfer_count"] == 0
+    assert naive["next_gameweek_free_transfers"] == 5
+    assert optimizer["transfer_count"] == 2
+    assert optimizer["next_gameweek_free_transfers"] == 3
+    assert {
+        (move["player_out_name"], move["player_in_name"])
+        for move in optimizer["transfers"]
+    } == {
+        ("Cole Palmer", "Cody Gakpo"),
+        ("Elliot Anderson", "Dominik Szoboszlai"),
+    }
+    assert not [path for path in requested if path.name == "hidden-outcome.json"]

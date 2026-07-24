@@ -853,6 +853,20 @@ def _replay_strategy(arm: str) -> str:
     }[arm]
 
 
+def select_policy_candidate(
+    arm: str, solver_output: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Return the reviewed candidate that the policy arm will actually freeze."""
+    if arm not in POLICY_ARMS:
+        raise GenuineReplayError(f"Unknown replay policy arm: {arm}")
+    candidate = (
+        solver_output["plans"]["no_transfer"]
+        if arm == "naive_baseline"
+        else solver_output["selected"]
+    )
+    return deepcopy(dict(candidate))
+
+
 def _replay_decision_record(
     *,
     manifest: Mapping[str, Any],
@@ -870,10 +884,8 @@ def _replay_decision_record(
     }
     no_transfer = solver_output["plans"]["no_transfer"]
     strategy = _replay_strategy(str(state["policy_arm"]))
-    recommended = (
-        no_transfer
-        if state["policy_arm"] == "naive_baseline"
-        else solver_output["selected"]
+    recommended = select_policy_candidate(
+        str(state["policy_arm"]), solver_output
     )
     selected_objective = float(recommended["objective"])
     no_transfer_objective = float(no_transfer["objective"])
@@ -1093,11 +1105,7 @@ def finalise_historical_gameweek(
         decision_market = {
             str(row["player_id"]): dict(row) for row in solver_input["players"]
         }
-        candidate = (
-            solver_output["plans"]["no_transfer"]
-            if arm == "naive_baseline"
-            else solver_output["selected"]
-        )
+        candidate = select_policy_candidate(arm, solver_output)
         states[arm] = state
         decision_markets[arm] = decision_market
         frozen_plans[arm] = validate_and_freeze_plan(

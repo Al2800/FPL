@@ -21,6 +21,7 @@ from src.orchestration.genuine_replay import (
     PROBABILITY_EXTRA_TRANSFER_NEEDED,
     TRANSFER_VALUE_POLICY,
     prepare_historical_gameweek,
+    select_policy_candidate,
 )
 from src.orchestration.policy_state import POLICY_ARMS
 
@@ -155,6 +156,7 @@ def prepare(
             )
         output = output_cache[input_hash]
         output_hash = fingerprint(output)
+        selected = select_policy_candidate(arm, output)
         input_hashes.add(input_hash)
         output_hashes.add(output_hash)
         review = {
@@ -169,7 +171,12 @@ def prepare(
             "state_sha256": state["content_sha256"],
             "feature_state_sha256": feature_state["content_sha256"],
             "forecast_sha256": forecast["content_sha256"],
-            "selected": _plan_summary(output["selected"], names),
+            "selection_policy": (
+                "do_nothing_bank_transfers"
+                if arm == "naive_baseline"
+                else "reviewed_solver_selected"
+            ),
+            "selected": _plan_summary(selected, names),
             "plans_by_transfer_count": {
                 count: _plan_summary(candidate, names)
                 for count, candidate in output["best_by_transfer_count"].items()
@@ -190,6 +197,7 @@ def prepare(
             "solver_input_sha256": input_hash,
             "solver_output_sha256": output_hash,
             "review_sha256": review["content_sha256"],
+            "selection_policy": review["selection_policy"],
             "selected": review["selected"],
         }
 
