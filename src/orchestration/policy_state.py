@@ -16,7 +16,11 @@ from src.orchestration.validated_plan import (
     validate_plan_integrity,
 )
 from src.scoring.rules_loader import assert_ruleset_activatable
-from src.scoring.validator import selling_price, validate_squad
+from src.scoring.validator import (
+    club_limit_exceptions,
+    selling_price,
+    validate_squad,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -157,7 +161,10 @@ def _hard_squad_errors(squad: list[dict[str, Any]], rules: Mapping[str, Any]) ->
 
 
 def _normalise_squad(
-    rows: Iterable[Mapping[str, Any]], rules: Mapping[str, Any]
+    rows: Iterable[Mapping[str, Any]],
+    rules: Mapping[str, Any],
+    *,
+    allow_club_limit_exception: bool = False,
 ) -> list[dict[str, Any]]:
     squad: list[dict[str, Any]] = []
     for source in rows:
@@ -182,6 +189,12 @@ def _normalise_squad(
         )
     squad.sort(key=_player_key)
     errors = _hard_squad_errors(squad, rules)
+    if allow_club_limit_exception:
+        errors = [
+            error
+            for error in errors
+            if not error.startswith("squad.max_per_club")
+        ]
     if errors:
         raise PolicyStateError(f"Invalid squad: {errors}")
     return squad
@@ -199,7 +212,17 @@ def _validate_state(
     if len(set(ids)) != len(ids):
         raise PolicyStateError("Policy state squad player IDs must be unique")
     if rules is not None:
-        _normalise_squad(state["squad"], rules)
+        declared_exceptions = list(state.get("club_limit_exceptions", []))
+        normalised = _normalise_squad(
+            state["squad"],
+            rules,
+            allow_club_limit_exception=bool(declared_exceptions),
+        )
+        actual_exceptions = club_limit_exceptions(normalised, dict(rules))
+        if declared_exceptions != actual_exceptions:
+            raise PolicyStateError(
+                "Policy state club-limit exception does not match its squad"
+            )
     if profile is not None:
         terminal = int(profile["terminal_state_gameweek"])
         regular = int(profile["regular_gameweeks"])
@@ -423,7 +446,11 @@ def _refresh_squad(
                 "selling_price": selling_price(purchase, current, dict(rules)),
             }
         )
-    return _normalise_squad(refreshed, rules)
+    return _normalise_squad(
+        refreshed,
+        rules,
+        allow_club_limit_exception=True,
+    )
 
 
 def transition_policy_state(
@@ -492,6 +519,8 @@ def transition_policy_state(
         quote = decision_prices[player_id]
         if str(quote["position"]) != player["position"]:
             raise PolicyStateError(f"Decision market position mismatch for {player_id}")
+        if str(quote["club_id"]) != player["club_id"]:
+            raise PolicyStateError(f"Decision market club mismatch for {player_id}")
         if _require_price_step(quote["now_cost"], "now_cost") != player["current_price"]:
             raise PolicyStateError(f"Decision market is stale for owned player {player_id}")
 
@@ -543,7 +572,13 @@ def transition_policy_state(
     bank = _round_price(bank)
     if bank < 0:
         raise PolicyStateError("Transfer set has insufficient bank")
-    candidate_squad = _normalise_squad(working.values(), rules)
+    candidate_squad = _normalise_squad(
+        working.values(),
+        rules,
+        allow_club_limit_exception=(
+            not raw_moves and bool(current.get("club_limit_exceptions"))
+        ),
+    )
 
     transfer_count = len(audited_moves)
     hit_per_transfer = int(profile["hit_cost"])
@@ -581,6 +616,9 @@ def transition_policy_state(
         persistent_squad = candidate_squad
         next_bank = bank
     refreshed_squad = _refresh_squad(persistent_squad, future_prices, rules)
+    next_club_limit_exceptions = club_limit_exceptions(
+        refreshed_squad, dict(rules)
+    )
 
     chips = list(current["chips_available"])
     history = deepcopy(current["chip_history"])
@@ -629,6 +667,8 @@ def transition_policy_state(
         "chip_history": history,
         "cumulative_points": int(current["cumulative_points"]) + net_points,
     }
+    if next_club_limit_exceptions:
+        successor["club_limit_exceptions"] = next_club_limit_exceptions
     successor["content_sha256"] = state_hash(successor)
     _validate_state(successor, rules, profile)
 
@@ -653,6 +693,7 @@ def transition_policy_state(
         "hit_cost": hit_cost,
         "gross_points": gross_points,
         "net_points": net_points,
+        "next_club_limit_exceptions": next_club_limit_exceptions,
         "next_state_sha256": successor["content_sha256"],
     }
     transition["content_sha256"] = transition_hash(transition)

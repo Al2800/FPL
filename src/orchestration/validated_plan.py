@@ -13,6 +13,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 from src.optimisation.io import fingerprint
 from src.scoring.validator import (
+    club_limit_exceptions,
     selling_price,
     transfer_hit_cost,
     validate_chips,
@@ -232,8 +233,23 @@ def validate_and_freeze_plan(
 
     squad_rows = list(owned.values())
     squad_validation = validate_squad(squad_rows, bank=bank, rules=rules_dict)
-    if not squad_validation.ok:
-        raise ValidatedPlanError("Illegal post-transfer squad: " + "; ".join(squad_validation.errors))
+    squad_errors = list(squad_validation.errors)
+    declared_exceptions = list(state.get("club_limit_exceptions", []))
+    may_carry_exception = (
+        not audited
+        and bool(declared_exceptions)
+        and declared_exceptions == club_limit_exceptions(squad_rows, rules_dict)
+    )
+    if may_carry_exception:
+        squad_errors = [
+            error
+            for error in squad_errors
+            if not error.startswith("squad.max_per_club")
+        ]
+    if squad_errors:
+        raise ValidatedPlanError(
+            "Illegal post-transfer squad: " + "; ".join(squad_errors)
+        )
     squad_after = [
         {
             "player_id": str(row["player_id"]),

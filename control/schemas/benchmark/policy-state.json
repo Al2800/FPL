@@ -54,6 +54,12 @@
       "uniqueItems": true,
       "items": {"$ref": "#/$defs/player"}
     },
+    "club_limit_exceptions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/club_limit_exception"}
+    },
     "bank": {"type": "number", "minimum": 0},
     "free_transfers": {"type": "integer", "minimum": 0, "maximum": 99},
     "chips_available": {
@@ -89,6 +95,26 @@
       ]
     },
     "chip": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_(fh|sh)$"},
+    "club_limit_exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "club_id",
+        "player_count",
+        "maximum",
+        "reason",
+        "must_resolve_when_next_transfer_made"
+      ],
+      "properties": {
+        "club_id": {"type": "string", "minLength": 1},
+        "player_count": {"type": "integer", "minimum": 4},
+        "maximum": {"type": "integer", "minimum": 1},
+        "reason": {
+          "const": "player_transferred_between_premier_league_clubs"
+        },
+        "must_resolve_when_next_transfer_made": {"const": true}
+      }
+    },
     "player": {
       "type": "object",
       "additionalProperties": false,

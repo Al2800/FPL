@@ -313,6 +313,103 @@ def test_ordinary_transfer_uses_purchase_history_hits_and_correct_next_free_tran
     assert transition["next_state_sha256"] == next_state["content_sha256"]
 
 
+def test_player_club_change_can_create_a_temporary_club_limit_exception():
+    seed = deepcopy(_seed())
+    for player in seed["squad"]:
+        if player["player_id"] in {"1", "2", "3"}:
+            player["club_id"] = "club-a"
+    state = initialise_policy_states(
+        seed,
+        policy_arms=POLICY_ARMS,
+        rules=RULES,
+        ruleset_sha256=RULES_HASH,
+    )["naive_baseline"]
+    decision_market = _market()
+    for player_id in {"1", "2", "3"}:
+        decision_market[player_id]["club_id"] = "club-a"
+    next_market = deepcopy(decision_market)
+    next_market["4"]["club_id"] = "club-a"
+
+    exceptional_state, transition = _transition(
+        state,
+        decision_market=decision_market,
+        next_market=next_market,
+        salt="club-change-overflow",
+    )
+
+    expected = [
+        {
+            "club_id": "club-a",
+            "player_count": 4,
+            "maximum": 3,
+            "reason": "player_transferred_between_premier_league_clubs",
+            "must_resolve_when_next_transfer_made": True,
+        }
+    ]
+    assert exceptional_state["club_limit_exceptions"] == expected
+    assert transition["next_club_limit_exceptions"] == expected
+    Draft202012Validator(
+        _schema(STATE_SCHEMA), format_checker=FormatChecker()
+    ).validate(exceptional_state)
+    Draft202012Validator(
+        _schema(TRANSITION_SCHEMA), format_checker=FormatChecker()
+    ).validate(transition)
+
+    carried_state, _ = _transition(
+        exceptional_state,
+        decision_market=next_market,
+        next_market=next_market,
+        salt="carry-club-change-overflow",
+    )
+    assert carried_state["club_limit_exceptions"] == expected
+
+    repaired_state, repaired_transition = _transition(
+        exceptional_state,
+        transfers=[{"player_out_id": "4", "player_in_id": "19"}],
+        decision_market=next_market,
+        next_market=next_market,
+        salt="repair-club-change-overflow",
+    )
+    assert "club_limit_exceptions" not in repaired_state
+    assert repaired_transition["next_club_limit_exceptions"] == []
+
+
+def test_any_transfer_must_resolve_an_existing_club_limit_exception():
+    seed = deepcopy(_seed())
+    for player in seed["squad"]:
+        if player["player_id"] in {"1", "2", "3"}:
+            player["club_id"] = "club-a"
+    state = initialise_policy_states(
+        seed,
+        policy_arms=POLICY_ARMS,
+        rules=RULES,
+        ruleset_sha256=RULES_HASH,
+    )["naive_baseline"]
+    decision_market = _market()
+    for player_id in {"1", "2", "3"}:
+        decision_market[player_id]["club_id"] = "club-a"
+    next_market = deepcopy(decision_market)
+    next_market["4"]["club_id"] = "club-a"
+    exceptional_state, _ = _transition(
+        state,
+        decision_market=decision_market,
+        next_market=next_market,
+        salt="open-club-change-overflow",
+    )
+
+    with pytest.raises(
+        (PolicyStateError, ValueError),
+        match="squad.max_per_club|Illegal post-transfer squad",
+    ):
+        _transition(
+            exceptional_state,
+            transfers=[{"player_out_id": "5", "player_in_id": "19"}],
+            decision_market=next_market,
+            next_market=next_market,
+            salt="unrelated-transfer-keeps-overflow",
+        )
+
+
 def test_no_transfer_banks_to_cap_and_gw16_exception_tops_up():
     state = _initial()["naive_baseline"]
     assert _transition(state)[0]["free_transfers"] == 2

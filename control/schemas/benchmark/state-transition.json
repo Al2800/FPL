@@ -74,6 +74,11 @@
     "hit_cost": {"type": "integer", "minimum": 0, "multipleOf": 4},
     "gross_points": {"type": "integer"},
     "net_points": {"type": "integer"},
+    "next_club_limit_exceptions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/club_limit_exception"}
+    },
     "next_state_sha256": {"$ref": "#/$defs/sha256"},
     "content_sha256": {"$ref": "#/$defs/sha256"}
   },
@@ -89,5 +94,26 @@
       ]
     },
     "chip": {"type": "string", "pattern": "^[a-z][a-z0-9_]*_(fh|sh)$"}
+    ,
+    "club_limit_exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "club_id",
+        "player_count",
+        "maximum",
+        "reason",
+        "must_resolve_when_next_transfer_made"
+      ],
+      "properties": {
+        "club_id": {"type": "string", "minLength": 1},
+        "player_count": {"type": "integer", "minimum": 4},
+        "maximum": {"type": "integer", "minimum": 1},
+        "reason": {
+          "const": "player_transferred_between_premier_league_clubs"
+        },
+        "must_resolve_when_next_transfer_made": {"const": true}
+      }
+    }
   }
 }

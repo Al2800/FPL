@@ -31,6 +31,28 @@ class ValidationResult:
         }
 
 
+def club_limit_exceptions(
+    players: list[dict[str, Any]],
+    rules: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """Describe club-limit overflow caused by an in-season player club change."""
+
+    rules = rules or load_rules()
+    maximum = int(get_rule(rules, "squad.max_per_club")["value"])
+    clubs = Counter(str(player["club_id"]) for player in players)
+    return [
+        {
+            "club_id": club_id,
+            "player_count": count,
+            "maximum": maximum,
+            "reason": "player_transferred_between_premier_league_clubs",
+            "must_resolve_when_next_transfer_made": True,
+        }
+        for club_id, count in sorted(clubs.items())
+        if count > maximum
+    ]
+
+
 def legal_formations(rules: dict[str, Any] | None = None) -> list[dict[str, int]]:
     """Enumerate every legal outfield formation from the active ruleset."""
     rules = rules or load_rules()

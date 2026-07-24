@@ -36,6 +36,8 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 20:45Z) Diagnose the user-questioned four-transfer state as a season-start off-by-one: the seed supplied one pre-GW1 transfer and the normal transition awarded another.
 - [x] (2026-07-24 21:20Z) Correct the controlled seed to zero pre-deadline transfers, migrate GW2 to the generic reviewed-setup contract, and prove the full corrected chain in isolation: GW2/GW3/GW4 open with 1/2/3 transfers while points and football actions remain unchanged.
 - [x] (2026-07-24 21:34Z) Commit producing correction `bbbba85`, preserve the invalid lineage in Git commit `365587a` plus the ignored local archive named by `superseded-lineages.json`, regenerate 225 canonical GW1–GW4 files, prove byte-identical rerun, and pass 57 historical plus 350 applicable repository tests.
+- [x] (2026-07-24 21:43Z) Reproduce and fix the GW4→GW5 state failure caused by Marc Guiu's Sunderland→Chelsea club refresh: record the official temporary club-limit exception, permit no-transfer carry, and require the next transfer action to restore the three-player limit.
+- [x] (2026-07-24 21:46Z) Finalise GW4 after all five plans froze: the four active arms scored 57 and reached 231 cumulative points; the naive bank arm scored 62 and reached 236, while carrying the explicit four-Chelsea exception into GW5.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -85,6 +87,12 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: correcting the transfer count does not change the reviewed actions through GW4.
   Evidence: the isolated corrected replay scores 56/59/59 and still banks in GW2 and GW3. GW4 still prefers Palmer→Gakpo plus Anderson→Szoboszlai without a hit; only option-value levels and successor transfer counts change.
 
+- Observation: a real-world player move can make an already-owned FPL squad temporarily exceed the ordinary three-per-club limit.
+  Evidence: the GW5 market refresh changes Marc Guiu from Sunderland to Chelsea. The naive arm still owns Sánchez, Palmer and João Pedro, so its successor contains four Chelsea players. The official FPL help contract permits this state but requires the manager to return under the limit when next making a transfer.
+
+- Observation: the first policy divergence lost five immediate points.
+  Evidence: Palmer and Anderson scored 7 and 4 in the naive XI, while their replacements Gakpo and Szoboszlai scored 3 each. Captain Salah and every other effective starter were shared, producing 62 for naive versus 57 for the other four arms.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -131,6 +139,10 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
   Rationale: one loader and one lineage contract reduce special-case drift while preserving the locked pre-season forecast and option-value policy.
   Date/Author: 2026-07-24 / Codex.
 
+- Decision: represent a club-change overflow explicitly on policy state rather than weakening the ordinary squad validator.
+  Rationale: official FPL permits the exceptional squad to persist only until the manager next makes a transfer. Explicit metadata lets no-transfer banking remain legal, forces any later transfer set to restore the limit, and preserves strict validation for ordinary and initial squads.
+  Date/Author: 2026-07-24 / Codex.
+
 ## Outcomes & Retrospective
 
 The first genuine checkpoint is complete locally. It contains one shared official-Scout action bound independently to five arm states, five frozen plans and realised outcomes, and five successor states at the opening of GW2. Every arm scored 56 net points and banked a second free transfer. No GW2 proposal, outcome, or policy choice exists.
@@ -140,6 +152,8 @@ The checkpoint exposed and fixed one provenance mismatch between episode and sco
 GW3 is now complete as the third genuine chronological checkpoint. The reviewed bank/no-transfer plan scored 59: Palmer did not appear, Ezri Konsa legally auto-substituted for him and contributed 14, Salah's captaincy added 3, and João Pedro scored 9 without needing the vice-captain fallback. All arms remain action-equivalent at 174 cumulative points but retain distinct state, plan, outcome and transition hashes.
 
 The corrected lineage opens GW2/GW3/GW4 with 1/2/3 free transfers. Scores, substitutions, squads and reviewed actions through GW3 are unchanged. The corrected GW4 setup still recommends Palmer→Gakpo plus Anderson→Szoboszlai for the optimiser/fallback arms, now carrying two transfers to GW5; the naive arm banks and would carry four. The superseded lineage is recoverable from its recorded Git commit and preserved in an ignored local archive; the corrected 225-file tree reproduces byte-for-byte.
+
+GW4 is now complete. The active structured action made two free transfers and scored 57, leaving those arms on 231 cumulative points with £1.8m bank and two free transfers. The naive arm banked, scored 62, and leads on 236 with four free transfers. Its GW5 state explicitly records four Chelsea players because Marc Guiu's club identity refreshed from Sunderland to Chelsea; it may continue without a transfer, but its next transfer action must restore the three-per-club limit. No GW5 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
