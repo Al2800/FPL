@@ -46,6 +46,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 23:23Z) Generate the canonical sealed GW7 setup from committed GW6 checkpoint `81424f0` and prove a byte-identical 41-file rerun. Active arms select Murillo→Gabriel by a narrow planning margin; naive banks at the five-transfer cap.
 - [x] (2026-07-24 23:25Z) Finalise GW7 from the sealed plans: active arms scored 40 and reached 348 cumulative; naive scored 32 and reached 352. Gabriel's 9 versus Rodon's 1 accounts for the complete eight-point weekly swing. Prove the completed checkpoint is byte-identical on rerun.
 - [x] (2026-07-24 23:28Z) Generate the canonical sealed GW8 setup from committed GW7 checkpoint `6fa0847` and prove a byte-identical 41-file rerun. Active arms select free Tarkowski→Timber and Bruno→Semenyo transfers; naive remains the no-transfer control.
+- [x] (2026-07-24 23:30Z) Finalise GW8 from the sealed plans: active arms scored 52 and reached 400 cumulative; naive scored 36 and reached 388. Prove the completed checkpoint is byte-identical on rerun and separate the latest-transfer return from the accumulated trajectory return.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -125,6 +126,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: the active GW8 two-transfer action clears the option-value hurdle, but the incremental second transfer remains a sensitivity point.
   Evidence: bank scores 66.14 planning points, Bruno→Semenyo 66.47, and adding Tarkowski→Timber 66.71; the selected second transfer contributes 0.24 planning points. A three-transfer route reaches 64.39 immediate but only 66.19 planning after spending another retained transfer.
 
+- Observation: GW8's sixteen-point active gain came from accumulated trajectory divergence, not the latest two transfers.
+  Evidence: Timber scored 6 versus Tarkowski's 3, while Semenyo scored 4 versus Bruno's 8, making the current transfers net −1. Earlier divergent slots Gabriel/Gakpo/Szoboszlai scored 23 versus naive's Rodon/Porro/Anderson on 6, net +17; together these produce the observed +16.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -200,6 +204,8 @@ GW7 is prepared and sealed from committed GW6 checkpoint `81424f0`. Active arms 
 GW7 is complete. Active arms made the free Murillo→Gabriel transfer, scored 40, and reached 348 cumulative with four free transfers and £1.1m for GW8. Naive banked, scored 32, and reached 352 with five free transfers and £0.0m. Gabriel's 9 points versus Rodon's 1 produced the complete eight-point weekly recovery; no substitutions, hits, or chips intervened. The completed checkpoint is byte-identical on rerun. No GW8 decision has yet been prepared.
 
 GW8 is prepared and sealed from committed GW7 checkpoint `6fa0847`. Active arms select the free Tarkowski→Timber and Bruno→Semenyo transfers, project 63.11 immediate and 66.71 planning points, and would retain three transfers for GW9. Naive banks, projects 53.13 immediate and 60.33 planning points, and remains capped at five. All arms captain Salah; active vice-captains Semenyo while naive vice-captains João Pedro. The 41 setup files reproduce byte-for-byte; no GW8 hidden outcome, validated plan, or state transition exists.
+
+GW8 is complete. Active arms made the free Tarkowski→Timber and Bruno→Semenyo transfers, scored 52, and reached 400 cumulative with three free transfers and £2.0m for GW9. Naive banked, scored 36, and reached 388 with five free transfers and £0.0m. Active therefore moves from four points behind to twelve ahead, but the latest transfer pair returned −1 relative to the outgoing players; the gain came from earlier trajectory divergence. No substitutions, hits, or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW9 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
