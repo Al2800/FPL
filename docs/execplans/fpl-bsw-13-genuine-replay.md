@@ -51,6 +51,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 23:36Z) Finalise GW9 from the sealed bank plans: active scored 53 and reached 453 cumulative; naive scored 54 and reached 442. Prove the completed checkpoint is byte-identical and attribute the one-point swing to the five divergent XI slots.
 - [x] (2026-07-24 23:38Z) Generate the canonical sealed GW10 setup from committed GW9 checkpoint `f8a6a77` and prove a byte-identical 41-file rerun. Active selects Reijnders→Mbeumo plus Watkins→Woltemade by only 0.16 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-24 23:40Z) Reproduce the GW10 freeze failure before outcome access, isolate it to sequential rather than batch affordability validation, add a red order-independence contract, and fix the validator to check the final aggregate bank. Pass all 17 validated-plan contracts.
+- [x] (2026-07-24 23:43Z) Finalise GW10 cleanly from the sealed plans using validator commit `891fd23`: active scored 65 and reached 518 cumulative; naive scored 55 and reached 497. Prove the completed checkpoint is byte-identical and attribute the ten-point gain to prior trajectory divergence rather than the latest transfers.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -145,6 +146,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW10 exposed an order-dependent batch-affordability defect at the final freeze boundary.
   Evidence: Reijnders→Mbeumo temporarily moved the bank from £2.0m to −£0.4m, then Watkins→Woltemade restored it to the correct £0.8m final balance. The optimiser validated the aggregate batch, while the validator rejected the first ordered pair. A regression now proves both transfer orderings freeze with the same final bank.
 
+- Observation: GW10's latest transfer pair returned zero relative points while the accumulated active trajectory gained ten.
+  Evidence: Mbeumo scored 2 versus Reijnders's 1, while Woltemade scored 1 versus Watkins's 2. The remaining divergent active slots outscored their naive counterparts 25–15, producing the complete ten-point weekly gain.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -230,6 +234,8 @@ GW9 is complete. Active banked, scored 53, and reached 453 cumulative with four 
 GW10 is prepared and sealed from committed GW9 checkpoint `f8a6a77`. Active selects the free Reijnders→Mbeumo and Watkins→Woltemade transfers, projects 64.20 immediate and 67.80 planning points, and would retain three transfers for GW11. Naive banks, projects 51.40 immediate and 58.60 planning points, and remains capped at five. All arms captain Salah; active vice-captains Gabriel while naive vice-captains João Pedro. The 41 setup files reproduce byte-for-byte; no GW10 hidden outcome, validated plan, or state transition exists.
 
 The first GW10 finalisation attempt stopped before outcome access because the final validator tested affordability after each ordered transfer rather than over the complete batch. The sealed action is correctly affordable at £0.8m after both moves. The validator now performs the negative-bank check after aggregating the batch, and an order-independence contract passes alongside all existing validated-plan contracts. GW10 remains unrevealed pending a clean rerun from the committed fix.
+
+GW10 is complete under validator commit `891fd23`. Active made the free Reijnders→Mbeumo and Watkins→Woltemade transfers, scored 65, and reached 518 cumulative with three free transfers and £0.8m for GW11. Naive banked, scored 55, and reached 497 with five free transfers and £0.0m. The newest transfer pair netted zero relative points; earlier trajectory divergence supplied the ten-point gain. No substitutions, hits, or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW11 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
