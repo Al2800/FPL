@@ -30,7 +30,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 01:31Z) Commit the reusable setup builder, generate the tracked sealed GW3 proposal from that commit, and pause for human review without opening GW3 outcomes.
 - [x] (2026-07-24 02:35Z) Generalise the finaliser to verify and consume arm-specific reviewed setups while retaining the legacy GW2 contract.
 - [x] (2026-07-24 02:36Z) Prove in an isolated run that all five GW3 plans persist before outcome access, score 59 points, auto-substitute Konsa for Palmer, and advance isolated states to GW4 with four free transfers.
-- [ ] Commit the generic finaliser from a passing regression suite, generate the canonical GW3 checkpoint from that producing commit, and pause before any GW4 decision.
+- [x] (2026-07-24 02:43Z) Commit/push generic finaliser `4356ea7`, generate the canonical GW3 checkpoint from that exact commit, prove an idempotent rerun, and stop with no GW4 directory or decision.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -107,6 +107,8 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 The first genuine checkpoint is complete locally. It contains one shared official-Scout action bound independently to five arm states, five frozen plans and realised outcomes, and five successor states at the opening of GW2. Every arm scored 56 net points and banked a second free transfer. No GW2 proposal, outcome, or policy choice exists.
 
 The checkpoint exposed and fixed one provenance mismatch between episode and scorer canonicalisation. It also demonstrates why the replay must preserve actual decisions: Rodon's 7 bench points remain unused because all XI players appeared. The result is reproducible across two output roots and the full repository suite passes. Policy divergence and solver inputs intentionally begin at the reviewed GW2 checkpoint.
+
+GW3 is now complete as the third genuine chronological checkpoint. The reviewed bank/no-transfer plan scored 59: Palmer did not appear, Ezri Konsa legally auto-substituted for him and contributed 14, Salah's captaincy added 3, and João Pedro scored 9 without needing the vice-captain fallback. All arms remain action-equivalent at 174 cumulative points but retain distinct state, plan, outcome and transition hashes. They open GW4 with £0.0m bank and four free transfers. The canonical rerun is byte-identical and no GW4 proposal has been created.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
