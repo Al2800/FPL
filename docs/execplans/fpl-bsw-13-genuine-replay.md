@@ -42,6 +42,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 22:10Z) Generate the canonical 41-file sealed GW5 setup from commit `d1302c4`, prove a byte-identical rerun, and pass 353 applicable repository tests without accessing the hidden outcome.
 - [x] (2026-07-24 22:29Z) Finalise GW5 from the reviewed bank actions: active arms scored 46 and reached 277 cumulative; naive scored 49 and reached 285, with the expected 3/5 opening-GW6 transfer banks.
 - [x] (2026-07-24 22:34Z) Generate the canonical sealed GW6 setup from committed GW5 checkpoint `115e4cf`, prove a byte-identical 41-file rerun, and pass 353 applicable tests without opening GW6 outcomes.
+- [x] (2026-07-24 23:19Z) Finalise GW6 from the sealed bank actions: active arms scored 31 and reached 308 cumulative; naive scored 35 and reached 320, with no automatic substitutions and 4/5 opening-GW7 transfer banks. Prove the completed checkpoint is byte-identical on rerun and pass 97 focused replay/state/scoring tests.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -108,6 +109,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 
 - Observation: the active GW6 bank decision is clear, while the naive policy deliberately ignores a costless-at-cap transfer improvement.
   Evidence: active bank scores 66.52 planning points versus 66.14 for Sánchez→Pickford. Naive bank scores 65.14, but Palmer→Semenyo scores 67.79 because using one of five transfers still replenishes to the five-transfer cap for GW7. Naive nevertheless banks by benchmark definition.
+
+- Observation: GW6 extended the naive arm's realised lead from eight to twelve points.
+  Evidence: active arms scored 31 and reached 308 cumulative; naive scored 35 and reached 320. No arm needed an automatic substitution, took a hit, played a chip, or made a transfer.
 
 ## Decision Log
 
@@ -177,7 +181,7 @@ GW4 is now complete. The active structured action made two free transfers and sc
 
 GW5 is now complete. The active arms banked and scored 46, reaching 277 with three free transfers and £1.8m for GW6. Naive banked and scored 49, reaching 285 with the five-transfer cap and £0.0m. Murillo's zero minutes triggered legal but arm-specific automatic substitutions because the benches differ: Tarkowski entered for the active arms and Rodon for naive. No GW6 decision has yet been prepared.
 
-GW6 is prepared and sealed. Active arms bank three available transfers, project 61.12 immediate and 66.52 planning points, and would open GW7 with four. Naive banks at the five-transfer cap, projects 57.94 immediate and 65.14 planning points, and remains capped at five. All arms captain Salah and vice-captain João Pedro. No GW6 hidden outcome, validated plan, or state transition exists.
+GW6 is complete. Active arms banked, scored 31, and reached 308 cumulative with four free transfers and £1.8m for GW7. Naive banked, scored 35, and reached 320 with the five-transfer cap and £0.0m. No automatic substitutions were required. The completed checkpoint is byte-identical on rerun and the 97-test focused replay/state/scoring suite passes. No GW7 decision has yet been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
