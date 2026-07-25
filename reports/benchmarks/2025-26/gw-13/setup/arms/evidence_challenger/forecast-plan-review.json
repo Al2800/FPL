@@ -1,0 +1,373 @@
+{
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "3e444fda2f2b3ae894e6556de59257c4d79bfc1785807f9674cf1a98a21573ad",
+  "feature_state_sha256": "7c8fdfa03a0c056b5cbf004954dd4769fd237dc18ddaf959fbc433372a06919f",
+  "forecast_sha256": "02e4116e4430f0d8bf5ad402aa42699698bbf371ed0cb887038a32f7f42d7bab",
+  "gameweek": 13,
+  "lineage": {
+    "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+    "solver_input_sha256": "a326cb6d5f131e58a5ad705618fb9205cd6e066ecc5a8db0f23aeb92f911f4f6",
+    "solver_output_sha256": "caa9e660032c90b7803dd57c71e39735c3853bbd0f9d061bb506438829f9b8d3"
+  },
+  "plans_by_transfer_count": {
+    "0": {
+      "captain_id": "player:2025-26:381",
+      "captain_name": "Mohamed Salah",
+      "hit_cost": 0,
+      "immediate_objective": 58.13,
+      "next_gameweek_free_transfers": 5,
+      "planning_objective": 65.33,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Marcos Senesi Barón",
+          "player_id": "player:2025-26:72"
+        },
+        {
+          "name": "Mohamed Salah",
+          "player_id": "player:2025-26:381"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "player_id": "player:2025-26:387"
+        },
+        {
+          "name": "Cody Gakpo",
+          "player_id": "player:2025-26:384"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "João Pedro Junqueira de Jesus",
+          "player_id": "player:2025-26:249"
+        },
+        {
+          "name": "Nick Woltemade",
+          "player_id": "player:2025-26:714"
+        }
+      ],
+      "transfer_count": 0,
+      "transfer_option_value": 7.2,
+      "transfers": [],
+      "vice_captain_id": "player:2025-26:8",
+      "vice_captain_name": "Jurriën Timber"
+    },
+    "1": {
+      "captain_id": "player:2025-26:381",
+      "captain_name": "Mohamed Salah",
+      "hit_cost": 0,
+      "immediate_objective": 59.98,
+      "next_gameweek_free_transfers": 5,
+      "planning_objective": 67.18,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Daniel Muñoz Mejía",
+          "player_id": "player:2025-26:256"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Mohamed Salah",
+          "player_id": "player:2025-26:381"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "player_id": "player:2025-26:387"
+        },
+        {
+          "name": "Cody Gakpo",
+          "player_id": "player:2025-26:384"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "João Pedro Junqueira de Jesus",
+          "player_id": "player:2025-26:249"
+        },
+        {
+          "name": "Nick Woltemade",
+          "player_id": "player:2025-26:714"
+        }
+      ],
+      "transfer_count": 1,
+      "transfer_option_value": 7.2,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:256",
+          "player_in_name": "Daniel Muñoz Mejía",
+          "player_out_id": "player:2025-26:568",
+          "player_out_name": "Pedro Porro Sauceda"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:256",
+      "vice_captain_name": "Daniel Muñoz Mejía"
+    },
+    "2": {
+      "captain_id": "player:2025-26:381",
+      "captain_name": "Mohamed Salah",
+      "hit_cost": 0,
+      "immediate_objective": 61.21,
+      "next_gameweek_free_transfers": 4,
+      "planning_objective": 66.61,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Daniel Muñoz Mejía",
+          "player_id": "player:2025-26:256"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Mohamed Salah",
+          "player_id": "player:2025-26:381"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "player_id": "player:2025-26:387"
+        },
+        {
+          "name": "Cody Gakpo",
+          "player_id": "player:2025-26:384"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Igor Thiago Nascimento Rodrigues",
+          "player_id": "player:2025-26:136"
+        },
+        {
+          "name": "João Pedro Junqueira de Jesus",
+          "player_id": "player:2025-26:249"
+        }
+      ],
+      "transfer_count": 2,
+      "transfer_option_value": 5.4,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:256",
+          "player_in_name": "Daniel Muñoz Mejía",
+          "player_out_id": "player:2025-26:348",
+          "player_out_name": "Joe Rodon"
+        },
+        {
+          "player_in_id": "player:2025-26:136",
+          "player_in_name": "Igor Thiago Nascimento Rodrigues",
+          "player_out_id": "player:2025-26:714",
+          "player_out_name": "Nick Woltemade"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:136",
+      "vice_captain_name": "Igor Thiago Nascimento Rodrigues"
+    },
+    "3": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 62.07,
+      "next_gameweek_free_transfers": 3,
+      "planning_objective": 65.67,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Daniel Muñoz Mejía",
+          "player_id": "player:2025-26:256"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "player_id": "player:2025-26:387"
+        },
+        {
+          "name": "Cody Gakpo",
+          "player_id": "player:2025-26:384"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "João Pedro Junqueira de Jesus",
+          "player_id": "player:2025-26:249"
+        }
+      ],
+      "transfer_count": 3,
+      "transfer_option_value": 3.6,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:21",
+          "player_in_name": "Declan Rice",
+          "player_out_id": "player:2025-26:381",
+          "player_out_name": "Mohamed Salah"
+        },
+        {
+          "player_in_id": "player:2025-26:256",
+          "player_in_name": "Daniel Muñoz Mejía",
+          "player_out_id": "player:2025-26:568",
+          "player_out_name": "Pedro Porro Sauceda"
+        },
+        {
+          "player_in_id": "player:2025-26:430",
+          "player_in_name": "Erling Haaland",
+          "player_out_id": "player:2025-26:714",
+          "player_out_name": "Nick Woltemade"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:256",
+      "vice_captain_name": "Daniel Muñoz Mejía"
+    }
+  },
+  "policy_arm": "evidence_challenger",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected": {
+    "captain_id": "player:2025-26:381",
+    "captain_name": "Mohamed Salah",
+    "hit_cost": 0,
+    "immediate_objective": 59.98,
+    "next_gameweek_free_transfers": 5,
+    "planning_objective": 67.18,
+    "starting_xi": [
+      {
+        "name": "Robert Lynch Sánchez",
+        "player_id": "player:2025-26:220"
+      },
+      {
+        "name": "Daniel Muñoz Mejía",
+        "player_id": "player:2025-26:256"
+      },
+      {
+        "name": "Jurriën Timber",
+        "player_id": "player:2025-26:8"
+      },
+      {
+        "name": "Gabriel dos Santos Magalhães",
+        "player_id": "player:2025-26:5"
+      },
+      {
+        "name": "Mohamed Salah",
+        "player_id": "player:2025-26:381"
+      },
+      {
+        "name": "Bryan Mbeumo",
+        "player_id": "player:2025-26:119"
+      },
+      {
+        "name": "Dominik Szoboszlai",
+        "player_id": "player:2025-26:387"
+      },
+      {
+        "name": "Cody Gakpo",
+        "player_id": "player:2025-26:384"
+      },
+      {
+        "name": "Antoine Semenyo",
+        "player_id": "player:2025-26:82"
+      },
+      {
+        "name": "João Pedro Junqueira de Jesus",
+        "player_id": "player:2025-26:249"
+      },
+      {
+        "name": "Nick Woltemade",
+        "player_id": "player:2025-26:714"
+      }
+    ],
+    "transfer_count": 1,
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:256",
+        "player_in_name": "Daniel Muñoz Mejía",
+        "player_out_id": "player:2025-26:568",
+        "player_out_name": "Pedro Porro Sauceda"
+      }
+    ],
+    "vice_captain_id": "player:2025-26:256",
+    "vice_captain_name": "Daniel Muñoz Mejía"
+  },
+  "selection_policy": "reviewed_solver_selected",
+  "state_sha256": "34c5657f5ec0651f9950bc59cdd46e63cdff5618b48ff8653bd706c9aaadb0bb",
+  "status": "sealed_setup_awaiting_human_review",
+  "transfer_value_policy": {
+    "free_per_gameweek": 1,
+    "future_transfer_discount": 0.9,
+    "hit_cost_per_transfer": 4,
+    "interpretation": "expected discounted hit avoided per retained transfer; not a multi-Gameweek player forecast",
+    "max_banked": 5,
+    "option_unit_value": 1.8,
+    "policy": "expected_hit_avoidance_v1",
+    "probability_extra_transfer_needed": 0.5
+  }
+}
