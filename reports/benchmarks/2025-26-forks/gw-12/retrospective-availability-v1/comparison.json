@@ -1,0 +1,37 @@
+{
+  "active_chip": null,
+  "canonical_gross_points": 29,
+  "canonical_plan_sha256": "af69b5738afb2e144abbbcdbc632cc9d4a062d9061c8df9d355305d56053b5c5",
+  "captain": "Mohamed Salah",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "content_sha256": "1b9f2567e1dfe0cb9ef1e5592a7e83e14c3e56d9c1d9edf82c63c623279cabc3",
+  "evidence_assessment_sha256": "6089213b5723caa05ba928306ca1b4d233de3e74ff987276a21370d2b95d6c01",
+  "experiment_id": "2025-26-gw12-retrospective-availability-v1",
+  "exploratory_only": true,
+  "fork_gross_points": 43,
+  "fork_plan_sha256": "a484bb913c35b69214c84b53a766483ffced04a20e2994e534ea8bc4b89e41cd",
+  "gameweek": 12,
+  "gross_points_delta": 14,
+  "hit_cost": 0,
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "not_eligible_for_headline_agent_performance"
+  ],
+  "planning_objective": 68.74,
+  "schema_version": "1.0",
+  "score_ceilings": {
+    "canonical_selected_15_hindsight_xi_and_captain": 37,
+    "fork_selected_15_hindsight_xi_and_captain": 58,
+    "interpretation": "Availability evidence can improve GW12, but neither selected 15 contains a 100-point legal XI-and-captain combination."
+  },
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Daniel Muñoz Mejía",
+      "player_out": "Gabriel dos Santos Magalhães"
+    }
+  ],
+  "solver_input_sha256": "ea1b2c5321f2a8f3f98bd897888e3a8123d2d5b8ceebc341b81b7943ae5e3b15",
+  "solver_output_sha256": "3797da504e640388a33edf519a9468d62c2d05dfca24de0bd420c8b3fd2381f6"
+}

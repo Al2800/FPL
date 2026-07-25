@@ -1,0 +1,48 @@
+{
+  "captured_at": "2026-07-25T10:50:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "content_sha256": "6089213b5723caa05ba928306ca1b4d233de3e74ff987276a21370d2b95d6c01",
+  "decision_cutoff": "2025-11-22T11:00:00Z",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "experiment_id": "2025-26-gw12-retrospective-availability-v1",
+  "exploratory_admissible": true,
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "not_eligible_for_headline_agent_performance"
+  ],
+  "production_eligible": false,
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "adjustment_id": "adjust-gw12-gabriel-unavailable",
+      "captured_at": "2026-07-25T10:50:00Z",
+      "citation_excerpt_sha256": "8bbb2415b9dcefe466026a640d16350dd17336c571704dc11f03e19f7c8c9ea2",
+      "claim_id": "claim-gw12-gabriel-out",
+      "exploratory_admissible": true,
+      "player_id": "player:2025-26:5",
+      "production_eligible": false,
+      "production_ineligibility_reasons": [
+        "observed_at_after_decision",
+        "available_at_after_decision"
+      ],
+      "published_at": "2025-11-21T16:00:00Z",
+      "source_id": "tottenham-team-news-2025-11-21"
+    },
+    {
+      "adjustment_id": "adjust-gw12-semenyo-start-probability",
+      "captured_at": "2026-07-25T10:50:00Z",
+      "citation_excerpt_sha256": "df9f42fce05dcb442ec5ade54dc558fde02c67f3f01e1772ff4ee9e410a1674a",
+      "claim_id": "claim-gw12-semenyo-doubt",
+      "exploratory_admissible": true,
+      "player_id": "player:2025-26:82",
+      "production_eligible": false,
+      "production_ineligibility_reasons": [
+        "observed_at_after_decision",
+        "available_at_after_decision"
+      ],
+      "published_at": "2025-11-21T13:00:00Z",
+      "source_id": "fantasy-football-scout-gw12-team-news-2025-11-21"
+    }
+  ]
+}

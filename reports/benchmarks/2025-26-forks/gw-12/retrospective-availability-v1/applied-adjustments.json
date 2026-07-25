@@ -1,0 +1,47 @@
+{
+  "adjustments": [
+    {
+      "adjustment_id": "adjust-gw12-gabriel-unavailable",
+      "after": {
+        "expected_minutes": 0.0,
+        "expected_points": 0.0,
+        "start_probability": 0.0,
+        "status": "i"
+      },
+      "before": {
+        "expected_minutes": 85.6,
+        "expected_points": 6.09,
+        "start_probability": 0.9524,
+        "status": "a"
+      },
+      "claim_id": "claim-gw12-gabriel-out",
+      "confidence": 0.99,
+      "player_id": "player:2025-26:5",
+      "rationale": "Confirmed multi-week absence makes the player unavailable for GW12.",
+      "target": "availability_flag"
+    },
+    {
+      "adjustment_id": "adjust-gw12-semenyo-start-probability",
+      "after": {
+        "expected_minutes": 65.4,
+        "expected_points": 4.55,
+        "start_probability": 0.7321,
+        "status": "a"
+      },
+      "before": {
+        "expected_minutes": 87.7,
+        "expected_points": 6.11,
+        "start_probability": 0.9821,
+        "status": "a"
+      },
+      "claim_id": "claim-gw12-semenyo-doubt",
+      "confidence": 0.65,
+      "player_id": "player:2025-26:82",
+      "rationale": "Material ankle doubt receives the maximum bounded start-probability reduction, not an unavailable flag.",
+      "target": "start_probability_delta"
+    }
+  ],
+  "content_sha256": "d8ecfac9af980bd901eb658f0410a85b8073cb161c08d1a32f956d0f9086a958",
+  "experiment_id": "2025-26-gw12-retrospective-availability-v1",
+  "schema_version": "1.0"
+}

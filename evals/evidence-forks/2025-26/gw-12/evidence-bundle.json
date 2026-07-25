@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw12-retrospective-availability-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-11-22T11:00:00Z",
+  "captured_at": "2026-07-25T10:50:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "sources": [
+    {
+      "source_id": "tottenham-team-news-2025-11-21",
+      "url": "https://www.tottenhamhotspur.com/news/2025/november/arsenal-team-news-gabriel-magalhaes-one-of-six-ruled-out-riccardo-calafiori-a-doubt/",
+      "title": "Arsenal team news: Gabriel one of six ruled out",
+      "published_at": "2025-11-21T16:00:00Z",
+      "published_at_precision": "minute",
+      "captured_at": "2026-07-25T10:50:00Z",
+      "citation_excerpt": "Gabi unfortunately picked up an injury ... and he's going to be out for weeks.",
+      "claim_id": "claim-gw12-gabriel-out",
+      "claim_text": "Arsenal manager Mikel Arteta confirmed Gabriel would miss the derby and remain out for weeks.",
+      "confidence": 0.99,
+      "expires_at": "2025-11-24T23:59:59Z",
+      "player_id": "player:2025-26:5",
+      "adjustment": {
+        "adjustment_id": "adjust-gw12-gabriel-unavailable",
+        "target": "availability_flag",
+        "after_value": false,
+        "confidence": 0.99,
+        "rationale": "Confirmed multi-week absence makes the player unavailable for GW12."
+      }
+    },
+    {
+      "source_id": "fantasy-football-scout-gw12-team-news-2025-11-21",
+      "url": "https://www.fantasyfootballscout.co.uk/2025/11/21/fpl-gameweek-12-team-news-fridays-live-injury-updates-3",
+      "title": "FPL Gameweek 12 team news: Friday injury updates",
+      "published_at": "2025-11-21T13:00:00Z",
+      "published_at_precision": "inferred_after_scheduled_press_conference",
+      "captured_at": "2026-07-25T10:50:00Z",
+      "citation_excerpt": "I really don't know if he's going to be available for tomorrow or not.",
+      "claim_id": "claim-gw12-semenyo-doubt",
+      "claim_text": "Bournemouth manager Andoni Iraola was uncertain whether Antoine Semenyo's ankle would allow him to play.",
+      "confidence": 0.7,
+      "expires_at": "2025-11-22T17:00:00Z",
+      "player_id": "player:2025-26:82",
+      "adjustment": {
+        "adjustment_id": "adjust-gw12-semenyo-start-probability",
+        "target": "start_probability_delta",
+        "after_value": -0.25,
+        "confidence": 0.65,
+        "rationale": "Material ankle doubt receives the maximum bounded start-probability reduction, not an unavailable flag."
+      }
+    }
+  ]
+}
