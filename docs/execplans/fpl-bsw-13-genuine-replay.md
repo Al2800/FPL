@@ -78,6 +78,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 09:57Z) Finalise GW22 from the sealed plans: active scored 47 and reached 1119 cumulative; naive scored 71 and reached 1095. Prove the completed checkpoint is byte-identical and distinguish the −1 transfer-pair return, neutral captaincy, and +23 wider naive trajectory.
 - [x] (2026-07-25 10:05Z) Generate the canonical sealed GW23 setup from committed GW22 checkpoint `f17ace4` and prove a byte-identical 41-file rerun. Both trajectories bank; active restores its five-transfer bank and rejects a one-transfer route that loses 0.70 planning points.
 - [x] (2026-07-25 10:08Z) Finalise GW23 from the sealed plans: active scored 41 and reached 1160 cumulative; naive scored 67 and reached 1162, creating the first cumulative crossover. Prove the completed checkpoint is byte-identical and attribute 14 points to effective captaincy and 12 to wider trajectory.
+- [x] (2026-07-25 10:13Z) Generate the canonical sealed GW24 setup from committed GW23 checkpoint `5de78f4` and prove a byte-identical 41-file rerun. Active selects Foden→Wirtz by 0.86 planning points over banking; naive remains the no-transfer control.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -253,6 +254,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW23 produces the first cumulative crossover without a new transfer decision.
   Evidence: Watkins scored 8 raw plus 8 captain points versus Haaland's 1 plus 1, adding 14 for naive. The remaining divergent positions added 12 more, producing a 26-point weekly swing and moving naive two points ahead overall.
 
+- Observation: GW24 favours a single midfield change while preserving the transfer cap.
+  Evidence: banking projects 59.34 immediate and 66.54 planning points; Foden→Wirtz projects 60.20 and 67.40 with five free transfers. The two-transfer route reaches 61.84 immediate but only 67.24 planning.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -392,6 +396,8 @@ GW22 is complete. Active made the free Cunha→Bruno Guimarães and Tarkowski→
 GW23 is prepared and sealed from committed GW22 checkpoint `f17ace4`. Active banks, projects 63.99 immediate and 71.19 planning points, and would restore five free transfers for GW24. Haaland remains captain with Semenyo vice. Naive also banks, projects 44.17 immediate and 51.37 planning points, remains capped at five, and captains Watkins with Tarkowski vice. The 41 setup files reproduce byte-for-byte; no GW23 hidden outcome, validated plan, or state transition exists.
 
 GW23 is complete. Both trajectories banked. Active scored 41 and reached 1160 cumulative with five free transfers and £0.5m for GW24. Naive scored 67 and reached 1162 with five free transfers and £0.0m, producing the first cumulative crossover. Senesi replaced zero-minute Bruno Guimarães for active; Salah replaced zero-minute Palmer for naive. Watkins' effective 16 captain points beat Haaland's 2 by 14, and the other divergent slots supplied +12 to naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW24 decision has been prepared.
+
+GW24 is prepared and sealed from committed GW23 checkpoint `5de78f4`. Active selects the free Foden→Wirtz transfer, projects 60.20 immediate and 67.40 planning points, and would remain at five free transfers for GW25. Haaland remains captain with Semenyo vice. Naive banks, projects 49.82 immediate and 57.02 planning points, remains capped at five, and captains Bruno with Watkins vice. The 41 setup files reproduce byte-for-byte; no GW24 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
