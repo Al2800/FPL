@@ -1,0 +1,38 @@
+{
+  "episode_id": "benchmark-v0:2025-26:gw35:manager-neutral",
+  "feature_state_sha256": "38d04a9c6e3f401bb4f3374e12bfc2b712d88677e7dad492ebc6d50ca9a31a48",
+  "hidden_outcome_sha256": "8387ba37f2529a3d1ac5bd4d2becc0fe98e911d6b3f89b49483ab2d3165cfa8d",
+  "identity_map_sha256": "b402a0a2d110bcc55c7077425a1d363e1b486e19bb4ea95a65c5e6431eae33c6",
+  "limitations": [
+    "No admissible historical unstructured evidence was reconstructed",
+    "No recorded historical human decision was available",
+    "Transfer option value is a bridge, not a multiweek player forecast",
+    "final_export_fixture_revision_not_archived",
+    "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+    "historical_manager_state_unavailable",
+    "historical_news_unavailable",
+    "historical_prices_not_deadline_snapshots",
+    "unshifted_vaastav_xP_excluded",
+    "untimestamped_market_odds_excluded"
+  ],
+  "next_feature_state_sha256": "054e6870fe6a7c46453f80258bb99155da71e07ae4e1ac2e636a047e087dbdd7",
+  "observed_sha256": "86c42fcbbc076e7d3d6ded47d9e5eae4456fba42e23a3316d170644403b73fee",
+  "reviewed_solver_input_sha256_by_arm": {
+    "evidence_agent": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+    "evidence_challenger": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+    "forecast_optimizer": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+    "human_decision": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+    "naive_baseline": "16133a26d9e4d66b533093d7c5b68114a61db97ddf9c96116214a5e718825e71"
+  },
+  "reviewed_solver_output_sha256_by_arm": {
+    "evidence_agent": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+    "evidence_challenger": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+    "forecast_optimizer": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+    "human_decision": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+    "naive_baseline": "9383a43050e1245777d30f1f5e389d2ca7003151442c63cd6af12644c948095e"
+  },
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  }
+}
