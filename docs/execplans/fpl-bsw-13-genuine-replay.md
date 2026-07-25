@@ -69,6 +69,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 09:19Z) Generate the canonical sealed GW18 setup from committed GW17 checkpoint `d8ea285` and prove a byte-identical 41-file rerun. Active selects Woltemade→Igor Thiago by 0.57 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-25 09:22Z) Finalise GW18 from the sealed plans: active scored 33 and reached 916 cumulative; naive scored 64 and reached 899. Prove the completed checkpoint is byte-identical and attribute the 31-point naive gain across effective captain returns, wider trajectory, and the active transfer's +3 realised return.
 - [x] (2026-07-25 09:30Z) Generate the canonical sealed GW19 setup from committed GW18 checkpoint `2f9ce3a` and prove a byte-identical 41-file rerun. Active selects Mbeumo→Cunha by 1.05 planning points over banking; naive remains the no-transfer control.
+- [x] (2026-07-25 09:33Z) Finalise GW19 from the sealed plans: active scored 36 and reached 952 cumulative; naive scored 44 and reached 943. Prove the completed checkpoint is byte-identical and separate the active transfer/captain gains from the wider naive trajectory return.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -217,6 +218,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW19 prefers one targeted midfield transfer while preserving maximum option value.
   Evidence: banking projects 61.34 immediate and 68.54 planning points; Mbeumo→Cunha projects 62.39 and 69.59 while retaining five free transfers. The two-transfer route rises to 63.91 immediate but falls to 69.31 planning.
 
+- Observation: GW19's selected transfer and captain both outperform their immediate counterfactuals despite naive winning the Gameweek.
+  Evidence: Cunha scored 2 while Mbeumo played zero; after three-point Senesi covered zero-minute Rice, the bank plan's second replacement would have been zero-point Rodon, making the transfer worth +2. Haaland's effective 4 captain points beat João Pedro's 2 by +2. The other divergent positions favoured naive by 12, producing the net eight-point naive gain.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -338,6 +342,8 @@ GW18 is prepared and sealed from committed GW17 checkpoint `d8ea285`. Active sel
 GW18 is complete. Active made the free Woltemade→Igor Thiago transfer, scored 33, and reached 916 cumulative with five free transfers and £0.9m for GW19. Naive banked, scored 64, and reached 899 with five free transfers and £0.0m. Senesi and Rodon replaced zero-minute Timber and Szoboszlai for active; Rodon and Murillo replaced zero-minute Bruno and Salah for naive. Bruno's absence passed captaincy to vice-captain Tarkowski, whose 8 raw plus 8 extra beat Haaland's 2 plus 2 by 12 effective points. Igor Thiago beat Woltemade 5–2 for a +3 transfer return, while the other divergent slots supplied +22 to naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW19 decision has been prepared.
 
 GW19 is prepared and sealed from committed GW18 checkpoint `2f9ce3a`. Active selects the free Mbeumo→Cunha transfer, projects 62.39 immediate and 69.59 planning points, and would return to the five-transfer cap for GW20. Haaland remains captain with Foden vice. Naive banks, projects 46.69 immediate and 53.89 planning points, remains capped at five, and captains João Pedro with Bruno vice. The 41 setup files reproduce byte-for-byte; no GW19 hidden outcome, validated plan, or state transition exists.
+
+GW19 is complete. Active made the free Mbeumo→Cunha transfer, scored 36, and reached 952 cumulative with five free transfers and £0.9m for GW20. Naive banked, scored 44, and reached 943 with five free transfers and £0.0m. Senesi replaced zero-minute Rice for active and zero-minute Bruno for naive. Cunha's 2 versus zero-minute Mbeumo added +2 against the legal bank counterfactual; Haaland's effective 4 captain points beat João Pedro's 2 by +2. The other divergent slots supplied +12 to naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW20 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
