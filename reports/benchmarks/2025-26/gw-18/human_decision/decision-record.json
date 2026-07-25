@@ -1,0 +1,423 @@
+{
+  "alternatives": {
+    "aggressive": {
+      "bank_after": 1.8,
+      "banked_option_units": 3,
+      "hit_cost": 0,
+      "immediate_objective": 65.37,
+      "lineup": {
+        "bench_ids": [
+          "player:2025-26:470",
+          "player:2025-26:72",
+          "player:2025-26:348",
+          "player:2025-26:252"
+        ],
+        "captain_id": "player:2025-26:430",
+        "formation": {
+          "DEF": 3,
+          "FWD": 2,
+          "MID": 5
+        },
+        "starting_xi_ids": [
+          "player:2025-26:220",
+          "player:2025-26:8",
+          "player:2025-26:260",
+          "player:2025-26:226",
+          "player:2025-26:414",
+          "player:2025-26:21",
+          "player:2025-26:82",
+          "player:2025-26:329",
+          "player:2025-26:387",
+          "player:2025-26:430",
+          "player:2025-26:661"
+        ],
+        "vice_captain_id": "player:2025-26:661"
+      },
+      "next_gameweek_free_transfers": 4,
+      "objective": 70.77,
+      "strategy": "free_transfer",
+      "transfer_option_value": 5.4,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:329",
+          "player_out_id": "player:2025-26:119"
+        },
+        {
+          "player_in_id": "player:2025-26:661",
+          "player_out_id": "player:2025-26:714"
+        }
+      ],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    },
+    "conservative": {
+      "bank_after": 0.8,
+      "banked_option_units": 4,
+      "hit_cost": 0,
+      "immediate_objective": 63.61,
+      "lineup": {
+        "bench_ids": [
+          "player:2025-26:470",
+          "player:2025-26:72",
+          "player:2025-26:348",
+          "player:2025-26:252"
+        ],
+        "captain_id": "player:2025-26:430",
+        "formation": {
+          "DEF": 3,
+          "FWD": 2,
+          "MID": 5
+        },
+        "starting_xi_ids": [
+          "player:2025-26:220",
+          "player:2025-26:8",
+          "player:2025-26:260",
+          "player:2025-26:226",
+          "player:2025-26:414",
+          "player:2025-26:21",
+          "player:2025-26:82",
+          "player:2025-26:387",
+          "player:2025-26:119",
+          "player:2025-26:430",
+          "player:2025-26:714"
+        ],
+        "vice_captain_id": "player:2025-26:414"
+      },
+      "next_gameweek_free_transfers": 5,
+      "objective": 70.81,
+      "strategy": "bank_transfer",
+      "transfer_option_value": 7.2,
+      "transfers": [],
+      "validation": {
+        "chips_ok": true,
+        "lineup_ok": true,
+        "squad_ok": true
+      }
+    }
+  },
+  "approval": {
+    "approver": "reviewed_structured_replay_policy",
+    "notes": "No post-deadline evidence; evidence/human arms use the declared structured fallback",
+    "status": "approved"
+  },
+  "available_at": "2025-12-26T18:30:00Z",
+  "baseline_comparison": {
+    "do_nothing_objective": 70.81,
+    "expected_advantage": 0.57,
+    "notes": "Planning objectives include the declared transfer-option term; immediate objectives remain in the solver artefact",
+    "recommended_objective": 71.38
+  },
+  "candidate_plans": [
+    {
+      "hit_cost": 0,
+      "objective": 70.81,
+      "strategy": "0_transfers",
+      "transfers": []
+    },
+    {
+      "hit_cost": 0,
+      "objective": 71.38,
+      "strategy": "1_transfers",
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:136",
+          "player_out_id": "player:2025-26:714"
+        }
+      ]
+    },
+    {
+      "hit_cost": 0,
+      "objective": 70.77,
+      "strategy": "2_transfers",
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:329",
+          "player_out_id": "player:2025-26:119"
+        },
+        {
+          "player_in_id": "player:2025-26:661",
+          "player_out_id": "player:2025-26:714"
+        }
+      ]
+    },
+    {
+      "hit_cost": 0,
+      "objective": 69.64,
+      "strategy": "3_transfers",
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:329",
+          "player_out_id": "player:2025-26:119"
+        },
+        {
+          "player_in_id": "player:2025-26:1",
+          "player_out_id": "player:2025-26:220"
+        },
+        {
+          "player_in_id": "player:2025-26:661",
+          "player_out_id": "player:2025-26:714"
+        }
+      ]
+    }
+  ],
+  "confidence": "Locked structured forecast with explicit option-value policy",
+  "data_quality": "Locked structured forecast; historical unstructured evidence and recorded human choice unavailable",
+  "deadline": "2025-12-26T18:30:00Z",
+  "decision_cutoff": "2025-12-26T18:30:00Z",
+  "degraded": true,
+  "evidence": {
+    "conflict_ids": [],
+    "conflicting_claim_ids": [],
+    "proposed_adjustment_ids": [],
+    "supporting_claim_ids": []
+  },
+  "execution": {
+    "mode": "dry_run",
+    "notes": "Historical replay; no external account action"
+  },
+  "finalised_at": "2025-12-28T20:30:00Z",
+  "fixture_id": "benchmark-v0:2025-26:gw18:manager-neutral",
+  "gameweek": 18,
+  "manager_state": {
+    "bank": 0.8,
+    "chips_available": [
+      "wildcard_fh",
+      "free_hit_fh",
+      "triple_captain_fh",
+      "bench_boost_fh",
+      "wildcard_sh",
+      "free_hit_sh",
+      "triple_captain_sh",
+      "bench_boost_sh"
+    ],
+    "free_transfers": 5,
+    "squad_player_ids": [
+      "player:2025-26:119",
+      "player:2025-26:21",
+      "player:2025-26:220",
+      "player:2025-26:226",
+      "player:2025-26:252",
+      "player:2025-26:260",
+      "player:2025-26:348",
+      "player:2025-26:387",
+      "player:2025-26:414",
+      "player:2025-26:430",
+      "player:2025-26:470",
+      "player:2025-26:714",
+      "player:2025-26:72",
+      "player:2025-26:8",
+      "player:2025-26:82"
+    ]
+  },
+  "observed_at": "2025-12-26T18:30:00Z",
+  "outcome": {
+    "finalised_at": "2025-12-28T20:30:00Z",
+    "notes": "Official hidden outcome revealed after all arm freezes",
+    "points": 33
+  },
+  "principal_uncertainty": "No admissible historical press, injury, odds, agent or human proposal was available for this checkpoint",
+  "projections_summary": {
+    "model_versions": [
+      "live-faithful-v1"
+    ],
+    "n_players": 770,
+    "principal_uncertainty": "Transfer flexibility uses an explicit expected-hit-avoidance bridge rather than future player forecasts"
+  },
+  "provenance": {
+    "ruleset_id": "2025-26-v1.0",
+    "source_ids": [
+      "benchmark-v0-observed",
+      "live-faithful-v1-locked",
+      "expected-hit-avoidance-v1"
+    ],
+    "transformation_version": "genuine-replay-v2"
+  },
+  "recommendation": {
+    "captain_name": "Erling Haaland",
+    "objective": 71.38,
+    "strategy": "structured_fallback_no_recorded_human_choice",
+    "validated_plan_sha256": "76b7c844ea0774345588b6dbe01c3786b5e91b9c0c0c43a0901876251ccbf7d2",
+    "vice_captain_name": "Phil Foden"
+  },
+  "record_id": "gdr:2025-26:gw18:human_decision",
+  "retrospective": {
+    "lessons": [
+      "final_export_fixture_revision_not_archived",
+      "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+      "historical_manager_state_unavailable",
+      "historical_news_unavailable",
+      "historical_prices_not_deadline_snapshots",
+      "unshifted_vaastav_xP_excluded",
+      "untimestamped_market_odds_excluded"
+    ],
+    "metrics": {
+      "gross_points": 33,
+      "net_points": 33,
+      "substitutions": 2
+    },
+    "process_notes": "Reviewed GW18 chronological checkpoint"
+  },
+  "ruleset_id": "2025-26-v1.0",
+  "season": "2025-26",
+  "validated_plan": {
+    "active_chip": null,
+    "content_sha256": "76b7c844ea0774345588b6dbe01c3786b5e91b9c0c0c43a0901876251ccbf7d2",
+    "episode_id": "benchmark-v0:2025-26:gw18:manager-neutral",
+    "finance": {
+      "bank_after": 0.9,
+      "bank_before": 0.8,
+      "free_transfers_before": 5,
+      "hit_cost": 0,
+      "transfer_count": 1
+    },
+    "frozen_at": "2025-12-26T18:30:00Z",
+    "gameweek": 18,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:8",
+        "player:2025-26:260",
+        "player:2025-26:226",
+        "player:2025-26:414",
+        "player:2025-26:21",
+        "player:2025-26:82",
+        "player:2025-26:387",
+        "player:2025-26:119",
+        "player:2025-26:430",
+        "player:2025-26:136"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "plan_id": "validated-plan:benchmark-v0:2025-26:gw18:manager-neutral:human_decision",
+    "policy_arm": "human_decision",
+    "previous_state_sha256": "ccee72c030839b512121feda4911399c5904917161636f449d96395b61c5a0f6",
+    "ruleset": {
+      "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "ruleset_id": "2025-26-v1.0"
+    },
+    "schema_version": "1.0",
+    "season": "2025-26",
+    "squad_after": [
+      {
+        "club_id": "team:2025-26:14",
+        "player_id": "player:2025-26:119",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:5",
+        "player_id": "player:2025-26:136",
+        "position": "FWD"
+      },
+      {
+        "club_id": "team:2025-26:1",
+        "player_id": "player:2025-26:21",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:7",
+        "player_id": "player:2025-26:220",
+        "position": "GKP"
+      },
+      {
+        "club_id": "team:2025-26:7",
+        "player_id": "player:2025-26:226",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:7",
+        "player_id": "player:2025-26:252",
+        "position": "FWD"
+      },
+      {
+        "club_id": "team:2025-26:8",
+        "player_id": "player:2025-26:260",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:11",
+        "player_id": "player:2025-26:348",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:12",
+        "player_id": "player:2025-26:387",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:13",
+        "player_id": "player:2025-26:414",
+        "position": "MID"
+      },
+      {
+        "club_id": "team:2025-26:13",
+        "player_id": "player:2025-26:430",
+        "position": "FWD"
+      },
+      {
+        "club_id": "team:2025-26:3",
+        "player_id": "player:2025-26:470",
+        "position": "GKP"
+      },
+      {
+        "club_id": "team:2025-26:4",
+        "player_id": "player:2025-26:72",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:1",
+        "player_id": "player:2025-26:8",
+        "position": "DEF"
+      },
+      {
+        "club_id": "team:2025-26:4",
+        "player_id": "player:2025-26:82",
+        "position": "MID"
+      }
+    ],
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:136",
+        "player_out_id": "player:2025-26:714",
+        "position": "FWD",
+        "purchase_price": 7.2,
+        "selling_price": 7.3
+      }
+    ],
+    "validation": {
+      "checks": [
+        "predecessor_and_rules_bound",
+        "transfer_finance_recomputed",
+        "squad_legal",
+        "lineup_legal_and_ordered",
+        "chip_legal"
+      ],
+      "content_sha256": "ad2f49e9daee902f0934c3cf922e59fa4d7c1bdb20f485aa2c4058b4d19f179b",
+      "status": "passed"
+    }
+  },
+  "validation": {
+    "chips_ok": true,
+    "lineup": {
+      "ok": true
+    },
+    "squad": {
+      "ok": true
+    },
+    "validated_plan_sha256": "76b7c844ea0774345588b6dbe01c3786b5e91b9c0c0c43a0901876251ccbf7d2"
+  }
+}

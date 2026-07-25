@@ -67,6 +67,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 09:12Z) Generate the canonical sealed GW17 setup from committed GW16 checkpoint `d769ad9` and prove a byte-identical 41-file rerun. Active selects Gakpo→Foden by 2.76 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-25 09:15Z) Finalise GW17 from the sealed plans: active scored 88 and reached 883 cumulative; naive scored 44 and reached 835. Prove the completed checkpoint is byte-identical and separate the +30 captaincy swing from the +1 legal-counterfactual transfer return and wider trajectory.
 - [x] (2026-07-25 09:19Z) Generate the canonical sealed GW18 setup from committed GW17 checkpoint `d8ea285` and prove a byte-identical 41-file rerun. Active selects Woltemade→Igor Thiago by 0.57 planning points over banking; naive remains the no-transfer control.
+- [x] (2026-07-25 09:22Z) Finalise GW18 from the sealed plans: active scored 33 and reached 916 cumulative; naive scored 64 and reached 899. Prove the completed checkpoint is byte-identical and attribute the 31-point naive gain across effective captain returns, wider trajectory, and the active transfer's +3 realised return.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -209,6 +210,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW18 is another suitable isolated evidence-injection candidate.
   Evidence: banking projects 63.61 immediate and 70.81 planning points; Woltemade→Igor Thiago projects 64.18 and 71.38, a 0.57 planning margin while retaining five free transfers. The two-transfer route projects 65.37 immediate but only 70.77 planning, so modest expected-minutes or news evidence could change the selected action.
 
+- Observation: GW18's large naive gain coexists with a successful active transfer and a correctly applied vice-captain fallback.
+  Evidence: Igor Thiago scored 5 versus Woltemade's 2, adding +3 for active. Zero-minute Bruno passed naive captaincy to Tarkowski, whose 8 raw plus 8 extra beat Haaland's 2 plus 2 by 12 effective points; six of that difference is the captain multiplier and six is the underlying player return. The other divergent positions favoured naive by 22, producing the net 31-point weekly swing after the transfer gain.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -326,6 +330,8 @@ GW17 is prepared and sealed from committed GW16 checkpoint `d769ad9`. Active sel
 GW17 is complete. Active made the free Gakpo→Foden transfer, scored 88, and reached 883 cumulative with five free transfers and £0.8m for GW18. Naive banked, scored 44, and reached 835 with five free transfers and £0.0m. Senesi replaced zero-minute Mbeumo for active; Rodon replaced zero-minute Salah for naive. Haaland's 16 raw plus 16 captain points beat Bruno's 1 plus 1 by 30. Foden's 3 points were worth only +1 against the legal bank counterfactual because two-point Rodon would have covered zero-minute Gakpo after Senesi covered Mbeumo. Other divergent positions supplied +13. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW18 decision has been prepared.
 
 GW18 is prepared and sealed from committed GW17 checkpoint `d8ea285`. Active selects the free Woltemade→Igor Thiago transfer, projects 64.18 immediate and 71.38 planning points, and would return to the five-transfer cap for GW19. Haaland remains captain with Foden vice. Naive banks, projects 45.30 immediate and 52.50 planning points, remains capped at five, and captains Bruno with Tarkowski vice. The 41 setup files reproduce byte-for-byte; no GW18 hidden outcome, validated plan, or state transition exists.
+
+GW18 is complete. Active made the free Woltemade→Igor Thiago transfer, scored 33, and reached 916 cumulative with five free transfers and £0.9m for GW19. Naive banked, scored 64, and reached 899 with five free transfers and £0.0m. Senesi and Rodon replaced zero-minute Timber and Szoboszlai for active; Rodon and Murillo replaced zero-minute Bruno and Salah for naive. Bruno's absence passed captaincy to vice-captain Tarkowski, whose 8 raw plus 8 extra beat Haaland's 2 plus 2 by 12 effective points. Igor Thiago beat Woltemade 5–2 for a +3 transfer return, while the other divergent slots supplied +22 to naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW19 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
