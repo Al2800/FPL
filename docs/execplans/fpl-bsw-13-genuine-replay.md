@@ -83,6 +83,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 10:21Z) Generate the canonical sealed GW25 setup from committed GW24 checkpoint `7685076` and prove a byte-identical 41-file rerun. Active selects Bruno Guimarães→Harry Wilson while retaining five transfers; naive remains the no-transfer control.
 - [x] (2026-07-25 10:24Z) Finalise GW25 from the sealed plans: active scored 58 and reached 1278 cumulative; naive scored 66 and reached 1289. Prove the completed checkpoint is byte-identical and attribute −9 to the transfer, −4 to effective captaincy, and +5 to the wider active trajectory.
 - [x] (2026-07-25 10:29Z) Generate the canonical sealed GW26 setup from committed GW25 checkpoint `89e394f` and prove a byte-identical 41-file rerun. Active selects Senesi→Timber while retaining five transfers; naive remains the no-transfer control.
+- [x] (2026-07-25 10:32Z) Finalise GW26 from the sealed plans: active scored 68 and reached 1346 cumulative; naive scored 47 and reached 1336, returning the lead to active. Prove the completed checkpoint is byte-identical and attribute +1 to the transfer, +5 to effective captaincy, and +15 to wider trajectory.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -273,6 +274,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW26 again prefers a one-transfer route once transfer option value is included.
   Evidence: Senesi→Timber projects 84.36 immediate and 91.56 planning points with five transfers. The leading two-transfer alternative projects 85.61 immediate but 91.01 planning with four transfers.
 
+- Observation: GW26's double fixtures produced a broad active-trajectory gain rather than a single-transfer windfall.
+  Evidence: Timber scored 3 across two fixtures versus Senesi's 2, only +1. Gabriel's seven captain bonus points beat Bruno Fernandes' two by five; the other divergent effective slots added 15 for active.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -422,6 +426,8 @@ GW25 is prepared and sealed from committed GW24 checkpoint `7685076`. Active sel
 GW25 is complete. Active made the free Bruno Guimarães→Harry Wilson transfer, scored 58, and reached 1278 cumulative with five free transfers and £1.8m for GW26. Naive banked, scored 66, and reached 1289 with five free transfers and £0.0m. Wilson scored 2 versus Bruno Guimarães' 11, making the selected transfer −9 against the legal bank counterfactual. Gabriel's effective captain bonus was four below Bruno Fernandes, while the remaining trajectory differences recovered five for active. Neither arm required an automatic substitution. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW26 decision has been prepared.
 
 GW26 is prepared and sealed from committed GW25 checkpoint `89e394f`. Active selects the free Senesi→Timber transfer, projects 84.36 immediate and 91.56 planning points, and would remain at five free transfers for GW27. Gabriel remains captain with Rice vice. The leading two-transfer alternative projects 85.61 immediate and 91.01 planning points but would reduce the bank to four. Naive banks, projects 51.55 immediate and 58.75 planning points, remains capped at five, and captains Bruno Fernandes with Salah vice. The 41 setup files reproduce byte-for-byte; no GW26 hidden outcome, validated plan, or state transition exists.
+
+GW26 is complete. Active made the free Senesi→Timber transfer, scored 68, and reached 1346 cumulative with five free transfers and £0.0m for GW27. Naive banked, scored 47, and reached 1336 with five free transfers and £0.0m, returning the cumulative lead to active by ten. Timber scored 3 across two fixtures versus Senesi's 2, making the transfer +1. Gabriel's effective captain bonus was five above Bruno Fernandes, and the remaining trajectory differences added 15 for active. Naive auto-substituted Guiu for zero-minute Murillo; active required no substitution. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW27 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
