@@ -74,6 +74,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 09:41Z) Finalise GW20 from the sealed plans: active scored 65 and reached 1017 cumulative; naive scored 43 and reached 986. Prove the completed checkpoint is byte-identical and distinguish the +3 transfer return, −10 effective-captain difference, and +29 wider active trajectory.
 - [x] (2026-07-25 09:46Z) Generate the canonical sealed GW21 setup from committed GW20 checkpoint `4240cef` and prove a byte-identical 41-file rerun. Active selects Timber→Tarkowski by 0.65 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-25 09:49Z) Finalise GW21 from the sealed plans: active scored 55 and reached 1072 cumulative; naive scored 38 and reached 1024. Prove the completed checkpoint is byte-identical and distinguish the −2 transfer result from +4 effective captaincy and +15 wider trajectory.
+- [x] (2026-07-25 09:54Z) Generate the canonical sealed GW22 setup from committed GW21 checkpoint `2026a8c` and prove a byte-identical 41-file rerun. Active selects Cunha→Bruno Guimarães plus Tarkowski→Gabriel by only 0.32 planning points over the one-transfer route; naive remains the no-transfer control.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -237,6 +238,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW21's active win does not validate the newest transfer.
   Evidence: Tarkowski scored 4 versus outgoing Timber's 6, a direct −2. Haaland's effective 12 captain points beat Tarkowski's 8 by +4, and the other divergent positions added +15 for active, led by Igor Thiago on 12.
 
+- Observation: GW22's second transfer is highly evidence-sensitive.
+  Evidence: banking projects 58.50 immediate and 65.70 planning points; Cunha→Bruno Guimarães projects 59.97 and 67.17 while retaining five free transfers. Adding Tarkowski→Gabriel lifts the projection to 62.09 immediate and 67.49 planning but reduces the GW23 bank to four, a planning margin of only 0.32.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -368,6 +372,8 @@ GW20 is complete. Active made the free Szoboszlai→Rogers transfer, scored 65, 
 GW21 is prepared and sealed from committed GW20 checkpoint `4240cef`. Active selects the free Timber→Tarkowski transfer, projects 62.30 immediate and 69.50 planning points, and would return to the five-transfer cap for GW22. Haaland remains captain with Foden vice. Naive banks, projects 43.01 immediate and 50.21 planning points, remains capped at five, and captains Tarkowski with Watkins vice. The 41 setup files reproduce byte-for-byte; no GW21 hidden outcome, validated plan, or state transition exists.
 
 GW21 is complete. Active made the free Timber→Tarkowski transfer, scored 55, and reached 1072 cumulative with five free transfers and £0.5m for GW22. Naive banked, scored 38, and reached 1024 with five free transfers and £0.0m. Neither trajectory required an automatic substitution. Tarkowski scored 4 versus outgoing Timber's 6 for a −2 transfer return. Haaland's effective 12 captain points beat Tarkowski's 8 by +4, while the other divergent slots supplied +15 to active. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW22 decision has been prepared.
+
+GW22 is prepared and sealed from committed GW21 checkpoint `2026a8c`. Active selects the free Cunha→Bruno Guimarães and Tarkowski→Gabriel transfers, projects 62.09 immediate and 67.49 planning points, and would retain four free transfers for GW23. Haaland remains captain with Gabriel vice. Naive banks, projects 42.23 immediate and 49.43 planning points, remains capped at five, and captains Watkins with Palmer vice. The 41 setup files reproduce byte-for-byte; no GW22 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
