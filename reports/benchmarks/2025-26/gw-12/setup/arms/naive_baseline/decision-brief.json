@@ -1,0 +1,73 @@
+{
+  "content_sha256": "7f20261cd3bf4f1ee243128022249432800047de5538830d859104e784a9bdaf",
+  "episode_id": "benchmark-v0:2025-26:gw12:manager-neutral",
+  "feature_state_sha256": "df72261e3d23acdf2749102db1bcf3504b234caec6d0ddf4499defbbcdb4b120",
+  "gameweek": 12,
+  "observed_sha256": "87a7d2744c03344ecddd37142f86e24bff036071c129fd479942bd8543cad1ea",
+  "outcome_access": "sealed_not_loaded",
+  "policy": {
+    "decision_rule": "Use the engine's no-transfer lineup and bank available transfers; never inspect agent evidence.",
+    "execution_mode": "deterministic",
+    "fallback": null,
+    "proposed_source": "shared_engine_baseline.no_transfer",
+    "review_gate": "confirm_naive_rule_before_freeze"
+  },
+  "policy_arm": "naive_baseline",
+  "proposal_frozen": false,
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "shared_engine_baseline": {
+    "candidate_count": 55637,
+    "immediate_objective": 77.34,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:64",
+        "player:2025-26:506",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:457",
+      "formation": {
+        "DEF": 4,
+        "FWD": 1,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:575",
+        "player:2025-26:348",
+        "player:2025-26:568",
+        "player:2025-26:72",
+        "player:2025-26:457",
+        "player:2025-26:119",
+        "player:2025-26:381",
+        "player:2025-26:517",
+        "player:2025-26:449",
+        "player:2025-26:249"
+      ],
+      "vice_captain_id": "player:2025-26:575"
+    },
+    "no_transfer_objective": 58.87,
+    "objective": 80.94,
+    "selected_strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:119",
+        "player_out_id": "player:2025-26:235"
+      },
+      {
+        "player_in_id": "player:2025-26:575",
+        "player_out_id": "player:2025-26:291"
+      },
+      {
+        "player_in_id": "player:2025-26:457",
+        "player_out_id": "player:2025-26:427"
+      }
+    ]
+  },
+  "solver_input_sha256": "ff86ab28e0b5cec58e5809f1de7f4901d2a33a3b14e3c505aadea68b89d642b8",
+  "solver_output_sha256": "9ac3f761c64ed9f7825c907cf7ac7304821b5502de7908c7f6667ed6c378a368",
+  "starting_state_sha256": "ce6510784438daf07bf0d8516f4707c3c3209553ebdc514ac4e5a69015475df2",
+  "status": "prepared_awaiting_policy_proposal"
+}
