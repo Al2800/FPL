@@ -55,6 +55,8 @@ class SolverInput:
     transfer_value_policy: str = "none"
     probability_extra_transfer_needed: float = 0.5
     future_transfer_discount: float = 0.9
+    squad_contingency_policy: str = "none"
+    appearance_calibration: dict[str, Any] | None = None
     ruleset_mismatch_policy: str = "fail_closed"
     availability_policy: str = "available_only"
     solver_version: str = SOLVER_VERSION
@@ -90,6 +92,13 @@ class SolverInput:
                     "future_transfer_discount": self.future_transfer_discount,
                 }
             )
+        if self.squad_contingency_policy != "none":
+            value.update(
+                {
+                    "squad_contingency_policy": self.squad_contingency_policy,
+                    "appearance_calibration": self.appearance_calibration,
+                }
+            )
         return value
 
     @classmethod
@@ -116,6 +125,14 @@ class SolverInput:
             ),
             future_transfer_discount=float(
                 data.get("future_transfer_discount", 0.9)
+            ),
+            squad_contingency_policy=str(
+                data.get("squad_contingency_policy", "none")
+            ),
+            appearance_calibration=(
+                dict(data["appearance_calibration"])
+                if data.get("appearance_calibration") is not None
+                else None
             ),
             ruleset_mismatch_policy=str(data.get("ruleset_mismatch_policy", "fail_closed")),
             availability_policy=str(data.get("availability_policy", "available_only")),

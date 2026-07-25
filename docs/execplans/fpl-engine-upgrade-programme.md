@@ -19,7 +19,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [ ] Complete the timestamp-sealed evidence fork owned under `FPL-98p`, then generalise isolated weekly evidence injections without changing the canonical replay.
 - [x] (2026-07-25 21:20Z) Evaluated the sealed 0.25 player-event challenger and rejected promotion: selected cohorts improved slightly, but all-player calibration regressed.
 - [x] (2026-07-26 00:05Z) Separated attack and defence context, calibrated it before 2025/26, and rejected promotion after it worsened all, owned, and selected-player calibration.
-- [ ] Value uncertain minutes, legal automatic substitutions, bench order, and vice-captain contingency.
+- [x] (2026-07-25 23:15Z) Added calibrated three-state appearances and opt-in legal goalkeeper, bench-order, automatic-substitution, and vice-captain planning value without changing realised scoring.
 - [ ] Add robust selection that shrinks noisy extreme forecasts and reports sensitivity.
 - [ ] Replace the fixed transfer-option proxy with a three-to-six-Gameweek receding-horizon planner.
 - [ ] Implement the autonomous chip policy and GW31 Free Hit counterfactual in `FPL-q8s`.
@@ -49,6 +49,9 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - Observation: Better team-level xG prediction does not automatically improve player-level FPL forecasts.
   Evidence: The selected model reached 0.617 team-xG MAE on locked 2024/25 but worsened 2025/26 player MAE versus v1 by +0.137 overall, +0.168 for owned players, and +0.210 for selected-XI players.
 
+- Observation: The prior optimiser ignored material expected value in its ordered bench and vice-captain choices.
+  Evidence: The new appearance bins improve locked 2024/25 multiclass Brier from 0.37164 to 0.36219; the exact 123-candidate contingency search now runs in 5.49 seconds after isomorphic structural caching, versus 65.09 seconds initially.
+
 ## Decision Log
 
 - Decision: Treat the completed `live-faithful-v1` replay and its artifacts as immutable control data.
@@ -70,6 +73,11 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - Decision: Optimise for the 2026/27 live process while using 2025/26 as a systems and evaluation test.
   Rationale: Historical outcomes are useful for validation but must not leak into deadline decisions or induce season-specific tuning.
   Date/Author: 2026-07-25 / Codex
+
+- Decision: Keep probabilistic squad contingency as an opt-in planning policy and leave the official realised scorer unchanged.
+  Rationale: Forecast uncertainty should influence lineup, bench, and captain choices before the deadline, while revealed outcomes must continue to follow the versioned deterministic FPL rules without expected-value substitutions.
+  Date/Author: 2026-07-25 / Codex
+
 
 ## Outcomes & Retrospective
 
@@ -168,3 +176,6 @@ Plan revision note (2026-07-25): Completed the evaluation foundation, recorded t
 Plan revision note (2026-07-25): Completed the event challenger experiment. Recorded its mixed cohort result and rejection so later team-context and robustness work can address the mechanism without silently promoting it.
 
 Plan revision note (2026-07-26): Completed the separate team-context experiment. Recorded its governed source policy, pre-2025/26 calibration, and rejection so the live policy does not inherit a team-level model that degrades player decisions.
+
+
+Plan revision note (2026-07-25): Completed the probabilistic squad-contingency slice with a pre-2024/25 calibrated appearance model, exact ruleset-driven bench legality, opt-in solver decomposition, adapter plumbing, and unchanged control/scoring behaviour.

@@ -18,6 +18,21 @@ def _ep(p: dict[str, Any]) -> float:
     return 0.0
 
 
+def _forecast_fields(player: Mapping[str, Any]) -> dict[str, Any]:
+    """Preserve optional planning forecast fields through squad transitions."""
+
+    return {
+        key: player[key]
+        for key in (
+            "expected_minutes",
+            "start_probability",
+            "fixture_count",
+            "appearance_distribution",
+        )
+        if player.get(key) is not None
+    }
+
+
 def index_players(players: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return {str(p["player_id"]): p for p in players}
 
@@ -44,6 +59,7 @@ def owned_records(
                 "expected_points": _ep(p),
                 "web_name": p.get("web_name", ""),
                 "status": p.get("status", "a"),
+                **_forecast_fields(p),
             }
         )
     return rows
@@ -88,6 +104,7 @@ def apply_transfers(
             "expected_points": _ep(in_p),
             "web_name": in_p.get("web_name", ""),
             "status": in_p.get("status", "a"),
+            **_forecast_fields(in_p),
         }
 
     new_bank = bank + proceeds - spend

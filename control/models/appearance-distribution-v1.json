@@ -1,0 +1,110 @@
+{
+  "bins": [
+    {
+      "lower": 0.0,
+      "n_observations": 34675,
+      "probabilities": {
+        "60_plus": 0.05998039,
+        "under_60": 0.11866313,
+        "zero": 0.82135648
+      },
+      "upper": 0.2
+    },
+    {
+      "lower": 0.2,
+      "n_observations": 4647,
+      "probabilities": {
+        "60_plus": 0.65053763,
+        "under_60": 0.16107527,
+        "zero": 0.1883871
+      },
+      "upper": 0.4
+    },
+    {
+      "lower": 0.4,
+      "n_observations": 1643,
+      "probabilities": {
+        "60_plus": 0.27156744,
+        "under_60": 0.15188335,
+        "zero": 0.57654921
+      },
+      "upper": 0.6
+    },
+    {
+      "lower": 0.6,
+      "n_observations": 1452,
+      "probabilities": {
+        "60_plus": 0.5024055,
+        "under_60": 0.22611684,
+        "zero": 0.27147766
+      },
+      "upper": 0.8
+    },
+    {
+      "lower": 0.8,
+      "n_observations": 11282,
+      "probabilities": {
+        "60_plus": 0.79078423,
+        "under_60": 0.1113868,
+        "zero": 0.09782898
+      },
+      "upper": 1.0
+    }
+  ],
+  "category_contract": {
+    "60_plus": "gameweek_minutes >= 60",
+    "under_60": "0 < gameweek_minutes < 60",
+    "zero": "gameweek_minutes == 0"
+  },
+  "content_sha256": "8ea3c3cc0ca7b04d054538f039b390727c90b569a5c04593df336a25a8f29383",
+  "feature_contract": "0.6*lagged_started+0.4*clip(mean(previous_3_gw_minutes)/90,0.05,0.95)",
+  "model_version": "appearance-distribution-v1",
+  "schema_version": "1.0",
+  "selection_rule": "fixed five equal-width bins with Dirichlet(1,1,1) smoothing; no 2024-25 or 2025-26 fitting",
+  "smoothing_prior": {
+    "60_plus": 1.0,
+    "under_60": 1.0,
+    "zero": 1.0
+  },
+  "states": [
+    "zero",
+    "under_60",
+    "60_plus"
+  ],
+  "status": "challenger",
+  "training_seasons": [
+    "2022-23",
+    "2023-24"
+  ],
+  "uncalibrated_reference": {
+    "log_loss": 0.67668515,
+    "mean_predicted": {
+      "60_plus": 0.26998861,
+      "under_60": 0.20682982,
+      "zero": 0.52318157
+    },
+    "multiclass_brier": 0.37164044,
+    "n": 27231,
+    "observed_frequency": {
+      "60_plus": 0.28430833,
+      "under_60": 0.1354706,
+      "zero": 0.58022107
+    }
+  },
+  "validation": {
+    "log_loss": 0.66324414,
+    "mean_predicted": {
+      "60_plus": 0.29424661,
+      "under_60": 0.12299439,
+      "zero": 0.58275901
+    },
+    "multiclass_brier": 0.36219467,
+    "n": 27231,
+    "observed_frequency": {
+      "60_plus": 0.28430833,
+      "under_60": 0.1354706,
+      "zero": 0.58022107
+    }
+  },
+  "validation_season": "2024-25"
+}

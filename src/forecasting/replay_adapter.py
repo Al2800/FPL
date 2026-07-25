@@ -23,6 +23,8 @@ def build_replay_solver_input(
     transfer_value_policy: str = "none",
     probability_extra_transfer_needed: float = 0.5,
     future_transfer_discount: float = 0.9,
+    squad_contingency_policy: str = "none",
+    appearance_calibration: Mapping[str, Any] | None = None,
 ) -> SolverInput:
     """Return the known market using an explicitly selected forecast view."""
 
@@ -123,6 +125,15 @@ def build_replay_solver_input(
                 "start_probability": float(
                     projection["start_probability"]
                 ),
+                "fixture_count": max(
+                    1,
+                    int(
+                        projection.get(
+                            "fixture_count",
+                            len(projection.get("fixture_components", [])) or 1,
+                        )
+                    ),
+                ),
                 "price_source_gameweek": int(quote["source_gameweek"]),
                 "price_age_gameweeks": int(quote["age_gameweeks"]),
                 "price_confidence": str(quote["price_confidence"]),
@@ -161,4 +172,10 @@ def build_replay_solver_input(
             probability_extra_transfer_needed
         ),
         future_transfer_discount=float(future_transfer_discount),
+        squad_contingency_policy=str(squad_contingency_policy),
+        appearance_calibration=(
+            deepcopy(dict(appearance_calibration))
+            if appearance_calibration is not None
+            else None
+        ),
     )

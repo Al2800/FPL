@@ -9,6 +9,10 @@ from typing import Any
 
 from src.optimisation.io import fingerprint
 from src.optimisation.simple_plan import choose_starting_xi_rows
+from src.optimisation.squad_contingency import (
+    SquadContingencyError,
+    choose_contingency_lineup,
+)
 from src.optimisation.transfers import (
     apply_transfers,
     enumerate_transfer_sets,
@@ -54,6 +58,9 @@ def _evaluate_squad(
     position_counts: Mapping[str, int],
     max_per_club: int,
     chip_ok: bool,
+    squad_contingency_policy: str = "none",
+    appearance_calibration: Mapping[str, Any] | None = None,
+    formation_constraints: Mapping[str, Any] | None = None,
     allow_club_limit_exception: bool = False,
 ) -> dict[str, Any] | None:
     if len(squad_rows) != 15 or len({str(row["player_id"]) for row in squad_rows}) != 15:
@@ -72,12 +79,30 @@ def _evaluate_squad(
         return None
 
     try:
-        lineup = choose_starting_xi_rows(squad_rows, formations=formations)
-    except ValueError:
+        if squad_contingency_policy == "probabilistic_v1":
+            if appearance_calibration is None or formation_constraints is None:
+                raise SquadContingencyError(
+                    "Contingency planning requires calibration and constraints"
+                )
+            lineup = choose_contingency_lineup(
+                squad_rows,
+                formations=formations,
+                calibration=appearance_calibration,
+                constraints=formation_constraints,
+                active_chip=active_chip,
+            )
+        else:
+            lineup = choose_starting_xi_rows(squad_rows, formations=formations)
+    except (ValueError, SquadContingencyError):
         return None
 
-    obj = _objective(lineup, hit_cost=hit_cost, active_chip=active_chip)
-    return {
+    if squad_contingency_policy == "probabilistic_v1":
+        obj = round(
+            float(lineup["contingency"]["planning_value"]) - float(hit_cost), 4
+        )
+    else:
+        obj = _objective(lineup, hit_cost=hit_cost, active_chip=active_chip)
+    result = {
         "strategy": strategy,
         "transfers": transfers,
         "hit_cost": hit_cost,
@@ -96,6 +121,12 @@ def _evaluate_squad(
             "chips_ok": chip_ok,
         },
     }
+    if squad_contingency_policy == "probabilistic_v1":
+        result["contingency"] = lineup["contingency"]
+        result["objective_without_hits"] = round(
+            float(lineup["contingency"]["planning_value"]), 4
+        )
+    return result
 
 
 def solve(
@@ -123,6 +154,18 @@ def solve(
         raise ValueError(
             "transfer_value_policy must be 'none' or 'expected_hit_avoidance_v1'"
         )
+    if solver_input.squad_contingency_policy not in {
+        "none",
+        "probabilistic_v1",
+    }:
+        raise ValueError(
+            "squad_contingency_policy must be 'none' or 'probabilistic_v1'"
+        )
+    contingency_policy_active = (
+        solver_input.squad_contingency_policy == "probabilistic_v1"
+    )
+    if contingency_policy_active and solver_input.appearance_calibration is None:
+        raise ValueError("probabilistic_v1 requires an appearance_calibration")
     if not 0.0 <= solver_input.probability_extra_transfer_needed <= 1.0:
         raise ValueError("probability_extra_transfer_needed must be between 0 and 1")
     if not 0.0 <= solver_input.future_transfer_discount <= 1.0:
@@ -171,6 +214,9 @@ def solve(
             row["purchase_price"] = float(src["purchase_price"])
 
     formations = legal_formations(rules_dict)
+    formation_constraints = get_rule(
+        rules_dict, "lineup.formation_constraints"
+    )["value"]
     position_counts = get_rule(rules_dict, "squad.position_counts")["value"]
     max_per_club = int(get_rule(rules_dict, "squad.max_per_club")["value"])
     hit_cost_per_transfer = int(get_rule(rules_dict, "transfers.hit_cost")["value"])
@@ -270,6 +316,9 @@ def solve(
         position_counts=position_counts,
         max_per_club=max_per_club,
         chip_ok=chip_validation.ok,
+        squad_contingency_policy=solver_input.squad_contingency_policy,
+        appearance_calibration=solver_input.appearance_calibration,
+        formation_constraints=formation_constraints,
         allow_club_limit_exception=True,
     )
     if base:
@@ -328,6 +377,9 @@ def solve(
                 position_counts=position_counts,
                 max_per_club=max_per_club,
                 chip_ok=chip_validation.ok,
+                squad_contingency_policy=solver_input.squad_contingency_policy,
+                appearance_calibration=solver_input.appearance_calibration,
+                formation_constraints=formation_constraints,
             )
             consider(plan)
 
@@ -392,6 +444,23 @@ def solve(
         output["best_by_transfer_count"] = {
             str(count): candidate
             for count, candidate in sorted(by_transfer_count.items())
+        }
+    if contingency_policy_active:
+        assert solver_input.appearance_calibration is not None
+        output["squad_contingency_policy"] = {
+            "policy": solver_input.squad_contingency_policy,
+            "appearance_model_version": solver_input.appearance_calibration[
+                "model_version"
+            ],
+            "appearance_calibration_sha256": solver_input.appearance_calibration[
+                "content_sha256"
+            ],
+            "states": ["zero", "under_60", "60_plus"],
+            "realised_scorer_changed": False,
+            "interpretation": (
+                "planning-time expected legal auto-substitution, goalkeeper, "
+                "bench-order and vice-captain fallback value"
+            ),
         }
     output["output_fingerprint"] = fingerprint(
         {k: output[k] for k in ("solver_version", "selected", "plans") if k in output}
