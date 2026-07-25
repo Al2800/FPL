@@ -45,6 +45,43 @@
     },
     "provenance": {
       "$ref": "../_defs.json#/$defs/provenance"
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "comparison_basis",
+        "evaluated_plan_sha256",
+        "baseline_plan_sha256",
+        "paired_metrics",
+        "detectable_effect",
+        "resource_use"
+      ],
+      "properties": {
+        "comparison_basis": {
+          "enum": [
+            "expected_proxy",
+            "realised_feasible_counterfactual"
+          ]
+        },
+        "evaluated_plan_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "baseline_plan_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "paired_metrics": {
+          "type": "object"
+        },
+        "detectable_effect": {
+          "type": "object"
+        },
+        "resource_use": {
+          "type": "object"
+        }
+      }
     }
   }
 }

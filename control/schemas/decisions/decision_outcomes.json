@@ -41,6 +41,91 @@
     },
     "provenance": {
       "$ref": "../_defs.json#/$defs/provenance"
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis",
+        "counterfactual_type",
+        "episode_id",
+        "evaluated_plan",
+        "baseline_plan",
+        "scoring_provenance"
+      ],
+      "properties": {
+        "basis": {
+          "const": "realised_feasible_counterfactual"
+        },
+        "counterfactual_type": {
+          "enum": [
+            "do_nothing",
+            "captain",
+            "transfer",
+            "bench",
+            "chip",
+            "policy_arm"
+          ]
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evaluated_plan": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "plan_id",
+            "plan_sha256"
+          ],
+          "properties": {
+            "plan_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "plan_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "baseline_plan": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "plan_id",
+            "plan_sha256"
+          ],
+          "properties": {
+            "plan_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "plan_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "scoring_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_outcome_sha256",
+            "ruleset_sha256"
+          ],
+          "properties": {
+            "source_outcome_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "ruleset_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      }
     }
   }
 }
