@@ -58,6 +58,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 07:35Z) Finalise GW12 from the sealed bank plans: active scored 29 and reached 582 cumulative after two auto-subs; naive scored 39 and reached 580. Prove the completed checkpoint is byte-identical and identify GW12 as a future evidence-injection candidate without misattributing the loss to autosubs.
 - [x] (2026-07-25 08:20Z) Generate the canonical sealed GW13 setup from committed GW12 checkpoint `baca2bf` and prove a byte-identical 41-file rerun. Active selects Porro→Muñoz at the transfer cap; naive remains the no-transfer control.
 - [x] (2026-07-25 08:23Z) Finalise GW13 from the sealed plans: active scored 36 and reached 618 cumulative; naive scored 32 and reached 612. Prove the completed checkpoint is byte-identical and distinguish the neutral new transfer/captaincy effects from prior trajectory returns.
+- [x] (2026-07-25 08:27Z) Generate the canonical sealed GW14 setup from committed GW13 checkpoint `d8c9178` and prove a byte-identical 41-file rerun. Active restructures Salah/João Pedro into Rice/Haaland and moves captaincy to Haaland; naive banks.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -173,6 +174,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW13's new transfer and fallback captaincy were neutral in realised relative points.
   Evidence: Muñoz and outgoing Porro both scored 1. With zero-minute Salah, Muñoz inherited active captaincy for one extra point; naive vice-captain João Pedro also scored 1 extra. Active's four-point gain came from the wider divergent trajectory, led by Gakpo on 14 and Woltemade on 7.
 
+- Observation: GW14's premium restructure is preferred but remains evidence-sensitive.
+  Evidence: bank with Salah scores 67.11 planning points, Semenyo→Eze 67.98, Salah/João Pedro→Rice/Haaland 68.52, and the three-transfer route 68.01. The selected action clears the nearest alternative by 0.54.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -272,6 +276,8 @@ GW12 is complete. Active banked, scored 29, and reached 582 cumulative with five
 GW13 is prepared and sealed from committed GW12 checkpoint `baca2bf`. Active selects the free Porro→Muñoz transfer, projects 59.98 immediate and 67.18 planning points, and would remain at the five-transfer cap for GW14. Naive banks, projects 50.50 immediate and 57.70 planning points, and also remains capped at five. All arms captain Salah; active vice-captains Muñoz while naive vice-captains João Pedro. The 41 setup files reproduce byte-for-byte; no GW13 hidden outcome, validated plan, or state transition exists.
 
 GW13 is complete. Active made the free Porro→Muñoz transfer, scored 36, and reached 618 cumulative with five free transfers and £0.5m for GW14. Naive banked, scored 32, and reached 612 with five free transfers and £0.0m. Senesi and Rodon replaced zero-minute Gabriel and Salah for active, while Reijnders replaced Murillo for naive; Muñoz and João Pedro inherited captaincy in their respective arms. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW14 decision has been prepared.
+
+GW14 is prepared and sealed from committed GW13 checkpoint `d8c9178`. Active selects the free Salah→Rice and João Pedro→Haaland transfers, projects 63.12 immediate and 68.52 planning points, and would retain four transfers for GW15. Haaland becomes captain with Mbeumo vice. Naive banks, projects 47.96 immediate and 55.16 planning points, remains capped at five, and retains Salah captain with Bruno vice. The 41 setup files reproduce byte-for-byte; no GW14 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
