@@ -82,6 +82,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 10:16Z) Finalise GW24 from the sealed plans: active scored 60 and reached 1220 cumulative; naive scored 61 and reached 1223. Prove the completed checkpoint is byte-identical; Wirtz returned 12 immediately, while naive retained a three-point cumulative lead.
 - [x] (2026-07-25 10:21Z) Generate the canonical sealed GW25 setup from committed GW24 checkpoint `7685076` and prove a byte-identical 41-file rerun. Active selects Bruno Guimarães→Harry Wilson while retaining five transfers; naive remains the no-transfer control.
 - [x] (2026-07-25 10:24Z) Finalise GW25 from the sealed plans: active scored 58 and reached 1278 cumulative; naive scored 66 and reached 1289. Prove the completed checkpoint is byte-identical and attribute −9 to the transfer, −4 to effective captaincy, and +5 to the wider active trajectory.
+- [x] (2026-07-25 10:29Z) Generate the canonical sealed GW26 setup from committed GW25 checkpoint `89e394f` and prove a byte-identical 41-file rerun. Active selects Senesi→Timber while retaining five transfers; naive remains the no-transfer control.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -269,6 +270,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW25's selected transfer sharply underperformed its legal bank counterfactual.
   Evidence: incoming Harry Wilson scored 2 while outgoing Bruno Guimarães scored 11, a nine-point loss. Gabriel's six captain bonus points also trailed Bruno Fernandes' ten by four; other divergent positions recovered five for active.
 
+- Observation: GW26 again prefers a one-transfer route once transfer option value is included.
+  Evidence: Senesi→Timber projects 84.36 immediate and 91.56 planning points with five transfers. The leading two-transfer alternative projects 85.61 immediate but 91.01 planning with four transfers.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -416,6 +420,8 @@ GW24 is complete. Active made the free Foden→Wirtz transfer, scored 60, and re
 GW25 is prepared and sealed from committed GW24 checkpoint `7685076`. Active selects the free Bruno Guimarães→Harry Wilson transfer, projects 59.76 immediate and 66.96 planning points, and would remain at five free transfers for GW26. Gabriel becomes captain with Haaland vice. The leading two-transfer alternative projects 61.51 immediate and 66.91 planning points but would reduce the bank to four. Naive banks, projects 50.44 immediate and 57.64 planning points, remains capped at five, and captains Bruno Fernandes with João Pedro vice. The 41 setup files reproduce byte-for-byte; no GW25 hidden outcome, validated plan, or state transition exists.
 
 GW25 is complete. Active made the free Bruno Guimarães→Harry Wilson transfer, scored 58, and reached 1278 cumulative with five free transfers and £1.8m for GW26. Naive banked, scored 66, and reached 1289 with five free transfers and £0.0m. Wilson scored 2 versus Bruno Guimarães' 11, making the selected transfer −9 against the legal bank counterfactual. Gabriel's effective captain bonus was four below Bruno Fernandes, while the remaining trajectory differences recovered five for active. Neither arm required an automatic substitution. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW26 decision has been prepared.
+
+GW26 is prepared and sealed from committed GW25 checkpoint `89e394f`. Active selects the free Senesi→Timber transfer, projects 84.36 immediate and 91.56 planning points, and would remain at five free transfers for GW27. Gabriel remains captain with Rice vice. The leading two-transfer alternative projects 85.61 immediate and 91.01 planning points but would reduce the bank to four. Naive banks, projects 51.55 immediate and 58.75 planning points, remains capped at five, and captains Bruno Fernandes with Salah vice. The 41 setup files reproduce byte-for-byte; no GW26 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
