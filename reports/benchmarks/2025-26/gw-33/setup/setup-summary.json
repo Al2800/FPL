@@ -1,0 +1,181 @@
+{
+  "candidate_count": 81849,
+  "code_commit": "cf5a6fb6ca55cbda98775676322767cc55310d5e",
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "8553656628c8113adbb4bc713bad25f0a0ebdd30629751473e38d3901ec13766",
+  "engine_no_transfer": {
+    "immediate_objective": 72.01,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:220",
+        "player:2025-26:568",
+        "player:2025-26:427",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:72",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:506",
+        "player:2025-26:291",
+        "player:2025-26:449",
+        "player:2025-26:235",
+        "player:2025-26:517",
+        "player:2025-26:381",
+        "player:2025-26:249",
+        "player:2025-26:64"
+      ],
+      "vice_captain_id": "player:2025-26:348"
+    },
+    "objective": 79.21,
+    "transfer_option_value": 7.2,
+    "transfers": []
+  },
+  "engine_selected": {
+    "immediate_objective": 109.99,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:220",
+        "player:2025-26:568",
+        "player:2025-26:427",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:173",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:470",
+        "player:2025-26:344",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:506",
+        "player:2025-26:173",
+        "player:2025-26:90",
+        "player:2025-26:449",
+        "player:2025-26:517",
+        "player:2025-26:249",
+        "player:2025-26:64"
+      ],
+      "vice_captain_id": "player:2025-26:344"
+    },
+    "objective": 113.59,
+    "transfer_option_value": 3.6,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:173",
+        "player_out_id": "player:2025-26:235"
+      },
+      {
+        "player_in_id": "player:2025-26:344",
+        "player_out_id": "player:2025-26:291"
+      },
+      {
+        "player_in_id": "player:2025-26:90",
+        "player_out_id": "player:2025-26:381"
+      }
+    ]
+  },
+  "episode_id": "benchmark-v0:2025-26:gw33:manager-neutral",
+  "feature_state_sha256": "be1014de5bb35dd0dc1ac9e88ad03aebce6d82502db2e3c1530047dcccb8be7e",
+  "gameweek": 33,
+  "limitations": [
+    "final_export_fixture_revision_not_archived",
+    "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+    "historical_manager_state_unavailable",
+    "historical_news_unavailable",
+    "historical_prices_not_deadline_snapshots",
+    "unshifted_vaastav_xP_excluded",
+    "untimestamped_market_odds_excluded"
+  ],
+  "observed_sha256": "6490fe863832296a78d533f50b5aef13c80b5c6ef565f8f5f87adaa2211948b7",
+  "outcome_access": "sealed_not_loaded",
+  "policy_brief_sha256": {
+    "evidence_agent": "3c27c35ff1a1944f72643c7b4a01c63571a1a525cdaceaa6475178db61566c88",
+    "evidence_challenger": "cec28d4cb6cadcd7788af79fb0202cac0fd0f25b634e6a6dd0ec632c7ab0456e",
+    "forecast_optimizer": "e90ab952beaa9621c99d7f18eb461b73641642664f8caa267c22f59de416cc35",
+    "human_decision": "19e76b66ca1773843e38507dfc50a66727b2eb8f0488c8281ee9cb65f00ac99f",
+    "naive_baseline": "08f52509f3967f7917338769d9f81a64138a33c99dbb3b0085534b43dcbc71d0"
+  },
+  "projection_diagnostics": {
+    "cold_start_risk": "rolling_window_populated",
+    "completed_history_gameweeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "configured_rolling_window": 3,
+    "freeze_recommendation": "eligible_for_policy_review",
+    "history_gameweek_count": 32,
+    "maximum_player_expected_points": 16.0,
+    "model_version": "historical-rolling-v1"
+  },
+  "review_gates": [
+    "resolve early-season projection prior and shrinkage policy",
+    "confirm naive no-transfer policy",
+    "inspect forecast-optimiser transfer and lineup",
+    "define admissible pre-deadline historical evidence",
+    "decide treatment of unavailable historical human choice"
+  ],
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "shared_engine_input": false,
+  "solver_input_sha256": {
+    "evidence_agent": "73bf4d9a3738650dd103951a4a32227e3620f0abd67456e90e62caba124d1097",
+    "evidence_challenger": "73bf4d9a3738650dd103951a4a32227e3620f0abd67456e90e62caba124d1097",
+    "forecast_optimizer": "73bf4d9a3738650dd103951a4a32227e3620f0abd67456e90e62caba124d1097",
+    "human_decision": "73bf4d9a3738650dd103951a4a32227e3620f0abd67456e90e62caba124d1097",
+    "naive_baseline": "a98b92b293d8a8761fdf6915b2c00751bb8423b94544e42a5992dad6c7373e27"
+  },
+  "solver_output_sha256": {
+    "evidence_agent": "5ba2a6fac08619790399a39e7da3ebe8510400d32b050fc8995fc1deac9259a1",
+    "evidence_challenger": "5ba2a6fac08619790399a39e7da3ebe8510400d32b050fc8995fc1deac9259a1",
+    "forecast_optimizer": "5ba2a6fac08619790399a39e7da3ebe8510400d32b050fc8995fc1deac9259a1",
+    "human_decision": "5ba2a6fac08619790399a39e7da3ebe8510400d32b050fc8995fc1deac9259a1",
+    "naive_baseline": "6f38800360eb98b8cdec61d02fda730739ed7c7f8a7464607f11d6c8e21082e6"
+  },
+  "status": "prepared_not_frozen"
+}
