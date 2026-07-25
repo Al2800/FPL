@@ -1,0 +1,366 @@
+{
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "2dc04013f8209a3e06bf7ab221fdc358add33bdc7411b6926bebd4084c8e1194",
+  "feature_state_sha256": "06d4fef54fd0971d7b478a7e660986518b03fd4de45dd7d50d11375c8c5f810a",
+  "forecast_sha256": "531629e0fbbe6858cb562833f84312250a543cbe96d28a27e1113a29b92f9d25",
+  "gameweek": 23,
+  "lineage": {
+    "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+    "solver_input_sha256": "c0654088632a170e0d915ccc2bf7db08e5bde535caafe695864d4ce108d59b51",
+    "solver_output_sha256": "0dbd29ad5231d1178f3a1856f1c51aad74540c76a7a744e5300796a5e18381cc"
+  },
+  "plans_by_transfer_count": {
+    "0": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 63.99,
+      "next_gameweek_free_transfers": 5,
+      "planning_objective": 71.19,
+      "starting_xi": [
+        {
+          "name": "Martin Dúbravka",
+          "player_id": "player:2025-26:470"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Trevoh Chalobah",
+          "player_id": "player:2025-26:226"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Phil Foden",
+          "player_id": "player:2025-26:414"
+        },
+        {
+          "name": "Morgan Rogers",
+          "player_id": "player:2025-26:47"
+        },
+        {
+          "name": "Bruno Guimarães Rodriguez Moura",
+          "player_id": "player:2025-26:488"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Igor Thiago Nascimento Rodrigues",
+          "player_id": "player:2025-26:136"
+        }
+      ],
+      "transfer_count": 0,
+      "transfer_option_value": 7.2,
+      "transfers": [],
+      "vice_captain_id": "player:2025-26:82",
+      "vice_captain_name": "Antoine Semenyo"
+    },
+    "1": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 65.09,
+      "next_gameweek_free_transfers": 4,
+      "planning_objective": 70.49,
+      "starting_xi": [
+        {
+          "name": "Martin Dúbravka",
+          "player_id": "player:2025-26:470"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Trevoh Chalobah",
+          "player_id": "player:2025-26:226"
+        },
+        {
+          "name": "James Tarkowski",
+          "player_id": "player:2025-26:291"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Phil Foden",
+          "player_id": "player:2025-26:414"
+        },
+        {
+          "name": "Morgan Rogers",
+          "player_id": "player:2025-26:47"
+        },
+        {
+          "name": "Bruno Guimarães Rodriguez Moura",
+          "player_id": "player:2025-26:488"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Igor Thiago Nascimento Rodrigues",
+          "player_id": "player:2025-26:136"
+        }
+      ],
+      "transfer_count": 1,
+      "transfer_option_value": 5.4,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:291",
+          "player_in_name": "James Tarkowski",
+          "player_out_id": "player:2025-26:260",
+          "player_out_name": "Marc Guéhi"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:82",
+      "vice_captain_name": "Antoine Semenyo"
+    },
+    "2": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 66.11,
+      "next_gameweek_free_transfers": 3,
+      "planning_objective": 69.71,
+      "starting_xi": [
+        {
+          "name": "Martin Dúbravka",
+          "player_id": "player:2025-26:470"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Trevoh Chalobah",
+          "player_id": "player:2025-26:226"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Harry Wilson",
+          "player_id": "player:2025-26:329"
+        },
+        {
+          "name": "Phil Foden",
+          "player_id": "player:2025-26:414"
+        },
+        {
+          "name": "Morgan Rogers",
+          "player_id": "player:2025-26:47"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Igor Thiago Nascimento Rodrigues",
+          "player_id": "player:2025-26:136"
+        }
+      ],
+      "transfer_count": 2,
+      "transfer_option_value": 3.6,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:8",
+          "player_in_name": "Jurriën Timber",
+          "player_out_id": "player:2025-26:260",
+          "player_out_name": "Marc Guéhi"
+        },
+        {
+          "player_in_id": "player:2025-26:329",
+          "player_in_name": "Harry Wilson",
+          "player_out_id": "player:2025-26:488",
+          "player_out_name": "Bruno Guimarães Rodriguez Moura"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:82",
+      "vice_captain_name": "Antoine Semenyo"
+    },
+    "3": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 67.34,
+      "next_gameweek_free_transfers": 2,
+      "planning_objective": 69.14,
+      "starting_xi": [
+        {
+          "name": "Jordan Pickford",
+          "player_id": "player:2025-26:287"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Trevoh Chalobah",
+          "player_id": "player:2025-26:226"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Harry Wilson",
+          "player_id": "player:2025-26:329"
+        },
+        {
+          "name": "Phil Foden",
+          "player_id": "player:2025-26:414"
+        },
+        {
+          "name": "Bruno Guimarães Rodriguez Moura",
+          "player_id": "player:2025-26:488"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Igor Thiago Nascimento Rodrigues",
+          "player_id": "player:2025-26:136"
+        }
+      ],
+      "transfer_count": 3,
+      "transfer_option_value": 1.8,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:287",
+          "player_in_name": "Jordan Pickford",
+          "player_out_id": "player:2025-26:220",
+          "player_out_name": "Robert Lynch Sánchez"
+        },
+        {
+          "player_in_id": "player:2025-26:8",
+          "player_in_name": "Jurriën Timber",
+          "player_out_id": "player:2025-26:260",
+          "player_out_name": "Marc Guéhi"
+        },
+        {
+          "player_in_id": "player:2025-26:329",
+          "player_in_name": "Harry Wilson",
+          "player_out_id": "player:2025-26:47",
+          "player_out_name": "Morgan Rogers"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:82",
+      "vice_captain_name": "Antoine Semenyo"
+    }
+  },
+  "policy_arm": "evidence_challenger",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected": {
+    "captain_id": "player:2025-26:430",
+    "captain_name": "Erling Haaland",
+    "hit_cost": 0,
+    "immediate_objective": 63.99,
+    "next_gameweek_free_transfers": 5,
+    "planning_objective": 71.19,
+    "starting_xi": [
+      {
+        "name": "Martin Dúbravka",
+        "player_id": "player:2025-26:470"
+      },
+      {
+        "name": "Gabriel dos Santos Magalhães",
+        "player_id": "player:2025-26:5"
+      },
+      {
+        "name": "Trevoh Chalobah",
+        "player_id": "player:2025-26:226"
+      },
+      {
+        "name": "Marc Guéhi",
+        "player_id": "player:2025-26:260"
+      },
+      {
+        "name": "Antoine Semenyo",
+        "player_id": "player:2025-26:82"
+      },
+      {
+        "name": "Declan Rice",
+        "player_id": "player:2025-26:21"
+      },
+      {
+        "name": "Phil Foden",
+        "player_id": "player:2025-26:414"
+      },
+      {
+        "name": "Morgan Rogers",
+        "player_id": "player:2025-26:47"
+      },
+      {
+        "name": "Bruno Guimarães Rodriguez Moura",
+        "player_id": "player:2025-26:488"
+      },
+      {
+        "name": "Erling Haaland",
+        "player_id": "player:2025-26:430"
+      },
+      {
+        "name": "Igor Thiago Nascimento Rodrigues",
+        "player_id": "player:2025-26:136"
+      }
+    ],
+    "transfer_count": 0,
+    "transfer_option_value": 7.2,
+    "transfers": [],
+    "vice_captain_id": "player:2025-26:82",
+    "vice_captain_name": "Antoine Semenyo"
+  },
+  "selection_policy": "reviewed_solver_selected",
+  "state_sha256": "07207139e5c39d8caa3b3ede8e13fa7adc0d738b64bd0197f2bdb59637c9b59a",
+  "status": "sealed_setup_awaiting_human_review",
+  "transfer_value_policy": {
+    "free_per_gameweek": 1,
+    "future_transfer_discount": 0.9,
+    "hit_cost_per_transfer": 4,
+    "interpretation": "expected discounted hit avoided per retained transfer; not a multi-Gameweek player forecast",
+    "max_banked": 5,
+    "option_unit_value": 1.8,
+    "policy": "expected_hit_avoidance_v1",
+    "probability_extra_transfer_needed": 0.5
+  }
+}
