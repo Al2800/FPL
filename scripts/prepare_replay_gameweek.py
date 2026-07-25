@@ -30,6 +30,13 @@ REPO = Path(__file__).resolve().parents[1]
 VAASTAV = REPO / "data" / "raw" / "vaastav" / "Fantasy-Premier-League" / "data"
 FOOTBALL_DATA = REPO / "data" / "raw" / "football-data"
 CONFIG = REPO / "control" / "models" / "live-faithful-v1.feature-complete.json"
+FINAL_GAMEWEEK = 38
+
+
+def _transfer_value_policy_for_gameweek(gameweek: int) -> str:
+    """Disable future-transfer option value when no future deadline exists."""
+
+    return "none" if gameweek == FINAL_GAMEWEEK else TRANSFER_VALUE_POLICY
 
 
 def _read(path: Path) -> dict[str, Any]:
@@ -140,7 +147,7 @@ def prepare(
             policy_state=state,
             forecast_view=forecast,
             max_transfers=3,
-            transfer_value_policy=TRANSFER_VALUE_POLICY,
+            transfer_value_policy=_transfer_value_policy_for_gameweek(gameweek),
             probability_extra_transfer_needed=(
                 PROBABILITY_EXTRA_TRANSFER_NEEDED
             ),

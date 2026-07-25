@@ -33,6 +33,13 @@ def _require_local_data() -> None:
         pytest.skip("local replay/training data is unavailable")
 
 
+def test_terminal_gameweek_disables_future_transfer_option_value() -> None:
+    assert replay_setup._transfer_value_policy_for_gameweek(37) == (
+        replay_setup.TRANSFER_VALUE_POLICY
+    )
+    assert replay_setup._transfer_value_policy_for_gameweek(38) == "none"
+
+
 def test_gw3_locked_forecast_setup_is_sealed_state_bound_and_reproducible(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
