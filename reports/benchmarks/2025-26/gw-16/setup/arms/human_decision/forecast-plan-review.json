@@ -1,0 +1,373 @@
+{
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "6d8fdf7b94990928f40262f4ac1e49807b645372982341f4fe8fbed49fdd9f94",
+  "feature_state_sha256": "cbff2e83119e8260595bccf22d673048d6505508cb22d369fc0c288edb5b59ee",
+  "forecast_sha256": "2a0e7a7937f62589b9b9d7d60d4b2f5ef8322c28697ef7a291a1e065832c44ed",
+  "gameweek": 16,
+  "lineage": {
+    "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+    "solver_input_sha256": "1bf79b31562fb52ef16d803430ad285f7c6b850295e31e1e3b565c766a9341eb",
+    "solver_output_sha256": "a0fb44d2d4afeebd51eadde26f8ca46e905cf2e4317eda5d6674c663d47d5133"
+  },
+  "plans_by_transfer_count": {
+    "0": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 61.02,
+      "next_gameweek_free_transfers": 5,
+      "planning_objective": 68.22,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Daniel Muñoz Mejía",
+          "player_id": "player:2025-26:256"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Cody Gakpo",
+          "player_id": "player:2025-26:384"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "player_id": "player:2025-26:387"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Nick Woltemade",
+          "player_id": "player:2025-26:714"
+        }
+      ],
+      "transfer_count": 0,
+      "transfer_option_value": 7.2,
+      "transfers": [],
+      "vice_captain_id": "player:2025-26:119",
+      "vice_captain_name": "Bryan Mbeumo"
+    },
+    "1": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 61.96,
+      "next_gameweek_free_transfers": 5,
+      "planning_objective": 69.16,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Trevoh Chalobah",
+          "player_id": "player:2025-26:226"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Cody Gakpo",
+          "player_id": "player:2025-26:384"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "player_id": "player:2025-26:387"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Nick Woltemade",
+          "player_id": "player:2025-26:714"
+        }
+      ],
+      "transfer_count": 1,
+      "transfer_option_value": 7.2,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:226",
+          "player_in_name": "Trevoh Chalobah",
+          "player_out_id": "player:2025-26:256",
+          "player_out_name": "Daniel Muñoz Mejía"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:119",
+      "vice_captain_name": "Bryan Mbeumo"
+    },
+    "2": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 62.92,
+      "next_gameweek_free_transfers": 4,
+      "planning_objective": 68.32,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Trevoh Chalobah",
+          "player_id": "player:2025-26:226"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Bruno Borges Fernandes",
+          "player_id": "player:2025-26:449"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Dominik Szoboszlai",
+          "player_id": "player:2025-26:387"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Nick Woltemade",
+          "player_id": "player:2025-26:714"
+        }
+      ],
+      "transfer_count": 2,
+      "transfer_option_value": 5.4,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:226",
+          "player_in_name": "Trevoh Chalobah",
+          "player_out_id": "player:2025-26:256",
+          "player_out_name": "Daniel Muñoz Mejía"
+        },
+        {
+          "player_in_id": "player:2025-26:449",
+          "player_in_name": "Bruno Borges Fernandes",
+          "player_out_id": "player:2025-26:384",
+          "player_out_name": "Cody Gakpo"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:119",
+      "vice_captain_name": "Bryan Mbeumo"
+    },
+    "3": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 0,
+      "immediate_objective": 63.15,
+      "next_gameweek_free_transfers": 3,
+      "planning_objective": 66.75,
+      "starting_xi": [
+        {
+          "name": "Robert Lynch Sánchez",
+          "player_id": "player:2025-26:220"
+        },
+        {
+          "name": "Trevoh Chalobah",
+          "player_id": "player:2025-26:226"
+        },
+        {
+          "name": "Jurriën Timber",
+          "player_id": "player:2025-26:8"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Bryan Mbeumo",
+          "player_id": "player:2025-26:119"
+        },
+        {
+          "name": "Bruno Borges Fernandes",
+          "player_id": "player:2025-26:449"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Dango Ouattara",
+          "player_id": "player:2025-26:83"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Nick Woltemade",
+          "player_id": "player:2025-26:714"
+        }
+      ],
+      "transfer_count": 3,
+      "transfer_option_value": 3.6,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:226",
+          "player_in_name": "Trevoh Chalobah",
+          "player_out_id": "player:2025-26:256",
+          "player_out_name": "Daniel Muñoz Mejía"
+        },
+        {
+          "player_in_id": "player:2025-26:449",
+          "player_in_name": "Bruno Borges Fernandes",
+          "player_out_id": "player:2025-26:384",
+          "player_out_name": "Cody Gakpo"
+        },
+        {
+          "player_in_id": "player:2025-26:83",
+          "player_in_name": "Dango Ouattara",
+          "player_out_id": "player:2025-26:387",
+          "player_out_name": "Dominik Szoboszlai"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:119",
+      "vice_captain_name": "Bryan Mbeumo"
+    }
+  },
+  "policy_arm": "human_decision",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected": {
+    "captain_id": "player:2025-26:430",
+    "captain_name": "Erling Haaland",
+    "hit_cost": 0,
+    "immediate_objective": 61.96,
+    "next_gameweek_free_transfers": 5,
+    "planning_objective": 69.16,
+    "starting_xi": [
+      {
+        "name": "Robert Lynch Sánchez",
+        "player_id": "player:2025-26:220"
+      },
+      {
+        "name": "Trevoh Chalobah",
+        "player_id": "player:2025-26:226"
+      },
+      {
+        "name": "Jurriën Timber",
+        "player_id": "player:2025-26:8"
+      },
+      {
+        "name": "Marc Guéhi",
+        "player_id": "player:2025-26:260"
+      },
+      {
+        "name": "Bryan Mbeumo",
+        "player_id": "player:2025-26:119"
+      },
+      {
+        "name": "Declan Rice",
+        "player_id": "player:2025-26:21"
+      },
+      {
+        "name": "Antoine Semenyo",
+        "player_id": "player:2025-26:82"
+      },
+      {
+        "name": "Cody Gakpo",
+        "player_id": "player:2025-26:384"
+      },
+      {
+        "name": "Dominik Szoboszlai",
+        "player_id": "player:2025-26:387"
+      },
+      {
+        "name": "Erling Haaland",
+        "player_id": "player:2025-26:430"
+      },
+      {
+        "name": "Nick Woltemade",
+        "player_id": "player:2025-26:714"
+      }
+    ],
+    "transfer_count": 1,
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:226",
+        "player_in_name": "Trevoh Chalobah",
+        "player_out_id": "player:2025-26:256",
+        "player_out_name": "Daniel Muñoz Mejía"
+      }
+    ],
+    "vice_captain_id": "player:2025-26:119",
+    "vice_captain_name": "Bryan Mbeumo"
+  },
+  "selection_policy": "reviewed_solver_selected",
+  "state_sha256": "faf28c401175b50aafe080a261aaedd3e6bdf34dd4d5ebebf81f0d3b4a90a0fe",
+  "status": "sealed_setup_awaiting_human_review",
+  "transfer_value_policy": {
+    "free_per_gameweek": 1,
+    "future_transfer_discount": 0.9,
+    "hit_cost_per_transfer": 4,
+    "interpretation": "expected discounted hit avoided per retained transfer; not a multi-Gameweek player forecast",
+    "max_banked": 5,
+    "option_unit_value": 1.8,
+    "policy": "expected_hit_avoidance_v1",
+    "probability_extra_transfer_needed": 0.5
+  }
+}
