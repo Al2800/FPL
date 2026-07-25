@@ -77,6 +77,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 09:54Z) Generate the canonical sealed GW22 setup from committed GW21 checkpoint `2026a8c` and prove a byte-identical 41-file rerun. Active selects Cunha→Bruno Guimarães plus Tarkowski→Gabriel by only 0.32 planning points over the one-transfer route; naive remains the no-transfer control.
 - [x] (2026-07-25 09:57Z) Finalise GW22 from the sealed plans: active scored 47 and reached 1119 cumulative; naive scored 71 and reached 1095. Prove the completed checkpoint is byte-identical and distinguish the −1 transfer-pair return, neutral captaincy, and +23 wider naive trajectory.
 - [x] (2026-07-25 10:05Z) Generate the canonical sealed GW23 setup from committed GW22 checkpoint `f17ace4` and prove a byte-identical 41-file rerun. Both trajectories bank; active restores its five-transfer bank and rejects a one-transfer route that loses 0.70 planning points.
+- [x] (2026-07-25 10:08Z) Finalise GW23 from the sealed plans: active scored 41 and reached 1160 cumulative; naive scored 67 and reached 1162, creating the first cumulative crossover. Prove the completed checkpoint is byte-identical and attribute 14 points to effective captaincy and 12 to wider trajectory.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -249,6 +250,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW23 cleanly favours rebuilding the active transfer bank.
   Evidence: banking projects 63.99 immediate and 71.19 planning points and restores five free transfers. Guéhi→Tarkowski raises immediate value to 65.09 but lowers planning value to 70.49 and leaves four transfers.
 
+- Observation: GW23 produces the first cumulative crossover without a new transfer decision.
+  Evidence: Watkins scored 8 raw plus 8 captain points versus Haaland's 1 plus 1, adding 14 for naive. The remaining divergent positions added 12 more, producing a 26-point weekly swing and moving naive two points ahead overall.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -386,6 +390,8 @@ GW22 is prepared and sealed from committed GW21 checkpoint `2026a8c`. Active sel
 GW22 is complete. Active made the free Cunha→Bruno Guimarães and Tarkowski→Gabriel transfers, scored 47, and reached 1119 cumulative with four free transfers and £0.5m for GW23. Naive banked, scored 71, and reached 1095 with five free transfers and £0.0m. Senesi replaced zero-minute Guéhi for active; Murillo replaced zero-minute Salah for naive. Gabriel/Tarkowski both scored 8 and Bruno Guimarães scored 3 versus Cunha's 4, making the pair −1. Haaland and Watkins each produced 4 effective captain points, while the other divergent slots supplied +23 to naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW23 decision has been prepared.
 
 GW23 is prepared and sealed from committed GW22 checkpoint `f17ace4`. Active banks, projects 63.99 immediate and 71.19 planning points, and would restore five free transfers for GW24. Haaland remains captain with Semenyo vice. Naive also banks, projects 44.17 immediate and 51.37 planning points, remains capped at five, and captains Watkins with Tarkowski vice. The 41 setup files reproduce byte-for-byte; no GW23 hidden outcome, validated plan, or state transition exists.
+
+GW23 is complete. Both trajectories banked. Active scored 41 and reached 1160 cumulative with five free transfers and £0.5m for GW24. Naive scored 67 and reached 1162 with five free transfers and £0.0m, producing the first cumulative crossover. Senesi replaced zero-minute Bruno Guimarães for active; Salah replaced zero-minute Palmer for naive. Watkins' effective 16 captain points beat Haaland's 2 by 14, and the other divergent slots supplied +12 to naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW24 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
