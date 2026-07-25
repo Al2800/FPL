@@ -16,6 +16,18 @@ from src.orchestration.policy_state import POLICY_ARMS
 
 
 REPO = Path(__file__).resolve().parents[2]
+
+
+def test_ruleset_marks_gw38_as_terminal_gameweek() -> None:
+    episode_dir = EPISODES / "gw-38"
+    if not episode_dir.exists():
+        pytest.skip("local GW38 episode is unavailable")
+    episode = replay_module._load_observed_episode(episode_dir)
+    ruleset_hash = episode["manifest"]["ruleset"]["content_sha256"]
+
+    assert replay_module._is_terminal_gameweek(38, episode["rules"], ruleset_hash)
+    assert not replay_module._is_terminal_gameweek(37, episode["rules"], ruleset_hash)
+
 EPISODES = REPO / "data" / "benchmark-v0" / "episodes" / "v2" / "2025-26"
 
 

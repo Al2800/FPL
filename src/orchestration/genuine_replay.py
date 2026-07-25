@@ -28,6 +28,7 @@ from src.orchestration.policy_state import (
 from src.orchestration.validated_plan import validate_and_freeze_plan
 from src.reporting.decision_record import build_decision_record
 from src.scoring.rules_loader import load_rules, ruleset_sha256
+from src.scoring.rules_activation import assert_ruleset_activatable
 
 
 class GenuineReplayError(ValueError):
@@ -38,6 +39,18 @@ TRANSFER_VALUE_POLICY = "expected_hit_avoidance_v1"
 PROBABILITY_EXTRA_TRANSFER_NEEDED = 0.5
 FUTURE_TRANSFER_DISCOUNT = 0.9
 REPO = Path(__file__).resolve().parents[2]
+
+
+def _is_terminal_gameweek(
+    gameweek: int,
+    rules: Mapping[str, Any],
+    ruleset_hash: str,
+) -> bool:
+    activation = assert_ruleset_activatable(
+        rules, ruleset_hash, mode="historical_replay"
+    )
+    return gameweek == int(activation["transition_profile"]["regular_gameweeks"])
+
 
 
 def _canonical_json(value: Any) -> str:
@@ -1059,16 +1072,22 @@ def finalise_historical_gameweek(
         episode_root / f"gw-{gameweek:02d}",
         frozen_plans=frozen_plans,
     )
-    next_observed = _load_observed_episode(
-        episode_root / f"gw-{gameweek + 1:02d}"
-    )
-    next_feature_state = build_feature_state(
-        episode_manifest=next_observed["manifest"],
-        observed=next_observed["observed"],
-        identity_map=next_observed["identity"],
-        previous_state=feature_state,
-    )
-    next_market = _market(next_feature_state)
+    terminal_gameweek = _is_terminal_gameweek(gameweek, rules, rules_hash)
+    next_feature_state: dict[str, Any] | None
+    if terminal_gameweek:
+        next_feature_state = None
+        next_market = _market(feature_state)
+    else:
+        next_observed = _load_observed_episode(
+            episode_root / f"gw-{gameweek + 1:02d}"
+        )
+        next_feature_state = build_feature_state(
+            episode_manifest=next_observed["manifest"],
+            observed=next_observed["observed"],
+            identity_map=next_observed["identity"],
+            previous_state=feature_state,
+        )
+        next_market = _market(next_feature_state)
     identity_hash = _stable_hash(revealed_episode["identity"])
     identity = _identity_index(revealed_episode["identity"])
     revealed_at = _reveal_time(
@@ -1164,7 +1183,9 @@ def finalise_historical_gameweek(
         "identity_map_sha256": identity_hash,
         "ruleset": deepcopy(manifest["ruleset"]),
         "feature_state_sha256": feature_state["content_sha256"],
-        "next_feature_state_sha256": next_feature_state["content_sha256"],
+        "next_feature_state_sha256": (
+            next_feature_state["content_sha256"] if next_feature_state else None
+        ),
         "limitations": sorted(
             set(feature_state["limitations"])
             | {
