@@ -1,0 +1,33 @@
+{
+  "active_chip": null,
+  "content_sha256": "c6779072b4a5d6c061d903aac8b0ee8e3755eeae84c28845d3a6f4829e7b23cb",
+  "episode_id": "benchmark-v0:2025-26:gw15:manager-neutral",
+  "gameweek_from": 15,
+  "gameweek_to": 16,
+  "gross_points": 78,
+  "hit_cost": 0,
+  "moves": [],
+  "net_points": 78,
+  "next_club_limit_exceptions": [
+    {
+      "club_id": "team:2025-26:7",
+      "maximum": 3,
+      "must_resolve_when_next_transfer_made": true,
+      "player_count": 4,
+      "reason": "player_transferred_between_premier_league_clubs"
+    }
+  ],
+  "next_state_sha256": "b49eeda3da78fe0591879b000ec5f6a20ed898d70edda716316ad7d3af559713",
+  "outcome_id": "realised-outcome:benchmark-v0:2025-26:gw15:manager-neutral:naive_baseline",
+  "outcome_revealed_at": "2025-12-09T00:00:00Z",
+  "policy_arm": "naive_baseline",
+  "previous_state_sha256": "9c630a25e99efb39f49ca6844063e2db42e16bb6b5b51777ada13db1f799aea2",
+  "proposal_frozen_at": "2025-12-06T11:00:00Z",
+  "proposal_sha256": "a3156eda4e609da65dc33a8efa3d7e3f8f4ed2bade1187d235759acaf81f0a65",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "temporary_squad_sha256": null,
+  "transition_id": "state-transition:2025-26:gw15:naive_baseline:a3156eda4e60"
+}
