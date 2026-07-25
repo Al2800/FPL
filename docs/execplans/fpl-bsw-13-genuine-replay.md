@@ -63,6 +63,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 08:34Z) Generate the canonical sealed GW15 setup from committed GW14 checkpoint `6019e57` and prove a byte-identical 41-file rerun. Active selects Gabriel→Guéhi by only 0.07 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-25 08:38Z) Finalise GW15 from the sealed plans: active scored 55 and reached 736 cumulative; naive scored 78 and reached 735. Prove the completed checkpoint is byte-identical and attribute the 23-point naive gain to a 32-point captaincy advantage, partly offset by nine points across the other divergent slots.
 - [x] (2026-07-25 09:04Z) Generate the canonical sealed GW16 setup from committed GW15 checkpoint `25987ce` and prove a byte-identical 41-file rerun. Active selects Muñoz→Chalobah by 0.94 planning points over banking; naive remains the no-transfer control.
+- [x] (2026-07-25 09:08Z) Finalise GW16 from the sealed plans: active scored 59 and reached 795 cumulative; naive scored 56 and reached 791. Prove the completed checkpoint is byte-identical and attribute +8 versus the legal bank counterfactual to Chalobah's nine-point return.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -193,6 +194,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW16's selected transfer is driven by a moderate single-player upgrade while preserving the transfer cap.
   Evidence: banking projects 61.02 immediate and 68.22 planning points; Muñoz→Chalobah projects 61.96 and 69.16 while returning to five free transfers for GW17. Two transfers improve the immediate projection to 62.92 but reduce the planning score to 68.32.
 
+- Observation: GW16 validates the selected defensive transfer but also shows why transfer attribution must use the legal auto-sub counterfactual.
+  Evidence: Chalobah scored 9 and Muñoz played zero minutes. Because Gakpo also played zero minutes, the bank plan would have used both Rodon (2) and Senesi (1), whereas the selected plan needed only Rodon. The realised transfer effect is therefore +8 rather than the naive 9−0 comparison. Haaland and Bruno each scored 13 raw and 13 extra captain points.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -302,6 +306,8 @@ GW15 is prepared and sealed from committed GW14 checkpoint `6019e57`. Active sel
 GW15 is complete. Active made the free Gabriel→Guéhi transfer, scored 55, and reached 736 cumulative with five free transfers and £1.4m for GW16. Naive banked, scored 78, and reached 735 with five free transfers and £0.0m. Rodon replaced zero-minute Muñoz for active; Palmer replaced zero-minute Salah for naive. Bruno's 18 raw plus 18 captain points beat Haaland's 2 plus 2 by 32, while active recovered nine points across the other divergent slots. Guéhi returned 8 points, so the weekly reversal was not caused by the marginal transfer. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW16 decision has been prepared.
 
 GW16 is prepared and sealed from committed GW15 checkpoint `25987ce`. Active selects the free Muñoz→Chalobah transfer, projects 61.96 immediate and 69.16 planning points, and would return to the five-transfer cap for GW17. Haaland remains captain with Mbeumo vice. Naive banks, projects 45.06 immediate and 52.26 planning points, remains capped at five, and captains Bruno with Sánchez vice. The 41 setup files reproduce byte-for-byte; no GW16 hidden outcome, validated plan, or state transition exists.
+
+GW16 is complete. Active made the free Muñoz→Chalobah transfer, scored 59, and reached 795 cumulative with five free transfers and £2.1m for GW17. Naive banked, scored 56, and reached 791 with five free transfers and £0.0m. Rodon replaced zero-minute Gakpo for active; naive required no substitutions. Chalobah's 9 points were worth +8 against the legal bank counterfactual because zero-minute Muñoz would have admitted one-point Senesi after Rodon covered Gakpo. Haaland and Bruno both scored 13 and doubled to 26, so captaincy was neutral. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW17 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
