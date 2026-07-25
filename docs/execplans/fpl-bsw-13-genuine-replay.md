@@ -59,6 +59,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 08:20Z) Generate the canonical sealed GW13 setup from committed GW12 checkpoint `baca2bf` and prove a byte-identical 41-file rerun. Active selects Porro→Muñoz at the transfer cap; naive remains the no-transfer control.
 - [x] (2026-07-25 08:23Z) Finalise GW13 from the sealed plans: active scored 36 and reached 618 cumulative; naive scored 32 and reached 612. Prove the completed checkpoint is byte-identical and distinguish the neutral new transfer/captaincy effects from prior trajectory returns.
 - [x] (2026-07-25 08:27Z) Generate the canonical sealed GW14 setup from committed GW13 checkpoint `d8c9178` and prove a byte-identical 41-file rerun. Active restructures Salah/João Pedro into Rice/Haaland and moves captaincy to Haaland; naive banks.
+- [x] (2026-07-25 08:30Z) Finalise GW14 from the sealed plans: active scored 63 and reached 681 cumulative; naive scored 45 and reached 657. Prove the completed checkpoint is byte-identical and attribute +27 directly to the premium-switch/captain decision before wider trajectory offsets.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -177,6 +178,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW14's premium restructure is preferred but remains evidence-sensitive.
   Evidence: bank with Salah scores 67.11 planning points, Semenyo→Eze 67.98, Salah/João Pedro→Rice/Haaland 68.52, and the three-transfer route 68.01. The selected action clears the nearest alternative by 0.54.
 
+- Observation: GW14 is the first recent week where the newest active decision dominates realised relative performance.
+  Evidence: Haaland/Rice scored 17 raw versus Salah/João Pedro on 3, while Haaland captaincy added 14 versus Salah's 1. The +27 direct effect was offset by −9 across other divergent slots, producing the observed +18.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -278,6 +282,8 @@ GW13 is prepared and sealed from committed GW12 checkpoint `baca2bf`. Active sel
 GW13 is complete. Active made the free Porro→Muñoz transfer, scored 36, and reached 618 cumulative with five free transfers and £0.5m for GW14. Naive banked, scored 32, and reached 612 with five free transfers and £0.0m. Senesi and Rodon replaced zero-minute Gabriel and Salah for active, while Reijnders replaced Murillo for naive; Muñoz and João Pedro inherited captaincy in their respective arms. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW14 decision has been prepared.
 
 GW14 is prepared and sealed from committed GW13 checkpoint `d8c9178`. Active selects the free Salah→Rice and João Pedro→Haaland transfers, projects 63.12 immediate and 68.52 planning points, and would retain four transfers for GW15. Haaland becomes captain with Mbeumo vice. Naive banks, projects 47.96 immediate and 55.16 planning points, remains capped at five, and retains Salah captain with Bruno vice. The 41 setup files reproduce byte-for-byte; no GW14 hidden outcome, validated plan, or state transition exists.
+
+GW14 is complete. Active made the free Salah→Rice and João Pedro→Haaland transfers, scored 63, and reached 681 cumulative with four free transfers and £0.3m for GW15. Naive banked, scored 45, and reached 657 with five free transfers and £0.0m. Rodon replaced zero-minute Gabriel for active; Reijnders and Palmer replaced Senesi and Murillo for naive. The premium switch and captaincy supplied +27 before other trajectory offsets. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW15 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
