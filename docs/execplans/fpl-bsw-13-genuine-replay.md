@@ -60,6 +60,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 08:23Z) Finalise GW13 from the sealed plans: active scored 36 and reached 618 cumulative; naive scored 32 and reached 612. Prove the completed checkpoint is byte-identical and distinguish the neutral new transfer/captaincy effects from prior trajectory returns.
 - [x] (2026-07-25 08:27Z) Generate the canonical sealed GW14 setup from committed GW13 checkpoint `d8c9178` and prove a byte-identical 41-file rerun. Active restructures Salah/João Pedro into Rice/Haaland and moves captaincy to Haaland; naive banks.
 - [x] (2026-07-25 08:30Z) Finalise GW14 from the sealed plans: active scored 63 and reached 681 cumulative; naive scored 45 and reached 657. Prove the completed checkpoint is byte-identical and attribute +27 directly to the premium-switch/captain decision before wider trajectory offsets.
+- [x] (2026-07-25 08:34Z) Generate the canonical sealed GW15 setup from committed GW14 checkpoint `6019e57` and prove a byte-identical 41-file rerun. Active selects Gabriel→Guéhi by only 0.07 planning points over banking; naive remains the no-transfer control.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -181,6 +182,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW14 is the first recent week where the newest active decision dominates realised relative performance.
   Evidence: Haaland/Rice scored 17 raw versus Salah/João Pedro on 3, while Haaland captaincy added 14 versus Salah's 1. The +27 direct effect was offset by −9 across other divergent slots, producing the observed +18.
 
+- Observation: GW15 is the strongest isolated historical evidence-injection candidate identified so far.
+  Evidence: bank scores 68.07 planning points and Gabriel→Guéhi scores 68.14, a 0.07 margin after Gabriel's consecutive zero-minute outcomes. Contemporary injury, expected-minutes, or predicted-line-up evidence could readily flip the decision.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -284,6 +288,8 @@ GW13 is complete. Active made the free Porro→Muñoz transfer, scored 36, and r
 GW14 is prepared and sealed from committed GW13 checkpoint `d8c9178`. Active selects the free Salah→Rice and João Pedro→Haaland transfers, projects 63.12 immediate and 68.52 planning points, and would retain four transfers for GW15. Haaland becomes captain with Mbeumo vice. Naive banks, projects 47.96 immediate and 55.16 planning points, remains capped at five, and retains Salah captain with Bruno vice. The 41 setup files reproduce byte-for-byte; no GW14 hidden outcome, validated plan, or state transition exists.
 
 GW14 is complete. Active made the free Salah→Rice and João Pedro→Haaland transfers, scored 63, and reached 681 cumulative with four free transfers and £0.3m for GW15. Naive banked, scored 45, and reached 657 with five free transfers and £0.0m. Rodon replaced zero-minute Gabriel for active; Reijnders and Palmer replaced Senesi and Murillo for naive. The premium switch and captaincy supplied +27 before other trajectory offsets. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW15 decision has been prepared.
+
+GW15 is prepared and sealed from committed GW14 checkpoint `6019e57`. Active selects the free Gabriel→Guéhi transfer, projects 62.74 immediate and 68.14 planning points, and would retain four transfers for GW16. Haaland remains captain with Mbeumo vice. Naive banks, projects 45.38 immediate and 52.58 planning points, remains capped at five, and captains Bruno with Salah vice. The 41 setup files reproduce byte-for-byte; no GW15 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
