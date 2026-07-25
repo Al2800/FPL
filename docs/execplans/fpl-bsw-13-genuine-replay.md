@@ -71,6 +71,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 09:30Z) Generate the canonical sealed GW19 setup from committed GW18 checkpoint `2f9ce3a` and prove a byte-identical 41-file rerun. Active selects Mbeumo→Cunha by 1.05 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-25 09:33Z) Finalise GW19 from the sealed plans: active scored 36 and reached 952 cumulative; naive scored 44 and reached 943. Prove the completed checkpoint is byte-identical and separate the active transfer/captain gains from the wider naive trajectory return.
 - [x] (2026-07-25 09:38Z) Generate the canonical sealed GW20 setup from committed GW19 checkpoint `d130ab3` and prove a byte-identical 41-file rerun. Active selects Szoboszlai→Rogers by 1.82 planning points over banking; naive remains the no-transfer control.
+- [x] (2026-07-25 09:41Z) Finalise GW20 from the sealed plans: active scored 65 and reached 1017 cumulative; naive scored 43 and reached 986. Prove the completed checkpoint is byte-identical and distinguish the +3 transfer return, −10 effective-captain difference, and +29 wider active trajectory.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -225,6 +226,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW20's single-transfer preference is comparatively well separated from banking.
   Evidence: banking projects 57.23 immediate and 64.43 planning points; Szoboszlai→Rogers projects 59.05 and 66.25 while retaining five free transfers. The two-transfer route reaches 59.81 immediate but falls to 65.21 planning.
 
+- Observation: GW20 is a strong accumulated-trajectory win despite losing the captaincy comparison.
+  Evidence: Rogers scored 5 versus Szoboszlai's 2 for a direct +3 transfer return. Watkins' effective 14 captain points beat Haaland's 4 by 10, but the other divergent positions added 29 for active, led by Igor Thiago and Rice on 17 each and Cunha on 9.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -350,6 +354,8 @@ GW19 is prepared and sealed from committed GW18 checkpoint `2f9ce3a`. Active sel
 GW19 is complete. Active made the free Mbeumo→Cunha transfer, scored 36, and reached 952 cumulative with five free transfers and £0.9m for GW20. Naive banked, scored 44, and reached 943 with five free transfers and £0.0m. Senesi replaced zero-minute Rice for active and zero-minute Bruno for naive. Cunha's 2 versus zero-minute Mbeumo added +2 against the legal bank counterfactual; Haaland's effective 4 captain points beat João Pedro's 2 by +2. The other divergent slots supplied +12 to naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW20 decision has been prepared.
 
 GW20 is prepared and sealed from committed GW19 checkpoint `d130ab3`. Active selects the free Szoboszlai→Rogers transfer, projects 59.05 immediate and 66.25 planning points, and would return to the five-transfer cap for GW21. Haaland remains captain with Foden vice. Naive banks, projects 40.34 immediate and 47.54 planning points, remains capped at five, and captains Watkins with Tarkowski vice. The 41 setup files reproduce byte-for-byte; no GW20 hidden outcome, validated plan, or state transition exists.
+
+GW20 is complete. Active made the free Szoboszlai→Rogers transfer, scored 65, and reached 1017 cumulative with five free transfers and £0.0m for GW21. Naive banked, scored 43, and reached 986 with five free transfers and £0.0m. The reserve goalkeeper replaced zero-minute Sánchez for both trajectories; Murillo additionally replaced zero-minute Bruno for naive. Rogers beat Szoboszlai 5–2 for a +3 transfer return. Watkins' effective 14 captain points beat Haaland's 4 by 10, while the other divergent slots supplied +29 to active. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW21 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
