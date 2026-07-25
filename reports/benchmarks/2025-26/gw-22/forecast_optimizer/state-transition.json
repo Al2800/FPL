@@ -1,0 +1,39 @@
+{
+  "active_chip": null,
+  "content_sha256": "2e5b3ee6adc07eb4bf2536550fafcdd34c91a396f6cc65e7fcd64c12928b378a",
+  "episode_id": "benchmark-v0:2025-26:gw22:manager-neutral",
+  "gameweek_from": 22,
+  "gameweek_to": 23,
+  "gross_points": 47,
+  "hit_cost": 0,
+  "moves": [
+    {
+      "player_in_id": "player:2025-26:5",
+      "player_out_id": "player:2025-26:291",
+      "position": "DEF",
+      "purchase_price": 6.6,
+      "selling_price": 5.6
+    },
+    {
+      "player_in_id": "player:2025-26:488",
+      "player_out_id": "player:2025-26:450",
+      "position": "MID",
+      "purchase_price": 7.1,
+      "selling_price": 8.1
+    }
+  ],
+  "net_points": 47,
+  "next_state_sha256": "8ef26ebfd476494a8d1c48c98250a749cffd38f4d261848f83a511acb0f065df",
+  "outcome_id": "realised-outcome:benchmark-v0:2025-26:gw22:manager-neutral:forecast_optimizer",
+  "outcome_revealed_at": "2026-01-20T00:00:00Z",
+  "policy_arm": "forecast_optimizer",
+  "previous_state_sha256": "d324c2a835b8e41aa497e66584fc2c75ca878831123076bbe8043e4ca557063c",
+  "proposal_frozen_at": "2026-01-17T11:00:00Z",
+  "proposal_sha256": "3a0da477d94cd977be4e4017a60303a40af96eb76cedd35c7ea928703b04d9bb",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "temporary_squad_sha256": null,
+  "transition_id": "state-transition:2025-26:gw22:forecast_optimizer:3a0da477d94c"
+}
