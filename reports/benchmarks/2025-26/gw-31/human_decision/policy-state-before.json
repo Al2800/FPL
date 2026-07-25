@@ -1,0 +1,150 @@
+{
+  "bank": 0.3,
+  "chip_history": [],
+  "chips_available": [
+    "wildcard_sh",
+    "free_hit_sh",
+    "triple_captain_sh",
+    "bench_boost_sh"
+  ],
+  "content_sha256": "a13c0f832abbeb9261065bfd510f77e737873adc04af53054be13436bfe2b539",
+  "cumulative_points": 1554,
+  "free_transfers": 5,
+  "gameweek": 31,
+  "origin": {
+    "seed_id": "benchmark-v0-official-scout-gw1",
+    "seed_sha256": "e0d798bcfd3a527ac896ed6c7191376d9ef7a8f776fb0ec1fe71f4bdcbbd0297",
+    "type": "controlled_shared_seed"
+  },
+  "policy_arm": "human_decision",
+  "previous_state_sha256": "938ea91ce1726ccd109d4feda0792a764f7e8dd4bee8ec72b97c2aec217d82ad",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "squad": [
+    {
+      "club_id": "team:2025-26:5",
+      "current_price": 7.2,
+      "player_id": "player:2025-26:136",
+      "position": "FWD",
+      "purchase_price": 7.2,
+      "selling_price": 7.2
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 7.4,
+      "player_id": "player:2025-26:21",
+      "position": "MID",
+      "purchase_price": 7.0,
+      "selling_price": 7.2
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "current_price": 5.6,
+      "player_id": "player:2025-26:226",
+      "position": "DEF",
+      "purchase_price": 5.2,
+      "selling_price": 5.4
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "current_price": 4.1,
+      "player_id": "player:2025-26:252",
+      "position": "FWD",
+      "purchase_price": 4.5,
+      "selling_price": 4.1
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 5.2,
+      "player_id": "player:2025-26:260",
+      "position": "DEF",
+      "purchase_price": 5.1,
+      "selling_price": 5.1
+    },
+    {
+      "club_id": "team:2025-26:10",
+      "current_price": 6.0,
+      "player_id": "player:2025-26:329",
+      "position": "MID",
+      "purchase_price": 6.1,
+      "selling_price": 6.0
+    },
+    {
+      "club_id": "team:2025-26:11",
+      "current_price": 3.9,
+      "player_id": "player:2025-26:348",
+      "position": "DEF",
+      "purchase_price": 4.0,
+      "selling_price": 3.9
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 14.6,
+      "player_id": "player:2025-26:430",
+      "position": "FWD",
+      "purchase_price": 14.9,
+      "selling_price": 14.6
+    },
+    {
+      "club_id": "team:2025-26:14",
+      "current_price": 8.0,
+      "player_id": "player:2025-26:450",
+      "position": "MID",
+      "purchase_price": 8.0,
+      "selling_price": 8.0
+    },
+    {
+      "club_id": "team:2025-26:2",
+      "current_price": 7.5,
+      "player_id": "player:2025-26:47",
+      "position": "MID",
+      "purchase_price": 7.4,
+      "selling_price": 7.4
+    },
+    {
+      "club_id": "team:2025-26:3",
+      "current_price": 4.0,
+      "player_id": "player:2025-26:470",
+      "position": "GKP",
+      "purchase_price": 4.0,
+      "selling_price": 4.0
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 7.2,
+      "player_id": "player:2025-26:5",
+      "position": "DEF",
+      "purchase_price": 6.6,
+      "selling_price": 6.9
+    },
+    {
+      "club_id": "team:2025-26:17",
+      "current_price": 4.8,
+      "player_id": "player:2025-26:670",
+      "position": "GKP",
+      "purchase_price": 4.9,
+      "selling_price": 4.8
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 6.3,
+      "player_id": "player:2025-26:8",
+      "position": "DEF",
+      "purchase_price": 6.4,
+      "selling_price": 6.3
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 8.3,
+      "player_id": "player:2025-26:82",
+      "position": "MID",
+      "purchase_price": 7.8,
+      "selling_price": 8.0
+    }
+  ],
+  "state_id": "policy-state:benchmark-v0-official-scout-gw1:human_decision:gw31:bccb6acf415c",
+  "status": "active",
+  "transition_id": "state-transition:2025-26:gw30:human_decision:bccb6acf415c"
+}
