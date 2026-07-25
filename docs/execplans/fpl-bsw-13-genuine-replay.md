@@ -55,6 +55,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 07:26Z) Generate the canonical sealed GW11 setup from committed GW10 checkpoint `344cd10` and prove a byte-identical 41-file rerun. Both trajectories bank; active's nearest transfer alternative remains 0.77 planning points behind.
 - [x] (2026-07-25 07:29Z) Finalise GW11 from the sealed bank plans: active scored 35 and reached 553 cumulative; naive scored 44 and reached 541 after Guiu auto-substituted for zero-minute Reijnders. Prove the completed checkpoint is byte-identical and attribute the nine-point swing to the divergent effective slots.
 - [x] (2026-07-25 07:32Z) Generate the canonical sealed GW12 setup from committed GW11 checkpoint `5650ce1` and prove a byte-identical 41-file rerun. Both trajectories bank and enter GW13 at the five-transfer cap.
+- [x] (2026-07-25 07:35Z) Finalise GW12 from the sealed bank plans: active scored 29 and reached 582 cumulative after two auto-subs; naive scored 39 and reached 580. Prove the completed checkpoint is byte-identical and identify GW12 as a future evidence-injection candidate without misattributing the loss to autosubs.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -161,6 +162,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW12 brings both trajectories to the five-transfer cap, but the active bank remains a decisive objective choice.
   Evidence: bank scores 73.32 planning points, Porro→Muñoz 72.55, adding Gakpo→Rice 71.70, and adding Woltemade→Mateta 70.64.
 
+- Observation: GW12 is a useful future availability-evidence case, but the ten-point loss was not mechanically caused by failed auto-substitution.
+  Evidence: Rodon legally replaced zero-minute Gabriel and Porro replaced zero-minute Semenyo. Shared effective slots then matched; active's remaining divergent slots scored 12 versus naive's 22, led by Anderson on 9 and Tarkowski on 8.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -254,6 +258,8 @@ GW11 is prepared and sealed from committed GW10 checkpoint `344cd10`. Active ban
 GW11 is complete. Active banked, scored 35, and reached 553 cumulative with four free transfers and £0.8m for GW12. Naive banked, scored 44, and reached 541 with five free transfers and £0.0m. Guiu auto-substituted for zero-minute Reijnders in the naive trajectory; no other substitutions, hits, or chips intervened. The completed checkpoint is byte-identical on rerun. No GW12 decision has been prepared.
 
 GW12 is prepared and sealed from committed GW11 checkpoint `5650ce1`. Active banks, projects 66.12 immediate and 73.32 planning points, and would reach the five-transfer cap for GW13. Naive banks, projects 52.02 immediate and 59.22 planning points, and remains capped at five. All arms captain Salah; active vice-captains Semenyo while naive vice-captains João Pedro. The 41 setup files reproduce byte-for-byte; no GW12 hidden outcome, validated plan, or state transition exists.
+
+GW12 is complete. Active banked, scored 29, and reached 582 cumulative with five free transfers and £0.8m for GW13. Naive banked, scored 39, and reached 580 with five free transfers and £0.0m. Rodon auto-substituted for zero-minute Gabriel and Porro for zero-minute Semenyo in the active trajectory. The ten-point naive gain came from the remaining divergent slots rather than a rules failure. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW13 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
