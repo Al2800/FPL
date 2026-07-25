@@ -80,6 +80,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 10:08Z) Finalise GW23 from the sealed plans: active scored 41 and reached 1160 cumulative; naive scored 67 and reached 1162, creating the first cumulative crossover. Prove the completed checkpoint is byte-identical and attribute 14 points to effective captaincy and 12 to wider trajectory.
 - [x] (2026-07-25 10:13Z) Generate the canonical sealed GW24 setup from committed GW23 checkpoint `5de78f4` and prove a byte-identical 41-file rerun. Active selects Foden→Wirtz by 0.86 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-25 10:16Z) Finalise GW24 from the sealed plans: active scored 60 and reached 1220 cumulative; naive scored 61 and reached 1223. Prove the completed checkpoint is byte-identical; Wirtz returned 12 immediately, while naive retained a three-point cumulative lead.
+- [x] (2026-07-25 10:21Z) Generate the canonical sealed GW25 setup from committed GW24 checkpoint `7685076` and prove a byte-identical 41-file rerun. Active selects Bruno Guimarães→Harry Wilson while retaining five transfers; naive remains the no-transfer control.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -261,6 +262,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW24's selected transfer produced a strong immediate return without retaking the cumulative lead.
   Evidence: Wirtz scored 12 after replacing Foden. Active scored 60 with Haaland's 10 effective captain points; naive scored 61 with Bruno's 20 effective captain points and remained three points ahead overall.
 
+- Observation: GW25's best one- and two-transfer plans are almost tied after option value.
+  Evidence: Bruno Guimarães→Harry Wilson projects 59.76 immediate and 66.96 planning points while retaining five transfers. The leading two-transfer route projects 61.51 immediate but 66.91 planning points with four transfers, only 0.05 behind.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -404,6 +408,8 @@ GW23 is complete. Both trajectories banked. Active scored 41 and reached 1160 cu
 GW24 is prepared and sealed from committed GW23 checkpoint `5de78f4`. Active selects the free Foden→Wirtz transfer, projects 60.20 immediate and 67.40 planning points, and would remain at five free transfers for GW25. Haaland remains captain with Semenyo vice. Naive banks, projects 49.82 immediate and 57.02 planning points, remains capped at five, and captains Bruno with Watkins vice. The 41 setup files reproduce byte-for-byte; no GW24 hidden outcome, validated plan, or state transition exists.
 
 GW24 is complete. Active made the free Foden→Wirtz transfer, scored 60, and reached 1220 cumulative with five free transfers and £0.8m for GW25. Naive banked, scored 61, and reached 1223 with five free transfers and £0.0m. Wirtz returned 12 in his first active appearance. Haaland's effective 10 captain points trailed Bruno's 20 by ten; the other trajectory differences, including the transfer, recovered nine points for active. Naive auto-substituted Tarkowski for zero-minute Watkins; active required no substitution. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW25 decision has been prepared.
+
+GW25 is prepared and sealed from committed GW24 checkpoint `7685076`. Active selects the free Bruno Guimarães→Harry Wilson transfer, projects 59.76 immediate and 66.96 planning points, and would remain at five free transfers for GW26. Gabriel becomes captain with Haaland vice. The leading two-transfer alternative projects 61.51 immediate and 66.91 planning points but would reduce the bank to four. Naive banks, projects 50.44 immediate and 57.64 planning points, remains capped at five, and captains Bruno Fernandes with João Pedro vice. The 41 setup files reproduce byte-for-byte; no GW25 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
