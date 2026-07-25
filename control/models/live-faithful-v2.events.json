@@ -1,0 +1,69 @@
+{
+  "calibration": {
+    "control_event_weight": 0.0,
+    "elo_locked_validation_log_loss": 0.9910030923283217,
+    "elo_parameters": {
+      "draw_factor": 0.6,
+      "fixture_scale": 0.25,
+      "home_advantage": 80.0,
+      "k": 40.0,
+      "promoted_rating": 1450.0,
+      "season_regression": 1.0
+    },
+    "elo_training_log_loss": 0.9604226309162917,
+    "event_candidate_objective": 1.7565466547890711,
+    "event_candidate_rank": 5,
+    "event_candidate_selection": "best_nonzero_from_locked_pre_2025_26_grid",
+    "locked_validation_season": "2024-25",
+    "selection_objective": "early_gw2_5_mae + 0.01*expected_minutes_mae + 0.5*start_brier",
+    "source_commit": "f2090d378ebd1b0c3d14884770dde95f38c50a0d",
+    "source_lineage_sha256": "7e2258d87be5628acaa1abcd3f4b59e5b7495a6c47bd7219cb9fcb2d1fbbe02e",
+    "team_component_status": "calibrated_match_and_player_training",
+    "training_target_seasons": [
+      "2022-23",
+      "2023-24"
+    ]
+  },
+  "cameo_minutes": 10.0,
+  "content_sha256": "3bc67c1f4fac9ba2f0afb5c67b33c2498094fe6783852b32f8725d78fb23e65d",
+  "event_model_weight": 0.25,
+  "fixture_multiplier_bounds": [
+    0.7,
+    1.3
+  ],
+  "model_version": "live-faithful-v2-events",
+  "optional_components": {
+    "timestamped_odds": "degrade_when_absent",
+    "unstructured_evidence": "degrade_when_absent"
+  },
+  "player_prior_reliability_minutes": 900.0,
+  "position_attack_weight": {
+    "DEF": 0.2,
+    "FWD": 1.0,
+    "GKP": 0.0,
+    "MID": 0.85
+  },
+  "price_bands": [
+    [
+      0.0,
+      5.5
+    ],
+    [
+      5.5,
+      7.5
+    ],
+    [
+      7.5,
+      10.0
+    ],
+    [
+      10.0,
+      20.0
+    ]
+  ],
+  "prior_equivalent_minutes": 1350.0,
+  "recent_minutes_weight": 0.5,
+  "start_prior_equivalent_matches": 2.0,
+  "status": "experimental_preseason_event_challenger",
+  "team_fixture_scale": 0.25
+}

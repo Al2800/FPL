@@ -17,7 +17,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-25 20:40Z) Claimed `FPL-bsw.14` as the measurement and equivalence-oracle foundation.
 - [x] (2026-07-25 21:05Z) Implemented `FPL-bsw.14`: realised feasible-baseline contracts, paired cluster-aware metrics, calibration, uncertainty, resource use, detectable-effect-size analysis, and a read-only 38-Gameweek control report.
 - [ ] Complete the timestamp-sealed evidence fork owned under `FPL-98p`, then generalise isolated weekly evidence injections without changing the canonical replay.
-- [ ] Activate and calibrate the player event model as an additive challenger.
+- [x] (2026-07-25 21:20Z) Evaluated the sealed 0.25 player-event challenger and rejected promotion: selected cohorts improved slightly, but all-player calibration regressed.
 - [ ] Separate team attacking and defensive strength and combine deadline-safe xG/xGA, Elo, and odds evidence.
 - [ ] Value uncertain minutes, legal automatic substitutions, bench order, and vice-captain contingency.
 - [ ] Add robust selection that shrinks noisy extreme forecasts and reports sensitivity.
@@ -42,6 +42,9 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 
 - Observation: The GW1 cold start has no `shared-locked-forecast.json`, while GW2 onward do.
   Evidence: The real season review retains GW1 in paired policy scoring and begins forecast calibration at GW2.
+
+- Observation: The pre-season 0.25 event blend helps players the optimiser owned or selected but harms the full forecast population.
+  Evidence: On the sealed 2025/26 evaluation, selected-XI MAE changed by -0.052 and absolute bias by -0.122, while all-player MAE worsened by +0.118 and correlation changed by -0.0025. The predeclared promotion rule rejected it.
 
 ## Decision Log
 
@@ -158,3 +161,5 @@ The implementation uses the repository’s existing Python standard library, Num
 Plan revision note (2026-07-25): Created the initial self-contained programme after the completed 2025/26 replay review. The order deliberately begins with evaluation and preserves the v1 replay as immutable control.
 
 Plan revision note (2026-07-25): Completed the evaluation foundation, recorded the GW1 cold-start artifact difference, and added measured control-review and test evidence.
+
+Plan revision note (2026-07-25): Completed the event challenger experiment. Recorded its mixed cohort result and rejection so later team-context and robustness work can address the mechanism without silently promoting it.
