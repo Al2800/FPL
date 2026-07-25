@@ -1,0 +1,373 @@
+{
+  "arms": {
+    "evidence_agent": {
+      "review_sha256": "7fd1c088dc3d9344e110b961b38becb9b9ebdedd88ca7a647bd1ecbd30f86da7",
+      "selected": {
+        "captain_id": "player:2025-26:449",
+        "captain_name": "Bruno Borges Fernandes",
+        "hit_cost": 0,
+        "immediate_objective": 58.6,
+        "next_gameweek_free_transfers": 2,
+        "planning_objective": 60.4,
+        "starting_xi": [
+          {
+            "name": "Robin Roefs",
+            "player_id": "player:2025-26:670"
+          },
+          {
+            "name": "Gabriel dos Santos Magalhães",
+            "player_id": "player:2025-26:5"
+          },
+          {
+            "name": "Marc Guéhi",
+            "player_id": "player:2025-26:260"
+          },
+          {
+            "name": "Virgil van Dijk",
+            "player_id": "player:2025-26:373"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Antoine Semenyo",
+            "player_id": "player:2025-26:82"
+          },
+          {
+            "name": "Declan Rice",
+            "player_id": "player:2025-26:21"
+          },
+          {
+            "name": "Morgan Rogers",
+            "player_id": "player:2025-26:47"
+          },
+          {
+            "name": "Pascal Groß",
+            "player_id": "player:2025-26:783"
+          },
+          {
+            "name": "Jarrod Bowen",
+            "player_id": "player:2025-26:624"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 1.8,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:5",
+        "vice_captain_name": "Gabriel dos Santos Magalhães"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+      "solver_output_sha256": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+      "state_sha256": "6ef9f49f642f4819a34f030e69350f0efbed4c63acaa9bcccf2d78c25323a0ca"
+    },
+    "evidence_challenger": {
+      "review_sha256": "18aa9b30faedcfa1a5314f9532b957a087e6fb643af951f9bf3a14bdd4fd4841",
+      "selected": {
+        "captain_id": "player:2025-26:449",
+        "captain_name": "Bruno Borges Fernandes",
+        "hit_cost": 0,
+        "immediate_objective": 58.6,
+        "next_gameweek_free_transfers": 2,
+        "planning_objective": 60.4,
+        "starting_xi": [
+          {
+            "name": "Robin Roefs",
+            "player_id": "player:2025-26:670"
+          },
+          {
+            "name": "Gabriel dos Santos Magalhães",
+            "player_id": "player:2025-26:5"
+          },
+          {
+            "name": "Marc Guéhi",
+            "player_id": "player:2025-26:260"
+          },
+          {
+            "name": "Virgil van Dijk",
+            "player_id": "player:2025-26:373"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Antoine Semenyo",
+            "player_id": "player:2025-26:82"
+          },
+          {
+            "name": "Declan Rice",
+            "player_id": "player:2025-26:21"
+          },
+          {
+            "name": "Morgan Rogers",
+            "player_id": "player:2025-26:47"
+          },
+          {
+            "name": "Pascal Groß",
+            "player_id": "player:2025-26:783"
+          },
+          {
+            "name": "Jarrod Bowen",
+            "player_id": "player:2025-26:624"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 1.8,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:5",
+        "vice_captain_name": "Gabriel dos Santos Magalhães"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+      "solver_output_sha256": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+      "state_sha256": "06d620f8740b41337667ca6a074bf7334c7f677f920f686067aa091129ce7f68"
+    },
+    "forecast_optimizer": {
+      "review_sha256": "d4fca046efac3fcfb7f8b25fc3c74017dac379853c7bff76c58a4cb87f0bf028",
+      "selected": {
+        "captain_id": "player:2025-26:449",
+        "captain_name": "Bruno Borges Fernandes",
+        "hit_cost": 0,
+        "immediate_objective": 58.6,
+        "next_gameweek_free_transfers": 2,
+        "planning_objective": 60.4,
+        "starting_xi": [
+          {
+            "name": "Robin Roefs",
+            "player_id": "player:2025-26:670"
+          },
+          {
+            "name": "Gabriel dos Santos Magalhães",
+            "player_id": "player:2025-26:5"
+          },
+          {
+            "name": "Marc Guéhi",
+            "player_id": "player:2025-26:260"
+          },
+          {
+            "name": "Virgil van Dijk",
+            "player_id": "player:2025-26:373"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Antoine Semenyo",
+            "player_id": "player:2025-26:82"
+          },
+          {
+            "name": "Declan Rice",
+            "player_id": "player:2025-26:21"
+          },
+          {
+            "name": "Morgan Rogers",
+            "player_id": "player:2025-26:47"
+          },
+          {
+            "name": "Pascal Groß",
+            "player_id": "player:2025-26:783"
+          },
+          {
+            "name": "Jarrod Bowen",
+            "player_id": "player:2025-26:624"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 1.8,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:5",
+        "vice_captain_name": "Gabriel dos Santos Magalhães"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+      "solver_output_sha256": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+      "state_sha256": "7feb9b80339fff3ddf4ec3e7bdc152eb701e64fda1e6c52e7302d10ae1dd8962"
+    },
+    "human_decision": {
+      "review_sha256": "d476f92a04012a7677c2ee36a754cdee099eea9aaee48e9fa7da98e5c9d49d44",
+      "selected": {
+        "captain_id": "player:2025-26:449",
+        "captain_name": "Bruno Borges Fernandes",
+        "hit_cost": 0,
+        "immediate_objective": 58.6,
+        "next_gameweek_free_transfers": 2,
+        "planning_objective": 60.4,
+        "starting_xi": [
+          {
+            "name": "Robin Roefs",
+            "player_id": "player:2025-26:670"
+          },
+          {
+            "name": "Gabriel dos Santos Magalhães",
+            "player_id": "player:2025-26:5"
+          },
+          {
+            "name": "Marc Guéhi",
+            "player_id": "player:2025-26:260"
+          },
+          {
+            "name": "Virgil van Dijk",
+            "player_id": "player:2025-26:373"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Antoine Semenyo",
+            "player_id": "player:2025-26:82"
+          },
+          {
+            "name": "Declan Rice",
+            "player_id": "player:2025-26:21"
+          },
+          {
+            "name": "Morgan Rogers",
+            "player_id": "player:2025-26:47"
+          },
+          {
+            "name": "Pascal Groß",
+            "player_id": "player:2025-26:783"
+          },
+          {
+            "name": "Jarrod Bowen",
+            "player_id": "player:2025-26:624"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 1.8,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:5",
+        "vice_captain_name": "Gabriel dos Santos Magalhães"
+      },
+      "selection_policy": "reviewed_solver_selected",
+      "solver_input_sha256": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+      "solver_output_sha256": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc",
+      "state_sha256": "841058d45251d3dbbb58367fc74e78fec02a2a80abd166a432a0db9243f6e463"
+    },
+    "naive_baseline": {
+      "review_sha256": "d800a12bf0f47c31268c77c90d1824aa2c377d19b307d1b91084c6a9a2bfa23f",
+      "selected": {
+        "captain_id": "player:2025-26:449",
+        "captain_name": "Bruno Borges Fernandes",
+        "hit_cost": 0,
+        "immediate_objective": 50.16,
+        "next_gameweek_free_transfers": 5,
+        "planning_objective": 57.36,
+        "starting_xi": [
+          {
+            "name": "Robert Lynch Sánchez",
+            "player_id": "player:2025-26:220"
+          },
+          {
+            "name": "Marcos Senesi Barón",
+            "player_id": "player:2025-26:72"
+          },
+          {
+            "name": "James Tarkowski",
+            "player_id": "player:2025-26:291"
+          },
+          {
+            "name": "Pedro Porro Sauceda",
+            "player_id": "player:2025-26:568"
+          },
+          {
+            "name": "Joe Rodon",
+            "player_id": "player:2025-26:348"
+          },
+          {
+            "name": "Bruno Borges Fernandes",
+            "player_id": "player:2025-26:449"
+          },
+          {
+            "name": "Mohamed Salah",
+            "player_id": "player:2025-26:381"
+          },
+          {
+            "name": "Cole Palmer",
+            "player_id": "player:2025-26:235"
+          },
+          {
+            "name": "Elliot Anderson",
+            "player_id": "player:2025-26:517"
+          },
+          {
+            "name": "Ollie Watkins",
+            "player_id": "player:2025-26:64"
+          },
+          {
+            "name": "João Pedro Junqueira de Jesus",
+            "player_id": "player:2025-26:249"
+          }
+        ],
+        "transfer_count": 0,
+        "transfer_option_value": 7.2,
+        "transfers": [],
+        "vice_captain_id": "player:2025-26:381",
+        "vice_captain_name": "Mohamed Salah"
+      },
+      "selection_policy": "do_nothing_bank_transfers",
+      "solver_input_sha256": "16133a26d9e4d66b533093d7c5b68114a61db97ddf9c96116214a5e718825e71",
+      "solver_output_sha256": "9383a43050e1245777d30f1f5e389d2ca7003151442c63cd6af12644c948095e",
+      "state_sha256": "296b57b5ad75917b0b962c4f09d104f847c83a225b1be18b5f7f05094f5c4fba"
+    }
+  },
+  "code_commit": "afc89d4c1487eba98a0aecbcbf80e693a4ccea4e",
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "ef2983707605f4928285b1b7faf8140edd31f93abbc39dbc07ede8d1fddc4d7e",
+  "feature_state_sha256": "38d04a9c6e3f401bb4f3374e12bfc2b712d88677e7dad492ebc6d50ca9a31a48",
+  "forecast_diagnostics": {
+    "availability_policy": "historical availability/news unavailable; market rows remain available and expected minutes carries the observable signal",
+    "event_model_weight": 0.0,
+    "maximum_expected_points": 6.99,
+    "model_status": "structured_calibrated_locked_pre_2025_26",
+    "model_version": "live-faithful-v1",
+    "recent_minutes_weight": 0.5,
+    "team_fallbacks": [
+      "team:2025-26:11",
+      "team:2025-26:17",
+      "team:2025-26:3"
+    ]
+  },
+  "forecast_sha256": "144ccec8604b6995cdbeba288ad31f67e86bde1549befa857e41887322d02f4e",
+  "gameweek": 35,
+  "limitations": [
+    "final_export_fixture_revision_not_archived",
+    "fixture_deadline_derived_as_first_kickoff_minus_90_minutes",
+    "historical_manager_state_unavailable",
+    "historical_news_unavailable",
+    "historical_player_availability_status_unavailable",
+    "historical_prices_not_deadline_snapshots",
+    "historical_unstructured_evidence_not_reconstructed",
+    "unshifted_vaastav_xP_excluded",
+    "untimestamped_market_odds_excluded"
+  ],
+  "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "shared_forecast": true,
+  "shared_solver_input": false,
+  "shared_solver_output": false,
+  "status": "sealed_setup_awaiting_human_review"
+}

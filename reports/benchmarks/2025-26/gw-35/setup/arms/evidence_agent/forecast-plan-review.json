@@ -1,0 +1,366 @@
+{
+  "contains_hidden_outcome": false,
+  "contains_state_transition": false,
+  "contains_validated_plan": false,
+  "content_sha256": "7fd1c088dc3d9344e110b961b38becb9b9ebdedd88ca7a647bd1ecbd30f86da7",
+  "feature_state_sha256": "38d04a9c6e3f401bb4f3374e12bfc2b712d88677e7dad492ebc6d50ca9a31a48",
+  "forecast_sha256": "144ccec8604b6995cdbeba288ad31f67e86bde1549befa857e41887322d02f4e",
+  "gameweek": 35,
+  "lineage": {
+    "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+    "solver_input_sha256": "20519fb8250d53832c346b2cb1f9da360a75a57c6fbcd2f8178cc206ccc2061e",
+    "solver_output_sha256": "143bac42d18f381ee10d64bfbbdcb6497fa67fac4ec72e238da952c8154f78bc"
+  },
+  "plans_by_transfer_count": {
+    "0": {
+      "captain_id": "player:2025-26:449",
+      "captain_name": "Bruno Borges Fernandes",
+      "hit_cost": 0,
+      "immediate_objective": 58.6,
+      "next_gameweek_free_transfers": 2,
+      "planning_objective": 60.4,
+      "starting_xi": [
+        {
+          "name": "Robin Roefs",
+          "player_id": "player:2025-26:670"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Virgil van Dijk",
+          "player_id": "player:2025-26:373"
+        },
+        {
+          "name": "Bruno Borges Fernandes",
+          "player_id": "player:2025-26:449"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Morgan Rogers",
+          "player_id": "player:2025-26:47"
+        },
+        {
+          "name": "Pascal Groß",
+          "player_id": "player:2025-26:783"
+        },
+        {
+          "name": "Jarrod Bowen",
+          "player_id": "player:2025-26:624"
+        },
+        {
+          "name": "João Pedro Junqueira de Jesus",
+          "player_id": "player:2025-26:249"
+        }
+      ],
+      "transfer_count": 0,
+      "transfer_option_value": 1.8,
+      "transfers": [],
+      "vice_captain_id": "player:2025-26:5",
+      "vice_captain_name": "Gabriel dos Santos Magalhães"
+    },
+    "1": {
+      "captain_id": "player:2025-26:449",
+      "captain_name": "Bruno Borges Fernandes",
+      "hit_cost": 0,
+      "immediate_objective": 59.77,
+      "next_gameweek_free_transfers": 1,
+      "planning_objective": 59.77,
+      "starting_xi": [
+        {
+          "name": "Robin Roefs",
+          "player_id": "player:2025-26:670"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Virgil van Dijk",
+          "player_id": "player:2025-26:373"
+        },
+        {
+          "name": "Bruno Borges Fernandes",
+          "player_id": "player:2025-26:449"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Morgan Rogers",
+          "player_id": "player:2025-26:47"
+        },
+        {
+          "name": "Pascal Groß",
+          "player_id": "player:2025-26:783"
+        },
+        {
+          "name": "Igor Thiago Nascimento Rodrigues",
+          "player_id": "player:2025-26:136"
+        },
+        {
+          "name": "Jarrod Bowen",
+          "player_id": "player:2025-26:624"
+        }
+      ],
+      "transfer_count": 1,
+      "transfer_option_value": 0.0,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:136",
+          "player_in_name": "Igor Thiago Nascimento Rodrigues",
+          "player_out_id": "player:2025-26:249",
+          "player_out_name": "João Pedro Junqueira de Jesus"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:5",
+      "vice_captain_name": "Gabriel dos Santos Magalhães"
+    },
+    "2": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 4,
+      "immediate_objective": 57.05,
+      "next_gameweek_free_transfers": 1,
+      "planning_objective": 57.05,
+      "starting_xi": [
+        {
+          "name": "Robin Roefs",
+          "player_id": "player:2025-26:670"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Virgil van Dijk",
+          "player_id": "player:2025-26:373"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Morgan Rogers",
+          "player_id": "player:2025-26:47"
+        },
+        {
+          "name": "Carlos Henrique Casimiro",
+          "player_id": "player:2025-26:457"
+        },
+        {
+          "name": "Pascal Groß",
+          "player_id": "player:2025-26:783"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Jarrod Bowen",
+          "player_id": "player:2025-26:624"
+        }
+      ],
+      "transfer_count": 2,
+      "transfer_option_value": 0.0,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:430",
+          "player_in_name": "Erling Haaland",
+          "player_out_id": "player:2025-26:249",
+          "player_out_name": "João Pedro Junqueira de Jesus"
+        },
+        {
+          "player_in_id": "player:2025-26:457",
+          "player_in_name": "Carlos Henrique Casimiro",
+          "player_out_id": "player:2025-26:449",
+          "player_out_name": "Bruno Borges Fernandes"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:5",
+      "vice_captain_name": "Gabriel dos Santos Magalhães"
+    },
+    "3": {
+      "captain_id": "player:2025-26:430",
+      "captain_name": "Erling Haaland",
+      "hit_cost": 8,
+      "immediate_objective": 54.36,
+      "next_gameweek_free_transfers": 1,
+      "planning_objective": 54.36,
+      "starting_xi": [
+        {
+          "name": "Robin Roefs",
+          "player_id": "player:2025-26:670"
+        },
+        {
+          "name": "Gabriel dos Santos Magalhães",
+          "player_id": "player:2025-26:5"
+        },
+        {
+          "name": "Marc Guéhi",
+          "player_id": "player:2025-26:260"
+        },
+        {
+          "name": "Virgil van Dijk",
+          "player_id": "player:2025-26:373"
+        },
+        {
+          "name": "Bruno Borges Fernandes",
+          "player_id": "player:2025-26:449"
+        },
+        {
+          "name": "Antoine Semenyo",
+          "player_id": "player:2025-26:82"
+        },
+        {
+          "name": "Declan Rice",
+          "player_id": "player:2025-26:21"
+        },
+        {
+          "name": "Carlos Henrique Casimiro",
+          "player_id": "player:2025-26:457"
+        },
+        {
+          "name": "Pascal Groß",
+          "player_id": "player:2025-26:783"
+        },
+        {
+          "name": "Erling Haaland",
+          "player_id": "player:2025-26:430"
+        },
+        {
+          "name": "Jarrod Bowen",
+          "player_id": "player:2025-26:624"
+        }
+      ],
+      "transfer_count": 3,
+      "transfer_option_value": 0.0,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:430",
+          "player_in_name": "Erling Haaland",
+          "player_out_id": "player:2025-26:249",
+          "player_out_name": "João Pedro Junqueira de Jesus"
+        },
+        {
+          "player_in_id": "player:2025-26:457",
+          "player_in_name": "Carlos Henrique Casimiro",
+          "player_out_id": "player:2025-26:47",
+          "player_out_name": "Morgan Rogers"
+        },
+        {
+          "player_in_id": "player:2025-26:151",
+          "player_in_name": "Jan Paul van Hecke",
+          "player_out_id": "player:2025-26:8",
+          "player_out_name": "Jurriën Timber"
+        }
+      ],
+      "vice_captain_id": "player:2025-26:449",
+      "vice_captain_name": "Bruno Borges Fernandes"
+    }
+  },
+  "policy_arm": "evidence_agent",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected": {
+    "captain_id": "player:2025-26:449",
+    "captain_name": "Bruno Borges Fernandes",
+    "hit_cost": 0,
+    "immediate_objective": 58.6,
+    "next_gameweek_free_transfers": 2,
+    "planning_objective": 60.4,
+    "starting_xi": [
+      {
+        "name": "Robin Roefs",
+        "player_id": "player:2025-26:670"
+      },
+      {
+        "name": "Gabriel dos Santos Magalhães",
+        "player_id": "player:2025-26:5"
+      },
+      {
+        "name": "Marc Guéhi",
+        "player_id": "player:2025-26:260"
+      },
+      {
+        "name": "Virgil van Dijk",
+        "player_id": "player:2025-26:373"
+      },
+      {
+        "name": "Bruno Borges Fernandes",
+        "player_id": "player:2025-26:449"
+      },
+      {
+        "name": "Antoine Semenyo",
+        "player_id": "player:2025-26:82"
+      },
+      {
+        "name": "Declan Rice",
+        "player_id": "player:2025-26:21"
+      },
+      {
+        "name": "Morgan Rogers",
+        "player_id": "player:2025-26:47"
+      },
+      {
+        "name": "Pascal Groß",
+        "player_id": "player:2025-26:783"
+      },
+      {
+        "name": "Jarrod Bowen",
+        "player_id": "player:2025-26:624"
+      },
+      {
+        "name": "João Pedro Junqueira de Jesus",
+        "player_id": "player:2025-26:249"
+      }
+    ],
+    "transfer_count": 0,
+    "transfer_option_value": 1.8,
+    "transfers": [],
+    "vice_captain_id": "player:2025-26:5",
+    "vice_captain_name": "Gabriel dos Santos Magalhães"
+  },
+  "selection_policy": "reviewed_solver_selected",
+  "state_sha256": "6ef9f49f642f4819a34f030e69350f0efbed4c63acaa9bcccf2d78c25323a0ca",
+  "status": "sealed_setup_awaiting_human_review",
+  "transfer_value_policy": {
+    "free_per_gameweek": 1,
+    "future_transfer_discount": 0.9,
+    "hit_cost_per_transfer": 4,
+    "interpretation": "expected discounted hit avoided per retained transfer; not a multi-Gameweek player forecast",
+    "max_banked": 5,
+    "option_unit_value": 1.8,
+    "policy": "expected_hit_avoidance_v1",
+    "probability_extra_transfer_needed": 0.5
+  }
+}
