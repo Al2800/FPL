@@ -85,6 +85,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-25 10:29Z) Generate the canonical sealed GW26 setup from committed GW25 checkpoint `89e394f` and prove a byte-identical 41-file rerun. Active selects Senesi→Timber while retaining five transfers; naive remains the no-transfer control.
 - [x] (2026-07-25 10:32Z) Finalise GW26 from the sealed plans: active scored 68 and reached 1346 cumulative; naive scored 47 and reached 1336, returning the lead to active. Prove the completed checkpoint is byte-identical and attribute +1 to the transfer, +5 to effective captaincy, and +15 to wider trajectory.
 - [x] (2026-07-25 10:37Z) Generate the canonical sealed GW27 setup from committed GW26 checkpoint `a6eaab1` and prove a byte-identical 41-file rerun. Both trajectories bank; active's tied one-transfer alternative is rejected by the deterministic no-transaction tie-break.
+- [x] (2026-07-25 10:40Z) Finalise GW27 from the sealed bank plans: active scored 43 and reached 1389 cumulative; naive scored 39 and reached 1375. Prove the completed checkpoint is byte-identical and attribute +3 to effective captaincy and +1 to wider trajectory.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -281,6 +282,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW27 exercises the deterministic no-transaction tie-break.
   Evidence: banking and Wilson→player 83 both project 65.47 immediate and 72.67 planning points while retaining five transfers. The selected action is the simpler bank.
 
+- Observation: GW27's modest active gain is primarily captaincy rather than transfer policy.
+  Evidence: both arms banked. Haaland supplied six captain bonus points versus Salah's three, and the remaining divergent effective slots added one for active.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -434,6 +438,8 @@ GW26 is prepared and sealed from committed GW25 checkpoint `89e394f`. Active sel
 GW26 is complete. Active made the free Senesi→Timber transfer, scored 68, and reached 1346 cumulative with five free transfers and £0.0m for GW27. Naive banked, scored 47, and reached 1336 with five free transfers and £0.0m, returning the cumulative lead to active by ten. Timber scored 3 across two fixtures versus Senesi's 2, making the transfer +1. Gabriel's effective captain bonus was five above Bruno Fernandes, and the remaining trajectory differences added 15 for active. Naive auto-substituted Guiu for zero-minute Murillo; active required no substitution. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW27 decision has been prepared.
 
 GW27 is prepared and sealed from committed GW26 checkpoint `a6eaab1`. Active banks, projects 65.47 immediate and 72.67 planning points, remains capped at five free transfers for GW28, and captains Haaland with Semenyo vice. A one-transfer replacement for Wilson has exactly the same immediate and planning objective, so the deterministic tie-break preserves the current squad. Naive also banks, projects 51.25 immediate and 58.45 planning points, remains capped at five, and captains Salah with Palmer vice. The 41 setup files reproduce byte-for-byte; no GW27 hidden outcome, validated plan, or state transition exists.
+
+GW27 is complete. Both trajectories banked. Active scored 43 and reached 1389 cumulative with five free transfers and £0.0m for GW28. Naive scored 39 and reached 1375 with five free transfers and £0.0m, expanding the active lead to 14. Haaland's effective captain bonus beat Salah's by three, and the remaining divergent effective slots added one for active. Wilson replaced zero-minute Wirtz for active; Murillo replaced zero-minute Reijnders for naive. No hits or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW28 decision has been prepared.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
