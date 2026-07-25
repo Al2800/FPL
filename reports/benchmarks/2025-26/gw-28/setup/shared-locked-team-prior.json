@@ -1,0 +1,189 @@
+{
+  "as_of": "2026-02-27T18:30:00Z",
+  "content_sha256": "be02b4de5c6712edbe87003c628141a4901c2c1d127ed51d03cea7b9fcde63ce",
+  "fallback_teams": [
+    "team:2025-26:11",
+    "team:2025-26:17",
+    "team:2025-26:3"
+  ],
+  "fixture_adjustments": [
+    {
+      "attack_multiplier": 1.100425,
+      "club_id": "team:2025-26:1",
+      "defence_multiplier": 1.100425,
+      "expected_result_score": 0.733182,
+      "fixture_id": 271
+    },
+    {
+      "attack_multiplier": 0.854696,
+      "club_id": "team:2025-26:7",
+      "defence_multiplier": 0.854696,
+      "expected_result_score": 0.266818,
+      "fixture_id": 271
+    },
+    {
+      "attack_multiplier": 0.897856,
+      "club_id": "team:2025-26:17",
+      "defence_multiplier": 0.897856,
+      "expected_result_score": 0.324936,
+      "fixture_id": 272
+    },
+    {
+      "attack_multiplier": 1.077938,
+      "club_id": "team:2025-26:4",
+      "defence_multiplier": 1.077938,
+      "expected_result_score": 0.675064,
+      "fixture_id": 272
+    },
+    {
+      "attack_multiplier": 0.896216,
+      "club_id": "team:2025-26:16",
+      "defence_multiplier": 0.896216,
+      "expected_result_score": 0.322567,
+      "fixture_id": 273
+    },
+    {
+      "attack_multiplier": 1.078882,
+      "club_id": "team:2025-26:6",
+      "defence_multiplier": 1.078882,
+      "expected_result_score": 0.677433,
+      "fixture_id": 273
+    },
+    {
+      "attack_multiplier": 0.930072,
+      "club_id": "team:2025-26:3",
+      "defence_multiplier": 0.930072,
+      "expected_result_score": 0.374141,
+      "fixture_id": 274
+    },
+    {
+      "attack_multiplier": 1.057734,
+      "club_id": "team:2025-26:5",
+      "defence_multiplier": 1.057734,
+      "expected_result_score": 0.625859,
+      "fixture_id": 274
+    },
+    {
+      "attack_multiplier": 1.096712,
+      "club_id": "team:2025-26:10",
+      "defence_multiplier": 1.096712,
+      "expected_result_score": 0.723336,
+      "fixture_id": 275
+    },
+    {
+      "attack_multiplier": 0.862473,
+      "club_id": "team:2025-26:18",
+      "defence_multiplier": 0.862473,
+      "expected_result_score": 0.276664,
+      "fixture_id": 275
+    },
+    {
+      "attack_multiplier": 0.897001,
+      "club_id": "team:2025-26:11",
+      "defence_multiplier": 0.897001,
+      "expected_result_score": 0.3237,
+      "fixture_id": 276
+    },
+    {
+      "attack_multiplier": 1.078431,
+      "club_id": "team:2025-26:13",
+      "defence_multiplier": 1.078431,
+      "expected_result_score": 0.6763,
+      "fixture_id": 276
+    },
+    {
+      "attack_multiplier": 1.129098,
+      "club_id": "team:2025-26:12",
+      "defence_multiplier": 1.129098,
+      "expected_result_score": 0.812637,
+      "fixture_id": 277
+    },
+    {
+      "attack_multiplier": 0.782399,
+      "club_id": "team:2025-26:19",
+      "defence_multiplier": 0.782399,
+      "expected_result_score": 0.187363,
+      "fixture_id": 277
+    },
+    {
+      "attack_multiplier": 1.088853,
+      "club_id": "team:2025-26:14",
+      "defence_multiplier": 1.088853,
+      "expected_result_score": 0.702824,
+      "fixture_id": 278
+    },
+    {
+      "attack_multiplier": 0.878034,
+      "club_id": "team:2025-26:8",
+      "defence_multiplier": 0.878034,
+      "expected_result_score": 0.297176,
+      "fixture_id": 278
+    },
+    {
+      "attack_multiplier": 1.047508,
+      "club_id": "team:2025-26:15",
+      "defence_multiplier": 1.047508,
+      "expected_result_score": 0.602004,
+      "fixture_id": 279
+    },
+    {
+      "attack_multiplier": 0.944555,
+      "club_id": "team:2025-26:9",
+      "defence_multiplier": 0.944555,
+      "expected_result_score": 0.397996,
+      "fixture_id": 279
+    },
+    {
+      "attack_multiplier": 1.122312,
+      "club_id": "team:2025-26:2",
+      "defence_multiplier": 1.122312,
+      "expected_result_score": 0.793276,
+      "fixture_id": 280
+    },
+    {
+      "attack_multiplier": 0.801873,
+      "club_id": "team:2025-26:20",
+      "defence_multiplier": 0.801873,
+      "expected_result_score": 0.206724,
+      "fixture_id": 280
+    }
+  ],
+  "last_result_at": "2026-02-23T20:00:00Z",
+  "lineage": {
+    "football_data": {
+      "2020-21": {
+        "file": "E0_2021.csv",
+        "sha256": "5afe63f69401457b8354eaacee24f9a3e520b3c3af6329564a9783e20d789c62"
+      },
+      "2021-22": {
+        "file": "E0_2122.csv",
+        "sha256": "335afcbabeb2939fa10ab39ba3e8215072d0b577cb8d0705c1e44c56e934e703"
+      },
+      "2022-23": {
+        "file": "E0_2223.csv",
+        "sha256": "8442792d3b614c94ea3cf381bd2736805889cc1713169035368fff19c3d02380"
+      },
+      "2023-24": {
+        "file": "E0_2324.csv",
+        "sha256": "b2e057b0ed959f198b0f63d2391c01239f3608e6de5db68edab3f88e04d07ff3"
+      },
+      "2024-25": {
+        "file": "E0_2425.csv",
+        "sha256": "d0c8ce4a96d886cf60cf101f570f4a3893844226f91c7bd769eb568c49edbfa4"
+      }
+    },
+    "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+    "observed_sha256": "926d01aa35d6c803032f0f07a83d47e186ea6cf9946ae2429a8888724ed074e4"
+  },
+  "model": {
+    "draw_factor": 0.6,
+    "fixture_scale": 0.25,
+    "home_advantage": 80.0,
+    "k": 40.0,
+    "promoted_rating": 1450.0,
+    "season_regression": 1.0,
+    "type": "longitudinal_elo"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26"
+}
