@@ -33,10 +33,12 @@ CONFIG = REPO / "control" / "models" / "live-faithful-v1.feature-complete.json"
 FINAL_GAMEWEEK = 38
 
 
-def _transfer_value_policy_for_gameweek(gameweek: int) -> str:
-    """Disable future-transfer option value when no future deadline exists."""
+def _extra_transfer_probability_for_gameweek(gameweek: int) -> float:
+    """Return zero when no future deadline can require another transfer."""
 
-    return "none" if gameweek == FINAL_GAMEWEEK else TRANSFER_VALUE_POLICY
+    return (
+        0.0 if gameweek == FINAL_GAMEWEEK else PROBABILITY_EXTRA_TRANSFER_NEEDED
+    )
 
 
 def _read(path: Path) -> dict[str, Any]:
@@ -147,9 +149,9 @@ def prepare(
             policy_state=state,
             forecast_view=forecast,
             max_transfers=3,
-            transfer_value_policy=_transfer_value_policy_for_gameweek(gameweek),
+            transfer_value_policy=TRANSFER_VALUE_POLICY,
             probability_extra_transfer_needed=(
-                PROBABILITY_EXTRA_TRANSFER_NEEDED
+                _extra_transfer_probability_for_gameweek(gameweek)
             ),
             future_transfer_discount=FUTURE_TRANSFER_DISCOUNT,
         )
