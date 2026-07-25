@@ -52,6 +52,7 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - [x] (2026-07-24 23:38Z) Generate the canonical sealed GW10 setup from committed GW9 checkpoint `f8a6a77` and prove a byte-identical 41-file rerun. Active selects Reijnders→Mbeumo plus Watkins→Woltemade by only 0.16 planning points over banking; naive remains the no-transfer control.
 - [x] (2026-07-24 23:40Z) Reproduce the GW10 freeze failure before outcome access, isolate it to sequential rather than batch affordability validation, add a red order-independence contract, and fix the validator to check the final aggregate bank. Pass all 17 validated-plan contracts.
 - [x] (2026-07-24 23:43Z) Finalise GW10 cleanly from the sealed plans using validator commit `891fd23`: active scored 65 and reached 518 cumulative; naive scored 55 and reached 497. Prove the completed checkpoint is byte-identical and attribute the ten-point gain to prior trajectory divergence rather than the latest transfers.
+- [x] (2026-07-25 07:26Z) Generate the canonical sealed GW11 setup from committed GW10 checkpoint `344cd10` and prove a byte-identical 41-file rerun. Both trajectories bank; active's nearest transfer alternative remains 0.77 planning points behind.
 - [ ] Continue Gameweeks 2–38 one at a time after explicit review checkpoints; close `FPL-bsw.13` only after the chronological replay and rerun acceptance criteria are complete.
 
 ## Surprises & Discoveries
@@ -149,6 +150,9 @@ The user has chosen an incremental operating mode. The runner will stop at an ex
 - Observation: GW10's latest transfer pair returned zero relative points while the accumulated active trajectory gained ten.
   Evidence: Mbeumo scored 2 versus Reijnders's 1, while Woltemade scored 1 versus Watkins's 2. The remaining divergent active slots outscored their naive counterparts 25–15, producing the complete ten-point weekly gain.
 
+- Observation: GW11 is a decisive active bank under the current option-value policy.
+  Evidence: bank scores 67.74 planning points, Porro→Guéhi 66.97, Salah→Rice plus Woltemade→Haaland 66.66, and the three-transfer route 65.89.
+
 ## Decision Log
 
 - Decision: GW1 uses the official Scout seed's `initial_plan` unchanged for all five policy arms.
@@ -236,6 +240,8 @@ GW10 is prepared and sealed from committed GW9 checkpoint `f8a6a77`. Active sele
 The first GW10 finalisation attempt stopped before outcome access because the final validator tested affordability after each ordered transfer rather than over the complete batch. The sealed action is correctly affordable at £0.8m after both moves. The validator now performs the negative-bank check after aggregating the batch, and an order-independence contract passes alongside all existing validated-plan contracts. GW10 remains unrevealed pending a clean rerun from the committed fix.
 
 GW10 is complete under validator commit `891fd23`. Active made the free Reijnders→Mbeumo and Watkins→Woltemade transfers, scored 65, and reached 518 cumulative with three free transfers and £0.8m for GW11. Naive banked, scored 55, and reached 497 with five free transfers and £0.0m. The newest transfer pair netted zero relative points; earlier trajectory divergence supplied the ten-point gain. No substitutions, hits, or chips intervened, and the completed checkpoint is byte-identical on rerun. No GW11 decision has been prepared.
+
+GW11 is prepared and sealed from committed GW10 checkpoint `344cd10`. Active banks, projects 62.34 immediate and 67.74 planning points, and would grow to four transfers for GW12. Naive banks, projects 51.85 immediate and 59.05 planning points, and remains capped at five. All arms captain Salah; active vice-captains Gabriel while naive vice-captains João Pedro. The 41 setup files reproduce byte-for-byte; no GW11 hidden outcome, validated plan, or state transition exists.
 
 GW2 is complete and the replay is stopped before GW3. The tracked checkpoint
 was generated from implementation commit `eb65cef`. Every arm used the same
