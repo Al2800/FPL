@@ -1,0 +1,915 @@
+{
+  "calibration": {
+    "forbidden_fit_seasons": [
+      "2024-25",
+      "2025-26"
+    ],
+    "grid_size": 36,
+    "locked_validation_season": "2024-25",
+    "selected": {
+      "metrics": {
+        "2021-22": {
+          "matches": 380,
+          "promoted_teams": [],
+          "team_xg_mae": 0.9402469920666113
+        },
+        "2022-23": {
+          "matches": 380,
+          "promoted_teams": [
+            "Bournemouth",
+            "Fulham",
+            "Nott'm Forest"
+          ],
+          "team_xg_mae": 0.8537412823587008
+        },
+        "2023-24": {
+          "matches": 380,
+          "promoted_teams": [
+            "Burnley",
+            "Luton",
+            "Sheffield Utd"
+          ],
+          "team_xg_mae": 0.676815340021379
+        },
+        "2024-25": {
+          "matches": 380,
+          "promoted_teams": [
+            "Ipswich",
+            "Leicester",
+            "Southampton"
+          ],
+          "team_xg_mae": 0.6174523377636776
+        }
+      },
+      "parameters": {
+        "elo_weight": 0.15,
+        "home_xg_multiplier": 1.04,
+        "league_xg_per_team": 1.35,
+        "multiplier_max": 1.45,
+        "multiplier_min": 0.65,
+        "odds_weight": 0.1,
+        "prior_matches": 6.0,
+        "promoted_attack_multiplier": 0.85,
+        "promoted_defence_vulnerability": 1.05
+      },
+      "training_objective": 0.7652783111900399
+    },
+    "selection_objective": "mean_team_xg_mae",
+    "top_5": [
+      {
+        "metrics": {
+          "2021-22": {
+            "matches": 380,
+            "promoted_teams": [],
+            "team_xg_mae": 0.9402469920666113
+          },
+          "2022-23": {
+            "matches": 380,
+            "promoted_teams": [
+              "Bournemouth",
+              "Fulham",
+              "Nott'm Forest"
+            ],
+            "team_xg_mae": 0.8537412823587008
+          },
+          "2023-24": {
+            "matches": 380,
+            "promoted_teams": [
+              "Burnley",
+              "Luton",
+              "Sheffield Utd"
+            ],
+            "team_xg_mae": 0.676815340021379
+          }
+        },
+        "parameters": {
+          "elo_weight": 0.15,
+          "home_xg_multiplier": 1.04,
+          "league_xg_per_team": 1.35,
+          "multiplier_max": 1.45,
+          "multiplier_min": 0.65,
+          "odds_weight": 0.1,
+          "prior_matches": 6.0,
+          "promoted_attack_multiplier": 0.85,
+          "promoted_defence_vulnerability": 1.05
+        },
+        "training_objective": 0.7652783111900399
+      },
+      {
+        "metrics": {
+          "2021-22": {
+            "matches": 380,
+            "promoted_teams": [],
+            "team_xg_mae": 0.9551869402628408
+          },
+          "2022-23": {
+            "matches": 380,
+            "promoted_teams": [
+              "Bournemouth",
+              "Fulham",
+              "Nott'm Forest"
+            ],
+            "team_xg_mae": 0.8738624222486219
+          },
+          "2023-24": {
+            "matches": 380,
+            "promoted_teams": [
+              "Burnley",
+              "Luton",
+              "Sheffield Utd"
+            ],
+            "team_xg_mae": 0.6579600471480922
+          }
+        },
+        "parameters": {
+          "elo_weight": 0.15,
+          "home_xg_multiplier": 1.08,
+          "league_xg_per_team": 1.35,
+          "multiplier_max": 1.45,
+          "multiplier_min": 0.65,
+          "odds_weight": 0.1,
+          "prior_matches": 20.0,
+          "promoted_attack_multiplier": 0.85,
+          "promoted_defence_vulnerability": 1.05
+        },
+        "training_objective": 0.765911234698357
+      },
+      {
+        "metrics": {
+          "2021-22": {
+            "matches": 380,
+            "promoted_teams": [],
+            "team_xg_mae": 0.9434076729321743
+          },
+          "2022-23": {
+            "matches": 380,
+            "promoted_teams": [
+              "Bournemouth",
+              "Fulham",
+              "Nott'm Forest"
+            ],
+            "team_xg_mae": 0.8520249742963718
+          },
+          "2023-24": {
+            "matches": 380,
+            "promoted_teams": [
+              "Burnley",
+              "Luton",
+              "Sheffield Utd"
+            ],
+            "team_xg_mae": 0.6800560005210768
+          }
+        },
+        "parameters": {
+          "elo_weight": 0.15,
+          "home_xg_multiplier": 1.08,
+          "league_xg_per_team": 1.35,
+          "multiplier_max": 1.45,
+          "multiplier_min": 0.65,
+          "odds_weight": 0.1,
+          "prior_matches": 6.0,
+          "promoted_attack_multiplier": 0.85,
+          "promoted_defence_vulnerability": 1.05
+        },
+        "training_objective": 0.7660404874087243
+      },
+      {
+        "metrics": {
+          "2021-22": {
+            "matches": 380,
+            "promoted_teams": [],
+            "team_xg_mae": 0.9402469920666113
+          },
+          "2022-23": {
+            "matches": 380,
+            "promoted_teams": [
+              "Bournemouth",
+              "Fulham",
+              "Nott'm Forest"
+            ],
+            "team_xg_mae": 0.8549734682271072
+          },
+          "2023-24": {
+            "matches": 380,
+            "promoted_teams": [
+              "Burnley",
+              "Luton",
+              "Sheffield Utd"
+            ],
+            "team_xg_mae": 0.677436411065371
+          }
+        },
+        "parameters": {
+          "elo_weight": 0.15,
+          "home_xg_multiplier": 1.04,
+          "league_xg_per_team": 1.35,
+          "multiplier_max": 1.45,
+          "multiplier_min": 0.65,
+          "odds_weight": 0.1,
+          "prior_matches": 6.0,
+          "promoted_attack_multiplier": 0.85,
+          "promoted_defence_vulnerability": 1.15
+        },
+        "training_objective": 0.7662049396462391
+      },
+      {
+        "metrics": {
+          "2021-22": {
+            "matches": 380,
+            "promoted_teams": [],
+            "team_xg_mae": 0.9551869402628408
+          },
+          "2022-23": {
+            "matches": 380,
+            "promoted_teams": [
+              "Bournemouth",
+              "Fulham",
+              "Nott'm Forest"
+            ],
+            "team_xg_mae": 0.8751968948645088
+          },
+          "2023-24": {
+            "matches": 380,
+            "promoted_teams": [
+              "Burnley",
+              "Luton",
+              "Sheffield Utd"
+            ],
+            "team_xg_mae": 0.6572901265877895
+          }
+        },
+        "parameters": {
+          "elo_weight": 0.15,
+          "home_xg_multiplier": 1.08,
+          "league_xg_per_team": 1.35,
+          "multiplier_max": 1.45,
+          "multiplier_min": 0.65,
+          "odds_weight": 0.1,
+          "prior_matches": 20.0,
+          "promoted_attack_multiplier": 0.85,
+          "promoted_defence_vulnerability": 1.15
+        },
+        "training_objective": 0.7662435107261492
+      }
+    ],
+    "training_seasons": [
+      "2022-23",
+      "2023-24"
+    ]
+  },
+  "content_sha256": "6ffb9daa1a5613953f1f4ddef6198a0929747efcb79f0485f5d54658e17648a8",
+  "model_config_sha256": "dcfe7d8ab2a8ded72c7c8d51103ddfdc87d642867b1909c68f790170633eca72",
+  "note": "Promotion requires every declared player-calibration check; a rejected model remains an inspectable experiment.",
+  "out_of_sample": {
+    "calibration": {
+      "event_only": {
+        "all": {
+          "bias_actual_minus_predicted": -0.20939151489630486,
+          "correlation": 0.5607938665879781,
+          "mean_absolute_error": 1.2067589570832018,
+          "n": 28497,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 0.3807182985553772,
+              "mean_predicted": 0.6739757223113965,
+              "n": 19936
+            },
+            {
+              "bin": 1,
+              "mean_actual": 2.5112167300380226,
+              "mean_predicted": 2.420283269961977,
+              "n": 5260
+            },
+            {
+              "bin": 2,
+              "mean_actual": 3.6234432234432234,
+              "mean_predicted": 3.6794761904761906,
+              "n": 2730
+            },
+            {
+              "bin": 3,
+              "mean_actual": 4.30718954248366,
+              "mean_predicted": 4.965163398692811,
+              "n": 459
+            },
+            {
+              "bin": 4,
+              "mean_actual": 5.810344827586207,
+              "mean_predicted": 6.515862068965517,
+              "n": 58
+            },
+            {
+              "bin": 5,
+              "mean_actual": 6.2368421052631575,
+              "mean_predicted": 7.808684210526316,
+              "n": 38
+            },
+            {
+              "bin": 6,
+              "mean_actual": 5.8,
+              "mean_predicted": 9.293,
+              "n": 10
+            },
+            {
+              "bin": 7,
+              "mean_actual": 9.5,
+              "mean_predicted": 10.637500000000001,
+              "n": 4
+            },
+            {
+              "bin": 9,
+              "mean_actual": 12.0,
+              "mean_predicted": 13.925,
+              "n": 2
+            }
+          ],
+          "root_mean_square_error": 1.9908785179907889
+        },
+        "owned": {
+          "bias_actual_minus_predicted": -0.6433577981651376,
+          "correlation": 0.32770107085203015,
+          "mean_absolute_error": 2.8411926605504587,
+          "n": 545,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 0.3783783783783784,
+              "mean_predicted": 0.7756756756756756,
+              "n": 37
+            },
+            {
+              "bin": 1,
+              "mean_actual": 2.9680851063829787,
+              "mean_predicted": 2.7967021276595743,
+              "n": 94
+            },
+            {
+              "bin": 2,
+              "mean_actual": 3.8697916666666665,
+              "mean_predicted": 4.032604166666666,
+              "n": 192
+            },
+            {
+              "bin": 3,
+              "mean_actual": 3.8914285714285715,
+              "mean_predicted": 5.093142857142857,
+              "n": 175
+            },
+            {
+              "bin": 4,
+              "mean_actual": 4.85,
+              "mean_predicted": 6.5395,
+              "n": 20
+            },
+            {
+              "bin": 5,
+              "mean_actual": 4.647058823529412,
+              "mean_predicted": 7.9141176470588235,
+              "n": 17
+            },
+            {
+              "bin": 6,
+              "mean_actual": 6.5,
+              "mean_predicted": 9.6875,
+              "n": 4
+            },
+            {
+              "bin": 7,
+              "mean_actual": 9.5,
+              "mean_predicted": 10.637500000000001,
+              "n": 4
+            },
+            {
+              "bin": 9,
+              "mean_actual": 12.0,
+              "mean_predicted": 13.925,
+              "n": 2
+            }
+          ],
+          "root_mean_square_error": 3.54934983062863
+        },
+        "selected_xi": {
+          "bias_actual_minus_predicted": -0.809652605459057,
+          "correlation": 0.2120053049017386,
+          "mean_absolute_error": 3.194665012406948,
+          "n": 403,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 3.6818181818181817,
+              "mean_predicted": 3.3570454545454544,
+              "n": 44
+            },
+            {
+              "bin": 1,
+              "mean_actual": 3.860103626943005,
+              "mean_predicted": 4.385025906735751,
+              "n": 193
+            },
+            {
+              "bin": 2,
+              "mean_actual": 4.188524590163935,
+              "mean_predicted": 5.284836065573771,
+              "n": 122
+            },
+            {
+              "bin": 3,
+              "mean_actual": 3.857142857142857,
+              "mean_predicted": 6.497857142857143,
+              "n": 14
+            },
+            {
+              "bin": 4,
+              "mean_actual": 5.294117647058823,
+              "mean_predicted": 7.694705882352941,
+              "n": 17
+            },
+            {
+              "bin": 5,
+              "mean_actual": 6.75,
+              "mean_predicted": 8.719999999999999,
+              "n": 4
+            },
+            {
+              "bin": 6,
+              "mean_actual": 8.8,
+              "mean_predicted": 10.062000000000001,
+              "n": 5
+            },
+            {
+              "bin": 7,
+              "mean_actual": 6.0,
+              "mean_predicted": 10.850000000000001,
+              "n": 2
+            },
+            {
+              "bin": 9,
+              "mean_actual": 12.0,
+              "mean_predicted": 13.925,
+              "n": 2
+            }
+          ],
+          "root_mean_square_error": 3.820151900894218
+        }
+      },
+      "team_context": {
+        "all": {
+          "bias_actual_minus_predicted": -0.2518935326525599,
+          "correlation": 0.5479909608594811,
+          "mean_absolute_error": 1.2250429869810857,
+          "n": 28497,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 0.5086379511059371,
+              "mean_predicted": 0.7593583236321304,
+              "n": 21475
+            },
+            {
+              "bin": 1,
+              "mean_actual": 2.8282481309355427,
+              "mean_predicted": 2.819213982622752,
+              "n": 4949
+            },
+            {
+              "bin": 2,
+              "mean_actual": 3.7996378998189497,
+              "mean_predicted": 4.5014302957151475,
+              "n": 1657
+            },
+            {
+              "bin": 3,
+              "mean_actual": 4.847094801223242,
+              "mean_predicted": 6.169113149847095,
+              "n": 327
+            },
+            {
+              "bin": 4,
+              "mean_actual": 6.406779661016949,
+              "mean_predicted": 8.066440677966101,
+              "n": 59
+            },
+            {
+              "bin": 5,
+              "mean_actual": 5.833333333333333,
+              "mean_predicted": 9.665555555555555,
+              "n": 18
+            },
+            {
+              "bin": 6,
+              "mean_actual": 3.6,
+              "mean_predicted": 11.402000000000001,
+              "n": 5
+            },
+            {
+              "bin": 7,
+              "mean_actual": 7.2,
+              "mean_predicted": 13.040000000000001,
+              "n": 5
+            },
+            {
+              "bin": 8,
+              "mean_actual": 13.0,
+              "mean_predicted": 14.62,
+              "n": 1
+            },
+            {
+              "bin": 9,
+              "mean_actual": 11.0,
+              "mean_predicted": 17.8,
+              "n": 1
+            }
+          ],
+          "root_mean_square_error": 2.014731504719441
+        },
+        "owned": {
+          "bias_actual_minus_predicted": -1.0933577981651377,
+          "correlation": 0.31787594206482556,
+          "mean_absolute_error": 3.028954128440367,
+          "n": 545,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 0.94,
+              "mean_predicted": 1.1768,
+              "n": 50
+            },
+            {
+              "bin": 1,
+              "mean_actual": 3.0884353741496597,
+              "mean_predicted": 3.044625850340136,
+              "n": 147
+            },
+            {
+              "bin": 2,
+              "mean_actual": 3.8315217391304346,
+              "mean_predicted": 4.8304347826086955,
+              "n": 184
+            },
+            {
+              "bin": 3,
+              "mean_actual": 4.2936507936507935,
+              "mean_predicted": 6.415396825396825,
+              "n": 126
+            },
+            {
+              "bin": 4,
+              "mean_actual": 5.315789473684211,
+              "mean_predicted": 8.277368421052632,
+              "n": 19
+            },
+            {
+              "bin": 5,
+              "mean_actual": 6.181818181818182,
+              "mean_predicted": 9.723636363636363,
+              "n": 11
+            },
+            {
+              "bin": 6,
+              "mean_actual": 5.0,
+              "mean_predicted": 11.49,
+              "n": 1
+            },
+            {
+              "bin": 7,
+              "mean_actual": 7.2,
+              "mean_predicted": 13.040000000000001,
+              "n": 5
+            },
+            {
+              "bin": 8,
+              "mean_actual": 13.0,
+              "mean_predicted": 14.62,
+              "n": 1
+            },
+            {
+              "bin": 9,
+              "mean_actual": 11.0,
+              "mean_predicted": 17.8,
+              "n": 1
+            }
+          ],
+          "root_mean_square_error": 3.783679341302347
+        },
+        "selected_xi": {
+          "bias_actual_minus_predicted": -1.435136476426799,
+          "correlation": 0.20508450400730277,
+          "mean_absolute_error": 3.4570719602977666,
+          "n": 403,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 3.6507936507936507,
+              "mean_predicted": 3.340634920634921,
+              "n": 63
+            },
+            {
+              "bin": 1,
+              "mean_actual": 3.830188679245283,
+              "mean_predicted": 4.781823899371069,
+              "n": 159
+            },
+            {
+              "bin": 2,
+              "mean_actual": 4.090163934426229,
+              "mean_predicted": 6.162049180327869,
+              "n": 122
+            },
+            {
+              "bin": 3,
+              "mean_actual": 5.085714285714285,
+              "mean_predicted": 7.558857142857143,
+              "n": 35
+            },
+            {
+              "bin": 4,
+              "mean_actual": 5.5,
+              "mean_predicted": 9.446875,
+              "n": 16
+            },
+            {
+              "bin": 5,
+              "mean_actual": 5.0,
+              "mean_predicted": 11.49,
+              "n": 1
+            },
+            {
+              "bin": 6,
+              "mean_actual": 7.25,
+              "mean_predicted": 12.8,
+              "n": 4
+            },
+            {
+              "bin": 7,
+              "mean_actual": 10.0,
+              "mean_predicted": 14.309999999999999,
+              "n": 2
+            },
+            {
+              "bin": 9,
+              "mean_actual": 11.0,
+              "mean_predicted": 17.8,
+              "n": 1
+            }
+          ],
+          "root_mean_square_error": 4.114623500500196
+        }
+      },
+      "v1": {
+        "all": {
+          "bias_actual_minus_predicted": -0.05845913604940871,
+          "correlation": 0.5632845446315724,
+          "mean_absolute_error": 1.088280520756571,
+          "n": 28497,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 0.35758899101203473,
+              "mean_predicted": 0.448929568882344,
+              "n": 19693
+            },
+            {
+              "bin": 1,
+              "mean_actual": 2.4587638915968024,
+              "mean_predicted": 2.2812244102164163,
+              "n": 5129
+            },
+            {
+              "bin": 2,
+              "mean_actual": 3.515253100905129,
+              "mean_predicted": 3.601645993965806,
+              "n": 2983
+            },
+            {
+              "bin": 3,
+              "mean_actual": 4.310035842293907,
+              "mean_predicted": 4.935716845878137,
+              "n": 558
+            },
+            {
+              "bin": 4,
+              "mean_actual": 5.7105263157894735,
+              "mean_predicted": 6.399473684210526,
+              "n": 76
+            },
+            {
+              "bin": 5,
+              "mean_actual": 6.2682926829268295,
+              "mean_predicted": 7.932682926829268,
+              "n": 41
+            },
+            {
+              "bin": 6,
+              "mean_actual": 5.909090909090909,
+              "mean_predicted": 9.461818181818181,
+              "n": 11
+            },
+            {
+              "bin": 7,
+              "mean_actual": 9.5,
+              "mean_predicted": 11.155,
+              "n": 4
+            },
+            {
+              "bin": 9,
+              "mean_actual": 12.0,
+              "mean_predicted": 14.3,
+              "n": 2
+            }
+          ],
+          "root_mean_square_error": 1.9743533421773807
+        },
+        "owned": {
+          "bias_actual_minus_predicted": -0.6968256880733945,
+          "correlation": 0.3281339110494856,
+          "mean_absolute_error": 2.860899082568807,
+          "n": 545,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 0.37142857142857144,
+              "mean_predicted": 0.5374285714285715,
+              "n": 35
+            },
+            {
+              "bin": 1,
+              "mean_actual": 2.77,
+              "mean_predicted": 2.6455,
+              "n": 100
+            },
+            {
+              "bin": 2,
+              "mean_actual": 3.9612903225806453,
+              "mean_predicted": 3.960516129032258,
+              "n": 155
+            },
+            {
+              "bin": 3,
+              "mean_actual": 3.9554455445544554,
+              "mean_predicted": 5.149504950495049,
+              "n": 202
+            },
+            {
+              "bin": 4,
+              "mean_actual": 3.5217391304347827,
+              "mean_predicted": 6.464347826086956,
+              "n": 23
+            },
+            {
+              "bin": 5,
+              "mean_actual": 5.277777777777778,
+              "mean_predicted": 7.996666666666667,
+              "n": 18
+            },
+            {
+              "bin": 6,
+              "mean_actual": 6.666666666666667,
+              "mean_predicted": 9.581666666666667,
+              "n": 6
+            },
+            {
+              "bin": 7,
+              "mean_actual": 9.5,
+              "mean_predicted": 11.155,
+              "n": 4
+            },
+            {
+              "bin": 9,
+              "mean_actual": 12.0,
+              "mean_predicted": 14.3,
+              "n": 2
+            }
+          ],
+          "root_mean_square_error": 3.5823544868877466
+        },
+        "selected_xi": {
+          "bias_actual_minus_predicted": -0.9318114143920595,
+          "correlation": 0.2104327103415793,
+          "mean_absolute_error": 3.246650124069479,
+          "n": 403,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 3.5588235294117645,
+              "mean_predicted": 3.1658823529411766,
+              "n": 34
+            },
+            {
+              "bin": 1,
+              "mean_actual": 3.981132075471698,
+              "mean_predicted": 4.300817610062893,
+              "n": 159
+            },
+            {
+              "bin": 2,
+              "mean_actual": 4.057324840764331,
+              "mean_predicted": 5.28484076433121,
+              "n": 157
+            },
+            {
+              "bin": 3,
+              "mean_actual": 3.761904761904762,
+              "mean_predicted": 6.376190476190477,
+              "n": 21
+            },
+            {
+              "bin": 4,
+              "mean_actual": 4.944444444444445,
+              "mean_predicted": 7.846111111111111,
+              "n": 18
+            },
+            {
+              "bin": 5,
+              "mean_actual": 6.0,
+              "mean_predicted": 8.99,
+              "n": 5
+            },
+            {
+              "bin": 6,
+              "mean_actual": 8.0,
+              "mean_predicted": 10.225,
+              "n": 4
+            },
+            {
+              "bin": 7,
+              "mean_actual": 8.0,
+              "mean_predicted": 11.25,
+              "n": 3
+            },
+            {
+              "bin": 9,
+              "mean_actual": 12.0,
+              "mean_predicted": 14.3,
+              "n": 2
+            }
+          ],
+          "root_mean_square_error": 3.866141631733803
+        }
+      }
+    },
+    "decision": "reject",
+    "degraded_mode_counts": {
+      "odds_absent": 37
+    },
+    "deltas_team_context_minus": {
+      "event_only": {
+        "all": {
+          "bias_actual_minus_predicted": -0.04250201775625506,
+          "mean_absolute_error": 0.018284029897883913,
+          "root_mean_square_error": 0.023852986728652326
+        },
+        "owned": {
+          "bias_actual_minus_predicted": -0.45000000000000007,
+          "mean_absolute_error": 0.18776146788990822,
+          "root_mean_square_error": 0.23432951067371688
+        },
+        "selected_xi": {
+          "bias_actual_minus_predicted": -0.625483870967742,
+          "mean_absolute_error": 0.26240694789081864,
+          "root_mean_square_error": 0.2944715996059779
+        }
+      },
+      "v1": {
+        "all": {
+          "bias_actual_minus_predicted": -0.1934343966031512,
+          "mean_absolute_error": 0.13676246622451482,
+          "root_mean_square_error": 0.0403781625420605
+        },
+        "owned": {
+          "bias_actual_minus_predicted": -0.39653211009174316,
+          "mean_absolute_error": 0.16805504587155973,
+          "root_mean_square_error": 0.20132485441460046
+        },
+        "selected_xi": {
+          "bias_actual_minus_predicted": -0.5033250620347396,
+          "mean_absolute_error": 0.2104218362282877,
+          "root_mean_square_error": 0.248481868766393
+        }
+      }
+    },
+    "evaluation_season": "2025-26",
+    "fit_policy": "strictly_prior_gameweeks_only",
+    "parameters": {
+      "elo_weight": 0.15,
+      "home_xg_multiplier": 1.04,
+      "league_xg_per_team": 1.35,
+      "multiplier_max": 1.45,
+      "multiplier_min": 0.65,
+      "odds_weight": 0.1,
+      "prior_matches": 6.0,
+      "promoted_attack_multiplier": 0.85,
+      "promoted_defence_vulnerability": 1.05
+    },
+    "promotion_eligible": false,
+    "promotion_rule": {
+      "all_mae_beats_event_only": false,
+      "all_mae_beats_v1": false,
+      "owned_mae_beats_v1": false,
+      "selected_xi_mae_beats_v1": false
+    },
+    "schema_version": "1.0"
+  },
+  "report_id": "live-faithful-v2-team-context-evaluation",
+  "schema_version": "1.0"
+}

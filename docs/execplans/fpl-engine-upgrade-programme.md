@@ -18,7 +18,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-25 21:05Z) Implemented `FPL-bsw.14`: realised feasible-baseline contracts, paired cluster-aware metrics, calibration, uncertainty, resource use, detectable-effect-size analysis, and a read-only 38-Gameweek control report.
 - [ ] Complete the timestamp-sealed evidence fork owned under `FPL-98p`, then generalise isolated weekly evidence injections without changing the canonical replay.
 - [x] (2026-07-25 21:20Z) Evaluated the sealed 0.25 player-event challenger and rejected promotion: selected cohorts improved slightly, but all-player calibration regressed.
-- [ ] Separate team attacking and defensive strength and combine deadline-safe xG/xGA, Elo, and odds evidence.
+- [x] (2026-07-26 00:05Z) Separated attack and defence context, calibrated it before 2025/26, and rejected promotion after it worsened all, owned, and selected-player calibration.
 - [ ] Value uncertain minutes, legal automatic substitutions, bench order, and vice-captain contingency.
 - [ ] Add robust selection that shrinks noisy extreme forecasts and reports sensitivity.
 - [ ] Replace the fixed transfer-option proxy with a three-to-six-Gameweek receding-horizon planner.
@@ -45,6 +45,9 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 
 - Observation: The pre-season 0.25 event blend helps players the optimiser owned or selected but harms the full forecast population.
   Evidence: On the sealed 2025/26 evaluation, selected-XI MAE changed by -0.052 and absolute bias by -0.122, while all-player MAE worsened by +0.118 and correlation changed by -0.0025. The predeclared promotion rule rejected it.
+
+- Observation: Better team-level xG prediction does not automatically improve player-level FPL forecasts.
+  Evidence: The selected model reached 0.617 team-xG MAE on locked 2024/25 but worsened 2025/26 player MAE versus v1 by +0.137 overall, +0.168 for owned players, and +0.210 for selected-XI players.
 
 ## Decision Log
 
@@ -163,3 +166,5 @@ Plan revision note (2026-07-25): Created the initial self-contained programme af
 Plan revision note (2026-07-25): Completed the evaluation foundation, recorded the GW1 cold-start artifact difference, and added measured control-review and test evidence.
 
 Plan revision note (2026-07-25): Completed the event challenger experiment. Recorded its mixed cohort result and rejection so later team-context and robustness work can address the mechanism without silently promoting it.
+
+Plan revision note (2026-07-26): Completed the separate team-context experiment. Recorded its governed source policy, pre-2025/26 calibration, and rejection so the live policy does not inherit a team-level model that degrades player decisions.

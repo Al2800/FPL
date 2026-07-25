@@ -1,0 +1,39 @@
+{
+  "calibration": {
+    "forbidden_fit_seasons": [
+      "2024-25",
+      "2025-26"
+    ],
+    "grid_size": 36,
+    "locked_validation_season": "2024-25",
+    "selection_objective": "mean_team_xg_mae",
+    "training_seasons": [
+      "2022-23",
+      "2023-24"
+    ]
+  },
+  "content_sha256": "dcfe7d8ab2a8ded72c7c8d51103ddfdc87d642867b1909c68f790170633eca72",
+  "event_model_weight": 0.25,
+  "limitations": [
+    "2021-22_goals_used_only_for_pretraining_continuity_before_xg_available"
+  ],
+  "model_version": "live-faithful-v2-team-context",
+  "parameters": {
+    "elo_weight": 0.15,
+    "home_xg_multiplier": 1.04,
+    "league_xg_per_team": 1.35,
+    "multiplier_max": 1.45,
+    "multiplier_min": 0.65,
+    "odds_weight": 0.1,
+    "prior_matches": 6.0,
+    "promoted_attack_multiplier": 0.85,
+    "promoted_defence_vulnerability": 1.05
+  },
+  "source_policy": {
+    "closing_or_unspecified_odds": "forbidden",
+    "elo": "reuse_locked_pre_match_expected_score",
+    "odds": "registered_predeadline_only_degrade_when_absent",
+    "xg": "strictly_prior_fixture_player_xg_aggregation"
+  },
+  "status": "experimental_preseason_team_context_challenger"
+}
