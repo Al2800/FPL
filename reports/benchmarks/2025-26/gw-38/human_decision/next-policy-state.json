@@ -1,0 +1,145 @@
+{
+  "bank": 0.8,
+  "chip_history": [],
+  "chips_available": [],
+  "content_sha256": "45b0bc5b117bcc45b52da2d30ae9ebad1fbcd5f7dfb158ff0ca3d797712032e7",
+  "cumulative_points": 2010,
+  "free_transfers": 1,
+  "gameweek": 39,
+  "origin": {
+    "seed_id": "benchmark-v0-official-scout-gw1",
+    "seed_sha256": "e0d798bcfd3a527ac896ed6c7191376d9ef7a8f776fb0ec1fe71f4bdcbbd0297",
+    "type": "controlled_shared_seed"
+  },
+  "policy_arm": "human_decision",
+  "previous_state_sha256": "aefa6367840923440069f59579df5a3695c3232eaeb939d0199b6191a330c847",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "squad": [
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 7.2,
+      "player_id": "player:2025-26:21",
+      "position": "MID",
+      "purchase_price": 7.2,
+      "selling_price": 7.2
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "current_price": 4.0,
+      "player_id": "player:2025-26:252",
+      "position": "FWD",
+      "purchase_price": 4.5,
+      "selling_price": 4.0
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 5.1,
+      "player_id": "player:2025-26:260",
+      "position": "DEF",
+      "purchase_price": 5.1,
+      "selling_price": 5.1
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "current_price": 6.4,
+      "player_id": "player:2025-26:267",
+      "position": "MID",
+      "purchase_price": 6.3,
+      "selling_price": 6.3
+    },
+    {
+      "club_id": "team:2025-26:11",
+      "current_price": 3.9,
+      "player_id": "player:2025-26:348",
+      "position": "DEF",
+      "purchase_price": 4.0,
+      "selling_price": 3.9
+    },
+    {
+      "club_id": "team:2025-26:12",
+      "current_price": 6.1,
+      "player_id": "player:2025-26:373",
+      "position": "DEF",
+      "purchase_price": 6.3,
+      "selling_price": 6.1
+    },
+    {
+      "club_id": "team:2025-26:12",
+      "current_price": 7.0,
+      "player_id": "player:2025-26:387",
+      "position": "MID",
+      "purchase_price": 7.0,
+      "selling_price": 7.0
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 14.7,
+      "player_id": "player:2025-26:430",
+      "position": "FWD",
+      "purchase_price": 14.6,
+      "selling_price": 14.6
+    },
+    {
+      "club_id": "team:2025-26:3",
+      "current_price": 4.0,
+      "player_id": "player:2025-26:470",
+      "position": "GKP",
+      "purchase_price": 4.0,
+      "selling_price": 4.0
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 7.3,
+      "player_id": "player:2025-26:5",
+      "position": "DEF",
+      "purchase_price": 6.6,
+      "selling_price": 6.9
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 6.2,
+      "player_id": "player:2025-26:6",
+      "position": "DEF",
+      "purchase_price": 6.2,
+      "selling_price": 6.2
+    },
+    {
+      "club_id": "team:2025-26:19",
+      "current_price": 7.7,
+      "player_id": "player:2025-26:624",
+      "position": "FWD",
+      "purchase_price": 7.6,
+      "selling_price": 7.6
+    },
+    {
+      "club_id": "team:2025-26:17",
+      "current_price": 4.8,
+      "player_id": "player:2025-26:670",
+      "position": "GKP",
+      "purchase_price": 4.9,
+      "selling_price": 4.8
+    },
+    {
+      "club_id": "team:2025-26:6",
+      "current_price": 5.6,
+      "player_id": "player:2025-26:783",
+      "position": "MID",
+      "purchase_price": 5.5,
+      "selling_price": 5.5
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 8.1,
+      "player_id": "player:2025-26:82",
+      "position": "MID",
+      "purchase_price": 8.3,
+      "selling_price": 8.1
+    }
+  ],
+  "state_id": "policy-state:benchmark-v0-official-scout-gw1:human_decision:gw39:40cccd0c4a61",
+  "status": "season_complete",
+  "transition_id": "state-transition:2025-26:gw38:human_decision:40cccd0c4a61"
+}
