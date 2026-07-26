@@ -1,0 +1,238 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "7d7d14fb079bfbd8459ddbcc3eb661c10d547110e459ae87b090e965a51a1317",
+  "deterministic_candidate_sha256": "d960d867b4cb8f26506bcfb4a89e36b8ea29a66537022ec7f97cef5cbbbffeb2",
+  "episode": {
+    "decision_at": "2025-12-02T18:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw14:manager-neutral",
+    "observed_episode_sha256": "3b153f3f2dcd2f11a1d635f3ab3f8dfb48be35e448376578296b2e70cd05a908",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T12:15:47Z",
+      "content_sha256": "b7d64fdb02a11893d6229f73735b9fd5f171db4391f480106b7034db759f53aa",
+      "document_id": "document:bbc-fpl-gw14-suspensions-2025-12-02-1632",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "passages": {
+        "passage:claim-gw14-senesi-suspended": "Yellow card suspensions: David Brooks (Bournemouth); Marco Senesi (Bournemouth)."
+      },
+      "published_at": "2025-12-02T16:32:00Z",
+      "source_id": "bbc-fpl-gw14-suspensions-2025-12-02-1632",
+      "title": "Who is suspended in the Premier League this week?"
+    },
+    {
+      "available_at": "2026-07-26T12:15:47Z",
+      "content_sha256": "3825f4b99beb02e79220b45f07a6ca1329800903f77b8bda64170a90d7147375",
+      "document_id": "document:bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "passages": {
+        "passage:claim-gw14-joao-pedro-rotation-risk": "Some Chelsea fans will say he is due a rest and a benching is on the cards whilst others will say he’s due a goal. This could come back to bite me but I think I would be looking to offload him if I didn’t have any other fires to put out in my team."
+      },
+      "published_at": "2025-12-02T16:36:00Z",
+      "source_id": "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+      "title": "Should I start, bench or sell Joao Pedro?"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "17d9ddc751c08aab368bb63dd360775aeca4f12a39da1d25c20c0905e7ccb6a3",
+    "run_id": "gw14-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim:gw14:senesi:suspension",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:72",
+          "provenance": {
+            "content_hash_sha256": "b7d64fdb02a11893d6229f73735b9fd5f171db4391f480106b7034db759f53aa",
+            "source_ids": [
+              "bbc-fpl-gw14-suspensions-2025-12-02-1632"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        },
+        {
+          "claim_id": "claim:gw14:joao-pedro:rotation-risk",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:249",
+          "provenance": {
+            "content_hash_sha256": "3825f4b99beb02e79220b45f07a6ca1329800903f77b8bda64170a90d7147375",
+            "source_ids": [
+              "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T12:15:47Z",
+          "claim_id": "claim:gw14:senesi:suspension",
+          "claim_text": "Marco Senesi was definitively suspended for Gameweek 14.",
+          "confidence": 0.99,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:bbc-fpl-gw14-suspensions-2025-12-02-1632",
+          "expires_at": "2025-12-04T23:59:59Z",
+          "observed_at": "2026-07-26T12:15:47Z",
+          "provenance": {
+            "content_hash_sha256": "b7d64fdb02a11893d6229f73735b9fd5f171db4391f480106b7034db759f53aa",
+            "source_ids": [
+              "bbc-fpl-gw14-suspensions-2025-12-02-1632"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2025-12-02T16:32:00Z"
+        },
+        {
+          "available_at": "2026-07-26T12:15:47Z",
+          "claim_id": "claim:gw14:joao-pedro:rotation-risk",
+          "claim_text": "A BBC FPL expert identified a possible Gameweek 14 benching for Joao Pedro, but the passage was contested opinion rather than manager confirmation.",
+          "confidence": 0.58,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+          "expires_at": "2025-12-03T22:00:00Z",
+          "observed_at": "2026-07-26T12:15:47Z",
+          "provenance": {
+            "content_hash_sha256": "3825f4b99beb02e79220b45f07a6ca1329800903f77b8bda64170a90d7147375",
+            "source_ids": [
+              "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2025-12-02T16:36:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "ed64800300e6ecd6ca6a02ce6dc607a8903c8afb2051754de4666732a75ee5ae",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "Both passages were published before the 2025-12-02T18:00:00Z cutoff and are treated as retrospectively recovered pre-deadline evidence.",
+        "The Joao Pedro disagreement occurs within a single passage, so it is not represented as a multi-claim conflict.",
+        "No Joao Pedro adjustment is proposed because the contested expert opinion does not reach the 0.60 adjustment-confidence threshold.",
+        "The Senesi expected-minutes proposal is the sole adjustment for that player and can coherently scale related fields.",
+        "All adjustments are proposals only and decrease their baselines."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [
+        {
+          "adjustment_id": "adjustment:gw14:senesi:expected-minutes",
+          "after_value": 0.0,
+          "available_at": "2026-07-26T12:22:09Z",
+          "before_value": 82.9,
+          "confidence": 0.99,
+          "expires_at": "2025-12-04T23:59:59Z",
+          "observed_at": "2026-07-26T12:22:09Z",
+          "player_uid": "player:2025-26:72",
+          "provenance": {
+            "source_ids": [
+              "bbc-fpl-gw14-suspensions-2025-12-02-1632"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-07-26T12:22:09Z",
+          "rationale": "A definitive yellow-card suspension makes Senesi unavailable for Gameweek 14.",
+          "signal_ids": [
+            "signal:adjustment:gw14:senesi:expected-minutes"
+          ],
+          "status": "proposed",
+          "target": "expected_minutes"
+        }
+      ],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": [
+        {
+          "available_at": "2026-07-26T12:22:09Z",
+          "claim_ids": [
+            "claim:gw14:senesi:suspension"
+          ],
+          "interpretation": "A definitive yellow-card suspension makes Senesi unavailable for Gameweek 14.",
+          "observed_at": "2026-07-26T12:22:09Z",
+          "player_uid": "player:2025-26:72",
+          "provenance": {
+            "source_ids": [
+              "bbc-fpl-gw14-suspensions-2025-12-02-1632"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2025-12-02T16:32:00Z",
+          "signal_id": "signal:adjustment:gw14:senesi:expected-minutes"
+        }
+      ]
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:249": {
+      "expected_minutes": 73.5,
+      "start_probability": 0.9469
+    },
+    "player:2025-26:72": {
+      "expected_minutes": 82.9,
+      "start_probability": 0.9109
+    }
+  },
+  "player_ids": [
+    "player:2025-26:249",
+    "player:2025-26:72"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "6a147b7317d69e889e6943a7974f66749682def795075e3358b1d0dc6a791b16",
+  "run_id": "gw14-sol-challenger-v1",
+  "schema_version": "1.0"
+}

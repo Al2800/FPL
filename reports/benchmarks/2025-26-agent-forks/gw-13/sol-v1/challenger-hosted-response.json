@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "67da8dec0d7bfc598f4094d98fc5b73aa2d2886bbfb6ba1cc020910daa7b3f1b",
+  "response_sha256": "da6321f270c4cd14fda2155dd499a8c924d1941bf32cbae2db393c4d1afca21b",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "challenger:gw13:gabriel:expected-minutes:review",
+    "reviewed_adjustment_ids": ["adjustment:gw13:gabriel:expected-minutes"],
+    "escalation_outcome": "confidence_downgrade",
+    "notes": "The 68.0-to-50.0 expected-minutes reduction is plausible but not sufficiently supported for automatic passage at the 0.60 minimum: the timely excerpt is a secondary expert sell recommendation based on schedule congestion and possible injury, not manager confirmation or a quantified availability assessment. Retrospective pre-deadline review remains exploratory; later evidence may be captured separately without strengthening this pre-cutoff claim."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:20:12Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "67da8dec0d7bfc598f4094d98fc5b73aa2d2886bbfb6ba1cc020910daa7b3f1b",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

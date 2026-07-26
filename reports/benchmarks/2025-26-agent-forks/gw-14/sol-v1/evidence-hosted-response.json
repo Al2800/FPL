@@ -1,0 +1,77 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "2d54d9bde731d3bbf252ad4fab7953ccadeda1300ef7a65995d35f01d99a51e0",
+  "response_sha256": "5458649378c1b97be8ed2dda94cdfc3de50ee1ab399c997173e5b493fd17090e",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw14:senesi:suspension",
+        "document_id": "document:bbc-fpl-gw14-suspensions-2025-12-02-1632",
+        "passage_id": "passage:claim-gw14-senesi-suspended",
+        "source_id": "bbc-fpl-gw14-suspensions-2025-12-02-1632",
+        "claim_text": "Marco Senesi was definitively suspended for Gameweek 14.",
+        "citation_excerpt": "Yellow card suspensions: David Brooks (Bournemouth); Marco Senesi (Bournemouth).",
+        "citation_excerpt_sha256": "c7152478a56a7b1676ca5c160b0f4c801d749abe90e2e24b35494ab98ab0c396",
+        "expires_at": "2025-12-04T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:72"
+      },
+      {
+        "claim_id": "claim:gw14:joao-pedro:rotation-risk",
+        "document_id": "document:bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+        "passage_id": "passage:claim-gw14-joao-pedro-rotation-risk",
+        "source_id": "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+        "claim_text": "A BBC FPL expert identified a possible Gameweek 14 benching for Joao Pedro, but the passage was contested opinion rather than manager confirmation.",
+        "citation_excerpt": "Some Chelsea fans will say he is due a rest and a benching is on the cards whilst others will say he’s due a goal. This could come back to bite me but I think I would be looking to offload him if I didn’t have any other fires to put out in my team.",
+        "citation_excerpt_sha256": "f916527edbc2ae27cab75316dae976393ab30a31fe804dd0f4e655b967f94c5e",
+        "expires_at": "2025-12-03T22:00:00Z",
+        "confidence": 0.58,
+        "player_uid": "player:2025-26:249"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw14:senesi:expected-minutes",
+        "claim_ids": ["claim:gw14:senesi:suspension"],
+        "target": "expected_minutes",
+        "before_value": 82.9,
+        "after_value": 0.0,
+        "confidence": 0.99,
+        "expires_at": "2025-12-04T23:59:59Z",
+        "player_uid": "player:2025-26:72",
+        "rationale": "A definitive yellow-card suspension makes Senesi unavailable for Gameweek 14."
+      }
+    ],
+    "notes": [
+      "Both passages were published before the 2025-12-02T18:00:00Z cutoff and are treated as retrospectively recovered pre-deadline evidence.",
+      "The Joao Pedro disagreement occurs within a single passage, so it is not represented as a multi-claim conflict.",
+      "No Joao Pedro adjustment is proposed because the contested expert opinion does not reach the 0.60 adjustment-confidence threshold.",
+      "The Senesi expected-minutes proposal is the sole adjustment for that player and can coherently scale related fields.",
+      "All adjustments are proposals only and decrease their baselines."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:22:09Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "2d54d9bde731d3bbf252ad4fab7953ccadeda1300ef7a65995d35f01d99a51e0",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

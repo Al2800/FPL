@@ -1,0 +1,47 @@
+{
+  "adapter_audit_sha256": "be9a3b0d83b00558a8ab53eaf246edcfc6fb8cf143cd59ed42faca9469af6103",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 60,
+  "agent_vs_canonical_delta": -3,
+  "canonical_gross_points": 63,
+  "canonical_tree_sha256_after": "d773ebef2980c7a7cdd2af6fad629003ba02e7113f2c9c5292bfb5278417a3d2",
+  "canonical_tree_sha256_before": "d773ebef2980c7a7cdd2af6fad629003ba02e7113f2c9c5292bfb5278417a3d2",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "35b399f0abf14dd72b52ab3508e2a7bc0a47d3f3f6f2f638db7eb7697c059dfd",
+  "content_sha256": "fdfe7bdf31114b6c0d151f926bfb3a73a6ec27eb4da9874fb13f376b68207179",
+  "evidence_run_sha256": "17d9ddc751c08aab368bb63dd360775aeca4f12a39da1d25c20c0905e7ccb6a3",
+  "experiment_id": "2025-26-gw14-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 14,
+  "hit_cost": 0,
+  "host_bundle_sha256": "2cda8f7956814784b746605cd074074096385294653bca05de2675762436aa77",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "bbc_live_page_is_secondary_reporting_and_expert_interpretation",
+    "joao_pedro_rotation_claim_is_opinion_not_manager_confirmation",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": null,
+  "plan_sha256": "e3cc73724b82a7a93efd3c241dc41f7cfcedc30e5325d676ac957692bcaac584",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Erling Haaland",
+      "player_out": "João Pedro Junqueira de Jesus"
+    },
+    {
+      "player_in": "Eberechi Eze",
+      "player_out": "Mohamed Salah"
+    },
+    {
+      "player_in": "Trevoh Chalobah",
+      "player_out": "Pedro Porro Sauceda"
+    }
+  ],
+  "solver_input_sha256": "afe43db84ed52d156f43037e8479955c4158b1f3933fee2df401c8dfdde71f96",
+  "solver_output_sha256": "33609a01c83a5744b701cadc981be3e0b03419fe02659b86d88fe105a6b4e954",
+  "starting_state_sha256": "a36acb0d34170e572e0912c2124493667a60f5cdd64566a93b428afdf0ae3d03"
+}

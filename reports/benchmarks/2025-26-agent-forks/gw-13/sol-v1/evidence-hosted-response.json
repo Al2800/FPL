@@ -1,0 +1,75 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "4b7290ac094e9c90bb7fa1fba226e07002690a490ddeb2c1b533c0a2d06ab537",
+  "response_sha256": "d41d560fbeda1cd1e9c8a3fcb84a99aadc11b0849be5a52a9b4406c4cb4eecfb",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw13:semenyo:hopeful",
+        "document_id": "document:bbc-fpl-gw13-semenyo-2025-11-28-1554",
+        "passage_id": "passage:claim-gw13-semenyo-hopeful",
+        "source_id": "bbc-fpl-gw13-semenyo-2025-11-28-1554",
+        "claim_text": "Bournemouth manager Andoni Iraola was hopeful Antoine Semenyo would be available, but his availability and starting status were not confirmed.",
+        "citation_excerpt": "For Bournemouth Andoni Iraola is hopeful Antoine Semenyo will be available.",
+        "citation_excerpt_sha256": "df09d3f6d1c5cb922d5943032a875edb0b91c525fac2ff0919f64ba443906e75",
+        "expires_at": "2025-11-29T18:00:00Z",
+        "confidence": 0.72,
+        "player_uid": "player:2025-26:82"
+      },
+      {
+        "claim_id": "claim:gw13:gabriel:injury-sell",
+        "document_id": "document:bbc-fpl-gw13-gabriel-sell-2025-11-28-1559",
+        "passage_id": "passage:claim-gw13-gabriel-still-injured",
+        "source_id": "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559",
+        "claim_text": "A secondary expert assessment recommended selling Gabriel because his injury coincided with three gameweeks in nine days, while noting the injury might not be long-term.",
+        "citation_excerpt": "Gabriel's injury may not be long-term; however, we are in a time when games come thick and fast. GW13-15 all happen in the space of 9 days. With that in mind, I'd say Gabriel is a sell.",
+        "citation_excerpt_sha256": "cc9fcf95c9bd65cfde6d8e9d241af9fc505c81fd441ffb61eb7f41e156344cba",
+        "expires_at": "2025-12-04T23:59:59Z",
+        "confidence": 0.64,
+        "player_uid": "player:2025-26:5"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw13:gabriel:expected-minutes",
+        "claim_ids": [
+          "claim:gw13:gabriel:injury-sell"
+        ],
+        "target": "expected_minutes",
+        "before_value": 68.0,
+        "after_value": 50.0,
+        "confidence": 0.6,
+        "expires_at": "2025-12-04T23:59:59Z",
+        "player_uid": "player:2025-26:5",
+        "rationale": "The injury-related sell recommendation supports a cautious minutes reduction during a compressed schedule, but the reduction is limited because this is secondary expert interpretation rather than manager confirmation and the injury may be short-term."
+      }
+    ],
+    "notes": [
+      "No negative adjustment is proposed for Semenyo because hopeful availability is positive but uncertain evidence and does not justify reducing his baseline projection."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:19:14Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "4b7290ac094e9c90bb7fa1fba226e07002690a490ddeb2c1b533c0a2d06ab537",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

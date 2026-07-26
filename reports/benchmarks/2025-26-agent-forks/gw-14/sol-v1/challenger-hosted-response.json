@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "6a147b7317d69e889e6943a7974f66749682def795075e3358b1d0dc6a791b16",
+  "response_sha256": "7ab64f392537f3b97b7cd5796013c98ff446e7ef55ef00c1d13d980f13eeb638",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw14:senesi:expected-minutes:challenger",
+    "reviewed_adjustment_ids": ["adjustment:gw14:senesi:expected-minutes"],
+    "escalation_outcome": "dismissed",
+    "notes": "Exact-ID review found the proposed 82.9 to 0.0 expected-minutes adjustment well grounded by definitive suspension evidence published before the GW14 cutoff, with valid expiry, no player-level conflict, and proposal-only handling. The separate contested Joao Pedro rotation opinion correctly produced no adjustment below threshold. This review neither applies nor approves the adjustment; any later retrospective capture is permitted only when explicitly labelled exploratory."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:23:03Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "6a147b7317d69e889e6943a7974f66749682def795075e3358b1d0dc6a791b16",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

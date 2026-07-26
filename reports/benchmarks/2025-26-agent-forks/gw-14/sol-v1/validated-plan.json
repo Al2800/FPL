@@ -1,0 +1,162 @@
+{
+  "active_chip": null,
+  "content_sha256": "e3cc73724b82a7a93efd3c241dc41f7cfcedc30e5325d676ac957692bcaac584",
+  "episode_id": "benchmark-v0:2025-26:gw14:manager-neutral",
+  "finance": {
+    "bank_after": 0.8,
+    "bank_before": 1.4,
+    "free_transfers_before": 5,
+    "hit_cost": 0,
+    "transfer_count": 3
+  },
+  "frozen_at": "2025-12-02T18:00:00Z",
+  "gameweek": 14,
+  "lineup": {
+    "bench_ids": [
+      "player:2025-26:470",
+      "player:2025-26:348",
+      "player:2025-26:252",
+      "player:2025-26:72"
+    ],
+    "captain_id": "player:2025-26:430",
+    "formation": {
+      "DEF": 3,
+      "FWD": 2,
+      "MID": 5
+    },
+    "starting_xi_ids": [
+      "player:2025-26:220",
+      "player:2025-26:8",
+      "player:2025-26:256",
+      "player:2025-26:226",
+      "player:2025-26:119",
+      "player:2025-26:266",
+      "player:2025-26:384",
+      "player:2025-26:387",
+      "player:2025-26:82",
+      "player:2025-26:430",
+      "player:2025-26:714"
+    ],
+    "vice_captain_id": "player:2025-26:119"
+  },
+  "plan_id": "validated-plan:benchmark-v0:2025-26:gw14:manager-neutral:evidence_agent",
+  "policy_arm": "evidence_agent",
+  "previous_state_sha256": "a36acb0d34170e572e0912c2124493667a60f5cdd64566a93b428afdf0ae3d03",
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "squad_after": [
+    {
+      "club_id": "team:2025-26:14",
+      "player_id": "player:2025-26:119",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "player_id": "player:2025-26:220",
+      "position": "GKP"
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "player_id": "player:2025-26:226",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "player_id": "player:2025-26:252",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "player_id": "player:2025-26:256",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "player_id": "player:2025-26:266",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:11",
+      "player_id": "player:2025-26:348",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:12",
+      "player_id": "player:2025-26:384",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:12",
+      "player_id": "player:2025-26:387",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "player_id": "player:2025-26:430",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:3",
+      "player_id": "player:2025-26:470",
+      "position": "GKP"
+    },
+    {
+      "club_id": "team:2025-26:15",
+      "player_id": "player:2025-26:714",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:4",
+      "player_id": "player:2025-26:72",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "player_id": "player:2025-26:8",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:4",
+      "player_id": "player:2025-26:82",
+      "position": "MID"
+    }
+  ],
+  "transfers": [
+    {
+      "player_in_id": "player:2025-26:430",
+      "player_out_id": "player:2025-26:249",
+      "position": "FWD",
+      "purchase_price": 14.9,
+      "selling_price": 7.5
+    },
+    {
+      "player_in_id": "player:2025-26:266",
+      "player_out_id": "player:2025-26:381",
+      "position": "MID",
+      "purchase_price": 7.7,
+      "selling_price": 14.2
+    },
+    {
+      "player_in_id": "player:2025-26:226",
+      "player_out_id": "player:2025-26:568",
+      "position": "DEF",
+      "purchase_price": 5.1,
+      "selling_price": 5.4
+    }
+  ],
+  "validation": {
+    "checks": [
+      "predecessor_and_rules_bound",
+      "transfer_finance_recomputed",
+      "squad_legal",
+      "lineup_legal_and_ordered",
+      "chip_legal"
+    ],
+    "content_sha256": "93d7ab9fa50a717b5c5e4bd5353a02a6917bfc0113671b946e2f07b5163a10ba",
+    "status": "passed"
+  }
+}

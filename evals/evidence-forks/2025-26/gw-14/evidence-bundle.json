@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw14-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-12-02T18:00:00Z",
+  "captured_at": "2026-07-26T12:15:47Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "The pre-deadline search found a definitive Senesi yellow-card suspension and a weaker expert concern that Joao Pedro could be rested. The distinct evidence strengths are intentionally retained for the agent to weight.",
+  "sources": [
+    {
+      "source_id": "bbc-fpl-gw14-suspensions-2025-12-02-1632",
+      "url": "https://www.bbc.co.uk/sport/football/live/c2k4v0qynldt",
+      "title": "Who is suspended in the Premier League this week?",
+      "published_at": "2025-12-02T16:32:00Z",
+      "published_at_precision": "minute",
+      "captured_at": "2026-07-26T12:15:47Z",
+      "citation_excerpt": "Yellow card suspensions: David Brooks (Bournemouth); Marco Senesi (Bournemouth).",
+      "claim_id": "claim-gw14-senesi-suspended",
+      "claim_text": "Marcos Senesi was suspended for GW14 after reaching the yellow-card threshold.",
+      "confidence": 0.99,
+      "expires_at": "2025-12-04T23:59:59Z",
+      "player_id": "player:2025-26:72"
+    },
+    {
+      "source_id": "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+      "url": "https://www.bbc.co.uk/sport/football/live/c2k4v0qynldt",
+      "title": "Should I start, bench or sell Joao Pedro?",
+      "published_at": "2025-12-02T16:36:00Z",
+      "published_at_precision": "minute",
+      "captured_at": "2026-07-26T12:15:47Z",
+      "citation_excerpt": "Some Chelsea fans will say he is due a rest and a benching is on the cards whilst others will say he’s due a goal. This could come back to bite me but I think I would be looking to offload him if I didn’t have any other fires to put out in my team.",
+      "claim_id": "claim-gw14-joao-pedro-rotation-risk",
+      "claim_text": "An FPL expert identified meaningful but contested rotation risk for Joao Pedro and preferred selling if no higher-priority issue existed.",
+      "confidence": 0.6,
+      "expires_at": "2025-12-03T22:00:00Z",
+      "player_id": "player:2025-26:249"
+    }
+  ],
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "bbc_live_page_is_secondary_reporting_and_expert_interpretation",
+    "joao_pedro_rotation_claim_is_opinion_not_manager_confirmation",
+    "not_eligible_for_headline_agent_performance"
+  ]
+}

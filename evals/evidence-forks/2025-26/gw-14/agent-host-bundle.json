@@ -1,0 +1,216 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "0e8dd1194d8e084498183db1fec03d948cdd71f9",
+  "content_sha256": "2cda8f7956814784b746605cd074074096385294653bca05de2675762436aa77",
+  "deterministic_candidate": {
+    "bank_after": 0.5,
+    "banked_option_units": 3,
+    "hit_cost": 0,
+    "immediate_objective": 63.14,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:348",
+        "player:2025-26:568",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:8",
+        "player:2025-26:256",
+        "player:2025-26:72",
+        "player:2025-26:119",
+        "player:2025-26:266",
+        "player:2025-26:384",
+        "player:2025-26:387",
+        "player:2025-26:82",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:119"
+    },
+    "next_gameweek_free_transfers": 4,
+    "objective": 68.54,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 5.4,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:430",
+        "player_out_id": "player:2025-26:249"
+      },
+      {
+        "player_in_id": "player:2025-26:266",
+        "player_out_id": "player:2025-26:381"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2025-12-02T18:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw14:manager-neutral",
+    "observed_episode_sha256": "3b153f3f2dcd2f11a1d635f3ab3f8dfb48be35e448376578296b2e70cd05a908",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T12:15:47Z",
+      "content_sha256": "b7d64fdb02a11893d6229f73735b9fd5f171db4391f480106b7034db759f53aa",
+      "document_id": "document:bbc-fpl-gw14-suspensions-2025-12-02-1632",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "passages": {
+        "passage:claim-gw14-senesi-suspended": "Yellow card suspensions: David Brooks (Bournemouth); Marco Senesi (Bournemouth)."
+      },
+      "published_at": "2025-12-02T16:32:00Z",
+      "source_id": "bbc-fpl-gw14-suspensions-2025-12-02-1632",
+      "title": "Who is suspended in the Premier League this week?"
+    },
+    {
+      "available_at": "2026-07-26T12:15:47Z",
+      "content_sha256": "3825f4b99beb02e79220b45f07a6ca1329800903f77b8bda64170a90d7147375",
+      "document_id": "document:bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "passages": {
+        "passage:claim-gw14-joao-pedro-rotation-risk": "Some Chelsea fans will say he is due a rest and a benching is on the cards whilst others will say he’s due a goal. This could come back to bite me but I think I would be looking to offload him if I didn’t have any other fires to put out in my team."
+      },
+      "published_at": "2025-12-02T16:36:00Z",
+      "source_id": "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+      "title": "Should I start, bench or sell Joao Pedro?"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "70c1bc54cecaaac69163a543e84e94c99f1a4cd560ef78f0ef5f280d7e5e2c4c",
+    "deterministic_candidate_sha256": "d960d867b4cb8f26506bcfb4a89e36b8ea29a66537022ec7f97cef5cbbbffeb2",
+    "episode": {
+      "decision_at": "2025-12-02T18:00:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw14:manager-neutral",
+      "observed_episode_sha256": "3b153f3f2dcd2f11a1d635f3ab3f8dfb48be35e448376578296b2e70cd05a908",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T12:15:47Z",
+        "content_sha256": "b7d64fdb02a11893d6229f73735b9fd5f171db4391f480106b7034db759f53aa",
+        "document_id": "document:bbc-fpl-gw14-suspensions-2025-12-02-1632",
+        "observed_at": "2026-07-26T12:15:47Z",
+        "passages": {
+          "passage:claim-gw14-senesi-suspended": "Yellow card suspensions: David Brooks (Bournemouth); Marco Senesi (Bournemouth)."
+        },
+        "published_at": "2025-12-02T16:32:00Z",
+        "source_id": "bbc-fpl-gw14-suspensions-2025-12-02-1632",
+        "title": "Who is suspended in the Premier League this week?"
+      },
+      {
+        "available_at": "2026-07-26T12:15:47Z",
+        "content_sha256": "3825f4b99beb02e79220b45f07a6ca1329800903f77b8bda64170a90d7147375",
+        "document_id": "document:bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+        "observed_at": "2026-07-26T12:15:47Z",
+        "passages": {
+          "passage:claim-gw14-joao-pedro-rotation-risk": "Some Chelsea fans will say he is due a rest and a benching is on the cards whilst others will say he’s due a goal. This could come back to bite me but I think I would be looking to offload him if I didn’t have any other fires to put out in my team."
+        },
+        "published_at": "2025-12-02T16:36:00Z",
+        "source_id": "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+        "title": "Should I start, bench or sell Joao Pedro?"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:249": {
+        "expected_minutes": 73.5,
+        "start_probability": 0.9469
+      },
+      "player:2025-26:72": {
+        "expected_minutes": 82.9,
+        "start_probability": 0.9109
+      }
+    },
+    "player_ids": [
+      "player:2025-26:249",
+      "player:2025-26:72"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "2d54d9bde731d3bbf252ad4fab7953ccadeda1300ef7a65995d35f01d99a51e0",
+    "run_id": "gw14-sol-evidence-v1",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-gw14-sol-agent-fork-v1",
+  "gameweek": 14,
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "bbc_live_page_is_secondary_reporting_and_expert_interpretation",
+    "joao_pedro_rotation_claim_is_opinion_not_manager_confirmation",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "player_baselines": {
+    "player:2025-26:249": {
+      "expected_minutes": 73.5,
+      "start_probability": 0.9469
+    },
+    "player:2025-26:72": {
+      "expected_minutes": 82.9,
+      "start_probability": 0.9109
+    }
+  },
+  "research_summary": "The pre-deadline search found a definitive Senesi yellow-card suspension and a weaker expert concern that Joao Pedro could be rested. The distinct evidence strengths are intentionally retained for the agent to weight.",
+  "schema_version": "1.0"
+}

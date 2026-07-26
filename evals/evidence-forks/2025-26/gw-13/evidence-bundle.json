@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw13-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-11-29T13:30:00Z",
+  "captured_at": "2026-07-26T12:15:47Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "The pre-deadline search found no new confirmed absence among the carried GW12 fork squad. It found a positive but uncertain Semenyo availability update and continuing expert concern about Gabriel, who had already been sold by the fork.",
+  "sources": [
+    {
+      "source_id": "bbc-fpl-gw13-semenyo-2025-11-28-1554",
+      "url": "https://www.bbc.co.uk/sport/football/live/cvgqpydxxw7t",
+      "title": "Who could be returning?",
+      "published_at": "2025-11-28T15:54:00Z",
+      "published_at_precision": "minute",
+      "captured_at": "2026-07-26T12:15:47Z",
+      "citation_excerpt": "For Bournemouth Andoni Iraola is hopeful Antoine Semenyo will be available.",
+      "claim_id": "claim-gw13-semenyo-hopeful",
+      "claim_text": "Bournemouth manager Andoni Iraola was hopeful that Antoine Semenyo would be available for GW13.",
+      "confidence": 0.8,
+      "expires_at": "2025-11-29T18:00:00Z",
+      "player_id": "player:2025-26:82"
+    },
+    {
+      "source_id": "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559",
+      "url": "https://www.bbc.co.uk/sport/football/live/cvgqpydxxw7t",
+      "title": "My favourite of the lot is Nico O'Reilly",
+      "published_at": "2025-11-28T15:59:00Z",
+      "published_at_precision": "minute",
+      "captured_at": "2026-07-26T12:15:47Z",
+      "citation_excerpt": "Gabriel's injury may not be long-term; however, we are in a time when games come thick and fast. GW13-15 all happen in the space of 9 days. With that in mind, I'd say Gabriel is a sell.",
+      "claim_id": "claim-gw13-gabriel-still-injured",
+      "claim_text": "The expert assessment treated Gabriel's injury as sufficiently material in the congested schedule to recommend selling him for GW13.",
+      "confidence": 0.72,
+      "expires_at": "2025-12-04T23:59:59Z",
+      "player_id": "player:2025-26:5"
+    }
+  ],
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "bbc_live_page_is_secondary_reporting_and_expert_interpretation",
+    "positive_availability_language_is_not_a_confirmed_start",
+    "not_eligible_for_headline_agent_performance"
+  ]
+}
