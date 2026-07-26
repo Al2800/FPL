@@ -1,0 +1,97 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "92fce63480ddc3ab8ada12107ab2d75d804650ce13144ae0557d7267058a800b",
+  "response_sha256": "17a3d44215cf7f156a6ff5347fa48be5387f61ed84dac855826ad887cf25499e",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw12:gabriel-confirmed-absence",
+        "document_id": "document:tottenham-team-news-2025-11-21",
+        "passage_id": "passage:claim-gw12-gabriel-out",
+        "source_id": "tottenham-team-news-2025-11-21",
+        "claim_text": "Gabriel is confirmed unavailable for multiple weeks due to injury.",
+        "citation_excerpt": "Gabi unfortunately picked up an injury ... and he's going to be out for weeks.",
+        "citation_excerpt_sha256": "8bbb2415b9dcefe466026a640d16350dd17336c571704dc11f03e19f7c8c9ea2",
+        "expires_at": "2025-11-24T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:5"
+      },
+      {
+        "claim_id": "claim:gw12:semenyo-availability-uncertain",
+        "document_id": "document:fantasy-football-scout-gw12-team-news-2025-11-21",
+        "passage_id": "passage:claim-gw12-semenyo-doubt",
+        "source_id": "fantasy-football-scout-gw12-team-news-2025-11-21",
+        "claim_text": "Semenyo's availability for the following day is materially uncertain, but absence is not confirmed.",
+        "citation_excerpt": "I really don't know if he's going to be available for tomorrow or not.",
+        "citation_excerpt_sha256": "df9f42fce05dcb442ec5ade54dc558fde02c67f3f01e1772ff4ee9e410a1674a",
+        "expires_at": "2025-11-22T17:00:00Z",
+        "confidence": 0.82,
+        "player_uid": "player:2025-26:82"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw12:gabriel-expected-minutes-zero",
+        "claim_ids": [
+          "claim:gw12:gabriel-confirmed-absence"
+        ],
+        "target": "expected_minutes",
+        "before_value": 85.6,
+        "after_value": 0,
+        "confidence": 0.99,
+        "expires_at": "2025-11-24T23:59:59Z",
+        "player_uid": "player:2025-26:5",
+        "rationale": "The cited team news confirms a multi-week injury absence, supporting zero expected minutes during the evidence window."
+      },
+      {
+        "adjustment_id": "adjustment:gw12:semenyo-start-probability-reduction",
+        "claim_ids": [
+          "claim:gw12:semenyo-availability-uncertain"
+        ],
+        "target": "start_probability",
+        "before_value": 0.9821,
+        "after_value": 0.7321,
+        "confidence": 0.74,
+        "expires_at": "2025-11-22T17:00:00Z",
+        "player_uid": "player:2025-26:82",
+        "rationale": "The cited statement establishes material availability uncertainty without confirming absence; a bounded 0.25 reduction reflects that uncertainty."
+      }
+    ],
+    "notes": [
+      "Experiment mode is retrospective_published_before_deadline: both passages were published before the 2025-11-22T11:00:00Z decision cutoff but recovered later.",
+      "These are evidence-based proposals only; no adjustment has been applied or approved."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T11:47:40Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "92fce63480ddc3ab8ada12107ab2d75d804650ce13144ae0557d7267058a800b",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

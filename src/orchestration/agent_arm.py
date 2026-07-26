@@ -139,6 +139,7 @@ def build_hosted_request(
     budget: Mapping[str, Any],
     evidence_proposal: Mapping[str, Any] | None = None,
     reasoning_effort: str = "high",
+    evidence_mode: str = "production",
 ) -> dict[str, Any]:
     """Render the object handed to a subscription-backed Codex run."""
     if re.fullmatch(r"[A-Za-z0-9_-]{3,}", run_id) is None:
@@ -185,6 +186,7 @@ def build_hosted_request(
         "evidence_documents": deepcopy(evidence_documents),
         "deterministic_candidate_sha256": deterministic_candidate_sha256,
         "budget": deepcopy(dict(budget)),
+        "evidence_mode": evidence_mode,
         "evidence_proposal": (
             _proposal_binding(evidence_proposal)
             if evidence_proposal is not None
@@ -442,6 +444,7 @@ def run_agent_arm(
                 },
                 player_baselines=request["player_baselines"],
                 run_observed_at=actual_at,
+                evidence_mode=str(request.get("evidence_mode", "production")),
             )
         else:
             if evidence_proposal is None:

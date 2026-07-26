@@ -1,0 +1,45 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "6b7d547428056ed3fafc49271b513d40091310b24e426a19f49c272aee23db6e",
+  "response_sha256": "5cfecc09bf1b4a29d50e85b8dad29b628dbabc13d5359d66bc4bead5401876a1",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw12:independent-evidence-challenge",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw12:gabriel-expected-minutes-zero",
+      "adjustment:gw12:semenyo-start-probability-reduction"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Both proposals are grounded in the supplied immutable, pre-cutoff evidence; identities, hashes, expiries, confidence thresholds, and proposal-only authority are consistent, with no conflicts. Gabriel's confirmed multi-week absence supports expected_minutes 85.6 to 0. Semenyo's explicit availability uncertainty supports a material reduction, and the start_probability delta of -0.25 is exactly within the permitted maximum. Later 2026 capture is admissible under the labelled retrospective_published_before_deadline experiment and does not itself warrant escalation."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T11:48:46Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "6b7d547428056ed3fafc49271b513d40091310b24e426a19f49c272aee23db6e",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "adapter_applied": true,
+  "adapter_audit_sha256": "374a8d57adec05dd2339958c751ea37ae856f262c77a2c4b637eb7fee2183dc4",
+  "agent_fork_gross_points": 43,
+  "agent_vs_canonical_delta": 14,
+  "agent_vs_manual_delta": 0,
+  "canonical_gross_points": 29,
+  "canonical_tree_sha256_after": "64d06384c005c69c4e37a0b85682f0bb0234eeebe861b021aa0fe241fe1279fe",
+  "canonical_tree_sha256_before": "64d06384c005c69c4e37a0b85682f0bb0234eeebe861b021aa0fe241fe1279fe",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "395f5d3ac18d7f89c2dda769aa19ec5b28231a29f2fc9dfd15cbbfba06bceca1",
+  "content_sha256": "8ce1b20640c05bf3f762d7fa5a36b30be30795141b2b290f6bfd1165ced4ecd0",
+  "evidence_run_sha256": "a97d9deff40790d40eb90e37eed64b0146151ec940087d96a81b422da5a30928",
+  "experiment_id": "2025-26-gw12-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 12,
+  "hit_cost": 0,
+  "host_bundle_sha256": "ef7a186f64b803ce345b373307a7b480e6ada737b14efe282a7a3d0e7835c6c3",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "not_eligible_for_headline_agent_performance"
+  ],
+  "manual_fork_gross_points": 43,
+  "plan_sha256": "a484bb913c35b69214c84b53a766483ffced04a20e2994e534ea8bc4b89e41cd",
+  "planning_objective": 68.74,
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Daniel Muñoz Mejía",
+      "player_out": "Gabriel dos Santos Magalhães"
+    }
+  ],
+  "solver_input_sha256": "eaa2dad8d31526c3bb17ed2cb49763e46ef235934f3d0069c71aeb982cf13656",
+  "solver_output_sha256": "e7ee790ac16b44fae4b3181432109086c3381cf513a95f5b8d4827e677677254"
+}

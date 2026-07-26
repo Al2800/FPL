@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from copy import deepcopy
+from datetime import datetime
 import hashlib
 import json
 import math
@@ -44,6 +45,7 @@ def validate_evidence_result(
     approved_evidence: Mapping[str, Mapping[str, Any]],
     player_baselines: Mapping[str, Mapping[str, float]],
     run_observed_at: str,
+    evidence_mode: str = "production",
 ) -> dict[str, Any]:
     """Validate and normalise a proposal; never apply it."""
     schema = json.loads(OUTPUT_SCHEMA.read_text(encoding="utf-8"))
@@ -130,11 +132,27 @@ def validate_evidence_result(
         eligibility = assess_claim_for_decision(
             claim, decision_at, dict(policy)
         )
-        if not eligibility.eligible:
+        retrospective_reasons = {
+            "observed_at_after_decision",
+            "available_at_after_decision",
+        }
+        exploratory_admissible = (
+            evidence_mode == "retrospective_published_before_deadline"
+            and not eligibility.eligible
+            and bool(eligibility.reasons)
+            and set(eligibility.reasons).issubset(retrospective_reasons)
+        )
+        if not eligibility.eligible and not exploratory_admissible:
             raise EvidenceAgentError(
                 f"ineligible claim {claim['claim_id']}: "
                 + ",".join(eligibility.reasons)
             )
+        claim["decision_eligibility"] = {
+            "production_eligible": eligibility.eligible,
+            "production_ineligibility_reasons": list(eligibility.reasons),
+            "exploratory_admissible": exploratory_admissible,
+            "evidence_mode": evidence_mode,
+        }
         if claim["claim_id"] in claim_index:
             raise EvidenceAgentError("duplicate claim_id")
         claim_index[claim["claim_id"]] = claim
@@ -196,6 +214,15 @@ def validate_evidence_result(
                 "adjustment player does not match supporting claims"
             )
         signal_id = f"signal:{adjustment_id}"
+        if evidence_mode == "retrospective_published_before_deadline":
+            adjustment_expiry = datetime.fromisoformat(
+                str(raw["expires_at"]).replace("Z", "+00:00")
+            )
+            cutoff = datetime.fromisoformat(decision_at.replace("Z", "+00:00"))
+            if adjustment_expiry <= cutoff:
+                raise EvidenceAgentError(
+                    "retrospective adjustment is expired at decision time"
+                )
         published_at = max(str(claim["published_at"]) for claim in supporting)
         signal = make_signal(
             signal_id=signal_id,
@@ -229,7 +256,11 @@ def validate_evidence_result(
             observed_at=run_observed_at,
             provenance=deepcopy(signal["provenance"]),
             policy=dict(policy),
-            decision_at=decision_at,
+            decision_at=(
+                None
+                if evidence_mode == "retrospective_published_before_deadline"
+                else decision_at
+            ),
             supporting_claims=supporting,
             conflicts=raw_conflicts,
         )
@@ -261,6 +292,16 @@ def validate_evidence_result(
         "proposed_adjustments": adjustments,
         "notes": [str(value) for value in result.get("notes", [])],
         "authority": "proposal_only_not_applied",
+        "evidence_mode": evidence_mode,
+        "production_eligible": all(
+            claim["decision_eligibility"]["production_eligible"]
+            for claim in claims
+        ),
+        "exploratory_admissible": all(
+            claim["decision_eligibility"]["production_eligible"]
+            or claim["decision_eligibility"]["exploratory_admissible"]
+            for claim in claims
+        ),
     }
     normalised["content_sha256"] = artifact_hash(normalised)
     return normalised
