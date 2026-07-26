@@ -1,0 +1,178 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "ef174fe6cf1530aa028f3bdc08b01dbcf3a71a4d",
+  "content_sha256": "e0a12433f985fab98dfbc4d3539ca247d2064fda448b56dff4c402277d9f0d8f",
+  "deterministic_candidate": {
+    "bank_after": 0.2,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 63.87,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:749",
+        "player:2025-26:348"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:32",
+        "player:2025-26:5",
+        "player:2025-26:8",
+        "player:2025-26:226",
+        "player:2025-26:449",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:329",
+        "player:2025-26:47",
+        "player:2025-26:430",
+        "player:2025-26:136"
+      ],
+      "vice_captain_id": "player:2025-26:449"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 71.07,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:32",
+        "player_out_id": "player:2025-26:220"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2026-02-27T18:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw28:manager-neutral",
+    "observed_episode_sha256": "926d01aa35d6c803032f0f07a83d47e186ea6cf9946ae2429a8888724ed074e4",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T18:05:00Z",
+      "content_sha256": "cd277ec1da435f111b8d457cc09641f0979b0a47d83b017f4b6476fc81d71913",
+      "document_id": "document:ffs-gw28-wirtz-out-2026-02-27",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "passages": {
+        "passage:claim-gw28-wirtz-unavailable": "I don't expect Florian to be available, so that is a disappointment."
+      },
+      "published_at": "2026-02-27T00:00:00Z",
+      "source_id": "ffs-gw28-wirtz-out-2026-02-27",
+      "title": "FPL Gameweek 28 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "665373d29a2d1c26f9a6e25a28bb0d7420d5fa0a84e8058f9f8be7ad96893d92",
+    "deterministic_candidate_sha256": "1120975b9ed147b3c4eeacd7e68550adf1418203c2a943e5d9546d7984a97b96",
+    "episode": {
+      "decision_at": "2026-02-27T18:30:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw28:manager-neutral",
+      "observed_episode_sha256": "926d01aa35d6c803032f0f07a83d47e186ea6cf9946ae2429a8888724ed074e4",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T18:05:00Z",
+        "content_sha256": "cd277ec1da435f111b8d457cc09641f0979b0a47d83b017f4b6476fc81d71913",
+        "document_id": "document:ffs-gw28-wirtz-out-2026-02-27",
+        "observed_at": "2026-07-26T18:05:00Z",
+        "passages": {
+          "passage:claim-gw28-wirtz-unavailable": "I don't expect Florian to be available, so that is a disappointment."
+        },
+        "published_at": "2026-02-27T00:00:00Z",
+        "source_id": "ffs-gw28-wirtz-out-2026-02-27",
+        "title": "FPL Gameweek 28 team news: Friday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:382": {
+        "expected_minutes": 62.5,
+        "start_probability": 0.7695
+      }
+    },
+    "player_ids": [
+      "player:2025-26:382"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "769b9bb42c40da2b2b6097485a46a45d27e929c23dddaf3e7f6d6894102fe26e",
+    "run_id": "gw28-sol-evidence-v1",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-gw28-sol-agent-fork-v1",
+  "gameweek": 28,
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "player_baselines": {
+    "player:2025-26:382": {
+      "expected_minutes": 62.5,
+      "start_probability": 0.7695
+    }
+  },
+  "research_summary": "Arne Slot said he did not expect Florian Wirtz to be available because of a back injury.",
+  "schema_version": "1.0"
+}

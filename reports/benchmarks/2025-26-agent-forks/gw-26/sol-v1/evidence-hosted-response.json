@@ -1,0 +1,70 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "deb0ed64a75e4f6f886996d9670d9ff3465a005c6d052d119aa770c970c8efd5",
+  "response_sha256": "09aefcc58cffa7a5c75b767a77a3b8256dbe6525cabfa1d0046baf9eb0c4eac2",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw26-mateta-absence",
+      "document_id": "document:ffs-gw26-mateta-out-2026-02-10",
+      "passage_id": "passage:claim-gw26-mateta-out",
+      "source_id": "ffs-gw26-mateta-out-2026-02-10",
+      "claim_text": "Jean-Philippe Mateta will miss an unspecified period.",
+      "citation_excerpt": "He will miss a certain time. I can't say two weeks, three weeks or four weeks.",
+      "citation_excerpt_sha256": "971c6fa6fec8835318ff0ec49d88ef2015a90b0be8066fd6823f9da410162b52",
+      "expires_at": "2026-02-13T23:59:59Z",
+      "confidence": 0.99,
+      "player_uid": "player:2025-26:283"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw26-mateta-expected-minutes",
+        "claim_ids": ["claim:gw26-mateta-absence"],
+        "target": "expected_minutes",
+        "before_value": 50.1,
+        "after_value": 0.0,
+        "unit": "minutes",
+        "confidence": 0.98,
+        "expires_at": "2026-02-13T23:59:59Z",
+        "player_uid": "player:2025-26:283",
+        "rationale": "The supplied passage confirms an absence lasting an unspecified period, so zero expected minutes is appropriate within the bounded gameweek horizon."
+      },
+      {
+        "adjustment_id": "adjustment:gw26-mateta-start-probability",
+        "claim_ids": ["claim:gw26-mateta-absence"],
+        "target": "start_probability",
+        "before_value": 0.911,
+        "after_value": 0.0,
+        "unit": "probability",
+        "confidence": 0.98,
+        "expires_at": "2026-02-13T23:59:59Z",
+        "player_uid": "player:2025-26:283",
+        "rationale": "The confirmed absence makes a start during the bounded gameweek horizon unavailable."
+      }
+    ],
+    "notes": ["Proposal requires independent challenger review."]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:27:46Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "deb0ed64a75e4f6f886996d9670d9ff3465a005c6d052d119aa770c970c8efd5",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "a5855b5c9ccd0457adddfcb4271ffd16a40e0d2f71b1bd3f06db8481bccb2f44",
+  "response_sha256": "8f68641880de6bad1687394d46a495f95f7df2cccae100b8ef021a1dd72a71e4",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw24:player-8-okay-heavy-minutes",
+      "document_id": "document:ffs-gw24-timber-okay-2026-01-30",
+      "passage_id": "passage:claim-gw24-timber-okay",
+      "source_id": "ffs-gw24-timber-okay-2026-01-30",
+      "claim_text": "Player player:2025-26:8 was reported to be okay, with the qualification that they had played a lot of minutes.",
+      "citation_excerpt": "Yeah, they are okay. Obviously, they have played a lot of minutes.",
+      "citation_excerpt_sha256": "3b5bdfdb5acf60b14e9accad971cb22b8bde6fd7a2266d41e3af125681e88682",
+      "expires_at": "2026-02-01T23:59:59Z",
+      "confidence": 0.75,
+      "player_uid": "player:2025-26:8"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "Source published 2026-01-30 before the 2026-01-31T13:30:00Z cutoff.",
+      "Baseline expected minutes was 82.6 and baseline start probability was 0.8538.",
+      "The passage supports general availability but does not quantify a change from either baseline, so no adjustment is proposed."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:15:51Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "a5855b5c9ccd0457adddfcb4271ffd16a40e0d2f71b1bd3f06db8481bccb2f44",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

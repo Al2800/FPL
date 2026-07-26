@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "84e6080dbffb835787bd1a6e35436ba00f6015784e08c88814430ee522794d0b",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 67,
+  "agent_vs_canonical_delta": 14,
+  "canonical_gross_points": 53,
+  "canonical_tree_sha256_after": "3243fd481c4658b8b9d8ad1a1b12fabbac893ae84a61ece01050f1847cc1137b",
+  "canonical_tree_sha256_before": "3243fd481c4658b8b9d8ad1a1b12fabbac893ae84a61ece01050f1847cc1137b",
+  "captain": "Antoine Semenyo",
+  "challenger_run_sha256": "9ceab147d43fd04212707a46c5e69aa8e85c79bee77c3dcf238528ab4dbc4b3f",
+  "content_sha256": "ea1d62a5fb229d63817f46b8e906c0c20067242e114dd905f7946b61cbd9f324",
+  "evidence_run_sha256": "5820272fdc09a3dd4f41b92ad0b817ee0829fe19c8a0249ebcbef412c56b0c72",
+  "experiment_id": "2025-26-gw29-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 29,
+  "hit_cost": 0,
+  "host_bundle_sha256": "4b4773b5a448c0245514b17f970b2417de9695edd98b0dcae7e2766d24e8496f",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": null,
+  "plan_sha256": "3e85758735db3781e973727c1359810e8eeafdc871a6cad5545766fc481ce6d3",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Marc Guéhi",
+      "player_out": "Trevoh Chalobah"
+    }
+  ],
+  "solver_input_sha256": "919958a90fdc1cc894f6a6dc0667ce15488f1f880b5b80250bdf651ab6a59ec6",
+  "solver_output_sha256": "102127f846b980b80081e27d7b5c8248910e669756f3e2ec2ac4da2ae58cf98b",
+  "starting_state_sha256": "9c0b92a14fece645a1696e4843bb35a20a62bd16f3451a88063c88f29a2bb6ca"
+}

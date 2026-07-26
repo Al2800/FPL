@@ -1,0 +1,38 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "cadfd2acb0c21886691dd7ab2c5e1c67b06368fa05489691b681ae93868af8e0",
+  "response_sha256": "c1924ef65966abe60168df247d36349c0a8d37da7d3057b1d4743912c97d3dd2",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw23-sol-evidence-v2",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "No adjustment was proposed. The passage supports only unresolved availability and does not justify a quantified change to expected minutes or start probability, so the empty adjustment set is appropriate. The evidence is correctly marked exploratory only and production ineligible because it was observed and available after the decision cutoff."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:13:42Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "cadfd2acb0c21886691dd7ab2c5e1c67b06368fa05489691b681ae93868af8e0",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

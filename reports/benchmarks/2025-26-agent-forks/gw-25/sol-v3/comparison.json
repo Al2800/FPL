@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "4c47216e6472f2fdca6671862a58f800366e12027803f1ed1433a93565090172",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 73,
+  "agent_vs_canonical_delta": 15,
+  "canonical_gross_points": 58,
+  "canonical_tree_sha256_after": "63ba69d46552f19c3199384f0f0e8b8314f9ec2765740c89dc612c27c9bfcc96",
+  "canonical_tree_sha256_before": "63ba69d46552f19c3199384f0f0e8b8314f9ec2765740c89dc612c27c9bfcc96",
+  "captain": "Bruno Borges Fernandes",
+  "challenger_run_sha256": "5f96858005013987c06def2fd0ad235063483f070edb4e49e13dd9c15d46ed3b",
+  "content_sha256": "8bfddf4b726dddac26fabf952c3824a6dffd8b38ebd0d5d34e165c06edeb80e4",
+  "evidence_run_sha256": "15d95344b6879d4005be1b057806c7a059512dbc7bbde3fd8241a456135eb7a2",
+  "experiment_id": "2025-26-gw25-sol-agent-fork-v3",
+  "exploratory_only": true,
+  "gameweek": 25,
+  "hit_cost": 0,
+  "host_bundle_sha256": "0bb15d242412405c13d198dadc3bc2f1c8c65c96c1e69a5cb9150ee1447b29fd",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "cca91d67bcfd2381a9f27fa096c77ed6309b2552230601499535d36c0897610d",
+  "plan_sha256": "c7c45f3aee785f6457ea906f24155f1089a27a9439fc54de0b3c65442d05ece3",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Bruno Borges Fernandes",
+      "player_out": "Phil Foden"
+    }
+  ],
+  "solver_input_sha256": "3ec26a74a343323c73a1f7de5be65583e30ed5e3c7d0d8e322993e38a3186e7c",
+  "solver_output_sha256": "9f32061ce8277e5eca1a63dadc32ebe67bcf92dd4eb2bc47cebf503a185cb787",
+  "starting_state_sha256": "8c6aab147031cae0c1ccbbc22c23304eb7eaf2932a8d326149d42db6a37c4202"
+}

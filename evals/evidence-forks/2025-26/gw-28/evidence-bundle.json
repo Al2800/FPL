@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw28-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-02-27T18:30:00Z",
+  "captured_at": "2026-07-26T18:05:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Arne Slot said he did not expect Florian Wirtz to be available because of a back injury.",
+  "sources": [{
+    "source_id": "ffs-gw28-wirtz-out-2026-02-27",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/02/27/fpl-gameweek-28-team-news-fridays-live-injury-updates-3",
+    "title": "FPL Gameweek 28 team news: Friday's live injury updates",
+    "published_at": "2026-02-27T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T18:05:00Z",
+    "citation_excerpt": "I don't expect Florian to be available, so that is a disappointment.",
+    "claim_id": "claim-gw28-wirtz-unavailable",
+    "claim_text": "Florian Wirtz was expected to miss GW28 with a back injury.",
+    "confidence": 0.98,
+    "expires_at": "2026-03-01T23:59:59Z",
+    "player_id": "player:2025-26:382"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_is_day_precision_but_entire_day_precedes_cutoff", "not_eligible_for_headline_agent_performance"]
+}

@@ -1,0 +1,56 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "769b9bb42c40da2b2b6097485a46a45d27e929c23dddaf3e7f6d6894102fe26e",
+  "response_sha256": "27558ff2531f18bbf9a10dcfb06b875b592a01f39e76aec5da0a3d1c90eda683",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw28-wirtz-expected-absence",
+      "document_id": "document:ffs-gw28-wirtz-out-2026-02-27",
+      "passage_id": "passage:claim-gw28-wirtz-unavailable",
+      "source_id": "ffs-gw28-wirtz-out-2026-02-27",
+      "claim_text": "Florian Wirtz is not expected to be available.",
+      "citation_excerpt": "I don't expect Florian to be available, so that is a disappointment.",
+      "citation_excerpt_sha256": "baf8e47f2b2cf1ba9b103f0a3bdb8f1bb4b4ba901ebfaad81e579a81a5244b75",
+      "expires_at": "2026-03-01T23:59:59Z",
+      "confidence": 0.98,
+      "player_uid": "player:2025-26:382"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [{
+      "adjustment_id": "adjustment:gw28-wirtz-expected-minutes-zero",
+      "claim_ids": ["claim:gw28-wirtz-expected-absence"],
+      "target": "expected_minutes",
+      "before_value": 62.5,
+      "after_value": 0.0,
+      "unit": "minutes",
+      "confidence": 0.97,
+      "expires_at": "2026-03-01T23:59:59Z",
+      "player_uid": "player:2025-26:382",
+      "rationale": "The cited statement says Wirtz is not expected to be available, supporting zero expected minutes for the GW28 window."
+    }],
+    "notes": ["No start_probability adjustment is proposed because reducing the 0.7695 baseline to 0.0 would exceed the permitted absolute change of 0.25."]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:37:57Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "769b9bb42c40da2b2b6097485a46a45d27e929c23dddaf3e7f6d6894102fe26e",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

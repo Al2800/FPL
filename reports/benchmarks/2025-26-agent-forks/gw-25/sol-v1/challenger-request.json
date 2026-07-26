@@ -1,0 +1,137 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "fc60ae031c5fd7cefdc96b33261c483cadbf554c38cbb34b9a206adc1a53ef4c",
+  "deterministic_candidate_sha256": "7bc273eb39ceb545ba7ca1ab21198e3f55e18b8cb8a48f39acf2816778b826d7",
+  "episode": {
+    "decision_at": "2026-02-06T18:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw25:manager-neutral",
+    "observed_episode_sha256": "be3adebe1c21ad62c09edc3b02cedd9c3a983385cb951259962b3450c1845047",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T18:05:00Z",
+      "content_sha256": "f573b0455672c992855b48101deb3192782168c83629698661bf8d29d41a0485",
+      "document_id": "document:ffs-gw25-timber-fine-2026-02-06",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "passages": {
+        "passage:claim-gw25-timber-fine": "Jurrien is fine."
+      },
+      "published_at": "2026-02-06T00:00:00Z",
+      "source_id": "ffs-gw25-timber-fine-2026-02-06",
+      "title": "FPL Gameweek 25 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "37840b25883b5023ea67f82906c819a880483370a20d9feb3838457939fa47f8",
+    "run_id": "gw25-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim:gw25-player-8-fine",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:8",
+          "provenance": {
+            "content_hash_sha256": "f573b0455672c992855b48101deb3192782168c83629698661bf8d29d41a0485",
+            "source_ids": [
+              "ffs-gw25-timber-fine-2026-02-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T18:05:00Z",
+          "claim_id": "claim:gw25-player-8-fine",
+          "claim_text": "Jurrien is fine.",
+          "confidence": 0.95,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw25-timber-fine-2026-02-06",
+          "expires_at": "2026-02-07T00:00:00Z",
+          "observed_at": "2026-07-26T18:05:00Z",
+          "provenance": {
+            "content_hash_sha256": "f573b0455672c992855b48101deb3192782168c83629698661bf8d29d41a0485",
+            "source_ids": [
+              "ffs-gw25-timber-fine-2026-02-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-02-06T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "67730da3cc338fa9df964e9eef85d1b753f2d54adb38d570175dfa229f04c2ba",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "The passage supports a fitness claim but does not quantify a change from the supplied expected_minutes or start_probability baseline, so no adjustment is proposed."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": []
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:8": {
+      "expected_minutes": 82.8,
+      "start_probability": 0.8594
+    }
+  },
+  "player_ids": [
+    "player:2025-26:8"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "ea063fcd3991f025290a3785fb17f19941bfe94f2f6da9a4835d8af2fdcf37ce",
+  "run_id": "gw25-sol-challenger-v1",
+  "schema_version": "1.0"
+}

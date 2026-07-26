@@ -1,0 +1,55 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "b020666039c1a58db9dd607943684199583065a66ada1187b234a0023cd7493e",
+  "response_sha256": "c20249f944fc82b86429e6ca2a9e688d63bf89bd86a6d44911fe769034179953",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw23:bruno-late-assessment",
+        "document_id": "document:ffs-gw23-bruno-assessment-2026-01-23",
+        "passage_id": "passage:claim-gw23-bruno-late-assessment",
+        "source_id": "ffs-gw23-bruno-assessment-2026-01-23",
+        "claim_text": "Bruno Guimaraes remained in contention for GW23, but his availability was still undecided.",
+        "citation_excerpt": "We'll give him every chance for this weekend. Let's wait and see.",
+        "citation_excerpt_sha256": "906dd704ffb3d5f0b1ac66270885d2aec9881aaa60546e53bcd481eb8c923994",
+        "expires_at": "2026-01-25T23:59:59Z",
+        "confidence": 0.95,
+        "player_uid": "player:2025-26:488"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "Source published 2026-01-23 before the 2026-01-24T11:00:00Z cutoff.",
+      "Baseline expected minutes were 83.8 and baseline start probability was 0.9063.",
+      "The passage establishes unresolved availability but does not quantify a revised start probability or expected-minutes value."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:12:42Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "b020666039c1a58db9dd607943684199583065a66ada1187b234a0023cd7493e",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

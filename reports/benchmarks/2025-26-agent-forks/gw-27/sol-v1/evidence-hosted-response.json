@@ -1,0 +1,48 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "a78fdb2eae095c6068d99665b74dd522984e224b0ace111c7aad3e9d67200948",
+  "response_sha256": "c65fb2fd468970af49acb971b4e7bb87e4adb41021904494feb4b15e94f0746b",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw27:haaland-fit",
+      "document_id": "document:ffs-gw27-haaland-fit-2026-02-20",
+      "passage_id": "passage:claim-gw27-haaland-fit",
+      "source_id": "ffs-gw27-haaland-fit-2026-02-20",
+      "claim_text": "Pep Guardiola nonverbally indicated that Erling Haaland was back fully fit.",
+      "citation_excerpt": "Pep Guardiola gave no verbal confirmation that Erling Haaland would be available but emphatically nodded when asked if he was back fully fit.",
+      "citation_excerpt_sha256": "d0da12648648683bf5822f231df2c349f450772532d42fa7d6b0d1e8c45afcf1",
+      "expires_at": "2026-02-22T23:59:59Z",
+      "confidence": 0.9,
+      "player_uid": "player:2025-26:430"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "The baseline expected minutes were 79.7 and the baseline start probability was 0.9511.",
+      "The nonverbal fitness signal does not quantify a revised expected-minutes value or start probability, so no adjustment is proposed."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:35:04Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "a78fdb2eae095c6068d99665b74dd522984e224b0ace111c7aad3e9d67200948",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

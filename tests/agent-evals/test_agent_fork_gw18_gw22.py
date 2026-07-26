@@ -51,7 +51,7 @@ def test_all_research_is_strictly_predeadline() -> None:
         assert all(row["published_at"] < evidence["decision_cutoff"] for row in evidence["sources"])
 
 
-def test_committed_chain_is_bound_and_stops_before_gw23() -> None:
+def test_committed_sol_v1_chain_is_bound_and_stops_before_gw23() -> None:
     comparisons = {
         gw: _read(AGENT / f"gw-{gw:02d}/sol-v1/comparison.json")
         for gw in range(18, 23)
@@ -60,7 +60,7 @@ def test_committed_chain_is_bound_and_stops_before_gw23() -> None:
         assert comparisons[gw]["next_state_sha256"] == comparisons[gw + 1]["starting_state_sha256"]
     assert comparisons[22]["next_state_sha256"] is None
     assert not (AGENT / "gw-22/sol-v1/next-policy-state.json").exists()
-    assert not (AGENT / "gw-23").exists()
+    assert not (AGENT / "gw-23/sol-v1").exists()
 
 
 def test_same_state_attribution_exists_for_all_five_weeks() -> None:

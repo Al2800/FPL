@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw29-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-03-03T18:00:00Z",
+  "captured_at": "2026-07-26T18:05:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Erling Haaland felt better after missing GW28, but Pep Guardiola deferred the decision until after training.",
+  "sources": [{
+    "source_id": "ffs-gw29-haaland-assessment-2026-03-03",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/03/03/fpl-gameweek-29-team-news-tuesdays-live-injury-updates",
+    "title": "FPL Gameweek 29 team news: Tuesday's live injury updates and Haaland latest",
+    "published_at": "2026-03-03T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T18:05:00Z",
+    "citation_excerpt": "He feels much better but yesterday we didn't train. Now we have training, we will decide today.",
+    "claim_id": "claim-gw29-haaland-late-assessment",
+    "claim_text": "Erling Haaland had improved after a knee issue but remained subject to a post-training decision before GW29.",
+    "confidence": 0.95,
+    "expires_at": "2026-03-04T23:59:59Z",
+    "player_id": "player:2025-26:430"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_is_day_precision_but_entire_day_precedes_cutoff", "not_eligible_for_headline_agent_performance"]
+}

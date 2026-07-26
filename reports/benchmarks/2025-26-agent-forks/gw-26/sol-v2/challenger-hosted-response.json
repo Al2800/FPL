@@ -1,0 +1,30 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "dd4f6260f8a59d07e800cdd7b7ba8fa14f99c6a5051a4393dcbee7a5f2deba7c",
+  "response_sha256": "a634644c4b7e466cb01e17ce757997e26e058b97707b6605f67f4810ab602e4d",
+  "structured_output": {
+    "outcome": "dismissed",
+    "notes": "The direct pre-deadline passage confirms an immediate absence and supports reducing expected_minutes from 50.1 to 0.0 for GW26; the unspecified duration does not undermine that bounded adjustment."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:30:26Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "dd4f6260f8a59d07e800cdd7b7ba8fa14f99c6a5051a4393dcbee7a5f2deba7c",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

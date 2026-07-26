@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "8670f95702722a1ecc864a3ad29197b14bbe4a917c61cdbb6a5eb6b9c3531534",
+  "response_sha256": "8ca54e716a1e9347bfb6fcb5d216103d4fc7ccfb7d3916b80814d0c9e6b98965",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "gw24-sol-challenger-v1",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "The proposal contains no adjustments to review. Its cited passage supports general availability but does not quantify a change from the supplied baseline, and the proposal correctly limits the post-decision observation to retrospective exploratory use."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:16:53Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "8670f95702722a1ecc864a3ad29197b14bbe4a917c61cdbb6a5eb6b9c3531534",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

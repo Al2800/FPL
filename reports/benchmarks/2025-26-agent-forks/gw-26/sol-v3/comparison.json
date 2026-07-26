@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "1e9be1203a741de2a056b757758953be717d77036681a80e4e378bd804931675",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 64,
+  "agent_vs_canonical_delta": -4,
+  "canonical_gross_points": 68,
+  "canonical_tree_sha256_after": "e6499c6931c6b86a0ab08928cd98a0cf7b9dead7b1c402539f16a10ebcec1961",
+  "canonical_tree_sha256_before": "e6499c6931c6b86a0ab08928cd98a0cf7b9dead7b1c402539f16a10ebcec1961",
+  "captain": "Gabriel dos Santos Magalhães",
+  "challenger_run_sha256": "ec7e0a689ba5c851bb0e9d666f666ce36f07b6b784b03e79a041db8d5b08b715",
+  "content_sha256": "8c7a038d9e24e87b509b2ad2a373c38476a3bd29a3ab84441f4f04f9c0e3314c",
+  "evidence_run_sha256": "574073fb6bf5821a3a41de7b6f374da94777581c4f776330a9acdd8987b68fee",
+  "experiment_id": "2025-26-gw26-sol-agent-fork-v3",
+  "exploratory_only": true,
+  "gameweek": 26,
+  "hit_cost": 0,
+  "host_bundle_sha256": "472fdaea711f3a51993a6ed5cecd6083844473d70d77d2c0bc97a414a52f130b",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "double_gameweek_fixture_count_is_already_encoded_by_the_episode",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "ebd38fe54cac253b8c76ae55f79954549a38d7d011f89a23cba0368a8ac3481f",
+  "plan_sha256": "0d5dd9ac042220acdf57587f0bcbf4b37845f69856186a8cd120894ece5f8ec6",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Mateus Mané",
+      "player_out": "Marc Guiu Paz"
+    }
+  ],
+  "solver_input_sha256": "6f3987da8b334e706552c49884c446f44a6b189c750c4b9e79d61893923296b8",
+  "solver_output_sha256": "d3399a1e5b89d222fab60d67ec51035a6914735599a9e1b9f429a3dbf66e3472",
+  "starting_state_sha256": "cca91d67bcfd2381a9f27fa096c77ed6309b2552230601499535d36c0897610d"
+}

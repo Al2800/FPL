@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "d778600fa88a123a20c3597f87821d36ace2f7fbc5f1858f82ac9fe88a0e6ac0",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 82,
+  "agent_vs_canonical_delta": 15,
+  "canonical_gross_points": 67,
+  "canonical_tree_sha256_after": "08ff23cfb12eca53dc123df4f759687cc2c6df773d0b6f167f71033a4032b532",
+  "canonical_tree_sha256_before": "08ff23cfb12eca53dc123df4f759687cc2c6df773d0b6f167f71033a4032b532",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "e7b94f7aaea56d209024ae342cd1672561c29bfb949ed255970772f199616e0e",
+  "content_sha256": "ba606036c2cd7babd8f099c750b85cb05a73e6fa3c339860bfcc809c1454882f",
+  "evidence_run_sha256": "c1cc6ea659560b175032f1018c8edd795e79c862a3f5fd1613732057f9982fe6",
+  "experiment_id": "2025-26-gw28-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 28,
+  "hit_cost": 0,
+  "host_bundle_sha256": "e0a12433f985fab98dfbc4d3539ca247d2064fda448b56dff4c402277d9f0d8f",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "9c0b92a14fece645a1696e4843bb35a20a62bd16f3451a88063c88f29a2bb6ca",
+  "plan_sha256": "6865f94c5e6f02c730cb60de72a4806a0dd1b33129df630dc00179353b0b8e3e",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Emiliano Martínez Romero",
+      "player_out": "Robert Lynch Sánchez"
+    }
+  ],
+  "solver_input_sha256": "fb529ce076d8e1326a99d4ddad9c2dc565fbba705c060142c5402f75510f97d3",
+  "solver_output_sha256": "9b66125d65d0f51227b88c2e8010c94ef0089a4cac6a0ddb9d90c00c1ceed2d6",
+  "starting_state_sha256": "911b34fa9267c8c380e5675f538cfb8d71c441508e81d3c2740a676bbbe2be39"
+}

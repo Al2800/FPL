@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw24-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-01-31T13:30:00Z",
+  "captured_at": "2026-07-26T18:05:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Mikel Arteta said Jurriën Timber was okay after a midweek rest for a niggle and heavy minutes.",
+  "sources": [{
+    "source_id": "ffs-gw24-timber-okay-2026-01-30",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/01/30/fpl-gameweek-24-team-news-fridays-live-injury-updates-3",
+    "title": "FPL Gameweek 24 team news: Friday's live injury updates",
+    "published_at": "2026-01-30T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T18:05:00Z",
+    "citation_excerpt": "Yeah, they are okay. Obviously, they have played a lot of minutes.",
+    "claim_id": "claim-gw24-timber-okay",
+    "claim_text": "Jurriën Timber was available for GW24 after being rested in midweek while carrying a niggle.",
+    "confidence": 0.95,
+    "expires_at": "2026-02-01T23:59:59Z",
+    "player_id": "player:2025-26:8"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_is_day_precision_but_entire_day_precedes_cutoff", "not_eligible_for_headline_agent_performance"]
+}

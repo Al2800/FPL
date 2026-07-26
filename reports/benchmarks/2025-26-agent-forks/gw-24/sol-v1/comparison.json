@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "25d24ea3d8d8ec166fee953abbae21a42c54894979982afeada5eacaa8c79032",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 45,
+  "agent_vs_canonical_delta": -15,
+  "canonical_gross_points": 60,
+  "canonical_tree_sha256_after": "c2db44936e991ac500059ceaff2be865d24ac351e8d8b25d4c66eff5b225ed19",
+  "canonical_tree_sha256_before": "c2db44936e991ac500059ceaff2be865d24ac351e8d8b25d4c66eff5b225ed19",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "926c94d7dc913a80e4864f67a6d80535e24e9121ea0fcab6e627f5a56233b6f0",
+  "content_sha256": "6c7e884b3212e2b2283195b1e530867a3d50e36d9eb7fa7eba79bb2290280fc0",
+  "evidence_run_sha256": "8f7e163fabf3141be45868920e7b0392e4c4b20ba5be5020c7ae72c52a1fdee1",
+  "experiment_id": "2025-26-gw24-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 24,
+  "hit_cost": 0,
+  "host_bundle_sha256": "95bb846a4742657517845953517d4a54b59729a1881169b1879b43946ed5342b",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "8c6aab147031cae0c1ccbbc22c23304eb7eaf2932a8d326149d42db6a37c4202",
+  "plan_sha256": "ce6d07573a05d467a703b10cb7901d6690c2a98f760730214db18fc9c7b9a5d6",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Harry Wilson",
+      "player_out": "Bruno Guimarães Rodriguez Moura"
+    }
+  ],
+  "solver_input_sha256": "05f184d2f224a8be229b1fbcf37dae094cbc4ccdb7f48ab16f1e40ac880955bf",
+  "solver_output_sha256": "ffbaa2c974121c8195eb5b2936e3ab711bf579642340712467ce24e4576ab896",
+  "starting_state_sha256": "2ad4dd2b97c9fdfb7565bfcad749ca8da09a2d8b0d31d783b95183eaa07a986b"
+}

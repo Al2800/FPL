@@ -1,0 +1,45 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "16038e9fe3831765143d851c1eed90d078861a2d75fec109aff1d85b9e5c0191",
+  "response_sha256": "c96df0d2443c40e2293062cb12dc285a002064be97e99827d6e30c8d8ac4f5ee",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw25:jurrien-fine",
+      "document_id": "document:ffs-gw25-timber-fine-2026-02-06",
+      "passage_id": "passage:claim-gw25-timber-fine",
+      "source_id": "ffs-gw25-timber-fine-2026-02-06",
+      "claim_text": "Jurrien is fine.",
+      "citation_excerpt": "Jurrien is fine.",
+      "citation_excerpt_sha256": "2c55db6ab7e9af0a7c50cacd190d85ea78491e72d5125d7eb02dbfa2c3590916",
+      "expires_at": "2026-02-06T18:30:00Z",
+      "confidence": 0.95,
+      "player_uid": "player:2025-26:8"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": ["No adjustment proposed: the supplied passage does not quantify expected minutes or start probability and does not support changing the supplied baseline."]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:21:53Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "16038e9fe3831765143d851c1eed90d078861a2d75fec109aff1d85b9e5c0191",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

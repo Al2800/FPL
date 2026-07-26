@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "ea063fcd3991f025290a3785fb17f19941bfe94f2f6da9a4835d8af2fdcf37ce",
+  "response_sha256": "960b36b0ab228581240501db722ec25db31838796633739c438689189423b1a6",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "gw25-sol-challenger-v1",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "no_escalation",
+    "notes": "No proposed adjustments were present, so no escalation was required."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:20:17Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "ea063fcd3991f025290a3785fb17f19941bfe94f2f6da9a4835d8af2fdcf37ce",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

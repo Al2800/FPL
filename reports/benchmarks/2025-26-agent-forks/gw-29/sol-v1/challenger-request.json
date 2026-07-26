@@ -1,0 +1,137 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "0640d499a5383621f2eaaf4e4bc31969c92e8e464ad74fa4223333a4a43c767e",
+  "deterministic_candidate_sha256": "35a4bfb5e4d38b1773cde4a186a122a835f3d858ffcafd8aa6a9750f942e7a6f",
+  "episode": {
+    "decision_at": "2026-03-03T18:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw29:manager-neutral",
+    "observed_episode_sha256": "32000c8c7209c25e77312eb607fdae4af9aecbd07d2a332b7139059a78e55b31",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T18:05:00Z",
+      "content_sha256": "a4962c702586608a5139f5da98c126739d9c348598fc9acd47924fc694a6e4fb",
+      "document_id": "document:ffs-gw29-haaland-assessment-2026-03-03",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "passages": {
+        "passage:claim-gw29-haaland-late-assessment": "He feels much better but yesterday we didn't train. Now we have training, we will decide today."
+      },
+      "published_at": "2026-03-03T00:00:00Z",
+      "source_id": "ffs-gw29-haaland-assessment-2026-03-03",
+      "title": "FPL Gameweek 29 team news: Tuesday's live injury updates and Haaland latest"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "5820272fdc09a3dd4f41b92ad0b817ee0829fe19c8a0249ebcbef412c56b0c72",
+    "run_id": "gw29-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim-gw29-haaland-late-assessment",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:430",
+          "provenance": {
+            "content_hash_sha256": "a4962c702586608a5139f5da98c126739d9c348598fc9acd47924fc694a6e4fb",
+            "source_ids": [
+              "ffs-gw29-haaland-assessment-2026-03-03"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T18:05:00Z",
+          "claim_id": "claim-gw29-haaland-late-assessment",
+          "claim_text": "The player feels much better, but did not train yesterday and remains subject to a decision today after training.",
+          "confidence": 0.95,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw29-haaland-assessment-2026-03-03",
+          "expires_at": "2026-03-04T23:59:59Z",
+          "observed_at": "2026-07-26T18:05:00Z",
+          "provenance": {
+            "content_hash_sha256": "a4962c702586608a5139f5da98c126739d9c348598fc9acd47924fc694a6e4fb",
+            "source_ids": [
+              "ffs-gw29-haaland-assessment-2026-03-03"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-03-03T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "28814bd1dff6fd874b9beaafd14a9f764cd5be40c40e2b7d8a42245a0a71ef49",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "No adjustment proposed: the evidence reports improvement but leaves the post-training decision unresolved and does not quantify a change from the supplied baseline."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": []
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:430": {
+      "expected_minutes": 63.6,
+      "start_probability": 0.9211
+    }
+  },
+  "player_ids": [
+    "player:2025-26:430"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "ab307367bfb2c7ea61e8b7ce6406cb8524349f49e39916d593e29d7a492e59f8",
+  "run_id": "gw29-sol-challenger-v1",
+  "schema_version": "1.0"
+}

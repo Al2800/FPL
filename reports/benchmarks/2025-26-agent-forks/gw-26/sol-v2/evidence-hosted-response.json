@@ -1,0 +1,55 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "e5e0a59e07231fb0b7026ccf34292aa513bad46fb6632e2cc619b37a3db4c15c",
+  "response_sha256": "35e8720c2ba98d193e962ed3e1f7585e1aeee8d38d9d06f50b40561a28f4faa4",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw26-mateta-confirmed-absence",
+      "document_id": "document:ffs-gw26-mateta-out-2026-02-10",
+      "passage_id": "passage:claim-gw26-mateta-out",
+      "source_id": "ffs-gw26-mateta-out-2026-02-10",
+      "claim_text": "The player will miss an unspecified period of time.",
+      "citation_excerpt": "He will miss a certain time. I can't say two weeks, three weeks or four weeks.",
+      "citation_excerpt_sha256": "971c6fa6fec8835318ff0ec49d88ef2015a90b0be8066fd6823f9da410162b52",
+      "expires_at": "2026-02-13T23:59:59Z",
+      "confidence": 0.99,
+      "player_uid": "player:2025-26:283"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [{
+      "adjustment_id": "adjustment:gw26-mateta-expected-minutes-zero",
+      "claim_ids": ["claim:gw26-mateta-confirmed-absence"],
+      "target": "expected_minutes",
+      "before_value": 50.1,
+      "after_value": 0.0,
+      "confidence": 0.98,
+      "expires_at": "2026-02-13T23:59:59Z",
+      "player_uid": "player:2025-26:283",
+      "rationale": "The supplied passage confirms an absence lasting an unspecified period, justifying expected minutes of 0.0 for the imminent Gameweek 26 window."
+    }],
+    "notes": ["No start_probability adjustment is proposed because the required decrease would exceed the 0.25 policy limit."]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:29:24Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "e5e0a59e07231fb0b7026ccf34292aa513bad46fb6632e2cc619b37a3db4c15c",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

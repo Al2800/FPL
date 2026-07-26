@@ -1,0 +1,45 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "9fafe32b2e13aabb5552669283358ef13797fe20a174f7182c490f0a0e536de7",
+  "response_sha256": "5b6d0edcb4ca35248bf941aa4eff5f63a2da8352c1a6cafe10e8bba7bcaf6bcc",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw25-player-8-fine",
+      "document_id": "document:ffs-gw25-timber-fine-2026-02-06",
+      "passage_id": "passage:claim-gw25-timber-fine",
+      "source_id": "ffs-gw25-timber-fine-2026-02-06",
+      "claim_text": "Jurrien is fine.",
+      "citation_excerpt": "Jurrien is fine.",
+      "citation_excerpt_sha256": "2c55db6ab7e9af0a7c50cacd190d85ea78491e72d5125d7eb02dbfa2c3590916",
+      "expires_at": "2026-02-07T00:00:00Z",
+      "confidence": 0.95,
+      "player_uid": "player:2025-26:8"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": ["The passage supports a fitness claim but does not quantify a change from the supplied expected_minutes or start_probability baseline, so no adjustment is proposed."]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T18:19:01Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "9fafe32b2e13aabb5552669283358ef13797fe20a174f7182c490f0a0e536de7",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

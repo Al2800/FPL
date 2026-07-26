@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw26-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-02-10T18:00:00Z",
+  "captured_at": "2026-07-26T18:05:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Oliver Glasner confirmed Jean-Philippe Mateta would not be involved while rehabilitating a knee injury.",
+  "sources": [{
+    "source_id": "ffs-gw26-mateta-out-2026-02-10",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/02/10/fpl-gameweek-26-team-news-tuesdays-live-injury-updates",
+    "title": "FPL Gameweek 26 team news: Tuesday's live injury updates",
+    "published_at": "2026-02-10T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T18:05:00Z",
+    "citation_excerpt": "He will miss a certain time. I can't say two weeks, three weeks or four weeks.",
+    "claim_id": "claim-gw26-mateta-out",
+    "claim_text": "Jean-Philippe Mateta was unavailable for GW26 because of a knee injury.",
+    "confidence": 0.99,
+    "expires_at": "2026-02-13T23:59:59Z",
+    "player_id": "player:2025-26:283"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_is_day_precision_but_entire_day_precedes_cutoff", "double_gameweek_fixture_count_is_already_encoded_by_the_episode", "not_eligible_for_headline_agent_performance"]
+}
