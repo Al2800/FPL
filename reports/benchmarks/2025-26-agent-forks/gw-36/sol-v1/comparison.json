@@ -1,0 +1,43 @@
+{
+  "adapter_audit_sha256": "1e006f148e8fdf64a5b5c741632eeca152e4bba0aae306aed64b45b2349b85d7",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 87,
+  "agent_vs_canonical_delta": -2,
+  "canonical_gross_points": 89,
+  "canonical_tree_sha256_after": "d3bc81eac1e2f2f45b3408946dd9b74249aec0d49f3da7e594d10f3ee5f23fbd",
+  "canonical_tree_sha256_before": "d3bc81eac1e2f2f45b3408946dd9b74249aec0d49f3da7e594d10f3ee5f23fbd",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "96c60d6d66a4af55f9db9d3ac12fe4ea8d8a90efe670654318d03c6b9dfc3867",
+  "content_sha256": "94f34700c50ef1a7aa1df2e5c393315125b20fabf467661787cf859bbabcc6fc",
+  "evidence_run_sha256": "1d8d0ec0372191f03d700a7c53a75cbc22eadb0123f3735539f4d7e25bc99fb8",
+  "experiment_id": "2025-26-gw36-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 36,
+  "hit_cost": 0,
+  "host_bundle_sha256": "65e1cfbaed08255cb0661176acd1ddb3842a510e7fbde75228ab98c709ef9d9f",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "citation_excerpt_is_the_article_summary_not_a_direct_manager_quote",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "f7e22138c7061f5b377374b910de71fe1160083fe3c9fd1b18e33e7f746df860",
+  "plan_sha256": "9c662e208b3c789c599204da42f767595c26f6c4c4ebd999bbccde4888a8c058",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Antoine Semenyo",
+      "player_out": "Morgan Rogers"
+    },
+    {
+      "player_in": "Marc Guéhi",
+      "player_out": "Jurriën Timber"
+    }
+  ],
+  "solver_input_sha256": "d4cd6cc7d0b67c76866e4f3d13296b20a9d6b30b3c6638101dcca449ad184f5b",
+  "solver_output_sha256": "0c851ce16e9a0b623156fb7ae0a453827b888660c47766a1b86c3b280f0b66c0",
+  "starting_state_sha256": "350d507be23185310d05910cac70e744204927d122ce7040c2dce2d23a78b025"
+}

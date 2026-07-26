@@ -1,0 +1,58 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "479b673fd5100825bcd349abe9e9c97e9e94462ed55cb990b4fedfd7748684be",
+  "response_sha256": "acca46605e062544f04b5ba803965508393e56f001d1a74e72f944397704825e",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw37-semenyo-no-fresh-team-news",
+        "document_id": "document:ffs-gw37-bournemouth-no-presser-2026-05-09",
+        "passage_id": "passage:claim-gw37-semenyo-no-fresh-team-news",
+        "source_id": "ffs-gw37-bournemouth-no-presser-2026-05-09",
+        "claim_text": "No fresh pre-deadline Bournemouth manager team news was available for Antoine Semenyo ahead of Gameweek 37 because Bournemouth's manager would not face the media until after the deadline.",
+        "citation_excerpt": "The Bournemouth and Tottenham Hotspur managers will not face the media until after the Gameweek 37 deadline.",
+        "citation_excerpt_sha256": "9bd737e4e2467e2f889d1a953d68258e5f3b209bcadbf68e3ce96fc3d6c1f77c",
+        "expires_at": "2026-05-16T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:82"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "No adjustment is proposed: the absence of fresh pre-deadline manager news is not evidence that Semenyo was available, so expected_minutes 82.9 and start_probability 0.9658 remain unchanged.",
+      "This is an abstention based on retrospectively recovered evidence published before the decision cutoff; it does not apply or approve an adjustment."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:17:08Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "479b673fd5100825bcd349abe9e9c97e9e94462ed55cb990b4fedfd7748684be",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 1400,
+    "tool_calls": 0,
+    "input_tokens": 1100,
+    "output_tokens": 300,
+    "total_tokens": 1400,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

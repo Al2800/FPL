@@ -1,0 +1,57 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "ae8aa05c4ceb853ab58069d9572981b8256fb5ed1dff8f2feb031747f6acc66f",
+  "response_sha256": "5e711c732ad88713d4484ffed0bf7ddf6f59a950a6b296e5765a3eb9c1dada2a",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw38-timber-possible-return",
+        "document_id": "document:ffs-gw38-timber-possible-return-2026-05-21",
+        "passage_id": "passage:claim-gw38-timber-possible-return",
+        "source_id": "ffs-gw38-timber-possible-return-2026-05-21",
+        "claim_text": "Jurrien Timber was potentially going to return to training, but Mikel Arteta provided no selection clues.",
+        "citation_excerpt": "Merino to start training, Timber potentially to follow suit, no clues from Arteta.",
+        "citation_excerpt_sha256": "88b2705e7c6e1267541931b4a0829bdffe4715f80eaba18837c2d613c8512c14",
+        "expires_at": "2026-05-25T23:59:59Z",
+        "confidence": 0.8,
+        "player_uid": "player:2025-26:8"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "No adjustment is proposed: the source says only that Timber could potentially return to training and reports no Arteta selection clues, so it does not quantify a defensible change from 33.5 expected minutes or 0.7459 start probability."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:22:13Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "ae8aa05c4ceb853ab58069d9572981b8256fb5ed1dff8f2feb031747f6acc66f",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

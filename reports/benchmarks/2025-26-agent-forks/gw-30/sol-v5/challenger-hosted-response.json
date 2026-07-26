@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "71e816e5bba269254d44e0112d0cbea1ab3dc76be0f3a5b8eb136a306783122c",
+  "response_sha256": "b0b6aff3f58f8608e00cd12698e9c166ad5fe88bc4255beb7490d21042ba7ebe",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw30-sol-challenger-v5",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "Abstaining is justified. The qualitative fitness confirmation is consistent with the already strong baseline start probability and does not quantify a material minutes change. No player-specific rotation evidence supports an adjustment, and the claim is not production eligible because it was observed and available after the decision time."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:24:12Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "71e816e5bba269254d44e0112d0cbea1ab3dc76be0f3a5b8eb136a306783122c",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

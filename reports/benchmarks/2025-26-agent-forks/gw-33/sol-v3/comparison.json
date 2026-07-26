@@ -1,0 +1,46 @@
+{
+  "adapter_audit_sha256": "c837b74bbbeabebb5675a5f967cc721779eff106294de04416c38eb72747d0af",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 86,
+  "agent_vs_canonical_delta": 7,
+  "canonical_gross_points": 79,
+  "canonical_tree_sha256_after": "2733586d6b58bbe95464c32c3278e16e08a66cf07f5cda64ed30b523f793a5f6",
+  "canonical_tree_sha256_before": "2733586d6b58bbe95464c32c3278e16e08a66cf07f5cda64ed30b523f793a5f6",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "c99b3cbad9bdc69519f1027b8a5361b1d4a38fb244daffe312927aebecd326a3",
+  "content_sha256": "6b24f70fdfcea70bcae04b040e01862b5096690525aaaf4f6bddfc4e52681abe",
+  "evidence_run_sha256": "6a7af15d6b445aaaad7f2658f5a4c6698c04843ccac4f77fc6bf0e3671caf80f",
+  "experiment_id": "2025-26-gw33-sol-agent-fork-v3",
+  "exploratory_only": true,
+  "gameweek": 33,
+  "hit_cost": 0,
+  "host_bundle_sha256": "9965a64a270e9661c1c180bfa813f1df5a9ecac3a83521ec1da1e4639041c018",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "921fa0e8e99bbb091a7b99e512560fae936bcd322f09f1835e1749c50b963188",
+  "plan_sha256": "47d1b514873bcafb8e4a3cd24ef4aa71993876b1ae151ad6330600d104a070f6",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Pascal Groß",
+      "player_out": "Bryan Mbeumo"
+    },
+    {
+      "player_in": "Erling Haaland",
+      "player_out": "Igor Thiago Nascimento Rodrigues"
+    },
+    {
+      "player_in": "Marcus Tavernier",
+      "player_out": "Bruno Borges Fernandes"
+    }
+  ],
+  "solver_input_sha256": "23d3fcf6b424078ac4304dadf8232c5664f4585f633a5a5d7974471614bdad9e",
+  "solver_output_sha256": "966c5aa9b2f131461c542e35477975294b421d23bd81dd0e17f67f7da63032ab",
+  "starting_state_sha256": "a72f30cd3823392307138ce037ee532f2e685a34355964fa47ce6159a6c37754"
+}

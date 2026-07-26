@@ -1,0 +1,46 @@
+{
+  "adapter_audit_sha256": "e53e59bef778e46beba17fa091c5f6a4fb654657c09ba5b40b75938746e34967",
+  "agent_decision": "degraded_fallback",
+  "agent_fork_gross_points": 86,
+  "agent_vs_canonical_delta": 7,
+  "canonical_gross_points": 79,
+  "canonical_tree_sha256_after": "2733586d6b58bbe95464c32c3278e16e08a66cf07f5cda64ed30b523f793a5f6",
+  "canonical_tree_sha256_before": "2733586d6b58bbe95464c32c3278e16e08a66cf07f5cda64ed30b523f793a5f6",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "a58381b079facad1daae9f7e4c763a6db546b32fcc8a5c7f96e1c115b341b9ab",
+  "content_sha256": "9a89174a51d3bc13304373d3bf95c13c8494c1064b876b76025f9ea93cee63a3",
+  "evidence_run_sha256": "dfa18b595bb248242f5c258d23897808174872a9edad42313b7bbd70366c14a4",
+  "experiment_id": "2025-26-gw33-sol-agent-fork-v2",
+  "exploratory_only": true,
+  "gameweek": 33,
+  "hit_cost": 0,
+  "host_bundle_sha256": "c77a9100158943e9b4bcd603aa9e52d5eaef489ec33684232d2c6bf48072a698",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "921fa0e8e99bbb091a7b99e512560fae936bcd322f09f1835e1749c50b963188",
+  "plan_sha256": "47d1b514873bcafb8e4a3cd24ef4aa71993876b1ae151ad6330600d104a070f6",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Pascal Groß",
+      "player_out": "Bryan Mbeumo"
+    },
+    {
+      "player_in": "Erling Haaland",
+      "player_out": "Igor Thiago Nascimento Rodrigues"
+    },
+    {
+      "player_in": "Marcus Tavernier",
+      "player_out": "Bruno Borges Fernandes"
+    }
+  ],
+  "solver_input_sha256": "be6486d44a7f0d9116c831fcaceb649ea3310fa44be5f501ad263cb3cecc6a79",
+  "solver_output_sha256": "839b14e17cd479199b127adecd6d6686726ea43d8d35fcf9f461cef4ed97516c",
+  "starting_state_sha256": "a72f30cd3823392307138ce037ee532f2e685a34355964fa47ce6159a6c37754"
+}

@@ -1,0 +1,42 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "5820b934ccec84c6ef60a5be8dd9a7d016986f9b1eea66979bf7810623f5ad52",
+  "response_sha256": "8f4fd37203d66c41f1e248deb3468b2cbd970d96af1ae9a38495ed82bc44265f",
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:39:58Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "5820b934ccec84c6ef60a5be8dd9a7d016986f9b1eea66979bf7810623f5ad52",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw32-sol-challenger-v1",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "The evidence agent's abstention is appropriate: the cited midweek return supports recovery but does not quantify a defensible change to the already-high 78.5 expected-minutes baseline, and the evidence was observed only after the decision deadline, so there is no adjustment to challenge or escalate."
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

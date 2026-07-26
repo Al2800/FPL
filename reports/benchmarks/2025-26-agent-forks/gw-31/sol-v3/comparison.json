@@ -1,0 +1,46 @@
+{
+  "adapter_audit_sha256": "ac229946b6e40f9492a6230a2a923a873d15f0e855d164e0cfff66ecd4ee8e6e",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 60,
+  "agent_vs_canonical_delta": -3,
+  "canonical_gross_points": 63,
+  "canonical_tree_sha256_after": "2d266233a634182b0012ec0a4e2bdbfa09c63525aa714e9be6a75f7e2ab2bc19",
+  "canonical_tree_sha256_before": "2d266233a634182b0012ec0a4e2bdbfa09c63525aa714e9be6a75f7e2ab2bc19",
+  "captain": "Bruno Borges Fernandes",
+  "challenger_run_sha256": "613713c96b23b1d37897d386ef4e6ca8cd6a92dacf3488be4eb7d7f103e6b286",
+  "content_sha256": "e09322d2c17e218aa57bcd6c85a31396da027e3775aa31e834235e6ab3c321f7",
+  "evidence_run_sha256": "bb676eb1c0e9fdb64c7a85d4cde182fdc43f60d3ee107f12d9c7f78b6b84542b",
+  "experiment_id": "2025-26-gw31-sol-agent-fork-v3",
+  "exploratory_only": true,
+  "gameweek": 31,
+  "hit_cost": 0,
+  "host_bundle_sha256": "ed68285f2a2f4e54489d4bd77f2aae0f98a752afda3e41a3ec6bdf4c6eb60aa8",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "5156472fb6691f7368d9cc05e9acf1a39345a6b48c3db988d5b43f578fbaa4ad",
+  "plan_sha256": "66feb58ab93edf1aea563a211f12ed1e8ac15361e0716e29d46f6a45d516cb19",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Bryan Mbeumo",
+      "player_out": "Declan Rice"
+    },
+    {
+      "player_in": "João Pedro Junqueira de Jesus",
+      "player_out": "Erling Haaland"
+    },
+    {
+      "player_in": "Cole Palmer",
+      "player_out": "Antoine Semenyo"
+    }
+  ],
+  "solver_input_sha256": "3690ee5e931905d4929817b5d475e81ecee16266f4c1f919bcd0ef6887c32348",
+  "solver_output_sha256": "515a5130bbe5da6924e621e23e5de1fde86b9237bfc3e5e2d51a86837673cbf5",
+  "starting_state_sha256": "ddb596a9d0a1911bb90d44158691bd3b199debddaae964ef518b9c96825101d2"
+}

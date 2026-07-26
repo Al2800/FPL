@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw36-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-05-09T10:00:00Z",
+  "captured_at": "2026-07-26T19:25:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Jurrien Timber remained out before GW36 despite Arsenal reporting no fresh concerns.",
+  "sources": [{
+    "source_id": "ffs-gw36-timber-still-out-2026-05-08",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/05/08/fpl-gameweek-36-team-news-fridays-live-injury-updates-3?hc_page=-1",
+    "title": "FPL Gameweek 36 team news: Friday's live injury updates",
+    "published_at": "2026-05-08T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T19:25:00Z",
+    "citation_excerpt": "Arsenal have no fresh concerns but Jurrien Timber and Mikel Merino remain out.",
+    "claim_id": "claim-gw36-timber-still-out",
+    "claim_text": "Jurrien Timber remained unavailable for GW36.",
+    "confidence": 0.98,
+    "expires_at": "2026-05-11T23:59:59Z",
+    "player_id": "player:2025-26:8"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_normalized_to_day_start", "citation_excerpt_is_the_article_summary_not_a_direct_manager_quote", "not_eligible_for_headline_agent_performance"]
+}

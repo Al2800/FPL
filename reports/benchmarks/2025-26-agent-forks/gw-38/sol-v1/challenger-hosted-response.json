@@ -1,0 +1,42 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "6f6c9f0f497addd3f07c1748c9fdafadf5b98d22ec18b37ee70875ea4ef1924f",
+  "response_sha256": "185bb27f6ce361ca394348fb66b415bc95e34c86a003aca904d75edf4659331d",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw38-sol-challenger-v1",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "The vague possibility of a return to training and absence of any selection clue support abstention because they do not justify a defensible adjustment to Timber's expected minutes or start probability."
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:24:25Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "6f6c9f0f497addd3f07c1748c9fdafadf5b98d22ec18b37ee70875ea4ef1924f",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 1200,
+    "tool_calls": 0,
+    "input_tokens": 1800,
+    "output_tokens": 120,
+    "total_tokens": 1920,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

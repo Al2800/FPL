@@ -1,0 +1,72 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "c879622ea87c873bdc2b0eedfc91ccb9d745556ec5492fb492597318877979dc",
+  "response_sha256": "09f7fd7da4de3fdb8f6f3f62f4bafe1878fd619a1b34994dec93337e54b74230",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw31-salah-out",
+        "document_id": "document:ffs-gw31-salah-out-2026-03-20",
+        "passage_id": "passage:claim-gw31-salah-out",
+        "source_id": "ffs-gw31-salah-out-2026-03-20",
+        "claim_text": "Mohamed Salah is unavailable for Liverpool's GW31 trip to Brighton and Hove Albion because of a muscle injury.",
+        "citation_excerpt": "Mohamed Salah (muscle) will not be available for Saturday's trip to Brighton and Hove Albion.",
+        "citation_excerpt_sha256": "575cecc218cf850244fc568bf2ab70dead48abffd723a0760813697af0b327df",
+        "expires_at": "2026-03-22T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:381"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment-gw31-salah-expected-minutes-zero",
+        "claim_ids": [
+          "claim-gw31-salah-out"
+        ],
+        "target": "expected_minutes",
+        "before_value": 64.8,
+        "after_value": 0.0,
+        "unit": "minutes",
+        "confidence": 0.99,
+        "expires_at": "2026-03-22T23:59:59Z",
+        "player_uid": "player:2025-26:381",
+        "rationale": "The cited team-news passage says Salah will not be available for the fixture, so his expected minutes should be reduced to zero while leaving start probability unchanged."
+      }
+    ],
+    "notes": [
+      "Direct team-news evidence rules Mohamed Salah out for the GW31 fixture; only expected minutes are proposed for adjustment."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:38:42Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "c879622ea87c873bdc2b0eedfc91ccb9d745556ec5492fb492597318877979dc",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw38-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-05-24T13:30:00Z",
+  "captured_at": "2026-07-26T19:25:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Jurrien Timber was only potentially close to returning before the final-day deadline, while Arsenal gave no firm selection clues.",
+  "sources": [{
+    "source_id": "ffs-gw38-timber-possible-return-2026-05-21",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/05/21/fpl-gameweek-38-team-news-thursdays-live-injury-updates",
+    "title": "FPL Gameweek 38 team news: Thursday's live injury updates",
+    "published_at": "2026-05-21T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T19:25:00Z",
+    "citation_excerpt": "Merino to start training, Timber potentially to follow suit, no clues from Arteta.",
+    "claim_id": "claim-gw38-timber-possible-return",
+    "claim_text": "Jurrien Timber might return to training before GW38, but no availability or starting confirmation was provided.",
+    "confidence": 0.92,
+    "expires_at": "2026-05-25T23:59:59Z",
+    "player_id": "player:2025-26:8"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "citation_excerpt_is_the_article_summary_not_a_direct_manager_quote", "post_deadline_lineups_explicitly_excluded", "not_eligible_for_headline_agent_performance"]
+}

@@ -1,0 +1,138 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "302b49b91ac0034a65dd0eb44306b1e16e6ed1bdd258723db5ba2d445d67ccba",
+  "deterministic_candidate_sha256": "9ce7663c581ef5c13f8bf42c0bb9432885a3ef7bc80cbaa647cf4ec96df02229",
+  "episode": {
+    "decision_at": "2026-05-15T17:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw37:manager-neutral",
+    "observed_episode_sha256": "c5fd0fb77e8e00602d4c74ebc1bf7f87b9ee8d311bdd2fd590c237ee08896b38",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T19:25:00Z",
+      "content_sha256": "6cd78cb7adae3dbf7fecb3410cd9ceb0219a0556e18be44d36416d7849f316e8",
+      "document_id": "document:ffs-gw37-bournemouth-no-presser-2026-05-09",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "passages": {
+        "passage:claim-gw37-semenyo-no-fresh-team-news": "The Bournemouth and Tottenham Hotspur managers will not face the media until after the Gameweek 37 deadline."
+      },
+      "published_at": "2026-05-09T00:00:00Z",
+      "source_id": "ffs-gw37-bournemouth-no-presser-2026-05-09",
+      "title": "Why we won't get pre-deadline team news for two clubs in Gameweek 37"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "9c3650389c4853d51e1a7de9fedbbeb885227ab5cc2a66e317b97c5acd4ca1b0",
+    "run_id": "gw37-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim-gw37-semenyo-no-fresh-team-news",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:82",
+          "provenance": {
+            "content_hash_sha256": "6cd78cb7adae3dbf7fecb3410cd9ceb0219a0556e18be44d36416d7849f316e8",
+            "source_ids": [
+              "ffs-gw37-bournemouth-no-presser-2026-05-09"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T19:25:00Z",
+          "claim_id": "claim-gw37-semenyo-no-fresh-team-news",
+          "claim_text": "No fresh pre-deadline Bournemouth manager team news was available for Antoine Semenyo ahead of Gameweek 37 because Bournemouth's manager would not face the media until after the deadline.",
+          "confidence": 0.99,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw37-bournemouth-no-presser-2026-05-09",
+          "expires_at": "2026-05-16T23:59:59Z",
+          "observed_at": "2026-07-26T19:25:00Z",
+          "provenance": {
+            "content_hash_sha256": "6cd78cb7adae3dbf7fecb3410cd9ceb0219a0556e18be44d36416d7849f316e8",
+            "source_ids": [
+              "ffs-gw37-bournemouth-no-presser-2026-05-09"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-05-09T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "c34206e41dba222f0c0eb7aa89512f4d7db4cc4459d8dd8e5fb1f38b89d61447",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "No adjustment is proposed: the absence of fresh pre-deadline manager news is not evidence that Semenyo was available, so expected_minutes 82.9 and start_probability 0.9658 remain unchanged.",
+        "This is an abstention based on retrospectively recovered evidence published before the decision cutoff; it does not apply or approve an adjustment."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": []
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:82": {
+      "expected_minutes": 82.9,
+      "start_probability": 0.9658
+    }
+  },
+  "player_ids": [
+    "player:2025-26:82"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "52fe9b7e801e66c14433ea439c86353a67c738f1806ffbc06a99ab60b84b08d7",
+  "run_id": "gw37-sol-challenger-v1",
+  "schema_version": "1.0"
+}

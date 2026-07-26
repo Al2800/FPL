@@ -93,7 +93,7 @@ def test_every_week_completes_both_agent_gates() -> None:
             assert audit["fallback_reason"] == "no_agent_adjustments"
 
 
-def test_state_chain_is_bound_and_stops_before_gw30() -> None:
+def test_state_chain_is_bound_and_gw29_remains_terminal() -> None:
     comparisons = {
         gameweek: _read(
             AGENT
@@ -117,7 +117,20 @@ def test_state_chain_is_bound_and_stops_before_gw30() -> None:
             f"{ACCEPTED_VERSION[29]}/next-policy-state.json"
         )
     ).exists()
-    assert not (AGENT / "gw-30").exists()
+    expected_gw30, transition = derive_next_state_from_agent_fork(
+        gameweek=29,
+        canonical_root=CANONICAL,
+        episode_root=EPISODES,
+        fork_root=AGENT / "gw-29/sol-v1",
+    )
+    actual_gw30 = _read(
+        AGENT / "gw-30/sol-v5/starting-policy-state.json"
+    )
+    assert actual_gw30 == expected_gw30
+    assert (
+        actual_gw30["content_sha256"]
+        == transition["next_state_sha256"]
+    )
 
 
 def test_same_state_attribution_exists_for_all_seven_weeks() -> None:

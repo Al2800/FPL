@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "0744b9b05e975195ce6f35ea1fee33a59a0b96b1401f1914cb54345271481849",
+  "response_sha256": "510093483af0ba4a94d1929a19ddd78cb9d4e79f09d8cd1fc5b00eb36e8f0a42",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw31-sol-challenger-v3",
+    "reviewed_adjustment_ids": [
+      "adjustment-gw31-salah-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Direct published team-news evidence explicitly rules Mohamed Salah out of the GW31 fixture, so setting his expected_minutes to 0.0 is supported and the challenge is dismissed."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:40:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "0744b9b05e975195ce6f35ea1fee33a59a0b96b1401f1914cb54345271481849",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "4fb65ecd1f8d6b19b899c883bd506f0ff046d1db317b73741e75b2943614d9c9",
+  "response_sha256": "460c32c6e1f2e3dd3d2b267d718def3a1e18bb3bcd4806b34ec7947261ae5259",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw33-sol-challenger-v2",
+    "reviewed_adjustment_ids": [
+      "adjustment-gw33-saka-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "The direct, player-specific manager confirmation that Saka will miss the GW33 fixture supports reducing his expected minutes from 59.4 to 0.0. The retrospective timing and production-ineligibility classifications remain explicit and do not contradict this exploratory adjustment."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:48:12Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "4fb65ecd1f8d6b19b899c883bd506f0ff046d1db317b73741e75b2943614d9c9",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

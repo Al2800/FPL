@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw35-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-05-01T17:30:00Z",
+  "captured_at": "2026-07-26T19:25:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Mikel Arteta again ruled Jurrien Timber out before GW35.",
+  "sources": [{
+    "source_id": "ffs-gw35-timber-out-2026-05-01",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/05/01/fpl-gameweek-35-team-news-fridays-live-injury-updates-3",
+    "title": "FPL Gameweek 35 team news: Friday's live injury updates",
+    "published_at": "2026-05-01T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T19:25:00Z",
+    "citation_excerpt": "Kai and Jurrien will be out.",
+    "claim_id": "claim-gw35-timber-out",
+    "claim_text": "Jurrien Timber was confirmed unavailable for GW35.",
+    "confidence": 0.99,
+    "expires_at": "2026-05-04T23:59:59Z",
+    "player_id": "player:2025-26:8"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_normalized_to_day_start", "excerpt_uses_first_name_in_multi_player_answer", "not_eligible_for_headline_agent_performance"]
+}

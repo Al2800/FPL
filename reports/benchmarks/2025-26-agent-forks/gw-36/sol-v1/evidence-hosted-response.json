@@ -1,0 +1,73 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "9f463a4893931bc8b95ca8efc265606fc094543a16df35cdbf1d41d007e488b8",
+  "response_sha256": "da64295154b1c6c6fc94d1e2564877458a83aafabd9fe1bc9cc6c0272d084611",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw36-timber-still-out",
+        "document_id": "document:ffs-gw36-timber-still-out-2026-05-08",
+        "passage_id": "passage:claim-gw36-timber-still-out",
+        "source_id": "ffs-gw36-timber-still-out-2026-05-08",
+        "claim_text": "Jurrien Timber remained out for Arsenal ahead of Gameweek 36.",
+        "citation_excerpt": "Arsenal have no fresh concerns but Jurrien Timber and Mikel Merino remain out.",
+        "citation_excerpt_sha256": "9ae19aae340073f90bfe9b0ae22594afeebeb5308f3c530fa692c86e342c5e7a",
+        "expires_at": "2026-05-11T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:8"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw36-timber-expected-minutes",
+        "claim_ids": [
+          "claim-gw36-timber-still-out"
+        ],
+        "target": "expected_minutes",
+        "before_value": 35.1,
+        "after_value": 0.0,
+        "unit": "minutes",
+        "confidence": 0.99,
+        "expires_at": "2026-05-11T23:59:59Z",
+        "player_uid": "player:2025-26:8",
+        "rationale": "The supplied pre-deadline team news states that Timber remained out, supporting zero expected minutes for Gameweek 36."
+      }
+    ],
+    "notes": [
+      "No start_probability adjustment is proposed because reducing the 0.7874 baseline to 0 would exceed the permitted delta cap.",
+      "This is a proposal only, based on retrospectively recovered evidence published before the decision cutoff; it does not apply or approve an adjustment."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:11:40Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "9f463a4893931bc8b95ca8efc265606fc094543a16df35cdbf1d41d007e488b8",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 1200,
+    "tool_calls": 0,
+    "input_tokens": 900,
+    "output_tokens": 350,
+    "total_tokens": 1250,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

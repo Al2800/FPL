@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "902351009df74a66fe7c259b3cfe9ef8acd28e8f8dd032db750018dfb37148af",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 60,
+  "agent_vs_canonical_delta": 7,
+  "canonical_gross_points": 53,
+  "canonical_tree_sha256_after": "1207c2943604b5d68943050a41c0f4ec929d73839ce52eb8b6735e74b1c7d417",
+  "canonical_tree_sha256_before": "1207c2943604b5d68943050a41c0f4ec929d73839ce52eb8b6735e74b1c7d417",
+  "captain": "Bruno Borges Fernandes",
+  "challenger_run_sha256": "6ada5335fe40c9fb3304851d6eb3d3ec3ec33958b5dec0d8173828e66f2e3ace",
+  "content_sha256": "4e0b75a949821f6d3a2ab03160941282daaa8d7ba29e7fb793d93f91662e9af9",
+  "evidence_run_sha256": "4a3d64649d949000041e1c7fd152f45860a5425f1eb17f8f60dd792f0578005b",
+  "experiment_id": "2025-26-gw32-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 32,
+  "hit_cost": 0,
+  "host_bundle_sha256": "d4395c3e4ed88e420a4170cf5c02069cafc31f1cce004bb786315d620e7ad8f3",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "midweek_appearance_does_not_guarantee_gw32_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "a72f30cd3823392307138ce037ee532f2e685a34355964fa47ce6159a6c37754",
+  "plan_sha256": "f27e32e7d9dc963703d6249244f5a36bd6064e3e8af5bf3decde2f8fe7a72541",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Antoine Semenyo",
+      "player_out": "Harry Wilson"
+    }
+  ],
+  "solver_input_sha256": "6e2bd68b591db9f03c3c62e0240e745852d07511ab5e11e5953e820c0c5de047",
+  "solver_output_sha256": "e883e053992cf990b727d2619580e315b5f2de859559f710c652cdc529f5071d",
+  "starting_state_sha256": "5156472fb6691f7368d9cc05e9acf1a39345a6b48c3db988d5b43f578fbaa4ad"
+}

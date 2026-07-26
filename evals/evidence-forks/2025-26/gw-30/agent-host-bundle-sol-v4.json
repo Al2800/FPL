@@ -1,0 +1,179 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "efad847e05a311568c82c8947f6d1d86026ee86f",
+  "content_sha256": "12a86f707e1236391c41da0356bdaa3a5e10cbb174efa521cb429d2fe1586a5f",
+  "deterministic_candidate": {
+    "bank_after": 0.4,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 62.39,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:329",
+        "player:2025-26:749",
+        "player:2025-26:348"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:253",
+        "player:2025-26:5",
+        "player:2025-26:8",
+        "player:2025-26:260",
+        "player:2025-26:72",
+        "player:2025-26:82",
+        "player:2025-26:449",
+        "player:2025-26:21",
+        "player:2025-26:47",
+        "player:2025-26:430",
+        "player:2025-26:136"
+      ],
+      "vice_captain_id": "player:2025-26:82"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 69.59,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:253",
+        "player_out_id": "player:2025-26:32"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2026-03-14T13:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw30:manager-neutral",
+    "observed_episode_sha256": "ab768da15aec84eb91ef6e75a6dd46c725714786362d57b1c2002a61c89aa89a",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T19:25:00Z",
+      "content_sha256": "c22ca47dc67edb5e042a6c8afa191247fbe2233c1419a7a939732824e9a96ce5",
+      "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "passages": {
+        "passage:claim-gw30-haaland-fit": "Pep Guardiola confirmed that Erling Haaland is fine, when asked the striker missing a couple of recent games."
+      },
+      "published_at": "2026-03-13T00:00:00Z",
+      "source_id": "ffs-gw30-haaland-fit-2026-03-13",
+      "title": "FPL Gameweek 30 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "05272c5f9067f33b76ef94eea727f63e6115f4eca3c4c5db441e7244f8c7f713",
+    "deterministic_candidate_sha256": "81457c176046baa4667589b6ffe945d95090e3e6d6cbe2df73ae1dad614dd448",
+    "episode": {
+      "decision_at": "2026-03-14T13:30:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw30:manager-neutral",
+      "observed_episode_sha256": "ab768da15aec84eb91ef6e75a6dd46c725714786362d57b1c2002a61c89aa89a",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T19:25:00Z",
+        "content_sha256": "c22ca47dc67edb5e042a6c8afa191247fbe2233c1419a7a939732824e9a96ce5",
+        "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+        "observed_at": "2026-07-26T19:25:00Z",
+        "passages": {
+          "passage:claim-gw30-haaland-fit": "Pep Guardiola confirmed that Erling Haaland is fine, when asked the striker missing a couple of recent games."
+        },
+        "published_at": "2026-03-13T00:00:00Z",
+        "source_id": "ffs-gw30-haaland-fit-2026-03-13",
+        "title": "FPL Gameweek 30 team news: Friday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:430": {
+        "expected_minutes": 71.2,
+        "start_probability": 0.9236
+      }
+    },
+    "player_ids": [
+      "player:2025-26:430"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "149a54d892c5cef25ef1d79d4ce0ab01f0782c0a11f7bfd95ec474226e18756f",
+    "run_id": "gw30-sol-evidence-v4",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-gw30-sol-agent-fork-v4",
+  "gameweek": 30,
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "general_rotation_warning_not_player_specific",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "player_baselines": {
+    "player:2025-26:430": {
+      "expected_minutes": 71.2,
+      "start_probability": 0.9236
+    }
+  },
+  "research_summary": "Pep Guardiola confirmed Erling Haaland was fit but also warned that Manchester City would rotate.",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw37-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-05-15T17:30:00Z",
+  "captured_at": "2026-07-26T19:25:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "No pre-deadline Bournemouth press conference was available for GW37, creating an explicit missing-evidence case for Antoine Semenyo.",
+  "sources": [{
+    "source_id": "ffs-gw37-bournemouth-no-presser-2026-05-09",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/05/09/why-we-wont-get-pre-deadline-team-news-for-two-clubs-in-gameweek-37",
+    "title": "Why we won't get pre-deadline team news for two clubs in Gameweek 37",
+    "published_at": "2026-05-09T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T19:25:00Z",
+    "citation_excerpt": "The Bournemouth and Tottenham Hotspur managers will not face the media until after the Gameweek 37 deadline.",
+    "claim_id": "claim-gw37-semenyo-no-fresh-team-news",
+    "claim_text": "No fresh pre-deadline manager team news was available to change Antoine Semenyo's GW37 baseline.",
+    "confidence": 0.99,
+    "expires_at": "2026-05-16T23:59:59Z",
+    "player_id": "player:2025-26:82"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "absence_of_evidence_is_not_evidence_of_availability", "claim_should_normally_produce_abstention", "not_eligible_for_headline_agent_performance"]
+}

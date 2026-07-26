@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "493bf12bc5c7d49627349b8fd37e8947fa5687ab91fcd237c6ee5ca6f982b496",
+  "response_sha256": "5cc99ea9dbe380bf981338c91cdfedc6dba8ab021566c72634f12081116e54be",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw35-sol-challenger-v1",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw35-timber-expected-minutes"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "The proposed expected-minutes reduction is consistent with the supplied pre-deadline report that Jurrien Timber was ruled out. The retrospective evidence remains exploratory and production-ineligible because it was observed and made available after the decision, but that limitation is already explicit and does not reveal a challenger anomaly requiring escalation."
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:07:37Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "493bf12bc5c7d49627349b8fd37e8947fa5687ab91fcd237c6ee5ca6f982b496",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 1200,
+    "tool_calls": 0,
+    "input_tokens": 900,
+    "output_tokens": 350,
+    "total_tokens": 1250,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

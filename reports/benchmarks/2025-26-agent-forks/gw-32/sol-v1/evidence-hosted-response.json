@@ -1,0 +1,57 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "05a97d9332709022ad740a32599faf891f5b3911748ba24699044e484a64f9b1",
+  "response_sha256": "47e0fb9e67b09bfc00b739032ac65d3d9868c66406f11ab003b23be8e1fcd476",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw32-gabriel-recovered",
+        "document_id": "document:ffs-gw32-gabriel-recovered-2026-04-10",
+        "passage_id": "passage:claim-gw32-gabriel-recovered",
+        "source_id": "ffs-gw32-gabriel-recovered-2026-04-10",
+        "claim_text": "Gabriel Magalhaes recovered from injury and featured in midweek before Gameweek 32.",
+        "citation_excerpt": "Gabriel Magalhaes, Declan Rice and Leandro Trossard all recovered from injury to feature in midweek.",
+        "citation_excerpt_sha256": "453d33cb4b0753d7f61ce907ef8e9530a78b3e9c5bccdf59bcf7b02934782b81",
+        "expires_at": "2026-04-12T23:59:59Z",
+        "confidence": 0.98,
+        "player_uid": "player:2025-26:5"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "Gabriel's midweek return confirms recovery, but the baseline already assigns 78.5 expected minutes and a 0.7619 start probability. The evidence does not quantify an upward delta, so no adjustment is proposed."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:38:29Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "05a97d9332709022ad740a32599faf891f5b3911748ba24699044e484a64f9b1",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "4b4fdd4dcfbdda6349f72aca0ad7e15634a4fc220899b0053a056043cf059249",
+  "response_sha256": "438cfef3d7e8c0f8cf22bcce5df8407e9be6f4c21ce89bdc4f703d820369631f",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw31-sol-challenger-v2",
+    "reviewed_adjustment_ids": [
+      "adjustment-gw31-salah-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Dismissed: the direct, player-specific team-news passage explicitly states that Salah will not be available for the GW31 trip to Brighton, supporting a reduction from 64.8 expected minutes to 0.0 at high confidence. The evidence was observed and made available only after the decision, but the request explicitly classifies it as retrospective, exploratory-admissible, and production-ineligible; that timing limitation does not contradict the proposed retrospective adjustment."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:30:37.078Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "4b4fdd4dcfbdda6349f72aca0ad7e15634a4fc220899b0053a056043cf059249",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

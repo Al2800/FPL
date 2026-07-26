@@ -1,0 +1,71 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "53833dd9015b6a0b5f2c0b4f20134fb58db82c8971bf0ac91193033b3938cc3f",
+  "response_sha256": "ac2abfbc45385ab4031542da253476f79592284a75bde32e35aad766b205fd7f",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw33-saka-out",
+        "document_id": "document:ffs-gw33-saka-out-2026-04-17",
+        "passage_id": "passage:claim-gw33-saka-out",
+        "source_id": "ffs-gw33-saka-out-2026-04-17",
+        "claim_text": "Bukayo Saka will miss Arsenal's GW33 trip to Manchester City because of an Achilles injury.",
+        "citation_excerpt": "Mikel Arteta confirmed that Bukayo Saka (Achilles) will miss Arsenal's trip to Manchester City on Sunday.",
+        "citation_excerpt_sha256": "44cced82c011646b69ed264626ec1853c5a654e1022c6ac1d458160dc45ddd6f",
+        "expires_at": "2026-04-20T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:16"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment-gw33-saka-expected-minutes-zero",
+        "claim_ids": [
+          "claim-gw33-saka-out"
+        ],
+        "target": "expected_minutes",
+        "before_value": 59.4,
+        "after_value": 0.0,
+        "confidence": 0.99,
+        "expires_at": "2026-04-20T23:59:59Z",
+        "player_uid": "player:2025-26:16",
+        "rationale": "The cited manager confirmation makes Saka unavailable for the GW33 fixture, so his expected minutes should be reduced to zero."
+      }
+    ],
+    "notes": [
+      "No start_probability adjustment is proposed because reducing the 0.7013 baseline to zero would exceed the 0.25 cap."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:43:09Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "53833dd9015b6a0b5f2c0b4f20134fb58db82c8971bf0ac91193033b3938cc3f",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

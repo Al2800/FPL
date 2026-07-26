@@ -1,0 +1,45 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "8930ccb668a38df0580dd688d00b2944b0729b31ead4f1996cab842921f81586",
+  "response_sha256": "0cd7196d5723b9b4ebc044acd5efcca71b7462f423901721f1f45eda954eeaec",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim-gw30-haaland-fit",
+      "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+      "passage_id": "passage:claim-gw30-haaland-fit",
+      "source_id": "ffs-gw30-haaland-fit-2026-03-13",
+      "claim_text": "Pep Guardiola confirmed that Erling Haaland was fit.",
+      "citation_excerpt": "Pep Guardiola confirmed that Erling Haaland is fine, when asked the striker missing a couple of recent games.",
+      "citation_excerpt_sha256": "c4110a8f0a398f78450258a4371fb847d7b11d5851910d59f0f7fb71b151e31a",
+      "expires_at": "2026-03-15T23:59:59Z",
+      "confidence": 0.95,
+      "player_uid": "player:2025-26:430"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": []
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:23:22Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "8930ccb668a38df0580dd688d00b2944b0729b31ead4f1996cab842921f81586",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "64c2ce64cc5a3b48189136cb0b11785cbdb051973763afcd6201bd206e15d65b",
+  "response_sha256": "1a0465f4e3d4e56820515c1aa0ddec27f18b51981a9b019bda786346b9bd7d95",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw33-sol-challenger-v3",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw33-saka-expected-minutes"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Direct, player-specific manager confirmation supports reducing Saka's GW33 expected minutes from 59.4 to 0.0. The source was published before the deadline, while its retrospective observation and the proposal's production-ineligible status remain explicit, so no challenger escalation is warranted."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:54:27Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "64c2ce64cc5a3b48189136cb0b11785cbdb051973763afcd6201bd206e15d65b",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

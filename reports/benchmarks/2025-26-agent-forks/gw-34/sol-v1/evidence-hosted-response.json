@@ -1,0 +1,72 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "342605cb78514cd4044232320dfd32991672343391f21ff1e3a48ea4001d2c6c",
+  "response_sha256": "0e969ea3cdf5c2ff5046a275d9bb5e9a19e12035961dceaf325c0deb3640c0de",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw34-timber-out",
+        "document_id": "document:ffs-gw34-timber-out-2026-04-24",
+        "passage_id": "passage:claim-gw34-timber-out",
+        "source_id": "ffs-gw34-timber-out-2026-04-24",
+        "claim_text": "Jurrien Timber is unavailable for Arsenal's GW34 clash with Newcastle United.",
+        "citation_excerpt": "Jurrien Timber is out of Arsenal's clash with Newcastle United on Sunday.",
+        "citation_excerpt_sha256": "1efcdeb429c9bb570eaa412d23522763a0541ab760f851e1b0a5d830eebd196a",
+        "expires_at": "2026-04-27T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:8"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw34-timber-expected-minutes",
+        "claim_ids": [
+          "claim-gw34-timber-out"
+        ],
+        "target": "expected_minutes",
+        "before_value": 43.0,
+        "after_value": 0.0,
+        "unit": "minutes",
+        "confidence": 0.99,
+        "expires_at": "2026-04-27T23:59:59Z",
+        "player_uid": "player:2025-26:8",
+        "rationale": "The cited team-news passage confirms Timber is out of the GW34 fixture, so his expected minutes should be reduced to zero."
+      }
+    ],
+    "notes": [
+      "No start-probability adjustment is proposed because reducing the 0.8337 baseline to 0.0 would exceed the policy cap."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:58:16Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "342605cb78514cd4044232320dfd32991672343391f21ff1e3a48ea4001d2c6c",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "active_chip": null,
+  "content_sha256": "47d1b514873bcafb8e4a3cd24ef4aa71993876b1ae151ad6330600d104a070f6",
+  "episode_id": "benchmark-v0:2025-26:gw33:manager-neutral",
+  "finance": {
+    "bank_after": 1.2,
+    "bank_before": 0.9,
+    "free_transfers_before": 3,
+    "hit_cost": 0,
+    "transfer_count": 3
+  },
+  "frozen_at": "2026-04-18T10:00:00Z",
+  "gameweek": 33,
+  "lineup": {
+    "bench_ids": [
+      "player:2025-26:253",
+      "player:2025-26:47",
+      "player:2025-26:8",
+      "player:2025-26:749"
+    ],
+    "captain_id": "player:2025-26:430",
+    "formation": {
+      "DEF": 4,
+      "FWD": 2,
+      "MID": 4
+    },
+    "starting_xi_ids": [
+      "player:2025-26:470",
+      "player:2025-26:260",
+      "player:2025-26:72",
+      "player:2025-26:5",
+      "player:2025-26:348",
+      "player:2025-26:82",
+      "player:2025-26:235",
+      "player:2025-26:783",
+      "player:2025-26:84",
+      "player:2025-26:430",
+      "player:2025-26:249"
+    ],
+    "vice_captain_id": "player:2025-26:82"
+  },
+  "plan_id": "validated-plan:benchmark-v0:2025-26:gw33:manager-neutral:evidence_agent",
+  "policy_arm": "evidence_agent",
+  "previous_state_sha256": "a72f30cd3823392307138ce037ee532f2e685a34355964fa47ce6159a6c37754",
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "squad_after": [
+    {
+      "club_id": "team:2025-26:7",
+      "player_id": "player:2025-26:235",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "player_id": "player:2025-26:249",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "player_id": "player:2025-26:253",
+      "position": "GKP"
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "player_id": "player:2025-26:260",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:11",
+      "player_id": "player:2025-26:348",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "player_id": "player:2025-26:430",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:2",
+      "player_id": "player:2025-26:47",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:3",
+      "player_id": "player:2025-26:470",
+      "position": "GKP"
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "player_id": "player:2025-26:5",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:4",
+      "player_id": "player:2025-26:72",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:20",
+      "player_id": "player:2025-26:749",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:6",
+      "player_id": "player:2025-26:783",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "player_id": "player:2025-26:8",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "player_id": "player:2025-26:82",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:4",
+      "player_id": "player:2025-26:84",
+      "position": "MID"
+    }
+  ],
+  "transfers": [
+    {
+      "player_in_id": "player:2025-26:783",
+      "player_out_id": "player:2025-26:119",
+      "position": "MID",
+      "purchase_price": 5.5,
+      "selling_price": 8.6
+    },
+    {
+      "player_in_id": "player:2025-26:430",
+      "player_out_id": "player:2025-26:136",
+      "position": "FWD",
+      "purchase_price": 14.4,
+      "selling_price": 7.1
+    },
+    {
+      "player_in_id": "player:2025-26:84",
+      "player_out_id": "player:2025-26:449",
+      "position": "MID",
+      "purchase_price": 5.4,
+      "selling_price": 9.9
+    }
+  ],
+  "validation": {
+    "checks": [
+      "predecessor_and_rules_bound",
+      "transfer_finance_recomputed",
+      "squad_legal",
+      "lineup_legal_and_ordered",
+      "chip_legal"
+    ],
+    "content_sha256": "9ad7d50b465a1fc6b3c94d8482dc24bef485121d9f6ebc1e6373494d3fd5e073",
+    "status": "passed"
+  }
+}

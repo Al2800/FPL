@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "438e035af66ca7a50b6b751a75dd44f750248c785d25c677a0e32c5e340ebbcf",
+  "response_sha256": "b89c0dc37a7f1b8bb502cad6779d350a61433bdb7c2d3ff6b49863d8d83e18e3",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw34-sol-challenger-v1",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw34-timber-expected-minutes"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "The confirmed absence supports reducing Timber expected minutes to zero, so the proposed adjustment is well grounded and no escalation is warranted."
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:00:38Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "438e035af66ca7a50b6b751a75dd44f750248c785d25c677a0e32c5e340ebbcf",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 17000,
+    "tool_calls": 0,
+    "input_tokens": 2048,
+    "output_tokens": 118,
+    "total_tokens": 2166,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

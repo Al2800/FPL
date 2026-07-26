@@ -1,0 +1,34 @@
+{
+  "adjustments": [
+    {
+      "adjustment_id": "adjustment-gw31-salah-expected-minutes-zero",
+      "after": {
+        "expected_minutes": 0.0,
+        "expected_points": 0.0,
+        "start_probability": 0.0,
+        "status": "i"
+      },
+      "before": {
+        "expected_minutes": 64.8,
+        "expected_points": 4.65,
+        "start_probability": 0.6533,
+        "status": "a"
+      },
+      "claim_ids": [
+        "signal:adjustment-gw31-salah-expected-minutes-zero"
+      ],
+      "confidence": 0.99,
+      "player_id": "player:2025-26:381",
+      "ratio": 0.0,
+      "target": "expected_minutes"
+    }
+  ],
+  "applied": true,
+  "challenger_run_sha256": "613713c96b23b1d37897d386ef4e6ca8cd6a92dacf3488be4eb7d7f103e6b286",
+  "content_sha256": "ac229946b6e40f9492a6230a2a923a873d15f0e855d164e0cfff66ecd4ee8e6e",
+  "evidence_run_sha256": "bb676eb1c0e9fdb64c7a85d4cde182fdc43f60d3ee107f12d9c7f78b6b84542b",
+  "fallback_reason": null,
+  "policy_id": "agent-fork-adapter-v1",
+  "policy_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+  "schema_version": "1.0"
+}

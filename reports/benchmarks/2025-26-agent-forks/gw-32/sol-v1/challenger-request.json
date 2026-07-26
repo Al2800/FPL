@@ -1,0 +1,137 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "8efe610ec3d52b83878467dfdd1061d95038f866af7ecc75851bc148745400e4",
+  "deterministic_candidate_sha256": "8087d1e6175ce4f00391fbe8276daf928f1f6d3c2c72725db8aa23383ab9d40c",
+  "episode": {
+    "decision_at": "2026-04-10T17:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw32:manager-neutral",
+    "observed_episode_sha256": "d15be35917385ba6252668b39a495439d3f713f0ef262e9d136a6d8753d2e2ab",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T19:25:00Z",
+      "content_sha256": "6aa7de2c636f1166e28bbcc510290fe7a727973bc04fe0c6cdc981b95b382162",
+      "document_id": "document:ffs-gw32-gabriel-recovered-2026-04-10",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "passages": {
+        "passage:claim-gw32-gabriel-recovered": "Gabriel Magalhaes, Declan Rice and Leandro Trossard all recovered from injury to feature in midweek."
+      },
+      "published_at": "2026-04-10T00:00:00Z",
+      "source_id": "ffs-gw32-gabriel-recovered-2026-04-10",
+      "title": "FPL Gameweek 32 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "4a3d64649d949000041e1c7fd152f45860a5425f1eb17f8f60dd792f0578005b",
+    "run_id": "gw32-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim-gw32-gabriel-recovered",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:5",
+          "provenance": {
+            "content_hash_sha256": "6aa7de2c636f1166e28bbcc510290fe7a727973bc04fe0c6cdc981b95b382162",
+            "source_ids": [
+              "ffs-gw32-gabriel-recovered-2026-04-10"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T19:25:00Z",
+          "claim_id": "claim-gw32-gabriel-recovered",
+          "claim_text": "Gabriel Magalhaes recovered from injury and featured in midweek before Gameweek 32.",
+          "confidence": 0.98,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw32-gabriel-recovered-2026-04-10",
+          "expires_at": "2026-04-12T23:59:59Z",
+          "observed_at": "2026-07-26T19:25:00Z",
+          "provenance": {
+            "content_hash_sha256": "6aa7de2c636f1166e28bbcc510290fe7a727973bc04fe0c6cdc981b95b382162",
+            "source_ids": [
+              "ffs-gw32-gabriel-recovered-2026-04-10"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-04-10T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "bab9842f2612b7bf28995c4c4b97e1cef93ff6cc5a5b076799d63494d37adb64",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "Gabriel's midweek return confirms recovery, but the baseline already assigns 78.5 expected minutes and a 0.7619 start probability. The evidence does not quantify an upward delta, so no adjustment is proposed."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": []
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:5": {
+      "expected_minutes": 78.5,
+      "start_probability": 0.7619
+    }
+  },
+  "player_ids": [
+    "player:2025-26:5"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "5820b934ccec84c6ef60a5be8dd9a7d016986f9b1eea66979bf7810623f5ad52",
+  "run_id": "gw32-sol-challenger-v1",
+  "schema_version": "1.0"
+}

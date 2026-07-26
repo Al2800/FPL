@@ -1,0 +1,42 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "52fe9b7e801e66c14433ea439c86353a67c738f1806ffbc06a99ab60b84b08d7",
+  "response_sha256": "b0ec7582cdfd92335b533fb926b8295e99719252eeeae4d38bc84e646919e5fc",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw37-sol-challenger-v1",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "The missing fresh pre-deadline Bournemouth manager news supports abstention because absence of news is not evidence that Semenyo was available, so no availability adjustment is justified."
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:19:27Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "52fe9b7e801e66c14433ea439c86353a67c738f1806ffbc06a99ab60b84b08d7",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 1200,
+    "tool_calls": 0,
+    "input_tokens": 1800,
+    "output_tokens": 120,
+    "total_tokens": 1920,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

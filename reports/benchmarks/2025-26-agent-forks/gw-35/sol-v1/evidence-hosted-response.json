@@ -1,0 +1,73 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "2ee16d45d64a3ae1ce03c2bd9616816257a9cdf9e6fe42586464db28863ce4ad",
+  "response_sha256": "33db093c7ba13935c5aa4827d6d62ddc9b03f9aa0cd623b0dc4c3296ce102bcd",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim-gw35-timber-out",
+        "document_id": "document:ffs-gw35-timber-out-2026-05-01",
+        "passage_id": "passage:claim-gw35-timber-out",
+        "source_id": "ffs-gw35-timber-out-2026-05-01",
+        "claim_text": "Jurrien Timber was ruled out before the Gameweek 35 decision deadline.",
+        "citation_excerpt": "Kai and Jurrien will be out.",
+        "citation_excerpt_sha256": "c7abeef4a23768cfd297117e040525b7cd46f020ffdc97347d6ba4cb6f025547",
+        "expires_at": "2026-05-04T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:8"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw35-timber-expected-minutes",
+        "claim_ids": [
+          "claim-gw35-timber-out"
+        ],
+        "target": "expected_minutes",
+        "before_value": 36.0,
+        "after_value": 0.0,
+        "unit": "minutes",
+        "confidence": 0.99,
+        "expires_at": "2026-05-04T23:59:59Z",
+        "player_uid": "player:2025-26:8",
+        "rationale": "The supplied pre-deadline passage explicitly says Jurrien will be out, supporting zero expected minutes for the relevant Gameweek."
+      }
+    ],
+    "notes": [
+      "No start_probability adjustment is proposed because moving the 0.8099 baseline to 0 would exceed the maximum allowed delta of 0.25.",
+      "This retrospective evidence was recovered after the historical decision and is exploratory rather than production eligible."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "0.144.6",
+  "completed_at": "2026-07-26T20:04:35Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "2ee16d45d64a3ae1ce03c2bd9616816257a9cdf9e6fe42586464db28863ce4ad",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 1200,
+    "tool_calls": 0,
+    "input_tokens": 900,
+    "output_tokens": 350,
+    "total_tokens": 1250,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

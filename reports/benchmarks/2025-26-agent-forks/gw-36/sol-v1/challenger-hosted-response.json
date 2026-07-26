@@ -1,0 +1,36 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "6f2c2c82cb6a08559f3dee101d880b2026010fec7df29653ff01481378c4222b",
+  "response_sha256": "18cc3a7615c6a9d01c9c685adc00c9485fd4e000c8e55dd1a1f1944ce8330fd4",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw36-sol-challenger-v1",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw36-timber-expected-minutes"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "The zero-minute proposal is directly grounded in the cited pre-deadline team news, matches Timber's identity and the supplied baseline, and remains proposal-only; its post-decision observation and availability are explicitly marked production-ineligible, so no unresolved issue warrants escalation."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T20:14:10Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "6f2c2c82cb6a08559f3dee101d880b2026010fec7df29653ff01481378c4222b",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "9ff1fea57c748e0946f4af83ef271178800ef944a0643b9b01564ff8244be9f0",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 55,
+  "agent_vs_canonical_delta": 10,
+  "canonical_gross_points": 45,
+  "canonical_tree_sha256_after": "af52a0426b7a5a77b090a4ecc29079fb95521af53952429ccde7e57bf5ced77b",
+  "canonical_tree_sha256_before": "af52a0426b7a5a77b090a4ecc29079fb95521af53952429ccde7e57bf5ced77b",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "224a649298debaa31b98803c29b2728e46c1ac024ef3a6029340ae2909bf2892",
+  "content_sha256": "27dae37c74c23301a08883f1f5adda308a96c4ae1db7774b208c3cae0fd6dbe4",
+  "evidence_run_sha256": "fc0e5e744b38631d61165fa872e57288f09de50868a3583fe7a6f4fed548735c",
+  "experiment_id": "2025-26-gw30-sol-agent-fork-v5",
+  "exploratory_only": true,
+  "gameweek": 30,
+  "hit_cost": 0,
+  "host_bundle_sha256": "e73f22251a93ccd00e8192784e9cd214cea2c4b388bd5a58449c2b51785d3fef",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "general_rotation_warning_not_player_specific",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "ddb596a9d0a1911bb90d44158691bd3b199debddaae964ef518b9c96825101d2",
+  "plan_sha256": "ff86bdd97f24fb00bea689174c639d81535b88b3cc4e2e28c2b8797276bfff33",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Dean Henderson",
+      "player_out": "Emiliano Martínez Romero"
+    }
+  ],
+  "solver_input_sha256": "73cf5ab29bfe0dcf5563ee485c24235edb23b00d31a8dff907fb5d6c443ec8ee",
+  "solver_output_sha256": "db36d0101661f3152f14d4a3e07b66534ece3e1478857a840aa66c9ec95921af",
+  "starting_state_sha256": "e27656d5e84f5fff97c1c6bb94fa79840198fcfd7cd7c18d2dc59bfa87060f49"
+}

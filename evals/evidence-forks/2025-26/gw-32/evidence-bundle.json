@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw32-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-04-10T17:30:00Z",
+  "captured_at": "2026-07-26T19:25:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Gabriel Magalhaes had recovered and featured in Europe before GW32.",
+  "sources": [{
+    "source_id": "ffs-gw32-gabriel-recovered-2026-04-10",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/04/10/fpl-gameweek-32-team-news-fridays-live-injury-updates-2",
+    "title": "FPL Gameweek 32 team news: Friday's live injury updates",
+    "published_at": "2026-04-10T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T19:25:00Z",
+    "citation_excerpt": "Gabriel Magalhaes, Declan Rice and Leandro Trossard all recovered from injury to feature in midweek.",
+    "claim_id": "claim-gw32-gabriel-recovered",
+    "claim_text": "Gabriel Magalhaes recovered from injury and played before GW32.",
+    "confidence": 0.97,
+    "expires_at": "2026-04-12T23:59:59Z",
+    "player_id": "player:2025-26:5"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_normalized_to_day_start", "midweek_appearance_does_not_guarantee_gw32_start", "not_eligible_for_headline_agent_performance"]
+}

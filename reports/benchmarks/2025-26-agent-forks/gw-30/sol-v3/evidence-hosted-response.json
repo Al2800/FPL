@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "5913a813ec1e0463770d9b8bb719e7f2738db189e2409235a7c21e0054b3398f",
+  "response_sha256": "bb9b20c27f5407726515783f2d10362ecb7451bf96501b39846778fb3c6c2182",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [],
+    "conflicts": ["The evidence document contains no claim_id or expires_at, so no compliant claim can be emitted without inventing required values."],
+    "proposed_adjustments": [],
+    "notes": ["The passage qualitatively supports Erling Haaland's fitness, but it does not quantify a baseline adjustment."]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:20:58Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "5913a813ec1e0463770d9b8bb719e7f2738db189e2409235a7c21e0054b3398f",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

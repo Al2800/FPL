@@ -1,0 +1,49 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "9d856a556d62ba6e558b18b40144faf4fa7ab10cfa0a1e80c16ff202769deea8",
+  "response_sha256": "b97ba8102bd32da04f0118c0bfc743023fb19bfe9a6fc30018db8b66e1a49658",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw30-haaland-fit",
+      "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+      "passage_id": "passage:claim-gw30-haaland-fit",
+      "source_id": "ffs-gw30-haaland-fit-2026-03-13",
+      "claim_text": "Pep Guardiola confirmed that Erling Haaland was fit ahead of Gameweek 30.",
+      "citation_excerpt": "Pep Guardiola confirmed that Erling Haaland is fine, when asked the striker missing a couple of recent games.",
+      "citation_excerpt_sha256": "c4110a8f0a398f78450258a4371fb847d7b11d5851910d59f0f7fb71b151e31a",
+      "expires_at": "2026-03-14T13:30:00Z",
+      "confidence": 0.95,
+      "player_uid": "player:2025-26:430"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "The player-specific evidence qualitatively confirms fitness but does not quantify a change from the baseline expected minutes of 71.2 or start probability of 0.9236.",
+      "The general rotation warning is not player-specific, so no quantified baseline adjustment is proposed.",
+      "This is retrospective evidence recovered after the historical decision and published before the deadline."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T19:19:34Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "9d856a556d62ba6e558b18b40144faf4fa7ab10cfa0a1e80c16ff202769deea8",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

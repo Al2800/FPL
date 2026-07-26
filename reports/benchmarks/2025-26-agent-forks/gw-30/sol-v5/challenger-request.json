@@ -1,0 +1,135 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "518ae691dabcddb2a288440bc82a3599f707dc7ef4be1adb607f4e3c6ce578b4",
+  "deterministic_candidate_sha256": "81457c176046baa4667589b6ffe945d95090e3e6d6cbe2df73ae1dad614dd448",
+  "episode": {
+    "decision_at": "2026-03-14T13:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw30:manager-neutral",
+    "observed_episode_sha256": "ab768da15aec84eb91ef6e75a6dd46c725714786362d57b1c2002a61c89aa89a",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T19:25:00Z",
+      "content_sha256": "c22ca47dc67edb5e042a6c8afa191247fbe2233c1419a7a939732824e9a96ce5",
+      "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "passages": {
+        "passage:claim-gw30-haaland-fit": "Pep Guardiola confirmed that Erling Haaland is fine, when asked the striker missing a couple of recent games."
+      },
+      "published_at": "2026-03-13T00:00:00Z",
+      "source_id": "ffs-gw30-haaland-fit-2026-03-13",
+      "title": "FPL Gameweek 30 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "fc0e5e744b38631d61165fa872e57288f09de50868a3583fe7a6f4fed548735c",
+    "run_id": "gw30-sol-evidence-v5",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim-gw30-haaland-fit",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:430",
+          "provenance": {
+            "content_hash_sha256": "c22ca47dc67edb5e042a6c8afa191247fbe2233c1419a7a939732824e9a96ce5",
+            "source_ids": [
+              "ffs-gw30-haaland-fit-2026-03-13"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T19:25:00Z",
+          "claim_id": "claim-gw30-haaland-fit",
+          "claim_text": "Pep Guardiola confirmed that Erling Haaland was fit.",
+          "confidence": 0.95,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+          "expires_at": "2026-03-15T23:59:59Z",
+          "observed_at": "2026-07-26T19:25:00Z",
+          "provenance": {
+            "content_hash_sha256": "c22ca47dc67edb5e042a6c8afa191247fbe2233c1419a7a939732824e9a96ce5",
+            "source_ids": [
+              "ffs-gw30-haaland-fit-2026-03-13"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-03-13T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "6cb4aa7d77468de1e8ea53cd0d3850e7e365654edf20b56cfe4e181bcd82962d",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [],
+      "production_eligible": false,
+      "proposed_adjustments": [],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": []
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:430": {
+      "expected_minutes": 71.2,
+      "start_probability": 0.9236
+    }
+  },
+  "player_ids": [
+    "player:2025-26:430"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "71e816e5bba269254d44e0112d0cbea1ab3dc76be0f3a5b8eb136a306783122c",
+  "run_id": "gw30-sol-challenger-v5",
+  "schema_version": "1.0"
+}
