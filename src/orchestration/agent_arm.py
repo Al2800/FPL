@@ -15,6 +15,7 @@ from src.agents.challenger_agent import validate_challenger_result
 from src.agents.evidence_agent import validate_evidence_result
 from src.evidence.lifecycle import load_policy
 from src.forecasting.live_faithful import artifact_hash
+from src.orchestration.hosted_response import build_hosted_response
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -321,6 +322,80 @@ def cached_or_invoke(
     entry["content_sha256"] = artifact_hash(entry)
     cache[key] = entry
     return response
+
+
+def run_hosted_semantic_payload(
+    *,
+    request: Mapping[str, Any],
+    semantic_output: Mapping[str, Any],
+    completed_at: str,
+    deterministic_candidate: Mapping[str, Any],
+    code_commit: str,
+    evidence_proposal: Mapping[str, Any] | None = None,
+    usage: Mapping[str, Any] | None = None,
+    model_version: str = MODEL_ID,
+    cli_version: str = "host-owned-envelope-v1",
+) -> dict[str, Any]:
+    """Build trusted metadata around a model's semantic output, then validate."""
+    hosted_response = build_hosted_response(
+        request=request,
+        structured_output=semantic_output,
+        completed_at=completed_at,
+        usage=usage,
+        model_version=model_version,
+        cli_version=cli_version,
+    )
+    return run_agent_arm(
+        request=request,
+        hosted_response=hosted_response,
+        deterministic_candidate=deterministic_candidate,
+        code_commit=code_commit,
+        evidence_proposal=evidence_proposal,
+    )
+
+
+def _retry_disposition(
+    failure: Mapping[str, Any] | None,
+) -> dict[str, Any] | None:
+    if failure is None:
+        return None
+    message = str(failure.get("message_code", ""))
+    protocol_markers = (
+        "resource_usage",
+        "host_completed_at",
+        "hosted_failure",
+        "identity_mismatch",
+        "request_hash_mismatch",
+        "host_attestation",
+        "host_event",
+        "structured_output",
+        "response_hash_mismatch",
+    )
+    category = str(failure.get("category", "invalid_output"))
+    if any(marker in message for marker in protocol_markers):
+        reason_class = "protocol"
+        eligible = True
+        action = "repair_envelope_and_retry"
+    elif category in {
+        "provider_failure",
+        "tool_failure",
+        "source_failure",
+        "timeout",
+        "budget_exhaustion",
+    }:
+        reason_class = "execution"
+        eligible = bool(failure.get("retriable", False))
+        action = "retry_if_budget_and_deadline_allow"
+    else:
+        reason_class = "semantic"
+        eligible = False
+        action = "do_not_retry_without_new_semantic_input"
+    return {
+        "reason_class": reason_class,
+        "eligible": eligible,
+        "message_code": message,
+        "recommended_action": action,
+    }
 
 
 def run_agent_arm(
@@ -633,6 +708,7 @@ def run_agent_arm(
         "validated_output": validated,
         "selected_candidate": deepcopy(dict(deterministic_candidate)),
         "adjustments_applied": [],
+        "retry_disposition": _retry_disposition(failure),
         "trace": trace,
         "artifacts": {
             "response": {

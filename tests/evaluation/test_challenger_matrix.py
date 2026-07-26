@@ -68,6 +68,11 @@ def test_live_shadow_candidate_keeps_control_executable() -> None:
     assert candidate["executable_policy"]["model_config_sha256"] == "e" * 64
     assert candidate["shadow_policy"]["configuration_sha256"] == "a" * 64
     assert candidate["fallback"]["on_validation_failure"] is True
+    assert candidate["agent_completion_gate"] == {
+        "required_status": "completed",
+        "requires_validated_output": True,
+        "on_failure": "refuse_agent_scoring_use_control_only",
+    }
     assert candidate["content_sha256"] == artifact_hash(candidate)
 
 

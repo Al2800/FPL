@@ -304,6 +304,11 @@ def build_live_shadow_candidate(
                 "on_missing_inputs": True,
                 "on_validation_failure": True,
             },
+            "agent_completion_gate": {
+                "required_status": "completed",
+                "requires_validated_output": True,
+                "on_failure": "refuse_agent_scoring_use_control_only",
+            },
             "prohibitions": [
                 "must_not_submit_actions_to_fpl",
                 "must_not_delay_control_deadline",

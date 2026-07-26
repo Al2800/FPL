@@ -17,7 +17,9 @@ from src.orchestration.agent_fork_adapter import (
     apply_agent_adjustments,
     build_gw12_agent_host_bundle,
     run_isolated_agent_fork,
+    run_sequential_agent_fork_week,
 )
+from src.orchestration.evidence_fork import EvidenceForkError
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -265,6 +267,82 @@ def test_blocked_challenger_returns_exact_canonical_input() -> None:
     assert adjusted == solver_input
     assert audit["applied"] is False
     assert audit["fallback_reason"] == "challenger_gate_blocked"
+
+
+@pytest.mark.parametrize("degraded_arm", ["evidence", "challenger"])
+def test_non_completed_agent_run_is_refused_before_adjustment(
+    degraded_arm: str,
+) -> None:
+    solver_input = json.loads(SOLVER_INPUT.read_text(encoding="utf-8"))
+    evidence, challenger = _runs()
+    selected = evidence if degraded_arm == "evidence" else challenger
+    selected["status"] = "degraded"
+    selected["content_sha256"] = artifact_hash(selected)
+
+    with pytest.raises(
+        EvidenceForkError,
+        match=f"{degraded_arm} run must be completed",
+    ):
+        apply_agent_adjustments(solver_input, evidence, challenger)
+
+
+def test_tampered_completed_run_is_refused_instead_of_scored_as_fallback() -> None:
+    solver_input = json.loads(SOLVER_INPUT.read_text(encoding="utf-8"))
+    evidence, challenger = _runs()
+    evidence["content_sha256"] = "0" * 64
+
+    with pytest.raises(EvidenceForkError, match="evidence run hash mismatch"):
+        apply_agent_adjustments(solver_input, evidence, challenger)
+
+
+def test_shared_fork_runners_refuse_degraded_run_without_writing(
+    tmp_path: Path,
+) -> None:
+    host_bundle = json.loads(
+        (EVIDENCE.parent / "agent-host-bundle.json").read_text(encoding="utf-8")
+    )
+    evidence = json.loads(
+        (AGENT_RESULT / "evidence-run.json").read_text(encoding="utf-8")
+    )
+    challenger = json.loads(
+        (AGENT_RESULT / "challenger-run.json").read_text(encoding="utf-8")
+    )
+    evidence["status"] = "degraded"
+    evidence["content_sha256"] = artifact_hash(evidence)
+    isolated_output = tmp_path / "isolated"
+
+    with pytest.raises(EvidenceForkError, match="evidence run must be completed"):
+        run_isolated_agent_fork(
+            host_bundle=host_bundle,
+            evidence_run=evidence,
+            challenger_run=challenger,
+            canonical_root=CANONICAL,
+            episode_root=EPISODES,
+            manual_fork_root=MANUAL_RESULT,
+            output_root=isolated_output,
+        )
+    assert not isolated_output.exists()
+
+    state = json.loads(
+        (
+            CANONICAL
+            / "gw-12/setup/arms/evidence_agent/starting-policy-state.json"
+        ).read_text(encoding="utf-8")
+    )
+    sequential_output = tmp_path / "sequential"
+    with pytest.raises(EvidenceForkError, match="evidence run must be completed"):
+        run_sequential_agent_fork_week(
+            gameweek=12,
+            state=state,
+            host_bundle=host_bundle,
+            evidence_run=evidence,
+            challenger_run=challenger,
+            canonical_root=CANONICAL,
+            episode_root=EPISODES,
+            output_root=sequential_output,
+            transition_to_next=False,
+        )
+    assert not sequential_output.exists()
 
 
 def test_committed_sol_runs_reproduce_isolated_result_without_mutating_control(

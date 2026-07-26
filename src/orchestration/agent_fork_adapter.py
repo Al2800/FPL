@@ -559,19 +559,31 @@ def apply_agent_adjustments(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Apply only independently unopposed, policy-safe reductions."""
     if evidence_run.get("content_sha256") != artifact_hash(evidence_run):
-        return _fallback(solver_input, "evidence_run_hash_mismatch", evidence_run)
+        raise EvidenceForkError(
+            "Agent fork evidence run hash mismatch before scoring"
+        )
     if challenger_run.get("content_sha256") != artifact_hash(challenger_run):
-        return _fallback(solver_input, "challenger_run_hash_mismatch", evidence_run)
+        raise EvidenceForkError(
+            "Agent fork challenger run hash mismatch before scoring"
+        )
     if evidence_run.get("status") != "completed":
-        return _fallback(solver_input, "evidence_run_not_completed", evidence_run)
+        raise EvidenceForkError(
+            "Agent fork evidence run must be completed before scoring"
+        )
     if challenger_run.get("status") != "completed":
-        return _fallback(solver_input, "challenger_run_not_completed", evidence_run)
+        raise EvidenceForkError(
+            "Agent fork challenger run must be completed before scoring"
+        )
     proposal = evidence_run.get("validated_output")
     review = challenger_run.get("validated_output")
     if not isinstance(proposal, Mapping) or not isinstance(review, Mapping):
-        return _fallback(solver_input, "missing_validated_output", evidence_run)
+        raise EvidenceForkError(
+            "Completed agent runs require validated output before scoring"
+        )
     if review.get("proposal_sha256") != proposal.get("content_sha256"):
-        return _fallback(solver_input, "challenger_proposal_binding_mismatch", evidence_run)
+        raise EvidenceForkError(
+            "Agent fork challenger proposal binding mismatch before scoring"
+        )
     gate = review.get("approval_gate", {})
     if (
         gate.get("requires_human_review")
@@ -584,12 +596,16 @@ def apply_agent_adjustments(
     expected = {str(row.get("adjustment_id")) for row in proposals}
     unopposed = set(review.get("unopposed_proposed_adjustment_ids", []))
     if expected != unopposed:
-        return _fallback(solver_input, "challenger_did_not_unoppose_every_adjustment", evidence_run)
+        raise EvidenceForkError(
+            "Completed challenger gate is inconsistent with reviewed adjustments"
+        )
     if not proposals:
         return _fallback(solver_input, "no_agent_adjustments", evidence_run)
     players = {str(row["player_id"]): row for row in solver_input["players"]}
     if len({str(row.get("player_uid")) for row in proposals}) != len(proposals):
-        return _fallback(solver_input, "multiple_adjustments_for_player", evidence_run)
+        raise EvidenceForkError(
+            "Completed evidence run contains multiple adjustments for one player"
+        )
 
     policy = load_policy()
     adjusted = deepcopy(dict(solver_input))
@@ -602,16 +618,22 @@ def apply_agent_adjustments(
             "expected_minutes",
             "start_probability",
         }:
-            return _fallback(solver_input, "unsupported_player_or_target", evidence_run)
+            raise EvidenceForkError(
+                "Completed evidence run contains an unsupported player or target"
+            )
         before_value = float(proposal_row["before_value"])
         after_value = float(proposal_row["after_value"])
         canonical_before = float(players[player_id][target])
         if before_value != canonical_before or after_value > before_value:
-            return _fallback(solver_input, "baseline_mismatch_or_projection_increase", evidence_run)
+            raise EvidenceForkError(
+                "Completed evidence run does not match the frozen player baseline"
+            )
         if target == "start_probability" and before_value - after_value > float(
             policy["thresholds"]["max_start_probability_delta"]
         ):
-            return _fallback(solver_input, "start_probability_delta_exceeds_policy", evidence_run)
+            raise EvidenceForkError(
+                "Completed evidence run exceeds the projection adjustment policy"
+            )
         row = adjusted_players[player_id]
         before = {
             "status": row.get("status"),

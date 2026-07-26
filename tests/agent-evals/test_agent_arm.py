@@ -20,6 +20,11 @@ from src.orchestration.agent_arm import (
     build_hosted_request,
     cached_or_invoke,
     run_agent_arm,
+    run_hosted_semantic_payload,
+)
+from src.orchestration.hosted_response import (
+    HostedResponseError,
+    build_hosted_response,
 )
 
 
@@ -180,6 +185,98 @@ def _run_evidence(structured: dict) -> dict:
 
 def _valid_output() -> dict:
     return deepcopy(_fixture("evidence-agent-v1.json")["valid_output"])
+
+
+def test_host_builds_deterministic_envelope_around_semantic_payload() -> None:
+    request = _request()
+    structured = _valid_output()
+
+    first = build_hosted_response(
+        request=request,
+        structured_output=structured,
+        completed_at="2026-07-26T10:30:00Z",
+    )
+    second = build_hosted_response(
+        request=request,
+        structured_output=structured,
+        completed_at="2026-07-26T10:30:00Z",
+    )
+
+    assert first == second
+    assert first["request_sha256"] == request["rendered_input_sha256"]
+    assert first["response_sha256"] == artifact_hash(structured)
+    assert first["structured_output"] == structured
+    assert first["structured_output"] is not structured
+    assert first["attestation"]["rendered_input_sha256"] == request[
+        "rendered_input_sha256"
+    ]
+    assert first["usage"]["total_tokens"] == 0
+    assert first["usage"]["cost"]["metering_status"] == "unavailable"
+    assert first["metadata_owner"] == "host"
+
+
+@pytest.mark.parametrize(
+    "completed_at",
+    [
+        "2026-07-26T10:30:00.123Z",
+        "2026-07-26T11:30:00+01:00",
+        "not-a-timestamp",
+    ],
+)
+def test_host_rejects_non_whole_second_utc_timestamp(completed_at: str) -> None:
+    with pytest.raises(HostedResponseError, match="whole-second UTC"):
+        build_hosted_response(
+            request=_request(),
+            structured_output=_valid_output(),
+            completed_at=completed_at,
+        )
+
+
+def test_semantic_payload_entrypoint_builds_and_validates_host_metadata() -> None:
+    request = _request()
+    result = run_hosted_semantic_payload(
+        request=request,
+        semantic_output=_valid_output(),
+        completed_at="2026-07-26T10:30:00Z",
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+    )
+
+    assert result["status"] == "completed"
+    response = result["artifacts"]["response"]["payload"]
+    assert response["metadata_owner"] == "host"
+    assert response["request_sha256"] == request["rendered_input_sha256"]
+    assert result["retry_disposition"] is None
+
+
+def test_retry_disposition_distinguishes_protocol_and_semantic_failure() -> None:
+    request = _request()
+    protocol_response = _hosted(request, _valid_output())
+    protocol_response["request_sha256"] = "0" * 64
+    protocol = run_agent_arm(
+        request=request,
+        hosted_response=protocol_response,
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+    )
+    invalid_semantic = _valid_output()
+    invalid_semantic["claims"][0]["player_uid"] = "player:unknown"
+    semantic = run_hosted_semantic_payload(
+        request=request,
+        semantic_output=invalid_semantic,
+        completed_at="2026-07-26T10:30:00Z",
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+    )
+
+    assert protocol["status"] == "degraded"
+    assert protocol["retry_disposition"]["reason_class"] == "protocol"
+    assert semantic["status"] == "degraded"
+    assert semantic["retry_disposition"]["reason_class"] == "semantic"
+    assert (
+        semantic["artifacts"]["response"]["content_sha256"]
+        == artifact_hash(semantic["artifacts"]["response"]["payload"])
+    )
 
 
 def test_single_agent_is_proposal_only_and_preserves_candidate() -> None:

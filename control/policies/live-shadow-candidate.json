@@ -1,5 +1,10 @@
 {
-  "content_sha256": "5af51950f2acbbe0e5423f2a3862593e458aeb03467cbff325e4d8f54ddba3be",
+  "agent_completion_gate": {
+    "on_failure": "refuse_agent_scoring_use_control_only",
+    "required_status": "completed",
+    "requires_validated_output": true
+  },
+  "content_sha256": "efba264e608cb4b85a350585cf032bde5446d0fa8d670e0f332cb12a76040634",
   "executable_policy": {
     "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
     "policy_id": "live-faithful-v1-control"
