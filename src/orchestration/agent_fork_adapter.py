@@ -15,6 +15,7 @@ from src.evidence.lifecycle import load_policy
 from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.replay_adapter import build_replay_solver_input
 from src.optimisation.io import fingerprint
+from src.optimisation.chips import validate_weekly_chip_decision
 from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
 from src.orchestration.agent_arm import build_hosted_request
@@ -310,6 +311,7 @@ def run_sequential_agent_fork_week(
     episode_root: Path,
     output_root: Path,
     transition_to_next: bool,
+    chip_decision: Mapping[str, Any] | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any] | None, dict[str, Any] | None]:
     """Run one fork-owned week and optionally transition to the next state."""
     canonical_gw = canonical_root / f"gw-{gameweek:02d}"
@@ -330,13 +332,34 @@ def run_sequential_agent_fork_week(
         ruleset_sha256=rules_hash,
     )
     candidate = deepcopy(dict(solver_output["selected"]))
+    active_chip = None
+    if chip_decision is not None:
+        try:
+            validate_weekly_chip_decision(
+                chip_decision,
+                base_input=SolverInput.from_dict(adjusted_input),
+                canonical_output=solver_output,
+                state_sha256=str(state["content_sha256"]),
+                rules=rules,
+                ruleset_sha256=rules_hash,
+            )
+        except ValueError as exc:
+            raise EvidenceForkError(
+                f"Invalid weekly chip decision before scoring: {exc}"
+            ) from exc
+        candidate = deepcopy(dict(chip_decision["selected_candidate"]))
+        active_chip = (
+            str(chip_decision["selected_active_chip"])
+            if chip_decision.get("selected_active_chip") is not None
+            else None
+        )
     plan = validate_and_freeze_plan(
         episode_id=str(manifest["episode_id"]),
         policy_arm=str(state["policy_arm"]),
         state=state,
         candidate=candidate,
         decision_market=adjusted_input["players"],
-        active_chip=None,
+        active_chip=active_chip,
         frozen_at=str(manifest["deadline"]),
         rules=rules,
         ruleset_sha256=rules_hash,
@@ -407,6 +430,11 @@ def run_sequential_agent_fork_week(
             ],
             "captain": names[candidate["lineup"]["captain_id"]],
             "hit_cost": int(candidate["hit_cost"]),
+            **(
+                {"active_chip": plan["active_chip"]}
+                if chip_decision is not None
+                else {}
+            ),
             "starting_state_sha256": str(state["content_sha256"]),
             "next_state_sha256": (
                 successor["content_sha256"] if successor is not None else None
@@ -435,6 +463,8 @@ def run_sequential_agent_fork_week(
         ("comparison.json", comparison),
     ):
         _write_once(output_root / name, value)
+    if chip_decision is not None:
+        _write_once(output_root / "chip-policy-decision.json", chip_decision)
     if successor is not None and transition is not None:
         _write_once(output_root / "state-transition.json", transition)
         _write_once(output_root / "next-policy-state.json", successor)
@@ -689,6 +719,7 @@ def run_isolated_agent_fork(
     episode_root: Path,
     manual_fork_root: Path,
     output_root: Path,
+    chip_decision: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Apply reviewed proposals, freeze, then reveal and compare GW12."""
     canonical_gw = canonical_root / "gw-12"
@@ -711,13 +742,34 @@ def run_isolated_agent_fork(
         ruleset_sha256=rules_hash,
     )
     candidate = deepcopy(dict(solver_output["selected"]))
+    active_chip = None
+    if chip_decision is not None:
+        try:
+            validate_weekly_chip_decision(
+                chip_decision,
+                base_input=SolverInput.from_dict(adjusted_input),
+                canonical_output=solver_output,
+                state_sha256=str(state["content_sha256"]),
+                rules=rules,
+                ruleset_sha256=rules_hash,
+            )
+        except ValueError as exc:
+            raise EvidenceForkError(
+                f"Invalid weekly chip decision before scoring: {exc}"
+            ) from exc
+        candidate = deepcopy(dict(chip_decision["selected_candidate"]))
+        active_chip = (
+            str(chip_decision["selected_active_chip"])
+            if chip_decision.get("selected_active_chip") is not None
+            else None
+        )
     plan = validate_and_freeze_plan(
         episode_id=str(manifest["episode_id"]),
         policy_arm="evidence_agent",
         state=state,
         candidate=candidate,
         decision_market=adjusted_input["players"],
-        active_chip=None,
+        active_chip=active_chip,
         frozen_at=str(manifest["deadline"]),
         rules=rules,
         ruleset_sha256=rules_hash,
@@ -771,6 +823,11 @@ def run_isolated_agent_fork(
             "captain": names[candidate["lineup"]["captain_id"]],
             "hit_cost": int(candidate["hit_cost"]),
             "planning_objective": float(candidate["objective"]),
+            **(
+                {"active_chip": plan["active_chip"]}
+                if chip_decision is not None
+                else {}
+            ),
             "canonical_tree_sha256_before": canonical_before,
             "canonical_tree_sha256_after": canonical_after,
             "host_bundle_sha256": str(host_bundle["content_sha256"]),
@@ -788,6 +845,8 @@ def run_isolated_agent_fork(
     _write_once(output_root / "challenger-run.json", challenger_run)
     _write_once(output_root / "adapter-audit.json", audit)
     _write_once(output_root / "adjusted-solver-input.json", adjusted_input)
+    if chip_decision is not None:
+        _write_once(output_root / "chip-policy-decision.json", chip_decision)
     _write_once(
         output_root / "selected-candidate.json",
         _sealed(

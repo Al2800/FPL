@@ -4,12 +4,13 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from copy import deepcopy
-from typing import Any
+from typing import Any, Iterable
 
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.io import fingerprint
 from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
+from src.scoring.rules_loader import get_rule
 
 
 class ChipPolicyError(ValueError):
@@ -39,6 +40,18 @@ def validate_chip_policy_config(config: Mapping[str, Any]) -> None:
         raise ChipPolicyError("candidate_max_transfers must be between zero and three")
     if not 3 <= int(config.get("planning_horizon_gameweeks", 0)) <= 6:
         raise ChipPolicyError("planning horizon must contain three to six Gameweeks")
+    decay = int(config.get("reserve_decay_gameweeks", 0))
+    if not 1 <= decay <= int(config["planning_horizon_gameweeks"]):
+        raise ChipPolicyError(
+            "reserve decay must be within the declared planning horizon"
+        )
+    uncertainty = config.get("default_uncertainty_penalty_points", {})
+    if set(uncertainty) != set(CHIP_BASES):
+        raise ChipPolicyError(
+            "default uncertainty policy must cover all four chips"
+        )
+    if any(float(value) < 0 for value in uncertainty.values()):
+        raise ChipPolicyError("uncertainty penalties cannot be negative")
 
 
 def _candidate_record(
@@ -75,6 +88,7 @@ def generate_chip_candidates(
     config: Mapping[str, Any],
     rules: Mapping[str, Any],
     ruleset_sha256: str,
+    eligible_chips: Iterable[str] | None = None,
 ) -> list[dict[str, Any]]:
     """Generate legal no-chip and four-chip alternatives before outcome reveal."""
 
@@ -84,7 +98,14 @@ def generate_chip_candidates(
     configured_max = int(config["candidate_max_transfers"])
     if int(base_input.max_transfers) != configured_max:
         raise ChipPolicyError("solver input transfer bound differs from chip policy")
-    available = {str(value) for value in base_input.chips_available}
+    inventory = {str(value) for value in base_input.chips_available}
+    available = (
+        inventory
+        if eligible_chips is None
+        else {str(value) for value in eligible_chips}
+    )
+    if not available <= inventory:
+        raise ChipPolicyError("eligible chip set is not present in policy inventory")
     selected_chips: dict[str, str] = {}
     for chip in available:
         base = _chip_base(chip)
@@ -92,10 +113,6 @@ def generate_chip_candidates(
             if base in selected_chips:
                 raise ChipPolicyError(f"more than one available {base} chip")
             selected_chips[base] = chip
-    missing = sorted(set(CHIP_BASES) - set(selected_chips))
-    if missing:
-        raise ChipPolicyError(f"missing available chip candidates: {missing}")
-
     expected_counts = {str(value) for value in range(configured_max + 1)}
     by_count = canonical_output.get("best_by_transfer_count", {})
     if set(by_count) != expected_counts:
@@ -112,6 +129,8 @@ def generate_chip_candidates(
     ]
 
     for base in CHIP_BASES:
+        if base not in selected_chips:
+            continue
         chip = selected_chips[base]
         payload = deepcopy(base_input.as_dict())
         payload["active_chip"] = chip
@@ -139,6 +158,9 @@ def select_chip_candidate(
     *,
     config: Mapping[str, Any],
     future_trajectory_values: Mapping[str, float],
+    current_gameweek: int | None = None,
+    chip_expiry_gameweeks: Mapping[str, int] | None = None,
+    uncertainty_penalties: Mapping[str, float] | None = None,
 ) -> dict[str, Any]:
     """Select on forecast value and chip reserve, never on realised points."""
 
@@ -148,25 +170,72 @@ def select_chip_candidate(
         raise ChipPolicyError("chip candidate IDs must be unique")
     if set(identifiers) != set(future_trajectory_values):
         raise ChipPolicyError("future trajectory values do not cover every candidate")
+    chip_ids = {
+        str(row["active_chip"])
+        for row in candidates
+        if row["active_chip"] is not None
+    }
+    if (current_gameweek is None) != (chip_expiry_gameweeks is None):
+        raise ChipPolicyError(
+            "current Gameweek and chip expiry map must be supplied together"
+        )
+    if chip_expiry_gameweeks is not None and set(chip_expiry_gameweeks) != chip_ids:
+        raise ChipPolicyError("chip expiry map must cover every available chip")
+    if uncertainty_penalties is not None and set(uncertainty_penalties) != set(
+        identifiers
+    ):
+        raise ChipPolicyError(
+            "uncertainty penalties must cover every candidate"
+        )
 
     reserves = config["chip_reserve_points"]
+    default_uncertainty = config["default_uncertainty_penalty_points"]
+    decay_window = int(config["reserve_decay_gameweeks"])
     threshold = float(config["minimum_policy_gain_to_deploy_chip"])
     evaluated: list[dict[str, Any]] = []
     for source in candidates:
         row = deepcopy(dict(source))
         future = float(future_trajectory_values[row["candidate_id"]])
-        reserve = (
+        base_reserve = (
             0.0
             if row["active_chip"] is None
             else float(reserves[row["chip_base"]])
         )
+        expiry = None
+        weeks_remaining = None
+        reserve_factor = 1.0
+        if row["active_chip"] is not None and current_gameweek is not None:
+            assert chip_expiry_gameweeks is not None
+            expiry = int(chip_expiry_gameweeks[str(row["active_chip"])])
+            weeks_remaining = expiry - int(current_gameweek)
+            if weeks_remaining < 0:
+                raise ChipPolicyError("available chip is already past its expiry")
+            reserve_factor = min(1.0, weeks_remaining / decay_window)
+        reserve = base_reserve * reserve_factor
+        uncertainty = (
+            float(uncertainty_penalties[row["candidate_id"]])
+            if uncertainty_penalties is not None
+            else (
+                0.0
+                if row["active_chip"] is None
+                else float(default_uncertainty[row["chip_base"]])
+            )
+        )
         policy_value = (
-            float(row["expected"]["immediate_net_points"]) + future - reserve
+            float(row["expected"]["immediate_net_points"])
+            + future
+            - reserve
+            - uncertainty
         )
         row["expected"].update(
             {
                 "future_trajectory_value": round(future, 6),
+                "base_chip_reserve_points": round(base_reserve, 6),
                 "chip_reserve_points": round(reserve, 6),
+                "reserve_factor": round(reserve_factor, 6),
+                "chip_expiry_gameweek": expiry,
+                "weeks_until_expiry": weeks_remaining,
+                "uncertainty_penalty_points": round(uncertainty, 6),
                 "policy_value": round(policy_value, 6),
             }
         )
@@ -202,7 +271,7 @@ def select_chip_candidate(
     return {
         "selection_basis": (
             "immediate expected net points plus same-cutoff discounted future "
-            "trajectory value minus declared chip reserve"
+            "trajectory value minus expiry-adjusted chip reserve and uncertainty"
         ),
         "minimum_policy_gain_to_deploy_chip": threshold,
         "no_chip_control_id": control["candidate_id"],
@@ -211,3 +280,138 @@ def select_chip_candidate(
         "selected_active_chip": selected["active_chip"],
         "candidates": evaluated,
     }
+
+
+def build_weekly_chip_decision(
+    base_input: SolverInput,
+    canonical_output: Mapping[str, Any],
+    *,
+    state_sha256: str,
+    config: Mapping[str, Any],
+    rules: Mapping[str, Any],
+    ruleset_sha256: str,
+    current_gameweek: int,
+    chip_expiry_gameweeks: Mapping[str, int],
+    future_trajectory_values: Mapping[str, float],
+    uncertainty_penalties: Mapping[str, float] | None = None,
+) -> dict[str, Any]:
+    """Build one immutable, input-bound weekly chip selection."""
+
+    if int(current_gameweek) != int(base_input.gameweek):
+        raise ChipPolicyError("chip decision Gameweek differs from solver input")
+    if len(state_sha256) != 64:
+        raise ChipPolicyError("chip decision requires a state SHA-256")
+    first_half_expiry = int(
+        get_rule(dict(rules), "chips.first_half_expiry")["value"][
+            "expires_at_gameweek"
+        ]
+    )
+    for chip, expiry in chip_expiry_gameweeks.items():
+        if str(chip).endswith("_fh"):
+            if int(expiry) != first_half_expiry or current_gameweek > first_half_expiry:
+                raise ChipPolicyError(
+                    "first-half chip eligibility conflicts with active rules"
+                )
+        elif str(chip).endswith("_sh"):
+            if current_gameweek <= first_half_expiry or int(expiry) <= first_half_expiry:
+                raise ChipPolicyError(
+                    "second-half chip eligibility conflicts with active rules"
+                )
+        else:
+            raise ChipPolicyError("chip identifier must declare its active set")
+    candidates = generate_chip_candidates(
+        base_input,
+        canonical_output,
+        config=config,
+        rules=rules,
+        ruleset_sha256=ruleset_sha256,
+        eligible_chips=chip_expiry_gameweeks,
+    )
+    selection = select_chip_candidate(
+        candidates,
+        config=config,
+        future_trajectory_values=future_trajectory_values,
+        current_gameweek=current_gameweek,
+        chip_expiry_gameweeks=chip_expiry_gameweeks,
+        uncertainty_penalties=uncertainty_penalties,
+    )
+    selected = next(
+        row
+        for row in selection["candidates"]
+        if row["candidate_id"] == selection["selected_candidate_id"]
+    )
+    decision = {
+        "schema_version": "1.0",
+        "policy_id": "longitudinal-chip-policy-v1",
+        "season": base_input.season,
+        "gameweek": int(current_gameweek),
+        "state_sha256": state_sha256,
+        "ruleset_sha256": ruleset_sha256,
+        "solver_input_sha256": fingerprint(base_input.as_dict()),
+        "canonical_solver_output_sha256": fingerprint(canonical_output),
+        "policy_config": deepcopy(dict(config)),
+        "chip_expiry_gameweeks": {
+            str(key): int(value)
+            for key, value in sorted(chip_expiry_gameweeks.items())
+        },
+        "future_trajectory_values": {
+            str(key): float(value)
+            for key, value in sorted(future_trajectory_values.items())
+        },
+        "uncertainty_penalties": (
+            {
+                str(key): float(value)
+                for key, value in sorted(uncertainty_penalties.items())
+            }
+            if uncertainty_penalties is not None
+            else None
+        ),
+        "selection": selection,
+        "selected_candidate": deepcopy(selected["candidate"]),
+        "selected_active_chip": selected["active_chip"],
+    }
+    decision["content_sha256"] = artifact_hash(decision)
+    return decision
+
+
+def validate_weekly_chip_decision(
+    decision: Mapping[str, Any],
+    *,
+    base_input: SolverInput,
+    canonical_output: Mapping[str, Any],
+    state_sha256: str,
+    rules: Mapping[str, Any],
+    ruleset_sha256: str,
+) -> None:
+    """Rebuild a weekly chip decision and reject any changed binding or choice."""
+
+    if decision.get("content_sha256") != artifact_hash(decision):
+        raise ChipPolicyError("weekly chip decision hash mismatch")
+    if decision.get("state_sha256") != state_sha256:
+        raise ChipPolicyError("weekly chip decision state binding mismatch")
+    if decision.get("ruleset_sha256") != ruleset_sha256:
+        raise ChipPolicyError("weekly chip decision rules binding mismatch")
+    if decision.get("solver_input_sha256") != fingerprint(base_input.as_dict()):
+        raise ChipPolicyError("weekly chip decision input binding mismatch")
+    if decision.get("canonical_solver_output_sha256") != fingerprint(
+        canonical_output
+    ):
+        raise ChipPolicyError("weekly chip decision output binding mismatch")
+    rebuilt = build_weekly_chip_decision(
+        base_input,
+        canonical_output,
+        state_sha256=state_sha256,
+        config=dict(decision["policy_config"]),
+        rules=rules,
+        ruleset_sha256=ruleset_sha256,
+        current_gameweek=int(decision["gameweek"]),
+        chip_expiry_gameweeks=dict(decision["chip_expiry_gameweeks"]),
+        future_trajectory_values=dict(decision["future_trajectory_values"]),
+        uncertainty_penalties=(
+            dict(decision["uncertainty_penalties"])
+            if decision.get("uncertainty_penalties") is not None
+            else None
+        ),
+    )
+    if dict(decision) != rebuilt:
+        raise ChipPolicyError("weekly chip decision does not reproduce")

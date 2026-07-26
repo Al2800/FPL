@@ -14,6 +14,7 @@ from src.evaluation.outcome_scorer import score_revealed_outcome
 from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.replay_adapter import build_replay_solver_input
 from src.optimisation.io import fingerprint
+from src.optimisation.chips import validate_weekly_chip_decision
 from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
 from src.orchestration.historical_feature_state import (
@@ -809,6 +810,48 @@ def select_policy_candidate(
     return deepcopy(dict(candidate))
 
 
+def select_chip_aware_policy_action(
+    arm: str,
+    solver_input: Mapping[str, Any],
+    solver_output: Mapping[str, Any],
+    *,
+    state: Mapping[str, Any],
+    rules: Mapping[str, Any],
+    ruleset_sha256: str,
+    chip_decision: Mapping[str, Any] | None,
+) -> tuple[dict[str, Any], str | None]:
+    """Return the legacy action or one validated weekly chip-policy action."""
+
+    if chip_decision is None:
+        return select_policy_candidate(arm, solver_output), None
+    if arm == "naive_baseline":
+        raise GenuineReplayError(
+            "The naive no-transfer control cannot receive a chip decision"
+        )
+    typed_input = SolverInput.from_dict(dict(solver_input))
+    try:
+        validate_weekly_chip_decision(
+            chip_decision,
+            base_input=typed_input,
+            canonical_output=solver_output,
+            state_sha256=str(state["content_sha256"]),
+            rules=rules,
+            ruleset_sha256=ruleset_sha256,
+        )
+    except ValueError as exc:
+        raise GenuineReplayError(
+            f"Invalid weekly chip decision for {arm}: {exc}"
+        ) from exc
+    return (
+        deepcopy(dict(chip_decision["selected_candidate"])),
+        (
+            str(chip_decision["selected_active_chip"])
+            if chip_decision.get("selected_active_chip") is not None
+            else None
+        ),
+    )
+
+
 def _replay_decision_record(
     *,
     manifest: Mapping[str, Any],
@@ -973,6 +1016,7 @@ def finalise_historical_gameweek(
     output_root: Path,
     code_commit: str,
     reviewed_setup_dir: Path | None = None,
+    chip_decisions: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Freeze, reveal, score and transition one reviewed checkpoint."""
     if len(code_commit) != 40:
@@ -1014,6 +1058,12 @@ def finalise_historical_gameweek(
     decision_markets: dict[str, dict[str, dict[str, Any]]] = {}
     frozen_plans: dict[str, dict[str, Any]] = {}
     states: dict[str, dict[str, Any]] = {}
+    if chip_decisions is not None and set(chip_decisions) != set(
+        POLICY_ARMS[1:]
+    ):
+        raise GenuineReplayError(
+            "Chip-aware replay requires one decision for every non-naive arm"
+        )
     for arm in POLICY_ARMS:
         solver_input = solver_inputs[arm]
         solver_output = solver_outputs[arm]
@@ -1047,7 +1097,19 @@ def finalise_historical_gameweek(
         decision_market = {
             str(row["player_id"]): dict(row) for row in solver_input["players"]
         }
-        candidate = select_policy_candidate(arm, solver_output)
+        candidate, active_chip = select_chip_aware_policy_action(
+            arm,
+            solver_input,
+            solver_output,
+            state=state,
+            rules=rules,
+            ruleset_sha256=rules_hash,
+            chip_decision=(
+                chip_decisions.get(arm)
+                if chip_decisions is not None and arm != "naive_baseline"
+                else None
+            ),
+        )
         states[arm] = state
         decision_markets[arm] = decision_market
         frozen_plans[arm] = validate_and_freeze_plan(
@@ -1056,7 +1118,7 @@ def finalise_historical_gameweek(
             state=state,
             candidate=candidate,
             decision_market=decision_market,
-            active_chip=None,
+            active_chip=active_chip,
             frozen_at=str(manifest["deadline"]),
             rules=rules,
             ruleset_sha256=rules_hash,
@@ -1066,6 +1128,11 @@ def finalise_historical_gameweek(
     for arm in POLICY_ARMS:
         arm_dir = gameweek_dir / arm
         _write_json(arm_dir / "policy-state-before.json", states[arm])
+        if chip_decisions is not None and arm != "naive_baseline":
+            _write_json(
+                arm_dir / "chip-policy-decision.json",
+                dict(chip_decisions[arm]),
+            )
         _write_json(arm_dir / "validated-plan.json", frozen_plans[arm])
 
     revealed_episode = _load_outcomes_after_all_plans_freeze(
@@ -1197,6 +1264,12 @@ def finalise_historical_gameweek(
         "shared_action_count": len(action_hashes),
         "arms": arm_summaries,
     }
+    if chip_decisions is not None:
+        summary["chip_policy_mode"] = "reviewed_longitudinal_v1"
+        summary["chip_policy_decision_sha256_by_arm"] = {
+            arm: str(chip_decisions[arm]["content_sha256"])
+            for arm in POLICY_ARMS[1:]
+        }
     if gameweek == 2:
         summary["reviewed_solver_input_sha256"] = next(iter(input_hashes.values()))
         summary["reviewed_solver_output_sha256"] = next(
@@ -1248,6 +1321,7 @@ def finalise_historical_gameweek_two(
     output_root: Path,
     code_commit: str,
     reviewed_setup_dir: Path | None = None,
+    chip_decisions: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Compatibility wrapper for the reviewed GW2 checkpoint."""
     return finalise_historical_gameweek(
@@ -1257,6 +1331,7 @@ def finalise_historical_gameweek_two(
         output_root=output_root,
         code_commit=code_commit,
         reviewed_setup_dir=reviewed_setup_dir,
+        chip_decisions=chip_decisions,
     )
 
 
@@ -1268,6 +1343,7 @@ def run_historical_replay(
     start_gameweek: int = 1,
     stop_after_gameweek: int,
     code_commit: str,
+    chip_decisions: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Run one explicitly reviewed historical checkpoint."""
     if start_gameweek == stop_after_gameweek and start_gameweek >= 2:
@@ -1277,6 +1353,7 @@ def run_historical_replay(
             episode_root=episode_root,
             output_root=output_root,
             code_commit=code_commit,
+            chip_decisions=chip_decisions,
         )
     if start_gameweek != 1 or stop_after_gameweek != 1:
         raise GenuineReplayError(

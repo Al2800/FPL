@@ -7,6 +7,33 @@ Bench Boost and Triple Captain can be generated, frozen, scored and carried
 through legal state transitions using the same interface intended for live
 2026/27 decisions.
 
+## Weekly longitudinal integration
+
+The original GW31 experiment proved the candidate and transition mechanics but
+did not connect them to the ordinary replay runner: those paths still froze
+every plan with `active_chip=None`. The reusable weekly path now creates a
+`longitudinal-chip-policy-v1` decision before outcome reveal. That record binds
+the exact policy state, ruleset, no-chip solver input and output, candidate
+matrix, future values, uncertainty assumptions and selected action by hash.
+The genuine replay and agent-fork runners accept this record explicitly,
+rebuild it, and refuse any mismatch before freezing or scoring.
+
+Chip mode is opt-in for a new trajectory so the sealed canonical 2025/26
+artifacts remain byte-for-byte untouched. Once enabled, a genuine replay
+requires a reviewed chip decision for every non-naive arm; the naive arm stays
+the no-transfer/no-chip control. The chosen chip then flows through the normal
+validated plan, outcome scorer and policy-state transition. This is especially
+important for Free Hit: its temporary squad scores the current week while the
+successor restores the predecessor squad, purchase prices, bank and banked
+transfers.
+
+Longitudinal inventory is not assumed to contain all four usable alternatives.
+Used and expired chips disappear, while future-set chips may exist in state but
+are not eligible before their rules-defined window. The weekly decision
+therefore receives the currently legal chip IDs and their expiry Gameweeks;
+generation emits the complete no-chip transfer ladder plus only those legal
+chip candidates.
+
 ## What the policy decides
 
 At a deadline the deterministic solver receives one immutable player market,
@@ -82,6 +109,17 @@ After every plan was frozen, the revealed outcomes showed:
 Triple Captain therefore looks attractive in hindsight, but its realised
 13-point gain does not enter selection and does not justify changing the
 predeclared reserve.
+
+For weekly use, the full reserve applies until the final six Gameweeks before a
+chip expires, then declines linearly to zero at its deadline. This is not a
+forecast that late chips are inherently better. It prevents the optimiser from
+assigning option value beyond the period in which the option can be exercised.
+The policy also subtracts declared default uncertainty penalties: one point for
+Wildcard and Free Hit, and half a point for Bench Boost and Triple Captain.
+Callers may provide candidate-specific penalties, but they must cover the whole
+matrix and are sealed into the decision. At the terminal deadline a chip still
+must beat the best no-chip action by the two-point deployment threshold after
+uncertainty; only its now-nonexistent reserve becomes zero.
 
 The Free Hit branch restored the opening GW31 squad, every purchase price, the
 £0.3m bank and all five free transfers. Replanning independently from GW32 to

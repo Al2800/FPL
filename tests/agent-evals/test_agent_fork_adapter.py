@@ -8,13 +8,21 @@ import json
 from pathlib import Path
 
 import pytest
+import yaml
 
 from src.agents.evidence_agent import EvidenceAgentError
 from src.agents.evidence_agent import validate_evidence_result
 from src.evidence.lifecycle import load_policy
 from src.forecasting.live_faithful import artifact_hash
+from src.optimisation.chips import (
+    build_weekly_chip_decision,
+    generate_chip_candidates,
+)
+from src.optimisation.solver import solve
+from src.optimisation.types import SolverInput
 from src.orchestration.agent_fork_adapter import (
     apply_agent_adjustments,
+    build_fork_solver_input,
     build_gw12_agent_host_bundle,
     run_isolated_agent_fork,
     run_sequential_agent_fork_week,
@@ -343,6 +351,91 @@ def test_shared_fork_runners_refuse_degraded_run_without_writing(
             transition_to_next=False,
         )
     assert not sequential_output.exists()
+
+
+def test_sequential_agent_fork_freezes_scores_and_records_selected_chip(
+    tmp_path: Path,
+) -> None:
+    host_bundle = json.loads(
+        (EVIDENCE.parent / "agent-host-bundle.json").read_text(encoding="utf-8")
+    )
+    state = json.loads(
+        (
+            CANONICAL
+            / "gw-12/setup/arms/evidence_agent/starting-policy-state.json"
+        ).read_text(encoding="utf-8")
+    )
+    solver_input_value = build_fork_solver_input(
+        gameweek=12,
+        state=state,
+        canonical_root=CANONICAL,
+    )
+    solver_input = SolverInput.from_dict(solver_input_value)
+    episode = EPISODES / "gw-12"
+    manifest = json.loads(
+        (episode / "episode-manifest.json").read_text(encoding="utf-8")
+    )
+    rules = yaml.safe_load((episode / "ruleset.yaml").read_text(encoding="utf-8"))
+    rules_hash = manifest["ruleset"]["content_sha256"]
+    solver_output = solve(
+        solver_input,
+        rules=rules,
+        ruleset_sha256=rules_hash,
+    )
+    config = json.loads(
+        (ROOT / "control/policies/chip-v1.json").read_text(encoding="utf-8")
+    )
+    eligible_chips = [
+        chip for chip in solver_input.chips_available if chip.endswith("_fh")
+    ]
+    candidates = generate_chip_candidates(
+        solver_input,
+        solver_output,
+        config=config,
+        rules=rules,
+        ruleset_sha256=rules_hash,
+        eligible_chips=eligible_chips,
+    )
+    future = {row["candidate_id"]: 0.0 for row in candidates}
+    triple_captain = next(
+        chip
+        for chip in solver_input.chips_available
+        if chip.startswith("triple_captain_")
+    )
+    future[triple_captain] = 100.0
+    expiry = {chip: 19 for chip in eligible_chips}
+    decision = build_weekly_chip_decision(
+        solver_input,
+        solver_output,
+        state_sha256=state["content_sha256"],
+        config=config,
+        rules=rules,
+        ruleset_sha256=rules_hash,
+        current_gameweek=12,
+        chip_expiry_gameweeks=expiry,
+        future_trajectory_values=future,
+    )
+    evidence, challenger = _runs(blocked=True)
+    output = tmp_path / "chip-aware"
+
+    comparison, _, _ = run_sequential_agent_fork_week(
+        gameweek=12,
+        state=state,
+        host_bundle=host_bundle,
+        evidence_run=evidence,
+        challenger_run=challenger,
+        canonical_root=CANONICAL,
+        episode_root=EPISODES,
+        output_root=output,
+        transition_to_next=False,
+        chip_decision=decision,
+    )
+
+    plan = json.loads((output / "validated-plan.json").read_text(encoding="utf-8"))
+    assert decision["selected_active_chip"] == triple_captain
+    assert comparison["active_chip"] == triple_captain
+    assert plan["active_chip"] == triple_captain
+    assert (output / "chip-policy-decision.json").is_file()
 
 
 def test_committed_sol_runs_reproduce_isolated_result_without_mutating_control(

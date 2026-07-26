@@ -6,7 +6,13 @@
     "triple_captain": 8.0,
     "wildcard": 16.0
   },
-  "content_sha256": "1110c08c118689f156cd237e7287117c18453d04cac7fc5215d820c91bc17b67",
+  "content_sha256": "0a2519cc7ba6a10d5a0ea00e7099dd9c3c983643fa594b291bc1945fdc2109e1",
+  "default_uncertainty_penalty_points": {
+    "bench_boost": 0.5,
+    "free_hit": 1.0,
+    "triple_captain": 0.5,
+    "wildcard": 1.0
+  },
   "future_projection": {
     "allow_hits": true,
     "beam_width": 4,
@@ -30,6 +36,7 @@
   "minimum_policy_gain_to_deploy_chip": 2.0,
   "planning_horizon_gameweeks": 6,
   "policy_version": "chip-policy-v1",
+  "reserve_decay_gameweeks": 6,
   "reserve_interpretation": "Expected option value retained for a stronger later blank or double Gameweek; fixed before the 2025-26 outcome replay.",
   "selection_target": "immediate_expected_net_plus_same_cutoff_discounted_future_trajectory_minus_chip_reserve",
   "status": "experimental_live_shadow_challenger"
