@@ -16,7 +16,7 @@ This work continues the repaired historical evidence-agent trajectory from the e
 - [x] (2026-07-26 18:42Z) Run fresh evidence and challenger roles for GW23-GW29, preserving five rejected versions and advancing only completed gates.
 - [x] (2026-07-26 18:50Z) Run focused and full tests, complete byte-identical reruns, and finalise the seven-week review.
 - [x] (2026-07-26 18:55Z) Close Bead `FPL-2h9` with implementation and verification evidence.
-- [ ] Commit and push the completed block.
+- [x] (2026-07-26 18:57Z) Commit the completed block as `c7f8b9e` and push it to `origin/main`.
 
 ## Surprises & Discoveries
 
