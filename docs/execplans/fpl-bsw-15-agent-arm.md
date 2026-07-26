@@ -39,7 +39,8 @@ replayable without resampling the model.
   (81 tests).
 - [x] (2026-07-26) Added the detailed implementation record and closed
   `FPL-bsw.15`.
-- [ ] Commit and push `main`.
+- [x] (2026-07-26) Committed as `caba6b3` and pushed `main` to
+  `origin/main`.
 
 ## Surprises & Discoveries
 
