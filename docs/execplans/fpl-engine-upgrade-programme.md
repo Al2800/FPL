@@ -21,7 +21,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-26 00:05Z) Separated attack and defence context, calibrated it before 2025/26, and rejected promotion after it worsened all, owned, and selected-player calibration.
 - [x] (2026-07-25 23:15Z) Added calibrated three-state appearances and opt-in legal goalkeeper, bench-order, automatic-substitution, and vice-captain planning value without changing realised scoring.
 - [x] (2026-07-26 01:47Z) Added a sealed reliability-aware robust-selection challenger with raw/central/lower/upper audit values, unchanged legal solver integration, locked held-out gates, and explicit sensitivity reporting.
-- [ ] Replace the fixed transfer-option proxy with a three-to-six-Gameweek receding-horizon planner.
+- [x] (2026-07-26 02:21Z) Added a bounded same-cutoff receding-horizon transfer challenger with legal state carry, first-action-only execution, deterministic fallback, and an exploratory GW12 result.
 - [ ] Implement the autonomous chip policy and GW31 Free Hit counterfactual in `FPL-q8s`.
 - [ ] Add a dedicated captaincy model and compare captain-only counterfactuals.
 - [ ] Run the complete challenger matrix, preserve all frozen inputs and outputs, and nominate a 2026/27 live-shadow configuration.
