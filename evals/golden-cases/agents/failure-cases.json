@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "id": "stale_evidence",
+      "expected_failure_category": "invalid_output"
+    },
+    {
+      "id": "conflicting_evidence",
+      "expected_failure_category": "invalid_output"
+    },
+    {
+      "id": "unknown_player",
+      "expected_failure_category": "invalid_output"
+    },
+    {
+      "id": "rule_mutation",
+      "expected_failure_category": "invalid_output"
+    },
+    {
+      "id": "tool_failure",
+      "expected_failure_category": "tool_failure"
+    },
+    {
+      "id": "injection_attempt",
+      "expected_failure_category": "policy_denial"
+    },
+    {
+      "id": "budget_exhaustion",
+      "expected_failure_category": "budget_exhaustion"
+    }
+  ]
+}

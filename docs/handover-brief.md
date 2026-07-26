@@ -19,14 +19,19 @@
 1. **Day-one live capture** — keep `scripts.run_snapshot` on a schedule; treat 403/empty bodies as retained evidence; promote schema notes when bootstrap is stable.
 2. **Wire manager state** — fill the template each GW; convert to optimiser `SolverInput` + GDR (small adapter script).
 3. **Attach post-GW outcomes** — `replay_gameweek(..., attach_outcome_points=...)` or equivalent on live GDRs.
-4. **Do not** enable new collectors or LLM agents until OD8 secrets exist and ADRs are ratified as needed.
+4. Keep evidence agents proposal-only and inside the attested
+   `gpt-5.6-sol` subscription-host boundary; do not add API keys or execution
+   authority.
 
 ## Owner-only (do not invent)
 
 - Ratify Proposed ADRs 0011–0016  
 - Recruit ~5 cohort managers (ADR-0009)  
-- Choose LLM/Codex provider + secrets (Open Decision 8)  
+- Open Decision 8 is resolved: `gpt-5.6-sol` via ChatGPT-subscription Codex;
+  no API secret is required or permitted for this arm.
 
 ## Hard boundaries
 
-Same as `AGENTS.md`: rules-as-data, no unregistered collection, point-in-time discipline, LLMs propose only, no secrets in Git, no deferred-feature implementation (WP-10 notes only).
+Same as `AGENTS.md`: rules-as-data, no unregistered collection, point-in-time
+discipline, LLMs propose only, no secrets in Git, and no deferred execution
+implementation.

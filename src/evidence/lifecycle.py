@@ -85,6 +85,7 @@ ENTITY_SCHEMAS = {
     "source_documents": "evidence/source_documents.json",
     "extracted_claims": "evidence/extracted_claims.json",
     "claim_conflicts": "evidence/claim_conflicts.json",
+    "claim_entities": "evidence/claim_entities.json",
     "decision_signals": "evidence/decision_signals.json",
     "proposed_adjustments": "evidence/proposed_adjustments.json",
     "agent_reviews": "decisions/agent_reviews.json",

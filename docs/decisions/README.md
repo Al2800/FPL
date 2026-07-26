@@ -20,3 +20,8 @@ Decisions with trade-offs are recorded here (see `AGENTS.md`). Statuses: **Propo
 | [0014](0014-historical-seasons-event-data.md) | Historical seasons with reliable event-level data (Open Decision 6) | Proposed |
 | [0015](0015-browser-dry-run-stability.md) | Stability threshold before browser dry-run (Open Decision 11) | Proposed |
 | [0016](0016-agent-runtime-budgets.md) | Per-Gameweek agent cost and latency budgets (Open Decision 13) | Proposed |
+| [0017](0017-benchmark-kernel.md) | Fixed observed-episode benchmark contract | Accepted |
+| [0018](0018-benchmark-datasets.md) | Full 2025/26 benchmark seed and live snapshots | Accepted |
+| [0019](0019-historical-ruleset.md) | Historical 2025/26 ruleset activation | Accepted |
+| [0020](0020-transfer-option-value-bridge.md) | Transfer option-value bridge | Accepted for replay review |
+| [0021](0021-sol-subscription-evidence-agent.md) | GPT-5.6 Sol subscription-hosted evidence arm (Open Decision 8) | Accepted |

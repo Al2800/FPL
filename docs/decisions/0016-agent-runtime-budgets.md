@@ -20,7 +20,10 @@ Phase 1 default budgets (overridable per run in the Gameweek Decision Record `pi
 
 On timeout or budget breach: mark GDR `degraded=true`, attach failure reason, **do not** block the deterministic recommendation.
 
-Exact currency amounts depend on the chosen provider (Open Decision 8) and are filled when secrets are configured.
+The selected ChatGPT-subscription Codex host does not expose a reliable
+per-run currency meter. Currency is therefore recorded as unavailable, not
+zero; the wall-clock, one-attempt, output and postflight token limits remain
+enforced. A hard monetary cap requires a future API-backed provider decision.
 
 ## Consequences
 

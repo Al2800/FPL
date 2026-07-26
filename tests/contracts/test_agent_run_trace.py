@@ -44,8 +44,9 @@ def _assert_budget_within_limit(record: dict) -> None:
     used = record["budget"]["used"]
     for field in ["wall_clock_ms", "tool_calls", "input_tokens", "output_tokens", "total_tokens"]:
         assert used[field] <= limit[field], field
-    assert used["cost"]["currency"] == limit["cost"]["currency"]
-    assert used["cost"]["amount"] <= limit["cost"]["amount"]
+    if used["cost"]["amount"] is not None:
+        assert used["cost"]["currency"] == limit["cost"]["currency"]
+        assert used["cost"]["amount"] <= limit["cost"]["amount"]
 
 
 def _assert_contiguous_sequences(record: dict) -> None:

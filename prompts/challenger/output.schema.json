@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "role",
+    "review_id",
+    "reviewed_adjustment_ids",
+    "escalation_outcome",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "role": { "const": "challenger" },
+    "review_id": { "type": "string", "minLength": 1 },
+    "reviewed_adjustment_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "escalation_outcome": {
+      "enum": [
+        "dismissed",
+        "confidence_downgrade",
+        "forced_re_run",
+        "escalation"
+      ]
+    },
+    "notes": { "type": "string", "minLength": 1 }
+  }
+}

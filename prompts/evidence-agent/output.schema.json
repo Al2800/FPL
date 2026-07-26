@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "role",
+    "claims",
+    "conflicts",
+    "proposed_adjustments",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "role": { "const": "evidence" },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim_id",
+          "document_id",
+          "passage_id",
+          "source_id",
+          "claim_text",
+          "citation_excerpt",
+          "citation_excerpt_sha256",
+          "expires_at",
+          "confidence",
+          "player_uid"
+        ],
+        "properties": {
+          "claim_id": { "type": "string", "minLength": 1 },
+          "document_id": { "type": "string", "minLength": 1 },
+          "passage_id": { "type": "string", "minLength": 1 },
+          "source_id": { "type": "string", "minLength": 1 },
+          "claim_text": { "type": "string", "minLength": 1 },
+          "citation_excerpt": { "type": "string", "minLength": 1 },
+          "citation_excerpt_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "expires_at": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "player_uid": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["conflict_id", "claim_ids", "status"],
+        "properties": {
+          "conflict_id": { "type": "string", "minLength": 1 },
+          "claim_ids": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "status": { "enum": ["unresolved", "resolved"] }
+        }
+      }
+    },
+    "proposed_adjustments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "adjustment_id",
+          "claim_ids",
+          "target",
+          "before_value",
+          "after_value",
+          "confidence",
+          "expires_at",
+          "player_uid",
+          "rationale"
+        ],
+        "properties": {
+          "adjustment_id": { "type": "string", "minLength": 1 },
+          "claim_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "target": { "enum": ["expected_minutes", "start_probability"] },
+          "before_value": { "type": "number" },
+          "after_value": { "type": "number" },
+          "unit": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "expires_at": { "type": "string" },
+          "player_uid": { "type": "string", "minLength": 1 },
+          "rationale": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

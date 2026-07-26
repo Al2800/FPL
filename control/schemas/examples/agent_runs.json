@@ -10,14 +10,15 @@
   "agent_role": "evidence",
   "policy_arm": "evidence_agent",
   "provider": {
-    "provider_id": "provider-selected-by-od8",
-    "api_surface": "responses"
+    "provider_id": "openai-chatgpt-subscription",
+    "api_surface": "codex_subscription_subagent",
+    "auth_mode": "chatgpt_subscription",
+    "cli_version": "0.144.6"
   },
   "model": {
-    "model_id": "model-a",
-    "model_version": "2026-07-01",
-    "temperature": 0.2,
-    "seed": null
+    "requested_model": "gpt-5.6-sol",
+    "reported_model": null,
+    "reasoning_effort": "medium"
   },
   "versions": {
     "code_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -102,7 +103,8 @@
       "total_tokens": 16000,
       "cost": {
         "currency": "GBP",
-        "amount": 1.0
+        "amount": null,
+        "metering_status": "unavailable"
       }
     },
     "used": {
@@ -113,7 +115,8 @@
       "total_tokens": 2740,
       "cost": {
         "currency": "GBP",
-        "amount": 0.08
+        "amount": null,
+        "metering_status": "unavailable"
       }
     },
     "exhausted": []
@@ -143,5 +146,7 @@
     "model_version": "2026-07-01",
     "prompt_version": "1.0",
     "agent_run_id": "ar-evidence-gw01"
-  }
+  },
+  "decision_cutoff": "2026-08-14T10:30:00Z",
+  "run_mode": "live"
 }

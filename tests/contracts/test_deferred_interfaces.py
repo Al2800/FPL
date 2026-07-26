@@ -45,9 +45,9 @@ def test_deferred_notes_exist_with_required_sections() -> None:
             assert heading in text, f"{name} missing {heading}"
 
 
-def test_no_execution_or_agent_implementation_added() -> None:
-    """WP-10 must not ship Phase 1 implementation under deferred packages."""
-    for pkg in ("agents", "execution"):
+def test_no_deferred_execution_implementation_added() -> None:
+    """Execution remains deferred; evidence agents were activated by FPL-bsw.15."""
+    for pkg in ("execution",):
         root = REPO / "src" / pkg
         if not root.exists():
             continue

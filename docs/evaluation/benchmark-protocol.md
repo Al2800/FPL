@@ -132,6 +132,8 @@ claim bit-identical regeneration from a fresh model sample.
 
 ## Human gates
 
-ADR-0017 must be ratified before episode-builder beads merge. Model-provider
-selection remains Open Decision 8 and gates provider-specific evidence-agent
-work. Browser execution is outside this kernel and remains deferred to Phase 7.
+ADR-0017 must be ratified before episode-builder beads merge. The owner
+resolved Open Decision 8 on 26 July 2026 by selecting `gpt-5.6-sol` on the
+ChatGPT-subscription Codex host. This permits proposal-only benchmark arms but
+does not permit API-key use or unattended execution. Browser execution remains
+outside this kernel and deferred to Phase 7.

@@ -27,7 +27,9 @@
     "trace_path",
     "observed_at",
     "available_at",
-    "provenance"
+    "provenance",
+    "decision_cutoff",
+    "run_mode"
   ],
   "properties": {
     "schema_version": {
@@ -71,7 +73,9 @@
       "additionalProperties": false,
       "required": [
         "provider_id",
-        "api_surface"
+        "api_surface",
+        "auth_mode",
+        "cli_version"
       ],
       "properties": {
         "provider_id": {
@@ -81,6 +85,13 @@
         "api_surface": {
           "type": "string",
           "minLength": 1
+        },
+        "auth_mode": {
+          "const": "chatgpt_subscription"
+        },
+        "cli_version": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
@@ -88,29 +99,19 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "model_id",
-        "model_version",
-        "temperature"
+        "requested_model",
+        "reasoning_effort"
       ],
       "properties": {
-        "model_id": {
+        "requested_model": {
           "type": "string",
           "minLength": 1
         },
-        "model_version": {
-          "type": "string",
-          "minLength": 1
+        "reported_model": {
+          "type": ["string", "null"]
         },
-        "temperature": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 2
-        },
-        "seed": {
-          "type": [
-            "integer",
-            "null"
-          ]
+        "reasoning_effort": {
+          "enum": ["low", "medium", "high", "xhigh", "max", "ultra"]
         }
       }
     },
@@ -179,7 +180,6 @@
         },
         "tools": {
           "type": "array",
-          "minItems": 1,
           "uniqueItems": true,
           "items": {
             "type": "object",
@@ -319,7 +319,6 @@
     },
     "model_calls": {
       "type": "array",
-      "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -471,6 +470,12 @@
     },
     "provenance": {
       "$ref": "../_defs.json#/$defs/provenance"
+    },
+    "decision_cutoff": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "run_mode": {
+      "enum": ["live", "retrospective"]
     }
   },
   "allOf": [
@@ -612,8 +617,11 @@
               "pattern": "^[A-Z]{3}$"
             },
             "amount": {
-              "type": "number",
+              "type": ["number", "null"],
               "minimum": 0
+            },
+            "metering_status": {
+              "enum": ["metered", "limit_only", "unavailable"]
             }
           }
         }

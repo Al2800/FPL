@@ -11,29 +11,43 @@ replay the run without contacting the model or live tools again. The canonical
 record is `control/schemas/decisions/agent_runs.json`; a Gameweek-level index of
 those records is `control/schemas/benchmark/run-manifest.json`.
 
-This is a trace contract, not an agent implementation and not permission to
-select a provider. Open Decision 8 still gates provider-specific runtime code.
+Open Decision 8 was resolved by the owner on 26 July 2026:
+`gpt-5.6-sol` runs through a ChatGPT-subscription-authenticated Codex host.
+`src/orchestration/agent_arm.py` is the deterministic ingestion and validation
+boundary. It does not use an API key, execute FPL changes, or grant the model
+write authority.
 
 ## Replay boundary
 
 Each run binds to one immutable `episode_id`, the common observed-episode hash
 and the exact snapshot identifiers. It records:
 
-- provider, model identifier, model version and sampling settings;
+- provider, subscription authentication mode, Codex host version, requested
+  model, reported model when available, and reasoning effort;
 - code, ruleset, prompt, policy and tool contract versions and hashes;
 - hashes and immutable references for rendered context and structured output;
 - every tool call in contiguous sequence, with argument hash, versioned tool,
   status, timing and cached result reference;
 - every model call in contiguous sequence, with request/response hashes and a
   cached-response reference;
-- token, tool-call, wall-clock and currency limits plus actual use;
+- token, tool-call and wall-clock limits plus actual use; subscription cost is
+  explicitly unavailable rather than a fictional zero charge;
 - completed, degraded or failed status and a structured failure category; and
-- trace JSONL location, temporal fields and normal provenance.
+- trace JSONL location, the decision cutoff, actual run time,
+  retrospective/live mode and normal provenance.
 
 A replay resolves the recorded artefact references, verifies every hash and
-feeds cached tool/model results back in sequence. It does not resample the model
-or re-query a live source. A missing cache artefact or hash mismatch makes the
-run non-replayable; it must not be silently regenerated.
+feeds the cached raw model result through the closed output schema and all
+deterministic semantic checks. It does not resample the model or re-query a live
+source. A missing, corrupt or version-stale cache selects the exact
+deterministic fallback; it is never silently trusted or regenerated as the same
+run.
+
+The hosted input contains only immutable, hash-verified passages, known player
+identities and their deterministic baselines. Source identity and source
+timestamps are hydrated by the host. A citation must exactly match an approved
+passage. Hidden-outcome references, credentials and authority-bearing output
+fields are rejected.
 
 ## JSONL event order
 
@@ -45,9 +59,11 @@ validation; the JSONL artefact retains the complete event history.
 ## Budgets and degraded operation
 
 Limits and usage are recorded separately for wall-clock milliseconds, tool
-calls, input/output/total tokens and currency cost. Runtime enforcement must
-stop before a new action would exceed a limit. `budget.exhausted` records the
-triggering dimensions.
+calls and input/output/total tokens. One hosted attempt is allowed. A
+postflight overrun rejects the result and records the triggering dimensions in
+`budget.exhausted`. Subscription execution does not expose a monetary meter,
+so the trace records `metering_status: unavailable`. A real currency cap would
+require an API-backed provider selected later.
 
 The structured failure taxonomy is:
 
@@ -67,8 +83,9 @@ failure permits an unregistered source, larger budget or delayed deadline.
 
 Agent traces must never contain credentials, authorisation headers, cookies,
 session state, API tokens, manager personal data, or raw browser material. Raw
-prompt and response bodies are also excluded from the summary contract: only
-content hashes and access-controlled local artefact references are retained.
+prompt and response bodies are excluded from the summary contract. The
+returned run object materialises the hash-bound raw response and validated
+output separately so a cache store can persist them outside Git.
 
 Before persistence, runtime code must redact and scan the trace. The record is
 valid only with `privacy.redaction_status = passed` and
@@ -86,3 +103,9 @@ storage remains outside Git and inherits the repository retention policy.
 - completed/degraded conditional rules hold;
 - uncontracted credentials, cookies and personal-data fields are rejected; and
 - semantic checks detect non-contiguous sequences and budget overruns.
+
+`tests/agent-evals/test_agent_arm.py` additionally proves passage grounding,
+host-owned timestamps, baseline/range validation, contradiction and injection
+blocking, strict output schemas, challenger ablation, proposal binding, host
+attestation, honest zero-call failure, deterministic fallback and hash-verified
+cache replay.

@@ -1,0 +1,44 @@
+{
+  "decision_at": "2025-10-18T10:00:00Z",
+  "known_player_ids": [
+    "player:palmer"
+  ],
+  "valid_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:palmer-training",
+        "document_id": "document:club-update",
+        "passage_id": "passage:palmer-training",
+        "source_id": "official-club-update",
+        "claim_text": "Palmer did not train fully and will be assessed.",
+        "citation_excerpt": "Palmer did not train fully and will be assessed.",
+        "citation_excerpt_sha256": "eeeaf329c3725cabbc12c1d6a219e00677aea7b77972d7736e5ae2c018eb3948",
+        "expires_at": "2025-10-18T11:00:00Z",
+        "confidence": 0.85,
+        "player_uid": "player:palmer"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:palmer-minutes",
+        "claim_ids": [
+          "claim:palmer-training"
+        ],
+        "target": "expected_minutes",
+        "before_value": 80,
+        "after_value": 40,
+        "unit": "minutes",
+        "confidence": 0.8,
+        "expires_at": "2025-10-18T11:00:00Z",
+        "player_uid": "player:palmer",
+        "rationale": "The official update makes a full match materially less likely."
+      }
+    ],
+    "notes": [
+      "Proposal requires independent challenger review."
+    ]
+  }
+}

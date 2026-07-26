@@ -12,7 +12,9 @@
 - [x] Challenger outcomes (§13.4) gate automatic approval (`evaluate_challenger_outcomes`)
 - [x] Injection-resistant extraction golden case (`evals/golden-cases/evidence/injection-presser.json`)
 - [x] ADR-0013 + `control/policies/evidence-adjustments.yaml` (Open Decision 10 — Proposed)
-- [ ] Live LLM evidence/challenger agents — blocked on Open Decision 8 (provider + secrets)
+- [x] Constrained evidence/challenger benchmark arms — `gpt-5.6-sol` through
+  the ChatGPT-subscription Codex host, with no API key, mutation or execution
+  authority (`FPL-bsw.15`)
 
 ## Run
 
