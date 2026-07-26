@@ -22,7 +22,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-25 23:15Z) Added calibrated three-state appearances and opt-in legal goalkeeper, bench-order, automatic-substitution, and vice-captain planning value without changing realised scoring.
 - [x] (2026-07-26 01:47Z) Added a sealed reliability-aware robust-selection challenger with raw/central/lower/upper audit values, unchanged legal solver integration, locked held-out gates, and explicit sensitivity reporting.
 - [x] (2026-07-26 02:21Z) Added a bounded same-cutoff receding-horizon transfer challenger with legal state carry, first-action-only execution, deterministic fallback, and an exploratory GW12 result.
-- [ ] Implement the autonomous chip policy and GW31 Free Hit counterfactual in `FPL-q8s`.
+- [x] (2026-07-26 03:29Z) Implemented the autonomous chip policy and GW31 Free Hit counterfactual in `FPL-q8s`: same-cutoff trajectory projection, eight frozen alternatives, exact state restoration, a GW32-GW38 branch, canonical tree-hash protection, documentation, and 416 passing repository tests.
 - [x] (2026-07-26 03:07Z) Added a captain/vice challenger with calibrated zero-minute fallback, ceiling and uncertainty; rejected it on locked 2024/25 despite a descriptive +7 on 2025/26.
 - [ ] Run the complete challenger matrix, preserve all frozen inputs and outputs, and nominate a 2026/27 live-shadow configuration.
 
@@ -58,6 +58,12 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - Observation: A captain policy can raise expected value and finish ahead in one season while still failing the prior held-out gate.
   Evidence: `captain-v1` improved training captain points by 18 and final 2025/26 by 7, but lost 9 points to control on locked 2024/25.
 
+- Observation: In the sealed GW31 input, Wildcard and Free Hit do not improve the immediate three-transfer XI; their apparent one-week planning gain comes entirely from retaining five banked transfers.
+  Evidence: The prototype gives the same 50.02 immediate objective to the no-chip, Wildcard, and Free Hit three-transfer squads, while the chip variants retain 7.2 rather than 3.6 points of transfer-option value.
+
+- Observation: The realised best chip and the forecast policy decision can disagree sharply without indicating a process defect.
+  Evidence: Triple Captain realised 76 versus 63 for no chip, but its frozen expected gain was only 5.89 before an eight-point reserve. The declared policy therefore retained the chip. A separate Free Hit branch finished GW31-GW38 28 points ahead despite being forecast below the persistent squad at the GW31 cutoff.
+
 ## Decision Log
 
 - Decision: Treat the completed `live-faithful-v1` replay and its artifacts as immutable control data.
@@ -92,10 +98,20 @@ After this work, a user can run the same timestamp-safe historical episodes thro
   Rationale: The captain-only alternative failed the locked 2024/25 realised-points gate; its descriptive +7 in 2025/26 cannot be used for retrospective promotion.
   Date/Author: 2026-07-26 / Codex
 
+- Decision: Treat chip use as a same-cutoff multiweek allocation decision with an explicit reserve value.
+  Rationale: Immediate expected points alone systematically spends scarce chips too early, while realised points would leak hindsight. The policy therefore combines the frozen current-week forecast, a discounted future trajectory from the same cutoff, and a predeclared value for retaining each chip.
+  Date/Author: 2026-07-26 / Codex
+
+- Decision: Retain the no-chip three-transfer GW31 control under `chip-policy-v1`.
+  Rationale: No chip cleared both its declared reserve and the two-point deployment margin on the same-cutoff forecast. The later Triple Captain and Free Hit gains remain descriptive evaluation evidence rather than inputs to selection.
+  Date/Author: 2026-07-26 / Codex
+
 
 ## Outcomes & Retrospective
 
 The evaluation foundation is complete. `reports/evaluation/2025-26-control-review.json` reproduces the +20 season difference as only +0.53 points per paired Gameweek, with a 95% normal interval of about -5.64 to +6.69 and an estimated minimum detectable effect of 8.81 points per Gameweek. It also reproduces the selected-XI correlation of 0.21, MAE of 3.25, and actual-minus-predicted bias of -0.93. The focused tests pass 23/23 and the complete project suite passes 373/373 in `.venv`. Same-starting-state do-nothing, captain, transfer, bench, and chip artifacts remain work for their dedicated challenger slices; the evaluator now forbids presenting expected proxies as realised comparisons and accepts only frozen alternatives with identical scoring provenance.
+
+The chip milestone is complete. `reports/benchmarks/2025-26-counterfactuals/gw-31/evaluation.json` freezes eight legal alternatives before reveal, retains the no-chip three-transfer plan under the declared expected-value and reserve rule, proves exact Free Hit restoration, and carries the restored branch through GW38. The realised Triple Captain gain and the Free Hit branch's descriptive +28 remain visible but do not alter the pre-outcome selection. The report marks the reconstructed future schedule and bounded search as high uncertainty and promotion-ineligible. Focused chip/state/optimiser tests pass 52/52 and the full repository passes 416/416.
 
 ## Context and Orientation
 
@@ -197,3 +213,7 @@ Plan revision note (2026-07-25): Completed the probabilistic squad-contingency s
 Plan revision note (2026-07-26): Completed the robust-selection slice with reliability-aware upper-tail shrinkage, residual scenarios, raw-versus-robust solver reporting, locked 2024/25 promotion gates, and a deliberately qualified 2025/26 diagnostic.
 
 Plan revision note (2026-07-26): Completed the isolated captain/vice slice, preserved exact squad/transfer/XI/bench attribution, and rejected the position-residual challenger under its locked validation rule.
+
+Plan revision note (2026-07-26): Began the chip-policy milestone after tracing the existing rules, scorer, and longitudinal transition contracts. Added the declared candidate and reserve-value design before opening GW31 outcomes.
+
+Plan revision note (2026-07-26): Completed the GW31 chip implementation and sealed evaluation. Recorded the no-chip policy decision, tempting but inadmissible realised chip gains, exact Free Hit restoration, high historical schedule uncertainty, and the remaining full-suite publication gate.
