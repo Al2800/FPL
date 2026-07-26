@@ -37,7 +37,8 @@ existing behavior.
   self-hash and documentation.
 - [x] (2026-07-26 23:42+01:00) Passed 28 focused integration tests and the full
   repository suite of 497 tests; verified the policy hash and diff hygiene.
-- [ ] Add the implementation record, close `FPL-bsw.33`, commit and push.
+- [x] (2026-07-26 23:48+01:00) Added the implementation record, closed
+  `FPL-bsw.33`, and committed the implementation as `ca136e0`.
 
 ## Surprises & Discoveries
 
@@ -235,3 +236,6 @@ and identifying the missing weekly orchestration boundary.
 
 Revision note (2026-07-26): updated after implementation with the eligibility
 discovery, final decisions, end-to-end behavior and validation transcripts.
+
+Revision note (2026-07-26): recorded the closed bead and implementation commit
+after all acceptance evidence passed.
