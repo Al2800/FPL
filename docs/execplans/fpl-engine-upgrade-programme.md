@@ -20,7 +20,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-25 21:20Z) Evaluated the sealed 0.25 player-event challenger and rejected promotion: selected cohorts improved slightly, but all-player calibration regressed.
 - [x] (2026-07-26 00:05Z) Separated attack and defence context, calibrated it before 2025/26, and rejected promotion after it worsened all, owned, and selected-player calibration.
 - [x] (2026-07-25 23:15Z) Added calibrated three-state appearances and opt-in legal goalkeeper, bench-order, automatic-substitution, and vice-captain planning value without changing realised scoring.
-- [ ] Add robust selection that shrinks noisy extreme forecasts and reports sensitivity.
+- [x] (2026-07-26 01:47Z) Added a sealed reliability-aware robust-selection challenger with raw/central/lower/upper audit values, unchanged legal solver integration, locked held-out gates, and explicit sensitivity reporting.
 - [ ] Replace the fixed transfer-option proxy with a three-to-six-Gameweek receding-horizon planner.
 - [ ] Implement the autonomous chip policy and GW31 Free Hit counterfactual in `FPL-q8s`.
 - [ ] Add a dedicated captaincy model and compare captain-only counterfactuals.
@@ -52,6 +52,9 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - Observation: The prior optimiser ignored material expected value in its ordered bench and vice-captain choices.
   Evidence: The new appearance bins improve locked 2024/25 multiclass Brier from 0.37164 to 0.36219; the exact 123-candidate contingency search now runs in 5.49 seconds after isomorphic structural caching, versus 65.09 seconds initially.
 
+- Observation: Reliability-aware upper-tail shrinkage improves selected-player calibration consistently, but ranking regret does not move in the same direction in every season.
+  Evidence: Locked 2024/25 selected-top-15 MAE improves by 0.045 and mean regret by 2.211 points per Gameweek; final 2025/26 selected MAE improves by 0.204 while the unconstrained regret proxy worsens by 2.395.
+
 ## Decision Log
 
 - Decision: Treat the completed `live-faithful-v1` replay and its artifacts as immutable control data.
@@ -77,6 +80,10 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - Decision: Keep probabilistic squad contingency as an opt-in planning policy and leave the official realised scorer unchanged.
   Rationale: Forecast uncertainty should influence lineup, bench, and captain choices before the deadline, while revealed outcomes must continue to follow the versioned deterministic FPL rules without expected-value substitutions.
   Date/Author: 2026-07-25 / Codex
+
+- Decision: Promote robust selection only to challenger status, not directly to the 2026/27 live policy.
+  Rationale: The predeclared locked validation gate passes, but final 2025/26 calibration and unconstrained ranking regret disagree; the legal full-season challenger matrix must resolve downstream decision value.
+  Date/Author: 2026-07-26 / Codex
 
 
 ## Outcomes & Retrospective
@@ -179,3 +186,5 @@ Plan revision note (2026-07-26): Completed the separate team-context experiment.
 
 
 Plan revision note (2026-07-25): Completed the probabilistic squad-contingency slice with a pre-2024/25 calibrated appearance model, exact ruleset-driven bench legality, opt-in solver decomposition, adapter plumbing, and unchanged control/scoring behaviour.
+
+Plan revision note (2026-07-26): Completed the robust-selection slice with reliability-aware upper-tail shrinkage, residual scenarios, raw-versus-robust solver reporting, locked 2024/25 promotion gates, and a deliberately qualified 2025/26 diagnostic.

@@ -1,0 +1,117 @@
+{
+  "content_sha256": "f2c95abe8688d763332be201e0afb09cfc2afde517f61cfd79e2ad7c56bb39bc",
+  "decision": "promote_to_challenger",
+  "final_out_of_sample": {
+    "delta_robust_minus_raw": {
+      "all_player_mae": -0.005200098749688742,
+      "mean_selected_actual_points": -0.15964912280701782,
+      "mean_selected_predicted_points": -0.42131979301580014,
+      "mean_top15_decision_regret": 2.39473684210526,
+      "selected_top15_bias_actual_minus_predicted": 0.26167067020878376,
+      "selected_top15_mae": -0.20376803069130345
+    },
+    "raw_unshrunk": {
+      "all_player_mae": 1.130985497895956,
+      "gameweeks": 38,
+      "mean_selected_actual_points": 4.5,
+      "mean_selected_predicted_points": 5.222903329868594,
+      "mean_top15_decision_regret": 111.55263157894737,
+      "player_gameweeks": 29338,
+      "selected_top15_bias_actual_minus_predicted": -0.7229033298685953,
+      "selected_top15_mae": 3.3739611496385606
+    },
+    "robust": {
+      "all_player_mae": 1.1257853991462672,
+      "gameweeks": 38,
+      "mean_selected_actual_points": 4.340350877192982,
+      "mean_selected_predicted_points": 4.801583536852794,
+      "mean_top15_decision_regret": 113.94736842105263,
+      "player_gameweeks": 29338,
+      "selected_top15_bias_actual_minus_predicted": -0.46123265965981153,
+      "selected_top15_mae": 3.170193118947257
+    }
+  },
+  "locked_validation": {
+    "delta_robust_minus_raw": {
+      "all_player_mae": -0.005517145785632005,
+      "mean_selected_actual_points": 0.14736842105263204,
+      "mean_selected_predicted_points": -0.47946443665947847,
+      "mean_top15_decision_regret": -2.2105263157894655,
+      "selected_top15_bias_actual_minus_predicted": 0.62683285771211,
+      "selected_top15_mae": -0.04488830960859502
+    },
+    "raw_unshrunk": {
+      "all_player_mae": 1.1432791784929814,
+      "gameweeks": 38,
+      "mean_selected_actual_points": 5.15438596491228,
+      "mean_selected_predicted_points": 5.751208888056453,
+      "mean_top15_decision_regret": 97.34210526315789,
+      "player_gameweeks": 26919,
+      "selected_top15_bias_actual_minus_predicted": -0.5968229231441728,
+      "selected_top15_mae": 3.759123709492526
+    },
+    "robust": {
+      "all_player_mae": 1.1377620327073494,
+      "gameweeks": 38,
+      "mean_selected_actual_points": 5.301754385964912,
+      "mean_selected_predicted_points": 5.271744451396975,
+      "mean_top15_decision_regret": 95.13157894736842,
+      "player_gameweeks": 26919,
+      "selected_top15_bias_actual_minus_predicted": 0.03000993456793708,
+      "selected_top15_mae": 3.714235399883931
+    }
+  },
+  "metric_scope": "Top-15 ranking proxy per Gameweek; legal squad/price/club constraints are evaluated separately through the optimiser adapter.",
+  "model_config_sha256": "be0019ab0d9ec1c347325f676f8048adc7848b93922cbecd4bf5a3c3068d2f93",
+  "promotion_eligible": true,
+  "promotion_rule": {
+    "deterministic_fixed_controls": true,
+    "locked_decision_regret_improves": true,
+    "locked_selected_mae_improves": true,
+    "raw_and_robust_reported": true
+  },
+  "report_id": "live-faithful-v2-robust-selection-evaluation",
+  "schema_version": "1.0",
+  "split": {
+    "final_out_of_sample_season": "2025-26",
+    "forbidden_fit_seasons": [
+      "2024-25",
+      "2025-26"
+    ],
+    "locked_validation_season": "2024-25",
+    "training_target_seasons": [
+      "2022-23",
+      "2023-24"
+    ]
+  },
+  "training": {
+    "delta_robust_minus_raw": {
+      "all_player_mae": -0.00546458098384206,
+      "mean_selected_actual_points": 0.1087719298245613,
+      "mean_selected_predicted_points": -0.6690655818513216,
+      "mean_top15_decision_regret": -1.6315789473684248,
+      "selected_top15_bias_actual_minus_predicted": 0.7778375116758821,
+      "selected_top15_mae": -0.049214931305868514
+    },
+    "raw_unshrunk": {
+      "all_player_mae": 1.1211823320570768,
+      "gameweeks": 38,
+      "mean_selected_actual_points": 5.643859649122807,
+      "mean_selected_predicted_points": 5.723196309576321,
+      "mean_top15_decision_regret": 124.15789473684211,
+      "player_gameweeks": 53699,
+      "selected_top15_bias_actual_minus_predicted": -0.07933666045351308,
+      "selected_top15_mae": 3.773262757828773
+    },
+    "robust": {
+      "all_player_mae": 1.1157177510732348,
+      "gameweeks": 38,
+      "mean_selected_actual_points": 5.752631578947368,
+      "mean_selected_predicted_points": 5.054130727724999,
+      "mean_top15_decision_regret": 122.52631578947368,
+      "player_gameweeks": 53699,
+      "selected_top15_bias_actual_minus_predicted": 0.698500851222369,
+      "selected_top15_mae": 3.7240478265229044
+    }
+  }
+}

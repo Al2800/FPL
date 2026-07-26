@@ -1,0 +1,40 @@
+{
+  "anchor_quantile": 0.9,
+  "calibration": {
+    "fit_seasons": [
+      "2022-23",
+      "2023-24"
+    ],
+    "forbidden_fit_seasons": [
+      "2024-25",
+      "2025-26"
+    ],
+    "locked_validation_season": "2024-25",
+    "selection_objective": "sequential: shrinkage minimises selected_top15_mae + 0.01 * mean_top15_decision_regret + 0.25 * absolute_selected_bias; risk minimises selected_top15_mae + 0.05 * mean_top15_decision_regret",
+    "selection_policy": "minimum training objective on predeclared anchor/shrinkage/risk grids; no held-out retuning"
+  },
+  "content_sha256": "be0019ab0d9ec1c347325f676f8048adc7848b93922cbecd4bf5a3c3068d2f93",
+  "fallback_reliability": 0.0,
+  "model_version": "live-faithful-v2-robust",
+  "reliability_minutes": 900.0,
+  "risk_aversion": 0.2,
+  "scenario_calibration": {
+    "absolute_error_q80": [
+      0.848051,
+      1.165605,
+      2.150262,
+      3.326782
+    ],
+    "ceiling": 20.0,
+    "floor": 0.0,
+    "reliability_bucket_edges": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ]
+  },
+  "shrinkage_strength": 0.75,
+  "status": "experimental_pre_2025_26_robust_selection_challenger"
+}
