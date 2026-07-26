@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw18-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-12-26T18:30:00Z",
+  "captured_at": "2026-07-26T14:47:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Pre-deadline team news definitively records owned midfielder Dominik Szoboszlai's one-match yellow-card suspension.",
+  "sources": [{
+    "source_id": "ffs-gw18-szoboszlai-ban-2025-12-23",
+    "url": "https://www.fantasyfootballscout.co.uk/2025/12/23/fpl-gameweek-18-team-news-tuesdays-injury-updates",
+    "title": "FPL Gameweek 18 team news: Tuesday's live injury updates",
+    "published_at": "2025-12-23T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T14:47:00Z",
+    "citation_excerpt": "Dominik Szoboszlai has to serve a one-match ban for yellow card accumulation, too.",
+    "claim_id": "claim-gw18-szoboszlai-suspended",
+    "claim_text": "Dominik Szoboszlai was suspended for GW18.",
+    "confidence": 0.99,
+    "expires_at": "2025-12-28T23:59:59Z",
+    "player_id": "player:2025-26:387"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_is_day_precision_but_entire_day_precedes_cutoff", "not_eligible_for_headline_agent_performance"]
+}

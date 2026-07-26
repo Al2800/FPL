@@ -1,0 +1,179 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "236b7d96fdb8e220cffc8c1c82a126e565f900fc69816f6053d79368480a2868",
+  "deterministic_candidate_sha256": "16af766d5c791fc0d336c91de510112e6d712f9eb08f9792d4a0e13454463cf4",
+  "episode": {
+    "decision_at": "2025-12-26T18:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw18:manager-neutral",
+    "observed_episode_sha256": "c29d96747a105bc86046cacc4e54916cb6af85afa3ec3039e643dfbbb5da3cad",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "951488f1e516e025f82cbf57894ceb34f563a5cede63d7d1fffc6093df32a34a",
+      "document_id": "document:ffs-gw18-szoboszlai-ban-2025-12-23",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw18-szoboszlai-suspended": "Dominik Szoboszlai has to serve a one-match ban for yellow card accumulation, too."
+      },
+      "published_at": "2025-12-23T00:00:00Z",
+      "source_id": "ffs-gw18-szoboszlai-ban-2025-12-23",
+      "title": "FPL Gameweek 18 team news: Tuesday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "8e9e119e24c21da32a0b55a31a4bb48806c571e9e4b8eaa83fb7b3cb9d8307c5",
+    "run_id": "gw18-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim:player-387-gw18-suspension",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:387",
+          "provenance": {
+            "content_hash_sha256": "951488f1e516e025f82cbf57894ceb34f563a5cede63d7d1fffc6093df32a34a",
+            "source_ids": [
+              "ffs-gw18-szoboszlai-ban-2025-12-23"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T14:47:00Z",
+          "claim_id": "claim:player-387-gw18-suspension",
+          "claim_text": "Dominik Szoboszlai is suspended for one match due to yellow card accumulation.",
+          "confidence": 0.99,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw18-szoboszlai-ban-2025-12-23",
+          "expires_at": "2025-12-28T23:59:59Z",
+          "observed_at": "2026-07-26T14:47:00Z",
+          "provenance": {
+            "content_hash_sha256": "951488f1e516e025f82cbf57894ceb34f563a5cede63d7d1fffc6093df32a34a",
+            "source_ids": [
+              "ffs-gw18-szoboszlai-ban-2025-12-23"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2025-12-23T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "1ec9908f06994491f47fc8cac86e07a01fc2dbe02592ccdccfcae6213c2e45b8",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "Proposal only; no adjustment has been applied."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [
+        {
+          "adjustment_id": "adjustment:player-387-gw18-expected-minutes-suspension",
+          "after_value": 0,
+          "available_at": "2026-07-26T14:55:00Z",
+          "before_value": 82.2,
+          "confidence": 0.99,
+          "expires_at": "2025-12-28T23:59:59Z",
+          "observed_at": "2026-07-26T14:55:00Z",
+          "player_uid": "player:2025-26:387",
+          "provenance": {
+            "source_ids": [
+              "ffs-gw18-szoboszlai-ban-2025-12-23"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-07-26T14:55:00Z",
+          "rationale": "The confirmed one-match suspension makes the player unavailable for GW18, so expected minutes should be reduced to zero.",
+          "signal_ids": [
+            "signal:adjustment:player-387-gw18-expected-minutes-suspension"
+          ],
+          "status": "proposed",
+          "target": "expected_minutes"
+        }
+      ],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": [
+        {
+          "available_at": "2026-07-26T14:55:00Z",
+          "claim_ids": [
+            "claim:player-387-gw18-suspension"
+          ],
+          "interpretation": "The confirmed one-match suspension makes the player unavailable for GW18, so expected minutes should be reduced to zero.",
+          "observed_at": "2026-07-26T14:55:00Z",
+          "player_uid": "player:2025-26:387",
+          "provenance": {
+            "source_ids": [
+              "ffs-gw18-szoboszlai-ban-2025-12-23"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2025-12-23T00:00:00Z",
+          "signal_id": "signal:adjustment:player-387-gw18-expected-minutes-suspension"
+        }
+      ]
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:387": {
+      "expected_minutes": 82.2,
+      "start_probability": 0.9656
+    }
+  },
+  "player_ids": [
+    "player:2025-26:387"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "8bfe6b424dcbce6c586b21e713f50158f30a66be2720dae85e3868bc91b706e9",
+  "run_id": "gw18-sol-challenger-v1",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,71 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "23fa760c9614f7b76f6f9b61ccd4da1a66f131445a45734dc9643c829a4539e1",
+  "response_sha256": "d0131b04ee6e04e2c83b12aba8ce1f9aee3207421fd589f5352621cc48749f6d",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw20:rodon-out",
+        "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+        "passage_id": "passage:claim-gw20-rodon-out",
+        "source_id": "ffs-gw20-rodon-out-2026-01-02",
+        "claim_text": "Joe Rodon remained unavailable for GW20.",
+        "citation_excerpt": "Leeds United: Ampadu banned, Longstaff, Rodon + James still out",
+        "citation_excerpt_sha256": "07f88654b0bcc75c67e5ad274ec95553e170c23ed2837e4e8e288e8fab561758",
+        "expires_at": "2026-01-05T23:59:59Z",
+        "confidence": 0.96,
+        "player_uid": "player:2025-26:348"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw20:rodon-expected-minutes-zero",
+        "claim_ids": [
+          "claim:gw20:rodon-out"
+        ],
+        "target": "expected_minutes",
+        "before_value": 58.3,
+        "after_value": 0,
+        "confidence": 0.96,
+        "expires_at": "2026-01-05T23:59:59Z",
+        "player_uid": "player:2025-26:348",
+        "rationale": "Confirmed unavailable for GW20."
+      }
+    ],
+    "notes": [
+      "Proposal only."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T15:05:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "23fa760c9614f7b76f6f9b61ccd4da1a66f131445a45734dc9643c829a4539e1",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

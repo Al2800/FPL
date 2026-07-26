@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw19-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-12-30T18:00:00Z",
+  "captured_at": "2026-07-26T14:47:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "The latest pre-deadline report says Timber missed GW18 but contains no fresh manager confirmation for GW19. It is retained as an uncertainty and abstention test.",
+  "sources": [{
+    "source_id": "ffs-gw19-timber-missed-2025-12-29",
+    "url": "https://www.fantasyfootballscout.co.uk/2025/12/29/fpl-gameweek-19-team-news-mondays-live-injury-updates",
+    "title": "FPL Gameweek 19 team news: Monday's live injury updates",
+    "published_at": "2025-12-29T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T14:47:00Z",
+    "citation_excerpt": "We refer you to our Scout Notes for quotes on Jurrien Timber and Riccardo Calafiori, who both missed out in Gameweek 18.",
+    "claim_id": "claim-gw19-timber-recent-absence",
+    "claim_text": "Jurrien Timber missed GW18, with no new GW19 team-news confirmation in the cited update.",
+    "confidence": 0.62,
+    "expires_at": "2025-12-31T23:59:59Z",
+    "player_id": "player:2025-26:8"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "prior_match_absence_does_not_confirm_gw19_absence", "festive_press_conference_coverage_incomplete", "not_eligible_for_headline_agent_performance"]
+}

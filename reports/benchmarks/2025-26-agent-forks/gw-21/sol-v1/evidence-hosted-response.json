@@ -1,0 +1,83 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "948c08e3bcd299dda89030d27f05fffef9c9458e79fc604193869d0ab7316b90",
+  "response_sha256": "1cbd9ba0beaeec8c83a565fb40a0e6f908cf514df086fe5e6b2e44450f3114d6",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw21:gvardiol-long-term",
+        "document_id": "document:ffs-gw21-gvardiol-long-term-2026-01-06",
+        "passage_id": "passage:claim-gw21-gvardiol-long-term",
+        "source_id": "ffs-gw21-gvardiol-long-term-2026-01-06",
+        "claim_text": "Josko Gvardiol is unavailable due to a fracture and is expected to be out for a long time.",
+        "citation_excerpt": "Out for a long time.",
+        "citation_excerpt_sha256": "52330c20800993adb9af08ae208b9c576ef496f49394cd17f2d299bb694e672e",
+        "expires_at": "2026-02-15T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:403"
+      },
+      {
+        "claim_id": "claim:gw21:semenyo-available",
+        "document_id": "document:ffs-gw21-semenyo-last-game-2026-01-06",
+        "passage_id": "passage:claim-gw21-semenyo-available",
+        "source_id": "ffs-gw21-semenyo-last-game-2026-01-06",
+        "claim_text": "Antoine Semenyo is available and set to play his last game for Bournemouth.",
+        "citation_excerpt": "Bournemouth: Kluivert undergoes knee surgery, Semenyo set for last game",
+        "citation_excerpt_sha256": "5f6577d29a0e6110f2f75c471be387fbd452060e7f9cca789da3f77e05315592",
+        "expires_at": "2026-01-08T23:59:59Z",
+        "confidence": 0.98,
+        "player_uid": "player:2025-26:82"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw21:gvardiol-expected-minutes-zero",
+        "claim_ids": [
+          "claim:gw21:gvardiol-long-term"
+        ],
+        "target": "expected_minutes",
+        "before_value": 63.8,
+        "after_value": 0,
+        "confidence": 0.99,
+        "expires_at": "2026-02-15T23:59:59Z",
+        "player_uid": "player:2025-26:403",
+        "rationale": "The pre-deadline report identifies a fracture and long-term absence, supporting zero expected minutes for GW21."
+      }
+    ],
+    "notes": [
+      "No Semenyo adjustment proposed because his positive availability is already reflected in the 86.2 expected-minutes baseline and 0.944 start probability."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T15:25:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "948c08e3bcd299dda89030d27f05fffef9c9458e79fc604193869d0ab7316b90",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "provider_id":"openai-chatgpt-subscription","model_id":"gpt-5.6-sol","model_version":"gpt-5.6-sol",
+  "request_sha256":"8bfe6b424dcbce6c586b21e713f50158f30a66be2720dae85e3868bc91b706e9","response_sha256":"4c0d03b1e5b3c6260695b6e4b3b4139420fccbe0c2db473b6f0735d1fc29b2a6",
+  "structured_output":{"schema_version":"1.0","role":"challenger","review_id":"review-player-387-gw18-expected-minutes-suspension","reviewed_adjustment_ids":["adjustment:player-387-gw18-expected-minutes-suspension"],"escalation_outcome":"dismissed","notes":"The pre-cutoff passage explicitly establishes a one-match suspension, so reducing Szoboszlai's GW18 expected minutes from 82.2 to 0 is well grounded; 0.99 confidence and the Dec 28 expiry are appropriate."},
+  "cache_hit":false,"cli_version":"collaboration-subagent","completed_at":"2026-07-26T14:57:00Z",
+  "attestation":{"auth_mode":"chatgpt_subscription","sandbox":"read-only","network_access":false,"rendered_input_sha256":"8bfe6b424dcbce6c586b21e713f50158f30a66be2720dae85e3868bc91b706e9","event_types":["thread_started","agent_message","turn_completed"]},
+  "usage":{"wall_clock_ms":0,"tool_calls":0,"input_tokens":0,"output_tokens":0,"total_tokens":0,"measurement_status":"unavailable_from_collaboration_surface","cost":{"currency":"GBP","amount":null,"metering_status":"unavailable"}}
+}

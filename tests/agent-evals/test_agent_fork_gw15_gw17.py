@@ -87,7 +87,6 @@ def test_committed_chain_uses_topup_and_stops_before_gw18() -> None:
     assert transition16["next_state_sha256"] == state16["content_sha256"]
     assert gw17["next_state_sha256"] is None
     assert not (AGENT / "gw-17/sol-v1/next-policy-state.json").exists()
-    assert not (AGENT / "gw-18").exists()
 
 
 def test_same_state_attribution_exists_for_each_week() -> None:

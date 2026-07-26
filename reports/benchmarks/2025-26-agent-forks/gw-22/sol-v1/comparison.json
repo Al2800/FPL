@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "d933d1d2feb988f2ecc231e5c18f8550defeffbcf06afc33134a51aecae9a50e",
+  "agent_decision": "degraded_fallback",
+  "agent_fork_gross_points": 44,
+  "agent_vs_canonical_delta": -3,
+  "canonical_gross_points": 47,
+  "canonical_tree_sha256_after": "277bace07d6a06c4c48114e092abbbbd84e9462e33131fd29205426d349606e2",
+  "canonical_tree_sha256_before": "277bace07d6a06c4c48114e092abbbbd84e9462e33131fd29205426d349606e2",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "cc57d5f0b9c405f52933e58d0f4637ad769ed868cbe31dada485d19c912fb923",
+  "content_sha256": "0e27d38f511008e4d688eaa2535d4df8ab39799113ae12cf99aa2e0313ac0338",
+  "evidence_run_sha256": "5b08b8658f7d1be8f831f0341b9f72c42bf1b66a4f184d849339703bebae0edf",
+  "experiment_id": "2025-26-gw22-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 22,
+  "hit_cost": 0,
+  "host_bundle_sha256": "7f6e7a926091648a3546b575a6b6f444c262c6a4e770c5b0eef279e622084285",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "player_registration_transition_not_modelled_until_next_market",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": null,
+  "plan_sha256": "148136776ed0cb5fae74ea1416661e479270b7aa3cbc2cb429e9abf18a7f4782",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Bruno Guimarães Rodriguez Moura",
+      "player_out": "Matheus Santos Carneiro da Cunha"
+    }
+  ],
+  "solver_input_sha256": "bea34744c32166f4b8f716335cdce4e592172de6adf10c0fd4fc2e1cea6e9048",
+  "solver_output_sha256": "97b22a08fa2761bf3a3b1f537ba368e55580fa4c509bd491d8a697f78cf0ed3c",
+  "starting_state_sha256": "d44f5f05f2610b7c5a4d33f1e3fd619335ee2d27aa1ff4409e1bed0b23487cfd"
+}

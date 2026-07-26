@@ -1,0 +1,50 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "3aec5de619e8caaefa2dbe82e2dd779e26e84ef668639ebfbef1d4bf0ea595c3",
+  "response_sha256": "1de088bc68a0125d634e9e06d87b7edcd593b32166ad6943214c7ecfb4d13daa",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw21:gvardiol-long-term",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw21:gvardiol-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": [
+      "Pre-deadline source timing is valid.",
+      "Player identity is unambiguous.",
+      "Fracture and 'Out for a long time.' support reducing expected minutes to zero.",
+      "The 63.8-to-0 direction and magnitude are appropriate for GW21.",
+      "Confidence 0.99 and the stated expiry are consistent with a long absence."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T15:30:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "3aec5de619e8caaefa2dbe82e2dd779e26e84ef668639ebfbef1d4bf0ea595c3",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

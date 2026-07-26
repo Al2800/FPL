@@ -1,0 +1,49 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "374c0bc4cb2c115f2fa968572036d60b085d6570c3649881c024f0659c54fb81",
+  "response_sha256": "749e2a5abac7f34a6d513dd9021b7ba394de8213f3c39c383508cf01e1da4850",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw20:rodon-out",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw20:rodon-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": [
+      "Pre-deadline source explicitly identifies Leeds defender Joe Rodon as still out.",
+      "Published 2026-01-02, the evidence was timely for the 2026-01-03 deadline.",
+      "Reducing expected minutes from 58.3 to 0 matches the stated unavailability.",
+      "Confidence 0.96 and the short expiry are proportionate to the explicit report."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T15:20:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "374c0bc4cb2c115f2fa968572036d60b085d6570c3649881c024f0659c54fb81",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

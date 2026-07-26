@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw22-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2026-01-17T11:00:00Z",
+  "captured_at": "2026-07-26T14:47:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "Glasner explicitly confirmed that Marc Guehi would not play while his transfer was in its final stages.",
+  "sources": [{
+    "source_id": "ffs-gw22-guehi-not-playing-2026-01-16",
+    "url": "https://www.fantasyfootballscout.co.uk/2026/01/16/fpl-gameweek-22-team-news-fridays-live-injury-updates-2",
+    "title": "FPL Gameweek 22 team news: Friday's live injury updates",
+    "published_at": "2026-01-16T00:00:00Z",
+    "published_at_precision": "day",
+    "captured_at": "2026-07-26T14:47:00Z",
+    "citation_excerpt": "The result is that Marc doesn't play tomorrow for us.",
+    "claim_id": "claim-gw22-guehi-not-playing",
+    "claim_text": "Marc Guéhi would not play for Crystal Palace in GW22 while his transfer was finalising.",
+    "confidence": 0.99,
+    "expires_at": "2026-01-19T23:59:59Z",
+    "player_id": "player:2025-26:260"
+  }],
+  "limitations": ["source_recovered_after_historical_decision", "case_selected_after_outcome_was_known", "publication_time_is_day_precision_but_entire_day_precedes_cutoff", "player_registration_transition_not_modelled_until_next_market", "not_eligible_for_headline_agent_performance"]
+}

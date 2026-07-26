@@ -1,0 +1,71 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "7cf301b69a6bfe278e6e393eec26c3bc888c24b40ef9eee30b297301f1fa6a77",
+  "response_sha256": "85e915d002d75ebde6ff6fa60d790d408e46267fd26452ed0ab6fd9cc8d0dbfa",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw22:guehi-not-playing",
+        "document_id": "document:ffs-gw22-guehi-not-playing-2026-01-16",
+        "passage_id": "passage:claim-gw22-guehi-not-playing",
+        "source_id": "ffs-gw22-guehi-not-playing-2026-01-16",
+        "claim_text": "Marc Guehi will not play for Crystal Palace in GW22 while his Manchester City transfer is finalised.",
+        "citation_excerpt": "The result is that Marc doesn't play tomorrow for us.",
+        "citation_excerpt_sha256": "89c54bf51733b8f37324def35ef3ae53cb112af6915179025e89714a848eb9ca",
+        "expires_at": "2026-01-18T23:59:59Z",
+        "confidence": 1.0,
+        "player_uid": "player:2025-26:260"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw22:guehi-expected-minutes-zero",
+        "claim_ids": [
+          "claim:gw22:guehi-not-playing"
+        ],
+        "target": "expected_minutes",
+        "before_value": 86.9,
+        "after_value": 0,
+        "confidence": 1.0,
+        "expires_at": "2026-01-18T23:59:59Z",
+        "player_uid": "player:2025-26:260",
+        "rationale": "A pre-deadline statement explicitly confirms that Guehi will not play, superseding the frozen 0.936 start probability and 86.9 expected minutes."
+      }
+    ],
+    "notes": [
+      "Proposal-only adjustment based exclusively on the supplied pre-deadline source; no hindsight used."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T15:35:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "7cf301b69a6bfe278e6e393eec26c3bc888c24b40ef9eee30b297301f1fa6a77",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

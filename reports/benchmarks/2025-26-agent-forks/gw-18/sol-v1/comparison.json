@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "cbd1c6f1c2d4532cdd56420a62d35151a80acb80fc795c1b3acb097bf9e82a36",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 31,
+  "agent_vs_canonical_delta": -2,
+  "canonical_gross_points": 33,
+  "canonical_tree_sha256_after": "6f969868d3873cc3c14d7c81395cf383e55dd42e1d3b8517b8629241ce17cfc8",
+  "canonical_tree_sha256_before": "6f969868d3873cc3c14d7c81395cf383e55dd42e1d3b8517b8629241ce17cfc8",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "c06110a5e46359d880102510c1f6dcc201adec60277a0c4fb190061fdbda02d5",
+  "content_sha256": "4c02795725db07aa74704975f07f881384777078223328973e971a9adc639748",
+  "evidence_run_sha256": "8e9e119e24c21da32a0b55a31a4bb48806c571e9e4b8eaa83fb7b3cb9d8307c5",
+  "experiment_id": "2025-26-gw18-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 18,
+  "hit_cost": 0,
+  "host_bundle_sha256": "4c6b7d19f39233fa5546c9991389c04d2fb617511d52cac5436fecef894db233",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "7fad0c3a0754a3774a5cd9981b256fc3d4d52900d424b005a0d5402742dfeb1e",
+  "plan_sha256": "3a59bad5247ac4796d2e5225477c0242ac1270f14456ef8939589068b867125b",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Declan Rice",
+      "player_out": "Dominik Szoboszlai"
+    }
+  ],
+  "solver_input_sha256": "b4aa8c35425588a84f9ba990c42256491a9e43807b223de95189e3b3018a079a",
+  "solver_output_sha256": "ca1af3bba43f2bfb31b8752e2120d9928e7ba494346162f59cb727446d296e48",
+  "starting_state_sha256": "185178e63e120aaf4bb6929582841d455f50130bedceef4b11bebf121bb1ee27"
+}

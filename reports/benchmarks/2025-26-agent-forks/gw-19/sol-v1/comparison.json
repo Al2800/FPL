@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "55463c1db81c1650534a61a9616531c5220336ab7107d3f88e5c5925f49377f0",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 33,
+  "agent_vs_canonical_delta": -3,
+  "canonical_gross_points": 36,
+  "canonical_tree_sha256_after": "09a381b9b204ff1e4a591f89e54c094a3fcc4716b5dcc29e10ffc8b5bf77a611",
+  "canonical_tree_sha256_before": "09a381b9b204ff1e4a591f89e54c094a3fcc4716b5dcc29e10ffc8b5bf77a611",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "c6795b12129728d41327c46382bd0d1a39ca64402bb974b66099db67ef24be20",
+  "content_sha256": "c7e7bb1f24360b91585b4316a895ae00f040a0a5c61e203673b262e296c61826",
+  "evidence_run_sha256": "4ebc3c6fc5cdab7be75c6032d9c87bc3a43e2311a36c05284c33916a811e57ed",
+  "experiment_id": "2025-26-gw19-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 19,
+  "hit_cost": 0,
+  "host_bundle_sha256": "b1a64137367fd5c219b346bc5306aee9b1e699473e5bb18d29cf416eeefe375d",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "prior_match_absence_does_not_confirm_gw19_absence",
+    "festive_press_conference_coverage_incomplete",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "9bb4eece5982c6c341808f19fcebbf8a32566fb6595a0c4553ca567058b22f8d",
+  "plan_sha256": "41687fcbffcae530bc867d6f522c0de657e5ce9f9af50807a64cc82b37338abe",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Matheus Santos Carneiro da Cunha",
+      "player_out": "Eberechi Eze"
+    }
+  ],
+  "solver_input_sha256": "1f3aa331c899436c337a1bca7cd4217b86c275b1d8fa1d61f279c9883dbc8053",
+  "solver_output_sha256": "1470d212beb0af11222bbe1981efe1047877a454bfdfb3d0e91ff9ab07b4b9af",
+  "starting_state_sha256": "7fad0c3a0754a3774a5cd9981b256fc3d4d52900d424b005a0d5402742dfeb1e"
+}

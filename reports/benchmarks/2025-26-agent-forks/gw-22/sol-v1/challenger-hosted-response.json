@@ -1,0 +1,46 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "581f13eff6e50172aa72ff62109f2249b198f3f45b1d1c0a1580e57f8514bd8d",
+  "response_sha256": "0878ba7bd112b1ebde4770fbf22dd451c750098ee6e849cd7943820bc3ea8e92",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw22:guehi-not-playing",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw22:guehi-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": [
+      "Direct pre-deadline statement explicitly rules Marc Guehi out for the relevant match; identity and timing align. Reducing expected minutes from 86.9 to 0 is directionally and quantitatively supported, with confidence 1.0 and the stated expiry appropriate."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T15:40:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "581f13eff6e50172aa72ff62109f2249b198f3f45b1d1c0a1580e57f8514bd8d",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}
