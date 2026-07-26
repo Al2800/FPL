@@ -25,7 +25,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-26 02:21Z) Added a bounded same-cutoff receding-horizon transfer challenger with legal state carry, first-action-only execution, deterministic fallback, and an exploratory GW12 result.
 - [x] (2026-07-26 03:29Z) Implemented the autonomous chip policy and GW31 Free Hit counterfactual in `FPL-q8s`: same-cutoff trajectory projection, eight frozen alternatives, exact state restoration, a GW32-GW38 branch, canonical tree-hash protection, documentation, and 416 passing repository tests.
 - [x] (2026-07-26 03:07Z) Added a captain/vice challenger with calibrated zero-minute fallback, ceiling and uncertainty; rejected it on locked 2024/25 despite a descriptive +7 on 2025/26.
-- [ ] Run the complete challenger matrix, preserve all frozen inputs and outputs, and nominate a 2026/27 live-shadow configuration.
+- [x] (2026-07-26 10:15Z) Ran the complete governed matrix, preserved eight rejected/deferred/eligible rows, completed the GW2-GW38 isolated legal robust replay, proved the canonical tree unchanged, and nominated robust selection for observation-only 2026/27 live shadow with v1 still executable.
 
 ## Surprises & Discoveries
 
@@ -70,6 +70,9 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 
 - Observation: The difference between direct evidence attribution and state compounding is itself a decision metric.
   Evidence: The reusable weekly programme records +14 isolated direct value, +4 longitudinal value and therefore -10 from later compounding for the GW12 intervention.
+
+- Observation: Better selected-player calibration did not translate into better legal isolated decisions for the robust challenger.
+  Evidence: Across identical GW2-GW38 canonical starting states, robust selection changed 17 transfer choices and 30 lineups, never changed captaincy, and scored 1,935 versus 1,954 for control, a 19-point loss.
 
 ## Decision Log
 
@@ -117,12 +120,18 @@ After this work, a user can run the same timestamp-safe historical episodes thro
   Rationale: Advancing state separately for each isolated test would contaminate attribution, while evaluating only one combined trajectory would hide which bundle caused a direct change. The two views are complementary and their difference quantifies compounding.
   Date/Author: 2026-07-26 / Codex
 
+- Decision: Nominate `robust-selection-v2` only as an observation-only shadow while retaining `live-faithful-v1` as the executable policy.
+  Rationale: Robust selection is the only current challenger to pass its locked gate and complete the identical full legal episode comparison, but its negative 2025/26 isolated result and conflicting regret metrics rule out execution. Prospective shadowing can test generalisation without risking the live team.
+  Date/Author: 2026-07-26 / Codex
+
 
 ## Outcomes & Retrospective
 
 The evaluation foundation is complete. `reports/evaluation/2025-26-control-review.json` reproduces the +20 season difference as only +0.53 points per paired Gameweek, with a 95% normal interval of about -5.64 to +6.69 and an estimated minimum detectable effect of 8.81 points per Gameweek. It also reproduces the selected-XI correlation of 0.21, MAE of 3.25, and actual-minus-predicted bias of -0.93. The focused tests pass 23/23 and the complete project suite passes 373/373 in `.venv`. Same-starting-state do-nothing, captain, transfer, bench, and chip artifacts remain work for their dedicated challenger slices; the evaluator now forbids presenting expected proxies as realised comparisons and accepts only frozen alternatives with identical scoring provenance.
 
 The chip milestone is complete. `reports/benchmarks/2025-26-counterfactuals/gw-31/evaluation.json` freezes eight legal alternatives before reveal, retains the no-chip three-transfer plan under the declared expected-value and reserve rule, proves exact Free Hit restoration, and carries the restored branch through GW38. The realised Triple Captain gain and the Free Hit branch's descriptive +28 remain visible but do not alter the pre-outcome selection. The report marks the reconstructed future schedule and bounded search as high uncertainty and promotion-ineligible. Focused chip/state/optimiser tests pass 52/52 and the full repository passes 416/416.
+
+The final matrix is complete. `reports/benchmarks/2025-26-challenger-matrix/matrix.json` binds all eight challenger rows to identical episode/configuration evidence, retains every rejection and historical-provenance limitation, and records latency, memory, cost and fallback evidence. The full robust legal report is a negative but useful result: -19 isolated points over GW2-GW38. The generated `live-shadow-candidate.json` therefore keeps v1 executable and runs robust selection only as a non-blocking, non-executing shadow. The canonical 2,740-file replay tree has the same hash before and after matrix construction. An explicit 37-week recomputation reproduced the sealed report in 354.9 seconds, focused matrix/robust tests pass 9/9, and the full repository passes 425/425 in 202.57 seconds.
 
 ## Context and Orientation
 
@@ -232,3 +241,5 @@ Plan revision note (2026-07-26): Completed the GW31 chip implementation and seal
 Plan revision note (2026-07-26): Completed the taken-over GW12 evidence experiment, adding feasibility-labelled score ceilings and a full independent continuation. The result now distinguishes direct evidence attribution (+14) from longitudinal compounded value (+4).
 
 Plan revision note (2026-07-26): Generalised the evidence experiment into a reusable multi-bundle programme. Added deadline rejection, isolated no-state-advance attribution, one independent longitudinal chain, canonical tree protection and an explicit direct-versus-compounding decomposition.
+
+Plan revision note (2026-07-26): Completed the final challenger matrix and full legal robust replay. Preserved every rejected and exploratory result, recorded robust selection's -19 isolated result, bound operational profiles, and nominated it only for observation-only live shadow with the frozen control unchanged.

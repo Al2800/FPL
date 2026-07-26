@@ -1,0 +1,53 @@
+{
+  "content_sha256": "5af51950f2acbbe0e5423f2a3862593e458aeb03467cbff325e4d8f54ddba3be",
+  "executable_policy": {
+    "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+    "policy_id": "live-faithful-v1-control"
+  },
+  "fallback": {
+    "on_missing_inputs": true,
+    "on_timeout": true,
+    "on_validation_failure": true,
+    "policy_id": "live-faithful-v1-control"
+  },
+  "mode": "observation_only_no_fpl_execution",
+  "policy_id": "live-shadow-candidate-2026-27-v1",
+  "prohibitions": [
+    "must_not_submit_actions_to_fpl",
+    "must_not_delay_control_deadline",
+    "must_not_train_on_live_outcomes_before_freeze"
+  ],
+  "promotion_rule": {
+    "disqualifiers": [
+      "failed_locked_gate",
+      "retrospective_case_selection",
+      "historical_schedule_provenance_gap",
+      "missing_full_legal_replay"
+    ],
+    "final_season_points_can_override_failed_gate": false,
+    "required_gates": [
+      "configuration_integrity",
+      "episode_integrity",
+      "no_known_temporal_leakage",
+      "locked_held_out_gate",
+      "legal_replay",
+      "deterministic_reproduction",
+      "bounded_degradation",
+      "control_fallback"
+    ],
+    "rule_id": "live-shadow-promotion-v1",
+    "target": "observation_only_live_shadow",
+    "tie_break_order": [
+      "held_out_decision_quality",
+      "full_replay_realised_net_points",
+      "calibration",
+      "lower_operational_cost",
+      "challenger_id"
+    ]
+  },
+  "schema_version": "1.0",
+  "shadow_policy": {
+    "challenger_id": "robust-selection-v2",
+    "configuration_sha256": "be0019ab0d9ec1c347325f676f8048adc7848b93922cbecd4bf5a3c3068d2f93"
+  }
+}
