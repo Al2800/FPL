@@ -37,7 +37,8 @@ that degraded runs raise before any solver output is written.
   candidate generator and checked-in policy, then verified its self-hash.
 - [x] (2026-07-26 22:43+01:00) Passed 41 focused tests, 89 wider agent/trace
   tests, and the full repository suite of 494 tests; `git diff --check` passed.
-- [ ] Add the implementation record, close `FPL-bsw.32`, commit and push.
+- [x] (2026-07-26 22:47+01:00) Added the implementation record, closed
+  `FPL-bsw.32`, and committed the implementation as `9c88e0b`.
 
 ## Surprises & Discoveries
 
@@ -254,3 +255,6 @@ decision.
 Revision note (2026-07-26): updated after implementation to record strict
 integrity refusal, final interfaces, policy generation, and all validation
 evidence.
+
+Revision note (2026-07-26): recorded bead closure and implementation commit
+after the final repository-wide validation.
