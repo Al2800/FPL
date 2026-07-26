@@ -1,0 +1,38 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "9e9dd6cf100a479778ceb96316c69062b9d8b9584aaffc723448867022714379",
+  "response_sha256": "a74cf011d310d032e650a32696754b5f5d3aa47dc35a5685d14ffe38592c46f4",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "gw15-evidence-challenge-001",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "No adjustments were proposed; the positive evidence supports no reductions, and no conflicts require escalation."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:51:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "9e9dd6cf100a479778ceb96316c69062b9d8b9584aaffc723448867022714379",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "c74137b8ba449381ca4e4e485e8422cbe753f706f259e2d3175bdfaf79989271",
+  "response_sha256": "347736c79bea2d1d6289743967b623ba0ff26dc22a391179cfb678e488c5744e",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:mbeumo-gw17-afcon-expected-minutes:challenger",
+    "reviewed_adjustment_ids": ["adjustment:mbeumo-gw17-afcon-expected-minutes"],
+    "escalation_outcome": "dismissed",
+    "notes": "Grounding is an approved, pre-cutoff passage explicitly establishing that the identified AFCON-bound Mbeumo is unavailable for club selection from GW17 onward. Player identity player:2025-26:119 and the adjustment subject are coherent. The 88.8-minute baseline is superseded by confirmed unavailability, so expected_minutes=0 is appropriate. The 2026-01-18T23:59:59Z expiry is coherent with the temporary AFCON absence and does not undermine the GW17 adjustment. No material contradiction or unsupported inference found."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T13:03:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "c74137b8ba449381ca4e4e485e8422cbe753f706f259e2d3175bdfaf79989271",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

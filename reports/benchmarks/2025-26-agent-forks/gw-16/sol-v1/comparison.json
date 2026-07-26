@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "69f64e0c8c6d339ae10b440c4e2d43fc1489742c6ad06efde8326b512eb08d8c",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 58,
+  "agent_vs_canonical_delta": -1,
+  "canonical_gross_points": 59,
+  "canonical_tree_sha256_after": "393e8d7996817948b539a11a38a05b057b8b75383f4d84b87c2cdb3a37a8e700",
+  "canonical_tree_sha256_before": "393e8d7996817948b539a11a38a05b057b8b75383f4d84b87c2cdb3a37a8e700",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "730f5e9f38b06b00f437561ec1ada649e0fc5a60adf46335d047e7af6f94d679",
+  "content_sha256": "e075a27c33dc95a1a212077d5a4e2eff6ca56b4526b86b91df53ac37128ca2fc",
+  "evidence_run_sha256": "0b4e14aaaa2fc3c68b0646fcb0a28d740a7e37866dc2b15677b95a6f17f69677",
+  "experiment_id": "2025-26-gw16-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 16,
+  "hit_cost": 0,
+  "host_bundle_sha256": "754ffff571ba5fde632790b9296b272c5893607b4ae34c0057f0aff08a9eb2e0",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "source_language_is_norwegian_and_claim_text_is_an_english_translation",
+    "secondary_fpl_analysis_reporting_injury_news",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "14916c237858b82062a3b8f1e5a008c325595a1657d41f23fc6398d8856982b8",
+  "plan_sha256": "cfb452992f0f19ebbda9f498e43e3794c5a5648f235f0a84b9f243e024e885c5",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Marc Guéhi",
+      "player_out": "Daniel Muñoz Mejía"
+    }
+  ],
+  "solver_input_sha256": "c07bd9dc0745c1e48062c114db6740c673930998146771113e24b762318559cb",
+  "solver_output_sha256": "7fdd96c2a010860dfbbc4a40b914ecdf56b95e99e35a3380cb355c08aaa183dc",
+  "starting_state_sha256": "2aef91a0c81b7c77f8f5ab8d16da9eac58da589dd13f546af327c94549ceddc4"
+}

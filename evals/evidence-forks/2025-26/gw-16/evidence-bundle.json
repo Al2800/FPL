@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw16-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-12-13T13:30:00Z",
+  "captured_at": "2026-07-26T13:28:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "A precisely timestamped pre-deadline report says Muñoz requires surgery and is not expected back before 17 January. This is a high-confidence availability correction for an owned player.",
+  "sources": [
+    {
+      "source_id": "vg-gw16-munoz-surgery-2025-12-12-091620",
+      "url": "https://www.vg.no/sport/i/BxJ2Gl/fantasy-premier-league-gameweek-16-forbloeffende-trender-og-avgjoerende-kapteinsvalg",
+      "title": "Fantasy Premier League Gameweek 16: Forbløffende trender og avgjørende kapteinsvalg",
+      "published_at": "2025-12-12T09:16:20Z",
+      "published_at_precision": "second",
+      "captured_at": "2026-07-26T13:28:00Z",
+      "citation_excerpt": "Onsdag kom altså nyheten om at Munoz må opereres og er ikke forventet tilbake før 17. januar.",
+      "claim_id": "claim-gw16-munoz-surgery",
+      "claim_text": "Daniel Muñoz required surgery and was not expected to return before 17 January.",
+      "confidence": 0.99,
+      "expires_at": "2026-01-17T23:59:59Z",
+      "player_id": "player:2025-26:256"
+    }
+  ],
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "source_language_is_norwegian_and_claim_text_is_an_english_translation",
+    "secondary_fpl_analysis_reporting_injury_news",
+    "not_eligible_for_headline_agent_performance"
+  ]
+}

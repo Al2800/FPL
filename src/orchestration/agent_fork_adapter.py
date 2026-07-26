@@ -236,21 +236,46 @@ def derive_gw13_state_from_gw12_agent_fork(
     *, canonical_root: Path, episode_root: Path, gw12_fork_root: Path
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Legally transition the sealed GW12 agent result into GW13."""
-    episode = episode_root / "gw-12"
-    manifest = _read(episode / "episode-manifest.json")
-    rules = yaml.safe_load((episode / "ruleset.yaml").read_text(encoding="utf-8"))
-    return transition_policy_state(
-        _read(
+    return derive_next_state_from_agent_fork(
+        gameweek=12,
+        canonical_root=canonical_root,
+        episode_root=episode_root,
+        fork_root=gw12_fork_root,
+        starting_state=_read(
             canonical_root
             / "gw-12/setup/arms/evidence_agent/starting-policy-state.json"
         ),
-        _read(gw12_fork_root / "validated-plan.json"),
-        _read(gw12_fork_root / "realised-outcome.json"),
-        decision_market=_read(gw12_fork_root / "adjusted-solver-input.json")[
+    )
+
+
+def derive_next_state_from_agent_fork(
+    *,
+    gameweek: int,
+    canonical_root: Path,
+    episode_root: Path,
+    fork_root: Path,
+    starting_state: Mapping[str, Any] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Legally derive a fork's successor without using canonical manager state."""
+    episode = episode_root / f"gw-{gameweek:02d}"
+    manifest = _read(episode / "episode-manifest.json")
+    rules = yaml.safe_load((episode / "ruleset.yaml").read_text(encoding="utf-8"))
+    return transition_policy_state(
+        (
+            dict(starting_state)
+            if starting_state is not None
+            else _read(fork_root / "starting-policy-state.json")
+        ),
+        _read(fork_root / "validated-plan.json"),
+        _read(fork_root / "realised-outcome.json"),
+        decision_market=_read(fork_root / "adjusted-solver-input.json")[
             "players"
         ],
         next_market=_market_from_feature_state(
-            _read(canonical_root / "gw-13/setup/shared-feature-state.json")
+            _read(
+                canonical_root
+                / f"gw-{gameweek + 1:02d}/setup/shared-feature-state.json"
+            )
         ),
         rules=rules,
         ruleset_sha256=str(manifest["ruleset"]["content_sha256"]),

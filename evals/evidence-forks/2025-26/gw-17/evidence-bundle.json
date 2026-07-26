@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw17-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-12-20T11:00:00Z",
+  "captured_at": "2026-07-26T13:28:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "The deadline-safe search confirmed that AFCON-bound players including Mbeumo would be unavailable from GW17. Later Friday Liverpool news was excluded because publication before the 11:00 cutoff could not be proven.",
+  "sources": [
+    {
+      "source_id": "ffs-gw17-mbeumo-afcon-2025-12-13",
+      "url": "https://www.fantasyfootballscout.co.uk/2025/12/13/fpl-players-now-red-flagged-for-afcon-will-they-miss-gameweek-16",
+      "title": "FPL players now red-flagged for AFCON - will they miss Gameweek 16?",
+      "published_at": "2025-12-13T00:00:00Z",
+      "published_at_precision": "day",
+      "captured_at": "2026-07-26T13:28:00Z",
+      "citation_excerpt": "These AFCON-bound players will not be available for selection for their clubs from Gameweek 17 onwards.",
+      "claim_id": "claim-gw17-mbeumo-afcon-absence",
+      "claim_text": "Bryan Mbeumo was unavailable to Manchester United from GW17 because he had departed for AFCON.",
+      "confidence": 0.99,
+      "expires_at": "2026-01-18T23:59:59Z",
+      "player_id": "player:2025-26:119"
+    }
+  ],
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "later_gw17_liverpool_updates_excluded_for_unproven_or_post_cutoff_timing",
+    "not_eligible_for_headline_agent_performance"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "6a010bc7f7a49446c0769c6282b279cd7f407204cf079441ad27d6d0b03118dc",
+  "response_sha256": "17acd7780dfc86023e29a53b0a8ca06ad4d275408e7d141abe633433c4328eef",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:mbeumo-gw17-afcon-unavailable",
+      "document_id": "document:ffs-gw17-mbeumo-afcon-2025-12-13",
+      "passage_id": "passage:claim-gw17-mbeumo-afcon-absence",
+      "source_id": "ffs-gw17-mbeumo-afcon-2025-12-13",
+      "claim_text": "Mbeumo is one of the listed AFCON-bound players and is unavailable to Manchester United from GW17.",
+      "citation_excerpt": "These AFCON-bound players will not be available for selection for their clubs from Gameweek 17 onwards.",
+      "citation_excerpt_sha256": "1b79f6d3b976dac3516eba059726815d282809d8a834349ad8ca440b8fbf2b14",
+      "expires_at": "2026-01-18T23:59:59Z",
+      "confidence": 0.99,
+      "player_uid": "player:2025-26:119"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [{
+      "adjustment_id": "adjustment:mbeumo-gw17-afcon-expected-minutes",
+      "claim_ids": ["claim:mbeumo-gw17-afcon-unavailable"],
+      "target": "expected_minutes",
+      "before_value": 88.8,
+      "after_value": 0,
+      "confidence": 0.99,
+      "expires_at": "2026-01-18T23:59:59Z",
+      "player_uid": "player:2025-26:119",
+      "rationale": "Confirmed tournament absence from Gameweek 17 means Mbeumo is unavailable for club selection, reducing expected minutes from 88.8 to 0."
+    }],
+    "notes": []
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T13:00:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "6a010bc7f7a49446c0769c6282b279cd7f407204cf079441ad27d6d0b03118dc",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "2025-26-gw15-retrospective-research-v1",
+  "evidence_mode": "retrospective_published_before_deadline",
+  "decision_cutoff": "2025-12-06T11:00:00Z",
+  "captured_at": "2026-07-26T13:28:00Z",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "research_summary": "The deadline-safe search found positive evidence that Senesi returns from suspension and that Iraola continued to support Semenyo's role. This is an intentional abstention test because the adapter may reduce forecasts but may not turn positive prose into an uplift.",
+  "sources": [
+    {
+      "source_id": "ffs-gw15-senesi-return-2025-12-05",
+      "url": "https://www.fantasyfootballscout.co.uk/2025/12/05/fpl-gameweek-15-team-news-fridays-live-injury-updates",
+      "title": "FPL Gameweek 15 team news: Friday's live injury updates",
+      "published_at": "2025-12-05T00:00:00Z",
+      "published_at_precision": "day",
+      "captured_at": "2026-07-26T13:28:00Z",
+      "citation_excerpt": "Marcos Senesi and David Brooks return from suspension this weekend.",
+      "claim_id": "claim-gw15-senesi-returns",
+      "claim_text": "Marcos Senesi was available again in GW15 after serving his one-match suspension.",
+      "confidence": 0.98,
+      "expires_at": "2025-12-08T23:59:59Z",
+      "player_id": "player:2025-26:72"
+    },
+    {
+      "source_id": "ffs-gw15-semenyo-role-2025-12-05",
+      "url": "https://www.fantasyfootballscout.co.uk/2025/12/05/fpl-gameweek-15-team-news-fridays-live-injury-updates",
+      "title": "FPL Gameweek 15 team news: Friday's live injury updates",
+      "published_at": "2025-12-05T00:00:00Z",
+      "published_at_precision": "day",
+      "captured_at": "2026-07-26T13:28:00Z",
+      "citation_excerpt": "He's trying to help us in every game and I haven't seen any change in his attitude.",
+      "claim_id": "claim-gw15-semenyo-role-positive",
+      "claim_text": "Andoni Iraola reported no adverse change in Antoine Semenyo's attitude or regular contribution.",
+      "confidence": 0.82,
+      "expires_at": "2025-12-08T23:59:59Z",
+      "player_id": "player:2025-26:82"
+    }
+  ],
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "positive_evidence_cannot_create_an_uplift_under_reduction_only_policy",
+    "not_eligible_for_headline_agent_performance"
+  ]
+}

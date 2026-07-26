@@ -1,0 +1,65 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "6144514c339df13243b1af12903ca7157d924024be12b1571ae2eb712f05dad9",
+  "response_sha256": "9aa5136c97ab8fcc112d039ce713663a3b7210af14381d818f78d5e0da9a5a61",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw15:senesi-return",
+        "document_id": "document:ffs-gw15-senesi-return-2025-12-05",
+        "passage_id": "passage:claim-gw15-senesi-returns",
+        "source_id": "ffs-gw15-senesi-return-2025-12-05",
+        "claim_text": "Marcos Senesi returns from suspension this weekend.",
+        "citation_excerpt": "Marcos Senesi and David Brooks return from suspension this weekend.",
+        "citation_excerpt_sha256": "3dc9d66bc84f0a2bdfad8f31ac6c8bfb9e5ba54bcf478d2424bfbd3cab1b97c3",
+        "expires_at": "2025-12-08T23:59:59Z",
+        "confidence": 0.95,
+        "player_uid": "player:2025-26:72"
+      },
+      {
+        "claim_id": "claim:gw15:semenyo-role-positive",
+        "document_id": "document:ffs-gw15-semenyo-role-2025-12-05",
+        "passage_id": "passage:claim-gw15-semenyo-role-positive",
+        "source_id": "ffs-gw15-semenyo-role-2025-12-05",
+        "claim_text": "Semenyo's attitude and efforts to help the team remain positive.",
+        "citation_excerpt": "He's trying to help us in every game and I haven't seen any change in his attitude.",
+        "citation_excerpt_sha256": "7d2924fd1ed3776a9fa04cdc117feafccbb2cbfc6b27063968988672cf62432a",
+        "expires_at": "2025-12-08T23:59:59Z",
+        "confidence": 0.85,
+        "player_uid": "player:2025-26:82"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "Both claims are positive evidence and do not support a reduction from either player baseline; no adjustment proposed."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:46:22Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "6144514c339df13243b1af12903ca7157d924024be12b1571ae2eb712f05dad9",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

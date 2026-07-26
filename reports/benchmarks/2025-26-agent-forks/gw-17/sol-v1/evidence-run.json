@@ -1,0 +1,465 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw17-sol-evidence-v1",
+      "content_sha256": "cca92046f9897b00d9fc91209f47bedad24f39048606c6f88a9714feb5e8c22e",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "6a010bc7f7a49446c0769c6282b279cd7f407204cf079441ad27d6d0b03118dc",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T13:00:00Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "6a010bc7f7a49446c0769c6282b279cd7f407204cf079441ad27d6d0b03118dc",
+        "response_sha256": "17acd7780dfc86023e29a53b0a8ca06ad4d275408e7d141abe633433c4328eef",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "These AFCON-bound players will not be available for selection for their clubs from Gameweek 17 onwards.",
+              "citation_excerpt_sha256": "1b79f6d3b976dac3516eba059726815d282809d8a834349ad8ca440b8fbf2b14",
+              "claim_id": "claim:mbeumo-gw17-afcon-unavailable",
+              "claim_text": "Mbeumo is one of the listed AFCON-bound players and is unavailable to Manchester United from GW17.",
+              "confidence": 0.99,
+              "document_id": "document:ffs-gw17-mbeumo-afcon-2025-12-13",
+              "expires_at": "2026-01-18T23:59:59Z",
+              "passage_id": "passage:claim-gw17-mbeumo-afcon-absence",
+              "player_uid": "player:2025-26:119",
+              "source_id": "ffs-gw17-mbeumo-afcon-2025-12-13"
+            }
+          ],
+          "conflicts": [],
+          "notes": [],
+          "proposed_adjustments": [
+            {
+              "adjustment_id": "adjustment:mbeumo-gw17-afcon-expected-minutes",
+              "after_value": 0,
+              "before_value": 88.8,
+              "claim_ids": [
+                "claim:mbeumo-gw17-afcon-unavailable"
+              ],
+              "confidence": 0.99,
+              "expires_at": "2026-01-18T23:59:59Z",
+              "player_uid": "player:2025-26:119",
+              "rationale": "Confirmed tournament absence from Gameweek 17 means Mbeumo is unavailable for club selection, reducing expected minutes from 88.8 to 0.",
+              "target": "expected_minutes"
+            }
+          ],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw17-sol-evidence-v1",
+      "content_sha256": "097fc115c37d209a32d29a1af6e18e1fc3f308dae803b4c4eee0f4110883327f",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:mbeumo-gw17-afcon-unavailable",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:119",
+            "provenance": {
+              "content_hash_sha256": "780ab656da1dc1bc0fad726cfbf5434b637c3dad47a34b5cff967238af5b98a7",
+              "source_ids": [
+                "ffs-gw17-mbeumo-afcon-2025-12-13"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-26T13:28:00Z",
+            "claim_id": "claim:mbeumo-gw17-afcon-unavailable",
+            "claim_text": "Mbeumo is one of the listed AFCON-bound players and is unavailable to Manchester United from GW17.",
+            "confidence": 0.99,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:ffs-gw17-mbeumo-afcon-2025-12-13",
+            "expires_at": "2026-01-18T23:59:59Z",
+            "observed_at": "2026-07-26T13:28:00Z",
+            "provenance": {
+              "content_hash_sha256": "780ab656da1dc1bc0fad726cfbf5434b637c3dad47a34b5cff967238af5b98a7",
+              "source_ids": [
+                "ffs-gw17-mbeumo-afcon-2025-12-13"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-12-13T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "097fc115c37d209a32d29a1af6e18e1fc3f308dae803b4c4eee0f4110883327f",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [],
+        "production_eligible": false,
+        "proposed_adjustments": [
+          {
+            "adjustment_id": "adjustment:mbeumo-gw17-afcon-expected-minutes",
+            "after_value": 0,
+            "available_at": "2026-07-26T13:00:00Z",
+            "before_value": 88.8,
+            "confidence": 0.99,
+            "expires_at": "2026-01-18T23:59:59Z",
+            "observed_at": "2026-07-26T13:00:00Z",
+            "player_uid": "player:2025-26:119",
+            "provenance": {
+              "source_ids": [
+                "ffs-gw17-mbeumo-afcon-2025-12-13"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-07-26T13:00:00Z",
+            "rationale": "Confirmed tournament absence from Gameweek 17 means Mbeumo is unavailable for club selection, reducing expected minutes from 88.8 to 0.",
+            "signal_ids": [
+              "signal:adjustment:mbeumo-gw17-afcon-expected-minutes"
+            ],
+            "status": "proposed",
+            "target": "expected_minutes"
+          }
+        ],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": [
+          {
+            "available_at": "2026-07-26T13:00:00Z",
+            "claim_ids": [
+              "claim:mbeumo-gw17-afcon-unavailable"
+            ],
+            "interpretation": "Confirmed tournament absence from Gameweek 17 means Mbeumo is unavailable for club selection, reducing expected minutes from 88.8 to 0.",
+            "observed_at": "2026-07-26T13:00:00Z",
+            "player_uid": "player:2025-26:119",
+            "provenance": {
+              "source_ids": [
+                "ffs-gw17-mbeumo-afcon-2025-12-13"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-12-13T00:00:00Z",
+            "signal_id": "signal:adjustment:mbeumo-gw17-afcon-expected-minutes"
+          }
+        ]
+      }
+    }
+  },
+  "content_sha256": "2547cfed7d23e0b2882d18109c392652b858aa88ace72348a8a986b3e4423cbd",
+  "run_id": "gw17-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 0.3,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 62.05,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:260",
+        "player:2025-26:226",
+        "player:2025-26:8",
+        "player:2025-26:414",
+        "player:2025-26:82",
+        "player:2025-26:119",
+        "player:2025-26:387",
+        "player:2025-26:266",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 69.25,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:414",
+        "player_out_id": "player:2025-26:384"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-26T13:00:00Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-12-20T11:00:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw17:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw17-sol-evidence-v1",
+          "content_sha256": "28d00b5c3d770248d6ec46b9080592afb47f8dc48c210108425abf0a1cfbff83"
+        }
+      ],
+      "input_sha256": "28d00b5c3d770248d6ec46b9080592afb47f8dc48c210108425abf0a1cfbff83",
+      "rendered_prompt_sha256": "6a010bc7f7a49446c0769c6282b279cd7f407204cf079441ad27d6d0b03118dc"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw17-sol-evidence-v1",
+          "content_sha256": "cca92046f9897b00d9fc91209f47bedad24f39048606c6f88a9714feb5e8c22e"
+        },
+        "call_id": "model:gw17-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "6a010bc7f7a49446c0769c6282b279cd7f407204cf079441ad27d6d0b03118dc",
+        "response_sha256": "17acd7780dfc86023e29a53b0a8ca06ad4d275408e7d141abe633433c4328eef",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T13:00:00Z",
+    "observed_episode_sha256": "aba24da3ee6d35b5392237041f79ed171f899bd262359022906eeab08a28b1d6",
+    "output": {
+      "output_sha256": "097fc115c37d209a32d29a1af6e18e1fc3f308dae803b4c4eee0f4110883327f",
+      "response_ref": {
+        "artifact_id": "cached-response:gw17-sol-evidence-v1",
+        "content_sha256": "cca92046f9897b00d9fc91209f47bedad24f39048606c6f88a9714feb5e8c22e"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw17-sol-evidence-v1",
+        "content_sha256": "097fc115c37d209a32d29a1af6e18e1fc3f308dae803b4c4eee0f4110883327f"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw17-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw17-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw17-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "c1283d1933abe6e36466d66cfb92cebcfb502afe",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:mbeumo-gw17-afcon-unavailable",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:119",
+        "provenance": {
+          "content_hash_sha256": "780ab656da1dc1bc0fad726cfbf5434b637c3dad47a34b5cff967238af5b98a7",
+          "source_ids": [
+            "ffs-gw17-mbeumo-afcon-2025-12-13"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-26T13:28:00Z",
+        "claim_id": "claim:mbeumo-gw17-afcon-unavailable",
+        "claim_text": "Mbeumo is one of the listed AFCON-bound players and is unavailable to Manchester United from GW17.",
+        "confidence": 0.99,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:ffs-gw17-mbeumo-afcon-2025-12-13",
+        "expires_at": "2026-01-18T23:59:59Z",
+        "observed_at": "2026-07-26T13:28:00Z",
+        "provenance": {
+          "content_hash_sha256": "780ab656da1dc1bc0fad726cfbf5434b637c3dad47a34b5cff967238af5b98a7",
+          "source_ids": [
+            "ffs-gw17-mbeumo-afcon-2025-12-13"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-12-13T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "097fc115c37d209a32d29a1af6e18e1fc3f308dae803b4c4eee0f4110883327f",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [],
+    "production_eligible": false,
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:mbeumo-gw17-afcon-expected-minutes",
+        "after_value": 0,
+        "available_at": "2026-07-26T13:00:00Z",
+        "before_value": 88.8,
+        "confidence": 0.99,
+        "expires_at": "2026-01-18T23:59:59Z",
+        "observed_at": "2026-07-26T13:00:00Z",
+        "player_uid": "player:2025-26:119",
+        "provenance": {
+          "source_ids": [
+            "ffs-gw17-mbeumo-afcon-2025-12-13"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-07-26T13:00:00Z",
+        "rationale": "Confirmed tournament absence from Gameweek 17 means Mbeumo is unavailable for club selection, reducing expected minutes from 88.8 to 0.",
+        "signal_ids": [
+          "signal:adjustment:mbeumo-gw17-afcon-expected-minutes"
+        ],
+        "status": "proposed",
+        "target": "expected_minutes"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": [
+      {
+        "available_at": "2026-07-26T13:00:00Z",
+        "claim_ids": [
+          "claim:mbeumo-gw17-afcon-unavailable"
+        ],
+        "interpretation": "Confirmed tournament absence from Gameweek 17 means Mbeumo is unavailable for club selection, reducing expected minutes from 88.8 to 0.",
+        "observed_at": "2026-07-26T13:00:00Z",
+        "player_uid": "player:2025-26:119",
+        "provenance": {
+          "source_ids": [
+            "ffs-gw17-mbeumo-afcon-2025-12-13"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-12-13T00:00:00Z",
+        "signal_id": "signal:adjustment:mbeumo-gw17-afcon-expected-minutes"
+      }
+    ]
+  }
+}

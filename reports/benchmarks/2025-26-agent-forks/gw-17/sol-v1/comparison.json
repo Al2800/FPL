@@ -1,0 +1,43 @@
+{
+  "adapter_audit_sha256": "d84c106c2bacb56552234bd6fea346a908fb3364899685ccaf698988079782a2",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 92,
+  "agent_vs_canonical_delta": 4,
+  "canonical_gross_points": 88,
+  "canonical_tree_sha256_after": "78a2b73b401f689efc91637c06f11eb5403a45ee3785b9dee24cbf8ba25e6f48",
+  "canonical_tree_sha256_before": "78a2b73b401f689efc91637c06f11eb5403a45ee3785b9dee24cbf8ba25e6f48",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "0293f945db27376993b1109455ebd21880cfa68523994bdf9102835b9fcc0238",
+  "content_sha256": "e995054320ace60459f27472016905665f1448defb421bd18244b8d6bf80a70b",
+  "evidence_run_sha256": "2547cfed7d23e0b2882d18109c392652b858aa88ace72348a8a986b3e4423cbd",
+  "experiment_id": "2025-26-gw17-sol-agent-fork-v1",
+  "exploratory_only": true,
+  "gameweek": 17,
+  "hit_cost": 0,
+  "host_bundle_sha256": "757c04868f281dd61539bcb7131515cf5ea62b289bd427b2e39c376167f6b79d",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "later_gw17_liverpool_updates_excluded_for_unproven_or_post_cutoff_timing",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": null,
+  "plan_sha256": "946972951e2ef35930916b3c48596905c4481435210ce4ab489d5c798e316993",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Phil Foden",
+      "player_out": "Bryan Mbeumo"
+    },
+    {
+      "player_in": "Morgan Rogers",
+      "player_out": "Cody Gakpo"
+    }
+  ],
+  "solver_input_sha256": "52a3a05575d8c8112a49aa065c2551c1d444972c6d0f36d9084b6cf959b1a77c",
+  "solver_output_sha256": "0556284766bf6032bdceff2c6ca45709f4ba138392a7302cfc5c4912846d94fe",
+  "starting_state_sha256": "14916c237858b82062a3b8f1e5a008c325595a1657d41f23fc6398d8856982b8"
+}

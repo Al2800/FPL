@@ -1,0 +1,55 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "a9b41ba587e15233331782fb9bf8be9ef46786badbace40c45dbffb0127d8931",
+  "response_sha256": "be5a9fff28e2bc88f9c07e234c497dea3b969380ce2176a7c210deec4e893830",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [{
+      "claim_id": "claim:gw16-munoz-surgery-absence",
+      "document_id": "document:vg-gw16-munoz-surgery-2025-12-12-091620",
+      "passage_id": "passage:claim-gw16-munoz-surgery",
+      "source_id": "vg-gw16-munoz-surgery-2025-12-12-091620",
+      "claim_text": "Daniel Muñoz required surgery and was not expected back before 17 January.",
+      "citation_excerpt": "Onsdag kom altså nyheten om at Munoz må opereres og er ikke forventet tilbake før 17. januar.",
+      "citation_excerpt_sha256": "44a94f324be7f795b6286980b3bf8fced317cdaaa2f1830ab9be34b489875b92",
+      "expires_at": "2026-01-17T23:59:59Z",
+      "confidence": 0.99,
+      "player_uid": "player:2025-26:256"
+    }],
+    "conflicts": [],
+    "proposed_adjustments": [{
+      "adjustment_id": "adjustment:gw16-munoz-expected-minutes-zero",
+      "claim_ids": ["claim:gw16-munoz-surgery-absence"],
+      "target": "expected_minutes",
+      "before_value": 70.7,
+      "after_value": 0,
+      "confidence": 0.99,
+      "expires_at": "2026-01-17T23:59:59Z",
+      "player_uid": "player:2025-26:256",
+      "rationale": "Confirmed surgery and an expected absence through at least 17 January rule out GW16 participation."
+    }],
+    "notes": ["Proposal only; not applied or approved."]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:55:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "a9b41ba587e15233331782fb9bf8be9ef46786badbace40c45dbffb0127d8931",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

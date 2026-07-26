@@ -1,0 +1,34 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "a403c3df724f0a3496aa8aa1bea18a3d372a2b336a48a392e4a32c7e5794db8f",
+  "response_sha256": "a5ba1a0f95031956efb49a63759c2c6f5eceb3156ae48a0ac4606e41bce1cfcd",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw16-munoz-expected-minutes-zero:challenger",
+    "reviewed_adjustment_ids": ["adjustment:gw16-munoz-expected-minutes-zero"],
+    "escalation_outcome": "dismissed",
+    "notes": "No material challenge identified. The grounded pre-cutoff passage supports zero expected minutes because Muñoz requires surgery and is not expected back before 17 January. The 70.7-to-0 change, 0.99 confidence, exact adjustment ID, and expiry at 2026-01-17T23:59:59Z are coherent. Identity is consistent with the supplied player mapping. Review only; this does not apply or approve the adjustment."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T12:57:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "a403c3df724f0a3496aa8aa1bea18a3d372a2b336a48a392e4a32c7e5794db8f",
+    "event_types": ["thread_started", "agent_message", "turn_completed"]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {"currency": "GBP", "amount": null, "metering_status": "unavailable"}
+  }
+}

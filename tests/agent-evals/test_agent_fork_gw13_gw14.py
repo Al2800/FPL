@@ -132,4 +132,4 @@ def test_committed_two_week_chain_is_state_bound_and_stops_before_gw15() -> None
     assert attribution["agent_gross_points"] == 60
     assert attribution["agent_evidence_delta"] == -1
     assert gw14["next_state_sha256"] is None
-    assert not (AGENT / "gw-15").exists()
+    assert not (AGENT / "gw-14/sol-v1/next-policy-state.json").exists()
