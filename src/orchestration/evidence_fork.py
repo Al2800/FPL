@@ -221,9 +221,10 @@ def validate_reconstructed_bundle(bundle: Mapping[str, Any]) -> dict[str, Any]:
     )
 
 
-def _apply_adjustments(
+def apply_reconstructed_adjustments(
     solver_input: Mapping[str, Any], bundle: Mapping[str, Any]
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Apply an already validated evidence bundle to a copied solver input."""
     adjusted = deepcopy(dict(solver_input))
     players = {str(row["player_id"]): row for row in adjusted["players"]}
     applied: list[dict[str, Any]] = []
@@ -574,7 +575,7 @@ def run_isolated_evidence_fork(
         raise EvidenceForkError("Evidence bundle cutoff does not match episode deadline")
     state = _read(setup_arm / "starting-policy-state.json")
     solver_input = _read(setup_arm / "reviewed-engine-input.json")
-    adjusted_input, applied = _apply_adjustments(solver_input, bundle)
+    adjusted_input, applied = apply_reconstructed_adjustments(solver_input, bundle)
     rules = yaml.safe_load((episode / "ruleset.yaml").read_text(encoding="utf-8"))
     rules_hash = str(manifest["ruleset"]["content_sha256"])
     solver_output = solve(

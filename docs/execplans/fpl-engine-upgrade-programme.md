@@ -17,6 +17,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-25 20:40Z) Claimed `FPL-bsw.14` as the measurement and equivalence-oracle foundation.
 - [x] (2026-07-25 21:05Z) Implemented `FPL-bsw.14`: realised feasible-baseline contracts, paired cluster-aware metrics, calibration, uncertainty, resource use, detectable-effect-size analysis, and a read-only 38-Gameweek control report.
 - [x] (2026-07-26 03:48Z) Completed the timestamp-sealed GW12 evidence fork under `FPL-98p`: the isolated +14 reduces to +4 through an independent GW38 continuation, with canonical artifacts unchanged and opportunity ceilings separated by feasibility.
+- [x] (2026-07-26 04:28Z) Generalised timestamp-sealed evidence under `FPL-bsw.24`: reusable multi-bundle input, isolated no-state-advance attribution, one independent longitudinal chain, canonical tree protection, direct-versus-compounding decomposition, exact one-off hash equivalence and 421 passing repository tests.
 - [x] (2026-07-25 21:20Z) Evaluated the sealed 0.25 player-event challenger and rejected promotion: selected cohorts improved slightly, but all-player calibration regressed.
 - [x] (2026-07-26 00:05Z) Separated attack and defence context, calibrated it before 2025/26, and rejected promotion after it worsened all, owned, and selected-player calibration.
 - [x] (2026-07-25 23:15Z) Added calibrated three-state appearances and opt-in legal goalkeeper, bench-order, automatic-substitution, and vice-captain planning value without changing realised scoring.
@@ -67,6 +68,9 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - Observation: One successful evidence intervention does not preserve its isolated value after state compounding.
   Evidence: The reconstructed GW12 availability fork gains 14 points immediately but only four across GW12-GW38 after every later action is independently replanned.
 
+- Observation: The difference between direct evidence attribution and state compounding is itself a decision metric.
+  Evidence: The reusable weekly programme records +14 isolated direct value, +4 longitudinal value and therefore -10 from later compounding for the GW12 intervention.
+
 ## Decision Log
 
 - Decision: Treat the completed `live-faithful-v1` replay and its artifacts as immutable control data.
@@ -107,6 +111,10 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 
 - Decision: Retain the no-chip three-transfer GW31 control under `chip-policy-v1`.
   Rationale: No chip cleared both its declared reserve and the two-point deployment margin on the same-cutoff forecast. The later Triple Captain and Free Hit gains remain descriptive evaluation evidence rather than inputs to selection.
+  Date/Author: 2026-07-26 / Codex
+
+- Decision: Model multiple evidence weeks as isolated attribution rows plus one combined independent trajectory.
+  Rationale: Advancing state separately for each isolated test would contaminate attribution, while evaluating only one combined trajectory would hide which bundle caused a direct change. The two views are complementary and their difference quantifies compounding.
   Date/Author: 2026-07-26 / Codex
 
 
@@ -222,3 +230,5 @@ Plan revision note (2026-07-26): Began the chip-policy milestone after tracing t
 Plan revision note (2026-07-26): Completed the GW31 chip implementation and sealed evaluation. Recorded the no-chip policy decision, tempting but inadmissible realised chip gains, exact Free Hit restoration, high historical schedule uncertainty, and the remaining full-suite publication gate.
 
 Plan revision note (2026-07-26): Completed the taken-over GW12 evidence experiment, adding feasibility-labelled score ceilings and a full independent continuation. The result now distinguishes direct evidence attribution (+14) from longitudinal compounded value (+4).
+
+Plan revision note (2026-07-26): Generalised the evidence experiment into a reusable multi-bundle programme. Added deadline rejection, isolated no-state-advance attribution, one independent longitudinal chain, canonical tree protection and an explicit direct-versus-compounding decomposition.

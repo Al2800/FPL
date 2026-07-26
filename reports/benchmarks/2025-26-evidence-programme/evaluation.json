@@ -1,0 +1,1053 @@
+{
+  "attribution": {
+    "interpretation": "isolated direct effects do not advance altered state; the difference between longitudinal and isolated totals is compounding",
+    "isolated_direct_net_points_delta": 14,
+    "longitudinal_net_points_delta": 4,
+    "state_compounding_net_points_delta": -10
+  },
+  "canonical_artifacts": {
+    "file_count": 1971,
+    "tree_sha256_after": "d9efdd6216f89a4b6e06c93869a4507d31dfd43396633ce00e3ef5443662626f",
+    "tree_sha256_before": "d9efdd6216f89a4b6e06c93869a4507d31dfd43396633ce00e3ef5443662626f",
+    "unchanged": true
+  },
+  "content_sha256": "e299fd31878dc721ea22879eae24733aa61d58950b937bc5bbce2e088bfdbce2",
+  "isolated_results": [
+    {
+      "canonical_net_points": 29,
+      "canonical_outcome_sha256": "34368048cde25d49240521e3b53d4181dac1693c7f350bdc53f912cea376c91a",
+      "canonical_plan_sha256": "af69b5738afb2e144abbbcdbc632cc9d4a062d9061c8df9d355305d56053b5c5",
+      "comparison_type": "isolated_same_starting_state",
+      "evidence": {
+        "applied_adjustments": [
+          {
+            "adjustment_id": "adjust-gw12-gabriel-unavailable",
+            "after": {
+              "expected_minutes": 0.0,
+              "expected_points": 0.0,
+              "start_probability": 0.0,
+              "status": "i"
+            },
+            "before": {
+              "expected_minutes": 85.6,
+              "expected_points": 6.09,
+              "start_probability": 0.9524,
+              "status": "a"
+            },
+            "claim_id": "claim-gw12-gabriel-out",
+            "confidence": 0.99,
+            "player_id": "player:2025-26:5",
+            "rationale": "Confirmed multi-week absence makes the player unavailable for GW12.",
+            "target": "availability_flag"
+          },
+          {
+            "adjustment_id": "adjust-gw12-semenyo-start-probability",
+            "after": {
+              "expected_minutes": 65.4,
+              "expected_points": 4.55,
+              "start_probability": 0.7321,
+              "status": "a"
+            },
+            "before": {
+              "expected_minutes": 87.7,
+              "expected_points": 6.11,
+              "start_probability": 0.9821,
+              "status": "a"
+            },
+            "claim_id": "claim-gw12-semenyo-doubt",
+            "confidence": 0.65,
+            "player_id": "player:2025-26:82",
+            "rationale": "Material ankle doubt receives the maximum bounded start-probability reduction, not an unavailable flag.",
+            "target": "start_probability_delta"
+          }
+        ],
+        "assessment_sha256": "6089213b5723caa05ba928306ca1b4d233de3e74ff987276a21370d2b95d6c01",
+        "bundle_path": "C:/Users/Alastair/FPL/evals/evidence-forks/2025-26/gw-12/evidence-bundle.json",
+        "bundle_sha256": "711f207a7ddf48ddb504aaebf186f7924c4626108d05d7fde05a081aad29d037",
+        "captured_at": "2026-07-25T10:50:00Z",
+        "case_selection": "retrospective_exploratory_not_preregistered",
+        "claims": [
+          {
+            "adjustment_confidence": 0.99,
+            "adjustment_id": "adjust-gw12-gabriel-unavailable",
+            "adjustment_target": "availability_flag",
+            "captured_at": "2026-07-25T10:50:00Z",
+            "citation_excerpt_sha256": "8bbb2415b9dcefe466026a640d16350dd17336c571704dc11f03e19f7c8c9ea2",
+            "claim_confidence": 0.99,
+            "claim_id": "claim-gw12-gabriel-out",
+            "expires_at": "2025-11-24T23:59:59Z",
+            "player_id": "player:2025-26:5",
+            "published_at": "2025-11-21T16:00:00Z",
+            "source_id": "tottenham-team-news-2025-11-21",
+            "url": "https://www.tottenhamhotspur.com/news/2025/november/arsenal-team-news-gabriel-magalhaes-one-of-six-ruled-out-riccardo-calafiori-a-doubt/"
+          },
+          {
+            "adjustment_confidence": 0.65,
+            "adjustment_id": "adjust-gw12-semenyo-start-probability",
+            "adjustment_target": "start_probability_delta",
+            "captured_at": "2026-07-25T10:50:00Z",
+            "citation_excerpt_sha256": "df9f42fce05dcb442ec5ade54dc558fde02c67f3f01e1772ff4ee9e410a1674a",
+            "claim_confidence": 0.7,
+            "claim_id": "claim-gw12-semenyo-doubt",
+            "expires_at": "2025-11-22T17:00:00Z",
+            "player_id": "player:2025-26:82",
+            "published_at": "2025-11-21T13:00:00Z",
+            "source_id": "fantasy-football-scout-gw12-team-news-2025-11-21",
+            "url": "https://www.fantasyfootballscout.co.uk/2025/11/21/fpl-gameweek-12-team-news-fridays-live-injury-updates-3"
+          }
+        ],
+        "decision_cutoff": "2025-11-22T11:00:00Z",
+        "production_eligible": false
+      },
+      "fork_net_points": 43,
+      "fork_outcome_sha256": "2e7c4f02281a9f59c0acb7f47cc9e106f5659150866556d52e2baf02ca11ac9d",
+      "fork_plan_sha256": "a484bb913c35b69214c84b53a766483ffced04a20e2994e534ea8bc4b89e41cd",
+      "gameweek": 12,
+      "net_points_delta": 14,
+      "season": "2025-26",
+      "solver_input_sha256": "466fda719c5bcdac7887e0d8d67fb342e7f61495a1f6c3accb51c30c1700d707",
+      "solver_output_sha256": "43f069dab57ff49b67a346d582518f9b5677ccfd811daa2f85cec421b81e8179",
+      "starting_state_sha256": "5cbe52bd7f655a9c30c9c92b2feba2d7f3694d433db074408fbc7282bdebc708",
+      "state_advanced": false,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:256",
+          "player_in_name": "Daniel Muñoz Mejía",
+          "player_out_id": "player:2025-26:5",
+          "player_out_name": "Gabriel dos Santos Magalhães",
+          "position": "DEF",
+          "purchase_price": 5.7,
+          "selling_price": 6.3
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "case_selected_after_outcome_was_known",
+    "not_eligible_for_headline_agent_performance",
+    "sources_recovered_after_historical_decision"
+  ],
+  "longitudinal": {
+    "canonical_net_points": 1457,
+    "comparison_type": "independent_state_compounding",
+    "fork_net_points": 1461,
+    "net_points_delta": 4,
+    "terminal_cumulative_points": 2014,
+    "terminal_state_sha256": "9730c43e1604f6453f92d8bef8fa23563b06ccf5be2612145f2c2a6be460cd72",
+    "weeks": [
+      {
+        "canonical_net_points": 29,
+        "canonical_outcome_sha256": "34368048cde25d49240521e3b53d4181dac1693c7f350bdc53f912cea376c91a",
+        "canonical_plan_sha256": "af69b5738afb2e144abbbcdbc632cc9d4a062d9061c8df9d355305d56053b5c5",
+        "canonical_transition_sha256": "017957771059db65ca8f769e9113c79da13e8d0e2766ca5e3857c73936058e97",
+        "evidence": {
+          "applied_adjustments": [
+            {
+              "adjustment_id": "adjust-gw12-gabriel-unavailable",
+              "after": {
+                "expected_minutes": 0.0,
+                "expected_points": 0.0,
+                "start_probability": 0.0,
+                "status": "i"
+              },
+              "before": {
+                "expected_minutes": 85.6,
+                "expected_points": 6.09,
+                "start_probability": 0.9524,
+                "status": "a"
+              },
+              "claim_id": "claim-gw12-gabriel-out",
+              "confidence": 0.99,
+              "player_id": "player:2025-26:5",
+              "rationale": "Confirmed multi-week absence makes the player unavailable for GW12.",
+              "target": "availability_flag"
+            },
+            {
+              "adjustment_id": "adjust-gw12-semenyo-start-probability",
+              "after": {
+                "expected_minutes": 65.4,
+                "expected_points": 4.55,
+                "start_probability": 0.7321,
+                "status": "a"
+              },
+              "before": {
+                "expected_minutes": 87.7,
+                "expected_points": 6.11,
+                "start_probability": 0.9821,
+                "status": "a"
+              },
+              "claim_id": "claim-gw12-semenyo-doubt",
+              "confidence": 0.65,
+              "player_id": "player:2025-26:82",
+              "rationale": "Material ankle doubt receives the maximum bounded start-probability reduction, not an unavailable flag.",
+              "target": "start_probability_delta"
+            }
+          ],
+          "assessment_sha256": "6089213b5723caa05ba928306ca1b4d233de3e74ff987276a21370d2b95d6c01",
+          "bundle_path": "C:/Users/Alastair/FPL/evals/evidence-forks/2025-26/gw-12/evidence-bundle.json",
+          "bundle_sha256": "711f207a7ddf48ddb504aaebf186f7924c4626108d05d7fde05a081aad29d037",
+          "captured_at": "2026-07-25T10:50:00Z",
+          "case_selection": "retrospective_exploratory_not_preregistered",
+          "claims": [
+            {
+              "adjustment_confidence": 0.99,
+              "adjustment_id": "adjust-gw12-gabriel-unavailable",
+              "adjustment_target": "availability_flag",
+              "captured_at": "2026-07-25T10:50:00Z",
+              "citation_excerpt_sha256": "8bbb2415b9dcefe466026a640d16350dd17336c571704dc11f03e19f7c8c9ea2",
+              "claim_confidence": 0.99,
+              "claim_id": "claim-gw12-gabriel-out",
+              "expires_at": "2025-11-24T23:59:59Z",
+              "player_id": "player:2025-26:5",
+              "published_at": "2025-11-21T16:00:00Z",
+              "source_id": "tottenham-team-news-2025-11-21",
+              "url": "https://www.tottenhamhotspur.com/news/2025/november/arsenal-team-news-gabriel-magalhaes-one-of-six-ruled-out-riccardo-calafiori-a-doubt/"
+            },
+            {
+              "adjustment_confidence": 0.65,
+              "adjustment_id": "adjust-gw12-semenyo-start-probability",
+              "adjustment_target": "start_probability_delta",
+              "captured_at": "2026-07-25T10:50:00Z",
+              "citation_excerpt_sha256": "df9f42fce05dcb442ec5ade54dc558fde02c67f3f01e1772ff4ee9e410a1674a",
+              "claim_confidence": 0.7,
+              "claim_id": "claim-gw12-semenyo-doubt",
+              "expires_at": "2025-11-22T17:00:00Z",
+              "player_id": "player:2025-26:82",
+              "published_at": "2025-11-21T13:00:00Z",
+              "source_id": "fantasy-football-scout-gw12-team-news-2025-11-21",
+              "url": "https://www.fantasyfootballscout.co.uk/2025/11/21/fpl-gameweek-12-team-news-fridays-live-injury-updates-3"
+            }
+          ],
+          "decision_cutoff": "2025-11-22T11:00:00Z",
+          "production_eligible": false
+        },
+        "evidence_applied": true,
+        "fork_net_points": 43,
+        "gameweek": 12,
+        "net_points_delta": 14,
+        "next_state_sha256": "1c332004a94c63ff81f76fd847d445427ec525abcfa7e93d77af6a5cbe7307bc",
+        "outcome_sha256": "2e7c4f02281a9f59c0acb7f47cc9e106f5659150866556d52e2baf02ca11ac9d",
+        "plan_sha256": "a484bb913c35b69214c84b53a766483ffced04a20e2994e534ea8bc4b89e41cd",
+        "solver_input_sha256": "466fda719c5bcdac7887e0d8d67fb342e7f61495a1f6c3accb51c30c1700d707",
+        "solver_output_sha256": "43f069dab57ff49b67a346d582518f9b5677ccfd811daa2f85cec421b81e8179",
+        "starting_state_sha256": "5cbe52bd7f655a9c30c9c92b2feba2d7f3694d433db074408fbc7282bdebc708",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:256",
+            "player_in_name": "Daniel Muñoz Mejía",
+            "player_out_id": "player:2025-26:5",
+            "player_out_name": "Gabriel dos Santos Magalhães",
+            "position": "DEF",
+            "purchase_price": 5.7,
+            "selling_price": 6.3
+          }
+        ],
+        "transition_sha256": "5e519050c23c748c782437063ecca1df476a0351a9a239ac1a321cbdc9a8b6ae"
+      },
+      {
+        "canonical_net_points": 36,
+        "canonical_outcome_sha256": "cd579dfe70b1adafc7f9cec9af97465d1f89d6339aef8b5177e84d336d3b6660",
+        "canonical_plan_sha256": "59eecce508dff16da22b295a9b3cfd895aceac5ba5cab7580ce89194f834185d",
+        "canonical_transition_sha256": "b72cf6e9dc4a46cd6b4f5a858f215690605c768977ed332314d0cbd28a54aaf6",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 37,
+        "gameweek": 13,
+        "net_points_delta": 1,
+        "next_state_sha256": "a36acb0d34170e572e0912c2124493667a60f5cdd64566a93b428afdf0ae3d03",
+        "outcome_sha256": "a8936f54f28c342ab5f52470e7e96288d3a9f2baadca1ee1b5f20efe9abc780b",
+        "plan_sha256": "b46c42f9986ce9bd371885196480b3d43e0595be9951f58d0c1c6911aab1f393",
+        "solver_input_sha256": "d44a3e0513cf826908902d32384f77729241152545e945cef8994e0fd3f7d508",
+        "solver_output_sha256": "97b2f6aca23efa537fc361aff7dee4ca4032e7752d26b59f0445f97a29dfef55",
+        "starting_state_sha256": "1c332004a94c63ff81f76fd847d445427ec525abcfa7e93d77af6a5cbe7307bc",
+        "transfers": [],
+        "transition_sha256": "81908bfec6b7517dc82cc9ae9e6220f7efab8d027c6615aa75aa9690946ddedf"
+      },
+      {
+        "canonical_net_points": 63,
+        "canonical_outcome_sha256": "f7fbc84c2901c42eb7daec4849b2340eb748bcfffd00e825cd7c1db448035d03",
+        "canonical_plan_sha256": "de19dee3965983b28a646d016a9bde0260c362320a933f25bfec7a519fc1fb1b",
+        "canonical_transition_sha256": "a6f8d1103632b638623a1911e994476267a59c24ba04ca5b4b0856cc746b05fe",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 61,
+        "gameweek": 14,
+        "net_points_delta": -2,
+        "next_state_sha256": "5fe2325c3484af1a66b66bca44a376b4fcd111a82a6aa934fa52f6efbebc3d68",
+        "outcome_sha256": "71149f944069f260126cb4eee6ebf439c4617a96b4bf240276d51f7f9bfced5a",
+        "plan_sha256": "ba3a3992788752e9f7da063b5f861daa74e869a038c1a6a72b9899b23db26b0c",
+        "solver_input_sha256": "09dc931bd2349cecaf293e5f5a6c72a5d14c70f7b4443c3afd47fdf4688712a1",
+        "solver_output_sha256": "aa021da460050e19a51c9dcd1d4b0e6812fc57a04c87855f225b6c56afe409a0",
+        "starting_state_sha256": "a36acb0d34170e572e0912c2124493667a60f5cdd64566a93b428afdf0ae3d03",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:430",
+            "player_in_name": "Erling Haaland",
+            "player_out_id": "player:2025-26:249",
+            "player_out_name": "João Pedro Junqueira de Jesus",
+            "position": "FWD",
+            "purchase_price": 14.9,
+            "selling_price": 7.5
+          },
+          {
+            "player_in_id": "player:2025-26:266",
+            "player_in_name": "Eberechi Eze",
+            "player_out_id": "player:2025-26:381",
+            "player_out_name": "Mohamed Salah",
+            "position": "MID",
+            "purchase_price": 7.7,
+            "selling_price": 14.2
+          }
+        ],
+        "transition_sha256": "feb9a844f5fbab31393193609380a53f045b24c6994942393f96cde1e3ef0123"
+      },
+      {
+        "canonical_net_points": 55,
+        "canonical_outcome_sha256": "cdbaea7e6fab68c94fdc67ad9dc02f6a82d00982740a8446aea40e2a727158b2",
+        "canonical_plan_sha256": "03865dca9dca8ef1259aa685bd82fe2757df7d216910c7884d23bf9c6e929bdd",
+        "canonical_transition_sha256": "eedd2b8be1c09728f2963ad7eade3faf38f0497b4acab32f1ae6d21b7baaef4e",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 50,
+        "gameweek": 15,
+        "net_points_delta": -5,
+        "next_state_sha256": "2275f7257769f1ae91648e1286fc3dbde2b4ab8488292fe299b053f3d2d954a5",
+        "outcome_sha256": "f94a9cebb5c3337567a0b1477f95eb7aabc0dc522b96527eadc86d13687d377f",
+        "plan_sha256": "ed14e6b949e04e7232539875001d344e8e42b414796741734f1eb17dc237b7ca",
+        "solver_input_sha256": "4b6992268b69286450b4067608ee6429f32c52ca9e354feb429a62bcbc2d557c",
+        "solver_output_sha256": "661add2558298b09d924200dbd9dc20278ab6afa6a5f9a5e5e475c60878b3b01",
+        "starting_state_sha256": "5fe2325c3484af1a66b66bca44a376b4fcd111a82a6aa934fa52f6efbebc3d68",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:260",
+            "player_in_name": "Marc Guéhi",
+            "player_out_id": "player:2025-26:568",
+            "player_out_name": "Pedro Porro Sauceda",
+            "position": "DEF",
+            "purchase_price": 5.1,
+            "selling_price": 5.4
+          }
+        ],
+        "transition_sha256": "a18609790786666e92b84ec42c1b6c5c7c29b3c2bcc36d63da39cf511b2f8228"
+      },
+      {
+        "canonical_net_points": 59,
+        "canonical_outcome_sha256": "406850cf8fb4a3b07d9e428e2ce4d3adffdef9612f67ace31b22270484d069d1",
+        "canonical_plan_sha256": "377771e83d1aacff699c7920d6068d32b26e4de4bb8bb77963bcfdbb899cfc4d",
+        "canonical_transition_sha256": "811487b78a6fa82ba59156c06d745f8945fac05ece4628863167d2154f86a2e2",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 51,
+        "gameweek": 16,
+        "net_points_delta": -8,
+        "next_state_sha256": "9806bd46e400bb3b94f0647607ca126aa560cacf1b303e01bfe59a9a1cd427e6",
+        "outcome_sha256": "d7a63e37bb1ef1e710feb2ebf9a07adbbb88f482a33261901de88400ea56a561",
+        "plan_sha256": "5536b4b0807f7ad1d4b44820747fc8ffc5167f0ffa2fa07f05274be65704ef2b",
+        "solver_input_sha256": "30f77c043b504a5db4b9613fa21ccd536b0c267e7b7f833f34c0cfeeadab1c1b",
+        "solver_output_sha256": "e1edf7aaa95f7675a7a62fabb412b34f91659c6a8c2d79a240b8c4cf8a677a58",
+        "starting_state_sha256": "2275f7257769f1ae91648e1286fc3dbde2b4ab8488292fe299b053f3d2d954a5",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:21",
+            "player_in_name": "Declan Rice",
+            "player_out_id": "player:2025-26:266",
+            "player_out_name": "Eberechi Eze",
+            "position": "MID",
+            "purchase_price": 7.1,
+            "selling_price": 7.7
+          }
+        ],
+        "transition_sha256": "4606e4fd18b0fff6553d6c16ea86db48721830e87bad1fe9bed236fe5faee9ad"
+      },
+      {
+        "canonical_net_points": 88,
+        "canonical_outcome_sha256": "5740afb776e3dae14968aec58cad5a60ae34cdb434ee524cc8edf264e02b32ed",
+        "canonical_plan_sha256": "180b1aabfc18cd59e1e95181b57b6fa351f86c05a2affa6de5626cf458fa1d65",
+        "canonical_transition_sha256": "4a36737d09971fae686f4417109b4438b317d67b6cd55d235a16973089a05d23",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 87,
+        "gameweek": 17,
+        "net_points_delta": -1,
+        "next_state_sha256": "c0b41b493c1269cceb2ad4ecbbea1283100ffb943b60a68d8bfd88416942e70b",
+        "outcome_sha256": "086e6e22145865f5aeaabfcd61130adf45f93bb6cf504c58fa68c9a4498820e3",
+        "plan_sha256": "a9846006d06f6f6683b52eb088a41a3d60b475c3f09565c816a8b44424ebb989",
+        "solver_input_sha256": "ea88bbcbecbfcf976a36a612178055e0a4476718c3167f3fa2e5bc25af700723",
+        "solver_output_sha256": "4489ba271bc058b253e1cbd3d6a9363879ab2aab6c6f70ed2bb236c3f6b42114",
+        "starting_state_sha256": "9806bd46e400bb3b94f0647607ca126aa560cacf1b303e01bfe59a9a1cd427e6",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:414",
+            "player_in_name": "Phil Foden",
+            "player_out_id": "player:2025-26:384",
+            "player_out_name": "Cody Gakpo",
+            "position": "MID",
+            "purchase_price": 8.7,
+            "selling_price": 7.4
+          }
+        ],
+        "transition_sha256": "42e1bd4e0d3ef58809555dae5db7a88697daf57de18ecc7fb3655e21ddbad28f"
+      },
+      {
+        "canonical_net_points": 33,
+        "canonical_outcome_sha256": "02e5d3ef0767785e70dcde369a30ae6627ff74520957627a6e78f27df103c027",
+        "canonical_plan_sha256": "084d3ecf94208d99ed68fe0d468dbbdd9a01f71f8f9c1791c6e48b4f315972a3",
+        "canonical_transition_sha256": "da344fa6d20aa534763dbf49d096c231e65eab3da41a645d592b12a88e4de6c1",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 30,
+        "gameweek": 18,
+        "net_points_delta": -3,
+        "next_state_sha256": "562f52d998dcf70cbdb76f6d19231b2c0991d788debca6efee7c9a722df74c4a",
+        "outcome_sha256": "d0d84f92fe0ab6d501b68b089cc813cd61079b8daa4eef6653e6742ef350e638",
+        "plan_sha256": "af5ff44064b391e74fcb84d71b2766070a5b83346bc7828094c9456793202f50",
+        "solver_input_sha256": "d3260f0160f53d0a0f14397d109095b2b83f1c66bc724c1e8048c47445e748e3",
+        "solver_output_sha256": "c03e9f51fd7008f640091f5651e7554022d63dd8c1b5997cd4ad6b9c20e60d50",
+        "starting_state_sha256": "c0b41b493c1269cceb2ad4ecbbea1283100ffb943b60a68d8bfd88416942e70b",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:226",
+            "player_in_name": "Trevoh Chalobah",
+            "player_out_id": "player:2025-26:256",
+            "player_out_name": "Daniel Muñoz Mejía",
+            "position": "DEF",
+            "purchase_price": 5.5,
+            "selling_price": 5.8
+          }
+        ],
+        "transition_sha256": "cd3c5a25bfb63bb20688546851e616b958fce0f078400f33c4faddc698e1ef6a"
+      },
+      {
+        "canonical_net_points": 36,
+        "canonical_outcome_sha256": "3b7035832d7820d8af4ed3dfa635fa6d5c3825fe0dc3423f276ea763eab8061a",
+        "canonical_plan_sha256": "f0dbde5823d6bba1438de36ee05a6fef1837e086e27fcf36aa960f57f22f4c26",
+        "canonical_transition_sha256": "c1e0c7d3c8e2a7471e910a360f1fb8aebedf2e576f086e1f8ec01babc022e78e",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 35,
+        "gameweek": 19,
+        "net_points_delta": -1,
+        "next_state_sha256": "6aae2db5af848d842b3da0ac93c20a7a2700192c679e72007ab923caee7fc177",
+        "outcome_sha256": "d29d659f08cff4058a89db8d4f8d1efb58970c68e9c914545eddd84c34d874a9",
+        "plan_sha256": "dd4d0e9565e7118cef747b2426db8e2ed592bf52e71913d21e78f497b5532595",
+        "solver_input_sha256": "42afaad40cfeda497bbfd8ee43e86a7ae46b9045bd00196395745d94b59c19ee",
+        "solver_output_sha256": "47cb8d04454c22bb08dc0b4a863ab244ccd203ba68342b5fcd5a12b6c4c5d67c",
+        "starting_state_sha256": "562f52d998dcf70cbdb76f6d19231b2c0991d788debca6efee7c9a722df74c4a",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:450",
+            "player_in_name": "Matheus Santos Carneiro da Cunha",
+            "player_out_id": "player:2025-26:119",
+            "player_out_name": "Bryan Mbeumo",
+            "position": "MID",
+            "purchase_price": 8.0,
+            "selling_price": 8.0
+          }
+        ],
+        "transition_sha256": "a7dc00770527b4dc4b05a4e41e6dfcc79d3a9b8af03d3e64ed31cac24353341d"
+      },
+      {
+        "canonical_net_points": 65,
+        "canonical_outcome_sha256": "c7fd46a3407bf8852ce6ae872e571cb961856c2823b00e56a362c8b12edc386c",
+        "canonical_plan_sha256": "eaf373251f782409f6469f33ca37c5097b589505f267b8e661a6e6f5bb0ac96a",
+        "canonical_transition_sha256": "5a54275eb6246c5e891089cd8f0678dbc517200a2e033f3edbea0b2d930a6b71",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 45,
+        "gameweek": 20,
+        "net_points_delta": -20,
+        "next_state_sha256": "189a0ea4fdb576e6a2478113ab60b4a19aa610c5afd6c79b8437a91bfc6cd0d6",
+        "outcome_sha256": "e2169e3165af6fec0db0623a92ba57d316735b15444718a807bb70b45a1fece4",
+        "plan_sha256": "3aacbd299f3736020a2d4ceb396d30b417fb2d3b9ec7bd9b35f0a6c0f604ec2b",
+        "solver_input_sha256": "cbf84630896c9b5ad30aab2780aa3f68a578d182b73de02370a3cbc4ee32edba",
+        "solver_output_sha256": "69862dc5af0e1f860864952bea6fb58c2a131430881760433d092538e367757b",
+        "starting_state_sha256": "6aae2db5af848d842b3da0ac93c20a7a2700192c679e72007ab923caee7fc177",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:20",
+            "player_in_name": "Leandro Trossard",
+            "player_out_id": "player:2025-26:387",
+            "player_out_name": "Dominik Szoboszlai",
+            "position": "MID",
+            "purchase_price": 6.9,
+            "selling_price": 6.5
+          }
+        ],
+        "transition_sha256": "10d9482a3b1cf6eb11e0e3a157134c90cf1a458e989e7645702b309ad000d36b"
+      },
+      {
+        "canonical_net_points": 55,
+        "canonical_outcome_sha256": "f455cee994630eb2e8c0149d7a8d97e5906271f80311a6471b57708da21c2a63",
+        "canonical_plan_sha256": "1b23169bb170b16c5c69cc12c6317de7b5d50dccbdfec61011096a6d607ee7f0",
+        "canonical_transition_sha256": "7ca80c0f9375a66fefe0adf94ca5829d768b6edf46b3f22c87ab1cfec00b2d00",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 56,
+        "gameweek": 21,
+        "net_points_delta": 1,
+        "next_state_sha256": "8a6863ed0578c5bcf0bbb73b516d99bb5fe9d6eb723ac51b1b9a5f8669454576",
+        "outcome_sha256": "34f04353d52df1340cb7920ba0b2f2c4274e2178618e0479cf20b05824db9b21",
+        "plan_sha256": "ec5fd6d2eadcb18405269577f81d0b06915189a7c4780002ddace8b25ff19c75",
+        "solver_input_sha256": "37740a22cf92c2f2f9ce6e74332422737606beda775f725b0e12de7a55d282f3",
+        "solver_output_sha256": "13b156394dd94a461187f22b4c34b2182a1fc1bbb4765d9522ccf3974ba0104e",
+        "starting_state_sha256": "189a0ea4fdb576e6a2478113ab60b4a19aa610c5afd6c79b8437a91bfc6cd0d6",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:136",
+            "player_in_name": "Igor Thiago Nascimento Rodrigues",
+            "player_out_id": "player:2025-26:714",
+            "player_out_name": "Nick Woltemade",
+            "position": "FWD",
+            "purchase_price": 6.9,
+            "selling_price": 7.4
+          }
+        ],
+        "transition_sha256": "f76fa69c095013d9234d2d4ebec67ed004d3b1e9d4db14667de7e9a9c70a4184"
+      },
+      {
+        "canonical_net_points": 47,
+        "canonical_outcome_sha256": "a5f3554fa66849778535e557132d8aa0742541da62f0fadfd86f4cf0fee2dcfa",
+        "canonical_plan_sha256": "bc17c50a4e5125ff013e8639d5d2467ec18b89aaf99438a7d95d077f9c0fafd6",
+        "canonical_transition_sha256": "6e94709070f653e59362cdb71bb75104fe2c1c04a1bcde7b718e112cdce605e2",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 43,
+        "gameweek": 22,
+        "net_points_delta": -4,
+        "next_state_sha256": "edd145f2277982fd3ceec836f757e707ad3a81cf6b0a5c0a02a0958a17d33011",
+        "outcome_sha256": "bdc4f7c88a5bb31f5d1f7cbfa65522787c91604d7d0f7ca4d3603e44f24c09f6",
+        "plan_sha256": "ce80ab9b7580ea719d34d37176111a0216052405a315905eb2c8de8000363f7a",
+        "solver_input_sha256": "984d2e6bd73ba09641e5ffb9a13d601ac43becb90840780ecce009bfb342e087",
+        "solver_output_sha256": "281dcfcec134be0992bc8660840fab839a1600a5b0f4ed57313b249a9cbad815",
+        "starting_state_sha256": "8a6863ed0578c5bcf0bbb73b516d99bb5fe9d6eb723ac51b1b9a5f8669454576",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:488",
+            "player_in_name": "Bruno Guimarães Rodriguez Moura",
+            "player_out_id": "player:2025-26:450",
+            "player_out_name": "Matheus Santos Carneiro da Cunha",
+            "position": "MID",
+            "purchase_price": 7.1,
+            "selling_price": 8.1
+          }
+        ],
+        "transition_sha256": "050f0873e5c97af8cfe509a5644744b6fc6fde7be53b5c6884c2a600f4a99415"
+      },
+      {
+        "canonical_net_points": 41,
+        "canonical_outcome_sha256": "464a3b67d81d2f093144edab31ea8387bf6d1d7008bc0764652353c53a2ecdde",
+        "canonical_plan_sha256": "967a194e32a039dde43d69a9442608f8c163801434c96006f735a8addeff8bb2",
+        "canonical_transition_sha256": "e951187900c89aa4c6e2fca99e3b26d5292ef01159dfc4ff0e4ae51841cf1c2e",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 38,
+        "gameweek": 23,
+        "net_points_delta": -3,
+        "next_state_sha256": "52d061379eab9bae7bee741ab0501ccea23b186bb334985585bd86db608d81ac",
+        "outcome_sha256": "4fb982f56c95be774d4f1c54bac05a4df5d1d19fa1cd1463e1fc3cf8a9b5e5d1",
+        "plan_sha256": "17d70de9a0f66907243aeb4e4ac8235eb08867b85248d2cf055df0f143d6c8d5",
+        "solver_input_sha256": "17f7bd799c20274d305f09818fdd6688b0ec48aa1b20378b54f738401d06d0c7",
+        "solver_output_sha256": "1e92e3a9495c40e6906504df5070d9fa776f479c3d992f99701e8cf1fbb23870",
+        "starting_state_sha256": "edd145f2277982fd3ceec836f757e707ad3a81cf6b0a5c0a02a0958a17d33011",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:329",
+            "player_in_name": "Harry Wilson",
+            "player_out_id": "player:2025-26:20",
+            "player_out_name": "Leandro Trossard",
+            "position": "MID",
+            "purchase_price": 5.9,
+            "selling_price": 6.9
+          },
+          {
+            "player_in_id": "player:2025-26:5",
+            "player_in_name": "Gabriel dos Santos Magalhães",
+            "player_out_id": "player:2025-26:260",
+            "player_out_name": "Marc Guéhi",
+            "position": "DEF",
+            "purchase_price": 6.8,
+            "selling_price": 5.2
+          }
+        ],
+        "transition_sha256": "55f3a6115d854e4b625d1c635323cad7739bebbf2bb6452e68ce73ea602b016d"
+      },
+      {
+        "canonical_net_points": 60,
+        "canonical_outcome_sha256": "507ea7fa15e17d880bdea2778b167233f370f3594833cd2051abcaeb569c1c79",
+        "canonical_plan_sha256": "94ddf7805197242dd48695f5b5f1acc2406b22788a4360e4bed745dbe8b50219",
+        "canonical_transition_sha256": "2f42b43eeff33458f808a20888197757938290da5016e9fbe92fd216cec6b20d",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 51,
+        "gameweek": 24,
+        "net_points_delta": -9,
+        "next_state_sha256": "288e8808576e629e02317ebaa7f87c1e39ab25d185014c87f411eae777e8f0b3",
+        "outcome_sha256": "f0bf99af95519b56becdc19c3511ddbf0f461ef40605beb38a3a9dd9d01dc671",
+        "plan_sha256": "3f3a5f3151ed41deb7968fb40265c1ba921a903485b53f348eee85ae261839d7",
+        "solver_input_sha256": "5949e058d88461ccbd77c3288a12bb7a149065b2e537f9150b9ed66460204dd1",
+        "solver_output_sha256": "f90b72c52e081ab5276c83d6b1f62e20e59852a6e2129cf9e4d3365c7a309f73",
+        "starting_state_sha256": "52d061379eab9bae7bee741ab0501ccea23b186bb334985585bd86db608d81ac",
+        "transfers": [],
+        "transition_sha256": "fe9417ff186d37601e42b2691a33e456ddd83e2742c57abd6ce26833f8861119"
+      },
+      {
+        "canonical_net_points": 58,
+        "canonical_outcome_sha256": "f9ab9640d5cd69cae7d5a4bdf5869193c9e95b8edb990c755a58329ca733f872",
+        "canonical_plan_sha256": "adcf0ca9c65e6da9323bb1a05953e4aedf6f6f8e6a610961b2f9c121939b1057",
+        "canonical_transition_sha256": "fbd5e44e597abddba5d0b62a31bacd73e995e12e3ae2db441a1d8ea01fa15d5a",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 66,
+        "gameweek": 25,
+        "net_points_delta": 8,
+        "next_state_sha256": "e8c8a5e5b8ead942a6ddbba82102109a4cc447549133cf5769ff2d5968dbb66f",
+        "outcome_sha256": "725394a2816d32c49743fafa6ed0ababe65786dfd16953c32f920d44f0cacf84",
+        "plan_sha256": "4b39b565c707dc0a893387d8cd70034658a9601be58805bcf1232c57eb6125cd",
+        "solver_input_sha256": "abd186a524975113863cde78f081d211faaf8a3112e978225be8727adc9aee09",
+        "solver_output_sha256": "ad5e628779967aaffd76ec2a1ed6eebc3a248102583369608f551c9a20758a90",
+        "starting_state_sha256": "288e8808576e629e02317ebaa7f87c1e39ab25d185014c87f411eae777e8f0b3",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:449",
+            "player_in_name": "Bruno Borges Fernandes",
+            "player_out_id": "player:2025-26:414",
+            "player_out_name": "Phil Foden",
+            "position": "MID",
+            "purchase_price": 9.5,
+            "selling_price": 8.4
+          },
+          {
+            "player_in_id": "player:2025-26:457",
+            "player_in_name": "Carlos Henrique Casimiro",
+            "player_out_id": "player:2025-26:488",
+            "player_out_name": "Bruno Guimarães Rodriguez Moura",
+            "position": "MID",
+            "purchase_price": 5.5,
+            "selling_price": 7.1
+          }
+        ],
+        "transition_sha256": "2b655adbaa42cdf2fc99e3350214d7c50c822b2233a561a92ae7e66c047799cd"
+      },
+      {
+        "canonical_net_points": 68,
+        "canonical_outcome_sha256": "ac82fed09da21185864f79df2fa9b47f92926b0063c4e8f6b58dc78446c30b3e",
+        "canonical_plan_sha256": "b7a4365ebc089e150d06f4747ac2924c2b0cdd9e571d0bbaed41f00d1324b7fc",
+        "canonical_transition_sha256": "37d96345b3ea26196761d0eefeab20b58c9c3d12e97d7190d6dc0aea5cacba7b",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 62,
+        "gameweek": 26,
+        "net_points_delta": -6,
+        "next_state_sha256": "27dfec8ee49d49876e3c13ce2c289ee1f37847377ef0b0b48b1ea81c777dfa91",
+        "outcome_sha256": "d03556bdaebed0b35f070aeff07b36185b108b9da3fafe2e39f7c906529e7c71",
+        "plan_sha256": "d5dd3f298704b95f5c911bc62cb2bf1b965173cdeae0b324548171251cb167a5",
+        "solver_input_sha256": "a6ee3e8ababf3fedc26b4ecf63ba91409b926880bf95ea30f85999d5accf092f",
+        "solver_output_sha256": "d4f0bfe2a65c804406ec63175e02f47d821478c9377bcc5e2f2460aa6a352cb1",
+        "starting_state_sha256": "e8c8a5e5b8ead942a6ddbba82102109a4cc447549133cf5769ff2d5968dbb66f",
+        "transfers": [],
+        "transition_sha256": "9a73e8f780bbc353e98d0a0cf938ee1040982283f7ac1f96734335b9ba3f1e3a"
+      },
+      {
+        "canonical_net_points": 43,
+        "canonical_outcome_sha256": "4ca50210f8852365934d6a710f9786b7239b8d3e07222e2923028a836176b5a2",
+        "canonical_plan_sha256": "1d1f79acf8e7c75b728890f7be32158aa7165c6baea711ad4cb7e57db2e5d665",
+        "canonical_transition_sha256": "bd215e0078ce6fa7d3c728a20c08ee2a153a865c4c30c9c6d624414f9fc5827b",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 43,
+        "gameweek": 27,
+        "net_points_delta": 0,
+        "next_state_sha256": "cbda9ab1633ddf3b24a25f6227b0ae3430c5abac71e90d263284025adc4b6f2f",
+        "outcome_sha256": "11a51f898d0001ca004b72dd6eeda144d146530d1db0c7ec1b8b9b454d11aa07",
+        "plan_sha256": "306cc1b026b3082bd8578826ce085b6937272946e4401fb4e74e1891b0f9e886",
+        "solver_input_sha256": "d41ae277f47485ba7b9e1bc8c10b789af0d41e538c16ef4281939e0a41af72ed",
+        "solver_output_sha256": "514407eb398ec001d0fb8c5bd0289034085c0d2e2083a0e35e3da58012a6284a",
+        "starting_state_sha256": "27dfec8ee49d49876e3c13ce2c289ee1f37847377ef0b0b48b1ea81c777dfa91",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:260",
+            "player_in_name": "Marc Guéhi",
+            "player_out_id": "player:2025-26:348",
+            "player_out_name": "Joe Rodon",
+            "position": "DEF",
+            "purchase_price": 5.2,
+            "selling_price": 3.9
+          }
+        ],
+        "transition_sha256": "b728294f14cd09bbbb1e06f63e14e24b0d63593cf3964c37f4d3d24826f50a08"
+      },
+      {
+        "canonical_net_points": 67,
+        "canonical_outcome_sha256": "7b2f40492533afc92c745031015461dee47b01773a293c7aa16537e133d102ab",
+        "canonical_plan_sha256": "8413a9c2b4f1ed2c67e8ab03064346db407c015daf7cc26e3ad3ef5c710c4e26",
+        "canonical_transition_sha256": "15f79c2343c354066524515d7d271d192338dbce447e201046ecdc85e1c47b49",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 86,
+        "gameweek": 28,
+        "net_points_delta": 19,
+        "next_state_sha256": "2726877b0fab998229245c3563fb17a946386721622d65b269983833dcb1669b",
+        "outcome_sha256": "bed07fd76e1e6b87ee3cccc46f6a4507eb9574d8ccf719c77592b1e7e90b458b",
+        "plan_sha256": "eb6ec6ff1e043b92420935fef99d6f3b18b88d4cd0c1edab761b4ae7edff375d",
+        "solver_input_sha256": "2f1e639a81a78a9faf9acfe2f17f58243ce436684796fc07d88d5bd62c42505f",
+        "solver_output_sha256": "dc6c266aa3ffe3275680527815585b2cd28991e147a00071c77727a82aec5568",
+        "starting_state_sha256": "cbda9ab1633ddf3b24a25f6227b0ae3430c5abac71e90d263284025adc4b6f2f",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:32",
+            "player_in_name": "Emiliano Martínez Romero",
+            "player_out_id": "player:2025-26:220",
+            "player_out_name": "Robert Lynch Sánchez",
+            "position": "GKP",
+            "purchase_price": 5.0,
+            "selling_price": 4.9
+          }
+        ],
+        "transition_sha256": "282fdf518c6de365d9f82af258c68033d0119d13729b7360ca83bbb9a5537545"
+      },
+      {
+        "canonical_net_points": 53,
+        "canonical_outcome_sha256": "c4f1c1002e69471f572167dfc9e78125266927e3910037d5b3b4bd1b761cee04",
+        "canonical_plan_sha256": "285ef124f39eca0386e3b23c9ca6fcb6988ad15b114c9d491e4c181a2d5647a4",
+        "canonical_transition_sha256": "79de75513c0db5e7f4653996d5a5fd19a4a8e82d2f77d863d6aac023a951896c",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 67,
+        "gameweek": 29,
+        "net_points_delta": 14,
+        "next_state_sha256": "bbdefd102456149e2b11e4809cb6ab7b5c6783ed82d03177d40be696dde8d20b",
+        "outcome_sha256": "56df4af32e0ec2939e4f5ddec4cb11445f57ba7384465f387d8429a516aeea2b",
+        "plan_sha256": "810177f3ac88b7ae288171838dce7e89226937a5a5e977b3df2deb789acec90a",
+        "solver_input_sha256": "2a25eeca97688b34a965cf0410e6da4ee15aa4ea151379c269be7c3344e110cf",
+        "solver_output_sha256": "727b56fff9ff09e426a50c3254c6fee501cc2aff460dbeca13b41ff8091a9493",
+        "starting_state_sha256": "2726877b0fab998229245c3563fb17a946386721622d65b269983833dcb1669b",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:253",
+            "player_in_name": "Dean Henderson",
+            "player_out_id": "player:2025-26:32",
+            "player_out_name": "Emiliano Martínez Romero",
+            "position": "GKP",
+            "purchase_price": 5.0,
+            "selling_price": 5.0
+          }
+        ],
+        "transition_sha256": "d5ecb05b960429b52ef67667ecd1a29efca5de3b40d49d352c7860e8512ca993"
+      },
+      {
+        "canonical_net_points": 45,
+        "canonical_outcome_sha256": "73b8dbb807e2021f7f747cc647d615c1661d4e9a77667dbd07648df05403bbc8",
+        "canonical_plan_sha256": "0fdb7de0ded8a32117de5feed4fb0b063bb645bddc5c292f3c7186e5f422dea7",
+        "canonical_transition_sha256": "0a9b9021b9bb212809a6fa5f0af587e08b5d61123eac21de0b230fa7d8c55761",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 51,
+        "gameweek": 30,
+        "net_points_delta": 6,
+        "next_state_sha256": "88d5408cc2bc8b49824005a99f38fe5491b3db5e9984cc7646d1b7bc6f4826d4",
+        "outcome_sha256": "1b9b9e53bed0aa946bc09dc99faeb2bca94860b1c861ed204f33da6eaafcbb2e",
+        "plan_sha256": "08457e4b6d5094392e6bbe78161d0d104c1cc1f50e743bc074f24d362e125cca",
+        "solver_input_sha256": "2bf084c1f78873b185c760dcf92fc49a4c4a0b5175aa5d926c8715b207bc0669",
+        "solver_output_sha256": "72c80e0a27f9d15c7919f9a69ecb34bdb2c14835783e462c3b359286f4e24f56",
+        "starting_state_sha256": "bbdefd102456149e2b11e4809cb6ab7b5c6783ed82d03177d40be696dde8d20b",
+        "transfers": [],
+        "transition_sha256": "18139bc93de31bf56420bc54822065377a3c91c9640a5e6846892b5f3a916ac6"
+      },
+      {
+        "canonical_net_points": 63,
+        "canonical_outcome_sha256": "2e784b1c0611e5efc4a8fac6baa89d523c2efb34497028e22f6eef5d9f21f2eb",
+        "canonical_plan_sha256": "b6b05e35f337a3babb7d9fbf22c2d45a582893924c68600709e79afe44f47dfc",
+        "canonical_transition_sha256": "b081d867307feeb098481a40e57861f93cf3ee2ec2fe93246074730905b49490",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 53,
+        "gameweek": 31,
+        "net_points_delta": -10,
+        "next_state_sha256": "b67d4e059f7db2dd4318c864b51fdbbefb1dca30f157ac43be305cd8d9f1dff5",
+        "outcome_sha256": "b047f6aa43aaac17e304d5f901d65dc882c11a00498fe8c4de0021ae7bd74790",
+        "plan_sha256": "6c15ebedaa6937015c7fcf124ee5bfdec31f169e77c2132fcdb7018e07486259",
+        "solver_input_sha256": "3a3611bf3a7fddf36cd4ee733db481bc4b8c2cbef22c861346b407cb5e3062eb",
+        "solver_output_sha256": "9a99ed1f1387f9e1ba511fbe8dd603dc38edcbc788a690f1dc3b4c51b10b8eec",
+        "starting_state_sha256": "88d5408cc2bc8b49824005a99f38fe5491b3db5e9984cc7646d1b7bc6f4826d4",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:119",
+            "player_in_name": "Bryan Mbeumo",
+            "player_out_id": "player:2025-26:21",
+            "player_out_name": "Declan Rice",
+            "position": "MID",
+            "purchase_price": 8.7,
+            "selling_price": 7.2
+          },
+          {
+            "player_in_id": "player:2025-26:249",
+            "player_in_name": "João Pedro Junqueira de Jesus",
+            "player_out_id": "player:2025-26:430",
+            "player_out_name": "Erling Haaland",
+            "position": "FWD",
+            "purchase_price": 7.7,
+            "selling_price": 14.6
+          },
+          {
+            "player_in_id": "player:2025-26:47",
+            "player_in_name": "Morgan Rogers",
+            "player_out_id": "player:2025-26:82",
+            "player_out_name": "Antoine Semenyo",
+            "position": "MID",
+            "purchase_price": 7.5,
+            "selling_price": 8.0
+          }
+        ],
+        "transition_sha256": "2af88405623f7ed28a7c946236a7864b5f6b36e7d19c1904651545374891975a"
+      },
+      {
+        "canonical_net_points": 53,
+        "canonical_outcome_sha256": "516ff07ed7ba7f5ed6473b2658c9da6476f294aea0de6368790a02995a02b498",
+        "canonical_plan_sha256": "325ce53397ac4e88ee5ddb09d7dc726643a75baa96401df96b19043a5cc792a4",
+        "canonical_transition_sha256": "86d0866802adf609da9d3b42e1a0d76eb9e5a494fe0caa9d371b40cf2253e8f7",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 63,
+        "gameweek": 32,
+        "net_points_delta": 10,
+        "next_state_sha256": "abc8987f4af08f9081f70f1399c01c2512ad67076cd9c108670527dc7c296ef7",
+        "outcome_sha256": "fa9cb01104b9eb495132ca2cf8734b8605998917b563d21a9c25851a3c9e8db2",
+        "plan_sha256": "36f7664928ee89eeab524d65a118982cef378c66bf8a770f1edeeda97387403c",
+        "solver_input_sha256": "48ff7927fff9387fbb3849baae65f9e2dd9062496cd70095ee492269d428aa43",
+        "solver_output_sha256": "f502a44b74a70ea29582fe979eb1200b501195f0461c579edea3abb107eaabc2",
+        "starting_state_sha256": "b67d4e059f7db2dd4318c864b51fdbbefb1dca30f157ac43be305cd8d9f1dff5",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:16",
+            "player_in_name": "Bukayo Saka",
+            "player_out_id": "player:2025-26:329",
+            "player_out_name": "Harry Wilson",
+            "position": "MID",
+            "purchase_price": 9.8,
+            "selling_price": 5.9
+          }
+        ],
+        "transition_sha256": "ca9123a7d442e092ebf821c8adc69cd1b7b892329e3d6e8cce806902064a4af9"
+      },
+      {
+        "canonical_net_points": 79,
+        "canonical_outcome_sha256": "299bab5bf909bbdbe7ed98d2e82cc8edda0924b0479b68dff2b3de4b355bbb5e",
+        "canonical_plan_sha256": "2b2ba6a6d92c43b9f5323207301bdac15ade875333b35807bd83320e86ef4e5d",
+        "canonical_transition_sha256": "52e26f32a1daea00bef3c6123eef16e2358832488a7209a3751b236ae13f0f14",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 73,
+        "gameweek": 33,
+        "net_points_delta": -6,
+        "next_state_sha256": "223946d1dc7a022d726a45e63e91413dbf739abfd281f48040d92566a0c2d4e6",
+        "outcome_sha256": "40c0f2354b4de55c8919d6ebe56b90e232fecfd87a8c2f2ae82377783d2ae1ee",
+        "plan_sha256": "a6ceb4f3191fb1e0ef38dae2816ff91b07fc23d356ed1f5b450a2d5763c6542f",
+        "solver_input_sha256": "848dd33400fcb83ff7575467be7177be911bcc609a2fd6356c53dc04536eece7",
+        "solver_output_sha256": "df6a884d32e1c53e6201ede57c488d316c2bf876362018f69e51466b03ff4f4b",
+        "starting_state_sha256": "abc8987f4af08f9081f70f1399c01c2512ad67076cd9c108670527dc7c296ef7",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:173",
+            "player_in_name": "Mats Wieffer",
+            "player_out_id": "player:2025-26:119",
+            "player_out_name": "Bryan Mbeumo",
+            "position": "MID",
+            "purchase_price": 4.9,
+            "selling_price": 8.6
+          },
+          {
+            "player_in_id": "player:2025-26:430",
+            "player_in_name": "Erling Haaland",
+            "player_out_id": "player:2025-26:136",
+            "player_out_name": "Igor Thiago Nascimento Rodrigues",
+            "position": "FWD",
+            "purchase_price": 14.4,
+            "selling_price": 7.1
+          },
+          {
+            "player_in_id": "player:2025-26:82",
+            "player_in_name": "Antoine Semenyo",
+            "player_out_id": "player:2025-26:16",
+            "player_out_name": "Bukayo Saka",
+            "position": "MID",
+            "purchase_price": 8.2,
+            "selling_price": 9.8
+          }
+        ],
+        "transition_sha256": "8d06611bbfddf4905d29f289b4124911da915aa24e7b504f8ae968f06b0ba42f"
+      },
+      {
+        "canonical_net_points": 28,
+        "canonical_outcome_sha256": "37af02a995e436e40734c60cba320eed052dced5cde303d6acb9c811c29b6abf",
+        "canonical_plan_sha256": "a69d9328a9b94baef6ac37a8487f43507355d300e37ae997689b2234fc68f257",
+        "canonical_transition_sha256": "85e3f1461e1ddc556c1f096dca80bc5f23ce351fcae9e2bcc13943cd175fd548",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 40,
+        "gameweek": 34,
+        "net_points_delta": 12,
+        "next_state_sha256": "ce339d45ca8dfb4db71dda13e8d991ece963d485b1495eeda0a7cef1987923de",
+        "outcome_sha256": "2a56a57cf978a34a065c12944c009126b6e77df0e6cc67ca28616d3d0733952a",
+        "plan_sha256": "f2f1657bf9e58b948513711a6695e5faebdce68aa13a70b9cd2d7ec5f67852b5",
+        "solver_input_sha256": "b731f90bc29b31339c8e7b2eacebc15350d4138ccb29682af4e14d9fa43ba8be",
+        "solver_output_sha256": "efe0271f2500d89df321ffb953179f278f955e67d1d90eb2b96e1d25e3446385",
+        "starting_state_sha256": "223946d1dc7a022d726a45e63e91413dbf739abfd281f48040d92566a0c2d4e6",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:21",
+            "player_in_name": "Declan Rice",
+            "player_out_id": "player:2025-26:173",
+            "player_out_name": "Mats Wieffer",
+            "position": "MID",
+            "purchase_price": 7.2,
+            "selling_price": 4.9
+          },
+          {
+            "player_in_id": "player:2025-26:373",
+            "player_in_name": "Virgil van Dijk",
+            "player_out_id": "player:2025-26:226",
+            "player_out_name": "Trevoh Chalobah",
+            "position": "DEF",
+            "purchase_price": 6.3,
+            "selling_price": 5.4
+          },
+          {
+            "player_in_id": "player:2025-26:624",
+            "player_in_name": "Jarrod Bowen",
+            "player_out_id": "player:2025-26:430",
+            "player_out_name": "Erling Haaland",
+            "position": "FWD",
+            "purchase_price": 7.6,
+            "selling_price": 14.4
+          }
+        ],
+        "transition_sha256": "63dda6f391c0b3dfe18fe1e309d7df1ab401bb5ac8e86bc2abab23f04850a102"
+      },
+      {
+        "canonical_net_points": 44,
+        "canonical_outcome_sha256": "4ca636130a94b3a45fd7beb1fa233d19ce66f867544b3499724e904d181c27c1",
+        "canonical_plan_sha256": "734b32564a915fb533692e946dbd684b93c0391f39388cf97ae3465e9a36b102",
+        "canonical_transition_sha256": "cb48f6eaf4bac4d27c11e32b7f1a9fdd235fef93a43175706d521b67ab9853c3",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 51,
+        "gameweek": 35,
+        "net_points_delta": 7,
+        "next_state_sha256": "b1378db261f92d21cd05e5725d5b0b8119e33427d2e6f905a0ab1d5ee72bf612",
+        "outcome_sha256": "946fd8249e3a33ea8723dce5ee050c95b9c932eb1866cbd0bf2a3ab9a7432a5e",
+        "plan_sha256": "6e765b17a40249c6b66fbd28d6388ec3d51f9a725381e6ff643688cbd8b798a3",
+        "solver_input_sha256": "44d7cd6484c1b24ee5ee66844f9560ad1e215a8b857da0acc3c75b3152d209b4",
+        "solver_output_sha256": "d9b1680dcd93f7423ad0285aff685684c3f7c7b6ac9a9b12dcdd9b1e4d5103f0",
+        "starting_state_sha256": "ce339d45ca8dfb4db71dda13e8d991ece963d485b1495eeda0a7cef1987923de",
+        "transfers": [],
+        "transition_sha256": "172bf0213c2d96e01e522be86b961816f78cd046d28475bdba078a688f962624"
+      },
+      {
+        "canonical_net_points": 89,
+        "canonical_outcome_sha256": "3305a4c0157e5dc061c32d2e9b6d09c9f759453464cfb17c8a45484bcf2a414a",
+        "canonical_plan_sha256": "115fe5ead72554f66655d011ace17908e8a5146235b0e900f2d3cb0ee4460c88",
+        "canonical_transition_sha256": "d805ab7871ca32935ad22b46bc471f2bd522982baad26f194a1f153199a5d9a0",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 88,
+        "gameweek": 36,
+        "net_points_delta": -1,
+        "next_state_sha256": "d096ae19853bb3aef948ca3c20139d5d864b0165092967b9ea9060bbdcdb1b0e",
+        "outcome_sha256": "d5fffa5dba4069286e1812c069b70cd456ca27a21d8e73e860e3e6a357efa23e",
+        "plan_sha256": "d8f4e7d5c3efb0b895ffe7fbd50791f5629e46283aa944c7fe500c80325cec0a",
+        "solver_input_sha256": "b7e6b0e58983386ef480a93cce7ed56b51582615b16ff7a1d7d3cdb3aa8a56f4",
+        "solver_output_sha256": "1da597bad6e62761a3821b63726172b9da082b9087c8374a4bd67a46429c4b36",
+        "starting_state_sha256": "b1378db261f92d21cd05e5725d5b0b8119e33427d2e6f905a0ab1d5ee72bf612",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:430",
+            "player_in_name": "Erling Haaland",
+            "player_out_id": "player:2025-26:249",
+            "player_out_name": "João Pedro Junqueira de Jesus",
+            "position": "FWD",
+            "purchase_price": 14.6,
+            "selling_price": 7.5
+          },
+          {
+            "player_in_id": "player:2025-26:267",
+            "player_in_name": "Ismaïla Sarr",
+            "player_out_id": "player:2025-26:449",
+            "player_out_name": "Bruno Borges Fernandes",
+            "position": "MID",
+            "purchase_price": 6.3,
+            "selling_price": 9.9
+          }
+        ],
+        "transition_sha256": "fe800eea30e7c13ae626f12f9eda51b91295d477ac0c784922adb97625fed22f"
+      },
+      {
+        "canonical_net_points": 70,
+        "canonical_outcome_sha256": "b006a86cef06dcb521fa8341744c1d1d8db46e14319c39358894f8795b4d3dda",
+        "canonical_plan_sha256": "029f9030c3f2f2fc79e1c0cb3782eb85f33257d01f82435e01f5bde83cd744f9",
+        "canonical_transition_sha256": "77d50a207d05c816b764aee167215419d7191a37ae78096221bd4f97ea915a80",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 62,
+        "gameweek": 37,
+        "net_points_delta": -8,
+        "next_state_sha256": "5c242825bd54841a3216d82d9061ed48b1da75c94bcafcb81b79f851cbd8d667",
+        "outcome_sha256": "266672d49ffda894c9e24978c0e85e466dc7dbcebb6be3c22218ceb756176e3c",
+        "plan_sha256": "657424d684d1f8491faac24586a5f122aaa42318520bd436b43a66752459bb2d",
+        "solver_input_sha256": "9f86ddd3019abf721bff235a85061bea4730a822100f0c826fa72f93ddbb0f84",
+        "solver_output_sha256": "23881a4410c083df0d478d6023fc654e8c37bf5f25c1dc88bba6b9740b7c31bf",
+        "starting_state_sha256": "d096ae19853bb3aef948ca3c20139d5d864b0165092967b9ea9060bbdcdb1b0e",
+        "transfers": [],
+        "transition_sha256": "6bcf3cdf323c1c56064e6ebfc241f479667b9f8d58acf2cdcada41cdd2f5c4d6"
+      },
+      {
+        "canonical_net_points": 30,
+        "canonical_outcome_sha256": "eb790775000acb5b707d92d9739e038321eb96d0f508f27fb50787d342c513ac",
+        "canonical_plan_sha256": "bc21f4839bc24ef717900255a44056a8f49ec4cc596ff1a439aeb05660b29c70",
+        "canonical_transition_sha256": "f514555ff2846fc5f0645ac3cd35a116cea143faf99b7f8bc8d41834b4ce4f02",
+        "evidence": null,
+        "evidence_applied": false,
+        "fork_net_points": 29,
+        "gameweek": 38,
+        "net_points_delta": -1,
+        "next_state_sha256": "9730c43e1604f6453f92d8bef8fa23563b06ccf5be2612145f2c2a6be460cd72",
+        "outcome_sha256": "4bba55b9750bf7f547053964e5f756a5cf616dd91237da4069b9a57da13d2e39",
+        "plan_sha256": "05afa50e1ffb175a32700fc0349f4940b7f756d71d90a6905e5ee147606f86d6",
+        "solver_input_sha256": "2d4bbd6f67cdc0b83a1907fa80303199364e1b02cd4e3328ead04f306424898a",
+        "solver_output_sha256": "ac0aeee67d94df952214310ab0e924dd70e9e55e3eec60ab0a623628a7c04319",
+        "starting_state_sha256": "5c242825bd54841a3216d82d9061ed48b1da75c94bcafcb81b79f851cbd8d667",
+        "transfers": [
+          {
+            "player_in_id": "player:2025-26:1",
+            "player_in_name": "David Raya Martín",
+            "player_out_id": "player:2025-26:253",
+            "player_out_name": "Dean Henderson",
+            "position": "GKP",
+            "purchase_price": 6.1,
+            "selling_price": 5.0
+          },
+          {
+            "player_in_id": "player:2025-26:694",
+            "player_in_name": "Nordi Mukiele",
+            "player_out_id": "player:2025-26:8",
+            "player_out_name": "Jurriën Timber",
+            "position": "DEF",
+            "purchase_price": 4.6,
+            "selling_price": 5.9
+          }
+        ],
+        "transition_sha256": "66a052c6765b13e45b793ca9228ee14e6e7d51526871b1617a65974ed9b927d0"
+      }
+    ]
+  },
+  "production_eligible": false,
+  "programme_id": "weekly-evidence-programme-v1:2025-26:gw12-gw38",
+  "programme_version": "weekly-evidence-programme-v1",
+  "promotion_eligible": false,
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_evidence_gameweeks": [
+    12
+  ],
+  "start_gameweek": 12,
+  "terminal_gameweek": 38
+}
