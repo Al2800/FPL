@@ -16,7 +16,7 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 - [x] (2026-07-25 20:40Z) Identified the principal gaps: selected-player forecast overstatement, inactive event features, coupled team attack/defence adjustment, no probabilistic bench value, noisy top-projection selection, one-week transfer valuation, no autonomous chip policy, and simplistic captain selection.
 - [x] (2026-07-25 20:40Z) Claimed `FPL-bsw.14` as the measurement and equivalence-oracle foundation.
 - [x] (2026-07-25 21:05Z) Implemented `FPL-bsw.14`: realised feasible-baseline contracts, paired cluster-aware metrics, calibration, uncertainty, resource use, detectable-effect-size analysis, and a read-only 38-Gameweek control report.
-- [ ] Complete the timestamp-sealed evidence fork owned under `FPL-98p`, then generalise isolated weekly evidence injections without changing the canonical replay.
+- [x] (2026-07-26 03:48Z) Completed the timestamp-sealed GW12 evidence fork under `FPL-98p`: the isolated +14 reduces to +4 through an independent GW38 continuation, with canonical artifacts unchanged and opportunity ceilings separated by feasibility.
 - [x] (2026-07-25 21:20Z) Evaluated the sealed 0.25 player-event challenger and rejected promotion: selected cohorts improved slightly, but all-player calibration regressed.
 - [x] (2026-07-26 00:05Z) Separated attack and defence context, calibrated it before 2025/26, and rejected promotion after it worsened all, owned, and selected-player calibration.
 - [x] (2026-07-25 23:15Z) Added calibrated three-state appearances and opt-in legal goalkeeper, bench-order, automatic-substitution, and vice-captain planning value without changing realised scoring.
@@ -63,6 +63,9 @@ After this work, a user can run the same timestamp-safe historical episodes thro
 
 - Observation: The realised best chip and the forecast policy decision can disagree sharply without indicating a process defect.
   Evidence: Triple Captain realised 76 versus 63 for no chip, but its frozen expected gain was only 5.89 before an eight-point reserve. The declared policy therefore retained the chip. A separate Free Hit branch finished GW31-GW38 28 points ahead despite being forecast below the persistent squad at the GW31 cutoff.
+
+- Observation: One successful evidence intervention does not preserve its isolated value after state compounding.
+  Evidence: The reconstructed GW12 availability fork gains 14 points immediately but only four across GW12-GW38 after every later action is independently replanned.
 
 ## Decision Log
 
@@ -217,3 +220,5 @@ Plan revision note (2026-07-26): Completed the isolated captain/vice slice, pres
 Plan revision note (2026-07-26): Began the chip-policy milestone after tracing the existing rules, scorer, and longitudinal transition contracts. Added the declared candidate and reserve-value design before opening GW31 outcomes.
 
 Plan revision note (2026-07-26): Completed the GW31 chip implementation and sealed evaluation. Recorded the no-chip policy decision, tempting but inadmissible realised chip gains, exact Free Hit restoration, high historical schedule uncertainty, and the remaining full-suite publication gate.
+
+Plan revision note (2026-07-26): Completed the taken-over GW12 evidence experiment, adding feasibility-labelled score ceilings and a full independent continuation. The result now distinguishes direct evidence attribution (+14) from longitudinal compounded value (+4).

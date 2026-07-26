@@ -1,0 +1,86 @@
+{
+  "actual_selected_plan": {
+    "canonical_gross_points": 29,
+    "fork_gross_points": 43
+  },
+  "bounded_legal_market_opportunity": {
+    "feasibility": "legal under budget, position, club, formation and the declared zero-to-three-transfer replay candidate pool",
+    "gross_points": 99,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:249",
+        "player:2025-26:568",
+        "player:2025-26:82"
+      ],
+      "captain_id": "player:2025-26:266",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:506",
+        "player:2025-26:8",
+        "player:2025-26:348",
+        "player:2025-26:72",
+        "player:2025-26:266",
+        "player:2025-26:47",
+        "player:2025-26:384",
+        "player:2025-26:387",
+        "player:2025-26:252",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:506"
+    },
+    "solver_output_sha256": "d5318569a0b23ae8d31636a70e7d4ca9d2ef15778ea19f4d5f130109a614e276",
+    "transfer_bound": 3,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:266",
+        "player_in_name": "Eberechi Eze",
+        "player_out_id": "player:2025-26:119",
+        "player_out_name": "Bryan Mbeumo"
+      },
+      {
+        "player_in_id": "player:2025-26:47",
+        "player_in_name": "Morgan Rogers",
+        "player_out_id": "player:2025-26:381",
+        "player_out_name": "Mohamed Salah"
+      },
+      {
+        "player_in_id": "player:2025-26:506",
+        "player_in_name": "Murillo Costa dos Santos",
+        "player_out_id": "player:2025-26:5",
+        "player_out_name": "Gabriel dos Santos Magalhães"
+      }
+    ]
+  },
+  "content_sha256": "0a80d7263de49be8450b4225c94a302a1b59b804c953577598688e30265f6807",
+  "current_squad_xi_and_captain_ceiling": {
+    "feasibility": "best legal formation and captain from the exact pre-GW12 squad; no transfers",
+    "gross_points": 37
+  },
+  "diagnostic_only": true,
+  "experiment_id": "2025-26-gw12-retrospective-availability-v1",
+  "fixed_effective_lineup_captain_ceiling": {
+    "canonical_gross_points": 33,
+    "feasibility": "holds the realised effective XI fixed and changes only captain",
+    "fork_gross_points": 55
+  },
+  "gameweek": 12,
+  "interpretation": "The selected teams could not reach 100 points. The bounded legal three-transfer search reaches 99; the 173-point whole-market value is deliberately infeasible and must not be presented as attainable.",
+  "outcome_information_used": true,
+  "post_decision_squad_xi_and_captain_ceiling": {
+    "canonical_gross_points": 37,
+    "feasibility": "best legal formation and captain after each already selected transfer decision",
+    "fork_gross_points": 58
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "whole_market_position_only_upper_bound": {
+    "feasibility": "not a selectable FPL squad: ignores budget, club limits and transfer count; retained only as an opportunity upper bound",
+    "gross_points": 173
+  }
+}
