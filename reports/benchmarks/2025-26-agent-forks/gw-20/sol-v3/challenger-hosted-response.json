@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "443a81b6f013c1b15472ff928deda1499b2ae425e43a4de1ae757c6a38c48475",
+  "response_sha256": "4ecdd36cacedc562fcc12b27fc49004a9f48102a2a025ae9964c0a5f099af5df",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw20:rodon-out:v3",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw20:rodon-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Pre-deadline source explicitly states Rodon is still out, supporting zero expected minutes at high confidence."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T16:26:16Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "443a81b6f013c1b15472ff928deda1499b2ae425e43a4de1ae757c6a38c48475",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

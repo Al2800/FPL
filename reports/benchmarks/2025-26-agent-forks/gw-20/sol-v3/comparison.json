@@ -1,0 +1,33 @@
+{
+  "adapter_audit_sha256": "3a64c26be6f48bf98cceecdf4d208735ecfd6bbdf3c2bb14184fb80d21a17996",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 49,
+  "agent_vs_canonical_delta": -16,
+  "canonical_gross_points": 65,
+  "canonical_tree_sha256_after": "637a7ccf9890232cb3d004a90812b4665744173fb1c6f234252fffcbb96338c5",
+  "canonical_tree_sha256_before": "637a7ccf9890232cb3d004a90812b4665744173fb1c6f234252fffcbb96338c5",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "3c9eb92121becfd6e622228ca16754e2646a7941cccdf771b1c27c62d952e912",
+  "content_sha256": "457ea1b45826717aa9771ceb3c6a6692c21b54eba8f0c707159d1d393feb277c",
+  "evidence_run_sha256": "43ae516d5525bbaf48f9a7de1b93c86509f81d2122713944c043243fc1b3f087",
+  "experiment_id": "2025-26-gw20-sol-agent-fork-v3",
+  "exploratory_only": true,
+  "gameweek": 20,
+  "hit_cost": 0,
+  "host_bundle_sha256": "fd642ab2712cbe6e46ee7501c3c5cdc25d99f4a732911c3372e34b1369a7825c",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "summary_is_secondary_team_news",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "8a75aff3bfc8be2950ff7f57add5555877e93ca68a6272351a51f508afbc2632",
+  "plan_sha256": "ac85fb40b41cd95f54b526c57f376d5571cef156aa00f8abae8ef8ba8223598f",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [],
+  "solver_input_sha256": "e621354c72a9f01d1398bb41b0d5065b428d2b7c19536ef2073a127838a96173",
+  "solver_output_sha256": "bf8c9b5a5fc03b0963d5754bac0899bf7e18ce4eff60368730b6561aba6e6628",
+  "starting_state_sha256": "9bb4eece5982c6c341808f19fcebbf8a32566fb6595a0c4553ca567058b22f8d"
+}

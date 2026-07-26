@@ -1,0 +1,83 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "d8d5cb55f6467ae5e287d251090b03c637caa8cb4a41c2c7890b7055f52689ee",
+  "response_sha256": "278801f0d09556d7f27976734a553308f3760b9e33970429c3eba51534aa6c0b",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw21:gvardiol-long-term",
+        "document_id": "document:ffs-gw21-gvardiol-long-term-2026-01-06",
+        "passage_id": "passage:claim-gw21-gvardiol-long-term",
+        "source_id": "ffs-gw21-gvardiol-long-term-2026-01-06",
+        "claim_text": "Gvardiol is out for a long time with a fracture.",
+        "citation_excerpt": "Out for a long time.",
+        "citation_excerpt_sha256": "52330c20800993adb9af08ae208b9c576ef496f49394cd17f2d299bb694e672e",
+        "expires_at": "2026-02-15T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:403"
+      },
+      {
+        "claim_id": "claim:gw21:semenyo-available",
+        "document_id": "document:ffs-gw21-semenyo-last-game-2026-01-06",
+        "passage_id": "passage:claim-gw21-semenyo-available",
+        "source_id": "ffs-gw21-semenyo-last-game-2026-01-06",
+        "claim_text": "Semenyo is available and set for his last Bournemouth game.",
+        "citation_excerpt": "Bournemouth: Kluivert undergoes knee surgery, Semenyo set for last game",
+        "citation_excerpt_sha256": "5f6577d29a0e6110f2f75c471be387fbd452060e7f9cca789da3f77e05315592",
+        "expires_at": "2026-01-08T23:59:59Z",
+        "confidence": 0.96,
+        "player_uid": "player:2025-26:82"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw21:gvardiol-expected-minutes-zero",
+        "claim_ids": [
+          "claim:gw21:gvardiol-long-term"
+        ],
+        "target": "expected_minutes",
+        "before_value": 63.8,
+        "after_value": 0,
+        "confidence": 0.99,
+        "expires_at": "2026-02-15T23:59:59Z",
+        "player_uid": "player:2025-26:403",
+        "rationale": "The long-term fracture absence supersedes the baseline expected minutes and start probability."
+      }
+    ],
+    "notes": [
+      "No Semenyo uplift proposed because the availability report does not justify exceeding his robust baseline of 86.2 expected minutes and 0.944 start probability."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T16:28:09Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "d8d5cb55f6467ae5e287d251090b03c637caa8cb4a41c2c7890b7055f52689ee",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

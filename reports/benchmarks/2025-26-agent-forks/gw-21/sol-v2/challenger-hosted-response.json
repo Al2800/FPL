@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "a38a270c308dd152a15a4ab80d5afee79fbb523ba5a436ba1a79a0c4e76dbbc4",
+  "response_sha256": "04dedf3abc969b208c87e5754eab1eaa32de9dc48a8148910171b257b23edf0f",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw21:gvardiol-long-term:v2",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw21:gvardiol-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Pre-deadline fracture evidence and the definitive excerpt “Out for a long time.” support the stated player identity, downward direction, reduction from 63.8 to 0 expected minutes, 0.99 confidence, and expiry through 2026-02-15; Semenyo requires no separate adjustment because his baseline already reflected availability."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T16:22:24Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "a38a270c308dd152a15a4ab80d5afee79fbb523ba5a436ba1a79a0c4e76dbbc4",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

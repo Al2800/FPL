@@ -1,0 +1,180 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "902f654d86c02c1fdf3ab930ceaae26f8fe15be9d94ca56127fc304d65cd5f11",
+  "deterministic_candidate_sha256": "5e74fe4fdfca5edadc5e00220424418313902f71af45340d53fc8d5fa6a4d16a",
+  "episode": {
+    "decision_at": "2026-01-17T11:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw22:manager-neutral",
+    "observed_episode_sha256": "e2df246f0c522306578ac27dab0c633890ce9800c6cfe4b903acf2a47d69d5e6",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "ba29e35dd6add8d2b3ded9b0ff78e8bb7095258f4ea65728e256aab878545dea",
+      "document_id": "document:ffs-gw22-guehi-not-playing-2026-01-16",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw22-guehi-not-playing": "The result is that Marc doesn't play tomorrow for us."
+      },
+      "published_at": "2026-01-16T00:00:00Z",
+      "source_id": "ffs-gw22-guehi-not-playing-2026-01-16",
+      "title": "FPL Gameweek 22 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "d082895be42997a0260076dee0034cc3d8df9a137f72cbb458b601684da285d5",
+    "run_id": "gw22-sol-evidence-v3",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim:gw22:guehi-not-playing",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:260",
+          "provenance": {
+            "content_hash_sha256": "ba29e35dd6add8d2b3ded9b0ff78e8bb7095258f4ea65728e256aab878545dea",
+            "source_ids": [
+              "ffs-gw22-guehi-not-playing-2026-01-16"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T14:47:00Z",
+          "claim_id": "claim:gw22:guehi-not-playing",
+          "claim_text": "Marc Guehi will not play in GW22 while his transfer is finalised.",
+          "confidence": 0.99,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw22-guehi-not-playing-2026-01-16",
+          "expires_at": "2026-01-18T23:59:59Z",
+          "observed_at": "2026-07-26T14:47:00Z",
+          "provenance": {
+            "content_hash_sha256": "ba29e35dd6add8d2b3ded9b0ff78e8bb7095258f4ea65728e256aab878545dea",
+            "source_ids": [
+              "ffs-gw22-guehi-not-playing-2026-01-16"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-01-16T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "3ac8dbf86d4500e5ae42298d351ed1b4c3c3d8a2b3b4d08871b5d22d98907130",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "Source published 2026-01-16 before the 2026-01-17T11:00:00Z cutoff.",
+        "Baseline start probability was 0.936."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [
+        {
+          "adjustment_id": "adjustment:gw22:guehi-expected-minutes-zero",
+          "after_value": 0,
+          "available_at": "2026-07-26T16:30:29Z",
+          "before_value": 86.9,
+          "confidence": 0.99,
+          "expires_at": "2026-01-18T23:59:59Z",
+          "observed_at": "2026-07-26T16:30:29Z",
+          "player_uid": "player:2025-26:260",
+          "provenance": {
+            "source_ids": [
+              "ffs-gw22-guehi-not-playing-2026-01-16"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-07-26T16:30:29Z",
+          "rationale": "Guehi was explicitly ruled out of the GW22 match while his transfer was finalised.",
+          "signal_ids": [
+            "signal:adjustment:gw22:guehi-expected-minutes-zero"
+          ],
+          "status": "proposed",
+          "target": "expected_minutes"
+        }
+      ],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": [
+        {
+          "available_at": "2026-07-26T16:30:29Z",
+          "claim_ids": [
+            "claim:gw22:guehi-not-playing"
+          ],
+          "interpretation": "Guehi was explicitly ruled out of the GW22 match while his transfer was finalised.",
+          "observed_at": "2026-07-26T16:30:29Z",
+          "player_uid": "player:2025-26:260",
+          "provenance": {
+            "source_ids": [
+              "ffs-gw22-guehi-not-playing-2026-01-16"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-01-16T00:00:00Z",
+          "signal_id": "signal:adjustment:gw22:guehi-expected-minutes-zero"
+        }
+      ]
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:260": {
+      "expected_minutes": 86.9,
+      "start_probability": 0.936
+    }
+  },
+  "player_ids": [
+    "player:2025-26:260"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "38f6596d860ba4e094824a303849c9aae15dff7a4125b19a90a9bae955afa65f",
+  "run_id": "gw22-sol-challenger-v3",
+  "schema_version": "1.0"
+}

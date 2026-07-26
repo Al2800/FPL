@@ -1,0 +1,72 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "73b96fe2f4b7ff0f2aca59154927673b89001ef34a11d9f65dc9d230330f6316",
+  "response_sha256": "42018a2b26fbd483a5dfb3d0e4fcd21b4481da9c46f9913746f6539bc9fce7f1",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw20:rodon-out",
+        "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+        "passage_id": "passage:claim-gw20-rodon-out",
+        "source_id": "ffs-gw20-rodon-out-2026-01-02",
+        "claim_text": "Joe Rodon is still out for Leeds United.",
+        "citation_excerpt": "Leeds United: Ampadu banned, Longstaff, Rodon + James still out",
+        "citation_excerpt_sha256": "07f88654b0bcc75c67e5ad274ec95553e170c23ed2837e4e8e288e8fab561758",
+        "expires_at": "2026-01-05T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:348"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw20:rodon-expected-minutes-zero",
+        "claim_ids": [
+          "claim:gw20:rodon-out"
+        ],
+        "target": "expected_minutes",
+        "before_value": 58.3,
+        "after_value": 0,
+        "confidence": 0.99,
+        "expires_at": "2026-01-05T23:59:59Z",
+        "player_uid": "player:2025-26:348",
+        "rationale": "Rodon was reported still out before the GW20 deadline."
+      }
+    ],
+    "notes": [
+      "Baseline start probability was 0.8875.",
+      "Evidence source predates 2026-01-03T11:00Z."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T16:25:23Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "73b96fe2f4b7ff0f2aca59154927673b89001ef34a11d9f65dc9d230330f6316",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

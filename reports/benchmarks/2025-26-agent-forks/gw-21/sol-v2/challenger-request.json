@@ -1,0 +1,234 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "5ab707ff17719970b665e5a5f9b721fa981b7052220c25ad0d4c4e31fdd4fea9",
+  "deterministic_candidate_sha256": "5f77f94eec77f5fdffd000da145890c4ea8371b6245315c54ab3a5f00eee58a1",
+  "episode": {
+    "decision_at": "2026-01-06T18:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw21:manager-neutral",
+    "observed_episode_sha256": "b9b4f80a86d8b136a7b4e3f8694b831d7278030a32a5dad0b23a2769a1523be3",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "9d188696064c2f79a9d110001111b31f89176d7313b06b2873f778bf472529ea",
+      "document_id": "document:ffs-gw21-gvardiol-long-term-2026-01-06",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw21-gvardiol-long-term": "Out for a long time."
+      },
+      "published_at": "2026-01-06T00:00:00Z",
+      "source_id": "ffs-gw21-gvardiol-long-term-2026-01-06",
+      "title": "FPL Gameweek 21 team news: Tuesday's live injury updates"
+    },
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "4820e2ab8afbb2e4fda4040d0ccef9bd0df84f4e24a50534407439a088a43cc5",
+      "document_id": "document:ffs-gw21-semenyo-last-game-2026-01-06",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw21-semenyo-available": "Bournemouth: Kluivert undergoes knee surgery, Semenyo set for last game"
+      },
+      "published_at": "2026-01-06T00:00:00Z",
+      "source_id": "ffs-gw21-semenyo-last-game-2026-01-06",
+      "title": "FPL Gameweek 21 team news: Tuesday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "11603936cf3fdc6220ae0ba4ea3c92894deb62bbdffd2aa283234dd21660dcf0",
+    "run_id": "gw21-sol-evidence-v2",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim:gw21:gvardiol-long-term",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:403",
+          "provenance": {
+            "content_hash_sha256": "9d188696064c2f79a9d110001111b31f89176d7313b06b2873f778bf472529ea",
+            "source_ids": [
+              "ffs-gw21-gvardiol-long-term-2026-01-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        },
+        {
+          "claim_id": "claim:gw21:semenyo-available",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:82",
+          "provenance": {
+            "content_hash_sha256": "4820e2ab8afbb2e4fda4040d0ccef9bd0df84f4e24a50534407439a088a43cc5",
+            "source_ids": [
+              "ffs-gw21-semenyo-last-game-2026-01-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-26T14:47:00Z",
+          "claim_id": "claim:gw21:gvardiol-long-term",
+          "claim_text": "Gvardiol is expected to be unavailable for a long period due to his fracture.",
+          "confidence": 0.99,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw21-gvardiol-long-term-2026-01-06",
+          "expires_at": "2026-02-15T23:59:59Z",
+          "observed_at": "2026-07-26T14:47:00Z",
+          "provenance": {
+            "content_hash_sha256": "9d188696064c2f79a9d110001111b31f89176d7313b06b2873f778bf472529ea",
+            "source_ids": [
+              "ffs-gw21-gvardiol-long-term-2026-01-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-01-06T00:00:00Z"
+        },
+        {
+          "available_at": "2026-07-26T14:47:00Z",
+          "claim_id": "claim:gw21:semenyo-available",
+          "claim_text": "Semenyo is available and set to play his last game for Bournemouth.",
+          "confidence": 0.97,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:ffs-gw21-semenyo-last-game-2026-01-06",
+          "expires_at": "2026-01-08T23:59:59Z",
+          "observed_at": "2026-07-26T14:47:00Z",
+          "provenance": {
+            "content_hash_sha256": "4820e2ab8afbb2e4fda4040d0ccef9bd0df84f4e24a50534407439a088a43cc5",
+            "source_ids": [
+              "ffs-gw21-semenyo-last-game-2026-01-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-01-06T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "7db96c9afe9cae2fa6a92edea7032df0ee9807d0e4868750a9228120b87ed8a8",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "No Semenyo uplift proposed because his 86.2 expected minutes and 0.944 start probability already reflect availability."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [
+        {
+          "adjustment_id": "adjustment:gw21:gvardiol-expected-minutes-zero",
+          "after_value": 0,
+          "available_at": "2026-07-26T16:21:27Z",
+          "before_value": 63.8,
+          "confidence": 0.99,
+          "expires_at": "2026-02-15T23:59:59Z",
+          "observed_at": "2026-07-26T16:21:27Z",
+          "player_uid": "player:2025-26:403",
+          "provenance": {
+            "source_ids": [
+              "ffs-gw21-gvardiol-long-term-2026-01-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-07-26T16:21:27Z",
+          "rationale": "The pre-deadline evidence states Gvardiol is out for a long time due to his fracture, so his expected minutes should be reduced to zero.",
+          "signal_ids": [
+            "signal:adjustment:gw21:gvardiol-expected-minutes-zero"
+          ],
+          "status": "proposed",
+          "target": "expected_minutes"
+        }
+      ],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": [
+        {
+          "available_at": "2026-07-26T16:21:27Z",
+          "claim_ids": [
+            "claim:gw21:gvardiol-long-term"
+          ],
+          "interpretation": "The pre-deadline evidence states Gvardiol is out for a long time due to his fracture, so his expected minutes should be reduced to zero.",
+          "observed_at": "2026-07-26T16:21:27Z",
+          "player_uid": "player:2025-26:403",
+          "provenance": {
+            "source_ids": [
+              "ffs-gw21-gvardiol-long-term-2026-01-06"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2026-01-06T00:00:00Z",
+          "signal_id": "signal:adjustment:gw21:gvardiol-expected-minutes-zero"
+        }
+      ]
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:403": {
+      "expected_minutes": 63.8,
+      "start_probability": 0.7606
+    },
+    "player:2025-26:82": {
+      "expected_minutes": 86.2,
+      "start_probability": 0.944
+    }
+  },
+  "player_ids": [
+    "player:2025-26:403",
+    "player:2025-26:82"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "a38a270c308dd152a15a4ab80d5afee79fbb523ba5a436ba1a79a0c4e76dbbc4",
+  "run_id": "gw21-sol-challenger-v2",
+  "schema_version": "1.0"
+}

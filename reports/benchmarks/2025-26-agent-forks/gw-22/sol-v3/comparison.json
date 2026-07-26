@@ -1,0 +1,43 @@
+{
+  "adapter_audit_sha256": "44f79b1ede9751f20a035108ec3a1aa899ee50ac41e92214691581cfd9e5bfb1",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 49,
+  "agent_vs_canonical_delta": 2,
+  "canonical_gross_points": 47,
+  "canonical_tree_sha256_after": "277bace07d6a06c4c48114e092abbbbd84e9462e33131fd29205426d349606e2",
+  "canonical_tree_sha256_before": "277bace07d6a06c4c48114e092abbbbd84e9462e33131fd29205426d349606e2",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "6f3c1cf355c848ca6c38f5ce619d8e44098c20bb7e27922ad35eab0f1eb88e45",
+  "content_sha256": "3df0b9cf7c60f5faacada9f9f51683336d07f2d40aea73610528eb4fbbe45c93",
+  "evidence_run_sha256": "d082895be42997a0260076dee0034cc3d8df9a137f72cbb458b601684da285d5",
+  "experiment_id": "2025-26-gw22-sol-agent-fork-v3",
+  "exploratory_only": true,
+  "gameweek": 22,
+  "hit_cost": 0,
+  "host_bundle_sha256": "837ccb0fc04160ef6ae0bc9c2d47823fa65c847e0c4a8cec4429fe0634cb1c11",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "player_registration_transition_not_modelled_until_next_market",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": null,
+  "plan_sha256": "899caa9fc7112cfa00209f3cea0e82d34f1c54d19317bf3a4ebca64f982ce961",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Gabriel dos Santos Magalhães",
+      "player_out": "Marc Guéhi"
+    },
+    {
+      "player_in": "Bruno Guimarães Rodriguez Moura",
+      "player_out": "Matheus Santos Carneiro da Cunha"
+    }
+  ],
+  "solver_input_sha256": "a892e68b959b4d9f299666f0902f14bde9382d3b5d45eafd4c36aa16369fa3fd",
+  "solver_output_sha256": "c6851e4e02f822315bbf3e5dc5ebdc1af361b02eef74995adddc766c0b3232df",
+  "starting_state_sha256": "aa5a9d8bcdec7b236fd5aefc99bd177f2654ec5ffd1c4212cf20679d37b186c6"
+}

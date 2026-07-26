@@ -1,0 +1,72 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "ea0978694b9e341cc0d45ac4e69b132452108ffd47f1a591c424bc1d3167e5ad",
+  "response_sha256": "3ea391f869f74458f835869a4e6f284af53135ab5bc7a325ea705352394ac136",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw22:guehi-not-playing",
+        "document_id": "document:ffs-gw22-guehi-not-playing-2026-01-16",
+        "passage_id": "passage:claim-gw22-guehi-not-playing",
+        "source_id": "ffs-gw22-guehi-not-playing-2026-01-16",
+        "claim_text": "Marc Guehi will not play in GW22 while his transfer is finalised.",
+        "citation_excerpt": "The result is that Marc doesn't play tomorrow for us.",
+        "citation_excerpt_sha256": "89c54bf51733b8f37324def35ef3ae53cb112af6915179025e89714a848eb9ca",
+        "expires_at": "2026-01-18T23:59:59Z",
+        "confidence": 0.99,
+        "player_uid": "player:2025-26:260"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw22:guehi-expected-minutes-zero",
+        "claim_ids": [
+          "claim:gw22:guehi-not-playing"
+        ],
+        "target": "expected_minutes",
+        "before_value": 86.9,
+        "after_value": 0,
+        "confidence": 0.99,
+        "expires_at": "2026-01-18T23:59:59Z",
+        "player_uid": "player:2025-26:260",
+        "rationale": "Guehi was explicitly ruled out of the GW22 match while his transfer was finalised."
+      }
+    ],
+    "notes": [
+      "Source published 2026-01-16 before the 2026-01-17T11:00:00Z cutoff.",
+      "Baseline start probability was 0.936."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T16:30:29Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "ea0978694b9e341cc0d45ac4e69b132452108ffd47f1a591c424bc1d3167e5ad",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

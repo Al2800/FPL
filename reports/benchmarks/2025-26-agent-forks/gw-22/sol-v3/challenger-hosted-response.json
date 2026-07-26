@@ -1,0 +1,44 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "38f6596d860ba4e094824a303849c9aae15dff7a4125b19a90a9bae955afa65f",
+  "response_sha256": "daf670300d3af10a338a679030abb499fd8c047a19b78f320d442ff471f6369e",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw22:guehi-not-playing:v3",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw22:guehi-expected-minutes-zero"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Pre-deadline quote directly identifies Marc Guehi as unavailable for the next match; timing, identity, direction, magnitude to zero minutes, 0.99 confidence, and expiry are supported."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-26T16:31:15Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "38f6596d860ba4e094824a303849c9aae15dff7a4125b19a90a9bae955afa65f",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

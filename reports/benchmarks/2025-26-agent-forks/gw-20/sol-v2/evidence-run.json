@@ -1,0 +1,466 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw20-sol-evidence-v2",
+      "content_sha256": "b7779c23d391a0f0d9149649905f15195ea25df0a35e62a063b9f7447f8c1347",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "219a68f071c0ac84b3adf06992b0935acfdc382f2e1365a6ad5adec13f393214",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T16:18:32Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "219a68f071c0ac84b3adf06992b0935acfdc382f2e1365a6ad5adec13f393214",
+        "response_sha256": "c2d1ede1825e9f9ce0a7a38cb6ff940464dd5cabd8a7f0de5e3f5de9481b86db",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "Leeds United: Ampadu banned, Longstaff, Rodon + James still out",
+              "citation_excerpt_sha256": "07f88654b0bcc75c67e5ad274ec95553e170c23ed2837e4e8e288e8fab561758",
+              "claim_id": "claim:gw20:rodon-out",
+              "claim_text": "Joe Rodon is still out for Leeds United.",
+              "confidence": 0.99,
+              "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+              "expires_at": "2026-01-05T23:59:59Z",
+              "passage_id": "passage:claim-gw20-rodon-out",
+              "player_uid": "player:2025-26:348",
+              "source_id": "ffs-gw20-rodon-out-2026-01-02"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "Proposal-only adjustment based solely on evidence published before the frozen decision deadline; no hindsight used."
+          ],
+          "proposed_adjustments": [
+            {
+              "adjustment_id": "adjustment:gw20:rodon-expected-minutes-zero",
+              "after_value": 0,
+              "before_value": 58.3,
+              "claim_ids": [
+                "claim:gw20:rodon-out"
+              ],
+              "confidence": 0.99,
+              "expires_at": "2026-01-05T23:59:59Z",
+              "player_uid": "player:2025-26:348",
+              "rationale": "Pre-deadline evidence explicitly reports Rodon still out, so his frozen GW20 expected minutes should be reduced to zero.",
+              "target": "expected_minutes"
+            }
+          ],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw20-sol-evidence-v2",
+      "content_sha256": "243d77f62c40a69b3e8bdd95a224e4e351cb8a8a54246fd93d62a398fbd8ce43",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:gw20:rodon-out",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:348",
+            "provenance": {
+              "content_hash_sha256": "74cf98b83ad0add3d72ea0a35007dbf4f904d98e30f91d709dca586c180735e2",
+              "source_ids": [
+                "ffs-gw20-rodon-out-2026-01-02"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-26T14:47:00Z",
+            "claim_id": "claim:gw20:rodon-out",
+            "claim_text": "Joe Rodon is still out for Leeds United.",
+            "confidence": 0.99,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+            "expires_at": "2026-01-05T23:59:59Z",
+            "observed_at": "2026-07-26T14:47:00Z",
+            "provenance": {
+              "content_hash_sha256": "74cf98b83ad0add3d72ea0a35007dbf4f904d98e30f91d709dca586c180735e2",
+              "source_ids": [
+                "ffs-gw20-rodon-out-2026-01-02"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-01-02T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "243d77f62c40a69b3e8bdd95a224e4e351cb8a8a54246fd93d62a398fbd8ce43",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "Proposal-only adjustment based solely on evidence published before the frozen decision deadline; no hindsight used."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [
+          {
+            "adjustment_id": "adjustment:gw20:rodon-expected-minutes-zero",
+            "after_value": 0,
+            "available_at": "2026-07-26T16:18:32Z",
+            "before_value": 58.3,
+            "confidence": 0.99,
+            "expires_at": "2026-01-05T23:59:59Z",
+            "observed_at": "2026-07-26T16:18:32Z",
+            "player_uid": "player:2025-26:348",
+            "provenance": {
+              "source_ids": [
+                "ffs-gw20-rodon-out-2026-01-02"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-07-26T16:18:32Z",
+            "rationale": "Pre-deadline evidence explicitly reports Rodon still out, so his frozen GW20 expected minutes should be reduced to zero.",
+            "signal_ids": [
+              "signal:adjustment:gw20:rodon-expected-minutes-zero"
+            ],
+            "status": "proposed",
+            "target": "expected_minutes"
+          }
+        ],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": [
+          {
+            "available_at": "2026-07-26T16:18:32Z",
+            "claim_ids": [
+              "claim:gw20:rodon-out"
+            ],
+            "interpretation": "Pre-deadline evidence explicitly reports Rodon still out, so his frozen GW20 expected minutes should be reduced to zero.",
+            "observed_at": "2026-07-26T16:18:32Z",
+            "player_uid": "player:2025-26:348",
+            "provenance": {
+              "source_ids": [
+                "ffs-gw20-rodon-out-2026-01-02"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-01-02T00:00:00Z",
+            "signal_id": "signal:adjustment:gw20:rodon-expected-minutes-zero"
+          }
+        ]
+      }
+    }
+  },
+  "content_sha256": "8c05ba48acfb542c2ab3261f35f62f3f291de043b94e16e722a24434fa6a850b",
+  "run_id": "gw20-sol-evidence-v2",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 0.5,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 58.5,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:8",
+        "player:2025-26:260",
+        "player:2025-26:226",
+        "player:2025-26:414",
+        "player:2025-26:47",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:450",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 65.7,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-26T16:18:32Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2026-01-03T11:00:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw20:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw20-sol-evidence-v2",
+          "content_sha256": "37df92624dae44c58c40f9d8344487feaf78d41b37a6cb542c4c2d2d5aac6b07"
+        }
+      ],
+      "input_sha256": "37df92624dae44c58c40f9d8344487feaf78d41b37a6cb542c4c2d2d5aac6b07",
+      "rendered_prompt_sha256": "219a68f071c0ac84b3adf06992b0935acfdc382f2e1365a6ad5adec13f393214"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw20-sol-evidence-v2",
+          "content_sha256": "b7779c23d391a0f0d9149649905f15195ea25df0a35e62a063b9f7447f8c1347"
+        },
+        "call_id": "model:gw20-sol-evidence-v2",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "219a68f071c0ac84b3adf06992b0935acfdc382f2e1365a6ad5adec13f393214",
+        "response_sha256": "c2d1ede1825e9f9ce0a7a38cb6ff940464dd5cabd8a7f0de5e3f5de9481b86db",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T16:18:32Z",
+    "observed_episode_sha256": "dd9fa0160d73506bc61777542eefad2a9a73c264e563ab1c3dcf13f9162fcf02",
+    "output": {
+      "output_sha256": "243d77f62c40a69b3e8bdd95a224e4e351cb8a8a54246fd93d62a398fbd8ce43",
+      "response_ref": {
+        "artifact_id": "cached-response:gw20-sol-evidence-v2",
+        "content_sha256": "b7779c23d391a0f0d9149649905f15195ea25df0a35e62a063b9f7447f8c1347"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw20-sol-evidence-v2",
+        "content_sha256": "243d77f62c40a69b3e8bdd95a224e4e351cb8a8a54246fd93d62a398fbd8ce43"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw20-sol-evidence-v2",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw20-sol-evidence-v2",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw20-sol-evidence-v2.jsonl",
+    "versions": {
+      "code_commit": "fa509e416367edb6871ac24d42f934bf2e6b24dd",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:gw20:rodon-out",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:348",
+        "provenance": {
+          "content_hash_sha256": "74cf98b83ad0add3d72ea0a35007dbf4f904d98e30f91d709dca586c180735e2",
+          "source_ids": [
+            "ffs-gw20-rodon-out-2026-01-02"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-26T14:47:00Z",
+        "claim_id": "claim:gw20:rodon-out",
+        "claim_text": "Joe Rodon is still out for Leeds United.",
+        "confidence": 0.99,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+        "expires_at": "2026-01-05T23:59:59Z",
+        "observed_at": "2026-07-26T14:47:00Z",
+        "provenance": {
+          "content_hash_sha256": "74cf98b83ad0add3d72ea0a35007dbf4f904d98e30f91d709dca586c180735e2",
+          "source_ids": [
+            "ffs-gw20-rodon-out-2026-01-02"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-01-02T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "243d77f62c40a69b3e8bdd95a224e4e351cb8a8a54246fd93d62a398fbd8ce43",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "Proposal-only adjustment based solely on evidence published before the frozen decision deadline; no hindsight used."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw20:rodon-expected-minutes-zero",
+        "after_value": 0,
+        "available_at": "2026-07-26T16:18:32Z",
+        "before_value": 58.3,
+        "confidence": 0.99,
+        "expires_at": "2026-01-05T23:59:59Z",
+        "observed_at": "2026-07-26T16:18:32Z",
+        "player_uid": "player:2025-26:348",
+        "provenance": {
+          "source_ids": [
+            "ffs-gw20-rodon-out-2026-01-02"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-07-26T16:18:32Z",
+        "rationale": "Pre-deadline evidence explicitly reports Rodon still out, so his frozen GW20 expected minutes should be reduced to zero.",
+        "signal_ids": [
+          "signal:adjustment:gw20:rodon-expected-minutes-zero"
+        ],
+        "status": "proposed",
+        "target": "expected_minutes"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": [
+      {
+        "available_at": "2026-07-26T16:18:32Z",
+        "claim_ids": [
+          "claim:gw20:rodon-out"
+        ],
+        "interpretation": "Pre-deadline evidence explicitly reports Rodon still out, so his frozen GW20 expected minutes should be reduced to zero.",
+        "observed_at": "2026-07-26T16:18:32Z",
+        "player_uid": "player:2025-26:348",
+        "provenance": {
+          "source_ids": [
+            "ffs-gw20-rodon-out-2026-01-02"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-01-02T00:00:00Z",
+        "signal_id": "signal:adjustment:gw20:rodon-expected-minutes-zero"
+      }
+    ]
+  }
+}

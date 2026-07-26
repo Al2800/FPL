@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "59b7ce886d49cd5776b76fbc93c57152dc3ea93ea30c77c9394faed3b5bf4cc4",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 57,
+  "agent_vs_canonical_delta": 2,
+  "canonical_gross_points": 55,
+  "canonical_tree_sha256_after": "f38afd47cec47895abc55c4a52f16e847fbca5cdd8977f802de218b82cee7dca",
+  "canonical_tree_sha256_before": "f38afd47cec47895abc55c4a52f16e847fbca5cdd8977f802de218b82cee7dca",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "5df36bd1a012f2091a8bac89006086f069a19321b0c8ab4340ac1c07993e900b",
+  "content_sha256": "65b11f58fc923324e29b35ec224ef7a29bd2b33ee22b89325b4e366b96905d74",
+  "evidence_run_sha256": "86590f64685f1db32db0a9a5027658b70f228e4ad94f122dc0db79b60d4c1c0f",
+  "experiment_id": "2025-26-gw21-sol-agent-fork-v3",
+  "exploratory_only": true,
+  "gameweek": 21,
+  "hit_cost": 0,
+  "host_bundle_sha256": "9d3b5a58202ec9199c9ff3608724f10cb63a49ceac23b2c7504d083a929ae6df",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "positive_semenyo_evidence_cannot_create_uplift",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "aa5a9d8bcdec7b236fd5aefc99bd177f2654ec5ffd1c4212cf20679d37b186c6",
+  "plan_sha256": "7ab51adc194a831f564721ab1b569fda0cf8ee1d1140cb892ccd4f29420b99c5",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Igor Thiago Nascimento Rodrigues",
+      "player_out": "Nick Woltemade"
+    }
+  ],
+  "solver_input_sha256": "513f044ba6a0f353f5e6be0b511e719ff8102079c21e81a5b79874fce46b4672",
+  "solver_output_sha256": "9f8c0ee9cad3d17fd5a00d9607bc1a9c1e4cb4c9fe360e70364f7f4c30133f40",
+  "starting_state_sha256": "8a75aff3bfc8be2950ff7f57add5555877e93ca68a6272351a51f508afbc2632"
+}
