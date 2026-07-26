@@ -1,0 +1,46 @@
+{
+  "appearance_model_version": "appearance-distribution-v1",
+  "calibration": {
+    "fit_target_seasons": [
+      "2022-23",
+      "2023-24"
+    ],
+    "locked_validation_season": "2024-25",
+    "selection_rule": "balanced non-zero ceiling and uncertainty weights among training-total maximisers; no held-out retuning"
+  },
+  "ceiling_weight": 0.1,
+  "content_sha256": "ade3880683ed08b0659d5fa9534698245a009306ffb9f2ee4c2c5cc6ee1a7dba",
+  "locked_validation": {
+    "challenger_captain_points": 343,
+    "control_captain_points": 352,
+    "delta": -9,
+    "promotion_eligible": false,
+    "promotion_rule": "challenger realised captain points must exceed control on locked 2024-25"
+  },
+  "policy_version": "captain-v1",
+  "position_residual_statistics": {
+    "DEF": {
+      "absolute_residual_q80": 1.741936,
+      "positive_residual_q90": 2.167215
+    },
+    "FWD": {
+      "absolute_residual_q80": 1.707828,
+      "positive_residual_q90": 1.89047
+    },
+    "GKP": {
+      "absolute_residual_q80": 1.280403,
+      "positive_residual_q90": 0.47626
+    },
+    "MID": {
+      "absolute_residual_q80": 1.36624,
+      "positive_residual_q90": 1.388625
+    }
+  },
+  "status": "rejected_locked_validation_challenger",
+  "training": {
+    "challenger_captain_points": 281,
+    "control_captain_points": 263,
+    "delta": 18
+  },
+  "uncertainty_penalty_weight": 0.1
+}
