@@ -176,6 +176,7 @@ def test_expired_or_missing_evidence_degrades_to_exact_baseline() -> None:
     empty = build_set_piece_role_ledger(
         [], as_of="2026-08-01T10:01:00Z"
     )
+    assert empty["status"] == "degraded"
     assert build_set_piece_feature_payload(empty)["fallback"] == (
         "byte_identical_baseline"
     )

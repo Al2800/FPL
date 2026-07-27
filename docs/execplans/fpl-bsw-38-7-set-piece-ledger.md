@@ -19,9 +19,10 @@ alter an earlier episode.
   Football-Data odds bead.
 - [x] (2026-07-27 14:40Z) Verified the current official bootstrap exposes
   player/team identity plus all three set-piece order fields.
-- [ ] Implement the immutable snapshot normaliser and longitudinal ledger.
-- [ ] Add configuration, tests and operator documentation.
-- [ ] Validate the current live capture, run regressions and close the bead.
+- [x] (2026-07-27 14:48Z) Implemented immutable snapshot normalization,
+  whole-group supersession, expiry, conflict handling and exact fallback.
+- [x] (2026-07-27 14:49Z) Added frozen configuration, tests and documentation.
+- [x] (2026-07-27 14:58Z) Validated the live capture and passed 560 tests.
 
 ## Surprises & Discoveries
 
@@ -47,9 +48,11 @@ alter an earlier episode.
 
 ## Outcomes & Retrospective
 
-Implementation is in progress. The intended output is a self-hashed snapshot
-and a self-hashed as-of ledger with explicit active, expired, unknown,
-conflicted and superseded states. No forecast weight is promoted by this bead.
+Implementation is complete. The current official capture produced 60
+club-role groups and 195 ranked observations with zero unknowns or conflicts.
+The as-of ledger is self-hashed, future-safe, expiring and whole-group
+superseding. Missing, expired or conflicted evidence yields an empty feature
+delta and `byte_identical_baseline`; no forecast weight was promoted.
 
 ## Context and Orientation
 
@@ -94,6 +97,13 @@ Work from `C:/Users/Alastair/FPL`.
 No command downloads data or writes to an FPL account.
 
 ## Validation and Acceptance
+
+Final proof:
+
+    focused ledger contract: 5 passed in 0.06s
+    focused plus related regressions: 37 passed in 7.13s
+    current launch capture: 60 groups, 195 assignments, 0 unknown, 0 conflicts
+    complete repository suite: 560 passed in 336.64s
 
 The same bootstrap bytes and timestamps must reproduce the same snapshot and
 ledger hashes. A future snapshot must not enter an earlier as-of ledger. A

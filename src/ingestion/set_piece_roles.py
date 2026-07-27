@@ -322,7 +322,9 @@ def build_set_piece_role_ledger(
             active_roles.extend(deepcopy(latest["assignments"]))
         resolved_groups.append(latest)
 
-    degraded = bool(excluded_future or conflicts or unknowns or expired)
+    degraded = not resolved_groups or bool(
+        excluded_future or conflicts or unknowns or expired
+    )
     result: dict[str, Any] = {
         "schema_version": "1.0",
         "as_of": as_of_text,
