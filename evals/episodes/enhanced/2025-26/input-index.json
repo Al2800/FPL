@@ -1,0 +1,376 @@
+{
+  "canonical_tree": {
+    "allowlist": [
+      "episode-manifest.json",
+      "observed.json",
+      "identity-map.json"
+    ],
+    "file_count": 114,
+    "sha256": "a6c1bb9bb42ea2ac42af2d3d7045e4fae8fd661bea7ffb2bc7caaea1f029033e"
+  },
+  "classification": "exploratory_production_ineligible",
+  "content_sha256": "f7f834691b803d161414bbc7b7baab9ca4dc1c96512a1e12eb09d5af0544f5f2",
+  "coverage_matrix": {
+    "odds": {
+      "degraded": 0,
+      "exploratory_only": 38,
+      "strict_available": 0,
+      "unavailable": 0
+    },
+    "official_fpl_state": {
+      "degraded": 37,
+      "exploratory_only": 1,
+      "strict_available": 0,
+      "unavailable": 0
+    },
+    "player_ratings": {
+      "degraded": 0,
+      "exploratory_only": 0,
+      "strict_available": 0,
+      "unavailable": 38
+    },
+    "promoted_transfer_context": {
+      "degraded": 0,
+      "exploratory_only": 1,
+      "strict_available": 0,
+      "unavailable": 37
+    },
+    "set_piece_roles": {
+      "degraded": 0,
+      "exploratory_only": 0,
+      "strict_available": 0,
+      "unavailable": 38
+    },
+    "team_strength": {
+      "degraded": 0,
+      "exploratory_only": 0,
+      "strict_available": 37,
+      "unavailable": 1
+    },
+    "unstructured_evidence": {
+      "degraded": 0,
+      "exploratory_only": 38,
+      "strict_available": 0,
+      "unavailable": 0
+    }
+  },
+  "episode_count": 38,
+  "gameweeks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38
+  ],
+  "index_id": "enhanced-input-index:2025-26",
+  "packs": [
+    {
+      "content_sha256": "d346cfa15ab6ba1a3d49df10dbc27f9ac77d06cbbdb2f19629b21f37f5f72e95",
+      "episode_id": "benchmark-v0:2025-26:gw01:manager-neutral",
+      "gameweek": 1,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw01:manager-neutral",
+      "path": "gw-01/input-pack.json"
+    },
+    {
+      "content_sha256": "79661deb2bde0ffd011f8eff32e21f31a37510a81d01d54069a321e605586428",
+      "episode_id": "benchmark-v0:2025-26:gw02:manager-neutral",
+      "gameweek": 2,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw02:manager-neutral",
+      "path": "gw-02/input-pack.json"
+    },
+    {
+      "content_sha256": "448cd13883b0b895c8a97f8df7ff504931e4f084fdc5a3ab40864da76cac9057",
+      "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
+      "gameweek": 3,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw03:manager-neutral",
+      "path": "gw-03/input-pack.json"
+    },
+    {
+      "content_sha256": "b3763361ad64b2d8e3496f60f280c3b9448689afe72681bd543bf737c0836e15",
+      "episode_id": "benchmark-v0:2025-26:gw04:manager-neutral",
+      "gameweek": 4,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw04:manager-neutral",
+      "path": "gw-04/input-pack.json"
+    },
+    {
+      "content_sha256": "507a4b69080af8883cb05720c2c642071327a6b092de8b551165d2e3711d82be",
+      "episode_id": "benchmark-v0:2025-26:gw05:manager-neutral",
+      "gameweek": 5,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw05:manager-neutral",
+      "path": "gw-05/input-pack.json"
+    },
+    {
+      "content_sha256": "efdb595f41b4d41349b089885bb9d49a11e4c7b548af65e483c47567b91cbb02",
+      "episode_id": "benchmark-v0:2025-26:gw06:manager-neutral",
+      "gameweek": 6,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw06:manager-neutral",
+      "path": "gw-06/input-pack.json"
+    },
+    {
+      "content_sha256": "d2b1e0aec982015a7f373846c6e288733e0663aba460cf6fd8e0bc8a38a201aa",
+      "episode_id": "benchmark-v0:2025-26:gw07:manager-neutral",
+      "gameweek": 7,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw07:manager-neutral",
+      "path": "gw-07/input-pack.json"
+    },
+    {
+      "content_sha256": "bf1d5175e556ef0586510ca1d044aefd7e0f7c6031a98e86353fa39be9526bfe",
+      "episode_id": "benchmark-v0:2025-26:gw08:manager-neutral",
+      "gameweek": 8,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw08:manager-neutral",
+      "path": "gw-08/input-pack.json"
+    },
+    {
+      "content_sha256": "8c92234c82c6a68f035539b32d74df3b702e06477209b9aef7831484e113542d",
+      "episode_id": "benchmark-v0:2025-26:gw09:manager-neutral",
+      "gameweek": 9,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw09:manager-neutral",
+      "path": "gw-09/input-pack.json"
+    },
+    {
+      "content_sha256": "460ea5fcff3661e63361971a49fd1f8be71de1f2de9c7edb32ec5c845c2046aa",
+      "episode_id": "benchmark-v0:2025-26:gw10:manager-neutral",
+      "gameweek": 10,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw10:manager-neutral",
+      "path": "gw-10/input-pack.json"
+    },
+    {
+      "content_sha256": "d226be7566fa4f172ac5d09e402cd5a84458e0eb91bd6384ee4f0233967997d6",
+      "episode_id": "benchmark-v0:2025-26:gw11:manager-neutral",
+      "gameweek": 11,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw11:manager-neutral",
+      "path": "gw-11/input-pack.json"
+    },
+    {
+      "content_sha256": "eab8c89b65346f9bd7502fd592e1b47155222a814a02faf267f917b907e9f144",
+      "episode_id": "benchmark-v0:2025-26:gw12:manager-neutral",
+      "gameweek": 12,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw12:manager-neutral",
+      "path": "gw-12/input-pack.json"
+    },
+    {
+      "content_sha256": "5417832930f16bd8e5715bf9215e2f8d7b4c50caa4c5bb61eb3a2e5dc6dc6185",
+      "episode_id": "benchmark-v0:2025-26:gw13:manager-neutral",
+      "gameweek": 13,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw13:manager-neutral",
+      "path": "gw-13/input-pack.json"
+    },
+    {
+      "content_sha256": "a37f4c8b49429d4b5286c3d085a0ce7178a620eeae0bbe3b038118ca3c05b689",
+      "episode_id": "benchmark-v0:2025-26:gw14:manager-neutral",
+      "gameweek": 14,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw14:manager-neutral",
+      "path": "gw-14/input-pack.json"
+    },
+    {
+      "content_sha256": "4da7764df5d6836357e3670fa73dfbcd8bd198291f113c43b699508345c8815f",
+      "episode_id": "benchmark-v0:2025-26:gw15:manager-neutral",
+      "gameweek": 15,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw15:manager-neutral",
+      "path": "gw-15/input-pack.json"
+    },
+    {
+      "content_sha256": "e97bf8c4e3de1a8ad68c6b5d5fd424f72ea77f61afd023791f89e9551af42d82",
+      "episode_id": "benchmark-v0:2025-26:gw16:manager-neutral",
+      "gameweek": 16,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw16:manager-neutral",
+      "path": "gw-16/input-pack.json"
+    },
+    {
+      "content_sha256": "dffd7b90eb0f35a731ac2fda443d34230a41481f42b7b29c211000f89e722a02",
+      "episode_id": "benchmark-v0:2025-26:gw17:manager-neutral",
+      "gameweek": 17,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw17:manager-neutral",
+      "path": "gw-17/input-pack.json"
+    },
+    {
+      "content_sha256": "bea56b8aff1e611cab9bfb96c1f42674057f6f459bc28bb36e83258b7c3c7ecb",
+      "episode_id": "benchmark-v0:2025-26:gw18:manager-neutral",
+      "gameweek": 18,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw18:manager-neutral",
+      "path": "gw-18/input-pack.json"
+    },
+    {
+      "content_sha256": "0e48fb35cda64e2077b34d94f26acaac9741003fb62538d42d476ad2df8d76c0",
+      "episode_id": "benchmark-v0:2025-26:gw19:manager-neutral",
+      "gameweek": 19,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw19:manager-neutral",
+      "path": "gw-19/input-pack.json"
+    },
+    {
+      "content_sha256": "a06c691c63ccecca859ea2c6512d397f5680d2139702c4b056b07bf138124c3b",
+      "episode_id": "benchmark-v0:2025-26:gw20:manager-neutral",
+      "gameweek": 20,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw20:manager-neutral",
+      "path": "gw-20/input-pack.json"
+    },
+    {
+      "content_sha256": "064b229f4a3daa452e5dc04275003f6bf7a18415758e7f3edec9267c2508810a",
+      "episode_id": "benchmark-v0:2025-26:gw21:manager-neutral",
+      "gameweek": 21,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw21:manager-neutral",
+      "path": "gw-21/input-pack.json"
+    },
+    {
+      "content_sha256": "1ecc754fc283f8abb0c00a8a7c67d19484c52437c9253cdf6e61f568b68739b2",
+      "episode_id": "benchmark-v0:2025-26:gw22:manager-neutral",
+      "gameweek": 22,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw22:manager-neutral",
+      "path": "gw-22/input-pack.json"
+    },
+    {
+      "content_sha256": "5bb5bc3a1d755c900ff5766013749088b75246c8002a86406f52df1594895403",
+      "episode_id": "benchmark-v0:2025-26:gw23:manager-neutral",
+      "gameweek": 23,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw23:manager-neutral",
+      "path": "gw-23/input-pack.json"
+    },
+    {
+      "content_sha256": "9f8be5b9dc5dd9dd8df135eb2ccd234282a378902ef963283edf2e9b2944bea8",
+      "episode_id": "benchmark-v0:2025-26:gw24:manager-neutral",
+      "gameweek": 24,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw24:manager-neutral",
+      "path": "gw-24/input-pack.json"
+    },
+    {
+      "content_sha256": "e50f0a4310d446a05eb74a0a0d9f84f5e046ffb16970242f39f62b5adba3b391",
+      "episode_id": "benchmark-v0:2025-26:gw25:manager-neutral",
+      "gameweek": 25,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw25:manager-neutral",
+      "path": "gw-25/input-pack.json"
+    },
+    {
+      "content_sha256": "f61a94fcb4db2fbf09d8d69e3c57a6872bb21d51d587d9b9f192c031e08dc627",
+      "episode_id": "benchmark-v0:2025-26:gw26:manager-neutral",
+      "gameweek": 26,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw26:manager-neutral",
+      "path": "gw-26/input-pack.json"
+    },
+    {
+      "content_sha256": "9b3071f790fe37a1aea8599301de34c5701cf5fece069f88f1b1437c0f61cdc9",
+      "episode_id": "benchmark-v0:2025-26:gw27:manager-neutral",
+      "gameweek": 27,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw27:manager-neutral",
+      "path": "gw-27/input-pack.json"
+    },
+    {
+      "content_sha256": "09956d43ae3245d96231d153da3af539cfcb7eeb6c7b90bd6c78379fc155428b",
+      "episode_id": "benchmark-v0:2025-26:gw28:manager-neutral",
+      "gameweek": 28,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw28:manager-neutral",
+      "path": "gw-28/input-pack.json"
+    },
+    {
+      "content_sha256": "18346ca29d8a6a1c5adf3d12c6b8016442b480f08f9f598fabe2a25f6f725db3",
+      "episode_id": "benchmark-v0:2025-26:gw29:manager-neutral",
+      "gameweek": 29,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw29:manager-neutral",
+      "path": "gw-29/input-pack.json"
+    },
+    {
+      "content_sha256": "cd81b10fce2af0627c31d92c5a9b176d389699c6a49396dfa28f88cd7edf07c5",
+      "episode_id": "benchmark-v0:2025-26:gw30:manager-neutral",
+      "gameweek": 30,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw30:manager-neutral",
+      "path": "gw-30/input-pack.json"
+    },
+    {
+      "content_sha256": "1c5cd018e7d94ac70591ceadfce4463c41b2ddefa428f5724d3786a1bce92dcd",
+      "episode_id": "benchmark-v0:2025-26:gw31:manager-neutral",
+      "gameweek": 31,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw31:manager-neutral",
+      "path": "gw-31/input-pack.json"
+    },
+    {
+      "content_sha256": "025771aff806e05ea45a263459aaa6de289c21542ffc30fdda5852a884588b87",
+      "episode_id": "benchmark-v0:2025-26:gw32:manager-neutral",
+      "gameweek": 32,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw32:manager-neutral",
+      "path": "gw-32/input-pack.json"
+    },
+    {
+      "content_sha256": "18297059907c24f4e30b60ce48933bb99b8a4c20d2c335c8163dc12a1debadf2",
+      "episode_id": "benchmark-v0:2025-26:gw33:manager-neutral",
+      "gameweek": 33,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw33:manager-neutral",
+      "path": "gw-33/input-pack.json"
+    },
+    {
+      "content_sha256": "4472073c0b77e2670f3f6b4b24d1af5e7ab6561f89d84c31a969b26d86c46875",
+      "episode_id": "benchmark-v0:2025-26:gw34:manager-neutral",
+      "gameweek": 34,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw34:manager-neutral",
+      "path": "gw-34/input-pack.json"
+    },
+    {
+      "content_sha256": "04fa1bf8e7d2fef09897408e7a2ae05d47f82ccf9584c78e47e1af42c815bf43",
+      "episode_id": "benchmark-v0:2025-26:gw35:manager-neutral",
+      "gameweek": 35,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw35:manager-neutral",
+      "path": "gw-35/input-pack.json"
+    },
+    {
+      "content_sha256": "ed7da353908c4580e7605e9590bb37219b9701fac2a55b8bfd5aaef4e01a0389",
+      "episode_id": "benchmark-v0:2025-26:gw36:manager-neutral",
+      "gameweek": 36,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw36:manager-neutral",
+      "path": "gw-36/input-pack.json"
+    },
+    {
+      "content_sha256": "579e73502f91ce8faba10c5ab3c983c55d320d78db465f7ef1749d7e262c5d66",
+      "episode_id": "benchmark-v0:2025-26:gw37:manager-neutral",
+      "gameweek": 37,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw37:manager-neutral",
+      "path": "gw-37/input-pack.json"
+    },
+    {
+      "content_sha256": "b80b7f88da84a76d78eec0344c4c092c8b28f681ebfac165f6d8644c89f661ca",
+      "episode_id": "benchmark-v0:2025-26:gw38:manager-neutral",
+      "gameweek": 38,
+      "pack_id": "enhanced-input:benchmark-v0:2025-26:gw38:manager-neutral",
+      "path": "gw-38/input-pack.json"
+    }
+  ],
+  "replay_gate": {
+    "ready_for_setup_validation": true,
+    "ready_for_strict_feature_complete_claim": false,
+    "requires_frozen_no_evidence_control": true,
+    "requires_gap_preserving_fallbacks": true,
+    "requires_independent_arm_state": true
+  },
+  "schema_version": "1.0",
+  "season": "2025-26"
+}

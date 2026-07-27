@@ -1,0 +1,237 @@
+{
+  "canonical_inputs": {
+    "dataset_id": "benchmark-v0-2025-26",
+    "dataset_sha256": "fac1f0711ffd403e0cd68b7e7a75ef4cce0540ff0d42da970212efd2da54c6b0",
+    "identity_map_ref": "data/benchmark-v0/episodes/v2/2025-26/gw-08/identity-map.json",
+    "identity_map_sha256": "b402a0a2d110bcc55c7077425a1d363e1b486e19bb4ea95a65c5e6431eae33c6",
+    "manifest_ref": "data/benchmark-v0/episodes/v2/2025-26/gw-08/episode-manifest.json",
+    "manifest_sha256": "19ffdfb8cd21224565ae3c34aa7a2be4944477295959169ee7ecd2225779692e",
+    "observed_ref": "data/benchmark-v0/episodes/v2/2025-26/gw-08/observed.json",
+    "observed_sha256": "3f31efb820bbbab61da3674eca43a422e32c1ce185b598ee6a073592b66fc93d"
+  },
+  "classification": "exploratory_production_ineligible",
+  "content_sha256": "bf1d5175e556ef0586510ca1d044aefd7e0f7c6031a98e86353fa39be9526bfe",
+  "decision_cutoff": "2025-10-18T10:00:00Z",
+  "episode_id": "benchmark-v0:2025-26:gw08:manager-neutral",
+  "exploratory_only_families": [
+    "odds",
+    "unstructured_evidence"
+  ],
+  "feature_availability": [
+    {
+      "exploratory_replay_admissible": true,
+      "fallback": "canonical_lagged_state_with_visible_schedule_uncertainty",
+      "family": "official_fpl_state",
+      "gaps": [
+        "exact_predeadline_fixture_snapshot_unavailable",
+        "exact_predeadline_price_snapshot_unavailable"
+      ],
+      "observation_count": 2,
+      "observations": [
+        {
+          "availability_basis": "latest_fixture_kickoff_plus_6_hours",
+          "available_at": "2025-10-05T21:30:00Z",
+          "content_sha256": "263a5ddfa053b55e1188a7d689aea2c22376d87a96516875a0f3ff30bd2b3bbd",
+          "decision_cutoff": "2025-10-18T10:00:00Z",
+          "effective_at": null,
+          "finalised_at": null,
+          "limitations": [
+            "conservative_event_completion_bound",
+            "retrospective_source_acquisition"
+          ],
+          "observation_id": "benchmark-v0:2025-26:gw08:manager-neutral:official_fpl_state:lagged-player-features:263a5ddfa053b55e",
+          "observed_at": "2026-07-22T12:57:20Z",
+          "published_at": null,
+          "source_id": "vaastav-fpl",
+          "source_ref": "data/benchmark-v0/episodes/v2/2025-26/gw-08/observed.json#/lagged_player_features",
+          "strict_replay_admissible": true,
+          "upstream_source_sha256": "0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d"
+        },
+        {
+          "availability_basis": "postseason_final_export_observation",
+          "available_at": "2026-07-22T12:57:20Z",
+          "content_sha256": "cdeae66b8afcd73283a5bb3f4c316048d63ecabb2e42c2c62adbc9001036eb93",
+          "decision_cutoff": "2025-10-18T10:00:00Z",
+          "effective_at": null,
+          "finalised_at": null,
+          "limitations": [
+            "final_export_fixture_revision_not_archived",
+            "not_an_immutable_predeadline_schedule_snapshot"
+          ],
+          "observation_id": "benchmark-v0:2025-26:gw08:manager-neutral:official_fpl_state:fixtures:cdeae66b8afcd732",
+          "observed_at": "2026-07-22T12:57:20Z",
+          "published_at": null,
+          "source_id": "vaastav-fpl",
+          "source_ref": "data/benchmark-v0/episodes/v2/2025-26/gw-08/observed.json#/fixtures",
+          "strict_replay_admissible": false,
+          "upstream_source_sha256": "2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9"
+        }
+      ],
+      "status": "degraded",
+      "strict_observation_count": 1,
+      "strict_replay_admissible": true
+    },
+    {
+      "exploratory_replay_admissible": false,
+      "fallback": "shrink_unknown_new_and_promoted_players",
+      "family": "promoted_transfer_context",
+      "gaps": [
+        "no_complete_launch_market_snapshot",
+        "no_immutable_predeadline_transfer_registration_ledger"
+      ],
+      "observation_count": 0,
+      "observations": [],
+      "status": "unavailable",
+      "strict_observation_count": 0,
+      "strict_replay_admissible": false
+    },
+    {
+      "exploratory_replay_admissible": true,
+      "fallback": "neutral_team_strength_prior",
+      "family": "team_strength",
+      "gaps": [],
+      "observation_count": 1,
+      "observations": [
+        {
+          "availability_basis": "latest_fixture_kickoff_plus_6_hours",
+          "available_at": "2025-10-05T21:30:00Z",
+          "content_sha256": "db9b949f15d091525ede5419a66c77aed74bc17070814b94ff9e6a667f029cbf",
+          "decision_cutoff": "2025-10-18T10:00:00Z",
+          "effective_at": null,
+          "finalised_at": null,
+          "limitations": [
+            "conservative_event_completion_bound",
+            "retrospective_source_acquisition"
+          ],
+          "observation_id": "benchmark-v0:2025-26:gw08:manager-neutral:team_strength:prior-match-results:db9b949f15d09152",
+          "observed_at": "2026-07-22T12:57:20Z",
+          "published_at": null,
+          "source_id": "football-data-co-uk",
+          "source_ref": "data/benchmark-v0/episodes/v2/2025-26/gw-08/observed.json#/prior_match_results",
+          "strict_replay_admissible": true,
+          "upstream_source_sha256": "3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62"
+        }
+      ],
+      "status": "strict_available",
+      "strict_observation_count": 1,
+      "strict_replay_admissible": true
+    },
+    {
+      "exploratory_replay_admissible": false,
+      "fallback": "byte_identical_baseline",
+      "family": "player_ratings",
+      "gaps": [
+        "do_not_relabel_structured_form_as_vendor_rating",
+        "no_verified_2025_26_point_in_time_rating_source"
+      ],
+      "observation_count": 0,
+      "observations": [],
+      "status": "unavailable",
+      "strict_observation_count": 0,
+      "strict_replay_admissible": false
+    },
+    {
+      "exploratory_replay_admissible": false,
+      "fallback": "byte_identical_baseline",
+      "family": "set_piece_roles",
+      "gaps": [
+        "do_not_infer_role_from_later_goals",
+        "no_immutable_2025_26_official_set_piece_snapshot"
+      ],
+      "observation_count": 0,
+      "observations": [],
+      "status": "unavailable",
+      "strict_observation_count": 0,
+      "strict_replay_admissible": false
+    },
+    {
+      "exploratory_replay_admissible": true,
+      "fallback": "shared_structured_forecast_without_odds",
+      "family": "odds",
+      "gaps": [
+        "all_strict_predeadline_odds_slots_unavailable"
+      ],
+      "observation_count": 1,
+      "observations": [
+        {
+          "availability_basis": "source_schedule_without_quote_timestamp",
+          "available_at": "2026-07-22T12:57:20Z",
+          "content_sha256": "c946443c543152f0ec5493000313c19c63b0f7443aff7aa40170cde61e57340a",
+          "decision_cutoff": "2025-10-18T10:00:00Z",
+          "effective_at": null,
+          "finalised_at": null,
+          "limitations": [
+            "closing_odds_excluded",
+            "quote_level_availability_timestamp_unavailable",
+            "schedule_inferred_exploratory_comparator_only"
+          ],
+          "observation_id": "benchmark-v0:2025-26:gw08:manager-neutral:odds:c946443c543152f0",
+          "observed_at": "2026-07-22T12:57:20Z",
+          "published_at": null,
+          "source_id": "football-data-co-uk",
+          "source_ref": "data/benchmark-v0/enhanced/2025-26/football-data-preclosing.json",
+          "strict_replay_admissible": false,
+          "upstream_source_sha256": "3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62"
+        }
+      ],
+      "status": "exploratory_only",
+      "strict_observation_count": 0,
+      "strict_replay_admissible": false
+    },
+    {
+      "exploratory_replay_admissible": true,
+      "fallback": "frozen_no_evidence_control",
+      "family": "unstructured_evidence",
+      "gaps": [
+        "no_live_captured_predeadline_evidence",
+        "retrospective_research_not_strictly_admissible"
+      ],
+      "observation_count": 1,
+      "observations": [
+        {
+          "availability_basis": "retrospective_project_observation",
+          "available_at": "2026-07-27T10:18:35Z",
+          "content_sha256": "70216af0c1df8d2ffe56b22457bd44d3f623b69bf7bba4bba1905d318deb867b",
+          "decision_cutoff": "2025-10-18T10:00:00Z",
+          "effective_at": null,
+          "finalised_at": null,
+          "limitations": [
+            "publication_before_cutoff_does_not_prove_policy_observation",
+            "retrospective_case_selection",
+            "source_recovered_after_historical_decision"
+          ],
+          "observation_id": "benchmark-v0:2025-26:gw08:manager-neutral:unstructured_evidence:70216af0c1df8d2f",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "published_at": "2025-10-17T00:00:00Z",
+          "source_id": "historical-retrospective-evidence",
+          "source_ref": "evals/evidence-forks/2025-26/early-season-manifest.json#/entries/7",
+          "strict_replay_admissible": false,
+          "upstream_source_sha256": null
+        }
+      ],
+      "status": "exploratory_only",
+      "strict_observation_count": 0,
+      "strict_replay_admissible": false
+    }
+  ],
+  "gameweek": 8,
+  "pack_id": "enhanced-input:benchmark-v0:2025-26:gw08:manager-neutral",
+  "safeguards": {
+    "canonical_artifacts_mutated": false,
+    "hidden_outcome_payload_read": false,
+    "retrospective_evidence_strictly_admissible": false,
+    "silent_defaults_allowed": false,
+    "strict_admission_requires_available_before_cutoff": true
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "strict_available_families": [
+    "official_fpl_state",
+    "team_strength"
+  ],
+  "unavailable_families": [
+    "promoted_transfer_context",
+    "player_ratings",
+    "set_piece_roles"
+  ]
+}
