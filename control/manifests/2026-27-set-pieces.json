@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "source_id": "fpl-official-endpoints",
+  "source_authority": "canonical",
+  "capture_mode": "immutable_bootstrap_snapshot",
+  "roles": [
+    "penalty",
+    "direct_free_kick",
+    "corner_or_indirect_free_kick"
+  ],
+  "identity_keys": [
+    "official_player_id",
+    "official_team_id"
+  ],
+  "expiry_hours": 192,
+  "supersession": "latest_admissible_whole_team_role_group",
+  "current_launch_assessment": {
+    "capture_stamp": "20260727T100527Z",
+    "teams": 20,
+    "penalty_candidates": 64,
+    "direct_free_kick_candidates": 60,
+    "corner_or_indirect_candidates": 71,
+    "duplicate_team_rank_conflicts": 0
+  },
+  "forecast_policy": {
+    "status": "shadow_only",
+    "no_active_roles": "byte_identical_baseline",
+    "conflicted_group": "exclude_and_report",
+    "weights": "not_promoted_by_this_manifest"
+  },
+  "account_writes": false
+}

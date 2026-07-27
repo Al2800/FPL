@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "primary_source": {
+    "source_id": "fpl-official-endpoints",
+    "endpoint": "bootstrap-static",
+    "fields": {
+      "penalty": {
+        "order": "penalties_order",
+        "text": "penalties_text"
+      },
+      "direct_free_kick": {
+        "order": "direct_freekicks_order",
+        "text": "direct_freekicks_text"
+      },
+      "corner_or_indirect_free_kick": {
+        "order": "corners_and_indirect_freekicks_order",
+        "text": "corners_and_indirect_freekicks_text"
+      }
+    }
+  },
+  "manual_corroboration": {
+    "source_id": "fpl-official-rules-news",
+    "page": "Set-Piece Takers",
+    "automated_html_collection": false
+  },
+  "expiry_hours": 192,
+  "rank_confidence": {
+    "1": 0.95,
+    "2": 0.8,
+    "3": 0.65,
+    "4": 0.5,
+    "5": 0.4,
+    "6": 0.32,
+    "7": 0.28,
+    "8": 0.24,
+    "9": 0.22,
+    "10": 0.2
+  },
+  "replacement_boundary": "whole_team_role_group",
+  "conflict_policy": "exclude_conflicted_group_and_report",
+  "missing_policy": "empty_feature_delta_byte_identical_baseline",
+  "promotion_status": "shadow_only_pending_point_in_time_ablation"
+}
