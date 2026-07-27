@@ -33,7 +33,8 @@ be activated, and missing optional odds do not block official capture.
   operator documentation.
 - [x] (2026-07-27 09:27+01:00) Passed 23 focused, 92 forecasting/integration,
   8 registry and 505 full-suite tests, with clean diff hygiene.
-- [ ] Record the implementation in Beads, close the bead, commit and push.
+- [x] (2026-07-27 09:32+01:00) Recorded the implementation in Beads, closed
+  `FPL-dnr`, and committed and pushed the implementation as `a7ff610`.
 
 ## Surprises & Discoveries
 
@@ -197,3 +198,6 @@ degraded boundary.
 Revision note (2026-07-27): updated after implementation to record the
 off-season degraded-mode decision, policy-test discovery and complete
 validation evidence.
+
+Revision note (2026-07-27): finalized after closing `FPL-dnr` and pushing
+implementation commit `a7ff610` to `main`.
