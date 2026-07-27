@@ -348,6 +348,7 @@ def test_launch_freeze_classifies_promoted_and_transferred_and_refuses_late_free
         json.dumps(
             {
                 "promoted_team_ids": [1],
+                "new_player_codes": [1003],
                 "transferred_player_codes": [1002],
             }
         ),
@@ -377,7 +378,7 @@ def test_launch_freeze_classifies_promoted_and_transferred_and_refuses_late_free
     }
     assert classes[1001] == "promoted_team"
     assert classes[1002] == "transferred_player"
-    assert classes[1003] == "established"
+    assert classes[1003] == "new_to_fpl"
 
     with _client() as client, pytest.raises(
         LiveForecastCaptureError, match="before the GW1 deadline"

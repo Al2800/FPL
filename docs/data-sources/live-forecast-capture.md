@@ -8,21 +8,23 @@ Odds may enrich that state, but their absence cannot erase it.
 ## What is frozen
 
 Run `scripts.capture_fpl_live_shadow` before the GW1 deadline with
-`--freeze-launch` and an reviewed local launch-context file:
+`--freeze-launch` and a reviewed local launch-context file:
 
     .venv/Scripts/python.exe -m scripts.capture_fpl_live_shadow \
       --freeze-launch \
-      --launch-context control/inputs/2026-27-launch-context.json
+      --launch-context control/identities/2026-27-launch-context.json
 
-The context has two identity lists:
+The context has three identity lists:
 
     {
       "promoted_team_ids": [1, 2, 3],
+      "new_player_codes": [23456, 34567],
       "transferred_player_codes": [12345, 67890]
     }
 
 Team IDs and stable FPL player codes must exist in the same official bootstrap
 snapshot. Promoted-team players use a position/price prior with promoted-team
+shrinkage. Other new-to-FPL players use a position/price prior with new-signing
 shrinkage. Transferred players retain a stable-code performance prior but apply
 new-club minutes shrinkage. Other players use the stable-code prior and then the
 existing position/price fallback. The capture refuses to call this state

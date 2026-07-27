@@ -74,9 +74,10 @@ def _launch_context(
     *,
     teams: set[int],
     player_codes: set[int],
-) -> tuple[set[int], set[int], dict[str, Any]]:
+) -> tuple[set[int], set[int], set[int], dict[str, Any]]:
     context = deepcopy(dict(value or {}))
     promoted = {int(item) for item in context.get("promoted_team_ids", [])}
+    new_players = {int(item) for item in context.get("new_player_codes", [])}
     transferred = {int(item) for item in context.get("transferred_player_codes", [])}
     if not promoted <= teams:
         raise LiveForecastCaptureError("Launch context contains an unknown promoted team")
@@ -84,14 +85,18 @@ def _launch_context(
         raise LiveForecastCaptureError(
             "Launch context contains an unknown transferred player"
         )
-    return promoted, transferred, {
+    if not new_players <= player_codes:
+        raise LiveForecastCaptureError("Launch context contains an unknown new player")
+    return promoted, new_players, transferred, {
         "promoted_team_ids": sorted(promoted),
+        "new_player_codes": sorted(new_players),
         "transferred_player_codes": sorted(transferred),
         "classification_policy": (
-            "promoted_team_then_transferred_player_then_established"
+            "promoted_team_then_new_to_fpl_then_transferred_player_then_established"
         ),
         "fallback_policy": {
             "promoted_team": "position_price_prior_with_promoted_team_shrinkage",
+            "new_to_fpl": "position_price_prior_with_new_signing_shrinkage",
             "transferred_player": "stable_code_prior_with_new_club_minutes_shrinkage",
             "established": "stable_code_prior_then_position_price_fallback",
         },
@@ -190,7 +195,7 @@ def build_live_forecast_capture(
 
     raw_players = list(bootstrap.get("elements", []))
     player_codes = {int(source["code"]) for source in raw_players}
-    promoted, transferred, context = _launch_context(
+    promoted, new_players, transferred, context = _launch_context(
         launch_context, teams=team_ids, player_codes=player_codes
     )
     players: list[dict[str, Any]] = []
@@ -211,6 +216,8 @@ def build_live_forecast_capture(
         prior_class = (
             "promoted_team"
             if team_id in promoted
+            else "new_to_fpl"
+            if code in new_players
             else "transferred_player"
             if code in transferred
             else "established"
