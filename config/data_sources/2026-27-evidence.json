@@ -1,0 +1,78 @@
+{
+  "agent_gate": {
+    "challenger_required": true,
+    "fallback": "frozen_no_evidence_control",
+    "required_agent_status": "completed",
+    "required_challenger_verdict": "accept"
+  },
+  "conflict_policy": "exclude_pending_explicit_supersession",
+  "packet_limits": {
+    "maximum_claim_characters": 12000,
+    "maximum_claims": 12
+  },
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "sources": [
+    {
+      "admission_mode": "automated_snapshot",
+      "admitted": true,
+      "raw_content_retained": true,
+      "source_id": "fpl-official-endpoints"
+    },
+    {
+      "admission_mode": "manual_citation",
+      "admitted": true,
+      "raw_content_retained": false,
+      "source_id": "fpl-official-rules-news"
+    },
+    {
+      "admission_mode": "manual_citation",
+      "admitted": true,
+      "raw_content_retained": false,
+      "source_id": "official-club-communications"
+    },
+    {
+      "admission_mode": "manual_citation",
+      "admitted": true,
+      "raw_content_retained": false,
+      "source_id": "official-lineups-minutes"
+    }
+  ],
+  "thresholds": {
+    "minimum_claim_confidence": 0.55
+  },
+  "unregistered_analyst_or_blog_policy": "reject_until_source_registry_and_owner_approval",
+  "write_policy": "append_only_content_addressed_no_overwrite",
+  "automated_collection": {
+    "adapters": [
+      {
+        "endpoint": "/api/bootstrap-static/",
+        "source_id": "fpl-official-endpoints",
+        "status": "enabled"
+      },
+      {
+        "source_id": "official-club-communications",
+        "status": "disabled_pending_per_source_terms_and_supported_feed"
+      },
+      {
+        "source_id": "official-lineups-minutes",
+        "status": "disabled_pending_per_source_terms_and_supported_feed"
+      },
+      {
+        "source_id": "approved-analyst-or-blog",
+        "status": "disabled_pending_registry_entry_and_owner_approval"
+      }
+    ],
+    "checkpoint_schedule": [
+      "daily_preseason",
+      "T-48h",
+      "T-24h",
+      "T-8h",
+      "T-2h",
+      "final_pre_deadline"
+    ],
+    "default_availability_impact_points": 6.0,
+    "failure_policy": "record_gap_and_preserve_no_evidence_control",
+    "official_fpl_news_expiry_hours": 72
+  }
+}
