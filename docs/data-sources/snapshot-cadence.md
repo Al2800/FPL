@@ -9,7 +9,8 @@
 | When | Capture |
 |---|---|
 | Daily (morning UK) | `bootstrap-static`, `fixtures` |
-| T-48h / T-8h / T-2h relative to deadline | same, plus note in run metadata |
+| T-24h / T-8h / T-2h relative to deadline | same; optional approved market evidence uses the matching named slot |
+| Final pre-deadline | same, as late as operationally safe while remaining strictly before cutoff |
 | During matches (later phase) | `event/{gw}/live` |
 | After 09:00 UK Gameweek lock | bootstrap + live for final reconciliation |
 
@@ -22,3 +23,8 @@ Until a scheduler is installed, run the snapshotter manually at least once per d
 ## Launch verification note
 
 As of 21 July 2026 the public endpoints returned HTTP 200 in this environment. Re-check top-level `bootstrap-static` keys and player fields (`chance_of_playing_*`, `ep_next`, `news`, defensive contribution fields) after each FPL schema reset; record findings under `docs/data-sources/`.
+
+Freeze the launch catalogue exactly once before the GW1 deadline using
+`scripts.capture_fpl_live_shadow --freeze-launch`. A conflicting rerun at the
+same timestamp is refused. The four market slots remain explicit degraded
+features until a live provider has separate terms and cost approval.

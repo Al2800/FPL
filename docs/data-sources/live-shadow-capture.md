@@ -23,7 +23,12 @@ shape. Existing files may only be reused when their bytes are identical. The
 capture summary records endpoint manifest identities and refuses a conflicting
 overwrite at the same observation time.
 
-The command returns zero only when every configured endpoint succeeds. A partial
+The command also writes a self-hashed `forecast-input-capture.json` containing
+the official launch catalogue, cold-start classifications, market-slot status
+and the live-faithful forecast interface. See
+`docs/data-sources/live-forecast-capture.md`.
+
+The command returns zero only when every configured official endpoint succeeds. A partial
 HTTP or transport failure is still persisted with structured evidence and returns
 one so schedulers can alert without discarding the successful endpoint captures.
 Registry refusal or an immutable-path conflict returns two.
@@ -31,7 +36,7 @@ Registry refusal or an immutable-path conflict returns two.
 ## Scheduling boundary
 
 The command is safe for a read-only scheduler. Recommended in-season cadence is
-daily plus T-48h, T-8h and T-2h before a deadline. Scheduling itself remains an
+daily plus T-24h, T-8h, T-2h and a final safe pre-deadline capture. Scheduling itself remains an
 operator decision; overlapping runs should use distinct seconds-resolution
 observation times. No credentials or browser profile should be attached.
 

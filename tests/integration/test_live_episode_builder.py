@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import datetime
+import hashlib
 import json
 from pathlib import Path
 
@@ -13,6 +14,12 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 from scripts.build_live_episode import main as build_cli_main
 from scripts.capture_fpl_live_shadow import capture_live_shadow
+from src.forecasting.live_capture import (
+    LiveForecastCaptureError,
+    artifact_hash as live_capture_hash,
+    build_live_forecast_capture,
+)
+from src.ingestion.registry import load_registry
 from src.orchestration.episode_builder import LiveEpisodeError, build_live_episode
 from src.orchestration.manager_state import ManagerStateError
 from src.scoring.rules_activation import RulesetActivationError
@@ -218,6 +225,164 @@ def test_complete_capture_and_manual_state_build_schema_valid_episode(tmp_path: 
         datetime.fromisoformat(row["available_at"].replace("Z", "+00:00")) <= cutoff
         for row in manifest["observed"]["source_artifacts"]
     )
+
+
+def test_live_capture_freezes_launch_state_and_records_missing_market_degradation(
+    tmp_path: Path,
+):
+    capture = _capture(tmp_path)
+    summary = json.loads(capture.read_text())
+    ref = summary["forecast_input_capture"]
+    artifact = json.loads((capture.parent / ref["body_file"]).read_text())
+
+    assert artifact["content_sha256"] == live_capture_hash(artifact)
+    assert ref["content_sha256"] == artifact["content_sha256"]
+    assert ref["status"] == "degraded"
+    assert artifact["official_launch"]["players"][0] == {
+        "availability": {
+            "chance_of_playing_next_round": None,
+            "chance_of_playing_this_round": None,
+            "news": "",
+            "news_added": None,
+            "status": "a",
+        },
+        "available_at": OBSERVED,
+        "cold_start_class": "established",
+        "fpl_code": 1001,
+        "launch_price": 4.5,
+        "observed_at": OBSERVED,
+        "player_id": 1,
+        "position": "GKP",
+        "source_sha256": summary["endpoints"][0]["content_hash_sha256"],
+        "team_id": 1,
+        "web_name": "Player 1",
+    }
+    assert artifact["market_evidence"]["required_slots"] == [
+        "T-24h",
+        "T-8h",
+        "T-2h",
+        "final",
+    ]
+    assert {row["slot"] for row in artifact["degraded_features"]} == {
+        "T-24h",
+        "T-8h",
+        "T-2h",
+        "final",
+    }
+    assert artifact["feature_contract"]["forecast_interface"] == "live-faithful-v1"
+
+
+def test_launch_freeze_classifies_promoted_and_transferred_and_refuses_late_freeze(
+    tmp_path: Path,
+):
+    context = tmp_path / "launch-context.json"
+    context.write_text(
+        json.dumps(
+            {
+                "promoted_team_ids": [1],
+                "transferred_player_codes": [1002],
+            }
+        ),
+        encoding="utf-8",
+    )
+    with _client() as client:
+        summary = capture_live_shadow(
+            out_dir=tmp_path / "early",
+            base_url="https://fantasy.premierleague.com",
+            observed_at=OBSERVED,
+            launch_context_path=context,
+            freeze_launch=True,
+            client=client,
+        )
+    artifact = json.loads(
+        (
+            tmp_path
+            / "early"
+            / OBSERVED.replace(":", "").replace("-", "")
+            / summary["forecast_input_capture"]["body_file"]
+        ).read_text()
+    )
+    assert artifact["official_launch"]["status"] == "frozen"
+    classes = {
+        row["fpl_code"]: row["cold_start_class"]
+        for row in artifact["official_launch"]["players"]
+    }
+    assert classes[1001] == "promoted_team"
+    assert classes[1002] == "transferred_player"
+    assert classes[1003] == "established"
+
+    with _client() as client, pytest.raises(
+        LiveForecastCaptureError, match="before the GW1 deadline"
+    ):
+        capture_live_shadow(
+            out_dir=tmp_path / "late",
+            base_url="https://fantasy.premierleague.com",
+            observed_at=DEADLINE,
+            decision_cutoff="2025-08-15T11:00:00Z",
+            launch_context_path=context,
+            freeze_launch=True,
+            client=client,
+        )
+
+
+def test_market_evidence_requires_approval_hash_and_strict_pre_cutoff_time():
+    registry = load_registry()
+    registry["sources"].append(
+        {
+            "source_id": "fixture-live-odds",
+            "enabled": True,
+            "activation_approval": {"terms": "approved", "cost": "approved"},
+        }
+    )
+    payload = {"markets": [{"fixture_id": 1, "home_win": 0.5}]}
+    snapshot = {
+        "source_id": "fixture-live-odds",
+        "slot": "T-2h",
+        "observed_at": "2025-08-14T08:00:00Z",
+        "available_at": "2025-08-14T08:01:00Z",
+        "payload": payload,
+        "source_sha256": hashlib.sha256(
+            json.dumps(
+                payload, sort_keys=True, separators=(",", ":")
+            ).encode()
+        ).hexdigest(),
+    }
+    bootstrap_hash = "a" * 64
+    artifact = build_live_forecast_capture(
+        bootstrap=_bootstrap(),
+        bootstrap_manifest={"content_hash_sha256": bootstrap_hash},
+        observed_at=OBSERVED,
+        decision_cutoff=CUTOFF,
+        launch_context=None,
+        market_snapshots=[snapshot],
+        source_registry=registry,
+        freeze_launch=False,
+    )
+    assert artifact["market_evidence"]["snapshots"][0]["slot"] == "T-2h"
+    assert "T-2h" not in {
+        row["slot"]
+        for row in artifact["degraded_features"]
+        if row["reason"] == "no_approved_pre_cutoff_snapshot"
+    }
+
+    late = deepcopy(snapshot)
+    late["available_at"] = CUTOFF
+    disabled = deepcopy(snapshot)
+    disabled["source_id"] = "betfair-historical"
+    rejected = build_live_forecast_capture(
+        bootstrap=_bootstrap(),
+        bootstrap_manifest={"content_hash_sha256": bootstrap_hash},
+        observed_at=OBSERVED,
+        decision_cutoff=CUTOFF,
+        launch_context=None,
+        market_snapshots=[late, disabled],
+        source_registry=registry,
+        freeze_launch=False,
+    )
+    assert rejected["market_evidence"]["snapshots"] == []
+    reasons = [row["reason"] for row in rejected["market_evidence"]["rejected"]]
+    assert any("strictly before cutoff" in reason for reason in reasons)
+    assert any("disabled" in reason for reason in reasons)
 
 
 def test_pending_outcome_contains_no_future_values_and_is_reference_only(tmp_path: Path):

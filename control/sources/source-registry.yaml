@@ -2,8 +2,8 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.3.0"
-updated_at: "2026-07-22"
+registry_version: "0.4.0"
+updated_at: "2026-07-27"
 
 sources:
   - source_id: fpl-official-endpoints
@@ -257,6 +257,35 @@ sources:
       account access and reuse terms still require owner review.
       Alternative: football-data closing odds as a labelled non-point-in-time
       comparator; the pre-deadline market baseline remains a gap.
+
+  - source_id: live-odds-candidate
+    owner: to_be_selected
+    source_type: api
+    authority: secondary
+    terms_url: pending_vendor_selection
+    licence_status: unknown
+    allowed_use: unresolved
+    authentication: pending
+    collection_method: api
+    expected_cadence: "T-24h_T-8h_T-2h_final_pre_deadline"
+    max_staleness: "slot-specific"
+    failure_policy: degrade
+    retention_policy: none_until_approved
+    attribution: "Pending provider"
+    enabled: false
+    review_date: "2026-08-15"
+    activation_approval:
+      terms: pending
+      cost: pending
+      owner: pending
+      reviewed_at: null
+    notes: >
+      Placeholder for a timestamped live market feed. It cannot be collected or
+      admitted until the provider is selected and terms, cost, credentials,
+      rate limits and local retention are explicitly approved. Missing snapshots
+      degrade the relevant capture slot and never block official FPL inputs.
+      Alternative: run the official structured forecast with timestamped odds
+      recorded as an explicit evidence gap.
 
   - source_id: clubelo
     owner: ClubElo / Lars Rønn Olsen
