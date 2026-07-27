@@ -5,6 +5,7 @@ from __future__ import annotations
 from bisect import insort
 from collections import Counter
 from collections.abc import Mapping, Sequence
+from copy import deepcopy
 from typing import Any
 
 from src.optimisation.io import fingerprint
@@ -44,6 +45,57 @@ def _objective(
     if active_chip and "bench_boost" in active_chip:
         points += sum(float(p["expected_points"]) for p in lineup["bench"])
     return round(points - float(hit_cost), 4)
+
+
+def apply_transfer_hit_gate(
+    solver_output: Mapping[str, Any],
+    gate_artifact: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Return a copied solver output whose selection passed the sealed hit gate."""
+
+    from src.evaluation.transfer_counterfactual import (
+        validate_transfer_counterfactual_ladder,
+    )
+
+    base_input = SolverInput.from_dict(dict(gate_artifact["solver_input"]))
+    validate_transfer_counterfactual_ladder(
+        gate_artifact,
+        solver_input=base_input,
+        solver_output=solver_output,
+    )
+    result = deepcopy(dict(solver_output))
+    result["ungated_selected"] = deepcopy(result.get("selected"))
+    result["selected"] = deepcopy(
+        dict(gate_artifact["selected"]["candidate"])
+    )
+    if isinstance(result.get("plans"), dict):
+        result["plans"]["highest_ev"] = deepcopy(result["selected"])
+    result["transfer_hit_gate"] = {
+        "policy_id": str(gate_artifact["policy_id"]),
+        "artifact_sha256": str(gate_artifact["content_sha256"]),
+        "selected_candidate_id": str(
+            gate_artifact["selected"]["candidate_id"]
+        ),
+        "active_chip": gate_artifact["selected"].get("active_chip"),
+        "risk_premium_points_per_paid_transfer": float(
+            gate_artifact["verdict"][
+                "risk_premium_points_per_paid_transfer"
+            ]
+        ),
+        "forecast_uncertainty_points_per_paid_transfer": float(
+            gate_artifact["verdict"][
+                "forecast_uncertainty_points_per_paid_transfer"
+            ]
+        ),
+    }
+    result["output_fingerprint"] = fingerprint(
+        {
+            key: result[key]
+            for key in ("solver_version", "selected", "plans")
+            if key in result
+        }
+    )
+    return result
 
 
 def _evaluate_squad(

@@ -3,7 +3,7 @@
   "beam_width": 6,
   "branch_width": 5,
   "buy_pool_per_pos": 6,
-  "content_sha256": "e3fb07d357a97c56e7510869972f14901028542045dc158d8dd4af212b01b8fd",
+  "content_sha256": "fd711b362ee8ddd12f9fff43e34aa63b4060c092c8858cfc1cf07df27ab23190",
   "discount_factor": 0.9,
   "fallback": "one_week_solver_without_transfer_option_proxy",
   "fixture_projection": {
@@ -17,6 +17,18 @@
     "model": "frozen_player_rate_fdr_v1"
   },
   "horizon_gameweeks": 4,
+  "hit_gate": {
+    "forecast_uncertainty_points_per_paid_transfer": 0.75,
+    "nominal_hit_cost_per_paid_transfer": 4,
+    "require_eligible_chip_alternatives": true,
+    "required_transfer_counts": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "risk_premium_points_per_paid_transfer": 1.5
+  },
   "max_expanded_nodes": 20,
   "max_transfers_per_week": 2,
   "policy_version": "transfer-horizon-v1",

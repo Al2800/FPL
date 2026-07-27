@@ -257,6 +257,17 @@ def _project_future_values(
                 plan.get("search", {}).get("global_optimality_guaranteed", False)
             ),
             "discounted_future_value": value,
+            "future_weekly_net_values": (
+                [
+                    float(plan["value"]["immediate"]),
+                    *[
+                        float(row["candidate"]["objective"])
+                        for row in plan["advisory_trajectory"]
+                    ],
+                ]
+                if plan["status"] == "complete"
+                else [float(plan["value"]["immediate"])]
+            ),
         }
     return values, lineage
 
