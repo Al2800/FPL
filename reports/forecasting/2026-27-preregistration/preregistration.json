@@ -1,0 +1,173 @@
+{
+  "baseline": {
+    "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+    "model_id": "live-faithful-v1.feature-complete",
+    "policy_arm": "forecast_optimizer"
+  },
+  "candidate_families": {
+    "odds": {
+      "allowed_source_ids": [
+        "live-odds-candidate"
+      ],
+      "arm_id": "forecast_optimizer_plus_odds",
+      "family": "odds",
+      "missing_input": "degrade_to_shared_baseline",
+      "mode": "shadow_only",
+      "required_timestamps": [
+        "observed_at",
+        "available_at"
+      ],
+      "required_capture_slots": [
+        "T-24h",
+        "T-8h",
+        "T-2h",
+        "final"
+      ]
+    },
+    "player_ratings": {
+      "allowed_source_ids": [
+        "statsbomb-open",
+        "commercial-epl-event-data",
+        "fbref"
+      ],
+      "arm_id": "forecast_optimizer_plus_player_ratings",
+      "family": "player_ratings",
+      "missing_input": "degrade_to_shared_baseline",
+      "mode": "shadow_only",
+      "required_timestamps": [
+        "observed_at",
+        "available_at"
+      ]
+    },
+    "set_piece_role": {
+      "allowed_source_ids": [
+        "fpl-official-endpoints",
+        "official-club-communications",
+        "statsbomb-open",
+        "commercial-epl-event-data"
+      ],
+      "arm_id": "forecast_optimizer_plus_set_piece_role",
+      "family": "set_piece_role",
+      "missing_input": "degrade_to_shared_baseline",
+      "mode": "shadow_only",
+      "required_timestamps": [
+        "published_at",
+        "observed_at",
+        "available_at"
+      ]
+    },
+    "team_strength": {
+      "allowed_source_ids": [
+        "fpl-official-endpoints",
+        "football-data-co-uk",
+        "clubelo"
+      ],
+      "arm_id": "forecast_optimizer_plus_team_strength",
+      "family": "team_strength",
+      "missing_input": "degrade_to_shared_baseline",
+      "mode": "shadow_only",
+      "required_timestamps": [
+        "observed_at",
+        "available_at"
+      ]
+    }
+  },
+  "content_sha256": "e2d514efd774ca22f30a9cf701a453563d51d82f65188032ed66a8176388e19f",
+  "evidence_policy": {
+    "agent_arms_receive_identical_structured_engine_output": true,
+    "historical_2025_26_cases": "exploratory_production_ineligible",
+    "live_no_evidence_shadow": "continuously_frozen",
+    "unstructured_adjustments": "bounded_cited_and_completion_gated"
+  },
+  "frozen_at": "2026-07-27T09:20:00Z",
+  "exploratory_historical_folds": [
+    {
+      "fold_id": "exploratory-2025-26",
+      "test_end_gameweek": 38,
+      "test_season": "2025-26",
+      "test_start_gameweek": 1,
+      "train_end_gameweek": 38,
+      "train_end_season": "2024-25"
+    }
+  ],
+  "live_evaluation_season": "2026-27",
+  "metric_contract": {
+    "causal_comparisons": [
+      "candidate_family_minus_shared_baseline",
+      "evidence_actual_minus_evidence_state_no_evidence",
+      "evidence_state_no_evidence_minus_deterministic_control"
+    ],
+    "forecast": [
+      "proper_score",
+      "calibration_error",
+      "start_brier",
+      "expected_minutes_mae"
+    ],
+    "operations": [
+      "latency_mean",
+      "latency_p95",
+      "degradation_rate",
+      "validation_failures"
+    ],
+    "outcome": [
+      "legal_decision_regret",
+      "net_points",
+      "paired_uncertainty"
+    ]
+  },
+  "preregistration_id": "fpl-live-2026-27-calibration-ablation-v1",
+  "promotion_authority": "owner_review_required_no_automatic_live_activation",
+  "promotion_thresholds": {
+    "max_calibration_error_delta": 0.01,
+    "max_degradation_rate": 0.05,
+    "max_legal_regret_delta": -0.01,
+    "max_p95_latency_ms": 30000,
+    "max_proper_score_delta": -0.0001,
+    "min_episodes_per_fold": 4,
+    "min_locked_folds": 3
+  },
+  "rolling_origin_folds": [
+    {
+      "fold_id": "live-gw01-06",
+      "test_end_gameweek": 6,
+      "test_season": "2026-27",
+      "test_start_gameweek": 1,
+      "train_end_gameweek": 38,
+      "train_end_season": "2025-26"
+    },
+    {
+      "fold_id": "live-gw07-12",
+      "test_end_gameweek": 12,
+      "test_season": "2026-27",
+      "test_start_gameweek": 7,
+      "train_end_gameweek": 6,
+      "train_end_season": "2026-27"
+    },
+    {
+      "fold_id": "live-gw13-19",
+      "test_end_gameweek": 19,
+      "test_season": "2026-27",
+      "test_start_gameweek": 13,
+      "train_end_gameweek": 12,
+      "train_end_season": "2026-27"
+    },
+    {
+      "fold_id": "live-gw20-28",
+      "test_end_gameweek": 28,
+      "test_season": "2026-27",
+      "test_start_gameweek": 20,
+      "train_end_gameweek": 19,
+      "train_end_season": "2026-27"
+    },
+    {
+      "fold_id": "live-gw29-38",
+      "test_end_gameweek": 38,
+      "test_season": "2026-27",
+      "test_start_gameweek": 29,
+      "train_end_gameweek": 28,
+      "train_end_season": "2026-27"
+    }
+  ],
+  "schema_version": "1.0",
+  "status": "frozen_before_live_outcomes"
+}

@@ -4,7 +4,7 @@
     "required_status": "completed",
     "requires_validated_output": true
   },
-  "content_sha256": "acf1acd035820949203bbd3e5c44bc8eea203479a7121b952ec070de5045d6f1",
+  "content_sha256": "23bc92f58ba6b18d34a1fda4ff0476648028042ee2baf3ffeb4d3d636e61a71c",
   "executable_policy": {
     "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
     "policy_id": "live-faithful-v1-control"
@@ -33,6 +33,44 @@
     "must_not_delay_control_deadline",
     "must_not_train_on_live_outcomes_before_freeze"
   ],
+  "preregistration": {
+    "artifact": "reports/forecasting/2026-27-preregistration/preregistration.json",
+    "content_sha256": "e2d514efd774ca22f30a9cf701a453563d51d82f65188032ed66a8176388e19f",
+    "frozen_at": "2026-07-27T09:20:00Z",
+    "historical_2025_26": "exploratory_production_ineligible",
+    "optional_family_arms": [
+      "forecast_optimizer_plus_odds",
+      "forecast_optimizer_plus_team_strength",
+      "forecast_optimizer_plus_set_piece_role",
+      "forecast_optimizer_plus_player_ratings"
+    ],
+    "promotion_authority": "owner_review_required"
+  },
+  "reporting_contract": {
+    "causal_effects": [
+      "candidate_family_minus_shared_baseline",
+      "current_evidence",
+      "inherited_state",
+      "total_evidence_trajectory"
+    ],
+    "forecast_metrics": [
+      "proper_score",
+      "calibration_error",
+      "start_brier",
+      "expected_minutes_mae"
+    ],
+    "operational_metrics": [
+      "latency_mean",
+      "latency_p95",
+      "degradation_rate",
+      "validation_failures"
+    ],
+    "outcome_metrics": [
+      "legal_decision_regret",
+      "net_points",
+      "paired_uncertainty"
+    ]
+  },
   "promotion_rule": {
     "disqualifiers": [
       "failed_locked_gate",

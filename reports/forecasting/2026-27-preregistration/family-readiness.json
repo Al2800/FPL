@@ -1,0 +1,46 @@
+{
+  "appearance_baseline": {
+    "content_sha256": "f93b84b4c3f38e4533baed2dc9c204c804645bea40d21449e5f2efaabc0a12be",
+    "expected_minutes_mae": 17.31488341006438,
+    "player_gameweeks": 29338,
+    "production_eligible": false,
+    "start_brier": 0.11163719704763052,
+    "start_expected_calibration_error": 0.03937380882048455,
+    "status": "2025_26_exploratory_diagnostic"
+  },
+  "content_sha256": "c35772b67c7a2cb3765692798f9344b9193a4e8274b71583ee7a896b64fa660c",
+  "families": {
+    "odds": {
+      "historical_finding": "team_context_report_degraded_without_odds_in_37_gameweeks",
+      "live_requirement": "registered predeadline quotes at T-24h, T-8h, T-2h and final",
+      "promotion_eligible": false,
+      "reason": "no_complete_point_in_time_live_ablation_rows",
+      "status": "awaiting_live_shadow_rows"
+    },
+    "player_ratings": {
+      "historical_finding": "no_isolated_point_in_time_player_rating_ablation",
+      "live_requirement": "immutable predeadline rating snapshot and fixed transformation",
+      "promotion_eligible": false,
+      "reason": "no_complete_point_in_time_live_ablation_rows",
+      "status": "awaiting_live_shadow_rows"
+    },
+    "set_piece_role": {
+      "historical_finding": "no_isolated_point_in_time_set_piece_role_ablation",
+      "live_requirement": "immutable role observation with expiry and supersession",
+      "promotion_eligible": false,
+      "reason": "no_complete_point_in_time_live_ablation_rows",
+      "status": "awaiting_live_shadow_rows"
+    },
+    "team_strength": {
+      "historical_finding": "existing combined team_context challenger failed every 2025_26 promotion check",
+      "historical_report_sha256": "6ffb9daa1a5613953f1f4ddef6198a0929747efcb79f0485f5d54658e17648a8",
+      "live_requirement": "isolated team-strength arm on the frozen structured baseline",
+      "promotion_eligible": false,
+      "reason": "historical result is nonisolated and production-ineligible",
+      "status": "awaiting_isolated_live_shadow_rows"
+    }
+  },
+  "preregistration_sha256": "e2d514efd774ca22f30a9cf701a453563d51d82f65188032ed66a8176388e19f",
+  "schema_version": "1.0",
+  "status": "preseason_no_optional_family_promoted"
+}

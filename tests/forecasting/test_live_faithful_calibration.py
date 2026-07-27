@@ -4,8 +4,14 @@ from __future__ import annotations
 
 import pandas as pd
 
+from src.evaluation.calibration import (
+    binary_calibration_summary,
+    minutes_calibration_summary,
+)
+from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.calibrate_live_faithful import (
     ForecastParameters,
+    appearance_calibration_report,
     build_calibration_cases,
     evaluate_cases,
     predictions,
@@ -123,3 +129,53 @@ def test_zero_component_weights_reproduce_component_free_ablation() -> None:
     assert baseline["live_faithful_expected_points"].tolist() == ablation[
         "live_faithful_expected_points"
     ].tolist()
+
+
+def test_start_and_minutes_calibration_report_proper_scores_and_reliability() -> None:
+    starts = binary_calibration_summary([0.0, 0.25, 0.75, 1.0], [0, 0, 1, 1], bins=4)
+    assert starts["brier_score"] == 0.03125
+    assert starts["expected_calibration_error"] == 0.125
+    assert sum(row["n"] for row in starts["reliability"]) == 4
+
+    minutes = minutes_calibration_summary([0, 30, 60, 90], [0, 20, 70, 90], bins=3)
+    assert minutes["mean_absolute_error"] == 5
+    assert minutes["mean_squared_error"] == 50
+    assert sum(row["n"] for row in minutes["reliability"]) == 4
+
+
+def test_2025_26_appearance_report_is_hashed_and_never_promotion_eligible() -> None:
+    cases = build_calibration_cases(
+        prior_rows=_rows([5] * 10),
+        target_rows=_rows([4, 6, 2, 8, 3, 5]),
+        prior_season="2024-25",
+        target_season="2025-26",
+    )
+    report = appearance_calibration_report(
+        cases,
+        ForecastParameters(1350, 2, 10, recent_minutes_weight=0.5),
+        spans=[
+            {
+                "span_id": "locked-gw01-03",
+                "start_gameweek": 1,
+                "end_gameweek": 3,
+                "locked": True,
+            },
+            {
+                "span_id": "locked-gw04-06",
+                "start_gameweek": 4,
+                "end_gameweek": 6,
+                "locked": True,
+            },
+        ],
+        evaluation_season="2025-26",
+        status="exploratory_historical",
+        bins=4,
+    )
+    assert report["content_sha256"] == artifact_hash(report)
+    assert report["promotion_eligible"] is False
+    assert report["promotion_blockers"] == [
+        "historical_2025_26_is_exploratory_only"
+    ]
+    assert "brier_score" in report["all"]["start_probability"]
+    assert "mean_absolute_error" in report["all"]["expected_minutes"]
+    assert len(report["locked_spans"]) == 2

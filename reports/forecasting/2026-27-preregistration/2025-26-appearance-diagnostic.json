@@ -1,0 +1,1186 @@
+{
+  "all": {
+    "expected_minutes": {
+      "bias_actual_minus_predicted": -4.484835902275876,
+      "correlation": 0.7819042974700032,
+      "mean_absolute_calibration_gap": 4.520934900218871,
+      "mean_absolute_error": 17.31488341006438,
+      "mean_squared_error": 586.3321373328845,
+      "n": 29338,
+      "reliability": [
+        {
+          "bin": 0,
+          "mean_actual": 3.478682514339779,
+          "mean_predicted": 9.241604139246208,
+          "n": 16911
+        },
+        {
+          "bin": 1,
+          "mean_actual": 27.915441176470587,
+          "mean_predicted": 31.274528963831916,
+          "n": 3264
+        },
+        {
+          "bin": 2,
+          "mean_actual": 43.883469843633655,
+          "mean_predicted": 48.338313391924814,
+          "n": 2686
+        },
+        {
+          "bin": 3,
+          "mean_actual": 65.10555923229649,
+          "mean_predicted": 66.63779932756265,
+          "n": 3022
+        },
+        {
+          "bin": 4,
+          "mean_actual": 80.2919904363419,
+          "mean_predicted": 82.34110303535589,
+          "n": 3346
+        },
+        {
+          "bin": 5,
+          "mean_actual": 101.36842105263158,
+          "mean_predicted": 102.12064188768346,
+          "n": 19
+        },
+        {
+          "bin": 6,
+          "mean_actual": 143.6153846153846,
+          "mean_predicted": 119.26496489821,
+          "n": 13
+        },
+        {
+          "bin": 7,
+          "mean_actual": 142.5,
+          "mean_predicted": 135.4006418499157,
+          "n": 30
+        },
+        {
+          "bin": 8,
+          "mean_actual": 148.15384615384616,
+          "mean_predicted": 154.7853984269861,
+          "n": 26
+        },
+        {
+          "bin": 9,
+          "mean_actual": 170.1904761904762,
+          "mean_predicted": 172.36376738964935,
+          "n": 21
+        }
+      ],
+      "root_mean_square_error": 24.214296135400765
+    },
+    "gameweeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "start_probability": {
+      "brier_score": 0.11163719704763052,
+      "expected_calibration_error": 0.03937380882048455,
+      "log_loss": 0.35375036473848365,
+      "n": 29338,
+      "reliability": [
+        {
+          "absolute_gap": 0.03147460299219849,
+          "bin": 0,
+          "lower": 0.0,
+          "mean_actual": 0.014032946918852958,
+          "mean_predicted": 0.045507549911051444,
+          "n": 11473,
+          "upper": 0.1
+        },
+        {
+          "absolute_gap": 0.04221780543259529,
+          "bin": 1,
+          "lower": 0.1,
+          "mean_actual": 0.10057039927949565,
+          "mean_predicted": 0.14278820471209094,
+          "n": 3331,
+          "upper": 0.2
+        },
+        {
+          "absolute_gap": 0.034518300686275705,
+          "bin": 2,
+          "lower": 0.2,
+          "mean_actual": 0.21216041397153945,
+          "mean_predicted": 0.24667871465781516,
+          "n": 2319,
+          "upper": 0.3
+        },
+        {
+          "absolute_gap": 0.0296503732838187,
+          "bin": 3,
+          "lower": 0.3,
+          "mean_actual": 0.31530139103554866,
+          "mean_predicted": 0.34495176431936736,
+          "n": 1941,
+          "upper": 0.4
+        },
+        {
+          "absolute_gap": 0.0672683782123431,
+          "bin": 4,
+          "lower": 0.4,
+          "mean_actual": 0.38092979127134724,
+          "mean_predicted": 0.44819816948369035,
+          "n": 2108,
+          "upper": 0.5
+        },
+        {
+          "absolute_gap": 0.05451533082726273,
+          "bin": 5,
+          "lower": 0.5,
+          "mean_actual": 0.49679258731290094,
+          "mean_predicted": 0.5513079181401637,
+          "n": 1403,
+          "upper": 0.6
+        },
+        {
+          "absolute_gap": 0.04589177530328015,
+          "bin": 6,
+          "lower": 0.6,
+          "mean_actual": 0.6033670033670033,
+          "mean_predicted": 0.6492587786702835,
+          "n": 1485,
+          "upper": 0.7
+        },
+        {
+          "absolute_gap": 0.04665889840745774,
+          "bin": 7,
+          "lower": 0.7,
+          "mean_actual": 0.7032418952618454,
+          "mean_predicted": 0.7499007936693032,
+          "n": 1604,
+          "upper": 0.8
+        },
+        {
+          "absolute_gap": 0.04038757050152153,
+          "bin": 8,
+          "lower": 0.8,
+          "mean_actual": 0.8095768374164811,
+          "mean_predicted": 0.8499644079180027,
+          "n": 1796,
+          "upper": 0.9
+        },
+        {
+          "absolute_gap": 0.04366393658179313,
+          "bin": 9,
+          "lower": 0.9,
+          "mean_actual": 0.9041533546325878,
+          "mean_predicted": 0.947817291214381,
+          "n": 1878,
+          "upper": 1.0
+        }
+      ]
+    }
+  },
+  "content_sha256": "f93b84b4c3f38e4533baed2dc9c204c804645bea40d21449e5f2efaabc0a12be",
+  "evaluation_season": "2025-26",
+  "fit_policy": "fixed_parameters_no_target_refit",
+  "locked_spans": [
+    {
+      "end_gameweek": 6,
+      "locked": true,
+      "metrics": {
+        "expected_minutes": {
+          "bias_actual_minus_predicted": -7.819467828357771,
+          "correlation": 0.7241106831216619,
+          "mean_absolute_calibration_gap": 7.819467828357772,
+          "mean_absolute_error": 21.243723592402976,
+          "mean_squared_error": 743.2989859579613,
+          "n": 4330,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 1.9761444229529337,
+              "mean_predicted": 10.964922414553838,
+              "n": 1551
+            },
+            {
+              "bin": 1,
+              "mean_actual": 12.827586206896552,
+              "mean_predicted": 17.387084059276102,
+              "n": 580
+            },
+            {
+              "bin": 2,
+              "mean_actual": 26.28643216080402,
+              "mean_predicted": 26.7858665085303,
+              "n": 199
+            },
+            {
+              "bin": 3,
+              "mean_actual": 23.986876640419947,
+              "mean_predicted": 36.661117312466594,
+              "n": 381
+            },
+            {
+              "bin": 4,
+              "mean_actual": 26.9609375,
+              "mean_predicted": 44.16693278590494,
+              "n": 384
+            },
+            {
+              "bin": 5,
+              "mean_actual": 43.71341463414634,
+              "mean_predicted": 51.95479391518133,
+              "n": 164
+            },
+            {
+              "bin": 6,
+              "mean_actual": 52.80769230769231,
+              "mean_predicted": 60.02464943660299,
+              "n": 182
+            },
+            {
+              "bin": 7,
+              "mean_actual": 57.37623762376238,
+              "mean_predicted": 68.82465130146613,
+              "n": 202
+            },
+            {
+              "bin": 8,
+              "mean_actual": 76.81491002570694,
+              "mean_predicted": 77.03416826374965,
+              "n": 389
+            },
+            {
+              "bin": 9,
+              "mean_actual": 82.36577181208054,
+              "mean_predicted": 84.62709241394279,
+              "n": 298
+            }
+          ],
+          "root_mean_square_error": 27.263510154746424
+        },
+        "gameweeks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "start_probability": {
+          "brier_score": 0.1305998602805195,
+          "expected_calibration_error": 0.1017998321633767,
+          "log_loss": 0.4235072126371715,
+          "n": 4330,
+          "reliability": [
+            {
+              "absolute_gap": 0.05829356775048551,
+              "bin": 0,
+              "lower": 0.0,
+              "mean_actual": 0.015384615384615385,
+              "mean_predicted": 0.0736781831351009,
+              "n": 130,
+              "upper": 0.1
+            },
+            {
+              "absolute_gap": 0.10399289332305486,
+              "bin": 1,
+              "lower": 0.1,
+              "mean_actual": 0.04397537379067722,
+              "mean_predicted": 0.1479682671137321,
+              "n": 1137,
+              "upper": 0.2
+            },
+            {
+              "absolute_gap": 0.16529761194112147,
+              "bin": 2,
+              "lower": 0.2,
+              "mean_actual": 0.07629427792915532,
+              "mean_predicted": 0.24159188987027677,
+              "n": 734,
+              "upper": 0.3
+            },
+            {
+              "absolute_gap": 0.12667600459942546,
+              "bin": 3,
+              "lower": 0.3,
+              "mean_actual": 0.2088888888888889,
+              "mean_predicted": 0.33556489348831436,
+              "n": 450,
+              "upper": 0.4
+            },
+            {
+              "absolute_gap": 0.19063531459020316,
+              "bin": 4,
+              "lower": 0.4,
+              "mean_actual": 0.25573192239858905,
+              "mean_predicted": 0.4463672369887922,
+              "n": 567,
+              "upper": 0.5
+            },
+            {
+              "absolute_gap": 0.08044237941204369,
+              "bin": 5,
+              "lower": 0.5,
+              "mean_actual": 0.47342995169082125,
+              "mean_predicted": 0.5538723311028649,
+              "n": 207,
+              "upper": 0.6
+            },
+            {
+              "absolute_gap": 0.014576238532158503,
+              "bin": 6,
+              "lower": 0.6,
+              "mean_actual": 0.6615384615384615,
+              "mean_predicted": 0.646962223006303,
+              "n": 260,
+              "upper": 0.7
+            },
+            {
+              "absolute_gap": 0.012179620775179534,
+              "bin": 7,
+              "lower": 0.7,
+              "mean_actual": 0.7391304347826086,
+              "mean_predicted": 0.7513100555577882,
+              "n": 299,
+              "upper": 0.8
+            },
+            {
+              "absolute_gap": 0.004978125561543312,
+              "bin": 8,
+              "lower": 0.8,
+              "mean_actual": 0.8526645768025078,
+              "mean_predicted": 0.8476864512409645,
+              "n": 319,
+              "upper": 0.9
+            },
+            {
+              "absolute_gap": 0.012692484237046275,
+              "bin": 9,
+              "lower": 0.9,
+              "mean_actual": 0.9251101321585903,
+              "mean_predicted": 0.9378026163956366,
+              "n": 227,
+              "upper": 1.0
+            }
+          ]
+        }
+      },
+      "span_id": "exploratory-gw01-06",
+      "start_gameweek": 1
+    },
+    {
+      "end_gameweek": 12,
+      "locked": true,
+      "metrics": {
+        "expected_minutes": {
+          "bias_actual_minus_predicted": -4.1162457737673375,
+          "correlation": 0.8236150541429743,
+          "mean_absolute_calibration_gap": 4.612278846828637,
+          "mean_absolute_error": 15.710249510466713,
+          "mean_squared_error": 479.49717682751714,
+          "n": 4488,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 1.7918118466898956,
+              "mean_predicted": 8.489951916651691,
+              "n": 2296
+            },
+            {
+              "bin": 1,
+              "mean_actual": 15.079772079772079,
+              "mean_predicted": 18.361348546814458,
+              "n": 351
+            },
+            {
+              "bin": 2,
+              "mean_actual": 24.367588932806324,
+              "mean_predicted": 26.665751099785673,
+              "n": 253
+            },
+            {
+              "bin": 3,
+              "mean_actual": 31.316666666666666,
+              "mean_predicted": 34.88031315971073,
+              "n": 180
+            },
+            {
+              "bin": 4,
+              "mean_actual": 40.201149425287355,
+              "mean_predicted": 44.10636061541448,
+              "n": 174
+            },
+            {
+              "bin": 5,
+              "mean_actual": 50.095238095238095,
+              "mean_predicted": 51.89817331662517,
+              "n": 126
+            },
+            {
+              "bin": 6,
+              "mean_actual": 62.21164021164021,
+              "mean_predicted": 60.42525635092207,
+              "n": 189
+            },
+            {
+              "bin": 7,
+              "mean_actual": 72.1864406779661,
+              "mean_predicted": 68.9005437869753,
+              "n": 236
+            },
+            {
+              "bin": 8,
+              "mean_actual": 75.82608695652173,
+              "mean_predicted": 77.19655173894638,
+              "n": 276
+            },
+            {
+              "bin": 9,
+              "mean_actual": 83.92874692874693,
+              "mean_predicted": 85.27574949909929,
+              "n": 407
+            }
+          ],
+          "root_mean_square_error": 21.897423976977684
+        },
+        "gameweeks": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "start_probability": {
+          "brier_score": 0.09509647386597982,
+          "expected_calibration_error": 0.046862811620906435,
+          "log_loss": 0.3195817535294327,
+          "n": 4488,
+          "reliability": [
+            {
+              "absolute_gap": 0.05987408303780802,
+              "bin": 0,
+              "lower": 0.0,
+              "mean_actual": 0.01340645947592931,
+              "mean_predicted": 0.07328054251373733,
+              "n": 1641,
+              "upper": 0.1
+            },
+            {
+              "absolute_gap": 0.07821973027852108,
+              "bin": 1,
+              "lower": 0.1,
+              "mean_actual": 0.050387596899224806,
+              "mean_predicted": 0.1286073271777459,
+              "n": 774,
+              "upper": 0.2
+            },
+            {
+              "absolute_gap": 0.0141502540064882,
+              "bin": 2,
+              "lower": 0.2,
+              "mean_actual": 0.23166023166023167,
+              "mean_predicted": 0.24581048566671987,
+              "n": 259,
+              "upper": 0.3
+            },
+            {
+              "absolute_gap": 0.04553346381368212,
+              "bin": 3,
+              "lower": 0.3,
+              "mean_actual": 0.30416666666666664,
+              "mean_predicted": 0.34970013048034876,
+              "n": 240,
+              "upper": 0.4
+            },
+            {
+              "absolute_gap": 0.06159778111786923,
+              "bin": 4,
+              "lower": 0.4,
+              "mean_actual": 0.391304347826087,
+              "mean_predicted": 0.4529021289439562,
+              "n": 253,
+              "upper": 0.5
+            },
+            {
+              "absolute_gap": 0.002753936388246947,
+              "bin": 5,
+              "lower": 0.5,
+              "mean_actual": 0.5550660792951542,
+              "mean_predicted": 0.5523121429069072,
+              "n": 227,
+              "upper": 0.6
+            },
+            {
+              "absolute_gap": 0.013033300701692174,
+              "bin": 6,
+              "lower": 0.6,
+              "mean_actual": 0.6355555555555555,
+              "mean_predicted": 0.6485888562572477,
+              "n": 225,
+              "upper": 0.7
+            },
+            {
+              "absolute_gap": 0.015459769483167074,
+              "bin": 7,
+              "lower": 0.7,
+              "mean_actual": 0.73224043715847,
+              "mean_predicted": 0.747700206641637,
+              "n": 183,
+              "upper": 0.8
+            },
+            {
+              "absolute_gap": 0.02703394379148516,
+              "bin": 8,
+              "lower": 0.8,
+              "mean_actual": 0.8848684210526315,
+              "mean_predicted": 0.8578344772611464,
+              "n": 304,
+              "upper": 0.9
+            },
+            {
+              "absolute_gap": 0.017650728749164624,
+              "bin": 9,
+              "lower": 0.9,
+              "mean_actual": 0.9293193717277487,
+              "mean_predicted": 0.9469701004769133,
+              "n": 382,
+              "upper": 1.0
+            }
+          ]
+        }
+      },
+      "span_id": "exploratory-gw07-12",
+      "start_gameweek": 7
+    },
+    {
+      "end_gameweek": 19,
+      "locked": true,
+      "metrics": {
+        "expected_minutes": {
+          "bias_actual_minus_predicted": -3.763291981844349,
+          "correlation": 0.7694216322383124,
+          "mean_absolute_calibration_gap": 4.556222394104835,
+          "mean_absolute_error": 16.949740725064885,
+          "mean_squared_error": 593.9212381403499,
+          "n": 5357,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 2.226475849731664,
+              "mean_predicted": 7.574951919321564,
+              "n": 2795
+            },
+            {
+              "bin": 1,
+              "mean_actual": 15.680851063829786,
+              "mean_predicted": 17.632354634664203,
+              "n": 376
+            },
+            {
+              "bin": 2,
+              "mean_actual": 30.906382978723403,
+              "mean_predicted": 26.621205591338825,
+              "n": 235
+            },
+            {
+              "bin": 3,
+              "mean_actual": 39.573839662447256,
+              "mean_predicted": 34.86140327761883,
+              "n": 237
+            },
+            {
+              "bin": 4,
+              "mean_actual": 39.1869918699187,
+              "mean_predicted": 43.19729966821989,
+              "n": 246
+            },
+            {
+              "bin": 5,
+              "mean_actual": 46.83710407239819,
+              "mean_predicted": 51.801664106732964,
+              "n": 221
+            },
+            {
+              "bin": 6,
+              "mean_actual": 58.21145374449339,
+              "mean_predicted": 60.42983725326803,
+              "n": 227
+            },
+            {
+              "bin": 7,
+              "mean_actual": 63.641129032258064,
+              "mean_predicted": 68.93617678425366,
+              "n": 248
+            },
+            {
+              "bin": 8,
+              "mean_actual": 74.71030640668523,
+              "mean_predicted": 76.8311757477038,
+              "n": 359
+            },
+            {
+              "bin": 9,
+              "mean_actual": 80.9225181598063,
+              "mean_predicted": 85.6179729308956,
+              "n": 413
+            }
+          ],
+          "root_mean_square_error": 24.37049934121888
+        },
+        "gameweeks": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "start_probability": {
+          "brier_score": 0.11340921042848803,
+          "expected_calibration_error": 0.04325456615717273,
+          "log_loss": 0.35970827081183493,
+          "n": 5357,
+          "reliability": [
+            {
+              "absolute_gap": 0.0372151209989122,
+              "bin": 0,
+              "lower": 0.0,
+              "mean_actual": 0.015187849720223821,
+              "mean_predicted": 0.05240297071913602,
+              "n": 2502,
+              "upper": 0.1
+            },
+            {
+              "absolute_gap": 0.05082264596175132,
+              "bin": 1,
+              "lower": 0.1,
+              "mean_actual": 0.19315403422982885,
+              "mean_predicted": 0.14233138826807754,
+              "n": 409,
+              "upper": 0.2
+            },
+            {
+              "absolute_gap": 0.03130402198543225,
+              "bin": 2,
+              "lower": 0.2,
+              "mean_actual": 0.282798833819242,
+              "mean_predicted": 0.25149481183380973,
+              "n": 343,
+              "upper": 0.3
+            },
+            {
+              "absolute_gap": 0.003953115724108558,
+              "bin": 3,
+              "lower": 0.3,
+              "mean_actual": 0.3517915309446254,
+              "mean_predicted": 0.34783841522051684,
+              "n": 307,
+              "upper": 0.4
+            },
+            {
+              "absolute_gap": 0.003558795026059214,
+              "bin": 4,
+              "lower": 0.4,
+              "mean_actual": 0.4489795918367347,
+              "mean_predicted": 0.4454207968106755,
+              "n": 294,
+              "upper": 0.5
+            },
+            {
+              "absolute_gap": 0.029825901993057125,
+              "bin": 5,
+              "lower": 0.5,
+              "mean_actual": 0.5227272727272727,
+              "mean_predicted": 0.5525531747203298,
+              "n": 176,
+              "upper": 0.6
+            },
+            {
+              "absolute_gap": 0.004443960489977528,
+              "bin": 6,
+              "lower": 0.6,
+              "mean_actual": 0.6561264822134387,
+              "mean_predicted": 0.6516825217234612,
+              "n": 253,
+              "upper": 0.7
+            },
+            {
+              "absolute_gap": 0.07507026684527585,
+              "bin": 7,
+              "lower": 0.7,
+              "mean_actual": 0.6711864406779661,
+              "mean_predicted": 0.7462567075232419,
+              "n": 295,
+              "upper": 0.8
+            },
+            {
+              "absolute_gap": 0.12904281492784908,
+              "bin": 8,
+              "lower": 0.8,
+              "mean_actual": 0.7222222222222222,
+              "mean_predicted": 0.8512650371500713,
+              "n": 324,
+              "upper": 0.9
+            },
+            {
+              "absolute_gap": 0.07596819966883672,
+              "bin": 9,
+              "lower": 0.9,
+              "mean_actual": 0.8722466960352423,
+              "mean_predicted": 0.948214895704079,
+              "n": 454,
+              "upper": 1.0
+            }
+          ]
+        }
+      },
+      "span_id": "exploratory-gw13-19",
+      "start_gameweek": 13
+    },
+    {
+      "end_gameweek": 28,
+      "locked": true,
+      "metrics": {
+        "expected_minutes": {
+          "bias_actual_minus_predicted": -3.992251173462813,
+          "correlation": 0.7984851009437058,
+          "mean_absolute_calibration_gap": 4.46606914109736,
+          "mean_absolute_error": 16.500737720793335,
+          "mean_squared_error": 538.7632595355515,
+          "n": 7269,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 2.890011750881316,
+              "mean_predicted": 8.471754992725716,
+              "n": 4255
+            },
+            {
+              "bin": 1,
+              "mean_actual": 24.097271648873072,
+              "mean_predicted": 30.864598355061215,
+              "n": 843
+            },
+            {
+              "bin": 2,
+              "mean_actual": 48.8448,
+              "mean_predicted": 48.54512521209453,
+              "n": 625
+            },
+            {
+              "bin": 3,
+              "mean_actual": 67.6409608091024,
+              "mean_predicted": 66.00121387744673,
+              "n": 791
+            },
+            {
+              "bin": 4,
+              "mean_actual": 81.11852861035422,
+              "mean_predicted": 82.78681905470104,
+              "n": 734
+            },
+            {
+              "bin": 5,
+              "mean_actual": 120.5,
+              "mean_predicted": 104.72801163323535,
+              "n": 4
+            },
+            {
+              "bin": 6,
+              "mean_actual": 135.0,
+              "mean_predicted": 114.511346766982,
+              "n": 2
+            },
+            {
+              "bin": 7,
+              "mean_actual": 156.85714285714286,
+              "mean_predicted": 137.7586317065553,
+              "n": 7
+            },
+            {
+              "bin": 8,
+              "mean_actual": 149.75,
+              "mean_predicted": 153.6465919978112,
+              "n": 4
+            },
+            {
+              "bin": 9,
+              "mean_actual": 157.5,
+              "mean_predicted": 169.11993044065315,
+              "n": 4
+            }
+          ],
+          "root_mean_square_error": 23.211274405675177
+        },
+        "gameweeks": [
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "start_probability": {
+          "brier_score": 0.1117886263078269,
+          "expected_calibration_error": 0.04075642221803821,
+          "log_loss": 0.34514735736121877,
+          "n": 7269,
+          "reliability": [
+            {
+              "absolute_gap": 0.02732941883610652,
+              "bin": 0,
+              "lower": 0.0,
+              "mean_actual": 0.012748295286095465,
+              "mean_predicted": 0.040077714122201985,
+              "n": 3373,
+              "upper": 0.1
+            },
+            {
+              "absolute_gap": 0.00573641636265837,
+              "bin": 1,
+              "lower": 0.1,
+              "mean_actual": 0.15057915057915058,
+              "mean_predicted": 0.1448427342164922,
+              "n": 518,
+              "upper": 0.2
+            },
+            {
+              "absolute_gap": 0.03526505599304952,
+              "bin": 2,
+              "lower": 0.2,
+              "mean_actual": 0.282,
+              "mean_predicted": 0.24673494400695045,
+              "n": 500,
+              "upper": 0.3
+            },
+            {
+              "absolute_gap": 0.05281313104501434,
+              "bin": 3,
+              "lower": 0.3,
+              "mean_actual": 0.4013761467889908,
+              "mean_predicted": 0.34856301574397647,
+              "n": 436,
+              "upper": 0.4
+            },
+            {
+              "absolute_gap": 0.04843942231304588,
+              "bin": 4,
+              "lower": 0.4,
+              "mean_actual": 0.40130151843817785,
+              "mean_predicted": 0.44974094075122373,
+              "n": 461,
+              "upper": 0.5
+            },
+            {
+              "absolute_gap": 0.0684963264773612,
+              "bin": 5,
+              "lower": 0.5,
+              "mean_actual": 0.48055555555555557,
+              "mean_predicted": 0.5490518820329168,
+              "n": 360,
+              "upper": 0.6
+            },
+            {
+              "absolute_gap": 0.10367124760294466,
+              "bin": 6,
+              "lower": 0.6,
+              "mean_actual": 0.5459459459459459,
+              "mean_predicted": 0.6496171935488906,
+              "n": 370,
+              "upper": 0.7
+            },
+            {
+              "absolute_gap": 0.07826016458920104,
+              "bin": 7,
+              "lower": 0.7,
+              "mean_actual": 0.6714628297362111,
+              "mean_predicted": 0.7497229943254121,
+              "n": 417,
+              "upper": 0.8
+            },
+            {
+              "absolute_gap": 0.07593086266004523,
+              "bin": 8,
+              "lower": 0.8,
+              "mean_actual": 0.770935960591133,
+              "mean_predicted": 0.8468668232511782,
+              "n": 406,
+              "upper": 0.9
+            },
+            {
+              "absolute_gap": 0.027186343121017642,
+              "bin": 9,
+              "lower": 0.9,
+              "mean_actual": 0.9252336448598131,
+              "mean_predicted": 0.9524199879808307,
+              "n": 428,
+              "upper": 1.0
+            }
+          ]
+        }
+      },
+      "span_id": "exploratory-gw20-28",
+      "start_gameweek": 20
+    },
+    {
+      "end_gameweek": 38,
+      "locked": true,
+      "metrics": {
+        "expected_minutes": {
+          "bias_actual_minus_predicted": -3.8085229344909175,
+          "correlation": 0.7850312210150046,
+          "mean_absolute_calibration_gap": 3.9031942828853374,
+          "mean_absolute_error": 17.069610206456797,
+          "mean_squared_error": 599.6247909792903,
+          "n": 7894,
+          "reliability": [
+            {
+              "bin": 0,
+              "mean_actual": 3.133078231292517,
+              "mean_predicted": 8.363433679513257,
+              "n": 4704
+            },
+            {
+              "bin": 1,
+              "mean_actual": 29.837684449489217,
+              "mean_predicted": 30.62844983488653,
+              "n": 881
+            },
+            {
+              "bin": 2,
+              "mean_actual": 46.52428571428572,
+              "mean_predicted": 48.74376854481626,
+              "n": 700
+            },
+            {
+              "bin": 3,
+              "mean_actual": 64.10478654592497,
+              "mean_predicted": 66.25878462533117,
+              "n": 773
+            },
+            {
+              "bin": 4,
+              "mean_actual": 79.5187165775401,
+              "mean_predicted": 81.7473810128285,
+              "n": 748
+            },
+            {
+              "bin": 5,
+              "mean_actual": 96.26666666666667,
+              "mean_predicted": 101.42534328886963,
+              "n": 15
+            },
+            {
+              "bin": 6,
+              "mean_actual": 141.7,
+              "mean_predicted": 119.43189078195479,
+              "n": 10
+            },
+            {
+              "bin": 7,
+              "mean_actual": 139.875,
+              "mean_predicted": 134.36715732811675,
+              "n": 24
+            },
+            {
+              "bin": 8,
+              "mean_actual": 146.33333333333334,
+              "mean_predicted": 154.65675620654957,
+              "n": 21
+            },
+            {
+              "bin": 9,
+              "mean_actual": 173.55555555555554,
+              "mean_predicted": 172.511194677382,
+              "n": 18
+            }
+          ],
+          "root_mean_square_error": 24.487237308020077
+        },
+        "gameweeks": [
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38
+        ],
+        "start_probability": {
+          "brier_score": 0.10929782776301156,
+          "expected_calibration_error": 0.029115784901041362,
+          "log_loss": 0.338792210886862,
+          "n": 7894,
+          "reliability": [
+            {
+              "absolute_gap": 0.018286444625926695,
+              "bin": 0,
+              "lower": 0.0,
+              "mean_actual": 0.014632871701071335,
+              "mean_predicted": 0.03291931632699803,
+              "n": 3827,
+              "upper": 0.1
+            },
+            {
+              "absolute_gap": 0.029201937472009137,
+              "bin": 1,
+              "lower": 0.1,
+              "mean_actual": 0.18052738336713997,
+              "mean_predicted": 0.15132544589513083,
+              "n": 493,
+              "upper": 0.2
+            },
+            {
+              "absolute_gap": 0.034318045804269615,
+              "bin": 2,
+              "lower": 0.2,
+              "mean_actual": 0.2857142857142857,
+              "mean_predicted": 0.2513962399100161,
+              "n": 483,
+              "upper": 0.3
+            },
+            {
+              "absolute_gap": 0.0272820331137687,
+              "bin": 3,
+              "lower": 0.3,
+              "mean_actual": 0.3188976377952756,
+              "mean_predicted": 0.3461796709090443,
+              "n": 508,
+              "upper": 0.4
+            },
+            {
+              "absolute_gap": 0.005923093194183049,
+              "bin": 4,
+              "lower": 0.4,
+              "mean_actual": 0.4540337711069418,
+              "mean_predicted": 0.44811067791275877,
+              "n": 533,
+              "upper": 0.5
+            },
+            {
+              "absolute_gap": 0.07055552861399672,
+              "bin": 5,
+              "lower": 0.5,
+              "mean_actual": 0.48036951501154734,
+              "mean_predicted": 0.5509250436255441,
+              "n": 433,
+              "upper": 0.6
+            },
+            {
+              "absolute_gap": 0.0842773901239422,
+              "bin": 6,
+              "lower": 0.6,
+              "mean_actual": 0.5649867374005305,
+              "mean_predicted": 0.6492641275244727,
+              "n": 377,
+              "upper": 0.7
+            },
+            {
+              "absolute_gap": 0.033145881134904465,
+              "bin": 7,
+              "lower": 0.7,
+              "mean_actual": 0.7195121951219512,
+              "mean_predicted": 0.7526580762568557,
+              "n": 410,
+              "upper": 0.8
+            },
+            {
+              "absolute_gap": 0.02190658083718977,
+              "bin": 8,
+              "lower": 0.8,
+              "mean_actual": 0.8261851015801355,
+              "mean_predicted": 0.8480916824173252,
+              "n": 443,
+              "upper": 0.9
+            },
+            {
+              "absolute_gap": 0.06783406483506349,
+              "bin": 9,
+              "lower": 0.9,
+              "mean_actual": 0.8811369509043928,
+              "mean_predicted": 0.9489710157394563,
+              "n": 387,
+              "upper": 1.0
+            }
+          ]
+        }
+      },
+      "span_id": "exploratory-gw29-38",
+      "start_gameweek": 29
+    }
+  ],
+  "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+  "parameters": {
+    "cameo_minutes": 10.0,
+    "event_model_weight": 0.0,
+    "player_prior_reliability_minutes": 900.0,
+    "prior_equivalent_minutes": 1350.0,
+    "recent_minutes_weight": 0.5,
+    "start_prior_equivalent_matches": 2.0,
+    "team_fixture_scale": 0.25
+  },
+  "promotion_blockers": [
+    "historical_2025_26_is_exploratory_only"
+  ],
+  "promotion_eligible": false,
+  "report_id": "appearance-calibration:2025-26",
+  "schema_version": "1.0",
+  "source_lineage": {
+    "prior": {
+      "excluded_assistant_manager_rows": 322,
+      "merged_gw_sha256": "95f61a568f21e05bd44e676fdf78ef1c4fcd8926480f2aaf5da5db4675f989f0",
+      "players_raw_sha256": "75686051b265cbe7755ac71213ecaad21b26ee1cc46a8bafbba19c39ce894b05",
+      "row_count": 27283,
+      "season": "2024-25",
+      "start_source": "recorded"
+    },
+    "target": {
+      "excluded_assistant_manager_rows": 0,
+      "merged_gw_sha256": "f65817fbf2909838a9a0d7e1702302fe35a015f6ea9562d22aede61e0f6ccb12",
+      "players_raw_sha256": "412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "row_count": 29757,
+      "season": "2025-26",
+      "start_source": "recorded"
+    }
+  },
+  "status": "exploratory_historical"
+}

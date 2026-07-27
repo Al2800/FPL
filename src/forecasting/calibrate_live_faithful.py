@@ -11,6 +11,11 @@ from typing import Any, Iterable, Mapping
 import numpy as np
 import pandas as pd
 
+from src.evaluation.calibration import (
+    binary_calibration_summary,
+    minutes_calibration_summary,
+)
+from src.forecasting.live_faithful import artifact_hash
 
 POSITION_MAP = {"GK": "GKP", "GKP": "GKP", "DEF": "DEF", "MID": "MID", "FWD": "FWD"}
 DEFAULT_BANDS = ((0.0, 5.5), (5.5, 7.5), (7.5, 10.0), (10.0, 20.0))
@@ -535,6 +540,91 @@ def evaluate_cases(cases: pd.DataFrame, params: ForecastParameters) -> dict[str,
         )
     return result
 
+
+def appearance_calibration_report(
+    cases: pd.DataFrame,
+    params: ForecastParameters,
+    *,
+    spans: Iterable[Mapping[str, Any]],
+    evaluation_season: str,
+    status: str,
+    bins: int = 10,
+    source_lineage: Mapping[str, Any] | None = None,
+    model_config_sha256: str | None = None,
+) -> dict[str, Any]:
+    """Evaluate fixed appearance forecasts without fitting on the target rows."""
+
+    if status not in {"exploratory_historical", "locked_live_shadow"}:
+        raise CalibrationError("unsupported appearance calibration status")
+    if not evaluation_season:
+        raise CalibrationError("evaluation_season is required")
+    frame = predictions(cases, params)
+    frame = frame.loc[frame["actual_started"].notna()].copy()
+    if frame.empty:
+        raise CalibrationError("appearance calibration has no labelled rows")
+
+    def summarize(rows: pd.DataFrame) -> dict[str, Any]:
+        if rows.empty:
+            raise CalibrationError("appearance calibration span has no rows")
+        return {
+            "gameweeks": sorted(int(value) for value in rows["GW"].unique()),
+            "start_probability": binary_calibration_summary(
+                rows["live_faithful_start_probability"].astype(float).tolist(),
+                rows["actual_started"].astype(int).tolist(),
+                bins=bins,
+            ),
+            "expected_minutes": minutes_calibration_summary(
+                rows["live_faithful_expected_minutes"].astype(float).tolist(),
+                rows["actual_minutes"].astype(float).tolist(),
+                bins=bins,
+            ),
+        }
+
+    span_results: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for raw in spans:
+        span = dict(raw)
+        span_id = str(span.get("span_id", ""))
+        if not span_id or span_id in seen_ids:
+            raise CalibrationError("appearance spans require unique span_id values")
+        start = int(span.get("start_gameweek", 0))
+        end = int(span.get("end_gameweek", 0))
+        if start < 1 or end < start:
+            raise CalibrationError("appearance span has invalid Gameweek bounds")
+        selected = frame[(frame["GW"] >= start) & (frame["GW"] <= end)]
+        span_results.append(
+            {
+                "span_id": span_id,
+                "start_gameweek": start,
+                "end_gameweek": end,
+                "locked": bool(span.get("locked", True)),
+                "metrics": summarize(selected),
+            }
+        )
+        seen_ids.add(span_id)
+    if not span_results:
+        raise CalibrationError("at least one appearance span is required")
+    historical_only = evaluation_season == "2025-26"
+    report = {
+        "schema_version": "1.0",
+        "report_id": f"appearance-calibration:{evaluation_season}",
+        "evaluation_season": evaluation_season,
+        "status": status,
+        "parameters": asdict(params),
+        "model_config_sha256": model_config_sha256,
+        "source_lineage": dict(source_lineage or {}),
+        "fit_policy": "fixed_parameters_no_target_refit",
+        "all": summarize(frame),
+        "locked_spans": span_results,
+        "promotion_eligible": False,
+        "promotion_blockers": (
+            ["historical_2025_26_is_exploratory_only"]
+            if historical_only
+            else ["single_model_monitoring_requires_paired_candidate_comparison"]
+        ),
+    }
+    report["content_sha256"] = artifact_hash(report)
+    return report
 
 def calibration_objective(evaluation: Mapping[str, Any]) -> float:
     """Rank configurations on early points first, with minutes/start as tie-breakers."""
