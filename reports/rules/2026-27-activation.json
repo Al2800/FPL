@@ -1,0 +1,131 @@
+{
+  "advisory_use": "approved",
+  "browser_execution_authorized": false,
+  "content_sha256": "04ca5399db68ca8e1ff0d75c6e081586052b4a81acda096b777a70e3fbad69ff",
+  "fpl_account_writes_authorized": false,
+  "owner_review": {
+    "approved_at": "2026-07-27T19:01:48Z",
+    "approved_by": "Alastair",
+    "ruleset_id": "2026-27-v1.0",
+    "ruleset_sha256": "3439006e5ad21d0e497732273ff9b674e599010df98f0104272c53cea6be0c5a",
+    "scope": "2026-27_ruleset_advisory_engine_use_only",
+    "status": "approved"
+  },
+  "reviewed_at": "2026-07-27T18:06:05Z",
+  "ruleset_activation": {
+    "activatable": true,
+    "blockers": [],
+    "compatibility_policy": [],
+    "mode": "live",
+    "ruleset_id": "2026-27-v1.0",
+    "ruleset_sha256": "3439006e5ad21d0e497732273ff9b674e599010df98f0104272c53cea6be0c5a",
+    "schema_version": "1.0",
+    "season": "2026-27",
+    "transition_profile": {
+      "chip_boundary_restrictions": {
+        "free_hit_cannot_span_adjacent_gameweeks": [
+          19,
+          20
+        ],
+        "free_hit_unavailable_gameweeks": [
+          1
+        ],
+        "wildcard_unavailable_gameweeks": [
+          1
+        ]
+      },
+      "chip_sets": [
+        {
+          "chips": [
+            "wildcard_fh",
+            "free_hit_fh",
+            "triple_captain_fh",
+            "bench_boost_fh"
+          ],
+          "end_gameweek": 19,
+          "index": 1,
+          "start_gameweek": 1,
+          "suffix": "fh"
+        },
+        {
+          "chips": [
+            "wildcard_sh",
+            "free_hit_sh",
+            "triple_captain_sh",
+            "bench_boost_sh"
+          ],
+          "end_gameweek": 38,
+          "index": 2,
+          "start_gameweek": 20,
+          "suffix": "sh"
+        }
+      ],
+      "exceptional_transfer_events": [],
+      "free_transfers_per_gameweek": 1,
+      "hit_cost": 4,
+      "initial_budget": 100.0,
+      "max_banked": 5,
+      "max_per_club": 3,
+      "one_chip_per_gameweek": true,
+      "position_counts": {
+        "DEF": 5,
+        "FWD": 3,
+        "GKP": 2,
+        "MID": 5
+      },
+      "regular_gameweeks": 38,
+      "retain_banked_on_wildcard_free_hit": true,
+      "selling_rise_share_kept": 0.5,
+      "selling_round_down_to": 0.1,
+      "squad_size": 15,
+      "terminal_state_gameweek": 39
+    }
+  },
+  "schema_version": "1.0",
+  "semantic_diff_from_2025_26": {
+    "changes": [
+      {
+        "classification": "behavioral",
+        "left": {
+          "gameweek": 16,
+          "top_up_to": 5
+        },
+        "right": false,
+        "rule_id": "transfers.afcon_exceptional_topup"
+      },
+      {
+        "classification": "behavioral",
+        "left": {
+          "expires_at": "2025-12-30T18:30:00Z",
+          "expires_at_gameweek": 19
+        },
+        "right": {
+          "expires_at": "2027-01-02T13:30:00Z",
+          "expires_at_gameweek": 19
+        },
+        "rule_id": "chips.first_half_expiry"
+      }
+    ],
+    "left_ruleset_id": "2025-26-v1.0",
+    "left_ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "right_ruleset_id": "2026-27-v1.0",
+    "right_ruleset_sha256": "3439006e5ad21d0e497732273ff9b674e599010df98f0104272c53cea6be0c5a"
+  },
+  "source_audit": {
+    "confirmed_rule_count": 39,
+    "missing_source_date_rule_ids": [],
+    "official_source_urls": [
+      "https://www.premierleague.com/en/news/2174419/fpl-basics-how-to-pick-a-squad",
+      "https://www.premierleague.com/en/news/2174899/fpl-basics-managing-your-team",
+      "https://www.premierleague.com/en/news/2174907/fpl-basics-making-transfers",
+      "https://www.premierleague.com/en/news/2174909/fpl-basics-scoring",
+      "https://www.premierleague.com/en/news/4661030",
+      "https://www.premierleague.com/en/news/4679873/all-you-need-to-know-about-changes-to-fpl-for-202627",
+      "https://www.premierleague.com/en/news/4679879/whats-happening-with-fpl-chips-in-202627",
+      "https://www.premierleague.com/en/news/4679946/whats-new-in-202627-fantasy-changes-to-bonus-points-system"
+    ],
+    "rule_count": 39,
+    "unique_official_source_count": 8,
+    "unresolved_rule_ids": []
+  }
+}

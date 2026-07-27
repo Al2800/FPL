@@ -8,8 +8,6 @@ import runpy
 from copy import deepcopy
 from pathlib import Path
 
-import pytest
-
 from src.orchestration.policy_state import (
     POLICY_ARMS,
     _next_free_transfers,
@@ -17,7 +15,6 @@ from src.orchestration.policy_state import (
     transition_policy_state,
 )
 from src.scoring.rules_loader import (
-    RulesetActivationError,
     assert_ruleset_activatable,
     get_rule,
     load_rules,
@@ -38,21 +35,7 @@ def _canonical_hash(value: dict) -> str:
 
 
 def _confirmed_live_rules() -> dict:
-    rules = load_rules(LIVE_PATH)
-    for rows in rules.values():
-        if isinstance(rows, list):
-            for row in rows:
-                if isinstance(row, dict) and row.get("status") == "inherited":
-                    row["status"] = "confirmed"
-    boundary = get_rule(rules, "chips.gw1_and_boundary_restrictions")
-    boundary["rule_id"] = "chips.boundary_restrictions"
-    boundary["status"] = "confirmed"
-    boundary["value"] = {
-        "wildcard_unavailable_gameweeks": [1],
-        "free_hit_unavailable_gameweeks": [1],
-        "free_hit_cannot_span_adjacent_gameweeks": [19, 20],
-    }
-    return rules
+    return load_rules(LIVE_PATH)
 
 
 def _initial_for(rules: dict) -> tuple[dict, str]:
@@ -132,18 +115,25 @@ def test_refactor_preserves_exact_historical_state_and_transition_hashes():
     )
 
 
-def test_current_live_catalogue_is_rejected_before_initial_state_creation():
+def test_current_live_catalogue_activates_before_initial_state_creation():
     rules = load_rules(LIVE_PATH)
+    report = assert_ruleset_activatable(
+        rules,
+        ruleset_sha256(LIVE_PATH),
+        mode="live",
+    )
+    assert report["blockers"] == []
+    assert report["transition_profile"]["regular_gameweeks"] == 38
+
     seed = deepcopy(BASE["_seed"]())
     seed["season"] = "2026-27"
-    with pytest.raises(RulesetActivationError, match="not activatable"):
-        initialise_policy_states(
-            seed,
-            policy_arms=POLICY_ARMS,
-            rules=rules,
-            ruleset_sha256=ruleset_sha256(LIVE_PATH),
-        )
-
+    states = initialise_policy_states(
+        seed,
+        policy_arms=POLICY_ARMS,
+        rules=rules,
+        ruleset_sha256=ruleset_sha256(LIVE_PATH),
+    )
+    assert all(state["status"] == "active" for state in states.values())
 
 def test_full_transfer_recurrence_matrix_and_unlimited_chip_retention():
     historical = assert_ruleset_activatable(

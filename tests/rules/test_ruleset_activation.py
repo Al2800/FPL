@@ -64,25 +64,21 @@ def test_historical_rules_compile_to_schema_valid_transition_profile():
     assert profile["chip_sets"][1]["start_gameweek"] == 20
 
 
-def test_current_live_rules_fail_closed_with_complete_named_blockers():
+def test_current_live_rules_compile_with_zero_blockers():
     rules = load_rules(LIVE_PATH)
     report = build_ruleset_activation(rules, _sha(LIVE_PATH), mode="live")
 
-    assert report["activatable"] is False
-    assert report["transition_profile"] is None
-    blockers = {(row["code"], row["rule_id"]) for row in report["blockers"]}
-    assert ("unconfirmed_rule", "squad.initial_budget") in blockers
-    assert ("unconfirmed_rule", "transfers.hit_cost") in blockers
-    assert ("unconfirmed_rule", "chips.boundary_restrictions") in blockers
-    assert ("malformed_rule_value", "chips.boundary_restrictions") in blockers
-    assert not any(
-        row["rule_id"] == "transfers.afcon_exceptional_topup"
-        and row["code"] == "malformed_rule_value"
-        for row in report["blockers"]
-    )
-    with pytest.raises(RulesetActivationError, match="chips.boundary_restrictions"):
-        assert_ruleset_activatable(rules, _sha(LIVE_PATH), mode="live")
-
+    assert report["activatable"] is True
+    assert report["blockers"] == []
+    profile = report["transition_profile"]
+    assert profile["regular_gameweeks"] == 38
+    assert profile["exceptional_transfer_events"] == []
+    assert profile["chip_boundary_restrictions"] == {
+        "wildcard_unavailable_gameweeks": [1],
+        "free_hit_unavailable_gameweeks": [1],
+        "free_hit_cannot_span_adjacent_gameweeks": [19, 20],
+    }
+    assert_ruleset_activatable(rules, _sha(LIVE_PATH), mode="live")
 
 def test_reviewed_compatibility_can_allow_inherited_but_never_provisional():
     rules = load_rules(HISTORICAL_PATH)
@@ -165,9 +161,8 @@ def test_semantic_diff_ignores_metadata_and_exposes_behavioral_deltas():
         "top_up_to": 5,
     }
     assert changed["transfers.afcon_exceptional_topup"]["right"] is False
-    assert "chips.boundary_restrictions" in changed
     assert diff["left_ruleset_id"] == "2025-26-v1.0"
-    assert diff["right_ruleset_id"] == "2026-27-v0.1"
+    assert diff["right_ruleset_id"] == "2026-27-v1.0"
 
 
 def test_activation_cli_emits_reviewable_report_and_exit_status(capsys):
@@ -178,16 +173,15 @@ def test_activation_cli_emits_reviewable_report_and_exit_status(capsys):
     assert historical["activations"][0]["activatable"] is True
     assert historical["semantic_diff"] is None
 
-    assert main([str(HISTORICAL_PATH), str(LIVE_PATH)]) == 1
+    assert main([str(HISTORICAL_PATH), str(LIVE_PATH)]) == 0
     compared = json.loads(capsys.readouterr().out)
     assert [row["ruleset_id"] for row in compared["activations"]] == [
         "2025-26-v1.0",
-        "2026-27-v0.1",
+        "2026-27-v1.0",
     ]
-    assert compared["activations"][1]["activatable"] is False
+    assert compared["activations"][1]["activatable"] is True
     assert {
         row["rule_id"] for row in compared["semantic_diff"]["changes"]
     } >= {
         "transfers.afcon_exceptional_topup",
-        "chips.boundary_restrictions",
     }

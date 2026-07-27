@@ -1698,7 +1698,7 @@ Already complete: the repository exists, this plan lives at `docs/plan.md`, `AGE
 
 1. ~~Complete WP-01 and WP-02 before enabling any automated collectors.~~ Done for Tier 1 / FPL endpoints.
 2. ~~Start the Phase 1 walking skeleton.~~ Done (synthetic GW).
-3. Re-check official 2026/27 rules and API schemas when FPL launches — **partial:** live schema notes + residual re-verification log in `docs/data-sources/launch-reverification.md`; inherited rules still await stable bootstrap + rules-page promotion.
+3. ~~Re-check official 2026/27 rules and API schemas when FPL launches.~~ **Done:** 39/39 rules confirmed, zero machine activation blockers, stable bootstrap captured; owner advisory sign-off remains pending in `docs/rules/2026-27-owner-signoff.md`.
 4. ~~Create the canonical schemas and point-in-time contract.~~ Done (WP-03).
 5. ~~Profile historical datasets for usable event-level and pre-deadline features (WP-04).~~ Done — see `docs/data-sources/wp04/`.
 6. ~~Build a rules validator before building an LLM recommendation workflow.~~ Done — validator/scoring + `scripts/run_rules_golden` (24/24).

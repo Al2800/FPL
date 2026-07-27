@@ -592,13 +592,20 @@ def test_capture_integrity_partial_failure_and_authentication_are_rejected(tmp_p
 
 
 def test_unconfirmed_live_rules_are_a_hard_preflight_gate(tmp_path: Path):
+    provisional_rules = tmp_path / "provisional-rules.yaml"
+    provisional_rules.write_text(
+        LIVE_RULES.read_text(encoding="utf-8").replace(
+            "status: confirmed", "status: provisional", 1
+        ),
+        encoding="utf-8",
+    )
     state = _manager_state()
     state["season"] = "2026-27"
     with pytest.raises(RulesetActivationError, match="not activatable"):
-        _build(tmp_path, state=state, rules=LIVE_RULES)
+        _build(tmp_path, state=state, rules=provisional_rules)
 
 
-def test_cli_builds_offline_fixture_idempotently_and_keeps_live_rules_blocked(
+def test_cli_builds_offline_fixture_idempotently_and_accepts_verified_live_rules(
     tmp_path: Path, capsys
 ):
     capture = _capture(tmp_path / "cli-capture")
@@ -619,11 +626,19 @@ def test_cli_builds_offline_fixture_idempotently_and_keeps_live_rules_blocked(
     assert second == first
     assert json.loads((out / "episode-manifest.json").read_text())["mode"] == "live_shadow"
 
-    blocked_args = list(args)
-    blocked_args[blocked_args.index(str(RULES))] = str(LIVE_RULES)
-    blocked_args[blocked_args.index(str(out))] = str(tmp_path / "blocked-live-episode")
-    assert build_cli_main(blocked_args) == 2
-    refused = capsys.readouterr()
-    assert refused.out == ""
-    assert "not activatable" in refused.err
-    assert not (tmp_path / "blocked-live-episode").exists()
+    live_manager_state = _manager_state()
+    live_manager_state["season"] = "2026-27"
+    live_manager = _write_manager(
+        tmp_path / "live-input", live_manager_state, name="live-manager.json"
+    )
+    live_out = tmp_path / "verified-live-episode"
+    live_args = list(args)
+    live_args[live_args.index(str(manager))] = str(live_manager)
+    live_args[live_args.index(str(RULES))] = str(LIVE_RULES)
+    live_args[live_args.index(str(out))] = str(live_out)
+    assert build_cli_main(live_args) == 0
+    live_result = json.loads(capsys.readouterr().out)
+    assert live_result["mode"] == "live_shadow"
+    assert json.loads((live_out / "episode-manifest.json").read_text())["ruleset"][
+        "ruleset_id"
+    ] == "2026-27-v1.0"

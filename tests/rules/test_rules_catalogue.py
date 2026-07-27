@@ -33,13 +33,12 @@ def test_every_rule_has_status_source_and_verification():
         assert "value" in rule, rule_id
 
 
-def test_unresolved_rules_are_explicit():
+def test_live_catalogue_is_fully_verified_after_owner_ready_audit():
     indexed = index_rules(load_rules())
-    unresolved = [r for r in indexed.values() if r["status"] in {"inherited", "provisional"}]
-    assert unresolved, "expected inherited/provisional rules to be listed explicitly"
-    provisional = [r for r in unresolved if r["status"] == "provisional"]
-    assert any(r["rule_id"] == "chips.gw1_and_boundary_restrictions" for r in provisional)
-
+    assert all(rule["status"] == "confirmed" for rule in indexed.values())
+    assert all(rule["verified_at"] == "2026-07-27" for rule in indexed.values())
+    assert all(rule["source_published_at"] for rule in indexed.values())
+    assert "chips.boundary_restrictions" in indexed
 
 def test_golden_cases_cover_each_rule_family():
     cases = yaml.safe_load(GOLDEN.read_text(encoding="utf-8"))["cases"]

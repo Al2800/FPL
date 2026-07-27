@@ -2400,7 +2400,7 @@
     }
   ],
   "horizon_gameweeks": 1,
-  "input_fingerprint": "b6ba560a8fbf1fc95562d50424b569279d4a1a6718c65b43a1d26964e8f96ece",
+  "input_fingerprint": "3bba759374c668c920eb2a5331ca69fffde2949c71f04660a2b704f780c8a157",
   "n_candidates": 123,
   "output_fingerprint": "a4605dc794cd45d6c2ea54071ba330d66bff88c52da7458e246df2592b412fec",
   "plans": {
@@ -2670,17 +2670,22 @@
       }
     }
   },
-  "ruleset_id": "2026-27-v0.1",
+  "ruleset_id": "2026-27-v1.0",
   "ruleset_note": null,
+  "ruleset_sha256": "3439006e5ad21d0e497732273ff9b674e599010df98f0104272c53cea6be0c5a",
   "search_scope": {
     "affordability_filter_before_ranking": true,
     "availability_policy": "available_only",
     "buy_pool_per_pos": 6,
+    "candidate_generation": "lazy",
+    "full_rebuild_search": false,
     "global_optimality_guaranteed": false,
     "max_transfers": 2,
     "optimality": "highest_ev_in_declared_candidate_pool",
+    "retained_ranked_candidates": 50,
     "ruleset_mismatch_policy": "fail_closed",
-    "sell_pool_per_pos": 4
+    "sell_pool_per_pos": 4,
+    "wildcard_free_hit_hit_accounting": true
   },
   "selected": {
     "bank_after": 0.5,

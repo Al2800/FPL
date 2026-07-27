@@ -1,35 +1,55 @@
 # FPL launch re-verification log
 
-**Last pass:** 2026-07-21 (Phase 1 residual)  
-**Bootstrap sample used:** local snapshot `data/raw/fpl/20260721T171247Z` (HTTP 200, 841 elements)  
-**Live check at residual pass:** `bootstrap-static` → HTTP **403**; `fixtures` → HTTP **200** (transient / edge protection — keep retrying)
+**Last pass:** 2026-07-27
+**Official bootstrap:** `data/live-shadow/fpl/20260727T100527Z/api_bootstrap-static.json`
+**Ruleset:** `2026-27-v1.0`
+**Machine blockers:** 0
+**Owner advisory sign-off:** pending
 
-## Schema (decision-relevant fields)
+## Official state
 
-Confirmed present on sample elements in the 171247Z snapshot (also documented in `fpl-endpoint-schema-notes.md`):
+The official FPL bootstrap capture succeeded with HTTP 200 and is bound by
+SHA-256 `605dd760aa4a7697f99479c81911fe046c7b252704cfe7622c61fc5fd09399b5`.
+It contains the live 2026/27 teams, 558 current players, GW1 deadline and launch
+prices/positions. The earlier 403 residual is superseded operational evidence,
+not silently deleted.
 
-- availability: `status`, `chance_of_playing_*`, `news`, `news_added`
-- projections: `ep_this`, `ep_next`
-- DC: `defensive_contribution`, `defensive_contribution_per_90`, `clearances_blocks_interceptions`, `recoveries`
-- ownership/price: `selected_by_percent`, `now_cost*`, `cost_change_*`
+Decision-relevant element fields remain present:
 
-## Rules cross-check vs bootstrap `game_settings`
+- availability: `status`, `chance_of_playing_*`, `news`, `news_added`;
+- projections: `ep_this`, `ep_next`;
+- defensive contributions and component statistics;
+- ownership/price: `selected_by_percent`, `now_cost*`, `cost_change_*`.
 
-| Topic | Catalogue (`2026-27.yaml`) | API observation | Action |
-|---|---|---|---|
-| Max banked free transfers | `transfers.max_banked` = 5 | `max_extra_free_transfers` = 4 (⇒ 1 + 4 = 5 available) | Consistent — keep confirmed |
-| Selling price | half-profit | `element_sell_at_purchase_price` = false | Consistent with half-profit model |
-| Season path in static URL | 2026/27 target | `static_content_url` still references `2025_26` | **Do not promote** season-label-dependent inherited rules yet |
+## Rules verification
 
-## Promotion status
+All 39 catalogue rules are confirmed from official Premier League/FPL sources.
+Every rule has `source_url`, `source_published_at` and `verified_at`. The
+maintained detailed FPL Basics pages published in 2025 are explicitly linked
+from the dated 24 July 2026 official Help page; their older publication dates
+are preserved rather than relabelled.
 
-Inherited / provisional rules remain **not promoted** until:
+The typed activation result is:
 
-1. `bootstrap-static` is stably HTTP 200 through a full rules-page review, and  
-2. official 2026/27 rules pages confirm budget, formations, hit cost, and scoring values unchanged.
+- zero blockers;
+- £100m, 15-player, 2/5/5/3 squad and maximum three per club;
+- one free transfer, maximum five banked, four-point excess-transfer cost;
+- saved transfers retained across Wildcard/Free Hit;
+- half-profit selling-price rule;
+- two chip sets, GW19 first-half expiry, one chip per Gameweek;
+- Wildcard/Free Hit unavailable in GW1 and no consecutive GW19/GW20 Free Hits;
+- no 2026/27 AFCON transfer top-up;
+- 38 Gameweeks and terminal state GW39.
 
-Snapshot cadence and failed-response retention continue as designed (403 snapshots are still operational evidence).
+The malformed chip-boundary string was replaced by a structured value. The
+first-half expiry year was corrected to 2 January 2027.
 
-## Next verification trigger
+## Remaining gate
 
-Re-run when FPL announces 2026/27 launch / when bootstrap returns 200 consistently; then promote eligible `inherited` → `confirmed` in `control/rules/2026-27.yaml` with a new `verified_at`.
+The data/rules audit is complete. Advisory engine use remains blocked only on
+explicit owner approval of the exact ruleset ID and SHA in
+`docs/rules/2026-27-owner-signoff.md`. That approval does not grant browser
+execution or FPL account writes.
+
+Any later official rule amendment requires a new ruleset version/hash, a fresh
+activation artifact, semantic diff and owner review.

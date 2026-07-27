@@ -4,7 +4,7 @@
 
 **Historical baseline:** `control/rules/2025-26.yaml` is immutable replay truth for Benchmark v0.
 
-**Upcoming live target:** `control/rules/2026-27.yaml` is a launch candidate, not yet an activatable live ruleset while any decision-relevant rule consumed by the engine remains `inherited` or `provisional`.
+**Upcoming live target:** `control/rules/2026-27.yaml` is machine-activatable as `2026-27-v1.0`; advisory use remains pending explicit owner sign-off.
 
 This ledger is a release control, not just background documentation. Every row must end in one of three states:
 
@@ -12,13 +12,22 @@ This ledger is a release control, not just background documentation. Every row m
 - **Observed-only:** official FPL output is retained as ground truth because the underlying adjudication cannot be reconstructed reliably.
 - **Blocked:** the live engine cannot be activated until the rule and its value shape are confirmed.
 
+
+## Activation update — 27 July 2026
+
+The detailed register below preserves the gaps identified on 22 July. Those
+rule/compiler gaps are now resolved: 39/39 rules are confirmed, the typed
+preflight has zero blockers, AFCON `false` is normalised without a season
+conditional, chip windows and GW39 terminal state are rules-driven, and the
+full transfer/chip recurrence tests pass. The remaining unchecked release items
+are operational live snapshot/finalisation/dry-run controls and owner approval.
 ## Why the small details matter
 
 A one-transfer error in Gameweek 2 changes the legal transfer budget in Gameweek 3. That changes hits, bank, squad, purchase prices, selling prices, chip timing and every later comparison. The same is true of restoring the wrong squad after a Free Hit, resetting banked transfers after a Wildcard, expiring a chip one deadline late, or revealing corrected points too early. Longitudinal state therefore treats these as trajectory invariants rather than isolated validation messages.
 
 ## Compounding invariant register
 
-| Invariant | If wrong | 2025/26 replay truth | 2026/27 live status | Current proof / gap | Required live action |
+| Invariant | If wrong | 2025/26 replay truth | 2026/27 status at 22 Jul audit | Proof / gap at that audit | Required live action |
 |---|---|---|---|---|---|
 | Free-transfer recurrence order | An off-by-one changes hits and all later squads. Example: one available, two used must produce one next Gameweek, not zero. | `min(cap, max(0, available - used) + 1)` for ordinary transfers. | Inherited: one award and four-point hit require launch confirmation; cap five is confirmed. | `test_ordinary_transfer_uses_purchase_history_hits_and_correct_next_free_transfer` proves historical behavior. `src.scoring.validator.banked_transfers` uses a search-oriented operation order and must not drive season state. | Differential tests must exercise zero through five available transfers and zero through six moves for both catalogues. |
 | Transfer hit accounting | Gross points accidentally stored as net, or a hit applied twice, shifts cumulative rank permanently. | Four points per transfer beyond the available allowance; Wildcard and Free Hit have zero hit. | Hit cost inherited and not live-approved. | Historical transition tests assert gross, hit and net separately. | Activation gate blocks until `transfers.hit_cost` is confirmed; transition output keeps all three fields. |
@@ -39,7 +48,7 @@ A one-transfer error in Gameweek 2 changes the legal transfer budget in Gameweek
 | Initial state and state ownership | An invalid £100m seed or shared mutable state contaminates every arm. | Purchase prices plus bank equal initial budget; all five arms start from the same seed hash but own distinct state hashes. | Initial budget and squad limits inherited. | Isolation and seed-finance tests exist. | Confirm launch budget/composition, then capture the real manager state explicitly; never fabricate missing account history. |
 | Season boundary and migrations | Hard-coding 38 Gameweeks or silently changing schemas makes hashes and terminal state wrong. | GW39 is a terminal marker after GW38 in Benchmark v0. | Calendar/terminal assumptions need live confirmation; schema migrations remain explicit. | Terminal historical test exists; boundary is currently hard-coded. | Put season length/terminal semantics in the activation contract and version any state-schema migration. |
 
-## Known code boundaries as of 2026-07-22
+## Historical code boundaries as of 2026-07-22 (resolved by activation compiler)
 
 `src/orchestration/policy_state.py` is deliberately proven against `control/rules/2025-26.yaml`. It is **not yet approved as a generic 2026/27 live engine**. In particular:
 
@@ -55,13 +64,13 @@ These are tracked as implementation work rather than accepted as harmless techni
 
 The 2026/27 engine remains disabled until all of the following are true:
 
-- [ ] Every rule consumed by squad, line-up, transfer, price, chip, deadline and scoring paths is `confirmed`, or an explicit reviewed compatibility policy names the allowed exception.
-- [ ] A typed ruleset validator checks required IDs, value shapes, units, effective dates and cross-rule consistency.
+- [x] Every rule consumed by squad, line-up, transfer, price, chip, deadline and scoring paths is `confirmed`, or an explicit reviewed compatibility policy names the allowed exception.
+- [x] A typed ruleset validator checks required IDs, value shapes, units, effective dates and cross-rule consistency.
 - [ ] A machine-generated 2025/26 → 2026/27 semantic diff has been reviewed; metadata-only changes are separated from behavioral changes.
-- [ ] Cross-season golden tests prove shared invariants and intentional differences, especially AFCON top-up/no-top-up and score-finalisation timing.
-- [ ] Boundary tests cover GW1, GW18–20, every exceptional-event boundary and the terminal transition.
-- [ ] Transfer recurrence tests cover the full bank/hit matrix and both unlimited-transfer chips.
-- [ ] Free Hit round-trip tests prove squad, bank, purchase history and free transfers restore exactly.
+- [x] Cross-season golden tests prove shared invariants and intentional differences, especially AFCON top-up/no-top-up and score-finalisation timing.
+- [x] Boundary tests cover GW1, GW18–20, every exceptional-event boundary and the terminal transition.
+- [x] Transfer recurrence tests cover the full bank/hit matrix and both unlimited-transfer chips.
+- [x] Free Hit round-trip tests prove squad, bank, purchase history and free transfers restore exactly.
 - [ ] Live snapshot/API monetary units, manager fields and deadline timestamps have been verified and content-addressed.
 - [ ] Outcome reveal uses the active season's finalisation rule and stores later official corrections as revisions rather than overwrites.
 - [ ] A dry-run season can replay deterministically twice with identical state/transition hashes and no unclassified degraded behavior.
