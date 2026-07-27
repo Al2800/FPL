@@ -207,9 +207,19 @@ sources:
     notes: >
       Historical results and odds CSVs. Private analysis with attribution;
       do not republish their files. Enabled for local WP-04/WP-05 baseline work.
-      Odds are not accepted as pre-deadline evidence unless a field has a usable
-      timestamp strictly before the episode cutoff; otherwise use only as a
-      closing-market comparator.
+      Ordinary odds columns are documented as pre-closing, collected Friday
+      afternoons for weekend matches and Tuesday afternoons for midweek matches;
+      C-suffixed columns are closing odds. A live snapshot is accepted only when
+      this project observes the source strictly before the episode cutoff.
+      Historical schedule inference remains exploratory because the source note
+      does not provide an exact public upload timestamp.
+    activation_approval:
+      terms: approved
+      cost: approved
+      owner: Alastair
+      reviewed_at: "2026-07-27"
+      scope: private_analysis_exact_observed_preclosing_snapshots_no_redistribution
+
 
   - source_id: football-data-org
     owner: football-data.org

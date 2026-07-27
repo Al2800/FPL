@@ -20,8 +20,15 @@
       "PS",
       "Avg"
     ],
-    "timing_label": "closing_or_unspecified",
-    "live_forecast_admission": false
+    "quote_type": "preclosing",
+    "source_collection_schedule": {
+      "weekend_games": "Friday afternoon",
+      "midweek_games": "Tuesday afternoon",
+      "precision": "source_described_day_part_without_quote_timestamp"
+    },
+    "timing_label": "source_scheduled_preclosing",
+    "live_forecast_admission": "only_from_an_exact_local_observation_strictly_before_cutoff",
+    "historical_schedule_inference": "exploratory_only"
   },
   "required_live_slots": [
     "T-24h",
@@ -31,7 +38,7 @@
   ],
   "unsupported_capabilities": [
     "quote_level_predeadline_timestamps",
-    "fixed_interval_live_checkpoints",
+    "native_fixed_interval_live_feed",
     "player_markets"
   ],
   "fallback_policy": "degrade_to_shared_structured_forecast_without_odds",

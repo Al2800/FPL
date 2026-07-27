@@ -51,6 +51,13 @@ sources:
           value: degrade_without_imputation
   football-data-co-uk:
     fields:
+      market_probability:
+        strategy: latest_of
+        timestamps: [observed_at, available_at, ingested_at]
+        cutoff_relation: strictly_before
+        historical_schedule_inference: exploratory_only
+        when_missing:
+          value: degrade_without_imputation
       match_result:
         strategy: latest_of
         timestamps: [finalised_at, observed_at, ingested_at]

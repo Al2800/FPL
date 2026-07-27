@@ -2,12 +2,12 @@
   "schema_version": "1.0",
   "season": "2026-27",
   "selected_source_id": "football-data-co-uk",
-  "provider_status": "comparator_only",
+  "provider_status": "preclosing_comparator_and_exact_observation_candidate",
   "provider_scope": [
     "historical_match_odds",
     "closing_or_unspecified_market_comparator"
   ],
-  "live_market_admission": false,
+  "live_market_admission": "exact_observed_capture_strictly_before_cutoff_only",
   "required_slots": [
     "T-24h",
     "T-8h",
@@ -18,24 +18,35 @@
     {
       "slot": "T-24h",
       "supported": false,
-      "reason": "source_has_no_quote_level_predeadline_timestamp"
+      "reason": "no_2026_27_exact_observed_capture_yet"
     },
     {
       "slot": "T-8h",
       "supported": false,
-      "reason": "source_has_no_quote_level_predeadline_timestamp"
+      "reason": "no_2026_27_exact_observed_capture_yet"
     },
     {
       "slot": "T-2h",
       "supported": false,
-      "reason": "source_has_no_quote_level_predeadline_timestamp"
+      "reason": "no_2026_27_exact_observed_capture_yet"
     },
     {
       "slot": "final",
       "supported": false,
-      "reason": "source_has_no_quote_level_predeadline_timestamp"
+      "reason": "no_2026_27_exact_observed_capture_yet"
     }
   ],
+  "historical_assessment": {
+    "season": "2025-26",
+    "csv_sha256": "3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+    "source_note_sha256": "649fb92ec3c1ffe3b1b8815c86902e8f6ca5a50dedc21363f486a79fc94d4baf",
+    "rows": 380,
+    "preclosing_1x2_complete": 380,
+    "closing_1x2_complete": 380,
+    "bet365_preclosing_differs_from_closing": 372,
+    "temporal_status": "schedule_inferred_exploratory_not_exact"
+  },
+
   "raw_data_policy": "local_gitignored_no_redistribution",
   "forecast_fallback": "shared_structured_forecast_without_odds",
   "promotion_gate": "separate_timestamped_source_terms_cost_and_value_approval"

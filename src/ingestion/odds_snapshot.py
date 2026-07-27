@@ -15,8 +15,14 @@ from typing import Any, Mapping
 SOURCE_ID = "football-data-co-uk"
 ODDS_PREFIXES = ("B365", "PS", "Avg")
 MARKET_SLOTS = ("T-24h", "T-8h", "T-2h", "final")
-TIMING_LABEL = "closing_or_unspecified"
+TIMING_LABEL = "source_scheduled_preclosing"
 MISSING_TIMESTAMP_REASON = "source_has_no_quote_level_predeadline_timestamp"
+SLOT_WINDOWS_HOURS = {
+    "T-24h": (18.0, 30.0),
+    "T-8h": (5.0, 12.0),
+    "T-2h": (0.5, 4.0),
+    "final": (0.0, 0.5),
+}
 
 
 class FootballDataOddsError(ValueError):
@@ -170,8 +176,14 @@ def normalise_football_data_csv(
         "available_at": available_text,
         "source_sha256": hashlib.sha256(body).hexdigest(),
         "timing_label": TIMING_LABEL,
-        "timing_guarantee": "none_at_quote_level",
-        "use": "historical_or_closing_market_comparator",
+        "quote_type": "preclosing",
+        "source_collection_schedule": {
+            "weekend_games": "Friday afternoon",
+            "midweek_games": "Tuesday afternoon",
+            "precision": "source_described_day_part_without_quote_timestamp",
+        },
+        "timing_guarantee": "schedule_only_without_quote_level_timestamp",
+        "use": "historical_preclosing_market_comparator",
         "live_forecast_admission": False,
         "match_count": len(matches),
         "rejected_count": len(rejected),
@@ -200,7 +212,8 @@ def build_football_data_checkpoint_manifest(
             raise FootballDataOddsError("Comparator source_id is not Football-Data")
         if value.get("timing_label") != TIMING_LABEL:
             raise FootballDataOddsError(
-                "Football-Data comparator timing label must remain closing_or_unspecified"
+                "Football-Data comparator timing label must remain "
+                "source_scheduled_preclosing"
             )
         if value.get("live_forecast_admission") is not False:
             raise FootballDataOddsError(
@@ -240,3 +253,60 @@ def build_football_data_checkpoint_manifest(
     }
     result["content_sha256"] = artifact_hash(result)
     return result
+
+
+def build_observed_live_snapshot(
+    comparator: Mapping[str, Any],
+    *,
+    slot: str,
+    decision_cutoff: str,
+) -> dict[str, Any]:
+    """Stage an exact local pre-deadline observation for the live capture gate."""
+
+    if slot not in MARKET_SLOTS:
+        raise FootballDataOddsError(f"Unknown market capture slot: {slot}")
+    value = deepcopy(dict(comparator))
+    if value.get("source_id") != SOURCE_ID:
+        raise FootballDataOddsError("Comparator source_id is not Football-Data")
+    if value.get("content_sha256") != artifact_hash(value):
+        raise FootballDataOddsError("Football-Data comparator content hash mismatch")
+    if (
+        value.get("quote_type") != "preclosing"
+        or value.get("timing_label") != TIMING_LABEL
+    ):
+        raise FootballDataOddsError(
+            "Live snapshot requires Football-Data preclosing odds"
+        )
+    observed_text, observed = _timestamp(value.get("observed_at"), "observed_at")
+    available_text, available = _timestamp(value.get("available_at"), "available_at")
+    _, cutoff = _timestamp(decision_cutoff, "decision_cutoff")
+    if observed >= cutoff or available >= cutoff:
+        raise FootballDataOddsError(
+            "Observed and available times must be strictly before the decision cutoff"
+        )
+    evidence_time = max(observed, available)
+    lead_hours = (cutoff - evidence_time).total_seconds() / 3600.0
+    minimum, maximum = SLOT_WINDOWS_HOURS[slot]
+    if not (minimum < lead_hours <= maximum):
+        raise FootballDataOddsError(
+            f"Observation is outside the {slot} capture window: "
+            f"lead_hours={lead_hours:.3f}, expected=({minimum}, {maximum}]"
+        )
+
+    payload = {
+        "schema_version": "1.0",
+        "quote_type": "preclosing",
+        "source_timing": "exact_local_observation_of_source_scheduled_quotes",
+        "comparator_content_sha256": value["content_sha256"],
+        "markets": deepcopy(list(value.get("matches", []))),
+    }
+    return {
+        "source_id": SOURCE_ID,
+        "slot": slot,
+        "observed_at": observed_text,
+        "available_at": available_text,
+        "payload": payload,
+        "lead_time_hours": round(lead_hours, 6),
+        "slot_window_hours": {"exclusive_min": minimum, "inclusive_max": maximum},
+        "source_sha256": hashlib.sha256(_canonical_bytes(payload)).hexdigest(),
+    }
