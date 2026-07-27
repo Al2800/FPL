@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "selected_source_id": "football-data-co-uk",
+  "owner_decision": {
+    "decided_at": "2026-07-27",
+    "status": "approved_for_comparator",
+    "scope": [
+      "historical_match_odds",
+      "closing_or_unspecified_market_comparator"
+    ]
+  },
+  "source_contract": {
+    "origin_template": "https://www.football-data.co.uk/mmz4281/{season_code}/E0.csv",
+    "collection": "pre_acquired_local_bytes_only",
+    "attribution": "football-data.co.uk",
+    "retention": "local_gitignored_no_redistribution",
+    "odds_families_preference": [
+      "B365",
+      "PS",
+      "Avg"
+    ],
+    "timing_label": "closing_or_unspecified",
+    "live_forecast_admission": false
+  },
+  "required_live_slots": [
+    "T-24h",
+    "T-8h",
+    "T-2h",
+    "final"
+  ],
+  "unsupported_capabilities": [
+    "quote_level_predeadline_timestamps",
+    "fixed_interval_live_checkpoints",
+    "player_markets"
+  ],
+  "fallback_policy": "degrade_to_shared_structured_forecast_without_odds",
+  "future_upgrade": "add_a_separately_approved_timestamped_live_provider"
+}
