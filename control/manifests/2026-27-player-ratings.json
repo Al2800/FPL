@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "family": "player_ratings",
+  "selected_source_id": "statsbomb-open",
+  "provider_status": "approved_zero_cost_research_source",
+  "capture_mode": "automated_local_transform_no_network_fetch",
+  "current_live_coverage": "unavailable_not_verified",
+  "required_timestamps": [
+    "observed_at",
+    "available_at",
+    "decision_cutoff"
+  ],
+  "identity_keys": [
+    "source_player_id",
+    "official_player_id"
+  ],
+  "quarantine_policy": "unresolved_or_ambiguous_identity_never_guessed",
+  "immutability": {
+    "source_sha256_required": true,
+    "derived_content_sha256_required": true,
+    "existing_different_bytes": "refuse"
+  },
+  "forecast_policy": {
+    "status": "shadow_only",
+    "effect_weights": null,
+    "missing_or_expired": "byte_identical_baseline",
+    "promotion_gate": "three_locked_live_folds_and_owner_review"
+  },
+  "operational_status": {
+    "snapshots_captured": 0,
+    "status": "degraded",
+    "reason": "no_verified_2026_27_premier_league_source_rows"
+  },
+  "account_writes": false
+}

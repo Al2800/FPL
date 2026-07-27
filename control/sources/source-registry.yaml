@@ -324,23 +324,31 @@ sources:
     owner: StatsBomb
     source_type: file
     authority: secondary
-    terms_url: "https://github.com/statsbomb/open-data"
+    terms_url: "https://github.com/hudl/open-data/blob/master/LICENSE.pdf"
     licence_status: restricted
     allowed_use: private_method_prototyping_with_required_attribution
     authentication: none
-    collection_method: download
+    collection_method: pre_acquired_local_file
     expected_cadence: bounded_experiment
     max_staleness: "n/a"
     failure_policy: stop
-    retention_policy: none_until_experiment_approved_then_local_gitignored
+    retention_policy: local_gitignored_with_attribution
     attribution: "StatsBomb"
-    enabled: false
+    enabled: true
     review_date: "2026-09-01"
     notes: >
-      Tier 3 method-prototyping source with competitions, matches, events, line-ups
-      and selected 360 data. It is not assumed to cover the target EPL seasons and
-      is not a default production feature dependency. Alternative: aggregate FPL
-      and match-result features; event enrichment remains an accepted gap.
+      Tier 3 method-prototyping source with competitions, matches, events,
+      line-ups and selected 360 data. Enabled only for deterministic local
+      transformation of already-acquired files into a shadow-only ratings
+      family. No network downloader is implemented. It is not assumed to cover
+      the target EPL seasons and is not a production dependency. Alternative:
+      byte-identical shared baseline; event enrichment remains an accepted gap.
+    activation_approval:
+      terms: approved
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-07-27"
+      scope: private_noncommercial_method_prototyping_with_attribution
 
   - source_id: commercial-epl-event-data
     owner: to_be_selected

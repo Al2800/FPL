@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "selected_source_id": "statsbomb-open",
+  "owner_decision": {
+    "status": "approved_for_research_shadow_only",
+    "basis": "source_is_preregistered_and_open_data_terms_allow_research_use",
+    "cost": {
+      "currency": "GBP",
+      "amount": 0
+    }
+  },
+  "source_contract": {
+    "origin": "https://github.com/hudl/open-data",
+    "terms": "https://github.com/hudl/open-data/blob/master/LICENSE.pdf",
+    "attribution": "StatsBomb",
+    "collection": "pre_acquired_local_bytes_only",
+    "raw_retention": "local_gitignored_no_redistribution",
+    "network_collection_implemented": false
+  },
+  "rating_contract": {
+    "family": "player_ratings",
+    "scale": [0.0, 10.0],
+    "methodology_id_required": true,
+    "methodology_version_required": true,
+    "identity_resolution": "explicit_source_to_official_mapping_only",
+    "unresolved_identity": "quarantine_never_name_guess",
+    "max_age_hours": 720
+  },
+  "automation": {
+    "command": "python -m scripts.capture_player_ratings --input <local-envelope.json> --out <immutable-snapshot.json>",
+    "trigger": "after_each_authorised_local_source_capture",
+    "idempotence": "byte_identical_rerun_allowed",
+    "mutation": "different_bytes_at_existing_path_refused"
+  },
+  "current_live_capability": {
+    "status": "unavailable",
+    "reason": "no_verified_2026_27_premier_league_coverage",
+    "fallback": "byte_identical_shared_baseline"
+  },
+  "disabled_sources": [
+    {
+      "source_id": "fotmob",
+      "reason": "terms_prohibit_automatic_or_systematic_use"
+    },
+    {
+      "source_id": "sofascore",
+      "reason": "terms_prohibit_scraping_without_explicit_consent"
+    },
+    {
+      "source_id": "commercial-epl-event-data",
+      "reason": "terms_and_cost_not_owner_approved"
+    },
+    {
+      "source_id": "fbref",
+      "reason": "automated_collection_rights_not_approved"
+    }
+  ],
+  "promotion_status": "shadow_only_pending_three_locked_live_folds"
+}

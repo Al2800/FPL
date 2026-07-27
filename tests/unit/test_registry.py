@@ -15,7 +15,6 @@ BENCHMARK_CANDIDATE_IDS = [
     "betfair-historical",
     "clubelo",
     "official-lineups-minutes",
-    "statsbomb-open",
     "commercial-epl-event-data",
     "football-data-org",
 ]
@@ -34,7 +33,12 @@ def test_only_assessment_sources_enabled():
     registry = load_registry()
     enabled = sorted(s["source_id"] for s in registry["sources"] if s["enabled"])
     assert enabled == sorted(
-        ["fpl-official-endpoints", "football-data-co-uk", "vaastav-fpl"]
+        [
+            "fpl-official-endpoints",
+            "football-data-co-uk",
+            "statsbomb-open",
+            "vaastav-fpl",
+        ]
     )
 
 
@@ -52,6 +56,10 @@ def test_statsbomb_is_prototyping_only_and_commercial_data_needs_ablation():
     registry = load_registry()
     by_id = {s["source_id"]: s for s in registry["sources"]}
     assert "method_prototyping" in by_id["statsbomb-open"]["allowed_use"]
+    assert by_id["statsbomb-open"]["enabled"] is True
+    assert by_id["statsbomb-open"]["activation_approval"]["cost"] == (
+        "approved_zero"
+    )
     commercial = by_id["commercial-epl-event-data"]
     assert commercial["licence_status"] == "unknown"
     assert "ablation" in commercial["notes"].lower()
