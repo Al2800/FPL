@@ -41,7 +41,8 @@ separately.
   tests.
 - [x] (2026-07-27 10:34+01:00) Passed the complete 512-test suite and clean
   diff hygiene.
-- [ ] Record Beads implementation, close, commit and push.
+- [x] (2026-07-27 10:42+01:00) Recorded the implementation, closed
+  `FPL-bsw.35`, and committed and pushed it as `942f0df`.
 
 ## Surprises & Discoveries
 
@@ -196,3 +197,6 @@ No new dependency is required.
 Revision note (2026-07-27): created after inspecting the existing legal freeze,
 state transition and hosted-agent gates; chose a three-plan weekly design to
 make causal attribution valid after arm divergence.
+
+Revision note (2026-07-27): finalized after the full regression suite, Beads
+closure and implementation push `942f0df`.
