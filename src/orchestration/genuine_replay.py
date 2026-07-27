@@ -421,6 +421,7 @@ def prepare_historical_gameweek(
     previous_checkpoint_dir: Path,
     output_root: Path,
     code_commit: str,
+    seed_path: Path | None = None,
 ) -> dict[str, Any]:
     """Prepare a sealed policy workspace without reading the outcome payload."""
 
@@ -438,14 +439,14 @@ def prepare_historical_gameweek(
 
     if gameweek == 2:
         gw1 = _load_observed_episode(episode_root / "gw-01")
-        seed_path = (
+        resolved_seed_path = seed_path or (
             REPO
             / "control"
             / "seeds"
             / season
             / "official-scout-gw1.json"
         )
-        seed = _read_json(seed_path)
+        seed = _read_json(resolved_seed_path)
         previous_feature = build_feature_state(
             episode_manifest=gw1["manifest"],
             observed=gw1["observed"],
@@ -1344,6 +1345,7 @@ def run_historical_replay(
     stop_after_gameweek: int,
     code_commit: str,
     chip_decisions: Mapping[str, Mapping[str, Any]] | None = None,
+    seed_path: Path | None = None,
 ) -> dict[str, Any]:
     """Run one explicitly reviewed historical checkpoint."""
     if start_gameweek == stop_after_gameweek and start_gameweek >= 2:
@@ -1369,14 +1371,14 @@ def run_historical_replay(
     manifest = gw1["manifest"]
     if manifest["season"] != season or manifest["gameweek"] != 1:
         raise GenuineReplayError("Episode root does not contain requested GW1")
-    seed_path = (
+    resolved_seed_path = seed_path or (
         Path(__file__).resolve().parents[2]
         / "control"
         / "seeds"
         / season
         / "official-scout-gw1.json"
     )
-    seed = _read_json(seed_path)
+    seed = _read_json(resolved_seed_path)
     rules = gw1["rules"]
     rules_hash = str(manifest["ruleset"]["content_sha256"])
     feature_gw1 = build_feature_state(

@@ -1,0 +1,46 @@
+{
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "1355df5548045b839bae2cc7f5aa40cd1ef79bde7622d40eed54dab0defddfc6",
+  "response_sha256": "4875592dcf4051f9ab4306efd6f38fa9370ba7a30fb6578fe411baea4fd3e2c4",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw04:early-evidence-challenge",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw04:palmer-start-probability-down"
+    ],
+    "escalation_outcome": "confidence_downgrade",
+    "notes": "The Palmer proposal is grounded in the club passage, identity-matched, pre-cutoff, unconflicted, and confined to the exact 0.5639 baseline, an authorised downward start-probability change, and proposal-only authority. Pending a later training decision supports caution but not the exact 0.15 magnitude, so deterministic confidence downgrade and human review are required."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "1355df5548045b839bae2cc7f5aa40cd1ef79bde7622d40eed54dab0defddfc6",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

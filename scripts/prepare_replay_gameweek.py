@@ -100,6 +100,7 @@ def prepare(
     vaastav_root: Path = VAASTAV,
     football_data_root: Path = FOOTBALL_DATA,
     config_path: Path = CONFIG,
+    seed_path: Path | None = None,
 ) -> dict[str, Any]:
     """Build common forecast evidence and state-bound arm decisions, still sealed."""
 
@@ -109,6 +110,7 @@ def prepare(
         episode_root=episode_root,
         previous_checkpoint_dir=previous_checkpoint_dir,
         output_root=output_root,
+        seed_path=seed_path,
         code_commit=code_commit,
     )
     setup = output_root / f"gw-{gameweek:02d}" / "setup"
@@ -273,6 +275,7 @@ def main() -> int:
     parser.add_argument("--episode-root", required=True, type=Path)
     parser.add_argument("--output-root", required=True, type=Path)
     parser.add_argument("--previous-checkpoint", required=True, type=Path)
+    parser.add_argument("--seed", type=Path)
     args = parser.parse_args()
     result = prepare(
         season=args.season,
@@ -281,6 +284,7 @@ def main() -> int:
         output_root=args.output_root,
         previous_checkpoint_dir=args.previous_checkpoint,
         code_commit=_git_commit(),
+        seed_path=args.seed,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0

@@ -38,3 +38,6 @@ build/
 # bv (beads viewer) local config and caches
 .bv/
 reports/benchmarks/*/local-superseded/
+
+# Reproducible 125 MB historical branch cache; commit only its sealed summary/report.
+/reports/benchmarks/2025-26-gw1-seed-counterfactual/

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "gameweek": 8,
+  "decision_type": "weekly_management",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "research_method": "manual_boundary_targeted_web_research",
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical Semenyo and Timber transfer boundaries"
+  ],
+  "search_complete": true,
+  "boundary_ids": [
+    "gw08-transfer-semenyo-timber",
+    "gw08-lineup",
+    "gw08-captaincy-semenyo"
+  ],
+  "completeness_status": "ready",
+  "abstention_reason": null,
+  "limitations": [
+    "date_only_publication_precision",
+    "analyst_recommendation_overlaps_with_structured_form_and_fixture_features"
+  ],
+  "candidates": [
+    {
+      "evidence_id": "gw08-pl-semenyo-captaincy",
+      "source_registry_id": "fpl-official-rules-news",
+      "source_id": "premier-league-semenyo-captain-gw8-2025",
+      "url": "https://www.premierleague.com/en/news/4438599",
+      "title": "Why Bowen and Semenyo are the best captaincy alternatives to Haaland",
+      "published_at": "2025-10-17T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "publication_boundary_evidence": "page predates the following morning's deadline",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "available_at": "2026-07-27T10:18:35Z",
+      "citation_excerpt": "Bowen and Semenyo have the form and fixtures to prove the best armband alternatives to Haaland.",
+      "citation_excerpt_sha256": "c5c71da5a00f68dd7de58c9bc649aa6678d1e621c638f70ee2f46fa2308bf3ed",
+      "claim_summary": "The official analyst arm considered Semenyo a credible alternative captain as the canonical optimiser bought him.",
+      "evidence_kind": "reference_policy_and_captaincy",
+      "player_ids": [
+        "player:2025-26:82"
+      ],
+      "boundary_ids": [
+        "gw08-transfer-semenyo-timber",
+        "gw08-captaincy-semenyo"
+      ],
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "admission_status": "admitted_exploratory",
+      "exclusion_reasons": []
+    }
+  ]
+}

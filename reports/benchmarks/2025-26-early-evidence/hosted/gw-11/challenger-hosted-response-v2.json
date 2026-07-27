@@ -1,0 +1,44 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "7c801c26d52511b6535f8b05e8b53ae21118c91c125304f72b0bf2dca8795610",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "7c801c26d52511b6535f8b05e8b53ae21118c91c125304f72b0bf2dca8795610",
+  "response_sha256": "1bf2414cf8c4233f6d3b3d0f82b305ace1c38e642bca46e7082bf4934446e248",
+  "structured_output": {
+    "escalation_outcome": "dismissed",
+    "notes": "No adjustment was proposed. Gabriel's retained Scout selection is positive context, not negative availability evidence, and the host policy forbids upward changes while its allow-list is empty. Abstention is appropriate and remains within proposal-only authority.",
+    "review_id": "review:gw11:independent-evidence-challenge",
+    "reviewed_adjustment_ids": [],
+    "role": "challenger",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

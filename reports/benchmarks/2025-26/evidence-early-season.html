@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FPL early-season evidence replay</title>
+<style>
+:root{--bg:#081019;--panel:#101c28;--panel2:#142536;--text:#e8f0f7;--muted:#91a6b8;
+--line:#294052;--cyan:#6ee7f2;--green:#5ee0a0;--red:#ff7d86;--amber:#f2c66d}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(145deg,#07101a,#0b1722);
+color:var(--text);font:15px/1.55 Inter,Segoe UI,system-ui,sans-serif}
+main{max-width:1180px;margin:auto;padding:48px 24px 72px} h1{font-size:42px;line-height:1.05;
+letter-spacing:-1.5px;margin:0 0 12px} h2{margin:42px 0 14px;font-size:23px}
+p{color:var(--muted);max-width:900px} .eyebrow{color:var(--cyan);text-transform:uppercase;
+letter-spacing:2px;font-size:12px;font-weight:700} .cards{display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:28px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card b{display:block;font-size:29px;margin-top:5px} .label{color:var(--muted);font-size:12px;
+text-transform:uppercase;letter-spacing:1px} table{border-collapse:collapse;width:100%;
+background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{padding:12px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.8px;
+background:var(--panel2)} tr:last-child td{border-bottom:0} .pill{display:inline-block;
+padding:3px 8px;border-radius:99px;background:#203344;color:var(--muted);font-size:12px}
+.pill.applied{background:#163c36;color:var(--green)} .pill.degraded_fallback{background:#44351c;
+color:var(--amber)} .delta{font-variant-numeric:tabular-nums} .negative{color:var(--red)}
+.positive{color:var(--green)} .finding{background:var(--panel);border-left:3px solid var(--cyan);
+padding:16px 18px;margin:10px 0;border-radius:0 12px 12px 0} code{color:var(--cyan)}
+.hash{font:12px/1.5 ui-monospace,Consolas,monospace;word-break:break-all;color:var(--muted)}
+@media(max-width:850px){.cards{grid-template-columns:1fr 1fr} table{font-size:12px}}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">Benchmark v0 · 2025/26 · exploratory only</div>
+<h1>Early-season evidence replay</h1>
+<p>GW2–GW11, starting from the unchanged official Scout seed. Evidence decisions
+are compared both from the same weekly state and as an independently carried
+trajectory. Retrospective sources are never promoted to production evidence.</p>
+<div class="cards">
+<div class="card"><span class="label">Frozen no-evidence</span><b>497</b>GW2–GW11 net points</div>
+<div class="card"><span class="label">Evidence trajectory</span><b>490</b>GW2–GW11 net points</div>
+<div class="card"><span class="label">Trajectory delta</span><b class="negative">-7</b>realised points</div>
+<div class="card"><span class="label">Protocol</span><b>10/10</b>evidence and challenger pairs complete</div>
+</div>
+<h2>Week-by-week</h2>
+<table><thead><tr><th>Week</th><th>Evidence gate</th><th>Isolated decision</th>
+<th>Captain</th><th>Control</th><th>Carried fork</th><th>Direct evidence Δ</th>
+<th>Vs canonical Δ</th></tr></thead><tbody><tr><td>GW2</td><td><span class='pill abstained'>abstained</span></td><td>Bank</td><td>Mohamed Salah</td><td>59</td><td>59</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW3</td><td><span class='pill degraded_fallback'>degraded_fallback</span></td><td>Bank</td><td>Mohamed Salah</td><td>59</td><td>59</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW4</td><td><span class='pill degraded_fallback'>degraded_fallback</span></td><td>Cole Palmer → Cody Gakpo<br>Elliot Anderson → Dominik Szoboszlai</td><td>Mohamed Salah</td><td>57</td><td>57</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW5</td><td><span class='pill abstained'>abstained</span></td><td>Bank</td><td>Mohamed Salah</td><td>46</td><td>46</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW6</td><td><span class='pill degraded_fallback'>degraded_fallback</span></td><td>Bank</td><td>Mohamed Salah</td><td>31</td><td>31</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW7</td><td><span class='pill applied'>applied</span></td><td>Bank</td><td>Mohamed Salah</td><td>40</td><td>32</td><td class='delta negative'>-8</td><td class='delta negative'>-8</td></tr><tr><td>GW8</td><td><span class='pill abstained'>abstained</span></td><td>James Tarkowski → Jurriën Timber<br>Bruno Borges Fernandes → Antoine Semenyo</td><td>Mohamed Salah</td><td>52</td><td>52</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW9</td><td><span class='pill applied'>applied</span></td><td>Bank</td><td>Mohamed Salah</td><td>53</td><td>53</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW10</td><td><span class='pill abstained'>abstained</span></td><td>Tijjani Reijnders → Bryan Mbeumo<br>Ollie Watkins → Nick Woltemade</td><td>Mohamed Salah</td><td>65</td><td>65</td><td class='delta '>+0</td><td class='delta '>+0</td></tr><tr><td>GW11</td><td><span class='pill abstained'>abstained</span></td><td>Bank</td><td>Mohamed Salah</td><td>35</td><td>36</td><td class='delta '>+0</td><td class='delta positive'>+1</td></tr></tbody></table>
+<h2>What moved the result</h2>
+<div class="finding"><strong>GW7 is the causal event.</strong> Gabriel's reported
+fitness doubt reduced start probability from 0.9227 to 0.7227. That moved the
+optimiser away from Murillo → Gabriel. The evidence plan scored 32 versus 40
+from the same state: <span class="negative">−8</span>.</div>
+<div class="finding"><strong>GW9 changed the projection, not the score.</strong>
+The second Gabriel doubt was admitted and applied, but produced zero direct
+realised-point delta.</div>
+<div class="finding"><strong>Carried state recovered one point.</strong> By GW11,
+the evidence trajectory made different transfers and scored one point more that
+week, leaving the GW12 bridge seven points behind overall.</div>
+<div class="finding"><strong>Five sources correctly did nothing.</strong> GW2,
+GW5, GW8, GW10 and GW11 were context-only or duplicated structured signals.
+GW3, GW4 and GW6 proposals were blocked by confidence-downgrade review. Porro's
+GW6 player binding was suppressed because the stored passage mentioned only
+Palmer.</div>
+<h2>Engine implications</h2>
+<div class="finding"><strong>Add transfer hysteresis and uncertainty valuation.</strong>
+A modest doubt should not automatically veto a strong multiweek transfer. The
+engine needs an explicit option-value comparison: buy now under an uncertainty
+distribution, defer one week, or choose an alternative—rather than turning a
+single adjusted mean into a categorical route switch.</div>
+<div class="finding"><strong>Separate appearance probability from conditional
+points.</strong> The current adapter applies one ratio to start probability,
+expected minutes and expected points. That is deterministic and compatible with
+later-season tests, but too coarse for partial fitness, bench risk and substitute
+appearances. Calibrate minutes distributions first.</div>
+<div class="finding"><strong>Judge evidence ex ante, not from one realised week.</strong>
+Gabriel's GW7 report described genuine uncertainty. His eventual return does not
+make the source false. Promotion requires calibration across repeated cases,
+decision regret, and a frozen no-evidence shadow—not hindsight reward for this
+single path.</div>
+<h2>GW12 bridge</h2>
+<div class="cards">
+<div class="card"><span class="label">Cumulative points Δ</span><b class="negative">-7</b></div>
+<div class="card"><span class="label">Bank Δ</span><b>-0.7</b></div>
+<div class="card"><span class="label">Free transfers</span><b>4</b>control 4</div>
+<div class="card"><span class="label">Squad difference</span><b>6</b>player IDs in symmetric difference</div>
+</div>
+<p>The bridge is comparison-only and was not spliced into the accepted
+GW12–GW38 trajectory. Canonical artifacts remained byte-identical.</p>
+<p class="hash">Summary: 38546e35d1c58d4bcd9f07a6c00b2ddb85035f0f8acc7d9f7a00a4f69524630b<br>
+Canonical tree: d1407dc2602d927dab23fed609b5467bbf114f59a24d4d17e42dc396e2602932</p>
+</main></body></html>

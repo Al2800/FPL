@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "gameweek": 1,
+  "decision_type": "initial_squad_selection",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "research_method": "manual_boundary_targeted_web_research",
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical Scout-seed decision boundaries"
+  ],
+  "search_complete": true,
+  "boundary_ids": [
+    "gw01-seed-squad",
+    "gw01-captaincy"
+  ],
+  "completeness_status": "ready",
+  "abstention_reason": null,
+  "limitations": [
+    "date_only_publication_precision",
+    "official_advice_is_a_reference_policy_not_ground_truth"
+  ],
+  "candidates": [
+    {
+      "evidence_id": "gw01-pl-quick-tips-captaincy",
+      "source_registry_id": "fpl-official-rules-news",
+      "source_id": "premier-league-quick-fantasy-tips-gw1-2025",
+      "url": "https://www.premierleague.com/en/news/4373995/quick-fantasy-tips-your-basic-guide-to-gameweek-1",
+      "title": "Quick Fantasy tips: Your basic guide to Gameweek 1",
+      "published_at": "2025-08-11T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "publication_boundary_evidence": "page predates the deadline and explicitly frames its advice as pre-deadline",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "available_at": "2026-07-27T10:18:35Z",
+      "citation_excerpt": "The Scout's top three picks: 1. Cole Palmer 2. Mohamed Salah 3. Ollie Watkins",
+      "citation_excerpt_sha256": "38074661f32be9245c7f8e03e168a3b57c2882b865c5d51a10c58fd35bf1eed3",
+      "claim_summary": "The official pre-deadline reference ranked Palmer, Salah and Watkins as the leading GW1 captain candidates.",
+      "evidence_kind": "reference_policy_and_captaincy",
+      "player_ids": [
+        "player:2025-26:235",
+        "player:2025-26:381",
+        "player:2025-26:64"
+      ],
+      "boundary_ids": [
+        "gw01-seed-squad",
+        "gw01-captaincy"
+      ],
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "admission_status": "admitted_exploratory",
+      "exclusion_reasons": []
+    }
+  ]
+}

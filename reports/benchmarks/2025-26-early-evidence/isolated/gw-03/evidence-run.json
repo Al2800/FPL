@@ -1,0 +1,470 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw03-early-sol-evidence-v1",
+      "content_sha256": "5e221bd499b968cd3d0d24995e6c88c0acdf313a7abe816e8bcc38f1c03e4ed0",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "93e574f276f33bec41cec50bda3e4c4ee2641124e8176f69f6a62cf555ef365b",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-27T11:45:00Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "93e574f276f33bec41cec50bda3e4c4ee2641124e8176f69f6a62cf555ef365b",
+        "response_sha256": "d2f8ba2e8c1e0436d8cf0808220d86f3850ef65a1e0caa826871b71089406c51",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "The Brazilian is included in the Selection due to the ongoing doubts over Cole Palmer’s fitness for Chelsea.",
+              "citation_excerpt_sha256": "f8ef491f40f8f6e713bb610bab36f5908bd38b9b7bfa9d013bfae55cc594a8df",
+              "claim_id": "claim:gw03:palmer-fitness-doubt",
+              "claim_text": "Cole Palmer has ongoing fitness doubts before Chelsea's Gameweek 3 fixture.",
+              "confidence": 0.84,
+              "document_id": "document:gw03-pl-scout-palmer-doubt",
+              "expires_at": "2025-09-02T10:00:00Z",
+              "passage_id": "passage:gw03-pl-scout-palmer-doubt",
+              "player_uid": "player:2025-26:235",
+              "source_id": "premier-league-scout-selection-gw3-2025"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "The proposal is a downward availability adjustment for the sole host-authorised player and uses the exact deterministic start-probability baseline.",
+            "This is a retrospective proposal-only extraction from evidence published before the 2025-08-30T10:00:00Z decision cutoff and recovered later."
+          ],
+          "proposed_adjustments": [
+            {
+              "adjustment_id": "adjustment:gw03:palmer-start-probability-down",
+              "after_value": 0.5549,
+              "before_value": 0.7049,
+              "claim_ids": [
+                "claim:gw03:palmer-fitness-doubt"
+              ],
+              "confidence": 0.74,
+              "expires_at": "2025-09-02T10:00:00Z",
+              "player_uid": "player:2025-26:235",
+              "rationale": "Ongoing fitness doubts materially reduce confidence that Palmer starts, but the passage does not confirm absence; a bounded 0.15 downward change reflects that uncertainty.",
+              "target": "start_probability"
+            }
+          ],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw03-early-sol-evidence-v1",
+      "content_sha256": "24d117d03f369546d63b05a4ce937320eba36ae166c4e6cfed1ed436f1a8faaa",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:gw03:palmer-fitness-doubt",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:235",
+            "provenance": {
+              "content_hash_sha256": "f64c6c66d3f0b29ec0e5b7b3b5401366f4b5231d346c3a7c3ae2f42d613ee5bd",
+              "source_ids": [
+                "premier-league-scout-selection-gw3-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-27T10:18:35Z",
+            "claim_id": "claim:gw03:palmer-fitness-doubt",
+            "claim_text": "Cole Palmer has ongoing fitness doubts before Chelsea's Gameweek 3 fixture.",
+            "confidence": 0.84,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:gw03-pl-scout-palmer-doubt",
+            "expires_at": "2025-09-02T10:00:00Z",
+            "observed_at": "2026-07-27T10:18:35Z",
+            "provenance": {
+              "content_hash_sha256": "f64c6c66d3f0b29ec0e5b7b3b5401366f4b5231d346c3a7c3ae2f42d613ee5bd",
+              "source_ids": [
+                "premier-league-scout-selection-gw3-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-08-29T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "24d117d03f369546d63b05a4ce937320eba36ae166c4e6cfed1ed436f1a8faaa",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "The proposal is a downward availability adjustment for the sole host-authorised player and uses the exact deterministic start-probability baseline.",
+          "This is a retrospective proposal-only extraction from evidence published before the 2025-08-30T10:00:00Z decision cutoff and recovered later."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [
+          {
+            "adjustment_id": "adjustment:gw03:palmer-start-probability-down",
+            "after_value": 0.5549,
+            "available_at": "2026-07-27T11:45:00Z",
+            "before_value": 0.7049,
+            "confidence": 0.74,
+            "expires_at": "2025-09-02T10:00:00Z",
+            "observed_at": "2026-07-27T11:45:00Z",
+            "player_uid": "player:2025-26:235",
+            "provenance": {
+              "source_ids": [
+                "premier-league-scout-selection-gw3-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-07-27T11:45:00Z",
+            "rationale": "Ongoing fitness doubts materially reduce confidence that Palmer starts, but the passage does not confirm absence; a bounded 0.15 downward change reflects that uncertainty.",
+            "signal_ids": [
+              "signal:adjustment:gw03:palmer-start-probability-down"
+            ],
+            "status": "proposed",
+            "target": "start_probability"
+          }
+        ],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": [
+          {
+            "available_at": "2026-07-27T11:45:00Z",
+            "claim_ids": [
+              "claim:gw03:palmer-fitness-doubt"
+            ],
+            "interpretation": "Ongoing fitness doubts materially reduce confidence that Palmer starts, but the passage does not confirm absence; a bounded 0.15 downward change reflects that uncertainty.",
+            "observed_at": "2026-07-27T11:45:00Z",
+            "player_uid": "player:2025-26:235",
+            "provenance": {
+              "source_ids": [
+                "premier-league-scout-selection-gw3-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-08-29T00:00:00Z",
+            "signal_id": "signal:adjustment:gw03:palmer-start-probability-down"
+          }
+        ]
+      }
+    }
+  },
+  "content_sha256": "64e8016d406bd3e7ac9c00a0eab901c417d6eb5cef8ef07a2f50a6115873dbf1",
+  "retry_disposition": null,
+  "run_id": "gw03-early-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 0.0,
+    "banked_option_units": 2,
+    "hit_cost": 0,
+    "immediate_objective": 59.81,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:381",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:506",
+        "player:2025-26:291",
+        "player:2025-26:568",
+        "player:2025-26:381",
+        "player:2025-26:449",
+        "player:2025-26:427",
+        "player:2025-26:235",
+        "player:2025-26:517",
+        "player:2025-26:249",
+        "player:2025-26:64"
+      ],
+      "vice_captain_id": "player:2025-26:249"
+    },
+    "next_gameweek_free_transfers": 3,
+    "objective": 63.41,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-27T11:45:00Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-08-30T10:00:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw03-early-sol-evidence-v1",
+          "content_sha256": "65bfd68e4d0a406a338a3cfa4b4063e7aa83793788d4d4c9a35f7875549d78e2"
+        }
+      ],
+      "input_sha256": "65bfd68e4d0a406a338a3cfa4b4063e7aa83793788d4d4c9a35f7875549d78e2",
+      "rendered_prompt_sha256": "93e574f276f33bec41cec50bda3e4c4ee2641124e8176f69f6a62cf555ef365b"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw03-early-sol-evidence-v1",
+          "content_sha256": "5e221bd499b968cd3d0d24995e6c88c0acdf313a7abe816e8bcc38f1c03e4ed0"
+        },
+        "call_id": "model:gw03-early-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "93e574f276f33bec41cec50bda3e4c4ee2641124e8176f69f6a62cf555ef365b",
+        "response_sha256": "d2f8ba2e8c1e0436d8cf0808220d86f3850ef65a1e0caa826871b71089406c51",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-27T11:45:00Z",
+    "observed_episode_sha256": "a15d87643845e8cb7782fea4737eb6e1d566268f0af955ef6465b319343e3b49",
+    "output": {
+      "output_sha256": "24d117d03f369546d63b05a4ce937320eba36ae166c4e6cfed1ed436f1a8faaa",
+      "response_ref": {
+        "artifact_id": "cached-response:gw03-early-sol-evidence-v1",
+        "content_sha256": "5e221bd499b968cd3d0d24995e6c88c0acdf313a7abe816e8bcc38f1c03e4ed0"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw03-early-sol-evidence-v1",
+        "content_sha256": "24d117d03f369546d63b05a4ce937320eba36ae166c4e6cfed1ed436f1a8faaa"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw03-early-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw03-early-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw03-early-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "a8b7f15ef90a47dc98d926cd201612c331f9f59c",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:gw03:palmer-fitness-doubt",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:235",
+        "provenance": {
+          "content_hash_sha256": "f64c6c66d3f0b29ec0e5b7b3b5401366f4b5231d346c3a7c3ae2f42d613ee5bd",
+          "source_ids": [
+            "premier-league-scout-selection-gw3-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-27T10:18:35Z",
+        "claim_id": "claim:gw03:palmer-fitness-doubt",
+        "claim_text": "Cole Palmer has ongoing fitness doubts before Chelsea's Gameweek 3 fixture.",
+        "confidence": 0.84,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:gw03-pl-scout-palmer-doubt",
+        "expires_at": "2025-09-02T10:00:00Z",
+        "observed_at": "2026-07-27T10:18:35Z",
+        "provenance": {
+          "content_hash_sha256": "f64c6c66d3f0b29ec0e5b7b3b5401366f4b5231d346c3a7c3ae2f42d613ee5bd",
+          "source_ids": [
+            "premier-league-scout-selection-gw3-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-08-29T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "24d117d03f369546d63b05a4ce937320eba36ae166c4e6cfed1ed436f1a8faaa",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "The proposal is a downward availability adjustment for the sole host-authorised player and uses the exact deterministic start-probability baseline.",
+      "This is a retrospective proposal-only extraction from evidence published before the 2025-08-30T10:00:00Z decision cutoff and recovered later."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw03:palmer-start-probability-down",
+        "after_value": 0.5549,
+        "available_at": "2026-07-27T11:45:00Z",
+        "before_value": 0.7049,
+        "confidence": 0.74,
+        "expires_at": "2025-09-02T10:00:00Z",
+        "observed_at": "2026-07-27T11:45:00Z",
+        "player_uid": "player:2025-26:235",
+        "provenance": {
+          "source_ids": [
+            "premier-league-scout-selection-gw3-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-07-27T11:45:00Z",
+        "rationale": "Ongoing fitness doubts materially reduce confidence that Palmer starts, but the passage does not confirm absence; a bounded 0.15 downward change reflects that uncertainty.",
+        "signal_ids": [
+          "signal:adjustment:gw03:palmer-start-probability-down"
+        ],
+        "status": "proposed",
+        "target": "start_probability"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": [
+      {
+        "available_at": "2026-07-27T11:45:00Z",
+        "claim_ids": [
+          "claim:gw03:palmer-fitness-doubt"
+        ],
+        "interpretation": "Ongoing fitness doubts materially reduce confidence that Palmer starts, but the passage does not confirm absence; a bounded 0.15 downward change reflects that uncertainty.",
+        "observed_at": "2026-07-27T11:45:00Z",
+        "player_uid": "player:2025-26:235",
+        "provenance": {
+          "source_ids": [
+            "premier-league-scout-selection-gw3-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-08-29T00:00:00Z",
+        "signal_id": "signal:adjustment:gw03:palmer-start-probability-down"
+      }
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "83d7470ac6bae2191fa03717fe4295a96d278b550e078a1cead6990aaed2ad2b",
+  "deterministic_candidate_sha256": "88a5aef2a6f7e4d9de7af68fc2a946e8bf758a98ca8d9484a2908808a6d7c990",
+  "episode": {
+    "decision_at": "2025-10-18T10:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw08:manager-neutral",
+    "observed_episode_sha256": "3f31efb820bbbab61da3674eca43a422e32c1ce185b598ee6a073592b66fc93d",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-27T10:18:35Z",
+      "content_sha256": "ee41adcca137b2e56aec9f9bef9c8eb319fa7e673edafc6a59746fb093afdae5",
+      "document_id": "document:gw08-pl-semenyo-captaincy",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "passages": {
+        "passage:gw08-pl-semenyo-captaincy": "Bowen and Semenyo have the form and fixtures to prove the best armband alternatives to Haaland."
+      },
+      "published_at": "2025-10-17T00:00:00Z",
+      "source_id": "premier-league-semenyo-captain-gw8-2025",
+      "title": "Why Bowen and Semenyo are the best captaincy alternatives to Haaland"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "5570c7d15353de6390e12da115e4b800ac85d7643e27e90014584a2801890a92",
+    "run_id": "gw08-early-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim:gw08:semenyo-form-fixture",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:82",
+          "provenance": {
+            "content_hash_sha256": "ee41adcca137b2e56aec9f9bef9c8eb319fa7e673edafc6a59746fb093afdae5",
+            "source_ids": [
+              "premier-league-semenyo-captain-gw8-2025"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-27T10:18:35Z",
+          "claim_id": "claim:gw08:semenyo-form-fixture",
+          "claim_text": "The supplied Premier League analysis identified Semenyo's form and fixture as supporting an alternative captaincy case in Gameweek 8.",
+          "confidence": 0.9,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:gw08-pl-semenyo-captaincy",
+          "expires_at": "2025-10-21T10:00:00Z",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "provenance": {
+            "content_hash_sha256": "ee41adcca137b2e56aec9f9bef9c8eb319fa7e673edafc6a59746fb093afdae5",
+            "source_ids": [
+              "premier-league-semenyo-captain-gw8-2025"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2025-10-17T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "df8975da04e739f3d17025ca90285b8fd0a0a52024d084f74cbc6f7ccd174242",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "This form-and-fixture evidence is context only and overlaps the structured forecast signal, so it does not produce an adjustment.",
+        "The current policy permits only downward availability adjustments; the supplied positive captaincy context does not justify reducing Semenyo's baseline."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": []
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:82": {
+      "expected_minutes": 87.4,
+      "start_probability": 0.9742
+    }
+  },
+  "player_ids": [
+    "player:2025-26:82"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "3c796108d11754ee0c87903b39032bd0d4aec18950431365130fed596023badb",
+  "run_id": "gw08-early-sol-challenger-v1",
+  "schema_version": "1.0"
+}

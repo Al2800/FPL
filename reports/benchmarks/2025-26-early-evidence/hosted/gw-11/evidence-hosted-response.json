@@ -1,0 +1,60 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "8d147bf6c6f2a5c24f3410e71eae54197e6e81bda03657cda7b8e1baafb9adb9",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "8d147bf6c6f2a5c24f3410e71eae54197e6e81bda03657cda7b8e1baafb9adb9",
+  "response_sha256": "7b6ea0f095d1a560efc37409d12421d2f25691740de511249ad0297f20ece31a",
+  "structured_output": {
+    "claims": [
+      {
+        "citation_excerpt": "Gunners’ trio Gabriel, Declan Rice and Bukayo Saka retain their places from the Gameweek 10 Selection.",
+        "citation_excerpt_sha256": "ccdd8bf3e2f3cf06e6809233de4033226a718b4eefcf065bef4c77731b4f7501",
+        "claim_id": "claim:gw11:gabriel-retained-selection",
+        "claim_text": "Gabriel retained his place in the Premier League Scout Selection from Gameweek 10 to Gameweek 11.",
+        "confidence": 0.95,
+        "document_id": "document:gw11-pl-scout-gabriel",
+        "expires_at": "2025-11-11T11:00:00Z",
+        "passage_id": "passage:gw11-pl-scout-gabriel",
+        "player_uid": "player:2025-26:5",
+        "source_id": "premier-league-scout-selection-gw11-2025"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "The supplied passage is positive selection context rather than negative availability evidence.",
+      "The host policy permits only downward adjustments, and this context-only signal does not justify reducing Gabriel's baseline."
+    ],
+    "proposed_adjustments": [],
+    "role": "evidence",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

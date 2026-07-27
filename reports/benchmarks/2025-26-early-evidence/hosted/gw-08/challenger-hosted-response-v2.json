@@ -1,0 +1,44 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "3c796108d11754ee0c87903b39032bd0d4aec18950431365130fed596023badb",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "3c796108d11754ee0c87903b39032bd0d4aec18950431365130fed596023badb",
+  "response_sha256": "240e73d6de1165a2a62070c1e4986de5807e95459f25b711c4cd3907b2543d29",
+  "structured_output": {
+    "escalation_outcome": "dismissed",
+    "notes": "No adjustment was proposed. The Semenyo passage is positive form-and-fixture captaincy context that overlaps structured signals; the host allow-list is empty and permits only downward availability changes. Abstention is appropriate and respects proposal-only authority.",
+    "review_id": "review:gw08:independent-evidence-challenge",
+    "reviewed_adjustment_ids": [],
+    "role": "challenger",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

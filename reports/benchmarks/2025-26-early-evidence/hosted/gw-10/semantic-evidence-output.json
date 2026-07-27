@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "role": "evidence",
+  "claims": [
+    {
+      "claim_id": "claim:gw10:mbeumo-form-fixture-transfers",
+      "document_id": "document:gw10-pl-scout-mbeumo",
+      "passage_id": "passage:gw10-pl-scout-mbeumo",
+      "source_id": "premier-league-scout-selection-gw10-2025",
+      "claim_text": "Mbeumo had received more than 869,000 transfers in ahead of a fixture against a Nottingham Forest side that had conceded in every league match.",
+      "citation_excerpt": "Mbeumo has earned a massive 869,000+ transfers in for United's visit to a Nottingham Forest side who have conceded in all nine league matches.",
+      "citation_excerpt_sha256": "545d8ae846850dbdd324af7b723c18160108dc32ef2778b45de793de948f3cc3",
+      "expires_at": "2025-11-04T13:30:00Z",
+      "confidence": 0.96,
+      "player_uid": "player:2025-26:119"
+    },
+    {
+      "claim_id": "claim:gw10:woltemade-form-fixture",
+      "document_id": "document:gw10-pl-scout-woltemade",
+      "passage_id": "passage:gw10-pl-scout-woltemade",
+      "source_id": "premier-league-scout-selection-gw10-2025",
+      "claim_text": "The supplied analysis expected Woltemade's consistent run to be supported by a fixture against a West Ham side that had conceded at least twice in each of four home matches.",
+      "citation_excerpt": "Woltemade can maintain that consistent run against a West Ham side who have conceded at least twice in all four home matches.",
+      "citation_excerpt_sha256": "cbb9dbc77f9d015c57decc78734b151337f09c84bb060bcba31a64656e9b5fb4",
+      "expires_at": "2025-11-04T13:30:00Z",
+      "confidence": 0.92,
+      "player_uid": "player:2025-26:714"
+    }
+  ],
+  "conflicts": [],
+  "proposed_adjustments": [],
+  "notes": [
+    "Both passages are context-only form, fixture, and transfer signals that overlap the structured forecast inputs; neither may produce an adjustment under the host constraints.",
+    "Neither passage grounds availability uncertainty or supports a downward expected-minutes or start-probability change."
+  ]
+}

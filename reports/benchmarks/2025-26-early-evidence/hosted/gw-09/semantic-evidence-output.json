@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "role": "evidence",
+  "claims": [
+    {
+      "claim_id": "claim:gw09:gabriel-flagged",
+      "document_id": "document:gw09-ffscout-gabriel-flag",
+      "passage_id": "passage:gw09-ffscout-gabriel-flag",
+      "source_id": "fantasy-football-scout-gw9-team-news-2025-10-24",
+      "claim_text": "Gabriel Magalhaes was expected to carry an availability flag into the Gameweek 9 deadline, for the second time in three Gameweeks.",
+      "citation_excerpt": "For the second time in three Gameweeks, Gabriel Magalhaes is set to be flagged going into a deadline.",
+      "citation_excerpt_sha256": "bd3f0a699c0219f652dddcb080b859cdbae6c51f1c909a3e058c8a629e9c5c74",
+      "expires_at": "2025-10-27T17:30:00Z",
+      "confidence": 0.9,
+      "player_uid": "player:2025-26:5"
+    }
+  ],
+  "conflicts": [],
+  "proposed_adjustments": [
+    {
+      "adjustment_id": "adjustment:gw09:gabriel-start-probability",
+      "claim_ids": ["claim:gw09:gabriel-flagged"],
+      "target": "start_probability",
+      "before_value": 0.9382,
+      "after_value": 0.7882,
+      "unit": "probability",
+      "confidence": 0.66,
+      "expires_at": "2025-10-27T17:30:00Z",
+      "player_uid": "player:2025-26:5",
+      "rationale": "The supplied pre-deadline report establishes renewed availability uncertainty but does not confirm absence or quantify severity; a conservative 0.15 reduction reflects the flag without treating it as a ruled-out status."
+    }
+  ],
+  "notes": [
+    "This is a proposal-only downward adjustment based solely on the supplied passage.",
+    "The evidence was recovered after the historical decision and is exploratory rather than production eligible."
+  ]
+}

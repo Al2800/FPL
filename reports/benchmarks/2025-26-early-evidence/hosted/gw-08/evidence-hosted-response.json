@@ -1,0 +1,60 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "840592984b612689b2ab831bdb2a28141c6dcca46ea4e851e5b418959d33e4e6",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "840592984b612689b2ab831bdb2a28141c6dcca46ea4e851e5b418959d33e4e6",
+  "response_sha256": "83297599c028eb1633762e39b962a0b900e5909f55d585cf60132862b9f96c0c",
+  "structured_output": {
+    "claims": [
+      {
+        "citation_excerpt": "Bowen and Semenyo have the form and fixtures to prove the best armband alternatives to Haaland.",
+        "citation_excerpt_sha256": "c5c71da5a00f68dd7de58c9bc649aa6678d1e621c638f70ee2f46fa2308bf3ed",
+        "claim_id": "claim:gw08:semenyo-form-fixture",
+        "claim_text": "The supplied Premier League analysis identified Semenyo's form and fixture as supporting an alternative captaincy case in Gameweek 8.",
+        "confidence": 0.9,
+        "document_id": "document:gw08-pl-semenyo-captaincy",
+        "expires_at": "2025-10-21T10:00:00Z",
+        "passage_id": "passage:gw08-pl-semenyo-captaincy",
+        "player_uid": "player:2025-26:82",
+        "source_id": "premier-league-semenyo-captain-gw8-2025"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "This form-and-fixture evidence is context only and overlaps the structured forecast signal, so it does not produce an adjustment.",
+      "The current policy permits only downward availability adjustments; the supplied positive captaincy context does not justify reducing Semenyo's baseline."
+    ],
+    "proposed_adjustments": [],
+    "role": "evidence",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw10-early-sol-evidence-v1",
+      "content_sha256": "3e4d138ac1a31168ac2b79561e744eae3e6d6b4f8d0c72336415043f8091b1d1",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "turn_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "9f5a4fef61d4db6692928dea54dc4329654486212f9ceddfcdc9ec9e4904e4d8",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-27T11:45:00Z",
+        "envelope_version": "1.0",
+        "metadata_owner": "host",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "9f5a4fef61d4db6692928dea54dc4329654486212f9ceddfcdc9ec9e4904e4d8",
+        "response_sha256": "f303f00ad4aa141c84086d6c7067a9838d89fdab763732ae4144231428c82dae",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "Mbeumo has earned a massive 869,000+ transfers in for United's visit to a Nottingham Forest side who have conceded in all nine league matches.",
+              "citation_excerpt_sha256": "545d8ae846850dbdd324af7b723c18160108dc32ef2778b45de793de948f3cc3",
+              "claim_id": "claim:gw10:mbeumo-form-fixture-transfers",
+              "claim_text": "Mbeumo had received more than 869,000 transfers in ahead of a fixture against a Nottingham Forest side that had conceded in every league match.",
+              "confidence": 0.96,
+              "document_id": "document:gw10-pl-scout-mbeumo",
+              "expires_at": "2025-11-04T13:30:00Z",
+              "passage_id": "passage:gw10-pl-scout-mbeumo",
+              "player_uid": "player:2025-26:119",
+              "source_id": "premier-league-scout-selection-gw10-2025"
+            },
+            {
+              "citation_excerpt": "Woltemade can maintain that consistent run against a West Ham side who have conceded at least twice in all four home matches.",
+              "citation_excerpt_sha256": "cbb9dbc77f9d015c57decc78734b151337f09c84bb060bcba31a64656e9b5fb4",
+              "claim_id": "claim:gw10:woltemade-form-fixture",
+              "claim_text": "The supplied analysis expected Woltemade's consistent run to be supported by a fixture against a West Ham side that had conceded at least twice in each of four home matches.",
+              "confidence": 0.92,
+              "document_id": "document:gw10-pl-scout-woltemade",
+              "expires_at": "2025-11-04T13:30:00Z",
+              "passage_id": "passage:gw10-pl-scout-woltemade",
+              "player_uid": "player:2025-26:714",
+              "source_id": "premier-league-scout-selection-gw10-2025"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "Both passages are context-only form, fixture, and transfer signals that overlap the structured forecast inputs; neither may produce an adjustment under the host constraints.",
+            "Neither passage grounds availability uncertainty or supports a downward expected-minutes or start-probability change."
+          ],
+          "proposed_adjustments": [],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw10-early-sol-evidence-v1",
+      "content_sha256": "3eb9b457e25bf1a4bf64fa5d6871665b185cdafefc69f5cd30b5dc4db3da46d7",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:gw10:mbeumo-form-fixture-transfers",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:119",
+            "provenance": {
+              "content_hash_sha256": "fe93620b5d035d53453e69c084ede6d8a249c7da4f55fe608e4851ebda260db9",
+              "source_ids": [
+                "premier-league-scout-selection-gw10-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          },
+          {
+            "claim_id": "claim:gw10:woltemade-form-fixture",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:714",
+            "provenance": {
+              "content_hash_sha256": "d2e0a22162046e215de5b00afadc064387be33703317206ff3d06bceb2f6073b",
+              "source_ids": [
+                "premier-league-scout-selection-gw10-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-27T10:18:35Z",
+            "claim_id": "claim:gw10:mbeumo-form-fixture-transfers",
+            "claim_text": "Mbeumo had received more than 869,000 transfers in ahead of a fixture against a Nottingham Forest side that had conceded in every league match.",
+            "confidence": 0.96,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:gw10-pl-scout-mbeumo",
+            "expires_at": "2025-11-04T13:30:00Z",
+            "observed_at": "2026-07-27T10:18:35Z",
+            "provenance": {
+              "content_hash_sha256": "fe93620b5d035d53453e69c084ede6d8a249c7da4f55fe608e4851ebda260db9",
+              "source_ids": [
+                "premier-league-scout-selection-gw10-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-10-31T00:00:00Z"
+          },
+          {
+            "available_at": "2026-07-27T10:18:35Z",
+            "claim_id": "claim:gw10:woltemade-form-fixture",
+            "claim_text": "The supplied analysis expected Woltemade's consistent run to be supported by a fixture against a West Ham side that had conceded at least twice in each of four home matches.",
+            "confidence": 0.92,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:gw10-pl-scout-woltemade",
+            "expires_at": "2025-11-04T13:30:00Z",
+            "observed_at": "2026-07-27T10:18:35Z",
+            "provenance": {
+              "content_hash_sha256": "d2e0a22162046e215de5b00afadc064387be33703317206ff3d06bceb2f6073b",
+              "source_ids": [
+                "premier-league-scout-selection-gw10-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-10-31T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "3eb9b457e25bf1a4bf64fa5d6871665b185cdafefc69f5cd30b5dc4db3da46d7",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "Both passages are context-only form, fixture, and transfer signals that overlap the structured forecast inputs; neither may produce an adjustment under the host constraints.",
+          "Neither passage grounds availability uncertainty or supports a downward expected-minutes or start-probability change."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": []
+      }
+    }
+  },
+  "content_sha256": "bce4f1e88738708c393c4728a65e0313d2855fbf69c5d6a84add5e3770d09226",
+  "retry_disposition": null,
+  "run_id": "gw10-early-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 0.8,
+    "banked_option_units": 2,
+    "hit_cost": 0,
+    "immediate_objective": 64.2,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:381",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:5",
+        "player:2025-26:8",
+        "player:2025-26:568",
+        "player:2025-26:381",
+        "player:2025-26:119",
+        "player:2025-26:82",
+        "player:2025-26:384",
+        "player:2025-26:387",
+        "player:2025-26:714",
+        "player:2025-26:249"
+      ],
+      "vice_captain_id": "player:2025-26:5"
+    },
+    "next_gameweek_free_transfers": 3,
+    "objective": 67.8,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:119",
+        "player_out_id": "player:2025-26:427"
+      },
+      {
+        "player_in_id": "player:2025-26:714",
+        "player_out_id": "player:2025-26:64"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-27T11:45:00Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-11-01T13:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw10:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw10-early-sol-evidence-v1",
+          "content_sha256": "02bb86263ff89a03c4f62a482146d8e28518ba267d565a20be77e104a85e0fe3"
+        }
+      ],
+      "input_sha256": "02bb86263ff89a03c4f62a482146d8e28518ba267d565a20be77e104a85e0fe3",
+      "rendered_prompt_sha256": "9f5a4fef61d4db6692928dea54dc4329654486212f9ceddfcdc9ec9e4904e4d8"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw10-early-sol-evidence-v1",
+          "content_sha256": "3e4d138ac1a31168ac2b79561e744eae3e6d6b4f8d0c72336415043f8091b1d1"
+        },
+        "call_id": "model:gw10-early-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "9f5a4fef61d4db6692928dea54dc4329654486212f9ceddfcdc9ec9e4904e4d8",
+        "response_sha256": "f303f00ad4aa141c84086d6c7067a9838d89fdab763732ae4144231428c82dae",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-27T11:45:00Z",
+    "observed_episode_sha256": "743d1edcc6dc1c7c91a07311e14b0ee7143047af4c11da8336cb80da6ee56127",
+    "output": {
+      "output_sha256": "3eb9b457e25bf1a4bf64fa5d6871665b185cdafefc69f5cd30b5dc4db3da46d7",
+      "response_ref": {
+        "artifact_id": "cached-response:gw10-early-sol-evidence-v1",
+        "content_sha256": "3e4d138ac1a31168ac2b79561e744eae3e6d6b4f8d0c72336415043f8091b1d1"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw10-early-sol-evidence-v1",
+        "content_sha256": "3eb9b457e25bf1a4bf64fa5d6871665b185cdafefc69f5cd30b5dc4db3da46d7"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw10-early-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw10-early-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw10-early-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "a8b7f15ef90a47dc98d926cd201612c331f9f59c",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:gw10:mbeumo-form-fixture-transfers",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:119",
+        "provenance": {
+          "content_hash_sha256": "fe93620b5d035d53453e69c084ede6d8a249c7da4f55fe608e4851ebda260db9",
+          "source_ids": [
+            "premier-league-scout-selection-gw10-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      },
+      {
+        "claim_id": "claim:gw10:woltemade-form-fixture",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:714",
+        "provenance": {
+          "content_hash_sha256": "d2e0a22162046e215de5b00afadc064387be33703317206ff3d06bceb2f6073b",
+          "source_ids": [
+            "premier-league-scout-selection-gw10-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-27T10:18:35Z",
+        "claim_id": "claim:gw10:mbeumo-form-fixture-transfers",
+        "claim_text": "Mbeumo had received more than 869,000 transfers in ahead of a fixture against a Nottingham Forest side that had conceded in every league match.",
+        "confidence": 0.96,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:gw10-pl-scout-mbeumo",
+        "expires_at": "2025-11-04T13:30:00Z",
+        "observed_at": "2026-07-27T10:18:35Z",
+        "provenance": {
+          "content_hash_sha256": "fe93620b5d035d53453e69c084ede6d8a249c7da4f55fe608e4851ebda260db9",
+          "source_ids": [
+            "premier-league-scout-selection-gw10-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-10-31T00:00:00Z"
+      },
+      {
+        "available_at": "2026-07-27T10:18:35Z",
+        "claim_id": "claim:gw10:woltemade-form-fixture",
+        "claim_text": "The supplied analysis expected Woltemade's consistent run to be supported by a fixture against a West Ham side that had conceded at least twice in each of four home matches.",
+        "confidence": 0.92,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:gw10-pl-scout-woltemade",
+        "expires_at": "2025-11-04T13:30:00Z",
+        "observed_at": "2026-07-27T10:18:35Z",
+        "provenance": {
+          "content_hash_sha256": "d2e0a22162046e215de5b00afadc064387be33703317206ff3d06bceb2f6073b",
+          "source_ids": [
+            "premier-league-scout-selection-gw10-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-10-31T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "3eb9b457e25bf1a4bf64fa5d6871665b185cdafefc69f5cd30b5dc4db3da46d7",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "Both passages are context-only form, fixture, and transfer signals that overlap the structured forecast inputs; neither may produce an adjustment under the host constraints.",
+      "Neither passage grounds availability uncertainty or supports a downward expected-minutes or start-probability change."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": []
+  }
+}

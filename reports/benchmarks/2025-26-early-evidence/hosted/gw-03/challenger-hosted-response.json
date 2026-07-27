@@ -1,0 +1,46 @@
+{
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "485e7c7cf2b5406104602856d07d0e2c587e2a5ef8bee9e769e8b9ecd8d8ba55",
+  "response_sha256": "e42b4bdb50bbb387f0a01c0a4fd540db04155ba3fba9b59f1834e4e6b306b5e1",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw03:early-evidence-challenge",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw03:palmer-start-probability-down"
+    ],
+    "escalation_outcome": "confidence_downgrade",
+    "notes": "The Palmer proposal is identity-matched, cited, pre-cutoff, unconflicted, and confined to the exact 0.7049 baseline, an authorised downward start-probability change, and proposal-only authority. The passage supports reduced starting confidence but not the exact 0.15 magnitude, so deterministic confidence downgrade and human review are required."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "485e7c7cf2b5406104602856d07d0e2c587e2a5ef8bee9e769e8b9ecd8d8ba55",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

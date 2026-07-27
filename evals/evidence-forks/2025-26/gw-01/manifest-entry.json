@@ -1,0 +1,77 @@
+{
+  "boundary_ids": [
+    "gw01-seed-squad",
+    "gw01-captaincy"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw01-seed-squad",
+        "gw01-captaincy"
+      ],
+      "citation_excerpt": "The Scout's top three picks: 1. Cole Palmer 2. Mohamed Salah 3. Ollie Watkins",
+      "citation_excerpt_sha256": "38074661f32be9245c7f8e03e168a3b57c2882b865c5d51a10c58fd35bf1eed3",
+      "claim_summary": "The official pre-deadline reference ranked Palmer, Salah and Watkins as the leading GW1 captain candidates.",
+      "content_sha256": "6f53daf883be2b770ae3dcac01aab2260c63f7bcdcad2fa75176ec7be30a652a",
+      "evidence_id": "gw01-pl-quick-tips-captaincy",
+      "evidence_kind": "reference_policy_and_captaincy",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:235",
+        "player:2025-26:381",
+        "player:2025-26:64"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "page predates the deadline and explicitly frames its advice as pre-deadline",
+      "published_at": "2025-08-11T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "source_id": "premier-league-quick-fantasy-tips-gw1-2025",
+      "source_registry_id": "fpl-official-rules-news",
+      "title": "Quick Fantasy tips: Your basic guide to Gameweek 1",
+      "url": "https://www.premierleague.com/en/news/4373995/quick-fantasy-tips-your-basic-guide-to-gameweek-1"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 1,
+    "candidate_count": 1,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "cc2bbaf98ff22d2f506a33ba2ed358450d0929d838761000e91e433f94b5c02e",
+  "decision_cutoff": "2025-08-15T17:30:00Z",
+  "decision_type": "initial_squad_selection",
+  "episode_id": "benchmark-v0:2025-26:gw01:manager-neutral",
+  "gameweek": 1,
+  "limitations": [
+    "date_only_publication_precision",
+    "official_advice_is_a_reference_policy_not_ground_truth",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "sources_recovered_after_historical_decision"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "388be60abd0473edead3ee350b32a6b4aaf22cb4ac556d1c46a02fd81ebda311",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical Scout-seed decision boundaries"
+  ],
+  "season": "2025-26"
+}

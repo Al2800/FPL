@@ -1,0 +1,149 @@
+{
+  "branch_arm": "forecast_optimizer",
+  "candidate_pool_sha256": "27e6d39c5882afcab8b2b0f4b81708eb513fad84bff4443cc612504fd35c16ad",
+  "canonical_control_tree": {
+    "file_count": 3063,
+    "sha256": "d1407dc2602d927dab23fed609b5467bbf114f59a24d4d17e42dc396e2602932"
+  },
+  "content_sha256": "c578fc0af465382cdfdbdd9d2a7d91f0a6c40dcc12c7e882aad9b1aac96f6d5c",
+  "decomposition": {
+    "gw1_initial_seed_realised_delta": -8,
+    "gw2_to_stop_policy_and_carried_state_delta": 46,
+    "interpretation": "GW1 isolates the different starting squad under its frozen lineup. GW2 onward combines carried seed state with the same deterministic weekly policy; it is not a pure seed-only causal effect.",
+    "total_delta": 38
+  },
+  "experiment": "historical_gw1_seed_counterfactual",
+  "limitations": [
+    "exploratory_production_ineligible",
+    "retrospective_launch_field_reconstruction",
+    "one_realised_season_not_expected_value",
+    "gw2_onward_contains_policy_by_state_interaction",
+    "no_unstructured_predeadline_evidence_in_seed_policy"
+  ],
+  "schema_version": "1.0",
+  "seed_sha256": "327e192cb517cb68f1de9e6611fa3d8358f1fca901d5f289b35572832938e183",
+  "stop_gameweek": 11,
+  "weeks": [
+    {
+      "branch_cumulative": 48,
+      "branch_net_points": 48,
+      "branch_transfers": 0,
+      "control_cumulative": 56,
+      "control_net_points": 56,
+      "control_transfers": 0,
+      "cumulative_delta": -8,
+      "gameweek": 1,
+      "weekly_delta": -8
+    },
+    {
+      "branch_cumulative": 95,
+      "branch_net_points": 47,
+      "branch_transfers": 1,
+      "control_cumulative": 115,
+      "control_net_points": 59,
+      "control_transfers": 0,
+      "cumulative_delta": -20,
+      "gameweek": 2,
+      "weekly_delta": -12
+    },
+    {
+      "branch_cumulative": 159,
+      "branch_net_points": 64,
+      "branch_transfers": 1,
+      "control_cumulative": 174,
+      "control_net_points": 59,
+      "control_transfers": 0,
+      "cumulative_delta": -15,
+      "gameweek": 3,
+      "weekly_delta": 5
+    },
+    {
+      "branch_cumulative": 223,
+      "branch_net_points": 64,
+      "branch_transfers": 1,
+      "control_cumulative": 231,
+      "control_net_points": 57,
+      "control_transfers": 2,
+      "cumulative_delta": -8,
+      "gameweek": 4,
+      "weekly_delta": 7
+    },
+    {
+      "branch_cumulative": 279,
+      "branch_net_points": 56,
+      "branch_transfers": 0,
+      "control_cumulative": 277,
+      "control_net_points": 46,
+      "control_transfers": 0,
+      "cumulative_delta": 2,
+      "gameweek": 5,
+      "weekly_delta": 10
+    },
+    {
+      "branch_cumulative": 319,
+      "branch_net_points": 40,
+      "branch_transfers": 0,
+      "control_cumulative": 308,
+      "control_net_points": 31,
+      "control_transfers": 0,
+      "cumulative_delta": 11,
+      "gameweek": 6,
+      "weekly_delta": 9
+    },
+    {
+      "branch_cumulative": 373,
+      "branch_net_points": 54,
+      "branch_transfers": 0,
+      "control_cumulative": 348,
+      "control_net_points": 40,
+      "control_transfers": 1,
+      "cumulative_delta": 25,
+      "gameweek": 7,
+      "weekly_delta": 14
+    },
+    {
+      "branch_cumulative": 422,
+      "branch_net_points": 49,
+      "branch_transfers": 1,
+      "control_cumulative": 400,
+      "control_net_points": 52,
+      "control_transfers": 2,
+      "cumulative_delta": 22,
+      "gameweek": 8,
+      "weekly_delta": -3
+    },
+    {
+      "branch_cumulative": 479,
+      "branch_net_points": 57,
+      "branch_transfers": 0,
+      "control_cumulative": 453,
+      "control_net_points": 53,
+      "control_transfers": 0,
+      "cumulative_delta": 26,
+      "gameweek": 9,
+      "weekly_delta": 4
+    },
+    {
+      "branch_cumulative": 553,
+      "branch_net_points": 74,
+      "branch_transfers": 2,
+      "control_cumulative": 518,
+      "control_net_points": 65,
+      "control_transfers": 2,
+      "cumulative_delta": 35,
+      "gameweek": 10,
+      "weekly_delta": 9
+    },
+    {
+      "branch_cumulative": 591,
+      "branch_net_points": 38,
+      "branch_transfers": 0,
+      "control_cumulative": 553,
+      "control_net_points": 35,
+      "control_transfers": 0,
+      "cumulative_delta": 38,
+      "gameweek": 11,
+      "weekly_delta": 3
+    }
+  ]
+}

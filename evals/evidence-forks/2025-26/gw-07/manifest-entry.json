@@ -1,0 +1,77 @@
+{
+  "boundary_ids": [
+    "gw07-transfer-murillo-gabriel",
+    "gw07-lineup-gabriel",
+    "gw07-captaincy"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw07-transfer-murillo-gabriel",
+        "gw07-lineup-gabriel"
+      ],
+      "citation_excerpt": "Arteta awaits news on the fitness of defender Gabriel after he went off injured against Olympiakos in midweek.",
+      "citation_excerpt_sha256": "c5078a0a3d96a9afa539ea20100cae3e7e35d14ea2eed315432490cb611dddac",
+      "claim_summary": "Gabriel was a fitness doubt at the same deadline the canonical optimiser bought him, creating a material transfer and lineup boundary.",
+      "content_sha256": "3b735ea86a176c7edef617abe0213e321314a205975ec2d055424d5b70ba0a90",
+      "evidence_id": "gw07-bbc-gabriel-fitness",
+      "evidence_kind": "availability",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:5"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "article is explicitly framed ahead of the round and indexed on deadline day",
+      "published_at": "2025-10-03T00:00:00Z",
+      "published_at_precision": "date_only_explicit_pre_round_context",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+      "source_id": "bbc-premier-league-team-news-2025-10-03",
+      "source_registry_id": "historical_manual_citation_unregistered",
+      "title": "Premier League and FPL team news",
+      "url": "https://www.bbc.co.uk/sport/articles/ckg67zrvln5o"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 1,
+    "candidate_count": 1,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "cd6d82b2ba40a196794742d36546f7b41ee1b886992e3269a1ef20731e017edf",
+  "decision_cutoff": "2025-10-03T17:30:00Z",
+  "decision_type": "weekly_management",
+  "episode_id": "benchmark-v0:2025-26:gw07:manager-neutral",
+  "gameweek": 7,
+  "limitations": [
+    "availability_remained_uncertain_at_deadline",
+    "date_only_publication_precision",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "sources_recovered_after_historical_decision"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "a58244923aefaa0f03d42f02156028e61afc6cbe78e3afb4cf9e1aa93151140a",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "established sports reporting",
+    "canonical Murillo-to-Gabriel transfer boundary"
+  ],
+  "season": "2025-26"
+}

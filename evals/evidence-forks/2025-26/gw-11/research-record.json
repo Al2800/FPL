@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "gameweek": 11,
+  "decision_type": "weekly_management",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "research_method": "manual_boundary_targeted_web_research",
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical Gabriel lineup and transfer boundaries"
+  ],
+  "search_complete": true,
+  "boundary_ids": [
+    "gw11-transfer",
+    "gw11-lineup-gabriel",
+    "gw11-captaincy"
+  ],
+  "completeness_status": "ready",
+  "abstention_reason": null,
+  "limitations": [
+    "date_only_publication_precision",
+    "analyst_recommendation_overlaps_with_structured_form_features"
+  ],
+  "candidates": [
+    {
+      "evidence_id": "gw11-pl-scout-gabriel",
+      "source_registry_id": "fpl-official-rules-news",
+      "source_id": "premier-league-scout-selection-gw11-2025",
+      "url": "https://www.premierleague.com/en/news/4455697/scout-selection-best-fantasy-team-for-gameweek-11",
+      "title": "Scout Selection: Best Fantasy team for Gameweek 11",
+      "published_at": "2025-11-06T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "publication_boundary_evidence": "page predates the deadline by two days",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "available_at": "2026-07-27T10:18:35Z",
+      "citation_excerpt": "Gunners’ trio Gabriel, Declan Rice and Bukayo Saka retain their places from the Gameweek 10 Selection.",
+      "citation_excerpt_sha256": "ccdd8bf3e2f3cf06e6809233de4033226a718b4eefcf065bef4c77731b4f7501",
+      "claim_summary": "The official analyst arm retained Gabriel for GW11, providing positive lineup evidence after earlier fitness doubts.",
+      "evidence_kind": "reference_policy_and_availability_recovery_signal",
+      "player_ids": [
+        "player:2025-26:5"
+      ],
+      "boundary_ids": [
+        "gw11-lineup-gabriel",
+        "gw11-transfer"
+      ],
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "admission_status": "admitted_exploratory",
+      "exclusion_reasons": []
+    }
+  ]
+}

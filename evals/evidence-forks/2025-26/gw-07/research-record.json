@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "gameweek": 7,
+  "decision_type": "weekly_management",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "research_method": "manual_boundary_targeted_web_research",
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "established sports reporting",
+    "canonical Murillo-to-Gabriel transfer boundary"
+  ],
+  "search_complete": true,
+  "boundary_ids": [
+    "gw07-transfer-murillo-gabriel",
+    "gw07-lineup-gabriel",
+    "gw07-captaincy"
+  ],
+  "completeness_status": "ready",
+  "abstention_reason": null,
+  "limitations": [
+    "date_only_publication_precision",
+    "availability_remained_uncertain_at_deadline"
+  ],
+  "candidates": [
+    {
+      "evidence_id": "gw07-bbc-gabriel-fitness",
+      "source_registry_id": "historical_manual_citation_unregistered",
+      "source_id": "bbc-premier-league-team-news-2025-10-03",
+      "url": "https://www.bbc.co.uk/sport/articles/ckg67zrvln5o",
+      "title": "Premier League and FPL team news",
+      "published_at": "2025-10-03T00:00:00Z",
+      "published_at_precision": "date_only_explicit_pre_round_context",
+      "publication_boundary_evidence": "article is explicitly framed ahead of the round and indexed on deadline day",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "available_at": "2026-07-27T10:18:35Z",
+      "citation_excerpt": "Arteta awaits news on the fitness of defender Gabriel after he went off injured against Olympiakos in midweek.",
+      "citation_excerpt_sha256": "c5078a0a3d96a9afa539ea20100cae3e7e35d14ea2eed315432490cb611dddac",
+      "claim_summary": "Gabriel was a fitness doubt at the same deadline the canonical optimiser bought him, creating a material transfer and lineup boundary.",
+      "evidence_kind": "availability",
+      "player_ids": [
+        "player:2025-26:5"
+      ],
+      "boundary_ids": [
+        "gw07-transfer-murillo-gabriel",
+        "gw07-lineup-gabriel"
+      ],
+      "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+      "admission_status": "admitted_exploratory",
+      "exclusion_reasons": []
+    }
+  ]
+}

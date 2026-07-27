@@ -1,0 +1,72 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "93e574f276f33bec41cec50bda3e4c4ee2641124e8176f69f6a62cf555ef365b",
+  "response_sha256": "d2f8ba2e8c1e0436d8cf0808220d86f3850ef65a1e0caa826871b71089406c51",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw03:palmer-fitness-doubt",
+        "document_id": "document:gw03-pl-scout-palmer-doubt",
+        "passage_id": "passage:gw03-pl-scout-palmer-doubt",
+        "source_id": "premier-league-scout-selection-gw3-2025",
+        "claim_text": "Cole Palmer has ongoing fitness doubts before Chelsea's Gameweek 3 fixture.",
+        "citation_excerpt": "The Brazilian is included in the Selection due to the ongoing doubts over Cole Palmer’s fitness for Chelsea.",
+        "citation_excerpt_sha256": "f8ef491f40f8f6e713bb610bab36f5908bd38b9b7bfa9d013bfae55cc594a8df",
+        "expires_at": "2025-09-02T10:00:00Z",
+        "confidence": 0.84,
+        "player_uid": "player:2025-26:235"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw03:palmer-start-probability-down",
+        "claim_ids": [
+          "claim:gw03:palmer-fitness-doubt"
+        ],
+        "target": "start_probability",
+        "before_value": 0.7049,
+        "after_value": 0.5549,
+        "confidence": 0.74,
+        "expires_at": "2025-09-02T10:00:00Z",
+        "player_uid": "player:2025-26:235",
+        "rationale": "Ongoing fitness doubts materially reduce confidence that Palmer starts, but the passage does not confirm absence; a bounded 0.15 downward change reflects that uncertainty."
+      }
+    ],
+    "notes": [
+      "The proposal is a downward availability adjustment for the sole host-authorised player and uses the exact deterministic start-probability baseline.",
+      "This is a retrospective proposal-only extraction from evidence published before the 2025-08-30T10:00:00Z decision cutoff and recovered later."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "93e574f276f33bec41cec50bda3e4c4ee2641124e8176f69f6a62cf555ef365b",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

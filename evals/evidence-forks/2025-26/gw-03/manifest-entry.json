@@ -1,0 +1,75 @@
+{
+  "boundary_ids": [
+    "gw03-transfer-palmer",
+    "gw03-lineup-palmer",
+    "gw03-captaincy"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw03-transfer-palmer",
+        "gw03-lineup-palmer"
+      ],
+      "citation_excerpt": "The Brazilian is included in the Selection due to the ongoing doubts over Cole Palmer’s fitness for Chelsea.",
+      "citation_excerpt_sha256": "f8ef491f40f8f6e713bb610bab36f5908bd38b9b7bfa9d013bfae55cc594a8df",
+      "claim_summary": "The official selection treated Palmer as a material fitness doubt before GW3.",
+      "content_sha256": "9216f53ce0e28d84230cfe97c7fca543c9bf961274111bc05a96b0f2e93229bd",
+      "evidence_id": "gw03-pl-scout-palmer-doubt",
+      "evidence_kind": "availability_and_reference_policy",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:235"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "page predates the following morning's deadline",
+      "published_at": "2025-08-29T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "source_id": "premier-league-scout-selection-gw3-2025",
+      "source_registry_id": "fpl-official-rules-news",
+      "title": "Scout Selection: Best Fantasy team for Gameweek 3",
+      "url": "https://www.premierleague.com/en/news/4395386"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 1,
+    "candidate_count": 1,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "b7b8e4fc04e713435fd447416f45f2610acf8f866d454e01b088865aae5d94fc",
+  "decision_cutoff": "2025-08-30T10:00:00Z",
+  "decision_type": "weekly_management",
+  "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
+  "gameweek": 3,
+  "limitations": [
+    "date_only_publication_precision",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "sources_recovered_after_historical_decision"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "f435f3b62185224360baa08b507dac397e415c2d8c7fe4c939e3cdde1b8a5302",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical transfer, lineup and captaincy boundaries"
+  ],
+  "season": "2025-26"
+}

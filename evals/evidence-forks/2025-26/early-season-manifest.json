@@ -1,0 +1,893 @@
+{
+  "benchmark_dataset_hash": "fac1f0711ffd403e0cd68b7e7a75ef4cce0540ff0d42da970212efd2da54c6b0",
+  "benchmark_dataset_id": "benchmark-v0-2025-26",
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "content_sha256": "15827541ef2918225112a4eafcd974f41b25e47150366035f817570e372a9954",
+  "coverage": {
+    "abstained_gameweek_count": 0,
+    "abstention_rate": 0.0,
+    "admission_rate": 1.0,
+    "admitted_count": 12,
+    "candidate_count": 12,
+    "excluded_count": 0,
+    "gameweek_count": 11,
+    "search_complete_gameweek_count": 11
+  },
+  "entries": [
+    {
+      "boundary_ids": [
+        "gw01-seed-squad",
+        "gw01-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw01-seed-squad",
+            "gw01-captaincy"
+          ],
+          "citation_excerpt": "The Scout's top three picks: 1. Cole Palmer 2. Mohamed Salah 3. Ollie Watkins",
+          "citation_excerpt_sha256": "38074661f32be9245c7f8e03e168a3b57c2882b865c5d51a10c58fd35bf1eed3",
+          "claim_summary": "The official pre-deadline reference ranked Palmer, Salah and Watkins as the leading GW1 captain candidates.",
+          "content_sha256": "6f53daf883be2b770ae3dcac01aab2260c63f7bcdcad2fa75176ec7be30a652a",
+          "evidence_id": "gw01-pl-quick-tips-captaincy",
+          "evidence_kind": "reference_policy_and_captaincy",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:235",
+            "player:2025-26:381",
+            "player:2025-26:64"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the deadline and explicitly frames its advice as pre-deadline",
+          "published_at": "2025-08-11T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-quick-fantasy-tips-gw1-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "Quick Fantasy tips: Your basic guide to Gameweek 1",
+          "url": "https://www.premierleague.com/en/news/4373995/quick-fantasy-tips-your-basic-guide-to-gameweek-1"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "cc2bbaf98ff22d2f506a33ba2ed358450d0929d838761000e91e433f94b5c02e",
+      "decision_cutoff": "2025-08-15T17:30:00Z",
+      "decision_type": "initial_squad_selection",
+      "episode_id": "benchmark-v0:2025-26:gw01:manager-neutral",
+      "gameweek": 1,
+      "limitations": [
+        "date_only_publication_precision",
+        "official_advice_is_a_reference_policy_not_ground_truth",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "388be60abd0473edead3ee350b32a6b4aaf22cb4ac556d1c46a02fd81ebda311",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical Scout-seed decision boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw02-lineup-palmer",
+        "gw02-captaincy-salah-vs-alternatives"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw02-lineup-palmer",
+            "gw02-captaincy-salah-vs-alternatives"
+          ],
+          "citation_excerpt": "Cole Palmer and Erling Haaland also have the fixtures to prove better premium options than Salah in the next two Gameweeks.",
+          "citation_excerpt_sha256": "025fe18284ecb5550a8e00828ccb8ea7d1d84b95943f64c41ea67a01c641a57d",
+          "claim_summary": "The official reference favoured Palmer's two-week fixture outlook over Salah before Palmer's unforeseeable warm-up injury.",
+          "content_sha256": "f0b433d315a27ae6e14e14ddbc0d8ac083bd479398721a9d82ae3f21f4c2d6e1",
+          "evidence_id": "gw02-pl-scout-new-starters",
+          "evidence_kind": "reference_policy_and_fixture_outlook",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:235",
+            "player:2025-26:381"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the deadline by two days",
+          "published_at": "2025-08-20T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-scout-gw2-squad-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "The Scout’s FPL GW2 squad for Wildcarders and new starters",
+          "url": "https://www.premierleague.com/en/news/4380722"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "9c8fb0305f5e18d08503240a17b3b14b461596c82411b501418a96e40ee37ccd",
+      "decision_cutoff": "2025-08-22T17:30:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw02:manager-neutral",
+      "gameweek": 2,
+      "limitations": [
+        "date_only_publication_precision",
+        "palmer_warmup_injury_occurred_after_deadline_and_was_not_foreseeable_from_admitted_evidence",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "cc87c37663393d5f0347dfc05068fefa1b0704f29d651d67acfa39e31b67a2ef",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical lineup and captaincy boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw03-transfer-palmer",
+        "gw03-lineup-palmer",
+        "gw03-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw03-transfer-palmer",
+            "gw03-lineup-palmer"
+          ],
+          "citation_excerpt": "The Brazilian is included in the Selection due to the ongoing doubts over Cole Palmer’s fitness for Chelsea.",
+          "citation_excerpt_sha256": "f8ef491f40f8f6e713bb610bab36f5908bd38b9b7bfa9d013bfae55cc594a8df",
+          "claim_summary": "The official selection treated Palmer as a material fitness doubt before GW3.",
+          "content_sha256": "9216f53ce0e28d84230cfe97c7fca543c9bf961274111bc05a96b0f2e93229bd",
+          "evidence_id": "gw03-pl-scout-palmer-doubt",
+          "evidence_kind": "availability_and_reference_policy",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:235"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the following morning's deadline",
+          "published_at": "2025-08-29T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-scout-selection-gw3-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "Scout Selection: Best Fantasy team for Gameweek 3",
+          "url": "https://www.premierleague.com/en/news/4395386"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "b7b8e4fc04e713435fd447416f45f2610acf8f866d454e01b088865aae5d94fc",
+      "decision_cutoff": "2025-08-30T10:00:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
+      "gameweek": 3,
+      "limitations": [
+        "date_only_publication_precision",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "f435f3b62185224360baa08b507dac397e415c2d8c7fe4c939e3cdde1b8a5302",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical transfer, lineup and captaincy boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw04-transfer-palmer",
+        "gw04-lineup-joao-pedro",
+        "gw04-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw04-transfer-palmer"
+          ],
+          "citation_excerpt": "a decision as to whether Cole Palmer is fit to face Brentford will be made after this afternoon's training session",
+          "citation_excerpt_sha256": "8b884e49a8043485c146683a09cab2f948b9f36971f256668cf5124aa138c822",
+          "claim_summary": "Chelsea left Palmer's availability unresolved until a final training test, supporting a reduced-start rather than confirmed-out interpretation.",
+          "content_sha256": "3f578505b470e5f1e183c596696c52a7d974238a4f28f9676a9c7669989d8cad",
+          "evidence_id": "gw04-chelsea-palmer-training-test",
+          "evidence_kind": "availability",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:235"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "official press conference page predates the following morning's deadline",
+          "published_at": "2025-09-12T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "chelsea-team-news-brentford-2025",
+          "source_registry_id": "official-club-communications",
+          "title": "Enzo Maresca confirms Chelsea team news for Brentford",
+          "url": "https://www.chelseafc.com/en/news/article/enzo-maresca-chelsea-team-news-brentford-2025"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "4d78462059f71431a7c408b7ef5346cb4978a5c183ee71d50a299e095f7327c2",
+      "decision_cutoff": "2025-09-13T10:00:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw04:manager-neutral",
+      "gameweek": 4,
+      "limitations": [
+        "date_only_publication_precision",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision",
+        "training_session_after_source_created_residual_uncertainty"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "18f2aa25371f230ef1d6fe0770a8ca1bc2858ba9fb3bd5d9e29a25883124e141",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical transfer and lineup boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw05-lineup-palmer-joao",
+        "gw05-captaincy-salah"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw05-lineup-palmer-joao",
+            "gw05-captaincy-salah"
+          ],
+          "citation_excerpt": "Salah's all-round potential, combined with the defensive data and his hefty ownership, make him the best option for the captaincy.",
+          "citation_excerpt_sha256": "ece8f40e8ec55452e5c266e6286b6fee5d8ac90067df2442c79341bcf691b0b4",
+          "claim_summary": "The official analysis preferred Salah as GW5 captain while still identifying Palmer and Joao Pedro as viable attackers.",
+          "content_sha256": "1bacc3c365d7203789fe4f8cffdc3c47eed6300a59bc27504653672987232bc6",
+          "evidence_id": "gw05-pl-captain-salah",
+          "evidence_kind": "reference_policy_and_captaincy",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:381",
+            "player:2025-26:235",
+            "player:2025-26:249"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the following morning's deadline",
+          "published_at": "2025-09-19T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-best-captain-gw5-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "Who is the best FPL captain for Gameweek 5?",
+          "url": "https://www.premierleague.com/en/news/4413655"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "7f5201fe1541202a02758aa987b32a7831ee51e2abd5af81535a160e6bf335dc",
+      "decision_cutoff": "2025-09-20T10:00:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw05:manager-neutral",
+      "gameweek": 5,
+      "limitations": [
+        "date_only_publication_precision",
+        "palmer_recurrence_during_match_not_foreseeable_as_confirmed_absence",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "5712a94631bae735e8e6ef822a8b54e72c1bcb64286437ac35739bfd9e6d4a5c",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical lineup and captaincy boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw06-transfer",
+        "gw06-lineup",
+        "gw06-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw06-transfer",
+            "gw06-lineup"
+          ],
+          "citation_excerpt": "Cole Palmer is a big injury problem for Chelsea",
+          "citation_excerpt_sha256": "84f167f85b3f49fc5f1aae341cfaaad95980ba190a10041a2f6fcd38fe84daad",
+          "claim_summary": "Expected-lineup reporting treated Palmer as a major absence risk and also identified rotation uncertainty for Pedro Porro.",
+          "content_sha256": "c3d79e1e24a023dc1940620515ec5ce476fde8d034a701c202d0f9c1294aede6",
+          "evidence_id": "gw06-fourfourtwo-palmer-porro",
+          "evidence_kind": "availability_and_expected_lineup",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:235",
+            "player:2025-26:568"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "indexed publication timestamp is before the GW6 deadline",
+          "published_at": "2025-09-26T11:02:09Z",
+          "published_at_precision": "second",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+          "source_id": "fourfourtwo-expected-lineups-2025-09-26",
+          "source_registry_id": "historical_manual_citation_unregistered",
+          "title": "Premier League line-ups: Every expected XI this weekend",
+          "url": "https://www.fourfourtwo.com/features/premier-league-line-ups-260925"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "4787aae68fd9c7742e01059c69c4d46a5600dd938dc6f3a2bf5b087668c10630",
+      "decision_cutoff": "2025-09-27T10:00:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw06:manager-neutral",
+      "gameweek": 6,
+      "limitations": [
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision",
+        "third_party_expected_lineup_is_not_official_confirmation"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "56fda851ce0d34525df99ea63baa0e26f628128a8df6595d50de0f26398a5706",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "timestamped expected-lineup reporting",
+        "canonical transfer, lineup and captaincy boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw07-transfer-murillo-gabriel",
+        "gw07-lineup-gabriel",
+        "gw07-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw07-transfer-murillo-gabriel",
+            "gw07-lineup-gabriel"
+          ],
+          "citation_excerpt": "Arteta awaits news on the fitness of defender Gabriel after he went off injured against Olympiakos in midweek.",
+          "citation_excerpt_sha256": "c5078a0a3d96a9afa539ea20100cae3e7e35d14ea2eed315432490cb611dddac",
+          "claim_summary": "Gabriel was a fitness doubt at the same deadline the canonical optimiser bought him, creating a material transfer and lineup boundary.",
+          "content_sha256": "3b735ea86a176c7edef617abe0213e321314a205975ec2d055424d5b70ba0a90",
+          "evidence_id": "gw07-bbc-gabriel-fitness",
+          "evidence_kind": "availability",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:5"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "article is explicitly framed ahead of the round and indexed on deadline day",
+          "published_at": "2025-10-03T00:00:00Z",
+          "published_at_precision": "date_only_explicit_pre_round_context",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+          "source_id": "bbc-premier-league-team-news-2025-10-03",
+          "source_registry_id": "historical_manual_citation_unregistered",
+          "title": "Premier League and FPL team news",
+          "url": "https://www.bbc.co.uk/sport/articles/ckg67zrvln5o"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "cd6d82b2ba40a196794742d36546f7b41ee1b886992e3269a1ef20731e017edf",
+      "decision_cutoff": "2025-10-03T17:30:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw07:manager-neutral",
+      "gameweek": 7,
+      "limitations": [
+        "availability_remained_uncertain_at_deadline",
+        "date_only_publication_precision",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "a58244923aefaa0f03d42f02156028e61afc6cbe78e3afb4cf9e1aa93151140a",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "established sports reporting",
+        "canonical Murillo-to-Gabriel transfer boundary"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw08-transfer-semenyo-timber",
+        "gw08-lineup",
+        "gw08-captaincy-semenyo"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw08-transfer-semenyo-timber",
+            "gw08-captaincy-semenyo"
+          ],
+          "citation_excerpt": "Bowen and Semenyo have the form and fixtures to prove the best armband alternatives to Haaland.",
+          "citation_excerpt_sha256": "c5c71da5a00f68dd7de58c9bc649aa6678d1e621c638f70ee2f46fa2308bf3ed",
+          "claim_summary": "The official analyst arm considered Semenyo a credible alternative captain as the canonical optimiser bought him.",
+          "content_sha256": "906d275c0cff75a01b602d2f82db26481a19b59d6b02d54b25059d14c4662064",
+          "evidence_id": "gw08-pl-semenyo-captaincy",
+          "evidence_kind": "reference_policy_and_captaincy",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:82"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the following morning's deadline",
+          "published_at": "2025-10-17T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-semenyo-captain-gw8-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "Why Bowen and Semenyo are the best captaincy alternatives to Haaland",
+          "url": "https://www.premierleague.com/en/news/4438599"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "dd989b8fcc4a1528779f815e38578054841377c0751780a6e79c76165253584a",
+      "decision_cutoff": "2025-10-18T10:00:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw08:manager-neutral",
+      "gameweek": 8,
+      "limitations": [
+        "analyst_recommendation_overlaps_with_structured_form_and_fixture_features",
+        "date_only_publication_precision",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "2ef23776cacbeb747fbaa90eaf3563e312d63db85a3f7254264d4941513e0907",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical Semenyo and Timber transfer boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw09-transfer",
+        "gw09-lineup-gabriel",
+        "gw09-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw09-transfer",
+            "gw09-lineup-gabriel"
+          ],
+          "citation_excerpt": "For the second time in three Gameweeks, Gabriel Magalhaes is set to be flagged going into a deadline.",
+          "citation_excerpt_sha256": "bd3f0a699c0219f652dddcb080b859cdbae6c51f1c909a3e058c8a629e9c5c74",
+          "claim_summary": "Gabriel carried a renewed fitness flag into GW9, affecting lineup and transfer confidence.",
+          "content_sha256": "9501c1c91e9793dec7017d60e1a0c7b48c7f5fc9256874370074aa09cb321b71",
+          "evidence_id": "gw09-ffscout-gabriel-flag",
+          "evidence_kind": "availability",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:5"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "dated live team-news page explicitly discusses players going into the deadline",
+          "published_at": "2025-10-24T00:00:00Z",
+          "published_at_precision": "date_only_explicit_pre_deadline_context",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+          "source_id": "fantasy-football-scout-gw9-team-news-2025-10-24",
+          "source_registry_id": "historical_manual_citation_unregistered",
+          "title": "FPL Gameweek 9 team news: Friday’s live injury updates",
+          "url": "https://www.fantasyfootballscout.co.uk/2025/10/24/fpl-gameweek-9-team-news-fridays-live-injury-updates-2"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "64edca2c72c12ae69c0055ca06f673f74abe0f4db98d13f69171557d00ae6a1b",
+      "decision_cutoff": "2025-10-24T17:30:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw09:manager-neutral",
+      "gameweek": 9,
+      "limitations": [
+        "date_only_publication_precision",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "secondary_team_news_aggregator",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "2f6d0343f603ee3ddf38efc12ab150d65df30a60a93d188381d08ef4f7e147b6",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "historical FPL team-news reporting",
+        "canonical Gabriel lineup boundary"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw10-transfer-mbeumo-woltemade",
+        "gw10-lineup",
+        "gw10-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw10-transfer-mbeumo-woltemade"
+          ],
+          "citation_excerpt": "Mbeumo has earned a massive 869,000+ transfers in for United's visit to a Nottingham Forest side who have conceded in all nine league matches.",
+          "citation_excerpt_sha256": "545d8ae846850dbdd324af7b723c18160108dc32ef2778b45de793de948f3cc3",
+          "claim_summary": "The official analyst arm strongly supported Mbeumo at the same boundary where the canonical optimiser bought him.",
+          "content_sha256": "55b55513bf70091f92ff92d4417478b062a33150aefe08aa177b3ac966bc9680",
+          "evidence_id": "gw10-pl-scout-mbeumo",
+          "evidence_kind": "reference_policy_and_transfer",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:119"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the following afternoon's deadline",
+          "published_at": "2025-10-31T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-scout-selection-gw10-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "Scout Selection: Best Fantasy team for Gameweek 10",
+          "url": "https://www.premierleague.com/en/news/4450343"
+        },
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw10-transfer-mbeumo-woltemade"
+          ],
+          "citation_excerpt": "Woltemade can maintain that consistent run against a West Ham side who have conceded at least twice in all four home matches.",
+          "citation_excerpt_sha256": "cbb9dbc77f9d015c57decc78734b151337f09c84bb060bcba31a64656e9b5fb4",
+          "claim_summary": "The official analyst arm also supported Woltemade at the same two-transfer boundary.",
+          "content_sha256": "60be090c67a4aabb10623775d8f042d88d6624dca6cfbb20602696509e0ff516",
+          "evidence_id": "gw10-pl-scout-woltemade",
+          "evidence_kind": "reference_policy_and_transfer",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:714"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the following afternoon's deadline",
+          "published_at": "2025-10-31T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-scout-selection-gw10-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "Scout Selection: Best Fantasy team for Gameweek 10",
+          "url": "https://www.premierleague.com/en/news/4450343"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 2,
+        "candidate_count": 2,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "059129174b98801db04ce94f59a5e1f47719887434ed5185a0297d3f2d7ca8a4",
+      "decision_cutoff": "2025-11-01T13:30:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw10:manager-neutral",
+      "gameweek": 10,
+      "limitations": [
+        "analyst_recommendations_overlap_with_structured_form_and_fixture_features",
+        "date_only_publication_precision",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "fbcadc8bbc8289bc597a17e4299f9f1c28bafe11b27aed0f44ac2baa06f175ca",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical Mbeumo and Woltemade transfer boundaries"
+      ],
+      "season": "2025-26"
+    },
+    {
+      "boundary_ids": [
+        "gw11-transfer",
+        "gw11-lineup-gabriel",
+        "gw11-captaincy"
+      ],
+      "candidates": [
+        {
+          "admission_status": "admitted_exploratory",
+          "available_at": "2026-07-27T10:18:35Z",
+          "available_before_cutoff": false,
+          "boundary_ids": [
+            "gw11-lineup-gabriel",
+            "gw11-transfer"
+          ],
+          "citation_excerpt": "Gunners’ trio Gabriel, Declan Rice and Bukayo Saka retain their places from the Gameweek 10 Selection.",
+          "citation_excerpt_sha256": "ccdd8bf3e2f3cf06e6809233de4033226a718b4eefcf065bef4c77731b4f7501",
+          "claim_summary": "The official analyst arm retained Gabriel for GW11, providing positive lineup evidence after earlier fitness doubts.",
+          "content_sha256": "b1b326c497e88a3c496aa7e72423f60609e56000d20d03da7f73d840dc5f413b",
+          "evidence_id": "gw11-pl-scout-gabriel",
+          "evidence_kind": "reference_policy_and_availability_recovery_signal",
+          "exclusion_reasons": [],
+          "historical_use": "exploratory_replay",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "observed_before_cutoff": false,
+          "player_ids": [
+            "player:2025-26:5"
+          ],
+          "production_eligible": false,
+          "publication_boundary_evidence": "page predates the deadline by two days",
+          "published_at": "2025-11-06T00:00:00Z",
+          "published_at_precision": "date_only_source_page",
+          "published_before_cutoff": true,
+          "rights_status": "manual_citation_only_no_bulk_collection",
+          "source_id": "premier-league-scout-selection-gw11-2025",
+          "source_registry_id": "fpl-official-rules-news",
+          "title": "Scout Selection: Best Fantasy team for Gameweek 11",
+          "url": "https://www.premierleague.com/en/news/4455697/scout-selection-best-fantasy-team-for-gameweek-11"
+        }
+      ],
+      "case_selection": "retrospective_exploratory_not_preregistered",
+      "completeness": {
+        "abstention_reason": null,
+        "admitted_count": 1,
+        "candidate_count": 1,
+        "excluded_count": 0,
+        "status": "ready"
+      },
+      "content_sha256": "eed24d68ef877a28e75821fc3a06ac908af148d86a6fc6fed32731884145245c",
+      "decision_cutoff": "2025-11-08T11:00:00Z",
+      "decision_type": "weekly_management",
+      "episode_id": "benchmark-v0:2025-26:gw11:manager-neutral",
+      "gameweek": 11,
+      "limitations": [
+        "analyst_recommendation_overlaps_with_structured_form_features",
+        "date_only_publication_precision",
+        "retrospective_case_selection_can_overstate_evidence_value",
+        "sources_recovered_after_historical_decision"
+      ],
+      "manifest_version": "early-season-evidence-manifest-v1",
+      "observed_episode_sha256": "50cc4e5079a9329564261103f637a7dd05073424de0cdab7a71db33bf4ce41cb",
+      "production_eligible": false,
+      "promotion_eligible": false,
+      "research_method": "manual_boundary_targeted_web_research",
+      "researched_at": "2026-07-27T10:18:35Z",
+      "ruleset_id": "2025-26-v1.0",
+      "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+      "schema_version": "1.0",
+      "search_complete": true,
+      "search_scope": [
+        "official Premier League FPL advice",
+        "official club availability communications",
+        "canonical Gabriel lineup and transfer boundaries"
+      ],
+      "season": "2025-26"
+    }
+  ],
+  "manifest_id": "early-season-evidence-manifest-v1:2025-26:gw01-gw11",
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "schema_version": "1.0",
+  "season": "2025-26"
+}

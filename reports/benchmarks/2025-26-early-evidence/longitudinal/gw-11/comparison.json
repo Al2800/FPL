@@ -1,0 +1,42 @@
+{
+  "adapter_audit_sha256": "71bdccf1a31cd2bf90d4c3ebe5fb33190a7a58896c214d57eca59f541ff3d4f8",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 36,
+  "agent_vs_canonical_delta": 1,
+  "canonical_gross_points": 35,
+  "canonical_tree_sha256_after": "69c030803881565e2d2a5a538bbf466440f9ff99c28b25e02f1348887a40e5c6",
+  "canonical_tree_sha256_before": "69c030803881565e2d2a5a538bbf466440f9ff99c28b25e02f1348887a40e5c6",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "571d2e1a0a4d8b7274f41e07c6268bbd10b548daa790cfc6c627dde854ce4fcb",
+  "content_sha256": "0b790a28dabbec71bea0c0f53d0c48d2803dee91599ef0a246ab9ebddf649d18",
+  "evidence_run_sha256": "1b8e9bd711dc0b13d5ec76babb26ea8a17e5e51edc0683ceb9f7f3bacebd8c59",
+  "experiment_id": "2025-26-gw11-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 11,
+  "hit_cost": 0,
+  "host_bundle_sha256": "34f66f3c0b86c4528e6fdde42f0425d174fc9b0d1d35487e5558984c5e0eb620",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "28b1025c93a4c0f0624a4d5c6c4a35110e4f594438639659cb21c01bccda1c77",
+  "plan_sha256": "c0939b44d65cbce63f5889c48dfc49ae4aadb8be56cda88cdbfd04ac03219789",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Bryan Mbeumo",
+      "player_out": "Mohamed Salah"
+    },
+    {
+      "player_in": "Erling Haaland",
+      "player_out": "Ollie Watkins"
+    }
+  ],
+  "solver_input_sha256": "f320a58bd7f4aa745bb1ddc9dad78e2dd7bcc6571f5822fe909cffa91368ab52",
+  "solver_output_sha256": "4a8ee44da3d6ec0a0557ab058d7b8a93c2ec55fb90feaca1de1028f16214eeb5",
+  "starting_state_sha256": "29b7d57c08283ff649933666263b02befd364edbfdd5f40156005cf577c43db9"
+}

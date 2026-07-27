@@ -1,0 +1,44 @@
+{
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "a8d8718a0deb211e0d09443b1b9fd1f26e6e87e40c6bed118741626ec2555585",
+  "response_sha256": "de5b5f811a5aa8c1c8736b98b06b5abb1b9c1f103d81df1cd388a73b63d75199",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw05:early-evidence-challenge",
+    "reviewed_adjustment_ids": [],
+    "escalation_outcome": "dismissed",
+    "notes": "No adjustment was proposed. The Salah captaincy view is a context-only reference policy rather than availability evidence and does not ground claims for the other listed players, so abstention is appropriate; identity, citation, pre-cutoff publication, retrospective labelling, expiry, and proposal-only authority raise no unresolved concern."
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "a8d8718a0deb211e0d09443b1b9fd1f26e6e87e40c6bed118741626ec2555585",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

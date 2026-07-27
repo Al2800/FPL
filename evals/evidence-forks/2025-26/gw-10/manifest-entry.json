@@ -1,0 +1,106 @@
+{
+  "boundary_ids": [
+    "gw10-transfer-mbeumo-woltemade",
+    "gw10-lineup",
+    "gw10-captaincy"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw10-transfer-mbeumo-woltemade"
+      ],
+      "citation_excerpt": "Mbeumo has earned a massive 869,000+ transfers in for United's visit to a Nottingham Forest side who have conceded in all nine league matches.",
+      "citation_excerpt_sha256": "545d8ae846850dbdd324af7b723c18160108dc32ef2778b45de793de948f3cc3",
+      "claim_summary": "The official analyst arm strongly supported Mbeumo at the same boundary where the canonical optimiser bought him.",
+      "content_sha256": "55b55513bf70091f92ff92d4417478b062a33150aefe08aa177b3ac966bc9680",
+      "evidence_id": "gw10-pl-scout-mbeumo",
+      "evidence_kind": "reference_policy_and_transfer",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:119"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "page predates the following afternoon's deadline",
+      "published_at": "2025-10-31T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "source_id": "premier-league-scout-selection-gw10-2025",
+      "source_registry_id": "fpl-official-rules-news",
+      "title": "Scout Selection: Best Fantasy team for Gameweek 10",
+      "url": "https://www.premierleague.com/en/news/4450343"
+    },
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw10-transfer-mbeumo-woltemade"
+      ],
+      "citation_excerpt": "Woltemade can maintain that consistent run against a West Ham side who have conceded at least twice in all four home matches.",
+      "citation_excerpt_sha256": "cbb9dbc77f9d015c57decc78734b151337f09c84bb060bcba31a64656e9b5fb4",
+      "claim_summary": "The official analyst arm also supported Woltemade at the same two-transfer boundary.",
+      "content_sha256": "60be090c67a4aabb10623775d8f042d88d6624dca6cfbb20602696509e0ff516",
+      "evidence_id": "gw10-pl-scout-woltemade",
+      "evidence_kind": "reference_policy_and_transfer",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:714"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "page predates the following afternoon's deadline",
+      "published_at": "2025-10-31T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "source_id": "premier-league-scout-selection-gw10-2025",
+      "source_registry_id": "fpl-official-rules-news",
+      "title": "Scout Selection: Best Fantasy team for Gameweek 10",
+      "url": "https://www.premierleague.com/en/news/4450343"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 2,
+    "candidate_count": 2,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "059129174b98801db04ce94f59a5e1f47719887434ed5185a0297d3f2d7ca8a4",
+  "decision_cutoff": "2025-11-01T13:30:00Z",
+  "decision_type": "weekly_management",
+  "episode_id": "benchmark-v0:2025-26:gw10:manager-neutral",
+  "gameweek": 10,
+  "limitations": [
+    "analyst_recommendations_overlap_with_structured_form_and_fixture_features",
+    "date_only_publication_precision",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "sources_recovered_after_historical_decision"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "fbcadc8bbc8289bc597a17e4299f9f1c28bafe11b27aed0f44ac2baa06f175ca",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical Mbeumo and Woltemade transfer boundaries"
+  ],
+  "season": "2025-26"
+}

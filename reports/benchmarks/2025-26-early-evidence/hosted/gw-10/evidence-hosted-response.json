@@ -1,0 +1,72 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "9f5a4fef61d4db6692928dea54dc4329654486212f9ceddfcdc9ec9e4904e4d8",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "9f5a4fef61d4db6692928dea54dc4329654486212f9ceddfcdc9ec9e4904e4d8",
+  "response_sha256": "f303f00ad4aa141c84086d6c7067a9838d89fdab763732ae4144231428c82dae",
+  "structured_output": {
+    "claims": [
+      {
+        "citation_excerpt": "Mbeumo has earned a massive 869,000+ transfers in for United's visit to a Nottingham Forest side who have conceded in all nine league matches.",
+        "citation_excerpt_sha256": "545d8ae846850dbdd324af7b723c18160108dc32ef2778b45de793de948f3cc3",
+        "claim_id": "claim:gw10:mbeumo-form-fixture-transfers",
+        "claim_text": "Mbeumo had received more than 869,000 transfers in ahead of a fixture against a Nottingham Forest side that had conceded in every league match.",
+        "confidence": 0.96,
+        "document_id": "document:gw10-pl-scout-mbeumo",
+        "expires_at": "2025-11-04T13:30:00Z",
+        "passage_id": "passage:gw10-pl-scout-mbeumo",
+        "player_uid": "player:2025-26:119",
+        "source_id": "premier-league-scout-selection-gw10-2025"
+      },
+      {
+        "citation_excerpt": "Woltemade can maintain that consistent run against a West Ham side who have conceded at least twice in all four home matches.",
+        "citation_excerpt_sha256": "cbb9dbc77f9d015c57decc78734b151337f09c84bb060bcba31a64656e9b5fb4",
+        "claim_id": "claim:gw10:woltemade-form-fixture",
+        "claim_text": "The supplied analysis expected Woltemade's consistent run to be supported by a fixture against a West Ham side that had conceded at least twice in each of four home matches.",
+        "confidence": 0.92,
+        "document_id": "document:gw10-pl-scout-woltemade",
+        "expires_at": "2025-11-04T13:30:00Z",
+        "passage_id": "passage:gw10-pl-scout-woltemade",
+        "player_uid": "player:2025-26:714",
+        "source_id": "premier-league-scout-selection-gw10-2025"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "Both passages are context-only form, fixture, and transfer signals that overlap the structured forecast inputs; neither may produce an adjustment under the host constraints.",
+      "Neither passage grounds availability uncertainty or supports a downward expected-minutes or start-probability change."
+    ],
+    "proposed_adjustments": [],
+    "role": "evidence",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "a52971c7e504193363b4e5593da66880851a5723acf59319a6acc33215cb2948",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "a52971c7e504193363b4e5593da66880851a5723acf59319a6acc33215cb2948",
+  "response_sha256": "6d311a4b5afcd5756d2c4c251d2028cc2b3a12a3bd03ba97ae417967ed5db087",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "challenger",
+    "review_id": "review:gw07:independent-evidence-challenge",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw07:gabriel-start-probability"
+    ],
+    "escalation_outcome": "dismissed",
+    "notes": "Gabriel's identity and BBC passage are bound, published before the cutoff, conflict-free, and matched to the host expiry. The 0.20 downward start-probability change is within the 0.25 policy limit and the actionability allow-list. It remains exploratory, production-ineligible, and proposal-only; no challenge warrants blocking it."
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "actionability_assessment": {
+    "allowed_adjustment_player_ids": [],
+    "candidate_player_uses": [
+      {
+        "allowed_use": "context_only",
+        "default_expires_at": "2025-09-23T10:00:00Z",
+        "evidence_id": "gw05-pl-captain-salah",
+        "grounding_passed": true,
+        "player_id": "player:2025-26:381",
+        "reason_codes": [
+          "reference_policy_not_forecast_evidence"
+        ],
+        "structured_overlap": false
+      },
+      {
+        "allowed_use": "context_only",
+        "default_expires_at": "2025-09-23T10:00:00Z",
+        "evidence_id": "gw05-pl-captain-salah",
+        "grounding_passed": true,
+        "player_id": "player:2025-26:235",
+        "reason_codes": [
+          "reference_policy_not_forecast_evidence"
+        ],
+        "structured_overlap": false
+      },
+      {
+        "allowed_use": "context_only",
+        "default_expires_at": "2025-09-23T10:00:00Z",
+        "evidence_id": "gw05-pl-captain-salah",
+        "grounding_passed": true,
+        "player_id": "player:2025-26:249",
+        "reason_codes": [
+          "reference_policy_not_forecast_evidence"
+        ],
+        "structured_overlap": false
+      }
+    ],
+    "content_sha256": "0e48147faa4cf839b410183c21161e3e41a6c2fa49e97792189d9962f205dabd",
+    "gameweek": 5,
+    "manifest_entry_sha256": "7f5201fe1541202a02758aa987b32a7831ee51e2abd5af81535a160e6bf335dc",
+    "policy": {
+      "allowed_targets": [
+        "expected_minutes",
+        "start_probability"
+      ],
+      "context_only_proposals_fail_completion_gate": true,
+      "only_downward_adjustments": true
+    },
+    "schema_version": "1.0"
+  },
+  "case_selection": "retrospective_boundary_targeted_not_preregistered",
+  "code_commit": "a8b7f15ef90a47dc98d926cd201612c331f9f59c",
+  "content_sha256": "1ec98a20d5e6c7e9a8621c47ea028046b3ca056ed2613368749a4622d6ba0112",
+  "deterministic_candidate": {
+    "bank_after": 1.8,
+    "banked_option_units": 2,
+    "hit_cost": 0,
+    "immediate_objective": 61.17,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:291",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:381",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:72",
+        "player:2025-26:568",
+        "player:2025-26:506",
+        "player:2025-26:381",
+        "player:2025-26:384",
+        "player:2025-26:387",
+        "player:2025-26:449",
+        "player:2025-26:427",
+        "player:2025-26:249",
+        "player:2025-26:64"
+      ],
+      "vice_captain_id": "player:2025-26:249"
+    },
+    "next_gameweek_free_transfers": 3,
+    "objective": 64.77,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2025-09-20T10:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw05:manager-neutral",
+    "observed_episode_sha256": "5712a94631bae735e8e6ef822a8b54e72c1bcb64286437ac35739bfd9e6d4a5c",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-27T10:18:35Z",
+      "content_sha256": "a3831733a1c75701fc480b79e3481fc20fdad69d147f5f0c84d118c253a74bde",
+      "document_id": "document:gw05-pl-captain-salah",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "passages": {
+        "passage:gw05-pl-captain-salah": "Salah's all-round potential, combined with the defensive data and his hefty ownership, make him the best option for the captaincy."
+      },
+      "published_at": "2025-09-19T00:00:00Z",
+      "source_id": "premier-league-best-captain-gw5-2025",
+      "title": "Who is the best FPL captain for Gameweek 5?"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "96852737acccb181b2f5dbb0cb86353411b2d5d69b350f88e94c82eca861dd7c",
+    "deterministic_candidate_sha256": "421a43458ca319879a275d6b7c7c2d27399f03637541ae0dacefbe8ab2ec75de",
+    "episode": {
+      "decision_at": "2025-09-20T10:00:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw05:manager-neutral",
+      "observed_episode_sha256": "a5aa385d797a10afd0214b23445d65cdae70da6ffcb7c7c2e5b14e817aa0077d",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-27T10:18:35Z",
+        "content_sha256": "a3831733a1c75701fc480b79e3481fc20fdad69d147f5f0c84d118c253a74bde",
+        "document_id": "document:gw05-pl-captain-salah",
+        "observed_at": "2026-07-27T10:18:35Z",
+        "passages": {
+          "passage:gw05-pl-captain-salah": "Salah's all-round potential, combined with the defensive data and his hefty ownership, make him the best option for the captaincy."
+        },
+        "published_at": "2025-09-19T00:00:00Z",
+        "source_id": "premier-league-best-captain-gw5-2025",
+        "title": "Who is the best FPL captain for Gameweek 5?"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "host_constraints": {
+      "actionability_assessment": {
+        "allowed_adjustment_player_ids": [],
+        "candidate_player_uses": [
+          {
+            "allowed_use": "context_only",
+            "default_expires_at": "2025-09-23T10:00:00Z",
+            "evidence_id": "gw05-pl-captain-salah",
+            "grounding_passed": true,
+            "player_id": "player:2025-26:381",
+            "reason_codes": [
+              "reference_policy_not_forecast_evidence"
+            ],
+            "structured_overlap": false
+          },
+          {
+            "allowed_use": "context_only",
+            "default_expires_at": "2025-09-23T10:00:00Z",
+            "evidence_id": "gw05-pl-captain-salah",
+            "grounding_passed": true,
+            "player_id": "player:2025-26:235",
+            "reason_codes": [
+              "reference_policy_not_forecast_evidence"
+            ],
+            "structured_overlap": false
+          },
+          {
+            "allowed_use": "context_only",
+            "default_expires_at": "2025-09-23T10:00:00Z",
+            "evidence_id": "gw05-pl-captain-salah",
+            "grounding_passed": true,
+            "player_id": "player:2025-26:249",
+            "reason_codes": [
+              "reference_policy_not_forecast_evidence"
+            ],
+            "structured_overlap": false
+          }
+        ],
+        "content_sha256": "0e48147faa4cf839b410183c21161e3e41a6c2fa49e97792189d9962f205dabd",
+        "gameweek": 5,
+        "manifest_entry_sha256": "7f5201fe1541202a02758aa987b32a7831ee51e2abd5af81535a160e6bf335dc",
+        "policy": {
+          "allowed_targets": [
+            "expected_minutes",
+            "start_probability"
+          ],
+          "context_only_proposals_fail_completion_gate": true,
+          "only_downward_adjustments": true
+        },
+        "schema_version": "1.0"
+      },
+      "instruction": "Propose adjustments only for allowed_adjustment_player_ids, only when the cited passage grounds availability, and only as a downward change. Context-only evidence may be extracted as a claim but must not produce an adjustment."
+    },
+    "player_baselines": {
+      "player:2025-26:235": {
+        "expected_minutes": 28.8,
+        "start_probability": 0.4699
+      },
+      "player:2025-26:249": {
+        "expected_minutes": 78.6,
+        "start_probability": 0.8672
+      },
+      "player:2025-26:381": {
+        "expected_minutes": 88.4,
+        "start_probability": 0.9843
+      }
+    },
+    "player_ids": [
+      "player:2025-26:235",
+      "player:2025-26:249",
+      "player:2025-26:381"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "5ed12e778a4bfd5d4c8bfc5b919c429a28d83745d6fe955997ce5b02e691dc34",
+    "run_id": "gw05-early-sol-evidence-v1",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-gw05-early-evidence-v1",
+  "gameweek": 5,
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "manifest_entry_sha256": "7f5201fe1541202a02758aa987b32a7831ee51e2abd5af81535a160e6bf335dc",
+  "player_baselines": {
+    "player:2025-26:235": {
+      "expected_minutes": 28.8,
+      "start_probability": 0.4699
+    },
+    "player:2025-26:249": {
+      "expected_minutes": 78.6,
+      "start_probability": 0.8672
+    },
+    "player:2025-26:381": {
+      "expected_minutes": 88.4,
+      "start_probability": 0.9843
+    }
+  },
+  "reuse_contract": {
+    "allowed_between_isolated_and_longitudinal": true,
+    "condition": "exact_player_baseline_equality",
+    "decision_fields_excluded_from_agent_authority": [
+      "transfers",
+      "lineup",
+      "captain",
+      "chips"
+    ]
+  },
+  "schema_version": "1.0",
+  "starting_state_sha256": "c07a76235f80cdf4b98fba727ec604a70767089eea22286d44dbec09d7a5422e"
+}

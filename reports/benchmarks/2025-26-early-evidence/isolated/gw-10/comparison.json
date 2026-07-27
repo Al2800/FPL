@@ -1,0 +1,42 @@
+{
+  "adapter_audit_sha256": "210562f5902ec44cfc906c4a9f94bb85661d0a2f4e190cf79e083c1eb1834536",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 65,
+  "agent_vs_canonical_delta": 0,
+  "canonical_gross_points": 65,
+  "canonical_tree_sha256_after": "e047713453526a8c7c8a00d73da0b0650e4a9d6b917358375c7d5f7f906cecb4",
+  "canonical_tree_sha256_before": "e047713453526a8c7c8a00d73da0b0650e4a9d6b917358375c7d5f7f906cecb4",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "ff37d38b222cc6da00b2dd025c010d3b2220dc648ca4e34948fbd3da61f4653f",
+  "content_sha256": "16e1e19bb3b23860a8806c076e711b4f54f2716822e70ed05b179c4c95dfaa24",
+  "evidence_run_sha256": "bce4f1e88738708c393c4728a65e0313d2855fbf69c5d6a84add5e3770d09226",
+  "experiment_id": "2025-26-gw10-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 10,
+  "hit_cost": 0,
+  "host_bundle_sha256": "8869bd995b37d3aba4b6949e9dca4f819ae73df0fff2c1951fb6f2f61754d3df",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": null,
+  "plan_sha256": "ef5c6b1744304bab8646505e9582fd532dfd92dbd0a830ff20d2e2ca5ed9b8cb",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Bryan Mbeumo",
+      "player_out": "Tijjani Reijnders"
+    },
+    {
+      "player_in": "Nick Woltemade",
+      "player_out": "Ollie Watkins"
+    }
+  ],
+  "solver_input_sha256": "38ec37eced53c78e973a19b2b6f374cae1836e0bddb59116638e0bb5310bec61",
+  "solver_output_sha256": "f9de72d9946ce82b7e467e943b6f0ae27b93c8ad7815ba01f932e87bb198864d",
+  "starting_state_sha256": "ea248f999e73481604f8bbaf5650341fe2561e56f2146129c76b9f31c223a1e7"
+}

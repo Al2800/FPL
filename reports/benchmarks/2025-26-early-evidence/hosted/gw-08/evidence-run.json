@@ -1,0 +1,383 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw08-early-sol-evidence-v1",
+      "content_sha256": "74680372a9c0bc695a0d39375f06bc35fd4b8f8700a85bf1899d5c5d298c4592",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "turn_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "840592984b612689b2ab831bdb2a28141c6dcca46ea4e851e5b418959d33e4e6",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-27T11:45:00Z",
+        "envelope_version": "1.0",
+        "metadata_owner": "host",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "840592984b612689b2ab831bdb2a28141c6dcca46ea4e851e5b418959d33e4e6",
+        "response_sha256": "83297599c028eb1633762e39b962a0b900e5909f55d585cf60132862b9f96c0c",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "Bowen and Semenyo have the form and fixtures to prove the best armband alternatives to Haaland.",
+              "citation_excerpt_sha256": "c5c71da5a00f68dd7de58c9bc649aa6678d1e621c638f70ee2f46fa2308bf3ed",
+              "claim_id": "claim:gw08:semenyo-form-fixture",
+              "claim_text": "The supplied Premier League analysis identified Semenyo's form and fixture as supporting an alternative captaincy case in Gameweek 8.",
+              "confidence": 0.9,
+              "document_id": "document:gw08-pl-semenyo-captaincy",
+              "expires_at": "2025-10-21T10:00:00Z",
+              "passage_id": "passage:gw08-pl-semenyo-captaincy",
+              "player_uid": "player:2025-26:82",
+              "source_id": "premier-league-semenyo-captain-gw8-2025"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "This form-and-fixture evidence is context only and overlaps the structured forecast signal, so it does not produce an adjustment.",
+            "The current policy permits only downward availability adjustments; the supplied positive captaincy context does not justify reducing Semenyo's baseline."
+          ],
+          "proposed_adjustments": [],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw08-early-sol-evidence-v1",
+      "content_sha256": "df8975da04e739f3d17025ca90285b8fd0a0a52024d084f74cbc6f7ccd174242",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:gw08:semenyo-form-fixture",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:82",
+            "provenance": {
+              "content_hash_sha256": "ee41adcca137b2e56aec9f9bef9c8eb319fa7e673edafc6a59746fb093afdae5",
+              "source_ids": [
+                "premier-league-semenyo-captain-gw8-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-27T10:18:35Z",
+            "claim_id": "claim:gw08:semenyo-form-fixture",
+            "claim_text": "The supplied Premier League analysis identified Semenyo's form and fixture as supporting an alternative captaincy case in Gameweek 8.",
+            "confidence": 0.9,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:gw08-pl-semenyo-captaincy",
+            "expires_at": "2025-10-21T10:00:00Z",
+            "observed_at": "2026-07-27T10:18:35Z",
+            "provenance": {
+              "content_hash_sha256": "ee41adcca137b2e56aec9f9bef9c8eb319fa7e673edafc6a59746fb093afdae5",
+              "source_ids": [
+                "premier-league-semenyo-captain-gw8-2025"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-10-17T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "df8975da04e739f3d17025ca90285b8fd0a0a52024d084f74cbc6f7ccd174242",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "This form-and-fixture evidence is context only and overlaps the structured forecast signal, so it does not produce an adjustment.",
+          "The current policy permits only downward availability adjustments; the supplied positive captaincy context does not justify reducing Semenyo's baseline."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": []
+      }
+    }
+  },
+  "content_sha256": "5570c7d15353de6390e12da115e4b800ac85d7643e27e90014584a2801890a92",
+  "retry_disposition": null,
+  "run_id": "gw08-early-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 2.0,
+    "banked_option_units": 2,
+    "hit_cost": 0,
+    "immediate_objective": 63.11,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:220",
+        "player:2025-26:348",
+        "player:2025-26:568",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:381",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:470",
+        "player:2025-26:5",
+        "player:2025-26:8",
+        "player:2025-26:72",
+        "player:2025-26:381",
+        "player:2025-26:82",
+        "player:2025-26:387",
+        "player:2025-26:384",
+        "player:2025-26:427",
+        "player:2025-26:249",
+        "player:2025-26:64"
+      ],
+      "vice_captain_id": "player:2025-26:82"
+    },
+    "next_gameweek_free_transfers": 3,
+    "objective": 66.71,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:8",
+        "player_out_id": "player:2025-26:291"
+      },
+      {
+        "player_in_id": "player:2025-26:82",
+        "player_out_id": "player:2025-26:449"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-27T11:45:00Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-10-18T10:00:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw08:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw08-early-sol-evidence-v1",
+          "content_sha256": "58b56e17e4b41ac8d92f54e8cf5f6bd8905e0d70b5c13992c61f77f35288fdf9"
+        }
+      ],
+      "input_sha256": "58b56e17e4b41ac8d92f54e8cf5f6bd8905e0d70b5c13992c61f77f35288fdf9",
+      "rendered_prompt_sha256": "840592984b612689b2ab831bdb2a28141c6dcca46ea4e851e5b418959d33e4e6"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw08-early-sol-evidence-v1",
+          "content_sha256": "74680372a9c0bc695a0d39375f06bc35fd4b8f8700a85bf1899d5c5d298c4592"
+        },
+        "call_id": "model:gw08-early-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "840592984b612689b2ab831bdb2a28141c6dcca46ea4e851e5b418959d33e4e6",
+        "response_sha256": "83297599c028eb1633762e39b962a0b900e5909f55d585cf60132862b9f96c0c",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-27T11:45:00Z",
+    "observed_episode_sha256": "3f31efb820bbbab61da3674eca43a422e32c1ce185b598ee6a073592b66fc93d",
+    "output": {
+      "output_sha256": "df8975da04e739f3d17025ca90285b8fd0a0a52024d084f74cbc6f7ccd174242",
+      "response_ref": {
+        "artifact_id": "cached-response:gw08-early-sol-evidence-v1",
+        "content_sha256": "74680372a9c0bc695a0d39375f06bc35fd4b8f8700a85bf1899d5c5d298c4592"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw08-early-sol-evidence-v1",
+        "content_sha256": "df8975da04e739f3d17025ca90285b8fd0a0a52024d084f74cbc6f7ccd174242"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw08-early-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw08-early-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw08-early-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "a8b7f15ef90a47dc98d926cd201612c331f9f59c",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:gw08:semenyo-form-fixture",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:82",
+        "provenance": {
+          "content_hash_sha256": "ee41adcca137b2e56aec9f9bef9c8eb319fa7e673edafc6a59746fb093afdae5",
+          "source_ids": [
+            "premier-league-semenyo-captain-gw8-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-27T10:18:35Z",
+        "claim_id": "claim:gw08:semenyo-form-fixture",
+        "claim_text": "The supplied Premier League analysis identified Semenyo's form and fixture as supporting an alternative captaincy case in Gameweek 8.",
+        "confidence": 0.9,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:gw08-pl-semenyo-captaincy",
+        "expires_at": "2025-10-21T10:00:00Z",
+        "observed_at": "2026-07-27T10:18:35Z",
+        "provenance": {
+          "content_hash_sha256": "ee41adcca137b2e56aec9f9bef9c8eb319fa7e673edafc6a59746fb093afdae5",
+          "source_ids": [
+            "premier-league-semenyo-captain-gw8-2025"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-10-17T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "df8975da04e739f3d17025ca90285b8fd0a0a52024d084f74cbc6f7ccd174242",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "This form-and-fixture evidence is context only and overlaps the structured forecast signal, so it does not produce an adjustment.",
+      "The current policy permits only downward availability adjustments; the supplied positive captaincy context does not justify reducing Semenyo's baseline."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": []
+  }
+}

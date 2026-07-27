@@ -1,0 +1,46 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "8683fd1b84615277fa0a1afc79417e7617e34dc0394b5d1da2140097c883d53e",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "8683fd1b84615277fa0a1afc79417e7617e34dc0394b5d1da2140097c883d53e",
+  "response_sha256": "c09a9c63f8888be0c64d36c226bd61ab1f4610f8c00f85182b5c6063b565ceba",
+  "structured_output": {
+    "escalation_outcome": "confidence_downgrade",
+    "notes": "The Palmer proposal is identity-matched, cited, pre-cutoff, unconflicted, and confined to the exact 0.5457 baseline, an authorised downward start-probability change, and proposal-only authority; correctly no Porro adjustment is made from an ungrounded passage. The vague injury description supports direction but not the exact 0.15 magnitude, so deterministic confidence downgrade and human review are required.",
+    "review_id": "review:gw06:early-evidence-challenge",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw06:palmer-start-probability-down"
+    ],
+    "role": "challenger",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

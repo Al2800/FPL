@@ -1,0 +1,138 @@
+{
+  "allowed_tools": [],
+  "arm": "evidence_challenger",
+  "authority": {
+    "may_apply_adjustment": false,
+    "may_approve": false,
+    "may_execute_fpl": false,
+    "may_modify_rules": false,
+    "may_propose": true,
+    "may_read_hidden_outcome": false
+  },
+  "budget": {
+    "cost": {
+      "amount": 0.0,
+      "currency": "GBP"
+    },
+    "input_tokens": 20000,
+    "output_tokens": 4000,
+    "tool_calls": 0,
+    "total_tokens": 24000,
+    "wall_clock_ms": 120000
+  },
+  "content_sha256": "3ca6bea30d3b48b9e228c7e1a8708b264cd5af459cbd9925b8fa31bf54a1b1a5",
+  "deterministic_candidate_sha256": "5509f842fba3d220bcf3fc13d9af2e40e2fc4c86fcd682bc39bb26b1a4433e91",
+  "episode": {
+    "decision_at": "2025-11-08T11:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw11:manager-neutral",
+    "observed_episode_sha256": "d9de80927acf0d139dcfa80dc96775e26beb6a6f06c27cd5aaf4f43eb2e0f4cc",
+    "ruleset_id": "2025-26-v1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-27T10:18:35Z",
+      "content_sha256": "60b19d91b841048b8ba0a78b267a3af491ae431e439c825b059e5e8612f411ab",
+      "document_id": "document:gw11-pl-scout-gabriel",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "passages": {
+        "passage:gw11-pl-scout-gabriel": "Gunners’ trio Gabriel, Declan Rice and Bukayo Saka retain their places from the Gameweek 10 Selection."
+      },
+      "published_at": "2025-11-06T00:00:00Z",
+      "source_id": "premier-league-scout-selection-gw11-2025",
+      "title": "Scout Selection: Best Fantasy team for Gameweek 11"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_proposal": {
+    "content_sha256": "1b8e9bd711dc0b13d5ec76babb26ea8a17e5e51edc0683ceb9f7f3bacebd8c59",
+    "run_id": "gw11-early-sol-evidence-v1",
+    "validated_output": {
+      "authority": "proposal_only_not_applied",
+      "claim_entities": [
+        {
+          "claim_id": "claim:gw11:gabriel-retained-selection",
+          "entity_type": "player",
+          "entity_uid": "player:2025-26:5",
+          "provenance": {
+            "content_hash_sha256": "60b19d91b841048b8ba0a78b267a3af491ae431e439c825b059e5e8612f411ab",
+            "source_ids": [
+              "premier-league-scout-selection-gw11-2025"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          }
+        }
+      ],
+      "claims": [
+        {
+          "available_at": "2026-07-27T10:18:35Z",
+          "claim_id": "claim:gw11:gabriel-retained-selection",
+          "claim_text": "Gabriel retained his place in the Premier League Scout Selection from Gameweek 10 to Gameweek 11.",
+          "confidence": 0.95,
+          "decision_eligibility": {
+            "evidence_mode": "retrospective_published_before_deadline",
+            "exploratory_admissible": true,
+            "production_eligible": false,
+            "production_ineligibility_reasons": [
+              "observed_at_after_decision",
+              "available_at_after_decision"
+            ]
+          },
+          "document_id": "document:gw11-pl-scout-gabriel",
+          "expires_at": "2025-11-11T11:00:00Z",
+          "observed_at": "2026-07-27T10:18:35Z",
+          "provenance": {
+            "content_hash_sha256": "60b19d91b841048b8ba0a78b267a3af491ae431e439c825b059e5e8612f411ab",
+            "source_ids": [
+              "premier-league-scout-selection-gw11-2025"
+            ],
+            "transformation_version": "evidence-agent-v1"
+          },
+          "published_at": "2025-11-06T00:00:00Z"
+        }
+      ],
+      "conflicts": [],
+      "content_sha256": "e46ef43c66999c3f22c8924e90f8601f5c3090b869837883ddce0da537bbf059",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "exploratory_admissible": true,
+      "notes": [
+        "The supplied passage is positive selection context rather than negative availability evidence.",
+        "The host policy permits only downward adjustments, and this context-only signal does not justify reducing Gabriel's baseline."
+      ],
+      "production_eligible": false,
+      "proposed_adjustments": [],
+      "role": "evidence",
+      "schema_version": "1.0",
+      "signals": []
+    }
+  },
+  "player_baselines": {
+    "player:2025-26:5": {
+      "expected_minutes": 85.4,
+      "start_probability": 0.9485
+    }
+  },
+  "player_ids": [
+    "player:2025-26:5"
+  ],
+  "prompt": {
+    "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+    "prompt_id": "challenger",
+    "version": "1.0"
+  },
+  "provider": {
+    "model_id": "gpt-5.6-sol",
+    "provider_id": "openai-chatgpt-subscription",
+    "reasoning_effort": "high",
+    "surface": "codex_subscription_subagent"
+  },
+  "rendered_input_sha256": "7c801c26d52511b6535f8b05e8b53ae21118c91c125304f72b0bf2dca8795610",
+  "run_id": "gw11-early-sol-challenger-v1",
+  "schema_version": "1.0"
+}

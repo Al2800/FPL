@@ -1,0 +1,42 @@
+{
+  "adapter_audit_sha256": "137646526f75cf6222ca78e9e79f978fe4ed925113991b5640750bba3cd8abe1",
+  "agent_decision": "degraded_fallback",
+  "agent_fork_gross_points": 57,
+  "agent_vs_canonical_delta": 0,
+  "canonical_gross_points": 57,
+  "canonical_tree_sha256_after": "75a50dfe0a1e9664f7e4a0a2019587898bb62110c4888f8b9e5bd93f422dec29",
+  "canonical_tree_sha256_before": "75a50dfe0a1e9664f7e4a0a2019587898bb62110c4888f8b9e5bd93f422dec29",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "2e09a9210aa0b96d0ff40b1879add64e4fe859fb3f26b064b2a5e5ed99ed334d",
+  "content_sha256": "3c8850bf7dc2da95022e25f09e749a35dd592439a36398a7dccead55699f5e52",
+  "evidence_run_sha256": "7425b1ea15204c3aa14b14b9b4d5cecf8021222e3ad68a1f404d6315942e0bc5",
+  "experiment_id": "2025-26-gw04-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 4,
+  "hit_cost": 0,
+  "host_bundle_sha256": "8f7ae509899a9975e7507db63744c29f6f0c29e7132d9339cb7e02850a89581c",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": null,
+  "plan_sha256": "5855a4f52b8c9b0c7827674a27a08ec2f777e1cf1a6a0ac7242e083542d75589",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Cody Gakpo",
+      "player_out": "Cole Palmer"
+    },
+    {
+      "player_in": "Dominik Szoboszlai",
+      "player_out": "Elliot Anderson"
+    }
+  ],
+  "solver_input_sha256": "53a36e7c5f3f29ab4419cefbc96f58708aa166119b0f4e04e51cbb0716f5816a",
+  "solver_output_sha256": "2ae558dce3cc17808c330495be4309b53c31a391a2a146c6d9dd5def83b49d2d",
+  "starting_state_sha256": "04b8d7980c81e7b39d6a4312906ab76526142c392cdc91e934a63cff35e27c80"
+}

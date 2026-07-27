@@ -1,0 +1,46 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "64f9875735a6a54a8833023ddf36621a0fa5d409df4064a7043403d6a44d6516",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "64f9875735a6a54a8833023ddf36621a0fa5d409df4064a7043403d6a44d6516",
+  "response_sha256": "5128e8023c0ba32509d1063d5ffe9092852af736cc365ed00033043e5b9fd8bd",
+  "structured_output": {
+    "escalation_outcome": "dismissed",
+    "notes": "Gabriel's identity and pre-cutoff flag report are bound, conflict-free, and matched to the host expiry. The 0.15 downward start-probability change is conservative, within the 0.25 policy limit, and authorised by the actionability allow-list. It remains exploratory, production-ineligible, and proposal-only; no challenge warrants blocking it.",
+    "review_id": "review:gw09:independent-evidence-challenge",
+    "reviewed_adjustment_ids": [
+      "adjustment:gw09:gabriel-start-probability"
+    ],
+    "role": "challenger",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

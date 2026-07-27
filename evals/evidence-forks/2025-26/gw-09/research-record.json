@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "gameweek": 9,
+  "decision_type": "weekly_management",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "research_method": "manual_boundary_targeted_web_research",
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "historical FPL team-news reporting",
+    "canonical Gabriel lineup boundary"
+  ],
+  "search_complete": true,
+  "boundary_ids": [
+    "gw09-transfer",
+    "gw09-lineup-gabriel",
+    "gw09-captaincy"
+  ],
+  "completeness_status": "ready",
+  "abstention_reason": null,
+  "limitations": [
+    "date_only_publication_precision",
+    "secondary_team_news_aggregator"
+  ],
+  "candidates": [
+    {
+      "evidence_id": "gw09-ffscout-gabriel-flag",
+      "source_registry_id": "historical_manual_citation_unregistered",
+      "source_id": "fantasy-football-scout-gw9-team-news-2025-10-24",
+      "url": "https://www.fantasyfootballscout.co.uk/2025/10/24/fpl-gameweek-9-team-news-fridays-live-injury-updates-2",
+      "title": "FPL Gameweek 9 team news: Friday’s live injury updates",
+      "published_at": "2025-10-24T00:00:00Z",
+      "published_at_precision": "date_only_explicit_pre_deadline_context",
+      "publication_boundary_evidence": "dated live team-news page explicitly discusses players going into the deadline",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "available_at": "2026-07-27T10:18:35Z",
+      "citation_excerpt": "For the second time in three Gameweeks, Gabriel Magalhaes is set to be flagged going into a deadline.",
+      "citation_excerpt_sha256": "bd3f0a699c0219f652dddcb080b859cdbae6c51f1c909a3e058c8a629e9c5c74",
+      "claim_summary": "Gabriel carried a renewed fitness flag into GW9, affecting lineup and transfer confidence.",
+      "evidence_kind": "availability",
+      "player_ids": [
+        "player:2025-26:5"
+      ],
+      "boundary_ids": [
+        "gw09-transfer",
+        "gw09-lineup-gabriel"
+      ],
+      "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+      "admission_status": "admitted_exploratory",
+      "exclusion_reasons": []
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "ab5a977b9b4995537aadc62783e889bc5c1dfd62b37ee7e5a0f42efe5f38a6b4",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "ab5a977b9b4995537aadc62783e889bc5c1dfd62b37ee7e5a0f42efe5f38a6b4",
+  "response_sha256": "ba5a1ec6d1c0bdcb822ab95d99e6f156ce251dff304f3aa266209adb3cd48320",
+  "structured_output": {
+    "claims": [
+      {
+        "citation_excerpt": "For the second time in three Gameweeks, Gabriel Magalhaes is set to be flagged going into a deadline.",
+        "citation_excerpt_sha256": "bd3f0a699c0219f652dddcb080b859cdbae6c51f1c909a3e058c8a629e9c5c74",
+        "claim_id": "claim:gw09:gabriel-flagged",
+        "claim_text": "Gabriel Magalhaes was expected to carry an availability flag into the Gameweek 9 deadline, for the second time in three Gameweeks.",
+        "confidence": 0.9,
+        "document_id": "document:gw09-ffscout-gabriel-flag",
+        "expires_at": "2025-10-27T17:30:00Z",
+        "passage_id": "passage:gw09-ffscout-gabriel-flag",
+        "player_uid": "player:2025-26:5",
+        "source_id": "fantasy-football-scout-gw9-team-news-2025-10-24"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "This is a proposal-only downward adjustment based solely on the supplied passage.",
+      "The evidence was recovered after the historical decision and is exploratory rather than production eligible."
+    ],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw09:gabriel-start-probability",
+        "after_value": 0.7882,
+        "before_value": 0.9382,
+        "claim_ids": [
+          "claim:gw09:gabriel-flagged"
+        ],
+        "confidence": 0.66,
+        "expires_at": "2025-10-27T17:30:00Z",
+        "player_uid": "player:2025-26:5",
+        "rationale": "The supplied pre-deadline report establishes renewed availability uncertainty but does not confirm absence or quantify severity; a conservative 0.15 reduction reflects the flag without treating it as a ruled-out status.",
+        "target": "start_probability",
+        "unit": "probability"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

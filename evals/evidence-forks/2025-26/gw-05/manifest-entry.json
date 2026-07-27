@@ -1,0 +1,77 @@
+{
+  "boundary_ids": [
+    "gw05-lineup-palmer-joao",
+    "gw05-captaincy-salah"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw05-lineup-palmer-joao",
+        "gw05-captaincy-salah"
+      ],
+      "citation_excerpt": "Salah's all-round potential, combined with the defensive data and his hefty ownership, make him the best option for the captaincy.",
+      "citation_excerpt_sha256": "ece8f40e8ec55452e5c266e6286b6fee5d8ac90067df2442c79341bcf691b0b4",
+      "claim_summary": "The official analysis preferred Salah as GW5 captain while still identifying Palmer and Joao Pedro as viable attackers.",
+      "content_sha256": "1bacc3c365d7203789fe4f8cffdc3c47eed6300a59bc27504653672987232bc6",
+      "evidence_id": "gw05-pl-captain-salah",
+      "evidence_kind": "reference_policy_and_captaincy",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:381",
+        "player:2025-26:235",
+        "player:2025-26:249"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "page predates the following morning's deadline",
+      "published_at": "2025-09-19T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "source_id": "premier-league-best-captain-gw5-2025",
+      "source_registry_id": "fpl-official-rules-news",
+      "title": "Who is the best FPL captain for Gameweek 5?",
+      "url": "https://www.premierleague.com/en/news/4413655"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 1,
+    "candidate_count": 1,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "7f5201fe1541202a02758aa987b32a7831ee51e2abd5af81535a160e6bf335dc",
+  "decision_cutoff": "2025-09-20T10:00:00Z",
+  "decision_type": "weekly_management",
+  "episode_id": "benchmark-v0:2025-26:gw05:manager-neutral",
+  "gameweek": 5,
+  "limitations": [
+    "date_only_publication_precision",
+    "palmer_recurrence_during_match_not_foreseeable_as_confirmed_absence",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "sources_recovered_after_historical_decision"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "5712a94631bae735e8e6ef822a8b54e72c1bcb64286437ac35739bfd9e6d4a5c",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical lineup and captaincy boundaries"
+  ],
+  "season": "2025-26"
+}

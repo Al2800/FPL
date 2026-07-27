@@ -1,0 +1,76 @@
+{
+  "boundary_ids": [
+    "gw08-transfer-semenyo-timber",
+    "gw08-lineup",
+    "gw08-captaincy-semenyo"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw08-transfer-semenyo-timber",
+        "gw08-captaincy-semenyo"
+      ],
+      "citation_excerpt": "Bowen and Semenyo have the form and fixtures to prove the best armband alternatives to Haaland.",
+      "citation_excerpt_sha256": "c5c71da5a00f68dd7de58c9bc649aa6678d1e621c638f70ee2f46fa2308bf3ed",
+      "claim_summary": "The official analyst arm considered Semenyo a credible alternative captain as the canonical optimiser bought him.",
+      "content_sha256": "906d275c0cff75a01b602d2f82db26481a19b59d6b02d54b25059d14c4662064",
+      "evidence_id": "gw08-pl-semenyo-captaincy",
+      "evidence_kind": "reference_policy_and_captaincy",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:82"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "page predates the following morning's deadline",
+      "published_at": "2025-10-17T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "source_id": "premier-league-semenyo-captain-gw8-2025",
+      "source_registry_id": "fpl-official-rules-news",
+      "title": "Why Bowen and Semenyo are the best captaincy alternatives to Haaland",
+      "url": "https://www.premierleague.com/en/news/4438599"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 1,
+    "candidate_count": 1,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "dd989b8fcc4a1528779f815e38578054841377c0751780a6e79c76165253584a",
+  "decision_cutoff": "2025-10-18T10:00:00Z",
+  "decision_type": "weekly_management",
+  "episode_id": "benchmark-v0:2025-26:gw08:manager-neutral",
+  "gameweek": 8,
+  "limitations": [
+    "analyst_recommendation_overlaps_with_structured_form_and_fixture_features",
+    "date_only_publication_precision",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "sources_recovered_after_historical_decision"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "2ef23776cacbeb747fbaa90eaf3563e312d63db85a3f7254264d4941513e0907",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical Semenyo and Timber transfer boundaries"
+  ],
+  "season": "2025-26"
+}

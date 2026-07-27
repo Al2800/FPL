@@ -1,0 +1,44 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "6f990a9c71170baa4fe3889eaa1f09fe6e48df375a100b70a26d09d0860d758e",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "6f990a9c71170baa4fe3889eaa1f09fe6e48df375a100b70a26d09d0860d758e",
+  "response_sha256": "1a738ccdba9d732babab28e359723f7b54bc66ceda4ef535726b9ee9bdbf4b79",
+  "structured_output": {
+    "escalation_outcome": "dismissed",
+    "notes": "No adjustment was proposed. Both passages provide form, fixture, and transfer context already represented by structured signals; neither grounds availability. The host allow-list is empty, so abstention correctly avoids an unauthorised adjustment.",
+    "review_id": "review:gw10:independent-evidence-challenge",
+    "reviewed_adjustment_ids": [],
+    "role": "challenger",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

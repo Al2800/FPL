@@ -1,0 +1,73 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "1f466eddacb51d827826fa327f6451a7ca8242742a32ecccc23a2b010fdb7fbb",
+  "response_sha256": "7ab08806c5f74cd99dcce2ef8452603d9e53bdb7c6f79bc823e1ea741add1954",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw06:palmer-big-injury-problem",
+        "document_id": "document:gw06-fourfourtwo-palmer-porro",
+        "passage_id": "passage:gw06-fourfourtwo-palmer-porro",
+        "source_id": "fourfourtwo-expected-lineups-2025-09-26",
+        "claim_text": "Cole Palmer is described as a significant injury concern for Chelsea.",
+        "citation_excerpt": "Cole Palmer is a big injury problem for Chelsea",
+        "citation_excerpt_sha256": "84f167f85b3f49fc5f1aae341cfaaad95980ba190a10041a2f6fcd38fe84daad",
+        "expires_at": "2025-09-30T10:00:00Z",
+        "confidence": 0.78,
+        "player_uid": "player:2025-26:235"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw06:palmer-start-probability-down",
+        "claim_ids": [
+          "claim:gw06:palmer-big-injury-problem"
+        ],
+        "target": "start_probability",
+        "before_value": 0.5457,
+        "after_value": 0.3957,
+        "confidence": 0.66,
+        "expires_at": "2025-09-30T10:00:00Z",
+        "player_uid": "player:2025-26:235",
+        "rationale": "The passage identifies a significant injury concern but gives no definitive absence or return timing; a moderate 0.15 downward change reflects the bounded evidence."
+      }
+    ],
+    "notes": [
+      "The proposal is a downward availability adjustment for the sole host-authorised and grounded player and uses the exact deterministic start-probability baseline.",
+      "No Pedro Porro claim or adjustment is extracted because the supplied passage does not mention or ground him and the host marks that candidate context-only with insufficient passage grounding.",
+      "This is a retrospective proposal-only extraction from evidence published before the 2025-09-27T10:00:00Z decision cutoff and recovered later."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "1f466eddacb51d827826fa327f6451a7ca8242742a32ecccc23a2b010fdb7fbb",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

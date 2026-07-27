@@ -1,0 +1,253 @@
+{
+  "bank": 0.0,
+  "chips_available": [
+    "wildcard_fh",
+    "free_hit_fh",
+    "triple_captain_fh",
+    "bench_boost_fh",
+    "wildcard_sh",
+    "free_hit_sh",
+    "triple_captain_sh",
+    "bench_boost_sh"
+  ],
+  "content_sha256": "327e192cb517cb68f1de9e6611fa3d8358f1fca901d5f289b35572832938e183",
+  "counterfactual_metadata": {
+    "candidate_pool_sha256": "27e6d39c5882afcab8b2b0f4b81708eb513fad84bff4443cc612504fd35c16ad",
+    "lineup": {
+      "active_chip": null,
+      "bench_ids": [
+        "player:2025-26:502",
+        "player:2025-26:338",
+        "player:2025-26:260",
+        "player:2025-26:610"
+      ],
+      "captain_id": "player:2025-26:381",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:287",
+        "player:2025-26:256",
+        "player:2025-26:507",
+        "player:2025-26:508",
+        "player:2025-26:381",
+        "player:2025-26:119",
+        "player:2025-26:450",
+        "player:2025-26:81",
+        "player:2025-26:489",
+        "player:2025-26:624",
+        "player:2025-26:135"
+      ],
+      "vice_captain_id": "player:2025-26:119"
+    },
+    "selection_algorithm": "lagrangian_grid_plus_single_swap_local_search_v1",
+    "selection_objective": 433.999412,
+    "squad_cost": 100.0
+  },
+  "deadline": "2025-08-15T17:30:00Z",
+  "evidence": [
+    {
+      "published_at": "2025-08-15T17:29:59Z",
+      "source_id": "frozen-local-completed-2024-25-plus-launch-fields",
+      "source_url": "local-reconstructed-inputs",
+      "title": "Structured prior seed counterfactual input bundle",
+      "use": "retrospective_field_whitelist_experiment"
+    }
+  ],
+  "free_transfers": 0,
+  "gameweek": 1,
+  "initial_plan": {
+    "active_chip": null,
+    "bench_ids": [
+      "player:2025-26:502",
+      "player:2025-26:338",
+      "player:2025-26:260",
+      "player:2025-26:610"
+    ],
+    "captain_id": "player:2025-26:381",
+    "starting_xi_ids": [
+      "player:2025-26:287",
+      "player:2025-26:256",
+      "player:2025-26:507",
+      "player:2025-26:508",
+      "player:2025-26:381",
+      "player:2025-26:119",
+      "player:2025-26:450",
+      "player:2025-26:81",
+      "player:2025-26:489",
+      "player:2025-26:624",
+      "player:2025-26:135"
+    ],
+    "vice_captain_id": "player:2025-26:119"
+  },
+  "limitations": [
+    "current_players_export_used_only_as_element_to_stable_code_bridge",
+    "exploratory_production_ineligible",
+    "historical_control_seed_not_a_2026_27_selection_policy",
+    "no_predeadline_injury_news_or_odds",
+    "not_a_2026_27_live_seed_policy",
+    "predeadline_player_eligibility_not_a_complete_immutable_snapshot",
+    "promoted_and_new_players_use_shrunk_position_prior",
+    "published_editorial_seed_not_a_manager_account_snapshot",
+    "retrospective_reconstruction_not_immutable_predeadline_capture",
+    "selection_uses_deterministic_local_search_not_global_milp_proof"
+  ],
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "seed_id": "benchmark-v0-structured-prior-gw1-counterfactual",
+  "seed_policy": "exploratory_reconstructed_structured_prior_v1",
+  "squad": [
+    {
+      "club_id": "team:2025-26:14",
+      "current_price": 8.0,
+      "fpl_element_id": 119,
+      "player_id": "player:2025-26:119",
+      "position": "MID",
+      "purchase_price": 8.0,
+      "selling_price": 8.0,
+      "web_name": "Bryan Mbeumo"
+    },
+    {
+      "club_id": "team:2025-26:5",
+      "current_price": 7.5,
+      "fpl_element_id": 135,
+      "player_id": "player:2025-26:135",
+      "position": "FWD",
+      "purchase_price": 7.5,
+      "selling_price": 7.5,
+      "web_name": "Yoane Wissa"
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "current_price": 5.5,
+      "fpl_element_id": 256,
+      "player_id": "player:2025-26:256",
+      "position": "DEF",
+      "purchase_price": 5.5,
+      "selling_price": 5.5,
+      "web_name": "Daniel Muñoz Mejía"
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "current_price": 4.5,
+      "fpl_element_id": 260,
+      "player_id": "player:2025-26:260",
+      "position": "DEF",
+      "purchase_price": 4.5,
+      "selling_price": 4.5,
+      "web_name": "Marc Guéhi"
+    },
+    {
+      "club_id": "team:2025-26:9",
+      "current_price": 5.5,
+      "fpl_element_id": 287,
+      "player_id": "player:2025-26:287",
+      "position": "GKP",
+      "purchase_price": 5.5,
+      "selling_price": 5.5,
+      "web_name": "Jordan Pickford"
+    },
+    {
+      "club_id": "team:2025-26:10",
+      "current_price": 5.5,
+      "fpl_element_id": 338,
+      "player_id": "player:2025-26:338",
+      "position": "FWD",
+      "purchase_price": 5.5,
+      "selling_price": 5.5,
+      "web_name": "Rodrigo Muniz Carvalho"
+    },
+    {
+      "club_id": "team:2025-26:12",
+      "current_price": 14.5,
+      "fpl_element_id": 381,
+      "player_id": "player:2025-26:381",
+      "position": "MID",
+      "purchase_price": 14.5,
+      "selling_price": 14.5,
+      "web_name": "Mohamed Salah"
+    },
+    {
+      "club_id": "team:2025-26:14",
+      "current_price": 8.0,
+      "fpl_element_id": 450,
+      "player_id": "player:2025-26:450",
+      "position": "MID",
+      "purchase_price": 8.0,
+      "selling_price": 8.0,
+      "web_name": "Matheus Santos Carneiro da Cunha"
+    },
+    {
+      "club_id": "team:2025-26:15",
+      "current_price": 6.5,
+      "fpl_element_id": 489,
+      "player_id": "player:2025-26:489",
+      "position": "MID",
+      "purchase_price": 6.5,
+      "selling_price": 6.5,
+      "web_name": "Jacob Murphy"
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "current_price": 5.0,
+      "fpl_element_id": 502,
+      "player_id": "player:2025-26:502",
+      "position": "GKP",
+      "purchase_price": 5.0,
+      "selling_price": 5.0,
+      "web_name": "Matz Sels"
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "current_price": 5.0,
+      "fpl_element_id": 507,
+      "player_id": "player:2025-26:507",
+      "position": "DEF",
+      "purchase_price": 5.0,
+      "selling_price": 5.0,
+      "web_name": "Ola Aina"
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "current_price": 5.0,
+      "fpl_element_id": 508,
+      "player_id": "player:2025-26:508",
+      "position": "DEF",
+      "purchase_price": 5.0,
+      "selling_price": 5.0,
+      "web_name": "Neco Williams"
+    },
+    {
+      "club_id": "team:2025-26:19",
+      "current_price": 4.5,
+      "fpl_element_id": 610,
+      "player_id": "player:2025-26:610",
+      "position": "DEF",
+      "purchase_price": 4.5,
+      "selling_price": 4.5,
+      "web_name": "Aaron Wan-Bissaka"
+    },
+    {
+      "club_id": "team:2025-26:19",
+      "current_price": 8.0,
+      "fpl_element_id": 624,
+      "player_id": "player:2025-26:624",
+      "position": "FWD",
+      "purchase_price": 8.0,
+      "selling_price": 8.0,
+      "web_name": "Jarrod Bowen"
+    },
+    {
+      "club_id": "team:2025-26:4",
+      "current_price": 7.0,
+      "fpl_element_id": 81,
+      "player_id": "player:2025-26:81",
+      "position": "MID",
+      "purchase_price": 7.0,
+      "selling_price": 7.0,
+      "web_name": "Justin Kluivert"
+    }
+  ]
+}

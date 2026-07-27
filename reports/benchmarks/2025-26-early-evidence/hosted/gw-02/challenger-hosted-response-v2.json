@@ -1,0 +1,44 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "5257ea51638b0b4ba18695d782ffc58c8c7bd0cf255a247901806daa71873326",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T12:00:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "5257ea51638b0b4ba18695d782ffc58c8c7bd0cf255a247901806daa71873326",
+  "response_sha256": "6722b679b80a6e6e34400d69e68029b60aa9f3a17bfd6c5a17c1eaf73db2f68c",
+  "structured_output": {
+    "escalation_outcome": "dismissed",
+    "notes": "No adjustment was proposed. The fixture-based premium comparison is context-only under the host actionability policy and overlaps structured signal, so abstention is appropriate; identity, citation, pre-cutoff publication, retrospective labelling, expiry, and proposal-only authority raise no unresolved concern.",
+    "review_id": "review:gw02:early-evidence-challenge",
+    "reviewed_adjustment_ids": [],
+    "role": "challenger",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

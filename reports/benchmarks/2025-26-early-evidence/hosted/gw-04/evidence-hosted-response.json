@@ -1,0 +1,72 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "9a4e6d0f32a3653eaf9b82d6144cac7acc81a7d80c14bd9fd628d6bda444a6cb",
+  "response_sha256": "f07e8fdcaa7d943172a086d8d7b843def4bd0f7921546c621f2d95032f454b3c",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw04:palmer-post-training-fitness-decision",
+        "document_id": "document:gw04-chelsea-palmer-training-test",
+        "passage_id": "passage:gw04-chelsea-palmer-training-test",
+        "source_id": "chelsea-team-news-brentford-2025",
+        "claim_text": "Cole Palmer's fitness to face Brentford remains undecided pending the afternoon training session.",
+        "citation_excerpt": "a decision as to whether Cole Palmer is fit to face Brentford will be made after this afternoon's training session",
+        "citation_excerpt_sha256": "8b884e49a8043485c146683a09cab2f948b9f36971f256668cf5124aa138c822",
+        "expires_at": "2025-09-16T10:00:00Z",
+        "confidence": 0.93,
+        "player_uid": "player:2025-26:235"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw04:palmer-start-probability-down",
+        "claim_ids": [
+          "claim:gw04:palmer-post-training-fitness-decision"
+        ],
+        "target": "start_probability",
+        "before_value": 0.5639,
+        "after_value": 0.4139,
+        "confidence": 0.8,
+        "expires_at": "2025-09-16T10:00:00Z",
+        "player_uid": "player:2025-26:235",
+        "rationale": "The club statement leaves Palmer's fitness unresolved until a later training assessment, supporting a moderate 0.15 downward change rather than treating him as unavailable."
+      }
+    ],
+    "notes": [
+      "The proposal is a downward availability adjustment for the sole host-authorised player and uses the exact deterministic start-probability baseline.",
+      "This is a retrospective proposal-only extraction from evidence published before the 2025-09-13T10:00:00Z decision cutoff and recovered later."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "9a4e6d0f32a3653eaf9b82d6144cac7acc81a7d80c14bd9fd628d6bda444a6cb",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

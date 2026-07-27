@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "role": "evidence",
+  "claims": [
+    {
+      "claim_id": "claim:gw11:gabriel-retained-selection",
+      "document_id": "document:gw11-pl-scout-gabriel",
+      "passage_id": "passage:gw11-pl-scout-gabriel",
+      "source_id": "premier-league-scout-selection-gw11-2025",
+      "claim_text": "Gabriel retained his place in the Premier League Scout Selection from Gameweek 10 to Gameweek 11.",
+      "citation_excerpt": "Gunners’ trio Gabriel, Declan Rice and Bukayo Saka retain their places from the Gameweek 10 Selection.",
+      "citation_excerpt_sha256": "ccdd8bf3e2f3cf06e6809233de4033226a718b4eefcf065bef4c77731b4f7501",
+      "expires_at": "2025-11-11T11:00:00Z",
+      "confidence": 0.95,
+      "player_uid": "player:2025-26:5"
+    }
+  ],
+  "conflicts": [],
+  "proposed_adjustments": [],
+  "notes": [
+    "The supplied passage is positive selection context rather than negative availability evidence.",
+    "The host policy permits only downward adjustments, and this context-only signal does not justify reducing Gabriel's baseline."
+  ]
+}

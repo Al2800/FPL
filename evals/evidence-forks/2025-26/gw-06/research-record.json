@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "gameweek": 6,
+  "decision_type": "weekly_management",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "research_method": "manual_boundary_targeted_web_research",
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "timestamped expected-lineup reporting",
+    "canonical transfer, lineup and captaincy boundaries"
+  ],
+  "search_complete": true,
+  "boundary_ids": [
+    "gw06-transfer",
+    "gw06-lineup",
+    "gw06-captaincy"
+  ],
+  "completeness_status": "ready",
+  "abstention_reason": null,
+  "limitations": [
+    "third_party_expected_lineup_is_not_official_confirmation"
+  ],
+  "candidates": [
+    {
+      "evidence_id": "gw06-fourfourtwo-palmer-porro",
+      "source_registry_id": "historical_manual_citation_unregistered",
+      "source_id": "fourfourtwo-expected-lineups-2025-09-26",
+      "url": "https://www.fourfourtwo.com/features/premier-league-line-ups-260925",
+      "title": "Premier League line-ups: Every expected XI this weekend",
+      "published_at": "2025-09-26T11:02:09Z",
+      "published_at_precision": "second",
+      "publication_boundary_evidence": "indexed publication timestamp is before the GW6 deadline",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "available_at": "2026-07-27T10:18:35Z",
+      "citation_excerpt": "Cole Palmer is a big injury problem for Chelsea",
+      "citation_excerpt_sha256": "84f167f85b3f49fc5f1aae341cfaaad95980ba190a10041a2f6fcd38fe84daad",
+      "claim_summary": "Expected-lineup reporting treated Palmer as a major absence risk and also identified rotation uncertainty for Pedro Porro.",
+      "evidence_kind": "availability_and_expected_lineup",
+      "player_ids": [
+        "player:2025-26:235",
+        "player:2025-26:568"
+      ],
+      "boundary_ids": [
+        "gw06-transfer",
+        "gw06-lineup"
+      ],
+      "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+      "admission_status": "admitted_exploratory",
+      "exclusion_reasons": []
+    }
+  ]
+}

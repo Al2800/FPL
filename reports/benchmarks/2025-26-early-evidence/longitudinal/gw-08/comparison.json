@@ -1,0 +1,46 @@
+{
+  "adapter_audit_sha256": "bf683f16cb8bcc13b89be3e4494d4658415e1cc4e6fa0c6da6cd87e21068ee15",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 52,
+  "agent_vs_canonical_delta": 0,
+  "canonical_gross_points": 52,
+  "canonical_tree_sha256_after": "f8bad471d8f838c44f5823bff39d00e020bcdd482f24d286df8f7fa405bee1fa",
+  "canonical_tree_sha256_before": "f8bad471d8f838c44f5823bff39d00e020bcdd482f24d286df8f7fa405bee1fa",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "24ac5bcd5461d1875d8b39b86ee540faebff77190b9e6d655560194c051e6182",
+  "content_sha256": "22ee4190b1ce0f7c5b9d63edf197801c944b61efbfe5a469e9654d35fac05ef8",
+  "evidence_run_sha256": "5570c7d15353de6390e12da115e4b800ac85d7643e27e90014584a2801890a92",
+  "experiment_id": "2025-26-gw08-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 8,
+  "hit_cost": 0,
+  "host_bundle_sha256": "7092b7057c00bfff1639a4ee8b4e8ae16e500d1ec195bbfcb9d63766ec2dddf1",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "5ceef49af873dc740533c76cf0ff80fee3fdf88a6ce3bc3c0ec091ddf929a007",
+  "plan_sha256": "33736bdf7cd09a9087d45e05d76687405afebf78654c6d36999b6318f5a4f2d4",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Gabriel dos Santos Magalhães",
+      "player_out": "James Tarkowski"
+    },
+    {
+      "player_in": "Jurriën Timber",
+      "player_out": "Joe Rodon"
+    },
+    {
+      "player_in": "Antoine Semenyo",
+      "player_out": "Bruno Borges Fernandes"
+    }
+  ],
+  "solver_input_sha256": "d79225d91f224939dda517293a18f30c92aab262eeea71cf8f63216195e0b025",
+  "solver_output_sha256": "b7c4fecabcf80d4701fdf2c46fdff5e1a68340b3a20053798a8d35987d695ec4",
+  "starting_state_sha256": "3d7c729a5c38ac522954ca11e4c2467debe5ae695632cde5b0af36e0961f5625"
+}

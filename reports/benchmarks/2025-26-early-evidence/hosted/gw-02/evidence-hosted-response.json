@@ -1,0 +1,71 @@
+{
+  "provider_id": "openai-chatgpt-subscription",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "request_sha256": "74ae787f7c06d6106431708f86d7831b098b20bb5c951a3e69ea302fee4ce13c",
+  "response_sha256": "f96f1b32ca400a926f238a456909b5dbf33a4223b6f3567bf8111d2eed1cbc27",
+  "structured_output": {
+    "schema_version": "1.0",
+    "role": "evidence",
+    "claims": [
+      {
+        "claim_id": "claim:gw02:palmer-premium-fixture-context",
+        "document_id": "document:gw02-pl-scout-new-starters",
+        "passage_id": "passage:gw02-pl-scout-new-starters",
+        "source_id": "premier-league-scout-gw2-squad-2025",
+        "claim_text": "The Scout presents Cole Palmer as one of two premium players with favourable fixtures over the next two Gameweeks.",
+        "citation_excerpt": "Cole Palmer and Erling Haaland also have the fixtures to prove better premium options than Salah in the next two Gameweeks.",
+        "citation_excerpt_sha256": "025fe18284ecb5550a8e00828ccb8ea7d1d84b95943f64c41ea67a01c641a57d",
+        "expires_at": "2025-08-25T17:30:00Z",
+        "confidence": 0.9,
+        "player_uid": "player:2025-26:235"
+      },
+      {
+        "claim_id": "claim:gw02:salah-relative-premium-context",
+        "document_id": "document:gw02-pl-scout-new-starters",
+        "passage_id": "passage:gw02-pl-scout-new-starters",
+        "source_id": "premier-league-scout-gw2-squad-2025",
+        "claim_text": "The Scout rates Cole Palmer and Erling Haaland above Mohamed Salah as premium options for the next two Gameweeks on fixture grounds.",
+        "citation_excerpt": "Cole Palmer and Erling Haaland also have the fixtures to prove better premium options than Salah in the next two Gameweeks.",
+        "citation_excerpt_sha256": "025fe18284ecb5550a8e00828ccb8ea7d1d84b95943f64c41ea67a01c641a57d",
+        "expires_at": "2025-08-25T17:30:00Z",
+        "confidence": 0.9,
+        "player_uid": "player:2025-26:381"
+      }
+    ],
+    "conflicts": [],
+    "proposed_adjustments": [],
+    "notes": [
+      "Both claims are context-only under the host actionability assessment and therefore produce no adjustment.",
+      "The passage expresses a fixture-based reference view rather than new availability evidence and overlaps structured signal.",
+      "This is a retrospective proposal-only extraction from evidence published before the 2025-08-22T17:30:00Z decision cutoff and recovered later."
+    ]
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "sandbox": "read-only",
+    "network_access": false,
+    "rendered_input_sha256": "74ae787f7c06d6106431708f86d7831b098b20bb5c951a3e69ea302fee4ce13c",
+    "event_types": [
+      "thread_started",
+      "agent_message",
+      "turn_completed"
+    ]
+  },
+  "usage": {
+    "wall_clock_ms": 0,
+    "tool_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0,
+    "measurement_status": "unavailable_from_collaboration_surface",
+    "cost": {
+      "currency": "GBP",
+      "amount": null,
+      "metering_status": "unavailable"
+    }
+  }
+}

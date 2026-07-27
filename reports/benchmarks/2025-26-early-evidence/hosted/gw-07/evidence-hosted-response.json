@@ -1,0 +1,75 @@
+{
+  "attestation": {
+    "auth_mode": "chatgpt_subscription",
+    "event_types": [
+      "thread_started",
+      "turn_started",
+      "agent_message",
+      "turn_completed"
+    ],
+    "network_access": false,
+    "rendered_input_sha256": "a01c812f229818d8c5b3c20229ab5fdb911a404f3bd36790c327c794d8de83a7",
+    "sandbox": "read-only"
+  },
+  "cache_hit": false,
+  "cli_version": "collaboration-subagent",
+  "completed_at": "2026-07-27T11:45:00Z",
+  "envelope_version": "1.0",
+  "metadata_owner": "host",
+  "model_id": "gpt-5.6-sol",
+  "model_version": "gpt-5.6-sol",
+  "provider_id": "openai-chatgpt-subscription",
+  "request_sha256": "a01c812f229818d8c5b3c20229ab5fdb911a404f3bd36790c327c794d8de83a7",
+  "response_sha256": "2ba9d23c6812eb41860ef977324ba8a7bb80c51e2983e6821ac65a9008c2005e",
+  "structured_output": {
+    "claims": [
+      {
+        "citation_excerpt": "Arteta awaits news on the fitness of defender Gabriel after he went off injured against Olympiakos in midweek.",
+        "citation_excerpt_sha256": "c5078a0a3d96a9afa539ea20100cae3e7e35d14ea2eed315432490cb611dddac",
+        "claim_id": "claim:gw07:gabriel-fitness-doubt",
+        "claim_text": "Gabriel left Arsenal's midweek match injured, and Mikel Arteta was awaiting news on his fitness before the Gameweek 7 deadline.",
+        "confidence": 0.92,
+        "document_id": "document:gw07-bbc-gabriel-fitness",
+        "expires_at": "2025-10-06T17:30:00Z",
+        "passage_id": "passage:gw07-bbc-gabriel-fitness",
+        "player_uid": "player:2025-26:5",
+        "source_id": "bbc-premier-league-team-news-2025-10-03"
+      }
+    ],
+    "conflicts": [],
+    "notes": [
+      "This is a proposal-only downward adjustment based solely on the supplied passage.",
+      "The evidence was recovered after the historical decision and is exploratory rather than production eligible."
+    ],
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw07:gabriel-start-probability",
+        "after_value": 0.7227,
+        "before_value": 0.9227,
+        "claim_ids": [
+          "claim:gw07:gabriel-fitness-doubt"
+        ],
+        "confidence": 0.72,
+        "expires_at": "2025-10-06T17:30:00Z",
+        "player_uid": "player:2025-26:5",
+        "rationale": "The supplied pre-deadline report establishes material availability uncertainty after Gabriel left the midweek match injured, but does not confirm absence; a bounded 0.20 reduction reflects that uncertainty.",
+        "target": "start_probability",
+        "unit": "probability"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0"
+  },
+  "usage": {
+    "cost": {
+      "amount": null,
+      "currency": "GBP",
+      "metering_status": "unavailable"
+    },
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "tool_calls": 0,
+    "total_tokens": 0,
+    "wall_clock_ms": 0
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "boundary_ids": [
+    "gw04-transfer-palmer",
+    "gw04-lineup-joao-pedro",
+    "gw04-captaincy"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw04-transfer-palmer"
+      ],
+      "citation_excerpt": "a decision as to whether Cole Palmer is fit to face Brentford will be made after this afternoon's training session",
+      "citation_excerpt_sha256": "8b884e49a8043485c146683a09cab2f948b9f36971f256668cf5124aa138c822",
+      "claim_summary": "Chelsea left Palmer's availability unresolved until a final training test, supporting a reduced-start rather than confirmed-out interpretation.",
+      "content_sha256": "3f578505b470e5f1e183c596696c52a7d974238a4f28f9676a9c7669989d8cad",
+      "evidence_id": "gw04-chelsea-palmer-training-test",
+      "evidence_kind": "availability",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:235"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "official press conference page predates the following morning's deadline",
+      "published_at": "2025-09-12T00:00:00Z",
+      "published_at_precision": "date_only_source_page",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_no_bulk_collection",
+      "source_id": "chelsea-team-news-brentford-2025",
+      "source_registry_id": "official-club-communications",
+      "title": "Enzo Maresca confirms Chelsea team news for Brentford",
+      "url": "https://www.chelseafc.com/en/news/article/enzo-maresca-chelsea-team-news-brentford-2025"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 1,
+    "candidate_count": 1,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "4d78462059f71431a7c408b7ef5346cb4978a5c183ee71d50a299e095f7327c2",
+  "decision_cutoff": "2025-09-13T10:00:00Z",
+  "decision_type": "weekly_management",
+  "episode_id": "benchmark-v0:2025-26:gw04:manager-neutral",
+  "gameweek": 4,
+  "limitations": [
+    "date_only_publication_precision",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "sources_recovered_after_historical_decision",
+    "training_session_after_source_created_residual_uncertainty"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "18f2aa25371f230ef1d6fe0770a8ca1bc2858ba9fb3bd5d9e29a25883124e141",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "canonical transfer and lineup boundaries"
+  ],
+  "season": "2025-26"
+}

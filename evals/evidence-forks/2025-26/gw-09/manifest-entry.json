@@ -1,0 +1,77 @@
+{
+  "boundary_ids": [
+    "gw09-transfer",
+    "gw09-lineup-gabriel",
+    "gw09-captaincy"
+  ],
+  "candidates": [
+    {
+      "admission_status": "admitted_exploratory",
+      "available_at": "2026-07-27T10:18:35Z",
+      "available_before_cutoff": false,
+      "boundary_ids": [
+        "gw09-transfer",
+        "gw09-lineup-gabriel"
+      ],
+      "citation_excerpt": "For the second time in three Gameweeks, Gabriel Magalhaes is set to be flagged going into a deadline.",
+      "citation_excerpt_sha256": "bd3f0a699c0219f652dddcb080b859cdbae6c51f1c909a3e058c8a629e9c5c74",
+      "claim_summary": "Gabriel carried a renewed fitness flag into GW9, affecting lineup and transfer confidence.",
+      "content_sha256": "9501c1c91e9793dec7017d60e1a0c7b48c7f5fc9256874370074aa09cb321b71",
+      "evidence_id": "gw09-ffscout-gabriel-flag",
+      "evidence_kind": "availability",
+      "exclusion_reasons": [],
+      "historical_use": "exploratory_replay",
+      "observed_at": "2026-07-27T10:18:35Z",
+      "observed_before_cutoff": false,
+      "player_ids": [
+        "player:2025-26:5"
+      ],
+      "production_eligible": false,
+      "publication_boundary_evidence": "dated live team-news page explicitly discusses players going into the deadline",
+      "published_at": "2025-10-24T00:00:00Z",
+      "published_at_precision": "date_only_explicit_pre_deadline_context",
+      "published_before_cutoff": true,
+      "rights_status": "manual_citation_only_terms_unreviewed_no_bulk_collection",
+      "source_id": "fantasy-football-scout-gw9-team-news-2025-10-24",
+      "source_registry_id": "historical_manual_citation_unregistered",
+      "title": "FPL Gameweek 9 team news: Friday’s live injury updates",
+      "url": "https://www.fantasyfootballscout.co.uk/2025/10/24/fpl-gameweek-9-team-news-fridays-live-injury-updates-2"
+    }
+  ],
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "completeness": {
+    "abstention_reason": null,
+    "admitted_count": 1,
+    "candidate_count": 1,
+    "excluded_count": 0,
+    "status": "ready"
+  },
+  "content_sha256": "64edca2c72c12ae69c0055ca06f673f74abe0f4db98d13f69171557d00ae6a1b",
+  "decision_cutoff": "2025-10-24T17:30:00Z",
+  "decision_type": "weekly_management",
+  "episode_id": "benchmark-v0:2025-26:gw09:manager-neutral",
+  "gameweek": 9,
+  "limitations": [
+    "date_only_publication_precision",
+    "retrospective_case_selection_can_overstate_evidence_value",
+    "secondary_team_news_aggregator",
+    "sources_recovered_after_historical_decision"
+  ],
+  "manifest_version": "early-season-evidence-manifest-v1",
+  "observed_episode_sha256": "2f6d0343f603ee3ddf38efc12ab150d65df30a60a93d188381d08ef4f7e147b6",
+  "production_eligible": false,
+  "promotion_eligible": false,
+  "research_method": "manual_boundary_targeted_web_research",
+  "researched_at": "2026-07-27T10:18:35Z",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "search_complete": true,
+  "search_scope": [
+    "official Premier League FPL advice",
+    "official club availability communications",
+    "historical FPL team-news reporting",
+    "canonical Gabriel lineup boundary"
+  ],
+  "season": "2025-26"
+}
