@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from copy import deepcopy
 import json
 from pathlib import Path
@@ -11,11 +11,13 @@ from typing import Any
 import yaml
 
 from src.evaluation.outcome_scorer import score_revealed_outcome
+from src.evidence.availability_ledger import project_availability
 from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.replay_adapter import build_replay_solver_input
 from src.optimisation.io import fingerprint
 from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
+from src.orchestration.boundary_retrieval import build_boundary_evidence_pack
 from src.orchestration.evidence_fork import (
     EvidenceForkError,
     _canonical_span_hash,
@@ -31,6 +33,35 @@ class WeeklyEvidenceProgrammeError(ValueError):
 
 
 PROGRAMME_VERSION = "weekly-evidence-programme-v1"
+
+
+def build_weekly_evidence_context(
+    *,
+    ledger: Mapping[str, Any],
+    decision_at: str,
+    boundaries: Sequence[Mapping[str, Any]],
+    player_uids: Sequence[str] = (),
+    max_evidence: int = 12,
+) -> dict[str, Any]:
+    """Build the cutoff-safe availability view and bounded agent evidence pack."""
+
+    availability_view = project_availability(
+        ledger, decision_at=decision_at, player_uids=player_uids
+    )
+    evidence_pack = build_boundary_evidence_pack(
+        availability_view=availability_view,
+        boundaries=boundaries,
+        max_evidence=max_evidence,
+    )
+    return _sealed(
+        {
+            "schema_version": "1.0",
+            "decision_at": decision_at,
+            "ledger_sha256": ledger["content_sha256"],
+            "availability_view": availability_view,
+            "boundary_evidence_pack": evidence_pack,
+        }
+    )
 
 
 def _read(path: Path) -> dict[str, Any]:

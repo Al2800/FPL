@@ -26,6 +26,12 @@ POLICY_PATH = REPO / "control" / "policies" / "evidence-adjustments.yaml"
 ESCALATION_OUTCOMES = frozenset(
     {"dismissed", "confidence_downgrade", "forced_re_run", "escalation"}
 )
+AVAILABILITY_CLAIM_STATUSES = frozenset(
+    {"unavailable", "doubtful", "available"}
+)
+RECOVERY_CONDITIONS = frozenset(
+    {"declared_fit", "returned_to_training", "started_match"}
+)
 
 INJECTION_PATTERNS = [
     re.compile(p, re.IGNORECASE)
@@ -453,6 +459,83 @@ def eligible_claims_for_decision(
         if result.eligible:
             eligible.append(deepcopy(claim))
     return eligible, results
+
+
+def validate_availability_claim_semantics(claim: dict[str, Any]) -> None:
+    """Validate the domain fields used by the stateful availability ledger."""
+
+    required = {
+        "claim_id",
+        "player_uid",
+        "status",
+        "confidence",
+        "published_at",
+        "observed_at",
+        "available_at",
+        "expires_at",
+        "provenance",
+    }
+    missing = sorted(required - set(claim))
+    if missing:
+        raise ValueError(
+            "availability claim missing required fields: " + ", ".join(missing)
+        )
+    if not isinstance(claim["claim_id"], str) or not claim["claim_id"]:
+        raise ValueError("availability claim_id must be a non-empty string")
+    if not isinstance(claim["player_uid"], str) or not claim["player_uid"]:
+        raise ValueError("availability player_uid must be a non-empty string")
+    if claim["status"] not in AVAILABILITY_CLAIM_STATUSES:
+        raise ValueError(
+            "availability status must be one of "
+            + ", ".join(sorted(AVAILABILITY_CLAIM_STATUSES))
+        )
+    published = _parse_timestamp(claim["published_at"], field="published_at")
+    observed = _parse_timestamp(claim["observed_at"], field="observed_at")
+    available = _parse_timestamp(claim["available_at"], field="available_at")
+    expires = _parse_timestamp(claim["expires_at"], field="expires_at")
+    if observed < published:
+        raise ValueError("observed_at must not precede published_at")
+    if available < observed:
+        raise ValueError("available_at must not precede observed_at")
+    if expires <= available:
+        raise ValueError("expires_at must be later than available_at")
+    confidence = claim["confidence"]
+    if (
+        not isinstance(confidence, (int, float))
+        or isinstance(confidence, bool)
+        or not math.isfinite(float(confidence))
+        or not 0 <= float(confidence) <= 1
+    ):
+        raise ValueError("availability confidence must be between 0 and 1")
+    provenance = claim["provenance"]
+    if (
+        not isinstance(provenance, dict)
+        or not isinstance(provenance.get("source_ids"), list)
+        or not provenance["source_ids"]
+    ):
+        raise ValueError("availability provenance requires source_ids")
+    supersedes = claim.get("supersedes_claim_ids", [])
+    if (
+        not isinstance(supersedes, list)
+        or any(not isinstance(value, str) or not value for value in supersedes)
+        or len(supersedes) != len(set(supersedes))
+    ):
+        raise ValueError(
+            "supersedes_claim_ids must contain unique non-empty strings"
+        )
+    recovery = claim.get("recovery")
+    if recovery is not None:
+        if claim["status"] != "available":
+            raise ValueError("recovery evidence requires status=available")
+        if not isinstance(recovery, dict):
+            raise ValueError("recovery must be an object")
+        if recovery.get("condition") not in RECOVERY_CONDITIONS:
+            raise ValueError(
+                "recovery condition must be one of "
+                + ", ".join(sorted(RECOVERY_CONDITIONS))
+            )
+        if recovery.get("condition_met") is not True:
+            raise ValueError("recovery condition must be explicitly met")
 
 
 @dataclass(frozen=True)

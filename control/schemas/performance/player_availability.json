@@ -18,6 +18,47 @@
     "status": {
       "type": "string"
     },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "expires_at": {
+      "$ref": "../_defs.json#/$defs/iso_datetime"
+    },
+    "supersedes_claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition",
+        "condition_met"
+      ],
+      "properties": {
+        "condition": {
+          "type": "string",
+          "enum": [
+            "declared_fit",
+            "returned_to_training",
+            "started_match"
+          ]
+        },
+        "condition_met": {
+          "const": true
+        }
+      }
+    },
     "chance_of_playing": {
       "type": [
         "number",
