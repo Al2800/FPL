@@ -35,7 +35,8 @@ test, without modifying canonical replay files.
 - [x] (2026-07-27 08:17+01:00) Passed 10 focused, 106 optimisation/historical
   and 502 full-suite tests; proved byte-deterministic report reproduction,
   policy hash integrity and clean diff hygiene.
-- [ ] Add implementation record, close `FPL-bsw.34`, commit and push.
+- [x] (2026-07-27 08:24+01:00) Added the implementation record, closed
+  `FPL-bsw.34`, and committed and pushed the implementation as `1fd3b56`.
 
 ## Surprises & Discoveries
 
@@ -248,3 +249,6 @@ same-cutoff projection components.
 Revision note (2026-07-27): updated after implementation to record the
 fixed-squad projection decision, GW34 verdict and all final validation
 evidence.
+
+Revision note (2026-07-27): finalized after closing `FPL-bsw.34` and pushing
+implementation commit `1fd3b56` to `main`.
