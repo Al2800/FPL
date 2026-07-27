@@ -4,7 +4,7 @@
     "required_status": "completed",
     "requires_validated_output": true
   },
-  "content_sha256": "efba264e608cb4b85a350585cf032bde5446d0fa8d670e0f332cb12a76040634",
+  "content_sha256": "acf1acd035820949203bbd3e5c44bc8eea203479a7121b952ec070de5045d6f1",
   "executable_policy": {
     "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
     "policy_id": "live-faithful-v1-control"
@@ -16,6 +16,17 @@
     "policy_id": "live-faithful-v1-control"
   },
   "mode": "observation_only_no_fpl_execution",
+  "paired_trajectory": {
+    "attribution_bridge": "evidence_state_no_evidence",
+    "control_arm": "forecast_optimizer",
+    "evidence_arm": "evidence_agent",
+    "freeze_gate": "no_later_than_episode_cutoff",
+    "shared_input": "content_addressed_structured_context",
+    "transitioned_plans": [
+      "deterministic_control",
+      "evidence_actual"
+    ]
+  },
   "policy_id": "live-shadow-candidate-2026-27-v1",
   "prohibitions": [
     "must_not_submit_actions_to_fpl",
@@ -51,6 +62,16 @@
     ]
   },
   "schema_version": "1.0",
+  "unstructured_evidence": {
+    "missing_feed": "degrade_to_control_policy",
+    "required_timestamps": [
+      "published_at",
+      "observed_at",
+      "available_at"
+    ],
+    "source_gate": "enabled_registered_resolved_licence",
+    "storage": "immutable_local_content_hash"
+  },
   "shadow_policy": {
     "challenger_id": "robust-selection-v2",
     "configuration_sha256": "be0019ab0d9ec1c347325f676f8048adc7848b93922cbecd4bf5a3c3068d2f93"

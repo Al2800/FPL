@@ -309,6 +309,27 @@ def build_live_shadow_candidate(
                 "requires_validated_output": True,
                 "on_failure": "refuse_agent_scoring_use_control_only",
             },
+            "paired_trajectory": {
+                "control_arm": "forecast_optimizer",
+                "evidence_arm": "evidence_agent",
+                "shared_input": "content_addressed_structured_context",
+                "attribution_bridge": "evidence_state_no_evidence",
+                "freeze_gate": "no_later_than_episode_cutoff",
+                "transitioned_plans": [
+                    "deterministic_control",
+                    "evidence_actual",
+                ],
+            },
+            "unstructured_evidence": {
+                "source_gate": "enabled_registered_resolved_licence",
+                "required_timestamps": [
+                    "published_at",
+                    "observed_at",
+                    "available_at",
+                ],
+                "storage": "immutable_local_content_hash",
+                "missing_feed": "degrade_to_control_policy",
+            },
             "prohibitions": [
                 "must_not_submit_actions_to_fpl",
                 "must_not_delay_control_deadline",

@@ -73,6 +73,12 @@ def test_live_shadow_candidate_keeps_control_executable() -> None:
         "requires_validated_output": True,
         "on_failure": "refuse_agent_scoring_use_control_only",
     }
+    assert candidate["paired_trajectory"]["attribution_bridge"] == (
+        "evidence_state_no_evidence"
+    )
+    assert candidate["unstructured_evidence"]["missing_feed"] == (
+        "degrade_to_control_policy"
+    )
     assert candidate["content_sha256"] == artifact_hash(candidate)
 
 

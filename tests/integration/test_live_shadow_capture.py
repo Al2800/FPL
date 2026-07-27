@@ -3,12 +3,19 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 
 import httpx
+import pytest
 from jsonschema import Draft202012Validator
 
 from scripts.capture_fpl_live_shadow import capture_live_shadow
+from src.orchestration.live_shadow import (
+    LiveShadowError,
+    build_unstructured_evidence_capture,
+    shadow_hash,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST_SCHEMA = ROOT / "control" / "schemas" / "data" / "source-snapshot-manifest.json"
@@ -60,6 +67,7 @@ def test_complete_capture_is_immutable_and_schema_valid(tmp_path: Path) -> None:
     assert first["browser_actions"] is False
     assert first["account_writes"] is False
     assert first["authentication"] == "none"
+    assert first["unstructured_evidence_capture"]["status"] == "degraded"
 
     validator = Draft202012Validator(json.loads(MANIFEST_SCHEMA.read_text(encoding="utf-8")))
     run_dir = tmp_path / "20260722T120000Z"
@@ -100,3 +108,90 @@ def test_capture_paths_are_public_read_only_endpoints(tmp_path: Path) -> None:
         "https://example.test/api/fixtures/",
     ]
     assert all("/my-team/" not in url and "/transfers/" not in url for url in urls)
+
+
+def _evidence_registry(*, enabled: bool = True) -> dict:
+    return {
+        "sources": [
+            {
+                "source_id": "fixture-club-news",
+                "enabled": enabled,
+                "licence_status": "restricted",
+                "allowed_use": "private_analysis",
+                "attribution": "Fixture club",
+            }
+        ]
+    }
+
+
+def _snapshot() -> dict:
+    content = "The player will be assessed before the match."
+    return {
+        "source_id": "fixture-club-news",
+        "document_id": "fixture-document-1",
+        "url": "https://club.example/news/1",
+        "title": "Team update",
+        "published_at": "2026-07-22T08:00:00Z",
+        "observed_at": "2026-07-22T08:05:00Z",
+        "available_at": "2026-07-22T08:06:00Z",
+        "content": content,
+        "content_sha256": hashlib.sha256(content.encode()).hexdigest(),
+        "raw_file": "forecast-inputs/evidence-01.json",
+    }
+
+
+def test_unstructured_capture_has_exact_timestamps_source_hash_and_degraded_empty():
+    cutoff = "2026-07-22T10:00:00Z"
+    admitted = build_unstructured_evidence_capture(
+        snapshots=[_snapshot()],
+        source_registry=_evidence_registry(),
+        decision_cutoff=cutoff,
+    )
+    assert admitted["content_sha256"] == shadow_hash(admitted)
+    assert admitted["status"] == "complete"
+    row = admitted["snapshots"][0]
+    assert {
+        "published_at",
+        "observed_at",
+        "available_at",
+        "content_sha256",
+        "snapshot_id",
+    } <= set(row)
+
+    degraded = build_unstructured_evidence_capture(
+        snapshots=[],
+        source_registry=_evidence_registry(),
+        decision_cutoff=cutoff,
+    )
+    assert degraded["status"] == "degraded"
+    assert degraded["snapshots"] == []
+    assert degraded["degraded_reasons"] == [
+        "no_governed_unstructured_evidence_available"
+    ]
+
+
+def test_unstructured_capture_refuses_late_disabled_and_hash_changed_evidence():
+    late = _snapshot()
+    late["available_at"] = "2026-07-22T10:00:01Z"
+    with pytest.raises(LiveShadowError, match="after decision cutoff"):
+        build_unstructured_evidence_capture(
+            snapshots=[late],
+            source_registry=_evidence_registry(),
+            decision_cutoff="2026-07-22T10:00:00Z",
+        )
+
+    with pytest.raises(LiveShadowError, match="disabled"):
+        build_unstructured_evidence_capture(
+            snapshots=[_snapshot()],
+            source_registry=_evidence_registry(enabled=False),
+            decision_cutoff="2026-07-22T10:00:00Z",
+        )
+
+    changed = _snapshot()
+    changed["content"] += " Changed."
+    with pytest.raises(LiveShadowError, match="hash mismatch"):
+        build_unstructured_evidence_capture(
+            snapshots=[changed],
+            source_registry=_evidence_registry(),
+            decision_cutoff="2026-07-22T10:00:00Z",
+        )

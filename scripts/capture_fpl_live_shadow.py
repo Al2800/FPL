@@ -19,6 +19,10 @@ from src.forecasting.live_capture import (
 from src.ingestion.acquisition import utc_now
 from src.ingestion.registry import assert_collectable, load_registry
 from src.ingestion.snapshot_fpl import DEFAULT_PATHS, SOURCE_ID, snapshot_endpoint
+from src.orchestration.live_shadow import (
+    LiveShadowError,
+    build_unstructured_evidence_capture,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT = REPO_ROOT / "data" / "live-shadow" / "fpl"
@@ -99,6 +103,7 @@ def capture_live_shadow(
     decision_cutoff: str | None = None,
     launch_context_path: Path | None = None,
     market_snapshot_paths: list[Path] | None = None,
+    evidence_snapshot_paths: list[Path] | None = None,
     freeze_launch: bool = False,
     timeout: float = 30.0,
     client: httpx.Client | None = None,
@@ -142,6 +147,7 @@ def capture_live_shadow(
         if endpoint["acquisition_status"] != "success"
     ]
     forecast_ref: dict[str, Any] | None = None
+    evidence_ref: dict[str, Any] | None = None
     if not failures:
         bootstrap, bootstrap_manifest = _bootstrap_payload(out_dir, observed, endpoints)
         launch_context: dict[str, Any] | None = None
@@ -160,12 +166,16 @@ def capture_live_shadow(
             _write_immutable_bytes(
                 run_dir / "forecast-inputs" / f"market-{index:02d}.json", body
             )
+        resolved_cutoff: str | None = decision_cutoff
         try:
+            resolved_cutoff = resolved_cutoff or _decision_cutoff(
+                bootstrap, observed
+            )
             forecast_capture = build_live_forecast_capture(
                 bootstrap=bootstrap,
                 bootstrap_manifest=bootstrap_manifest,
                 observed_at=observed,
-                decision_cutoff=decision_cutoff or _decision_cutoff(bootstrap, observed),
+                decision_cutoff=resolved_cutoff,
                 launch_context=launch_context,
                 market_snapshots=market_snapshots,
                 source_registry=registry,
@@ -198,6 +208,40 @@ def capture_live_shadow(
                     else "complete"
                 ),
             }
+        evidence_snapshots: list[dict[str, Any]] = []
+        for index, path in enumerate(evidence_snapshot_paths or [], start=1):
+            snapshot, body = _load_object(path, f"evidence snapshot {index}")
+            raw_file = f"evidence-{index:02d}.json"
+            snapshot["raw_file"] = f"forecast-inputs/{raw_file}"
+            evidence_snapshots.append(snapshot)
+            _write_immutable_bytes(
+                run_dir / "forecast-inputs" / raw_file, body
+            )
+        if resolved_cutoff is None:
+            if evidence_snapshots:
+                raise LiveShadowError(
+                    "Evidence capture requires an explicit decision cutoff"
+                )
+            evidence_ref = {
+                "body_file": None,
+                "content_sha256": None,
+                "status": "degraded",
+                "reason": "official_deadline_unavailable",
+            }
+        else:
+            evidence_capture = build_unstructured_evidence_capture(
+                snapshots=evidence_snapshots,
+                source_registry=registry,
+                decision_cutoff=resolved_cutoff,
+            )
+            evidence_path = run_dir / "unstructured-evidence-capture.json"
+            _write_immutable_json(evidence_path, evidence_capture)
+            evidence_ref = {
+                "body_file": evidence_path.name,
+                "content_sha256": evidence_capture["content_sha256"],
+                "status": evidence_capture["status"],
+                "snapshot_count": len(evidence_capture["snapshots"]),
+            }
     stable_identity = {
         "source_id": SOURCE_ID,
         "observed_at": observed,
@@ -222,6 +266,7 @@ def capture_live_shadow(
         "failures": failures,
         "endpoints": endpoints,
         "forecast_input_capture": forecast_ref,
+        "unstructured_evidence_capture": evidence_ref,
     }
     run_dir = out_dir / _stamp(observed)
     _write_immutable_json(run_dir / "capture-summary.json", summary)
@@ -236,6 +281,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--decision-cutoff")
     parser.add_argument("--launch-context", type=Path)
     parser.add_argument("--market-snapshot", action="append", type=Path, default=[])
+    parser.add_argument("--evidence-snapshot", action="append", type=Path, default=[])
     parser.add_argument("--freeze-launch", action="store_true")
     parser.add_argument("--timeout", type=float, default=30.0)
     args = parser.parse_args(argv)
@@ -247,10 +293,16 @@ def main(argv: list[str] | None = None) -> int:
             decision_cutoff=args.decision_cutoff,
             launch_context_path=args.launch_context,
             market_snapshot_paths=args.market_snapshot,
+            evidence_snapshot_paths=args.evidence_snapshot,
             freeze_launch=args.freeze_launch,
             timeout=args.timeout,
         )
-    except (PermissionError, FileExistsError, LiveForecastCaptureError) as exc:
+    except (
+        PermissionError,
+        FileExistsError,
+        LiveForecastCaptureError,
+        LiveShadowError,
+    ) as exc:
         print(f"refused: {exc}", file=sys.stderr)
         return 2
 

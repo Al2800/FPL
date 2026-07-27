@@ -22,6 +22,7 @@ from src.forecasting.live_capture import (
 from src.ingestion.registry import load_registry
 from src.orchestration.episode_builder import LiveEpisodeError, build_live_episode
 from src.orchestration.manager_state import ManagerStateError
+from src.orchestration.live_shadow import build_unstructured_evidence_capture
 from src.scoring.rules_activation import RulesetActivationError
 
 
@@ -270,6 +271,73 @@ def test_live_capture_freezes_launch_state_and_records_missing_market_degradatio
         "final",
     }
     assert artifact["feature_contract"]["forecast_interface"] == "live-faithful-v1"
+
+
+def test_complete_unstructured_evidence_is_bound_to_episode_and_raw_bytes(
+    tmp_path: Path,
+):
+    capture = _capture(tmp_path)
+    summary = json.loads(capture.read_text())
+    content = "The player remains unavailable for selection."
+    raw = {
+        "source_id": "fixture-club-news",
+        "document_id": "fixture-news-1",
+        "url": "https://club.example/news/1",
+        "title": "Team news",
+        "published_at": "2025-08-14T08:00:00Z",
+        "observed_at": "2025-08-14T08:05:00Z",
+        "available_at": "2025-08-14T08:06:00Z",
+        "content": content,
+        "content_sha256": hashlib.sha256(content.encode()).hexdigest(),
+        "raw_file": "forecast-inputs/evidence-01.json",
+    }
+    raw_path = capture.parent / raw["raw_file"]
+    raw_path.parent.mkdir(parents=True, exist_ok=True)
+    raw_path.write_text(json.dumps(raw), encoding="utf-8")
+    evidence = build_unstructured_evidence_capture(
+        snapshots=[raw],
+        source_registry={
+            "sources": [
+                {
+                    "source_id": "fixture-club-news",
+                    "enabled": True,
+                    "licence_status": "restricted",
+                    "allowed_use": "private_analysis",
+                    "attribution": "Fixture club",
+                }
+            ]
+        },
+        decision_cutoff=CUTOFF,
+    )
+    evidence_path = capture.parent / "unstructured-evidence-capture.json"
+    evidence_path.write_text(
+        json.dumps(evidence, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    summary["unstructured_evidence_capture"] = {
+        "body_file": evidence_path.name,
+        "content_sha256": evidence["content_sha256"],
+        "status": "complete",
+        "snapshot_count": 1,
+    }
+    capture.write_text(
+        json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+
+    _build(tmp_path, capture=capture)
+    manifest = json.loads(
+        (tmp_path / "episode/episode-manifest.json").read_text()
+    )
+    assert evidence["snapshots"][0]["snapshot_id"] in manifest["observed"][
+        "snapshot_ids"
+    ]
+    assert {
+        row["source_id"] for row in manifest["observed"]["source_artifacts"]
+    } == {"fpl-official-endpoints", "fixture-club-news"}
+
+    raw["content"] += " Tampered."
+    raw_path.write_text(json.dumps(raw), encoding="utf-8")
+    with pytest.raises(LiveEpisodeError, match="raw content hash mismatch"):
+        _build(tmp_path, capture=capture, out_name="tampered-evidence")
 
 
 def test_launch_freeze_classifies_promoted_and_transferred_and_refuses_late_freeze(

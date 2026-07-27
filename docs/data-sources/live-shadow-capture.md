@@ -28,6 +28,15 @@ the official launch catalogue, cold-start classifications, market-slot status
 and the live-faithful forecast interface. See
 `docs/data-sources/live-forecast-capture.md`.
 
+Optional unstructured documents are supplied as already staged local JSON with
+`--evidence-snapshot`. The capture command does not crawl news sites. Each file
+is admitted only when its source is enabled in the registry, its licence status
+is resolved, its content hash matches, and its publication, observation and
+availability times are at or before the explicit `--decision-cutoff`. Raw bytes
+and `unstructured-evidence-capture.json` are written immutably. With no admitted
+documents, the evidence layer is recorded as degraded and the deterministic
+control remains runnable.
+
 The command returns zero only when every configured official endpoint succeeds. A partial
 HTTP or transport failure is still persisted with structured evidence and returns
 one so schedulers can alert without discarding the successful endpoint captures.

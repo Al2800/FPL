@@ -17,6 +17,10 @@ from src.data.temporal import normalise_observation, parse_aware_datetime
 from src.features.deadline_view import materialise_deadline_view
 from src.ingestion.acquisition import detect_schema
 from src.orchestration.manager_state import normalise_manager_state
+from src.orchestration.live_shadow import (
+    LiveShadowError,
+    validate_unstructured_evidence_capture,
+)
 from src.orchestration.policy_state import POLICY_ARMS
 from src.scoring.rules_loader import (
     DEFAULT_RULES_PATH,
@@ -229,6 +233,71 @@ def _verify_capture(summary_path: Path) -> tuple[dict[str, Any], dict, list, lis
     if not isinstance(fixtures, list):
         raise LiveEpisodeError("fixtures body must be an array")
     return summary, bootstrap, fixtures, verified
+
+
+def _verify_unstructured_evidence(
+    summary_path: Path,
+    summary: Mapping[str, Any],
+    *,
+    cutoff: str,
+) -> list[dict[str, Any]]:
+    ref = summary.get("unstructured_evidence_capture")
+    if ref is None:
+        return []
+    if not isinstance(ref, Mapping):
+        raise LiveEpisodeError("unstructured evidence reference must be an object")
+    body_file = ref.get("body_file")
+    if body_file is None:
+        if ref.get("status") != "degraded":
+            raise LiveEpisodeError("missing evidence artifact must be degraded")
+        return []
+    if not isinstance(body_file, str) or Path(body_file).name != body_file:
+        raise LiveEpisodeError("unstructured evidence artifact path is unsafe")
+    artifact = _load_json(
+        summary_path.parent / body_file, "unstructured evidence capture"
+    )
+    if not isinstance(artifact, dict):
+        raise LiveEpisodeError("unstructured evidence capture must be an object")
+    try:
+        validate_unstructured_evidence_capture(artifact)
+    except LiveShadowError as exc:
+        raise LiveEpisodeError(str(exc)) from exc
+    if artifact.get("content_sha256") != ref.get("content_sha256"):
+        raise LiveEpisodeError("unstructured evidence reference hash mismatch")
+    if artifact.get("status") != ref.get("status"):
+        raise LiveEpisodeError("unstructured evidence reference status mismatch")
+    if (
+        artifact.get("status") == "complete"
+        and artifact.get("decision_cutoff") != cutoff
+    ):
+        raise LiveEpisodeError("unstructured evidence cutoff differs from episode")
+    root = summary_path.parent.resolve()
+    verified: list[dict[str, Any]] = []
+    for snapshot in artifact["snapshots"]:
+        raw_file = str(snapshot.get("raw_file", ""))
+        raw_path = (summary_path.parent / raw_file).resolve()
+        if not raw_file or root not in raw_path.parents:
+            raise LiveEpisodeError("unstructured evidence raw path is unsafe")
+        raw = _load_json(raw_path, "unstructured evidence raw snapshot")
+        if not isinstance(raw, dict):
+            raise LiveEpisodeError("unstructured evidence raw snapshot must be an object")
+        content = str(raw.get("content", ""))
+        digest = hashlib.sha256(content.encode("utf-8")).hexdigest()
+        if digest != snapshot.get("content_sha256"):
+            raise LiveEpisodeError("unstructured evidence raw content hash mismatch")
+        if str(raw.get("source_id")) != snapshot.get("source_id"):
+            raise LiveEpisodeError("unstructured evidence source identity mismatch")
+        if str(raw.get("document_id")) != snapshot.get("document_id"):
+            raise LiveEpisodeError("unstructured evidence document identity mismatch")
+        verified.append(
+            {
+                "source_id": str(snapshot["source_id"]),
+                "artifact_id": str(snapshot["snapshot_id"]),
+                "content_sha256": str(snapshot["content_sha256"]),
+                "available_at": str(snapshot["available_at"]),
+            }
+        )
+    return sorted(verified, key=lambda row: row["artifact_id"])
 
 
 def _observations(
@@ -446,6 +515,11 @@ def build_live_episode(
         compatibility_policy=compatibility_policy,
     )
     cutoff = str(manager["cutoff"])
+    evidence_artifacts = _verify_unstructured_evidence(
+        capture_summary_path,
+        capture,
+        cutoff=cutoff,
+    )
     capture_at = _timestamp(capture["observed_at"], "capture.observed_at")
     if parse_aware_datetime(capture_at, field="capture.observed_at") > parse_aware_datetime(
         cutoff, field="cutoff"
@@ -495,7 +569,7 @@ def build_live_episode(
             "available_at": capture_at,
         }
         for endpoint in sorted(endpoints, key=lambda row: str(row["request_url"]))
-    ]
+    ] + evidence_artifacts
     manifest: dict[str, Any] = {
         "schema_version": "1.0",
         "episode_id": episode_id,
@@ -512,7 +586,7 @@ def build_live_episode(
         },
         "observed": {
             "snapshot_ids": sorted(
-                str(endpoint["manifest_id"]) for endpoint in endpoints
+                str(artifact["artifact_id"]) for artifact in source_artifacts
             ),
             "source_artifacts": source_artifacts,
             "manager_state_ref": {
@@ -571,7 +645,9 @@ def build_live_episode(
         "pending_outcome_sha256": str(pending["content_sha256"]),
         "ruleset_id": str(manager["ruleset_id"]),
         "ruleset_sha256": rules_hash,
-        "snapshot_ids": sorted(str(endpoint["manifest_id"]) for endpoint in endpoints),
+        "snapshot_ids": sorted(
+            str(artifact["artifact_id"]) for artifact in source_artifacts
+        ),
         "feature_view_status": str(features["status"]),
         "degraded_feature_count": len(features["degraded_features"]),
     }

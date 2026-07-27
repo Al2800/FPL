@@ -45,6 +45,67 @@ The executable policy remains `live-faithful-v1`. The shadow config cannot
 submit actions to FPL, cannot delay the control deadline, and falls back to the
 control on timeout, missing inputs, or validation failure.
 
+## Prospective paired trajectory
+
+The 2026/27 shadow is a three-plan weekly experiment:
+
+1. `deterministic_control` is the forecast optimiser acting from its own state.
+2. `evidence_state_no_evidence` is the deterministic policy acting from the
+   evidence arm's inherited state.
+3. `evidence_actual` is the evidence-adjusted policy acting from that same
+   evidence state.
+
+Only the first and third plans transition longitudinal state. The middle plan
+is a same-state counterfactual bridge. After the Gameweek is final, attribution
+is:
+
+    current evidence = evidence actual - evidence-state no-evidence
+    inherited state = evidence-state no-evidence - deterministic control
+    total trajectory = current evidence + inherited state
+
+This avoids crediting a current article for points caused by a transfer made
+several weeks earlier. Both arms bind one content-addressed structured context;
+their state hashes remain separate after any divergence.
+
+Every plan freezes no later than the episode decision cutoff. An evidence agent
+run is usable only when the host-owned completion envelope says `completed`,
+contains validated output, and binds the selected candidate. Any failure,
+missing evidence capture, or unavailable source selects the no-evidence bridge
+as the evidence arm's actual plan for that week.
+
+## Evidence capture boundary
+
+Unstructured documents are operator-staged local JSON files passed to
+`scripts.capture_fpl_live_shadow --evidence-snapshot`. Each document must come
+from an enabled registered source with resolved licence status and must carry
+exact `published_at`, `observed_at` and `available_at` timestamps plus a
+SHA-256 hash of its content. Availability must be no later than the decision
+cutoff.
+
+The raw file and a self-hashed evidence index are stored beside the official
+capture. The live episode builder re-reads the raw bytes and binds admitted
+document snapshot IDs into `observed.source_artifacts`. Missing evidence is an
+explicit degraded state and does not delay or block the deterministic control.
+At present, the registered club/news candidates remain disabled pending source
+review, so production runs correctly fall back until that review is complete.
+
+## Running one advisory Gameweek
+
+Prepare a local bundle containing the episode manifest, shared structured
+context, both arm states, decision market, three candidates, evidence capture,
+hosted-agent envelope and freeze time. Freeze only:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.run_live_shadow_week `
+  --bundle path\to\gw01-bundle.json `
+  --out data\live-shadow\2026-27\gw-01
+```
+
+When the same bundle later contains the three plan-scored outcomes and the next
+market, the command writes `revealed-week.json` and advances the two actual
+states. Repeating either phase must reproduce the same bytes. The runner makes
+no network call and exposes neither browser nor account-write capability.
+
 ## Matrix interpretation
 
 - Event and team-context models remain rejected after their declared gates.
