@@ -965,4 +965,3 @@ def run_evidence_checkpoint(
         )
         _write_mutable_json(head_path, next_head)
         return artifact
-

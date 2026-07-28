@@ -290,4 +290,3 @@ def test_absent_ablation_is_byte_identical_and_writer_is_immutable(
     changed["status"] = "changed"
     with pytest.raises(FileExistsError):
         write_immutable_json(target, changed)
-

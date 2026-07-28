@@ -620,4 +620,3 @@ def write_immutable_json(
     with path.open("xb") as handle:
         handle.write(encoded)
     return "created"
-

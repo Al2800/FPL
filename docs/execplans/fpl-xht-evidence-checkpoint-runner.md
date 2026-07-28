@@ -77,4 +77,3 @@ concurrent processes to fork the evidence ledger.
 - [x] Runner and CLI implementation.
 - [x] Runbook and genesis head.
 - [x] Focused and split full regression verification.
-

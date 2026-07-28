@@ -59,4 +59,3 @@ SHA-256, and decoded payload. Future inputs and hash mismatches fail closed.
 - [x] Ingestion and immutable output.
 - [x] CLI and source documentation.
 - [x] Focused and regression tests.
-

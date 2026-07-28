@@ -26,4 +26,3 @@ official originals for manual derived-claim admission.
 - Query/rank/time provenance is retained.
 - Cross-domain, stale, duplicate, and snippet-only input cannot enter the cited
   original packet.
-

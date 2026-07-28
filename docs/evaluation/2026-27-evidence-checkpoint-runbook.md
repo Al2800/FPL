@@ -92,4 +92,3 @@ the content-addressed path.
 
 Missing coverage means unknown, not available. It must never be translated into
 a positive availability signal.
-
