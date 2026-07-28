@@ -114,3 +114,17 @@ This policy may enter a historical challenger replay, but it must not replace
 the frozen control merely because it increases expected planning value.
 Promotion requires realised paired decision evidence under the benchmark
 protocol.
+## W10 paired evaluation
+
+W10 supplied that evidence and rejected promotion of v1. On 38 locked 2024/25
+same-squad lineup decisions, `probabilistic_v1` changed 17 weeks and scored
+10 fewer realised points than the policy-off control. It then gained 22 points
+across 37 descriptive 2025/26 same-state lineup forks, but that later result
+cannot override the failed locked gate and is not a longitudinal season total.
+
+All plans remained legal. Transfers were held at zero for both arms because an
+unrestricted three-transfer contingency search exceeded ten minutes for one
+fork. Production therefore remains `none`; component ablation, boundary
+calibration and efficient transfer integration are required before a v2
+promotion attempt. See `docs/evaluation/squad-contingency-promotion.md` and
+`reports/evaluation/squad-contingency-v1.json`.

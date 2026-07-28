@@ -15,7 +15,12 @@ from src.agents.challenger_agent import validate_challenger_result
 from src.agents.evidence_agent import validate_evidence_result
 from src.evidence.lifecycle import load_policy
 from src.forecasting.live_faithful import artifact_hash
-from src.orchestration.hosted_response import build_hosted_response
+from src.orchestration.hosted_response import (
+    build_hosted_response,
+    build_repair_request,
+    hosted_response_policy,
+    lint_hosted_response,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -322,6 +327,254 @@ def cached_or_invoke(
     entry["content_sha256"] = artifact_hash(entry)
     cache[key] = entry
     return response
+
+
+def _retry_usage(response: Any) -> dict[str, Any] | None:
+    if not isinstance(response, Mapping):
+        return None
+    try:
+        return _resource_usage(response.get("usage"), subscription_cost=True)
+    except AgentArmError:
+        return None
+
+
+def _aggregate_retry_usage(responses: list[Any]) -> dict[str, Any] | None:
+    values = [_retry_usage(response) for response in responses]
+    if any(value is None for value in values):
+        return None
+    concrete = [value for value in values if value is not None]
+    usage = {
+        field: sum(int(value[field]) for value in concrete)
+        for field in (
+            "wall_clock_ms",
+            "tool_calls",
+            "input_tokens",
+            "output_tokens",
+            "total_tokens",
+        )
+    }
+    usage["cost"] = {
+        "currency": "GBP",
+        "amount": None,
+        "metering_status": "unavailable",
+    }
+    return usage
+
+
+def _retry_budget_available(
+    limit: Mapping[str, Any],
+    used: Mapping[str, Any] | None,
+) -> bool:
+    if used is None or _budget_failure(limit, used):
+        return False
+    return all(
+        int(used[field]) < int(limit[field])
+        for field in (
+            "wall_clock_ms",
+            "input_tokens",
+            "output_tokens",
+            "total_tokens",
+        )
+    )
+
+
+def _remaining_retry_budget(
+    limit: Mapping[str, Any],
+    used: Mapping[str, Any],
+) -> dict[str, Any]:
+    remaining = {
+        field: max(0, int(limit[field]) - int(used[field]))
+        for field in (
+            "wall_clock_ms",
+            "tool_calls",
+            "input_tokens",
+            "output_tokens",
+            "total_tokens",
+        )
+    }
+    remaining["cost"] = deepcopy(dict(limit["cost"]))
+    return remaining
+
+
+def _attempt_artifact_hash(value: Any) -> str:
+    try:
+        return artifact_hash(value)
+    except (TypeError, ValueError):
+        return artifact_hash({"unserializable_type": type(value).__qualname__})
+
+
+def _admissible_response(
+    response: Any,
+    violations: list[Mapping[str, Any]],
+) -> Mapping[str, Any] | None:
+    unsafe_codes = {"hosted_response_not_serializable"}
+    if not isinstance(response, Mapping) or any(
+        str(value.get("code")) in unsafe_codes for value in violations
+    ):
+        return None
+    return response
+
+
+def _attempt_model_call(
+    *,
+    request: Mapping[str, Any],
+    response: Any,
+    sequence: int,
+    request_sha256: str,
+) -> dict[str, Any]:
+    usage = _retry_usage(response) or _resource_usage(None, subscription_cost=True)
+    response_hash = (
+        str(response.get("response_sha256"))
+        if isinstance(response, Mapping)
+        and isinstance(response.get("response_sha256"), str)
+        and re.fullmatch(r"[a-f0-9]{64}", str(response["response_sha256"]))
+        else _attempt_artifact_hash(response)
+    )
+    return {
+        "sequence": sequence,
+        "call_id": f"model:{request['run_id']}:attempt-{sequence}",
+        "request_sha256": request_sha256,
+        "response_sha256": response_hash,
+        "cached_response_ref": {
+            "artifact_id": f"cached-response:{request['run_id']}:attempt-{sequence}",
+            "content_sha256": _attempt_artifact_hash(response),
+        },
+        "cache_hit": bool(
+            isinstance(response, Mapping) and response.get("cache_hit", False)
+        ),
+        "input_tokens": int(usage["input_tokens"]),
+        "output_tokens": int(usage["output_tokens"]),
+    }
+
+
+def run_live_agent_arm(
+    *,
+    request: Mapping[str, Any],
+    deterministic_candidate: Mapping[str, Any],
+    code_commit: str,
+    invoke,
+    evidence_proposal: Mapping[str, Any] | None = None,
+    repair_enabled: bool | None = None,
+) -> dict[str, Any]:
+    """Invoke the live host with default-on linting and one bounded repair."""
+    policy = hosted_response_policy(enabled=repair_enabled)
+    limit = _resource_usage(request.get("budget"), subscription_cost=False)
+    first_context = {
+        "attempt": 0,
+        "kind": "initial",
+        "request_sha256": request["rendered_input_sha256"],
+        "hosted_input": render_hosted_input(request),
+        "repair_request": None,
+        "remaining_budget": deepcopy(dict(request["budget"])),
+    }
+    first_response = invoke(first_context)
+    first_violations = lint_hosted_response(
+        request=request,
+        hosted_response=first_response,
+    )
+    first_result = run_agent_arm(
+        request=request,
+        hosted_response=_admissible_response(first_response, first_violations),
+        deterministic_candidate=deterministic_candidate,
+        code_commit=code_commit,
+        evidence_proposal=evidence_proposal,
+    )
+    responses = [first_response]
+    all_violations = [first_violations]
+    repair_request: dict[str, Any] | None = None
+    final_result = first_result
+
+    first_usage = _retry_usage(first_response)
+    may_repair = (
+        bool(policy["enabled"])
+        and int(policy["max_repair_attempts"]) == 1
+        and bool(first_violations)
+        and _retry_budget_available(limit, _retry_usage(first_response))
+    )
+    if may_repair:
+        assert first_usage is not None
+        repair_request = build_repair_request(
+            request=request,
+            failed_payload=first_response,
+            violations=first_violations,
+            policy=policy,
+        )
+        second_context = {
+            "attempt": 1,
+            "kind": "repair",
+            "request_sha256": request["rendered_input_sha256"],
+            "hosted_input": render_hosted_input(request),
+            "repair_request": repair_request,
+            "remaining_budget": _remaining_retry_budget(limit, first_usage),
+        }
+        second_response = invoke(second_context)
+        second_violations = lint_hosted_response(
+            request=request,
+            hosted_response=second_response,
+        )
+        responses.append(second_response)
+        all_violations.append(second_violations)
+        cumulative_usage = _aggregate_retry_usage(responses)
+        safe_second_response = _admissible_response(
+            second_response,
+            second_violations,
+        )
+        admitted_response = (
+            deepcopy(dict(safe_second_response))
+            if safe_second_response is not None
+            else None
+        )
+        if admitted_response is not None and cumulative_usage is not None:
+            admitted_response["usage"] = cumulative_usage
+        final_result = run_agent_arm(
+            request=request,
+            hosted_response=admitted_response,
+            deterministic_candidate=deterministic_candidate,
+            code_commit=code_commit,
+            evidence_proposal=evidence_proposal,
+        )
+
+    model_calls = [
+        _attempt_model_call(
+            request=request,
+            response=response,
+            sequence=index,
+            request_sha256=(
+                str(request["rendered_input_sha256"])
+                if index == 0
+                else str(repair_request["content_sha256"])
+            ),
+        )
+        for index, response in enumerate(responses)
+    ]
+    final_result["trace"]["model_calls"] = model_calls
+    final_result["host_response_policy"] = deepcopy(policy)
+    final_result["retry"] = {
+        "attempted": len(responses) == 2,
+        "attempt_count": len(responses),
+        "max_repair_attempts": int(policy["max_repair_attempts"]),
+        "repair_request_sha256": (
+            str(repair_request["content_sha256"])
+            if repair_request is not None
+            else None
+        ),
+        "attempt_violations": deepcopy(all_violations),
+        "time_to_accepted_decision_ms": int(
+            final_result["trace"]["budget"]["used"]["wall_clock_ms"]
+        ),
+        "final_status": str(final_result["status"]),
+    }
+    final_result["artifacts"]["attempts"] = [
+        {
+            "attempt": index,
+            "artifact_id": f"cached-response:{request['run_id']}:attempt-{index}",
+            "content_sha256": _attempt_artifact_hash(response),
+            "violations": deepcopy(all_violations[index]),
+        }
+        for index, response in enumerate(responses)
+    ]
+    final_result["content_sha256"] = artifact_hash(final_result)
+    return final_result
 
 
 def run_hosted_semantic_payload(

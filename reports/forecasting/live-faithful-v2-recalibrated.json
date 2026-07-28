@@ -1,0 +1,197 @@
+{
+  "content_sha256": "d424c7e60ae85aca8967f12b91ae82ddc496c2de8738070d38324d39c7fa44f9",
+  "decision": "reject_locked_validation",
+  "descriptive_2025_26": {
+    "challenger": {
+      "all_player_mae": 1.0930101038648965,
+      "all_player_rmse": 2.006882578209055,
+      "gameweeks": 38,
+      "mean_gameweek_premium_rank_correlation": 0.44730696494377736,
+      "mean_top15_ranking_regret": 121.47368421052632,
+      "player_gameweeks": 29338,
+      "selected_top15_bias_actual_minus_predicted": -0.6747310925399652,
+      "selected_top15_mae": 3.188835097278411,
+      "top15_precision": 0.10350877192982458,
+      "top_bin_bias_actual_minus_predicted": -0.19023147524477402,
+      "top_bin_n": 4529,
+      "xi_regret_status": "requires_optimizer_supplied_legal_candidates"
+    },
+    "control": {
+      "all_player_mae": 1.130985497895956,
+      "all_player_rmse": 1.9893469816784402,
+      "gameweeks": 38,
+      "mean_gameweek_premium_rank_correlation": 0.5034691430529515,
+      "mean_top15_ranking_regret": 111.55263157894737,
+      "player_gameweeks": 29338,
+      "selected_top15_bias_actual_minus_predicted": -0.7229033298685953,
+      "selected_top15_mae": 3.3739611496385606,
+      "top15_precision": 0.14035087719298248,
+      "top_bin_bias_actual_minus_predicted": -0.11640801239311394,
+      "top_bin_n": 4529,
+      "xi_regret_status": "requires_optimizer_supplied_legal_candidates"
+    },
+    "delta_challenger_minus_control": {
+      "all_player_mae": -0.03797539403105943,
+      "all_player_rmse": 0.01753559653061476,
+      "mean_gameweek_premium_rank_correlation": -0.05616217810917418,
+      "mean_top15_ranking_regret": 9.921052631578945,
+      "selected_top15_bias_actual_minus_predicted": 0.048172237328630074,
+      "selected_top15_mae": -0.18512605236014945,
+      "top15_precision": -0.0368421052631579,
+      "top_bin_bias_actual_minus_predicted": -0.07382346285166008
+    }
+  },
+  "locked_validation": {
+    "challenger": {
+      "all_player_mae": 1.1270336173382773,
+      "all_player_rmse": 2.0011135140803424,
+      "gameweeks": 38,
+      "mean_gameweek_premium_rank_correlation": 0.1644060992787212,
+      "mean_top15_ranking_regret": 112.60526315789474,
+      "player_gameweeks": 26919,
+      "selected_top15_bias_actual_minus_predicted": -0.4042137269359405,
+      "selected_top15_mae": 3.390369903329038,
+      "top15_precision": 0.12631578947368424,
+      "top_bin_bias_actual_minus_predicted": -0.2652142371250732,
+      "top_bin_n": 3729,
+      "xi_regret_status": "requires_optimizer_supplied_legal_candidates"
+    },
+    "control": {
+      "all_player_mae": 1.1432791784929814,
+      "all_player_rmse": 1.9651429528442388,
+      "gameweeks": 38,
+      "mean_gameweek_premium_rank_correlation": 0.3691183036216449,
+      "mean_top15_ranking_regret": 97.34210526315789,
+      "player_gameweeks": 26919,
+      "selected_top15_bias_actual_minus_predicted": -0.5968229231441728,
+      "selected_top15_mae": 3.759123709492526,
+      "top15_precision": 0.19298245614035087,
+      "top_bin_bias_actual_minus_predicted": -0.21807972209734316,
+      "top_bin_n": 3729,
+      "xi_regret_status": "requires_optimizer_supplied_legal_candidates"
+    },
+    "delta_challenger_minus_control": {
+      "all_player_mae": -0.016245561154704102,
+      "all_player_rmse": 0.03597056123610365,
+      "mean_gameweek_premium_rank_correlation": -0.20471220434292367,
+      "mean_top15_ranking_regret": 15.26315789473685,
+      "selected_top15_bias_actual_minus_predicted": 0.19260919620823236,
+      "selected_top15_mae": -0.36875380616348785,
+      "top15_precision": -0.06666666666666662,
+      "top_bin_bias_actual_minus_predicted": -0.04713451502773003
+    }
+  },
+  "metric_scope": {
+    "hindsight": "evaluation only",
+    "premium_rank": "mean per-Gameweek Spearman correlation among price bands whose lower bound is at least 7.5",
+    "top15": "unconstrained ranking proxy, not legal XI regret"
+  },
+  "model_config_sha256": "a6ebc28237b585108fef729959bcce297f62c81a41aaeedc7350508718dd3ec7",
+  "promotion_eligible": false,
+  "promotion_gates": {
+    "legal_replay_completed": false,
+    "locked_absolute_top_bin_bias_improves": false,
+    "locked_premium_rank_not_worse": false,
+    "locked_ranking_regret_not_worse": false,
+    "locked_selected_top15_mae_not_worse": true,
+    "locked_top15_precision_not_worse": false,
+    "production_owner_approval": false
+  },
+  "proxy_gate_passed": false,
+  "report_id": "live-faithful-v2-recalibrated-evaluation",
+  "schema_version": "1.0",
+  "split": {
+    "descriptive_only_season": "2025-26",
+    "fit_seasons": [
+      "2022-23",
+      "2023-24"
+    ],
+    "forbidden_fit_seasons": [
+      "2024-25",
+      "2025-26"
+    ],
+    "locked_validation_season": "2024-25",
+    "source_lineage": [
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "6cf30d3b9fb0bc594486c8a675eeccc209264550a01ba126b4733a2d2da70d21",
+        "players_raw_sha256": "78e185fb0b5c81f58c2b89f232358b1097bededc9852d4171edaea2e9d3bd887",
+        "row_count": 25447,
+        "season": "2021-22",
+        "start_source": "minutes_ge_60_prior_fallback"
+      },
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "b97460b11372173c3a70adec2230e46338dd91e7878dbe041892fe924a21a454",
+        "players_raw_sha256": "a874c12817bbf4d454e60a5765629742b528d4ad0c2f39f56e4fc89640605f7f",
+        "row_count": 26505,
+        "season": "2022-23",
+        "start_source": "recorded"
+      },
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "76cda38a4379a03b46ff50e66c659b807508aeec9d85b4aea2f1e33f1633cfa7",
+        "players_raw_sha256": "43d8cf5efb3d901f2499558c40b392b7f0ee22afe28030f36266ad29024c63d9",
+        "row_count": 29725,
+        "season": "2023-24",
+        "start_source": "recorded"
+      },
+      {
+        "excluded_assistant_manager_rows": 322,
+        "merged_gw_sha256": "95f61a568f21e05bd44e676fdf78ef1c4fcd8926480f2aaf5da5db4675f989f0",
+        "players_raw_sha256": "75686051b265cbe7755ac71213ecaad21b26ee1cc46a8bafbba19c39ce894b05",
+        "row_count": 27283,
+        "season": "2024-25",
+        "start_source": "recorded"
+      },
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "f65817fbf2909838a9a0d7e1702302fe35a015f6ea9562d22aede61e0f6ccb12",
+        "players_raw_sha256": "412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "row_count": 29757,
+        "season": "2025-26",
+        "start_source": "recorded"
+      }
+    ]
+  },
+  "training": {
+    "challenger": {
+      "all_player_mae": 1.0882114761115476,
+      "all_player_rmse": 2.0641750642869727,
+      "gameweeks": 38,
+      "mean_gameweek_premium_rank_correlation": 0.5025276639288989,
+      "mean_top15_ranking_regret": 140.3421052631579,
+      "player_gameweeks": 53699,
+      "selected_top15_bias_actual_minus_predicted": 0.015417416371463027,
+      "selected_top15_mae": 3.480170136745109,
+      "top15_precision": 0.10000000000000002,
+      "top_bin_bias_actual_minus_predicted": 0.0,
+      "top_bin_n": 5371,
+      "xi_regret_status": "requires_optimizer_supplied_legal_candidates"
+    },
+    "control": {
+      "all_player_mae": 1.1211823320570768,
+      "all_player_rmse": 2.0479285064248063,
+      "gameweeks": 38,
+      "mean_gameweek_premium_rank_correlation": 0.5281213084595304,
+      "mean_top15_ranking_regret": 124.15789473684211,
+      "player_gameweeks": 53699,
+      "selected_top15_bias_actual_minus_predicted": -0.07933666045351308,
+      "selected_top15_mae": 3.773262757828773,
+      "top15_precision": 0.18070175438596492,
+      "top_bin_bias_actual_minus_predicted": 0.04912647587255092,
+      "top_bin_n": 5371,
+      "xi_regret_status": "requires_optimizer_supplied_legal_candidates"
+    },
+    "delta_challenger_minus_control": {
+      "all_player_mae": -0.03297085594552929,
+      "all_player_rmse": 0.016246557862166444,
+      "mean_gameweek_premium_rank_correlation": -0.02559364453063151,
+      "mean_top15_ranking_regret": 16.18421052631578,
+      "selected_top15_bias_actual_minus_predicted": 0.09475407682497611,
+      "selected_top15_mae": -0.29309262108366374,
+      "top15_precision": -0.0807017543859649,
+      "top_bin_bias_actual_minus_predicted": -0.04912647587255092
+    }
+  }
+}

@@ -92,8 +92,17 @@ def test_committed_matrix_preserves_rejections_and_control_tree() -> None:
     decisions = {row["challenger_id"]: row["decision"] for row in matrix["rows"]}
     assert decisions["captain-v1"] == "rejected"
     assert decisions["team-context-v2"] == "rejected"
+    assert decisions["top-bin-recalibration-v2"] == "rejected"
     assert matrix["nomination"]["challenger_id"] == "robust-selection-v2"
     assert matrix["nomination"]["control_remains_executable"] is True
+    candidate = json.loads(
+        (root / "control/policies/live-shadow-candidate.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert matrix["nomination"]["candidate_config_sha256"] == (
+        candidate["content_sha256"]
+    )
     assert (
         matrix["control"]["canonical_tree_sha256_before"]
         == matrix["control"]["canonical_tree_sha256_after"]

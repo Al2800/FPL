@@ -401,6 +401,10 @@ def _forecast_player(
         "expected_minutes": round(
             sum(row["expected_minutes"] for row in components), 1
         ),
+        "expected_minutes_per_fixture": round(
+            expected_minutes_per_fixture,
+            1,
+        ),
         "start_probability": round(start_probability, 4),
         "posterior_points_per_90": round(posterior_rate, 4),
         "recent_minutes_per_fixture": round(recent_minutes_per_fixture, 1),

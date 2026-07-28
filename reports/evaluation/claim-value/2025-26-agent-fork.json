@@ -1,0 +1,3435 @@
+{
+  "application_groups": [
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-12:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:gw12:gabriel-expected-minutes-zero",
+        "adjustment:gw12:semenyo-start-probability-reduction"
+      ],
+      "applied_claim_ids": [
+        "claim:gw12:gabriel-confirmed-absence",
+        "claim:gw12:semenyo-availability-uncertain"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": false,
+      "fallback_reason": null,
+      "gameweek": 12,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": null,
+      "plan_changed": null
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-13:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "challenger_gate_blocked",
+      "gameweek": 13,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-14:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:gw14:senesi:expected-minutes"
+      ],
+      "applied_claim_ids": [
+        "claim:gw14:senesi:suspension"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 14,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": -1,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-15:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 15,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-16:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:gw16-munoz-expected-minutes-zero"
+      ],
+      "applied_claim_ids": [
+        "claim:gw16-munoz-surgery-absence"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 16,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": -1,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-17:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:mbeumo-gw17-afcon-expected-minutes"
+      ],
+      "applied_claim_ids": [
+        "claim:mbeumo-gw17-afcon-unavailable"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 17,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 13,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-18:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:player-387-gw18-expected-minutes-suspension"
+      ],
+      "applied_claim_ids": [
+        "claim:player-387-gw18-suspension"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 18,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-19:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 19,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-20:sol-v3",
+      "applied_adjustment_ids": [
+        "adjustment:gw20:rodon-expected-minutes-zero"
+      ],
+      "applied_claim_ids": [
+        "claim:gw20:rodon-out"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 20,
+      "namespace": "sol-v3",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-21:sol-v3",
+      "applied_adjustment_ids": [
+        "adjustment:gw21:gvardiol-expected-minutes-zero"
+      ],
+      "applied_claim_ids": [
+        "claim:gw21:gvardiol-long-term"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 21,
+      "namespace": "sol-v3",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-22:sol-v3",
+      "applied_adjustment_ids": [
+        "adjustment:gw22:guehi-expected-minutes-zero"
+      ],
+      "applied_claim_ids": [
+        "claim:gw22:guehi-not-playing"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 22,
+      "namespace": "sol-v3",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 5,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-23:sol-v2",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 23,
+      "namespace": "sol-v2",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-24:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 24,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-25:sol-v3",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 25,
+      "namespace": "sol-v3",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-26:sol-v3",
+      "applied_adjustment_ids": [
+        "adjustment:gw26-mateta-expected-minutes-zero"
+      ],
+      "applied_claim_ids": [
+        "claim:gw26-mateta-confirmed-absence"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 26,
+      "namespace": "sol-v3",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-27:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 27,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-28:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:gw28-wirtz-expected-minutes-zero"
+      ],
+      "applied_claim_ids": [
+        "claim:gw28-wirtz-expected-absence"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 28,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-29:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 29,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-30:sol-v5",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 30,
+      "namespace": "sol-v5",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-31:sol-v3",
+      "applied_adjustment_ids": [
+        "adjustment-gw31-salah-expected-minutes-zero"
+      ],
+      "applied_claim_ids": [
+        "claim-gw31-salah-out"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 31,
+      "namespace": "sol-v3",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-32:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 32,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-33:sol-v3",
+      "applied_adjustment_ids": [
+        "adjustment:gw33-saka-expected-minutes"
+      ],
+      "applied_claim_ids": [
+        "claim-gw33-saka-out"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 33,
+      "namespace": "sol-v3",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-34:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:gw34-timber-expected-minutes"
+      ],
+      "applied_claim_ids": [
+        "claim-gw34-timber-out"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 34,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-35:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:gw35-timber-expected-minutes"
+      ],
+      "applied_claim_ids": [
+        "claim-gw35-timber-out"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 35,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": true
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-36:sol-v1",
+      "applied_adjustment_ids": [
+        "adjustment:gw36-timber-expected-minutes"
+      ],
+      "applied_claim_ids": [
+        "claim-gw36-timber-still-out"
+      ],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": null,
+      "gameweek": 36,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-37:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 37,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-38:sol-v1",
+      "applied_adjustment_ids": [],
+      "applied_claim_ids": [],
+      "arm": "agent_fork",
+      "attribution_available": true,
+      "fallback_reason": "no_agent_adjustments",
+      "gameweek": 38,
+      "namespace": "sol-v1",
+      "paired_delta_scope": "gameweek_arm",
+      "paired_same_state_delta": 0,
+      "plan_changed": false
+    }
+  ],
+  "causal_scope": {
+    "claim_level_delta_allocation": "prohibited",
+    "claim_rows": "lifecycle_and_application_participation",
+    "paired_deltas": "gameweek_arm_application_group"
+  },
+  "caveats": [
+    "Accepted retries are selected as the highest sol-vN namespace with completed evidence and challenger runs plus a comparison.",
+    "Evidence was recovered retrospectively but published before the historical deadline; it is exploratory and production-ineligible.",
+    "GW12 has no paired same-state artifact; direct paired attribution therefore covers GW13-GW38 only."
+  ],
+  "claims": [
+    {
+      "age_at_deadline_hours": 19.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw12:gabriel-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-12:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": null
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-25T10:50:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "8bbb2415b9dcefe466026a640d16350dd17336c571704dc11f03e19f7c8c9ea2",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw12-gabriel-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw12:gabriel-confirmed-absence",
+      "claim_text": "Gabriel is confirmed unavailable for multiple weeks due to injury.",
+      "confidence": 0.99,
+      "decision_at": "2025-11-22T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-11-24T23:59:59Z",
+      "gameweek": 12,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-25T10:50:00Z",
+      "player_uid": "player:2025-26:5",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw12:gabriel-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2025-11-21T16:00:00Z",
+      "retrieval": {
+        "document_id": "document:tottenham-team-news-2025-11-21",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "tottenham-team-news-2025-11-21"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw12:gabriel-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 22.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw12:semenyo-start-probability-reduction"
+        ],
+        "application_group_id": "agent_fork:gw-12:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": null
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-25T10:50:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "df9f42fce05dcb442ec5ade54dc558fde02c67f3f01e1772ff4ee9e410a1674a",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw12-semenyo-doubt"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw12:semenyo-availability-uncertain",
+      "claim_text": "Semenyo's availability for the following day is materially uncertain, but absence is not confirmed.",
+      "confidence": 0.82,
+      "decision_at": "2025-11-22T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-11-22T17:00:00Z",
+      "gameweek": 12,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-25T10:50:00Z",
+      "player_uid": "player:2025-26:82",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw12:semenyo-start-probability-reduction"
+        ],
+        "proposed": true
+      },
+      "published_at": "2025-11-21T13:00:00Z",
+      "retrieval": {
+        "document_id": "document:fantasy-football-scout-gw12-team-news-2025-11-21",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "fantasy-football-scout-gw12-team-news-2025-11-21"
+      },
+      "verification": {
+        "actual_minutes": 0,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 21.516667,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-13:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T12:15:47Z",
+      "citation": {
+        "citation_excerpt_sha256": "cc9fcf95c9bd65cfde6d8e9d241af9fc505c81fd441ffb61eb7f41e156344cba",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw13-gabriel-still-injured"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw13:gabriel:injury-sell",
+      "claim_text": "A secondary expert assessment recommended selling Gabriel because his injury coincided with three gameweeks in nine days, while noting the injury might not be long-term.",
+      "confidence": 0.64,
+      "decision_at": "2025-11-29T13:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-12-04T23:59:59Z",
+      "gameweek": 13,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "player_uid": "player:2025-26:5",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw13:gabriel:expected-minutes"
+        ],
+        "proposed": true
+      },
+      "published_at": "2025-11-28T15:59:00Z",
+      "retrieval": {
+        "document_id": "document:bbc-fpl-gw13-gabriel-sell-2025-11-28-1559",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 21.6,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-13:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T12:15:47Z",
+      "citation": {
+        "citation_excerpt_sha256": "df09d3f6d1c5cb922d5943032a875edb0b91c525fac2ff0919f64ba443906e75",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw13-semenyo-hopeful"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw13:semenyo:hopeful",
+      "claim_text": "Bournemouth manager Andoni Iraola was hopeful Antoine Semenyo would be available, but his availability and starting status were not confirmed.",
+      "confidence": 0.72,
+      "decision_at": "2025-11-29T13:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-11-29T18:00:00Z",
+      "gameweek": 13,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "player_uid": "player:2025-26:82",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2025-11-28T15:54:00Z",
+      "retrieval": {
+        "document_id": "document:bbc-fpl-gw13-semenyo-2025-11-28-1554",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "bbc-fpl-gw13-semenyo-2025-11-28-1554"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 1.4,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-14:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T12:15:47Z",
+      "citation": {
+        "citation_excerpt_sha256": "f916527edbc2ae27cab75316dae976393ab30a31fe804dd0f4e655b967f94c5e",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw14-joao-pedro-rotation-risk"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw14:joao-pedro:rotation-risk",
+      "claim_text": "A BBC FPL expert identified a possible Gameweek 14 benching for Joao Pedro, but the passage was contested opinion rather than manager confirmation.",
+      "confidence": 0.58,
+      "decision_at": "2025-12-02T18:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-12-03T22:00:00Z",
+      "gameweek": 14,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "player_uid": "player:2025-26:249",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2025-12-02T16:36:00Z",
+      "retrieval": {
+        "document_id": "document:bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "bbc-fpl-gw14-joao-pedro-rotation-2025-12-02-1636"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 1.466667,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw14:senesi:expected-minutes"
+        ],
+        "application_group_id": "agent_fork:gw-14:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T12:15:47Z",
+      "citation": {
+        "citation_excerpt_sha256": "c7152478a56a7b1676ca5c160b0f4c801d749abe90e2e24b35494ab98ab0c396",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw14-senesi-suspended"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw14:senesi:suspension",
+      "claim_text": "Marco Senesi was definitively suspended for Gameweek 14.",
+      "confidence": 0.99,
+      "decision_at": "2025-12-02T18:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-12-04T23:59:59Z",
+      "gameweek": 14,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T12:15:47Z",
+      "player_uid": "player:2025-26:72",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw14:senesi:expected-minutes"
+        ],
+        "proposed": true
+      },
+      "published_at": "2025-12-02T16:32:00Z",
+      "retrieval": {
+        "document_id": "document:bbc-fpl-gw14-suspensions-2025-12-02-1632",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "bbc-fpl-gw14-suspensions-2025-12-02-1632"
+      },
+      "verification": {
+        "actual_minutes": 0,
+        "basis": "binary_zero_minutes_assertion_vs_realised_minutes",
+        "status": "verified",
+        "tested_adjustment_ids": [
+          "adjustment:gw14:senesi:expected-minutes"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 35.0,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-15:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T13:28:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "7d2924fd1ed3776a9fa04cdc117feafccbb2cbfc6b27063968988672cf62432a",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw15-semenyo-role-positive"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw15:semenyo-role-positive",
+      "claim_text": "Semenyo's attitude and efforts to help the team remain positive.",
+      "confidence": 0.85,
+      "decision_at": "2025-12-06T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-12-08T23:59:59Z",
+      "gameweek": 15,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T13:28:00Z",
+      "player_uid": "player:2025-26:82",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2025-12-05T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw15-semenyo-role-2025-12-05",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw15-semenyo-role-2025-12-05"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 35.0,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-15:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T13:28:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "3dc9d66bc84f0a2bdfad8f31ac6c8bfb9e5ba54bcf478d2424bfbd3cab1b97c3",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw15-senesi-returns"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw15:senesi-return",
+      "claim_text": "Marcos Senesi returns from suspension this weekend.",
+      "confidence": 0.95,
+      "decision_at": "2025-12-06T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-12-08T23:59:59Z",
+      "gameweek": 15,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T13:28:00Z",
+      "player_uid": "player:2025-26:72",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2025-12-05T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw15-senesi-return-2025-12-05",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw15-senesi-return-2025-12-05"
+      },
+      "verification": {
+        "actual_minutes": 61,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 28.227778,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw16-munoz-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-16:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T13:28:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "44a94f324be7f795b6286980b3bf8fced317cdaaa2f1830ab9be34b489875b92",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw16-munoz-surgery"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw16-munoz-surgery-absence",
+      "claim_text": "Daniel Muñoz required surgery and was not expected back before 17 January.",
+      "confidence": 0.99,
+      "decision_at": "2025-12-13T13:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-01-17T23:59:59Z",
+      "gameweek": 16,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T13:28:00Z",
+      "player_uid": "player:2025-26:256",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw16-munoz-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2025-12-12T09:16:20Z",
+      "retrieval": {
+        "document_id": "document:vg-gw16-munoz-surgery-2025-12-12-091620",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "vg-gw16-munoz-surgery-2025-12-12-091620"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw16-munoz-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 179.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:mbeumo-gw17-afcon-expected-minutes"
+        ],
+        "application_group_id": "agent_fork:gw-17:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T13:28:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "1b79f6d3b976dac3516eba059726815d282809d8a834349ad8ca440b8fbf2b14",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw17-mbeumo-afcon-absence"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:mbeumo-gw17-afcon-unavailable",
+      "claim_text": "Mbeumo is one of the listed AFCON-bound players and is unavailable to Manchester United from GW17.",
+      "confidence": 0.99,
+      "decision_at": "2025-12-20T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-01-18T23:59:59Z",
+      "gameweek": 17,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T13:28:00Z",
+      "player_uid": "player:2025-26:119",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:mbeumo-gw17-afcon-expected-minutes"
+        ],
+        "proposed": true
+      },
+      "published_at": "2025-12-13T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw17-mbeumo-afcon-2025-12-13",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw17-mbeumo-afcon-2025-12-13"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:mbeumo-gw17-afcon-expected-minutes"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 90.5,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:player-387-gw18-expected-minutes-suspension"
+        ],
+        "application_group_id": "agent_fork:gw-18:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T14:47:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "32650034c791a9ee0123b2145302cad39755775d8fef14bf38053a24053db596",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw18-szoboszlai-suspended"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:player-387-gw18-suspension",
+      "claim_text": "Dominik Szoboszlai is suspended for one match due to yellow card accumulation.",
+      "confidence": 0.99,
+      "decision_at": "2025-12-26T18:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-12-28T23:59:59Z",
+      "gameweek": 18,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "player_uid": "player:2025-26:387",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:player-387-gw18-expected-minutes-suspension"
+        ],
+        "proposed": true
+      },
+      "published_at": "2025-12-23T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw18-szoboszlai-ban-2025-12-23",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw18-szoboszlai-ban-2025-12-23"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:player-387-gw18-expected-minutes-suspension"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 42.0,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-19:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T14:47:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "c4b16472665a1f2f57a6613e118e9794d1658c64aa3552776ea6d82a918e652d",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw19-timber-recent-absence"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw19:player:2025-26:8:prior-match-absence",
+      "claim_text": "Jurrien Timber missed Gameweek 18; this source provides no fresh confirmation of his Gameweek 19 availability.",
+      "confidence": 0.62,
+      "decision_at": "2025-12-30T18:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2025-12-31T23:59:59Z",
+      "gameweek": 19,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "player_uid": "player:2025-26:8",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2025-12-29T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw19-timber-missed-2025-12-29",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw19-timber-missed-2025-12-29"
+      },
+      "verification": {
+        "actual_minutes": 82,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 35.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw20:rodon-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-20:sol-v3",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T14:47:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "07f88654b0bcc75c67e5ad274ec95553e170c23ed2837e4e8e288e8fab561758",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw20-rodon-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw20:rodon-out",
+      "claim_text": "Joe Rodon is still out for Leeds United.",
+      "confidence": 0.99,
+      "decision_at": "2026-01-03T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-01-05T23:59:59Z",
+      "gameweek": 20,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "player_uid": "player:2025-26:348",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw20:rodon-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-01-02T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw20-rodon-out-2026-01-02"
+      },
+      "verification": {
+        "actual_minutes": 0,
+        "basis": "binary_zero_minutes_assertion_vs_realised_minutes",
+        "status": "verified",
+        "tested_adjustment_ids": [
+          "adjustment:gw20:rodon-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 18.5,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw21:gvardiol-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-21:sol-v3",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T14:47:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "52330c20800993adb9af08ae208b9c576ef496f49394cd17f2d299bb694e672e",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw21-gvardiol-long-term"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw21:gvardiol-long-term",
+      "claim_text": "Gvardiol is out for a long time with a fracture.",
+      "confidence": 0.99,
+      "decision_at": "2026-01-06T18:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-02-15T23:59:59Z",
+      "gameweek": 21,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "player_uid": "player:2025-26:403",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw21:gvardiol-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-01-06T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw21-gvardiol-long-term-2026-01-06",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw21-gvardiol-long-term-2026-01-06"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw21:gvardiol-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 18.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-21:sol-v3",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T14:47:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "5f6577d29a0e6110f2f75c471be387fbd452060e7f9cca789da3f77e05315592",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw21-semenyo-available"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw21:semenyo-available",
+      "claim_text": "Semenyo is available and set for his last Bournemouth game.",
+      "confidence": 0.96,
+      "decision_at": "2026-01-06T18:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-01-08T23:59:59Z",
+      "gameweek": 21,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "player_uid": "player:2025-26:82",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-01-06T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw21-semenyo-last-game-2026-01-06",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw21-semenyo-last-game-2026-01-06"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 35.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw22:guehi-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-22:sol-v3",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T14:47:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "89c54bf51733b8f37324def35ef3ae53cb112af6915179025e89714a848eb9ca",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw22-guehi-not-playing"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw22:guehi-not-playing",
+      "claim_text": "Marc Guehi will not play in GW22 while his transfer is finalised.",
+      "confidence": 0.99,
+      "decision_at": "2026-01-17T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-01-18T23:59:59Z",
+      "gameweek": 22,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "player_uid": "player:2025-26:260",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw22:guehi-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-01-16T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw22-guehi-not-playing-2026-01-16",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw22-guehi-not-playing-2026-01-16"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw22:guehi-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 35.0,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-23:sol-v2",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T18:05:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "906dd704ffb3d5f0b1ac66270885d2aec9881aaa60546e53bcd481eb8c923994",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw23-bruno-late-assessment"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw23:bruno-late-assessment",
+      "claim_text": "Bruno Guimaraes remained in contention for GW23, but his availability was still undecided.",
+      "confidence": 0.95,
+      "decision_at": "2026-01-24T11:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-01-25T23:59:59Z",
+      "gameweek": 23,
+      "namespace": "sol-v2",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "player_uid": "player:2025-26:488",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-01-23T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw23-bruno-assessment-2026-01-23",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw23-bruno-assessment-2026-01-23"
+      },
+      "verification": {
+        "actual_minutes": 0,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 37.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-24:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T18:05:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "3b5bdfdb5acf60b14e9accad971cb22b8bde6fd7a2266d41e3af125681e88682",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw24-timber-okay"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw24:player-8-okay-heavy-minutes",
+      "claim_text": "Player player:2025-26:8 was reported to be okay, with the qualification that they had played a lot of minutes.",
+      "confidence": 0.75,
+      "decision_at": "2026-01-31T13:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-02-01T23:59:59Z",
+      "gameweek": 24,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "player_uid": "player:2025-26:8",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-01-30T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw24-timber-okay-2026-01-30",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw24-timber-okay-2026-01-30"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 18.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-25:sol-v3",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T18:05:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "2c55db6ab7e9af0a7c50cacd190d85ea78491e72d5125d7eb02dbfa2c3590916",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw25-timber-fine"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:player-8-gw25-fine",
+      "claim_text": "Jurrien is fine.",
+      "confidence": 0.95,
+      "decision_at": "2026-02-06T18:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-02-08T23:59:59Z",
+      "gameweek": 25,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "player_uid": "player:2025-26:8",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-02-06T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw25-timber-fine-2026-02-06",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw25-timber-fine-2026-02-06"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 18.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw26-mateta-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-26:sol-v3",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T18:05:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "971c6fa6fec8835318ff0ec49d88ef2015a90b0be8066fd6823f9da410162b52",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw26-mateta-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw26-mateta-confirmed-absence",
+      "claim_text": "Jean-Philippe Mateta will miss time.",
+      "confidence": 0.99,
+      "decision_at": "2026-02-10T18:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-02-13T23:59:59Z",
+      "gameweek": 26,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "player_uid": "player:2025-26:283",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw26-mateta-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-02-10T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw26-mateta-out-2026-02-10",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw26-mateta-out-2026-02-10"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw26-mateta-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 37.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-27:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T18:05:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "d0da12648648683bf5822f231df2c349f450772532d42fa7d6b0d1e8c45afcf1",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw27-haaland-fit"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim:gw27:haaland-fit",
+      "claim_text": "Pep Guardiola nonverbally indicated that Erling Haaland was back fully fit.",
+      "confidence": 0.9,
+      "decision_at": "2026-02-21T13:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-02-22T23:59:59Z",
+      "gameweek": 27,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "player_uid": "player:2025-26:430",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-02-20T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw27-haaland-fit-2026-02-20",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw27-haaland-fit-2026-02-20"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 18.5,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw28-wirtz-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-28:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T18:05:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "baf8e47f2b2cf1ba9b103f0a3bdb8f1bb4b4ba901ebfaad81e579a81a5244b75",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw28-wirtz-unavailable"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim:gw28-wirtz-expected-absence",
+      "claim_text": "Florian Wirtz is not expected to be available.",
+      "confidence": 0.98,
+      "decision_at": "2026-02-27T18:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-03-01T23:59:59Z",
+      "gameweek": 28,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "player_uid": "player:2025-26:382",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw28-wirtz-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-02-27T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw28-wirtz-out-2026-02-27",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw28-wirtz-out-2026-02-27"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw28-wirtz-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 18.0,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-29:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T18:05:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "28dd0951f5a1a6e0d58304e2ad61f7dcadf65959d8fca9208b7fff03b4334bfc",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw29-haaland-late-assessment"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim-gw29-haaland-late-assessment",
+      "claim_text": "The player feels much better, but did not train yesterday and remains subject to a decision today after training.",
+      "confidence": 0.95,
+      "decision_at": "2026-03-03T18:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-03-04T23:59:59Z",
+      "gameweek": 29,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T18:05:00Z",
+      "player_uid": "player:2025-26:430",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-03-03T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw29-haaland-assessment-2026-03-03",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw29-haaland-assessment-2026-03-03"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 37.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-30:sol-v5",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "c4110a8f0a398f78450258a4371fb847d7b11d5851910d59f0f7fb71b151e31a",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw30-haaland-fit"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim-gw30-haaland-fit",
+      "claim_text": "Pep Guardiola confirmed that Erling Haaland was fit.",
+      "confidence": 0.95,
+      "decision_at": "2026-03-14T13:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-03-15T23:59:59Z",
+      "gameweek": 30,
+      "namespace": "sol-v5",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:430",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-03-13T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw30-haaland-fit-2026-03-13"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 18.5,
+      "application": {
+        "adjustment_ids": [
+          "adjustment-gw31-salah-expected-minutes-zero"
+        ],
+        "application_group_id": "agent_fork:gw-31:sol-v3",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "575cecc218cf850244fc568bf2ab70dead48abffd723a0760813697af0b327df",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw31-salah-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim-gw31-salah-out",
+      "claim_text": "Mohamed Salah is unavailable for Liverpool's GW31 trip to Brighton and Hove Albion because of a muscle injury.",
+      "confidence": 0.99,
+      "decision_at": "2026-03-20T18:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-03-22T23:59:59Z",
+      "gameweek": 31,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:381",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment-gw31-salah-expected-minutes-zero"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-03-20T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw31-salah-out-2026-03-20",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw31-salah-out-2026-03-20"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment-gw31-salah-expected-minutes-zero"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 17.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-32:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "453d33cb4b0753d7f61ce907ef8e9530a78b3e9c5bccdf59bcf7b02934782b81",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw32-gabriel-recovered"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim-gw32-gabriel-recovered",
+      "claim_text": "Gabriel Magalhaes recovered from injury and featured in midweek before Gameweek 32.",
+      "confidence": 0.98,
+      "decision_at": "2026-04-10T17:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-04-12T23:59:59Z",
+      "gameweek": 32,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:5",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-04-10T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw32-gabriel-recovered-2026-04-10",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw32-gabriel-recovered-2026-04-10"
+      },
+      "verification": {
+        "actual_minutes": 90,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 34.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw33-saka-expected-minutes"
+        ],
+        "application_group_id": "agent_fork:gw-33:sol-v3",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "44cced82c011646b69ed264626ec1853c5a654e1022c6ac1d458160dc45ddd6f",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw33-saka-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim-gw33-saka-out",
+      "claim_text": "Mikel Arteta confirmed that Bukayo Saka will miss Arsenal's GW33 trip to Manchester City because of an Achilles injury.",
+      "confidence": 0.99,
+      "decision_at": "2026-04-18T10:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-04-20T23:59:59Z",
+      "gameweek": 33,
+      "namespace": "sol-v3",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:16",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw33-saka-expected-minutes"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-04-17T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw33-saka-out-2026-04-17",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw33-saka-out-2026-04-17"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw33-saka-expected-minutes"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 17.5,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw34-timber-expected-minutes"
+        ],
+        "application_group_id": "agent_fork:gw-34:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "1efcdeb429c9bb570eaa412d23522763a0541ab760f851e1b0a5d830eebd196a",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw34-timber-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim-gw34-timber-out",
+      "claim_text": "Jurrien Timber is unavailable for Arsenal's GW34 clash with Newcastle United.",
+      "confidence": 0.99,
+      "decision_at": "2026-04-24T17:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-04-27T23:59:59Z",
+      "gameweek": 34,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:8",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw34-timber-expected-minutes"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-04-24T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw34-timber-out-2026-04-24",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw34-timber-out-2026-04-24"
+      },
+      "verification": {
+        "actual_minutes": 0,
+        "basis": "binary_zero_minutes_assertion_vs_realised_minutes",
+        "status": "verified",
+        "tested_adjustment_ids": [
+          "adjustment:gw34-timber-expected-minutes"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 17.5,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw35-timber-expected-minutes"
+        ],
+        "application_group_id": "agent_fork:gw-35:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": true
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "c7abeef4a23768cfd297117e040525b7cd46f020ffdc97347d6ba4cb6f025547",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw35-timber-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim-gw35-timber-out",
+      "claim_text": "Jurrien Timber was ruled out before the Gameweek 35 decision deadline.",
+      "confidence": 0.99,
+      "decision_at": "2026-05-01T17:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-05-04T23:59:59Z",
+      "gameweek": 35,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:8",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw35-timber-expected-minutes"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-05-01T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw35-timber-out-2026-05-01",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw35-timber-out-2026-05-01"
+      },
+      "verification": {
+        "actual_minutes": 0,
+        "basis": "binary_zero_minutes_assertion_vs_realised_minutes",
+        "status": "verified",
+        "tested_adjustment_ids": [
+          "adjustment:gw35-timber-expected-minutes"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 34.0,
+      "application": {
+        "adjustment_ids": [
+          "adjustment:gw36-timber-expected-minutes"
+        ],
+        "application_group_id": "agent_fork:gw-36:sol-v1",
+        "applied": true,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "9ae19aae340073f90bfe9b0ae22594afeebeb5308f3c530fa692c86e342c5e7a",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw36-timber-still-out"
+      },
+      "claim_class": {
+        "basis": "derived_from_adjustment_target",
+        "value": "player_availability"
+      },
+      "claim_id": "claim-gw36-timber-still-out",
+      "claim_text": "Jurrien Timber remained out for Arsenal ahead of Gameweek 36.",
+      "confidence": 0.99,
+      "decision_at": "2026-05-09T10:00:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-05-11T23:59:59Z",
+      "gameweek": 36,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:8",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [
+          "adjustment:gw36-timber-expected-minutes"
+        ],
+        "proposed": true
+      },
+      "published_at": "2026-05-08T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw36-timber-still-out-2026-05-08",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw36-timber-still-out-2026-05-08"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": [
+          "adjustment:gw36-timber-expected-minutes"
+        ]
+      }
+    },
+    {
+      "age_at_deadline_hours": 161.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-37:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "9bd737e4e2467e2f889d1a953d68258e5f3b209bcadbf68e3ce96fc3d6c1f77c",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw37-semenyo-no-fresh-team-news"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim-gw37-semenyo-no-fresh-team-news",
+      "claim_text": "No fresh pre-deadline Bournemouth manager team news was available for Antoine Semenyo ahead of Gameweek 37 because Bournemouth's manager would not face the media until after the deadline.",
+      "confidence": 0.99,
+      "decision_at": "2026-05-15T17:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-05-16T23:59:59Z",
+      "gameweek": 37,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:82",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-05-09T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw37-bournemouth-no-presser-2026-05-09",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw37-bournemouth-no-presser-2026-05-09"
+      },
+      "verification": {
+        "actual_minutes": 55,
+        "basis": "minutes_observed_but_claim_has_no_binary_zero_minutes_assertion",
+        "status": "indeterminate",
+        "tested_adjustment_ids": []
+      }
+    },
+    {
+      "age_at_deadline_hours": 85.5,
+      "application": {
+        "adjustment_ids": [],
+        "application_group_id": "agent_fork:gw-38:sol-v1",
+        "applied": false,
+        "paired_delta_scope": "gameweek_arm_not_claim",
+        "plan_changed": false
+      },
+      "arm": "agent_fork",
+      "available_at": "2026-07-26T19:25:00Z",
+      "citation": {
+        "citation_excerpt_sha256": "88b2705e7c6e1267541931b4a0829bdffe4715f80eaba18837c2d613c8512c14",
+        "cited_by_agent": true,
+        "passage_id": "passage:claim-gw38-timber-possible-return"
+      },
+      "claim_class": {
+        "basis": "not_recorded",
+        "value": "unclassified_historical"
+      },
+      "claim_id": "claim-gw38-timber-possible-return",
+      "claim_text": "Jurrien Timber was potentially going to return to training, but Mikel Arteta provided no selection clues.",
+      "confidence": 0.8,
+      "decision_at": "2026-05-24T13:30:00Z",
+      "evidence_mode": "retrospective_published_before_deadline",
+      "expires_at": "2026-05-25T23:59:59Z",
+      "gameweek": 38,
+      "namespace": "sol-v1",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "player_uid": "player:2025-26:8",
+      "production_eligible": false,
+      "proposal": {
+        "adjustment_ids": [],
+        "proposed": false
+      },
+      "published_at": "2026-05-21T00:00:00Z",
+      "retrieval": {
+        "document_id": "document:ffs-gw38-timber-possible-return-2026-05-21",
+        "retrieved_into_host_bundle": true
+      },
+      "retrospective_caveat": true,
+      "source": {
+        "authority": null,
+        "authority_status": "not_recorded",
+        "source_family_id": null,
+        "source_family_status": "not_recorded",
+        "source_id": "ffs-gw38-timber-possible-return-2026-05-21"
+      },
+      "verification": {
+        "actual_minutes": null,
+        "basis": "post_match_minutes_missing",
+        "status": "unavailable",
+        "tested_adjustment_ids": []
+      }
+    }
+  ],
+  "content_sha256": "c88b579ecfab44452b09d766448ac3ab249de94af1e05b59b8d18ca7a449ad42",
+  "gameweeks": [
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-12:sol-v1",
+      "applied_claim_count": 2,
+      "arm": "agent_fork",
+      "cited_claim_count": 2,
+      "claim_count": 2,
+      "gameweek": 12,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": null,
+      "plan_changed": null,
+      "proposed_claim_count": 2,
+      "retrieved_claim_count": 2,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-13:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 2,
+      "claim_count": 2,
+      "gameweek": 13,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 2,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-14:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 2,
+      "claim_count": 2,
+      "gameweek": 14,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": -1,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 2,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-15:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 2,
+      "claim_count": 2,
+      "gameweek": 15,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 2,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-16:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 16,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": -1,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-17:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 17,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 13,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-18:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 18,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-19:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 19,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-20:sol-v3",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 20,
+      "namespace": "sol-v3",
+      "paired_same_state_delta": 0,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-21:sol-v3",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 2,
+      "claim_count": 2,
+      "gameweek": 21,
+      "namespace": "sol-v3",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 2,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-22:sol-v3",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 22,
+      "namespace": "sol-v3",
+      "paired_same_state_delta": 5,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-23:sol-v2",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 23,
+      "namespace": "sol-v2",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-24:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 24,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-25:sol-v3",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 25,
+      "namespace": "sol-v3",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-26:sol-v3",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 26,
+      "namespace": "sol-v3",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-27:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 27,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-28:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 28,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-29:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 29,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-30:sol-v5",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 30,
+      "namespace": "sol-v5",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-31:sol-v3",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 31,
+      "namespace": "sol-v3",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-32:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 32,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-33:sol-v3",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 33,
+      "namespace": "sol-v3",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-34:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 34,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-35:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 35,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": true,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": true,
+      "application_group_id": "agent_fork:gw-36:sol-v1",
+      "applied_claim_count": 1,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 36,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 1,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-37:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 37,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    },
+    {
+      "adapter_applied": false,
+      "application_group_id": "agent_fork:gw-38:sol-v1",
+      "applied_claim_count": 0,
+      "arm": "agent_fork",
+      "cited_claim_count": 1,
+      "claim_count": 1,
+      "gameweek": 38,
+      "namespace": "sol-v1",
+      "paired_same_state_delta": 0,
+      "plan_changed": false,
+      "proposed_claim_count": 0,
+      "retrieved_claim_count": 1,
+      "run_status": "completed"
+    }
+  ],
+  "input_bindings": [
+    {
+      "content_sha256": "374a8d57adec05dd2339958c751ea37ae856f262c77a2c4b637eb7fee2183dc4",
+      "source_ref": "agent_fork/gw-12/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "8ce1b20640c05bf3f762d7fa5a36b30be30795141b2b290f6bfd1165ced4ecd0",
+      "source_ref": "agent_fork/gw-12/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "a97d9deff40790d40eb90e37eed64b0146151ec940087d96a81b422da5a30928",
+      "source_ref": "agent_fork/gw-12/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "ef7a186f64b803ce345b373307a7b480e6ada737b14efe282a7a3d0e7835c6c3",
+      "source_ref": "agent_fork/gw-12/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "2e7c4f02281a9f59c0acb7f47cc9e106f5659150866556d52e2baf02ca11ac9d",
+      "source_ref": "agent_fork/gw-12/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "e0493a06904e8e24e7171d7d20a456b10bcecad85a2956c7b97db27d9020ccea",
+      "source_ref": "agent_fork/gw-13/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "0f27f80a93e96751330a2958d5111fa1e8da22ea6fc7a6eed521471ecd583640",
+      "source_ref": "agent_fork/gw-13/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "414b464e7ed507f8dfee84382f5720d8653ddbac16f72f63812ea037a8ab05fd",
+      "source_ref": "agent_fork/gw-13/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "be8569f144b944bcb6af297f4644993bd2f7a4518d94a18dd2f341f191eb5c8e",
+      "source_ref": "agent_fork/gw-13/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "a8936f54f28c342ab5f52470e7e96288d3a9f2baadca1ee1b5f20efe9abc780b",
+      "source_ref": "agent_fork/gw-13/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "2d5265ac0d39b5f88f399470d51793060a0badfc7829effd13da48c0e52c7016",
+      "source_ref": "agent_fork/gw-13/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "be9a3b0d83b00558a8ab53eaf246edcfc6fb8cf143cd59ed42faca9469af6103",
+      "source_ref": "agent_fork/gw-14/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "fdfe7bdf31114b6c0d151f926bfb3a73a6ec27eb4da9874fb13f376b68207179",
+      "source_ref": "agent_fork/gw-14/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "17d9ddc751c08aab368bb63dd360775aeca4f12a39da1d25c20c0905e7ccb6a3",
+      "source_ref": "agent_fork/gw-14/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "2cda8f7956814784b746605cd074074096385294653bca05de2675762436aa77",
+      "source_ref": "agent_fork/gw-14/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "400177eb4c92be643e9d2a46191c4220900abb03de7a4d1a5639b499b4c39398",
+      "source_ref": "agent_fork/gw-14/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "8dabfdbd19a28fc087205d87b131b60555b8c84f0fba42b087bd462bbb9303b5",
+      "source_ref": "agent_fork/gw-14/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "81f4db32d6fd4793fdbc5d90e3908edd70447d13fb3218473c53265f8d53f20e",
+      "source_ref": "agent_fork/gw-15/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "32aae3a2ae39fe1a1c5b7a9426e696a844c2eec6aee3fda7a0933f7c5cb8f0f1",
+      "source_ref": "agent_fork/gw-15/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "38917c93540b35ceb8e475df13d53b4e46f696e4824b6683ce8b180b95adbefa",
+      "source_ref": "agent_fork/gw-15/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "62a118ecf4d9cc483f565dc706c76ccfdcdb6b2eb85bb5f45f0cdd4c20681e5c",
+      "source_ref": "agent_fork/gw-15/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "5db385c3971819ee961d9cec2178390f565d8e9aef5f116a2ec0896e54fd6178",
+      "source_ref": "agent_fork/gw-15/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "153fb2e2f4d0f0d4e7f7b9b47d88c734cc462104bbffdbbb16f60e9f81c640d3",
+      "source_ref": "agent_fork/gw-15/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "69f64e0c8c6d339ae10b440c4e2d43fc1489742c6ad06efde8326b512eb08d8c",
+      "source_ref": "agent_fork/gw-16/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "e075a27c33dc95a1a212077d5a4e2eff6ca56b4526b86b91df53ac37128ca2fc",
+      "source_ref": "agent_fork/gw-16/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "0b4e14aaaa2fc3c68b0646fcb0a28d740a7e37866dc2b15677b95a6f17f69677",
+      "source_ref": "agent_fork/gw-16/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "754ffff571ba5fde632790b9296b272c5893607b4ae34c0057f0aff08a9eb2e0",
+      "source_ref": "agent_fork/gw-16/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "0fdae0cfbae5e9b70b240930883231fe66e90be297817ea53f3e939a4ae3a4ba",
+      "source_ref": "agent_fork/gw-16/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "1457c0a10929bd2fbadf44951d44776b288e66e863003c073551c2db3bd5f112",
+      "source_ref": "agent_fork/gw-16/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "d84c106c2bacb56552234bd6fea346a908fb3364899685ccaf698988079782a2",
+      "source_ref": "agent_fork/gw-17/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "e995054320ace60459f27472016905665f1448defb421bd18244b8d6bf80a70b",
+      "source_ref": "agent_fork/gw-17/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "2547cfed7d23e0b2882d18109c392652b858aa88ace72348a8a986b3e4423cbd",
+      "source_ref": "agent_fork/gw-17/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "757c04868f281dd61539bcb7131515cf5ea62b289bd427b2e39c376167f6b79d",
+      "source_ref": "agent_fork/gw-17/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "368d48ce8f9347dd7890d2f827deb0aab0d6cdd3cc87e9fbfd1ec2dba7d341e3",
+      "source_ref": "agent_fork/gw-17/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "a01aa975b8d018fff066017e8047b625ffd763523545fca4739d741dbe1a4c46",
+      "source_ref": "agent_fork/gw-17/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "cbd1c6f1c2d4532cdd56420a62d35151a80acb80fc795c1b3acb097bf9e82a36",
+      "source_ref": "agent_fork/gw-18/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "4c02795725db07aa74704975f07f881384777078223328973e971a9adc639748",
+      "source_ref": "agent_fork/gw-18/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "8e9e119e24c21da32a0b55a31a4bb48806c571e9e4b8eaa83fb7b3cb9d8307c5",
+      "source_ref": "agent_fork/gw-18/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "4c6b7d19f39233fa5546c9991389c04d2fb617511d52cac5436fecef894db233",
+      "source_ref": "agent_fork/gw-18/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "ee96ea18f60b90d62dfd11d69b4156b24434a53c80c654129ff483ff05b85dda",
+      "source_ref": "agent_fork/gw-18/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "8d3c22e5e3c5f1eca46c824ecaa747962611891bcac1673ec3436c20ab043c7f",
+      "source_ref": "agent_fork/gw-18/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "55463c1db81c1650534a61a9616531c5220336ab7107d3f88e5c5925f49377f0",
+      "source_ref": "agent_fork/gw-19/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "c7e7bb1f24360b91585b4316a895ae00f040a0a5c61e203673b262e296c61826",
+      "source_ref": "agent_fork/gw-19/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "4ebc3c6fc5cdab7be75c6032d9c87bc3a43e2311a36c05284c33916a811e57ed",
+      "source_ref": "agent_fork/gw-19/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "b1a64137367fd5c219b346bc5306aee9b1e699473e5bb18d29cf416eeefe375d",
+      "source_ref": "agent_fork/gw-19/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "d7e262200b7bae9037f1f00cdd3b51f7ee451ff22802d7793445a4cb629e7882",
+      "source_ref": "agent_fork/gw-19/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "b2381bfc9d12eb02945a63658d0258d75c420fb97fdc60f1a6d04c458b4a5bfe",
+      "source_ref": "agent_fork/gw-19/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "3a64c26be6f48bf98cceecdf4d208735ecfd6bbdf3c2bb14184fb80d21a17996",
+      "source_ref": "agent_fork/gw-20/sol-v3/adapter-audit.json"
+    },
+    {
+      "content_sha256": "457ea1b45826717aa9771ceb3c6a6692c21b54eba8f0c707159d1d393feb277c",
+      "source_ref": "agent_fork/gw-20/sol-v3/comparison.json"
+    },
+    {
+      "content_sha256": "43ae516d5525bbaf48f9a7de1b93c86509f81d2122713944c043243fc1b3f087",
+      "source_ref": "agent_fork/gw-20/sol-v3/evidence-run.json"
+    },
+    {
+      "content_sha256": "fd642ab2712cbe6e46ee7501c3c5cdc25d99f4a732911c3372e34b1369a7825c",
+      "source_ref": "agent_fork/gw-20/sol-v3/host-bundle.json"
+    },
+    {
+      "content_sha256": "97b942aca51ecb19d9ea7c8f1597336d98e7f9daadc5739907607e1b741c7a9e",
+      "source_ref": "agent_fork/gw-20/sol-v3/realised-outcome.json"
+    },
+    {
+      "content_sha256": "07adb2a9640bae7ffa787d358cab2939b4702be3f48bdd008ab11a98ec23c0ac",
+      "source_ref": "agent_fork/gw-20/sol-v3/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "59b7ce886d49cd5776b76fbc93c57152dc3ea93ea30c77c9394faed3b5bf4cc4",
+      "source_ref": "agent_fork/gw-21/sol-v3/adapter-audit.json"
+    },
+    {
+      "content_sha256": "65b11f58fc923324e29b35ec224ef7a29bd2b33ee22b89325b4e366b96905d74",
+      "source_ref": "agent_fork/gw-21/sol-v3/comparison.json"
+    },
+    {
+      "content_sha256": "86590f64685f1db32db0a9a5027658b70f228e4ad94f122dc0db79b60d4c1c0f",
+      "source_ref": "agent_fork/gw-21/sol-v3/evidence-run.json"
+    },
+    {
+      "content_sha256": "9d3b5a58202ec9199c9ff3608724f10cb63a49ceac23b2c7504d083a929ae6df",
+      "source_ref": "agent_fork/gw-21/sol-v3/host-bundle.json"
+    },
+    {
+      "content_sha256": "2ca29ebae5dffc05118719bcb2bc0d6491ef26e661034ea54b6e4ac91e0e71aa",
+      "source_ref": "agent_fork/gw-21/sol-v3/realised-outcome.json"
+    },
+    {
+      "content_sha256": "512dbee58093295baa69331930ddeb6aaebbbcc7969d645200c571bf6bdcf139",
+      "source_ref": "agent_fork/gw-21/sol-v3/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "44f79b1ede9751f20a035108ec3a1aa899ee50ac41e92214691581cfd9e5bfb1",
+      "source_ref": "agent_fork/gw-22/sol-v3/adapter-audit.json"
+    },
+    {
+      "content_sha256": "3df0b9cf7c60f5faacada9f9f51683336d07f2d40aea73610528eb4fbbe45c93",
+      "source_ref": "agent_fork/gw-22/sol-v3/comparison.json"
+    },
+    {
+      "content_sha256": "d082895be42997a0260076dee0034cc3d8df9a137f72cbb458b601684da285d5",
+      "source_ref": "agent_fork/gw-22/sol-v3/evidence-run.json"
+    },
+    {
+      "content_sha256": "837ccb0fc04160ef6ae0bc9c2d47823fa65c847e0c4a8cec4429fe0634cb1c11",
+      "source_ref": "agent_fork/gw-22/sol-v3/host-bundle.json"
+    },
+    {
+      "content_sha256": "cc04fe9ccb7c2537f7f83dc0513336cc0d5e2d12a876cd67cbab633426941d8b",
+      "source_ref": "agent_fork/gw-22/sol-v3/realised-outcome.json"
+    },
+    {
+      "content_sha256": "3b46293969b0e56ddddad2b56e11f88210e02299cde784fecebef09d52cebb16",
+      "source_ref": "agent_fork/gw-22/sol-v3/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "e709120d9d8cf25d26ea28ca2f3071b19cafcbdf7a4fe8325fd8ce5e906af9b4",
+      "source_ref": "agent_fork/gw-23/sol-v2/adapter-audit.json"
+    },
+    {
+      "content_sha256": "0910966b15ba29554b15301021d3e083b7bf5ca76beb5eacbaf09e36b6d7e24f",
+      "source_ref": "agent_fork/gw-23/sol-v2/comparison.json"
+    },
+    {
+      "content_sha256": "2b3c9597cc4d21bb6de02232361d2e9ff3c25ab7a260eb2a4f9cfbd4b1c4b6be",
+      "source_ref": "agent_fork/gw-23/sol-v2/evidence-run.json"
+    },
+    {
+      "content_sha256": "b0452096a6c8f7bf0499006f99d0b1b72e09b9e60ff61ca25933fc61e50d6d1a",
+      "source_ref": "agent_fork/gw-23/sol-v2/host-bundle.json"
+    },
+    {
+      "content_sha256": "1f8d73f99b47728688f0e2308343b2f35a49f3891e3bd8dcf4983942dca9d89f",
+      "source_ref": "agent_fork/gw-23/sol-v2/realised-outcome.json"
+    },
+    {
+      "content_sha256": "c4dbea4a721e3cad564841e61dc2bba7a837435913c7eca3f0688d5ddea101f3",
+      "source_ref": "agent_fork/gw-23/sol-v2/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "25d24ea3d8d8ec166fee953abbae21a42c54894979982afeada5eacaa8c79032",
+      "source_ref": "agent_fork/gw-24/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "6c7e884b3212e2b2283195b1e530867a3d50e36d9eb7fa7eba79bb2290280fc0",
+      "source_ref": "agent_fork/gw-24/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "8f7e163fabf3141be45868920e7b0392e4c4b20ba5be5020c7ae72c52a1fdee1",
+      "source_ref": "agent_fork/gw-24/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "95bb846a4742657517845953517d4a54b59729a1881169b1879b43946ed5342b",
+      "source_ref": "agent_fork/gw-24/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "e5511e2620c7e3ecfe6d777fb0612d5c3b38b26c4cfe5def36d8494b9ced5e35",
+      "source_ref": "agent_fork/gw-24/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "f3997d177fb513f0f56d3a851b93c61a39fee60aacf5c18117debbfc7f68af04",
+      "source_ref": "agent_fork/gw-24/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "4c47216e6472f2fdca6671862a58f800366e12027803f1ed1433a93565090172",
+      "source_ref": "agent_fork/gw-25/sol-v3/adapter-audit.json"
+    },
+    {
+      "content_sha256": "8bfddf4b726dddac26fabf952c3824a6dffd8b38ebd0d5d34e165c06edeb80e4",
+      "source_ref": "agent_fork/gw-25/sol-v3/comparison.json"
+    },
+    {
+      "content_sha256": "15d95344b6879d4005be1b057806c7a059512dbc7bbde3fd8241a456135eb7a2",
+      "source_ref": "agent_fork/gw-25/sol-v3/evidence-run.json"
+    },
+    {
+      "content_sha256": "0bb15d242412405c13d198dadc3bc2f1c8c65c96c1e69a5cb9150ee1447b29fd",
+      "source_ref": "agent_fork/gw-25/sol-v3/host-bundle.json"
+    },
+    {
+      "content_sha256": "5874748ce6ef25b3f92d1aeb87469669f9cf0c33de3db87d300a7557ea059a2c",
+      "source_ref": "agent_fork/gw-25/sol-v3/realised-outcome.json"
+    },
+    {
+      "content_sha256": "1e0e8ec81aee67132d8c98bae719790d72d34b1b076a8d97e831d970bc0ebca0",
+      "source_ref": "agent_fork/gw-25/sol-v3/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "1e9be1203a741de2a056b757758953be717d77036681a80e4e378bd804931675",
+      "source_ref": "agent_fork/gw-26/sol-v3/adapter-audit.json"
+    },
+    {
+      "content_sha256": "8c7a038d9e24e87b509b2ad2a373c38476a3bd29a3ab84441f4f04f9c0e3314c",
+      "source_ref": "agent_fork/gw-26/sol-v3/comparison.json"
+    },
+    {
+      "content_sha256": "574073fb6bf5821a3a41de7b6f374da94777581c4f776330a9acdd8987b68fee",
+      "source_ref": "agent_fork/gw-26/sol-v3/evidence-run.json"
+    },
+    {
+      "content_sha256": "472fdaea711f3a51993a6ed5cecd6083844473d70d77d2c0bc97a414a52f130b",
+      "source_ref": "agent_fork/gw-26/sol-v3/host-bundle.json"
+    },
+    {
+      "content_sha256": "e8a9e7e44c03bee679916ea61628f6e8bdc43c7c798ae3f7d495bbcdaee634be",
+      "source_ref": "agent_fork/gw-26/sol-v3/realised-outcome.json"
+    },
+    {
+      "content_sha256": "e5b02d9ec49539e4bce3a7d42f86fae820694f54b63b1a1570171fe6881159f4",
+      "source_ref": "agent_fork/gw-26/sol-v3/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "0b3ca11e22fce141c90e6f6bd95f1570edcd807f9d1a870f09755fc86a6693e8",
+      "source_ref": "agent_fork/gw-27/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "a8f47df76ce3c40b9494c46a3270437830cba41cd274c86e534f7b6aba593359",
+      "source_ref": "agent_fork/gw-27/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "db27421b060d14c4b7e60029fbd68ea933db0bd9746b509a4bcbb072f14684e7",
+      "source_ref": "agent_fork/gw-27/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "f0c45eeea8e88bee437a17f3005e136336259475c0326b4512738f26632b3751",
+      "source_ref": "agent_fork/gw-27/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "54a1079d577c48d01fb803de1c400fdc807a2d7a3f0fac52178b650ec19af102",
+      "source_ref": "agent_fork/gw-27/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "eeac4dab0cf6046e2934358c66d9509a4c151da76c19a15dbf9810e4d464ace5",
+      "source_ref": "agent_fork/gw-27/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "d778600fa88a123a20c3597f87821d36ace2f7fbc5f1858f82ac9fe88a0e6ac0",
+      "source_ref": "agent_fork/gw-28/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "ba606036c2cd7babd8f099c750b85cb05a73e6fa3c339860bfcc809c1454882f",
+      "source_ref": "agent_fork/gw-28/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "c1cc6ea659560b175032f1018c8edd795e79c862a3f5fd1613732057f9982fe6",
+      "source_ref": "agent_fork/gw-28/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "e0a12433f985fab98dfbc4d3539ca247d2064fda448b56dff4c402277d9f0d8f",
+      "source_ref": "agent_fork/gw-28/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "f40a055a3632fa9d7fbff3cf6bbca9d1e465e1da08eaeeecefe11b08fedb6cb1",
+      "source_ref": "agent_fork/gw-28/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "a573e9dc0d5731f801100843db44896522de1c60bd2b52f1cbb7695ecd19f520",
+      "source_ref": "agent_fork/gw-28/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "84e6080dbffb835787bd1a6e35436ba00f6015784e08c88814430ee522794d0b",
+      "source_ref": "agent_fork/gw-29/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "ea1d62a5fb229d63817f46b8e906c0c20067242e114dd905f7946b61cbd9f324",
+      "source_ref": "agent_fork/gw-29/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "5820272fdc09a3dd4f41b92ad0b817ee0829fe19c8a0249ebcbef412c56b0c72",
+      "source_ref": "agent_fork/gw-29/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "4b4773b5a448c0245514b17f970b2417de9695edd98b0dcae7e2766d24e8496f",
+      "source_ref": "agent_fork/gw-29/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "f77fbf8307f93dd4201f3fd31f7aec854a5e0595bf98832d38ea18ed4c067c4a",
+      "source_ref": "agent_fork/gw-29/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "a0c9ff18bc3c49bb7bcb6c71c5886adb849ac4daae3ae71d509832c75b330d3a",
+      "source_ref": "agent_fork/gw-29/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "9ff1fea57c748e0946f4af83ef271178800ef944a0643b9b01564ff8244be9f0",
+      "source_ref": "agent_fork/gw-30/sol-v5/adapter-audit.json"
+    },
+    {
+      "content_sha256": "27dae37c74c23301a08883f1f5adda308a96c4ae1db7774b208c3cae0fd6dbe4",
+      "source_ref": "agent_fork/gw-30/sol-v5/comparison.json"
+    },
+    {
+      "content_sha256": "fc0e5e744b38631d61165fa872e57288f09de50868a3583fe7a6f4fed548735c",
+      "source_ref": "agent_fork/gw-30/sol-v5/evidence-run.json"
+    },
+    {
+      "content_sha256": "e73f22251a93ccd00e8192784e9cd214cea2c4b388bd5a58449c2b51785d3fef",
+      "source_ref": "agent_fork/gw-30/sol-v5/host-bundle.json"
+    },
+    {
+      "content_sha256": "ec1a6e8f44700e9edac175abe56a5ae1ed58ee0303c77068f4a0795da5e6df02",
+      "source_ref": "agent_fork/gw-30/sol-v5/realised-outcome.json"
+    },
+    {
+      "content_sha256": "b7515af888088501f3436f30877eea5ae376b3957053ce3c58756341f9f4ea1a",
+      "source_ref": "agent_fork/gw-30/sol-v5/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "ac229946b6e40f9492a6230a2a923a873d15f0e855d164e0cfff66ecd4ee8e6e",
+      "source_ref": "agent_fork/gw-31/sol-v3/adapter-audit.json"
+    },
+    {
+      "content_sha256": "e09322d2c17e218aa57bcd6c85a31396da027e3775aa31e834235e6ab3c321f7",
+      "source_ref": "agent_fork/gw-31/sol-v3/comparison.json"
+    },
+    {
+      "content_sha256": "bb676eb1c0e9fdb64c7a85d4cde182fdc43f60d3ee107f12d9c7f78b6b84542b",
+      "source_ref": "agent_fork/gw-31/sol-v3/evidence-run.json"
+    },
+    {
+      "content_sha256": "ed68285f2a2f4e54489d4bd77f2aae0f98a752afda3e41a3ec6bdf4c6eb60aa8",
+      "source_ref": "agent_fork/gw-31/sol-v3/host-bundle.json"
+    },
+    {
+      "content_sha256": "06aae6abc02578d38e2b2485a5298d153bfc965c248476fc3843eaed3a2f9090",
+      "source_ref": "agent_fork/gw-31/sol-v3/realised-outcome.json"
+    },
+    {
+      "content_sha256": "21196986c15863bf19024fd8110470290bc1c315d81c97a52ea36ce0fca120e5",
+      "source_ref": "agent_fork/gw-31/sol-v3/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "902351009df74a66fe7c259b3cfe9ef8acd28e8f8dd032db750018dfb37148af",
+      "source_ref": "agent_fork/gw-32/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "4e0b75a949821f6d3a2ab03160941282daaa8d7ba29e7fb793d93f91662e9af9",
+      "source_ref": "agent_fork/gw-32/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "4a3d64649d949000041e1c7fd152f45860a5425f1eb17f8f60dd792f0578005b",
+      "source_ref": "agent_fork/gw-32/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "d4395c3e4ed88e420a4170cf5c02069cafc31f1cce004bb786315d620e7ad8f3",
+      "source_ref": "agent_fork/gw-32/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "69c0c1cf0e6860805a7a20ec5fab85c305636683ee39177988939e7471c7ae2e",
+      "source_ref": "agent_fork/gw-32/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "1c1791a9f215d834ff3daaf9e0ee86f4be49181cd616c31a8d13ccab6ffa0bf6",
+      "source_ref": "agent_fork/gw-32/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "c837b74bbbeabebb5675a5f967cc721779eff106294de04416c38eb72747d0af",
+      "source_ref": "agent_fork/gw-33/sol-v3/adapter-audit.json"
+    },
+    {
+      "content_sha256": "6b24f70fdfcea70bcae04b040e01862b5096690525aaaf4f6bddfc4e52681abe",
+      "source_ref": "agent_fork/gw-33/sol-v3/comparison.json"
+    },
+    {
+      "content_sha256": "6a7af15d6b445aaaad7f2658f5a4c6698c04843ccac4f77fc6bf0e3671caf80f",
+      "source_ref": "agent_fork/gw-33/sol-v3/evidence-run.json"
+    },
+    {
+      "content_sha256": "9965a64a270e9661c1c180bfa813f1df5a9ecac3a83521ec1da1e4639041c018",
+      "source_ref": "agent_fork/gw-33/sol-v3/host-bundle.json"
+    },
+    {
+      "content_sha256": "4ce6e3fb6820ef44199f8f03da3982c13f50de443942ae2022316a25ed33d78a",
+      "source_ref": "agent_fork/gw-33/sol-v3/realised-outcome.json"
+    },
+    {
+      "content_sha256": "86945f2bbba8cef0873d5b5f5d675946b9ca443ed807e57e1d21d70983f6f8df",
+      "source_ref": "agent_fork/gw-33/sol-v3/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "602b2b3fd8362ea78486774354451b7b11b063e48e400ac37f509b91d711b468",
+      "source_ref": "agent_fork/gw-34/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "e9f7ec092e75bcbf2f6c020813de926f966cf21741279489b3a15cf0db8f5649",
+      "source_ref": "agent_fork/gw-34/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "945a2843a846b97b3728d0be01366175eec2850922f9b86865b733fa5512b79a",
+      "source_ref": "agent_fork/gw-34/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "5893943caa8819c5cf673b32f8dec308660fa7736531d2cee060796b6218160b",
+      "source_ref": "agent_fork/gw-34/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "57ec554f20c7785269f4bcd405d709c9fdcd898bffa8757bd399c19e6e459915",
+      "source_ref": "agent_fork/gw-34/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "0c7f54af1ef94668de85bf82ad2e75fb027dd476bd491429e96860b1c5b8895f",
+      "source_ref": "agent_fork/gw-34/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "c4133de725bd3611a13b6401353b437ef4cefc5f7690d1c366fe9c163f76e7ba",
+      "source_ref": "agent_fork/gw-35/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "6fbc4883475b017cfb29e96a0b28635cf8c39ecce0a3bd80df483a4d3b85c593",
+      "source_ref": "agent_fork/gw-35/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "069ed9d77e65e9a81c0e677ae2f7ed53631ca1d4a9d369dac000fdf81e8cfbb5",
+      "source_ref": "agent_fork/gw-35/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "59d8ee6432d7def464312b76c4d0b71aa156b3957ca05868560770a610baf37b",
+      "source_ref": "agent_fork/gw-35/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "1851f2c38b303a39507e62dee5390a9067f9738964f66a85388c28152554c3cb",
+      "source_ref": "agent_fork/gw-35/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "f4dbc256443d29174340216fd4edcbc9e16f87edbadffaa810a498c825b6f46c",
+      "source_ref": "agent_fork/gw-35/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "1e006f148e8fdf64a5b5c741632eeca152e4bba0aae306aed64b45b2349b85d7",
+      "source_ref": "agent_fork/gw-36/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "94f34700c50ef1a7aa1df2e5c393315125b20fabf467661787cf859bbabcc6fc",
+      "source_ref": "agent_fork/gw-36/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "1d8d0ec0372191f03d700a7c53a75cbc22eadb0123f3735539f4d7e25bc99fb8",
+      "source_ref": "agent_fork/gw-36/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "65e1cfbaed08255cb0661176acd1ddb3842a510e7fbde75228ab98c709ef9d9f",
+      "source_ref": "agent_fork/gw-36/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "9bc6b41c5828abd08c7789447ec9518f998eb16882d2ac8f78e7502d61b03eb1",
+      "source_ref": "agent_fork/gw-36/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "448ee2fe54ccaedb874590c3dd6994745480c7852d7a6507d9e64c1b971b2ccb",
+      "source_ref": "agent_fork/gw-36/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "94afa4c3479c89409e3004eebab04f7ead85168508ea521aeb16d58baa54747f",
+      "source_ref": "agent_fork/gw-37/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "c1572892246844c9602126f40fa06de32a318e30077f3d4642fe3452d3e94a71",
+      "source_ref": "agent_fork/gw-37/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "9c3650389c4853d51e1a7de9fedbbeb885227ab5cc2a66e317b97c5acd4ca1b0",
+      "source_ref": "agent_fork/gw-37/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "afec46adf462f75e67762b8397f24071aafd11e0672e93df76f0360f4edf462a",
+      "source_ref": "agent_fork/gw-37/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "7447fafe385e66e174c660a4b6d5c7637c5e9df5964c42ca758fb2a93a72e2ee",
+      "source_ref": "agent_fork/gw-37/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "bfe85a8f4da55dbb64d98ff94eff4ca262bd8e5107ff12156b20a257d0c80e27",
+      "source_ref": "agent_fork/gw-37/sol-v1/same-state-attribution.json"
+    },
+    {
+      "content_sha256": "be4e924569dffed3696b9fdb2de26e52c06382b8f6d589714c3fc237826937ab",
+      "source_ref": "agent_fork/gw-38/sol-v1/adapter-audit.json"
+    },
+    {
+      "content_sha256": "de34cfe78770fcfaed6549975b22d447d7eb3c3a0e5e3e03ce613e90ac1a09ac",
+      "source_ref": "agent_fork/gw-38/sol-v1/comparison.json"
+    },
+    {
+      "content_sha256": "a1edc2a53a9c5af3780c765dd0b7c27f56c5bc78896170b389135654baa8fbcb",
+      "source_ref": "agent_fork/gw-38/sol-v1/evidence-run.json"
+    },
+    {
+      "content_sha256": "31f4cbf9f97fc0bae93c416a3fb8d224fceb653d9d3302ce31169370ce254ccc",
+      "source_ref": "agent_fork/gw-38/sol-v1/host-bundle.json"
+    },
+    {
+      "content_sha256": "01fb37525eb2235154c831b9795fbf941dcf5cf20b6d7a82471e563c0bae76f9",
+      "source_ref": "agent_fork/gw-38/sol-v1/realised-outcome.json"
+    },
+    {
+      "content_sha256": "9254deb4feb4a2800e489b560afe784305913236a97da4b9d048b6a775e51ad6",
+      "source_ref": "agent_fork/gw-38/sol-v1/same-state-attribution.json"
+    }
+  ],
+  "mode": "accepted_agent_fork",
+  "policy_effect": "none",
+  "read_only": true,
+  "report_id": "claim-value:2025-26:agent-fork",
+  "rollups": {
+    "arms": [
+      {
+        "applied_week_count": 15,
+        "arm": "agent_fork",
+        "claim_count": 32,
+        "evidence_run_count": 27,
+        "gameweek_count": 27,
+        "nonzero_paired_gameweeks": [
+          14,
+          16,
+          17,
+          22
+        ],
+        "paired_same_state_sum": 16,
+        "paired_week_count": 26,
+        "plan_changed_week_count": 8
+      }
+    ],
+    "claim_class_source_family": [
+      {
+        "applied_count": 16,
+        "cited_count": 17,
+        "claim_class": "player_availability",
+        "claim_count": 17,
+        "delta_note": "Paired deltas are counted only for application groups whose applied claims all belong to this bucket.",
+        "exclusive_application_group_count": 14,
+        "exclusive_group_paired_same_state_sum": 16,
+        "proposed_count": 17,
+        "retrieved_count": 17,
+        "shared_application_group_count": 0,
+        "source_family_id": null,
+        "verification_counts": {
+          "indeterminate": 1,
+          "unavailable": 12,
+          "verified": 4
+        }
+      },
+      {
+        "applied_count": 0,
+        "cited_count": 15,
+        "claim_class": "unclassified_historical",
+        "claim_count": 15,
+        "delta_note": "Paired deltas are counted only for application groups whose applied claims all belong to this bucket.",
+        "exclusive_application_group_count": 0,
+        "exclusive_group_paired_same_state_sum": 0,
+        "proposed_count": 0,
+        "retrieved_count": 15,
+        "shared_application_group_count": 0,
+        "source_family_id": null,
+        "verification_counts": {
+          "indeterminate": 13,
+          "unavailable": 2
+        }
+      }
+    ],
+    "nonzero_paired_gameweeks_union": [
+      14,
+      16,
+      17,
+      22
+    ]
+  },
+  "schema_version": "1.0",
+  "season": "2025-26"
+}

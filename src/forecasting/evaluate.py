@@ -7,6 +7,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+from src.evaluation.calibration import decision_aligned_comparison_table
 
 from src.forecasting.data import DEFAULT_VAASTAV, list_seasons, load_merged_gw
 from src.forecasting.minutes import build_minutes_frame
@@ -84,6 +85,58 @@ def expected_calibration_error(y: pd.Series, p: pd.Series, *, bins: int = 10) ->
             row["n"] / total * abs(row["mean_predicted"] - row["observed_rate"])
             for row in table
         )
+    )
+
+
+def decision_aligned_frame_comparison(
+    frame: pd.DataFrame,
+    *,
+    prediction_columns: dict[str, str],
+    boundary_type: str,
+    top_price_band_min: float,
+    legal_lineups: list[list[str]] | None = None,
+    selected_xi_ids_by_model: dict[str, list[str]] | None = None,
+    captain_id_by_model: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    """Map a shared forecast frame into the evaluation-only comparison table."""
+
+    required = {"player_id", "actual", "position", "price"}
+    missing = sorted(required - set(frame.columns))
+    if missing:
+        raise ValueError(
+            "decision-aligned frame missing columns: " + ", ".join(missing)
+        )
+    if not prediction_columns:
+        raise ValueError("prediction_columns must not be empty")
+    missing_predictions = sorted(
+        set(prediction_columns.values()) - set(frame.columns)
+    )
+    if missing_predictions:
+        raise ValueError(
+            "decision-aligned frame missing prediction columns: "
+            + ", ".join(missing_predictions)
+        )
+    records = frame.to_dict(orient="records")
+    model_rows = {
+        str(model): [
+            {
+                "player_id": row["player_id"],
+                "predicted": row[column],
+                "actual": row["actual"],
+                "position": row["position"],
+                "price": row["price"],
+            }
+            for row in records
+        ]
+        for model, column in prediction_columns.items()
+    }
+    return decision_aligned_comparison_table(
+        model_rows,
+        boundary_type=boundary_type,
+        top_price_band_min=top_price_band_min,
+        legal_lineups=legal_lineups,
+        selected_xi_ids_by_model=selected_xi_ids_by_model,
+        captain_id_by_model=captain_id_by_model,
     )
 
 

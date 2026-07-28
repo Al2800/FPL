@@ -20,6 +20,7 @@ from src.orchestration.agent_arm import (
     build_hosted_request,
     cached_or_invoke,
     run_agent_arm,
+    run_live_agent_arm,
     run_hosted_semantic_payload,
 )
 from src.orchestration.hosted_response import (
@@ -687,3 +688,205 @@ def test_golden_citation_hash_is_exact() -> None:
     assert claim["citation_excerpt_sha256"] == hashlib.sha256(
         claim["citation_excerpt"].encode("utf-8")
     ).hexdigest()
+
+
+def _host_owned(request: dict, structured: dict) -> dict:
+    return build_hosted_response(
+        request=request,
+        structured_output=structured,
+        completed_at="2026-07-26T10:30:00Z",
+        usage={
+            "wall_clock_ms": 1_200,
+            "tool_calls": 0,
+            "input_tokens": 900,
+            "output_tokens": 350,
+            "total_tokens": 1_250,
+        },
+        cli_version="0.144.6",
+    )
+
+
+def test_live_wrapper_repairs_protocol_once_and_records_cumulative_budget() -> None:
+    request = _request()
+    malformed = _valid_output()
+    malformed["adjustments"] = malformed.pop("proposed_adjustments")
+    invocations: list[dict] = []
+
+    def invoke(context: dict) -> dict:
+        invocations.append(context)
+        structured = malformed if context["attempt"] == 0 else _valid_output()
+        return _host_owned(request, structured)
+
+    result = run_live_agent_arm(
+        request=request,
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+        invoke=invoke,
+    )
+
+    assert result["status"] == "completed"
+    assert len(invocations) == 2
+    assert invocations[0]["repair_request"] is None
+    repair = invocations[1]["repair_request"]
+    assert repair["original_request_sha256"] == request["rendered_input_sha256"]
+    assert invocations[1]["remaining_budget"]["wall_clock_ms"] == 58_800
+    assert invocations[1]["remaining_budget"]["input_tokens"] == 19_100
+    assert invocations[1]["remaining_budget"]["output_tokens"] == 3_650
+    assert invocations[1]["remaining_budget"]["total_tokens"] == 22_750
+    assert {
+        row["code"] for row in repair["violations"]
+    } == {"schema_additional_property", "schema_required"}
+    assert result["retry"]["attempted"] is True
+    assert result["retry"]["attempt_count"] == 2
+    assert result["trace"]["budget"]["used"]["wall_clock_ms"] == 2_400
+    assert result["trace"]["budget"]["used"]["total_tokens"] == 2_500
+    assert len(result["trace"]["model_calls"]) == 2
+    assert result["trace"]["model_calls"][1]["request_sha256"] == repair[
+        "content_sha256"
+    ]
+    assert result["selected_candidate"] == _candidate()
+    assert result["adjustments_applied"] == []
+    _validate_trace(result["trace"])
+
+
+def test_live_wrapper_second_protocol_failure_uses_unchanged_fallback() -> None:
+    request = _request()
+    malformed = _valid_output()
+    malformed["role"] = "evidence_agent"
+    invocations = 0
+
+    def invoke(context: dict) -> dict:
+        nonlocal invocations
+        invocations += 1
+        return _host_owned(request, malformed)
+
+    result = run_live_agent_arm(
+        request=request,
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+        invoke=invoke,
+    )
+
+    assert invocations == 2
+    assert result["status"] == "degraded"
+    assert result["selected_candidate"] == _candidate()
+    assert result["validated_output"] is None
+    assert result["adjustments_applied"] == []
+    assert result["retry"]["attempt_count"] == 2
+    assert len(result["retry"]["attempt_violations"][1]) > 0
+    _validate_trace(result["trace"])
+
+
+def test_live_wrapper_rollback_disables_retry() -> None:
+    request = _request()
+    malformed = _valid_output()
+    malformed["role"] = "evidence_agent"
+    invocations = 0
+
+    def invoke(context: dict) -> dict:
+        nonlocal invocations
+        invocations += 1
+        return _host_owned(request, malformed)
+
+    result = run_live_agent_arm(
+        request=request,
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+        invoke=invoke,
+        repair_enabled=False,
+    )
+
+    assert invocations == 1
+    assert result["status"] == "degraded"
+    assert result["host_response_policy"]["enabled"] is False
+    assert result["retry"]["attempted"] is False
+
+
+def test_live_wrapper_does_not_retry_semantic_grounding_failure() -> None:
+    request = _request()
+    semantic_failure = _valid_output()
+    semantic_failure["claims"][0]["player_uid"] = "player:unknown"
+    invocations = 0
+
+    def invoke(context: dict) -> dict:
+        nonlocal invocations
+        invocations += 1
+        return _host_owned(request, semantic_failure)
+
+    result = run_live_agent_arm(
+        request=request,
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+        invoke=invoke,
+    )
+
+    assert invocations == 1
+    assert result["status"] == "degraded"
+    assert result["retry_disposition"]["reason_class"] == "semantic"
+    assert result["retry"]["attempted"] is False
+
+
+def test_live_wrapper_refuses_retry_after_budget_is_exhausted() -> None:
+    request = _request()
+    malformed = _valid_output()
+    malformed["role"] = "evidence_agent"
+    over_budget = build_hosted_response(
+        request=request,
+        structured_output=malformed,
+        completed_at="2026-07-26T10:30:00Z",
+        usage={
+            "wall_clock_ms": 60_001,
+            "tool_calls": 0,
+            "input_tokens": 900,
+            "output_tokens": 350,
+            "total_tokens": 1_250,
+        },
+    )
+    invocations = 0
+
+    def invoke(context: dict) -> dict:
+        nonlocal invocations
+        invocations += 1
+        return over_budget
+
+    result = run_live_agent_arm(
+        request=request,
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+        invoke=invoke,
+    )
+
+    assert invocations == 1
+    assert result["status"] == "degraded"
+    assert result["trace"]["failure"]["category"] == "budget_exhaustion"
+    assert result["retry"]["attempted"] is False
+
+
+def test_live_wrapper_repairs_non_serializable_response_without_admission() -> None:
+    request = _request()
+    malformed = _host_owned(request, _valid_output())
+    malformed["structured_output"]["notes"] = {object()}
+    invocations = 0
+
+    def invoke(context: dict) -> dict:
+        nonlocal invocations
+        invocations += 1
+        return (
+            malformed
+            if context["attempt"] == 0
+            else _host_owned(request, _valid_output())
+        )
+
+    result = run_live_agent_arm(
+        request=request,
+        deterministic_candidate=_candidate(),
+        code_commit=CODE_COMMIT,
+        invoke=invoke,
+    )
+
+    assert invocations == 2
+    assert result["status"] == "completed"
+    assert result["retry"]["attempt_violations"][0][0]["code"] == (
+        "hosted_response_not_serializable"
+    )
+    assert result["selected_candidate"] == _candidate()

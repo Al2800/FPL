@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "description": "Minimized protocol patterns copied from immutable GW30, GW31 and GW33 hosted-response artifacts.",
+  "source_artifacts": [
+    "reports/benchmarks/2025-26-agent-forks/gw-30/sol-v1/evidence-hosted-response.json",
+    "reports/benchmarks/2025-26-agent-forks/gw-30/sol-v4/evidence-hosted-response.json",
+    "reports/benchmarks/2025-26-agent-forks/gw-31/sol-v1/evidence-hosted-response.json",
+    "reports/benchmarks/2025-26-agent-forks/gw-31/sol-v2/challenger-hosted-response.json",
+    "reports/benchmarks/2025-26-agent-forks/gw-33/sol-v1/evidence-hosted-response.json",
+    "reports/benchmarks/2025-26-agent-forks/gw-33/sol-v2/challenger-hosted-response.json"
+  ],
+  "semantic_cases": [
+    {
+      "id": "gw30_nested_claim",
+      "arm": "evidence_agent",
+      "structured_output": {
+        "schema_version": "1.0",
+        "role": "evidence",
+        "claims": [
+          {
+            "claim_id": "claim-gw30-haaland-fit",
+            "player_id": "player:2025-26:430",
+            "statement": "Pep Guardiola confirmed that Erling Haaland was fit.",
+            "confidence": "high",
+            "citation": {
+              "document_id": "document:ffs-gw30-haaland-fit-2026-03-13",
+              "passage_id": "passage:claim-gw30-haaland-fit",
+              "citation_excerpt": "Pep Guardiola confirmed that Erling Haaland is fine.",
+              "citation_excerpt_sha256": "c4110a8f0a398f78450258a4371fb847d7b11d5851910d59f0f7fb71b151e31a"
+            }
+          }
+        ],
+        "conflicts": [],
+        "proposed_adjustments": [],
+        "notes": []
+      },
+      "expected_codes": [
+        "schema_additional_property",
+        "schema_required",
+        "schema_type"
+      ]
+    },
+    {
+      "id": "gw31_wrong_adjustment_key",
+      "arm": "evidence_agent",
+      "structured_output": {
+        "schema_version": "1.0",
+        "role": "evidence",
+        "claims": [],
+        "adjustments": [],
+        "conflicts": [],
+        "notes": []
+      },
+      "expected_codes": [
+        "schema_additional_property",
+        "schema_required"
+      ]
+    },
+    {
+      "id": "gw30_wrong_role_literal",
+      "arm": "evidence_agent",
+      "structured_output": {
+        "schema_version": "1.0",
+        "role": "evidence_agent",
+        "claims": [],
+        "conflicts": [],
+        "proposed_adjustments": [],
+        "notes": []
+      },
+      "expected_codes": [
+        "schema_const"
+      ]
+    },
+    {
+      "id": "gw33_wrong_challenger_adjustment",
+      "arm": "evidence_challenger",
+      "structured_output": {
+        "schema_version": "1.0",
+        "role": "challenger",
+        "review_id": "review:gw33-sol-challenger-v2",
+        "reviewed_adjustment_ids": [
+          "adjustment-gw33-saka-expected-minutes-zero"
+        ],
+        "escalation_outcome": "dismissed",
+        "notes": "The cited evidence supports the adjustment."
+      },
+      "expected_codes": [
+        "challenger_adjustment_binding_mismatch"
+      ]
+    },
+    {
+      "id": "encoded_json_string",
+      "arm": "evidence_agent",
+      "structured_output": "{\"schema_version\":\"1.0\",\"role\":\"evidence\"}",
+      "expected_codes": [
+        "structured_output_not_object"
+      ]
+    }
+  ],
+  "envelope_cases": [
+    {
+      "id": "gw31_fractional_completed_at",
+      "field": "completed_at",
+      "value": "2026-07-26T19:30:37.123Z",
+      "expected_code": "envelope_completed_at_invalid"
+    },
+    {
+      "id": "gw33_response_hash_mismatch",
+      "field": "response_sha256",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000",
+      "expected_code": "envelope_response_hash_mismatch"
+    },
+    {
+      "id": "episode_request_hash_mismatch",
+      "field": "request_sha256",
+      "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "expected_code": "envelope_request_sha256_mismatch"
+    }
+  ]
+}

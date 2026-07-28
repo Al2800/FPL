@@ -68,3 +68,18 @@ This is advisory-only collection. It uses no FPL login, browser, manager
 identifier or account write. Raw source payloads remain local and gitignored.
 Do not activate or purchase a source merely to fill a degraded slot: selection
 requires a separate owner review and later value ablation.
+
+> **Status update — 28 July 2026:** The earlier provider-selection paragraph is
+> historical. Source registry `0.6.0` now enables `the-odds-api` for private
+> local FPL analysis, with credentials read only from
+> `THE_ODDS_API_KEY`. Governed collection is implemented by
+> `scripts/capture_live_odds.py` and can be bound into
+> `scripts/run_evidence_checkpoint.py`. Missing credentials or slots degrade
+> the odds family without blocking the official structured forecast. Raw odds
+> responses remain local and must not be redistributed.
+
+
+The operational restrictions in this section remain in force. The dated update
+changes provider approval and collection capability only; it does not promote
+odds into the production forecast or remove the requirement for timestamped
+pre-deadline ablation.

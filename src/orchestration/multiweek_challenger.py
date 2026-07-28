@@ -10,6 +10,7 @@ from typing import Any
 
 import yaml
 
+from src.data.fixture_state import fixture_view_at, fixture_weeks_from_view
 from src.evaluation.outcome_scorer import score_revealed_outcome
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.multiweek import multiweek_plan_hash, plan_multiweek
@@ -98,6 +99,36 @@ def build_same_cutoff_horizon(
     cutoff = str(locked_forecast["cutoff"])
     result: list[dict[str, Any]] = []
     for week in fixture_weeks:
+        fixture_state_sha256 = week.get("fixture_state_sha256")
+        fixture_count_table_sha256 = week.get("fixture_count_table_sha256")
+        team_fixture_counts = week.get("team_fixture_counts")
+        bindings = (
+            fixture_state_sha256,
+            fixture_count_table_sha256,
+            team_fixture_counts,
+        )
+        if any(value is not None for value in bindings) and any(
+            value is None for value in bindings
+        ):
+            raise MultiweekChallengerError(
+                "fixture-state hash, count-table hash, and team counts "
+                "must be supplied together"
+            )
+        if fixture_state_sha256 is not None:
+            if any(
+                not isinstance(value, str) or len(value) != 64
+                for value in (
+                    fixture_state_sha256,
+                    fixture_count_table_sha256,
+                )
+            ):
+                raise MultiweekChallengerError(
+                    "fixture-state bindings must be SHA-256 values"
+                )
+            if not isinstance(team_fixture_counts, Mapping):
+                raise MultiweekChallengerError(
+                    "team fixture counts must be a mapping"
+                )
         players: list[dict[str, Any]] = []
         for source in base["players"]:
             row = deepcopy(dict(source))
@@ -108,10 +139,36 @@ def build_same_cutoff_horizon(
                 season=str(base["season"]),
                 multipliers=multipliers,
             )
-            minutes = (
-                float(player["expected_minutes"])
-                / max(1, int(player.get("fixture_count", 1)))
-            )
+            if team_fixture_counts is not None:
+                club_id = str(row["club_id"])
+                if club_id not in team_fixture_counts:
+                    raise MultiweekChallengerError(
+                        f"fixture counts omit club {club_id}"
+                    )
+                if int(team_fixture_counts[club_id]) != len(components):
+                    raise MultiweekChallengerError(
+                        f"fixture count mismatch for club {club_id}"
+                    )
+            current_fixture_count = int(player.get("fixture_count", 1))
+            if current_fixture_count > 0:
+                minutes = (
+                    float(player["expected_minutes"])
+                    / current_fixture_count
+                )
+            else:
+                per_fixture = player.get("expected_minutes_per_fixture")
+                if per_fixture is None:
+                    if fixture_state_sha256 is not None and components:
+                        raise MultiweekChallengerError(
+                            "blank-week forecast lacks per-fixture minutes"
+                        )
+                    minutes = 0.0
+                else:
+                    minutes = float(per_fixture)
+            if minutes < 0:
+                raise MultiweekChallengerError(
+                    "per-fixture expected minutes cannot be negative"
+                )
             rate = float(player["posterior_points_per_90"])
             if int(week["gameweek"]) == int(base["gameweek"]):
                 # The executable week's input must be byte-for-byte equivalent
@@ -119,6 +176,13 @@ def build_same_cutoff_horizon(
                 row["expected_points"] = float(source["expected_points"])
                 row["expected_minutes"] = float(source.get("expected_minutes", 0.0))
                 row["fixture_count"] = int(source.get("fixture_count", len(components)))
+                if (
+                    team_fixture_counts is not None
+                    and row["fixture_count"] != len(components)
+                ):
+                    raise MultiweekChallengerError(
+                        "executable-week market and fixture state disagree"
+                    )
             else:
                 row["expected_points"] = round(
                     sum(
@@ -131,16 +195,77 @@ def build_same_cutoff_horizon(
                 row["fixture_count"] = len(components)
             row["horizon_fixture_components"] = components
             players.append(row)
-        result.append(
-            {
-                "gameweek": int(week["gameweek"]),
-                "cutoff": cutoff,
-                "feature_state_sha256": feature_state_sha256,
-                "schedule_provenance": deepcopy(dict(week["schedule_provenance"])),
-                "players": players,
-            }
-        )
+        horizon_week = {
+            "gameweek": int(week["gameweek"]),
+            "cutoff": cutoff,
+            "feature_state_sha256": feature_state_sha256,
+            "schedule_provenance": deepcopy(dict(week["schedule_provenance"])),
+            "players": players,
+        }
+        if fixture_state_sha256 is not None:
+            horizon_week.update(
+                {
+                    "fixture_state_sha256": fixture_state_sha256,
+                    "fixture_count_table_sha256": fixture_count_table_sha256,
+                    "team_fixture_counts": {
+                        str(key): int(value)
+                        for key, value in sorted(team_fixture_counts.items())
+                    },
+                }
+            )
+        result.append(horizon_week)
     return result
+
+
+def build_same_cutoff_horizon_from_fixture_state(
+    *,
+    base_input: Mapping[str, Any],
+    locked_forecast: Mapping[str, Any],
+    fixture_revision_log: Mapping[str, Any],
+    gameweeks: Sequence[int],
+    feature_state_sha256: str,
+    config: Mapping[str, Any],
+) -> list[dict[str, Any]]:
+    """Build a live horizon from the official schedule known at forecast cutoff."""
+
+    cutoff = str(locked_forecast["cutoff"])
+    fixture_view = fixture_view_at(fixture_revision_log, cutoff=cutoff)
+    season = str(base_input["season"])
+    if fixture_view["season"] != season:
+        raise MultiweekChallengerError(
+            "fixture-state season differs from solver market"
+        )
+    team_ids: set[int] = set()
+    for row in base_input.get("players", []):
+        club_id = str(row["club_id"])
+        try:
+            prefix, club_season, team_id = club_id.split(":")
+        except ValueError as exc:
+            raise MultiweekChallengerError(
+                f"invalid canonical club identity: {club_id}"
+            ) from exc
+        if prefix != "team" or club_season != season:
+            raise MultiweekChallengerError(
+                f"club identity differs from solver season: {club_id}"
+            )
+        try:
+            team_ids.add(int(team_id))
+        except ValueError as exc:
+            raise MultiweekChallengerError(
+                f"invalid canonical club identity: {club_id}"
+            ) from exc
+    fixture_weeks = fixture_weeks_from_view(
+        fixture_view,
+        gameweeks=gameweeks,
+        team_ids=sorted(team_ids),
+    )
+    return build_same_cutoff_horizon(
+        base_input=base_input,
+        locked_forecast=locked_forecast,
+        fixture_weeks=fixture_weeks,
+        feature_state_sha256=feature_state_sha256,
+        config=config,
+    )
 
 
 def run_historical_multiweek_challenger(

@@ -27,3 +27,16 @@
 ## Out of scope for this pass
 
 Tier 2/3 sources (vaastav, FBref, odds, line-up services, etc.) are not yet registered. They remain disabled-by-default until individual terms reviews — do not enable collectors for them.
+
+> **Status update — 28 July 2026:** This page records the original WP-02
+> completion state. The source registry is now version `0.6.0` and is
+> authoritative. It additionally enables the governed private/local uses of
+> `vaastav-fpl`, `football-data-co-uk`, `the-odds-api` and
+> `statsbomb-open`; it does not make their raw data redistributable. Consult
+> each current registry entry, activation approval and allowed-use field before
+> collection.
+
+The paragraph above is historical. As of registry `0.6.0`, the specifically
+named sources in the status update are registered and enabled within their
+bounded allowed uses. Other Tier 2/3 sources remain disabled unless their
+current registry entry says otherwise.

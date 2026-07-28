@@ -121,6 +121,11 @@ def main() -> None:
         action="store_true",
         help="replace an uncommitted draft matrix; never changes control artifacts",
     )
+    parser.add_argument(
+        "--matrix-only",
+        action="store_true",
+        help="write evaluation artifacts without rewriting the live-shadow policy",
+    )
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     reports = root / "reports/benchmarks/2025-26"
@@ -135,6 +140,9 @@ def main() -> None:
     control = _read(root / "control/models/live-faithful-v1.feature-complete.json")
     event = _read(root / "control/models/live-faithful-v2.events.json")
     team = _read(root / "control/models/live-faithful-v2.team-context.json")
+    recalibrated = _read(
+        root / "control/models/live-faithful-v2.recalibrated.json"
+    )
     appearance = _read(root / "control/models/appearance-distribution-v1.json")
     robust = _read(root / "control/models/live-faithful-v2.robust.json")
     horizon = _read(root / "control/policies/transfer-horizon-v1.json")
@@ -148,6 +156,12 @@ def main() -> None:
     team_report = _read(
         root / "reports/forecasting/live-faithful-v2-team-context/evaluation.json"
     )
+    recalibrated_report = _read(
+        root / "reports/forecasting/live-faithful-v2-recalibrated.json"
+    )
+    recalibrated_delta = recalibrated_report["locked_validation"][
+        "delta_challenger_minus_control"
+    ]
     robust_path = output_dir / "robust-legal-replay.json"
     if robust_path.exists() and not args.recompute_robust:
         robust_legal = _read(robust_path)
@@ -232,6 +246,35 @@ def main() -> None:
             degradation="missing registered odds degrades to xG plus Elo",
             report_path=(
                 "reports/forecasting/live-faithful-v2-team-context/evaluation.json"
+            ),
+        ),
+        _row(
+            challenger_id="top-bin-recalibration-v2",
+            category="forecast",
+            config=recalibrated,
+            evidence=recalibrated_report,
+            bindings=bindings,
+            decision="rejected",
+            gates={**all_true, "locked_held_out_gate": False},
+            disqualifiers=["failed_locked_gate"],
+            metrics={
+                "held_out_decision_quality": -float(
+                    recalibrated_delta["mean_top15_ranking_regret"]
+                ),
+                "full_replay_realised_net_points": 0.0,
+                "calibration": -float(recalibrated_delta["all_player_rmse"]),
+                "operational_cost": 1.0,
+            },
+            uncertainty=(
+                "selected top-15 MAE improved, but locked top-15 precision, "
+                "ranking regret, premium rank correlation and overall RMSE worsened"
+            ),
+            degradation=(
+                "recalibration is post-composition and optional; rejection keeps "
+                "the production v1 forecast unchanged"
+            ),
+            report_path=(
+                "reports/forecasting/live-faithful-v2-recalibrated.json"
             ),
         ),
         _row(
@@ -389,11 +432,18 @@ def main() -> None:
     nominee = apply_promotion_rule(rows)
     if nominee is None:
         raise ValueError("promotion rule produced no live-shadow nominee")
-    candidate = build_live_shadow_candidate(
-        nominee=nominee,
-        rows=rows,
-        control_model_sha256=_hash(control),
-    )
+    candidate_path = root / "control/policies/live-shadow-candidate.json"
+    if args.matrix_only:
+        candidate = _read(candidate_path)
+        _hash(candidate)
+        if candidate.get("shadow_policy", {}).get("challenger_id") != nominee:
+            raise ValueError("sealed live-shadow candidate does not match nominee")
+    else:
+        candidate = build_live_shadow_candidate(
+            nominee=nominee,
+            rows=rows,
+            control_model_sha256=_hash(control),
+        )
     robust_row = next(
         row for row in rows if row["challenger_id"] == "robust-selection-v2"
     )
@@ -468,7 +518,11 @@ def main() -> None:
         matrix,
         replace_draft=args.replace_draft_matrix,
     )
-    _write_repeatable(root / "control/policies/live-shadow-candidate.json", candidate)
+    if not args.matrix_only:
+        _write_repeatable(
+            candidate_path,
+            candidate,
+        )
     print(
         json.dumps(
             {
@@ -476,8 +530,12 @@ def main() -> None:
                 "nominee": nominee,
                 "robust_legal_delta": robust_legal["summary"]["net_points_delta"],
                 "candidate": (
-                    root / "control/policies/live-shadow-candidate.json"
-                ).as_posix(),
+                    "unchanged (--matrix-only)"
+                    if args.matrix_only
+                    else (
+                        candidate_path
+                    ).as_posix()
+                ),
             },
             indent=2,
             sort_keys=True,

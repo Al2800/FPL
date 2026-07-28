@@ -205,6 +205,39 @@ def test_node_budget_uses_declared_deterministic_one_week_fallback() -> None:
     assert result["content_sha256"] == multiweek_plan_hash(result)
 
 
+def test_fixture_state_lineage_survives_complete_and_fallback_plans() -> None:
+    horizon = _horizon()
+    for week in horizon:
+        week["fixture_state_sha256"] = "b" * 64
+        week["fixture_count_table_sha256"] = "c" * 64
+        week["team_fixture_counts"] = {}
+        for player in week["players"]:
+            club_id = player["club_id"]
+            week["team_fixture_counts"][club_id] = 0
+            player["fixture_count"] = 0
+            player["horizon_fixture_components"] = []
+
+    complete = plan_multiweek(
+        _input(),
+        horizon,
+        config=_config(),
+        rules=RULES,
+        ruleset_sha256=RULES_HASH,
+    )
+    fallback = plan_multiweek(
+        _input(),
+        horizon,
+        config=_config(max_expanded_nodes=1),
+        rules=RULES,
+        ruleset_sha256=RULES_HASH,
+    )
+
+    for result in (complete, fallback):
+        assert result["lineage"]["fixture_state_sha256"] == "b" * 64
+        assert result["lineage"]["fixture_count_table_sha256"] == "c" * 64
+        assert result["content_sha256"] == multiweek_plan_hash(result)
+
+
 def test_replanning_does_not_execute_or_bind_the_previous_tail() -> None:
     original = plan_multiweek(
         _input(), _horizon(), config=_config(), rules=RULES, ruleset_sha256=RULES_HASH

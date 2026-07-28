@@ -1,0 +1,466 @@
+{
+  "base_model_version": "live-faithful-v1",
+  "calibration": {
+    "descriptive_only_season": "2025-26",
+    "fit_seasons": [
+      "2022-23",
+      "2023-24"
+    ],
+    "forbidden_fit_seasons": [
+      "2024-25",
+      "2025-26"
+    ],
+    "locked_validation_season": "2024-25",
+    "source_lineage": [
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "6cf30d3b9fb0bc594486c8a675eeccc209264550a01ba126b4733a2d2da70d21",
+        "players_raw_sha256": "78e185fb0b5c81f58c2b89f232358b1097bededc9852d4171edaea2e9d3bd887",
+        "row_count": 25447,
+        "season": "2021-22",
+        "start_source": "minutes_ge_60_prior_fallback"
+      },
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "b97460b11372173c3a70adec2230e46338dd91e7878dbe041892fe924a21a454",
+        "players_raw_sha256": "a874c12817bbf4d454e60a5765629742b528d4ad0c2f39f56e4fc89640605f7f",
+        "row_count": 26505,
+        "season": "2022-23",
+        "start_source": "recorded"
+      },
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "76cda38a4379a03b46ff50e66c659b807508aeec9d85b4aea2f1e33f1633cfa7",
+        "players_raw_sha256": "43d8cf5efb3d901f2499558c40b392b7f0ee22afe28030f36266ad29024c63d9",
+        "row_count": 29725,
+        "season": "2023-24",
+        "start_source": "recorded"
+      },
+      {
+        "excluded_assistant_manager_rows": 322,
+        "merged_gw_sha256": "95f61a568f21e05bd44e676fdf78ef1c4fcd8926480f2aaf5da5db4675f989f0",
+        "players_raw_sha256": "75686051b265cbe7755ac71213ecaad21b26ee1cc46a8bafbba19c39ce894b05",
+        "row_count": 27283,
+        "season": "2024-25",
+        "start_source": "recorded"
+      },
+      {
+        "excluded_assistant_manager_rows": 0,
+        "merged_gw_sha256": "f65817fbf2909838a9a0d7e1702302fe35a015f6ea9562d22aede61e0f6ccb12",
+        "players_raw_sha256": "412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "row_count": 29757,
+        "season": "2025-26",
+        "start_source": "recorded"
+      }
+    ]
+  },
+  "content_sha256": "a6ebc28237b585108fef729959bcce297f62c81a41aaeedc7350508718dd3ec7",
+  "model_version": "live-faithful-v2.recalibrated",
+  "promotion": {
+    "legal_replay_required": true,
+    "owner_gated": true,
+    "production_default_changed": false
+  },
+  "recalibrator": {
+    "actual_column": "actual_points",
+    "bin_count_requested": 10,
+    "method": "per_position_quantile_bins_weighted_isotonic",
+    "positions": {
+      "DEF": {
+        "calibrated_values": [
+          0.05708716235032024,
+          0.05708716235032024,
+          0.1275766016713092,
+          0.1940463065049614,
+          0.4462577377602701,
+          0.9236768802228412,
+          1.407799442896936,
+          2.0690807799442896,
+          2.293593314763231,
+          3.143652561247216
+        ],
+        "fit_bins": [
+          {
+            "calibrated_value": 0.05708716235032024,
+            "mean_actual": 0.06263858093126386,
+            "mean_prediction": 0.19585943250240542,
+            "n": 1804,
+            "source_bin": 0
+          },
+          {
+            "calibrated_value": 0.05708716235032024,
+            "mean_actual": 0.0514829322887521,
+            "mean_prediction": 0.22628083385005263,
+            "n": 1787,
+            "source_bin": 1
+          },
+          {
+            "calibrated_value": 0.1275766016713092,
+            "mean_actual": 0.1275766016713092,
+            "mean_prediction": 0.26732410495973163,
+            "n": 1795,
+            "source_bin": 2
+          },
+          {
+            "calibrated_value": 0.1940463065049614,
+            "mean_actual": 0.1940463065049614,
+            "mean_prediction": 0.3502821679872336,
+            "n": 1814,
+            "source_bin": 3
+          },
+          {
+            "calibrated_value": 0.4462577377602701,
+            "mean_actual": 0.4462577377602701,
+            "mean_prediction": 0.5189558896217998,
+            "n": 1777,
+            "source_bin": 4
+          },
+          {
+            "calibrated_value": 0.9236768802228412,
+            "mean_actual": 0.9236768802228412,
+            "mean_prediction": 0.8696286985303496,
+            "n": 1795,
+            "source_bin": 5
+          },
+          {
+            "calibrated_value": 1.407799442896936,
+            "mean_actual": 1.407799442896936,
+            "mean_prediction": 1.3532796374347953,
+            "n": 1795,
+            "source_bin": 6
+          },
+          {
+            "calibrated_value": 2.0690807799442896,
+            "mean_actual": 2.0690807799442896,
+            "mean_prediction": 1.8087198434270366,
+            "n": 1795,
+            "source_bin": 7
+          },
+          {
+            "calibrated_value": 2.293593314763231,
+            "mean_actual": 2.293593314763231,
+            "mean_prediction": 2.288583614414624,
+            "n": 1795,
+            "source_bin": 8
+          },
+          {
+            "calibrated_value": 3.143652561247216,
+            "mean_actual": 3.143652561247216,
+            "mean_prediction": 3.317193308053346,
+            "n": 1796,
+            "source_bin": 9
+          }
+        ],
+        "n": 17953,
+        "upper_bounds": [
+          0.21243891658863678,
+          0.24284192704843113,
+          0.2983140550504231,
+          0.41246833455581616,
+          0.6584105717243142,
+          1.1167726176474486,
+          1.5789992669480084,
+          2.0419532448784783,
+          2.5789371304465325
+        ]
+      },
+      "FWD": {
+        "calibrated_values": [
+          0.04,
+          0.0426179604261796,
+          0.05413533834586466,
+          0.21171171171171171,
+          0.5420420420420421,
+          1.2045112781954888,
+          1.4894894894894894,
+          2.3759398496240602,
+          2.93993993993994,
+          4.564564564564565
+        ],
+        "fit_bins": [
+          {
+            "calibrated_value": 0.04,
+            "mean_actual": 0.04,
+            "mean_prediction": 0.29928201949589595,
+            "n": 675,
+            "source_bin": 0
+          },
+          {
+            "calibrated_value": 0.0426179604261796,
+            "mean_actual": 0.0426179604261796,
+            "mean_prediction": 0.3330437772842913,
+            "n": 657,
+            "source_bin": 1
+          },
+          {
+            "calibrated_value": 0.05413533834586466,
+            "mean_actual": 0.05413533834586466,
+            "mean_prediction": 0.36020195860810855,
+            "n": 665,
+            "source_bin": 2
+          },
+          {
+            "calibrated_value": 0.21171171171171171,
+            "mean_actual": 0.21171171171171171,
+            "mean_prediction": 0.42654109391631245,
+            "n": 666,
+            "source_bin": 3
+          },
+          {
+            "calibrated_value": 0.5420420420420421,
+            "mean_actual": 0.5420420420420421,
+            "mean_prediction": 0.5771147687251359,
+            "n": 666,
+            "source_bin": 4
+          },
+          {
+            "calibrated_value": 1.2045112781954888,
+            "mean_actual": 1.2045112781954888,
+            "mean_prediction": 0.8816027551311265,
+            "n": 665,
+            "source_bin": 5
+          },
+          {
+            "calibrated_value": 1.4894894894894894,
+            "mean_actual": 1.4894894894894894,
+            "mean_prediction": 1.3618574385494149,
+            "n": 666,
+            "source_bin": 6
+          },
+          {
+            "calibrated_value": 2.3759398496240602,
+            "mean_actual": 2.3759398496240602,
+            "mean_prediction": 1.9790004713939875,
+            "n": 665,
+            "source_bin": 7
+          },
+          {
+            "calibrated_value": 2.93993993993994,
+            "mean_actual": 2.93993993993994,
+            "mean_prediction": 2.798960044097724,
+            "n": 666,
+            "source_bin": 8
+          },
+          {
+            "calibrated_value": 4.564564564564565,
+            "mean_actual": 4.564564564564565,
+            "mean_prediction": 4.421812892327514,
+            "n": 666,
+            "source_bin": 9
+          }
+        ],
+        "n": 6657,
+        "upper_bounds": [
+          0.32338429179774547,
+          0.34300252904449546,
+          0.381842563041027,
+          0.48053333336283505,
+          0.6876703163467506,
+          1.0938449148219433,
+          1.6463553974587912,
+          2.35030812465946,
+          3.29723795248924
+        ]
+      },
+      "GKP": {
+        "calibrated_values": [
+          0.021189894050529748,
+          0.021189894050529748,
+          0.03015075376884422,
+          0.036521739130434785,
+          0.06851691240242845,
+          0.06851691240242845,
+          0.2719594594594595,
+          1.775337837837838,
+          3.1402027027027026,
+          3.447635135135135
+        ],
+        "fit_bins": [
+          {
+            "calibrated_value": 0.021189894050529748,
+            "mean_actual": 0.03355704697986577,
+            "mean_prediction": 0.22519811835829792,
+            "n": 596,
+            "source_bin": 0
+          },
+          {
+            "calibrated_value": 0.021189894050529748,
+            "mean_actual": 0.009508716323296355,
+            "mean_prediction": 0.24077538291836123,
+            "n": 631,
+            "source_bin": 1
+          },
+          {
+            "calibrated_value": 0.03015075376884422,
+            "mean_actual": 0.03015075376884422,
+            "mean_prediction": 0.2571525243270148,
+            "n": 597,
+            "source_bin": 2
+          },
+          {
+            "calibrated_value": 0.036521739130434785,
+            "mean_actual": 0.036521739130434785,
+            "mean_prediction": 0.27986334798531004,
+            "n": 575,
+            "source_bin": 3
+          },
+          {
+            "calibrated_value": 0.06851691240242845,
+            "mean_actual": 0.0707070707070707,
+            "mean_prediction": 0.31882932962813665,
+            "n": 594,
+            "source_bin": 4
+          },
+          {
+            "calibrated_value": 0.06851691240242845,
+            "mean_actual": 0.06618962432915922,
+            "mean_prediction": 0.40689329665425483,
+            "n": 559,
+            "source_bin": 5
+          },
+          {
+            "calibrated_value": 0.2719594594594595,
+            "mean_actual": 0.2719594594594595,
+            "mean_prediction": 0.6444223767686454,
+            "n": 592,
+            "source_bin": 6
+          },
+          {
+            "calibrated_value": 1.775337837837838,
+            "mean_actual": 1.775337837837838,
+            "mean_prediction": 1.69514080181548,
+            "n": 592,
+            "source_bin": 7
+          },
+          {
+            "calibrated_value": 3.1402027027027026,
+            "mean_actual": 3.1402027027027026,
+            "mean_prediction": 2.622524782878833,
+            "n": 592,
+            "source_bin": 8
+          },
+          {
+            "calibrated_value": 3.447635135135135,
+            "mean_actual": 3.447635135135135,
+            "mean_prediction": 3.628616637355985,
+            "n": 592,
+            "source_bin": 9
+          }
+        ],
+        "n": 5920,
+        "upper_bounds": [
+          0.23449635413816586,
+          0.24739147844463324,
+          0.2664068437672947,
+          0.29357165137109686,
+          0.3487300313908583,
+          0.47644628116318244,
+          1.0870592168025777,
+          2.248658152577931,
+          2.9837354890766252
+        ]
+      },
+      "MID": {
+        "calibrated_values": [
+          0.01812688821752266,
+          0.05653862753560639,
+          0.09691070672873466,
+          0.21532364597093792,
+          0.4825205006473889,
+          1.018566493955095,
+          1.5222270176952957,
+          2.300388433318947,
+          2.817867932671558,
+          4.220975399223134
+        ],
+        "fit_bins": [
+          {
+            "calibrated_value": 0.01812688821752266,
+            "mean_actual": 0.01812688821752266,
+            "mean_prediction": 0.2085002727368125,
+            "n": 2317,
+            "source_bin": 0
+          },
+          {
+            "calibrated_value": 0.05653862753560639,
+            "mean_actual": 0.05653862753560639,
+            "mean_prediction": 0.23402346068947202,
+            "n": 2317,
+            "source_bin": 1
+          },
+          {
+            "calibrated_value": 0.09691070672873466,
+            "mean_actual": 0.09691070672873466,
+            "mean_prediction": 0.2710333224681218,
+            "n": 2363,
+            "source_bin": 2
+          },
+          {
+            "calibrated_value": 0.21532364597093792,
+            "mean_actual": 0.21532364597093792,
+            "mean_prediction": 0.34707052225749113,
+            "n": 2271,
+            "source_bin": 3
+          },
+          {
+            "calibrated_value": 0.4825205006473889,
+            "mean_actual": 0.4825205006473889,
+            "mean_prediction": 0.4843734886389552,
+            "n": 2317,
+            "source_bin": 4
+          },
+          {
+            "calibrated_value": 1.018566493955095,
+            "mean_actual": 1.018566493955095,
+            "mean_prediction": 0.8156744523781805,
+            "n": 2316,
+            "source_bin": 5
+          },
+          {
+            "calibrated_value": 1.5222270176952957,
+            "mean_actual": 1.5222270176952957,
+            "mean_prediction": 1.318477138332115,
+            "n": 2317,
+            "source_bin": 6
+          },
+          {
+            "calibrated_value": 2.300388433318947,
+            "mean_actual": 2.300388433318947,
+            "mean_prediction": 1.8788963307118933,
+            "n": 2317,
+            "source_bin": 7
+          },
+          {
+            "calibrated_value": 2.817867932671558,
+            "mean_actual": 2.817867932671558,
+            "mean_prediction": 2.526919404027662,
+            "n": 2317,
+            "source_bin": 8
+          },
+          {
+            "calibrated_value": 4.220975399223134,
+            "mean_actual": 4.220975399223134,
+            "mean_prediction": 3.967369046706885,
+            "n": 2317,
+            "source_bin": 9
+          }
+        ],
+        "n": 23169,
+        "upper_bounds": [
+          0.22168128845957719,
+          0.24830151743982304,
+          0.29845794968773354,
+          0.4059850591925323,
+          0.6003139127268765,
+          1.0763609167874817,
+          1.5913498156152865,
+          2.1749369782623016,
+          2.954581997854574
+        ]
+      }
+    },
+    "prediction_column": "live_faithful_expected_points"
+  },
+  "schema_version": "1.0",
+  "status": "registered_challenger_owner_gated"
+}

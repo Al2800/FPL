@@ -38,7 +38,7 @@
     37,
     38
   ],
-  "content_sha256": "45dc21cc1e5f068543283a61b9ba4b09483fc772801473884080f35bee6b3c9f",
+  "content_sha256": "0c49a7f2c30c40665eecc01b797955e7fccc39ffd3b388a5cc02aa10b2baa6af",
   "control": {
     "canonical_file_count": 2740,
     "canonical_net_points": 2010,
@@ -55,7 +55,7 @@
     "rejected_challengers_retained": true
   },
   "nomination": {
-    "candidate_config_sha256": "5af51950f2acbbe0e5423f2a3862593e458aeb03467cbff325e4d8f54ddba3be",
+    "candidate_config_sha256": "23bc92f58ba6b18d34a1fda4ff0476648028042ee2baf3ffeb4d3d636e61a71c",
     "challenger_id": "robust-selection-v2",
     "control_remains_executable": true,
     "mode": "observation_only"
@@ -786,6 +786,339 @@
       "uncertainty": "2025/26 player MAE worsened for all, owned, and selected players"
     },
     {
+      "category": "forecast",
+      "challenger_id": "top-bin-recalibration-v2",
+      "configuration_sha256": "a6ebc28237b585108fef729959bcce297f62c81a41aaeedc7350508718dd3ec7",
+      "decision": "rejected",
+      "degradation": "recalibration is post-composition and optional; rejection keeps the production v1 forecast unchanged",
+      "disqualifiers": [
+        "failed_locked_gate"
+      ],
+      "episode_bindings": [
+        {
+          "episode_id": "benchmark-v0:2025-26:gw02:manager-neutral",
+          "episode_manifest_sha256": "24115ede28b1ac68d174b559cc82f57202fdbb530cc1365d31757b67d19772b9",
+          "gameweek": 2,
+          "hidden_outcome_sha256": "2c31c16d760f07f996e25a4f91b6d21b4792b4be9494aa4b2ad706aaa8d4c25f",
+          "observed_sha256": "56dd270b9d81f476ee63761659f0af3c0b93417b684a35213b3a00701e6b2395",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
+          "episode_manifest_sha256": "cc6f571714135f10faae6985f67d9fbc65fda401e68d3ae26c13f2dde48b781f",
+          "gameweek": 3,
+          "hidden_outcome_sha256": "4440b17452fbde4f579fb468935f8b4d709b7ec4d8354d57aeaff8a5d8e80051",
+          "observed_sha256": "a15d87643845e8cb7782fea4737eb6e1d566268f0af955ef6465b319343e3b49",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw04:manager-neutral",
+          "episode_manifest_sha256": "2ba0a836c2e67ed7d4abf0b2a10d3eab98928d9cc870f23898f784938c0ef275",
+          "gameweek": 4,
+          "hidden_outcome_sha256": "094e72b37f2082b3d40a9aefb9f5b58963b7673df53a8ec7ce3d9e28d7896d0a",
+          "observed_sha256": "e3b061e3573e4f7fae99f867f4f5801c4cf331a2f473b47a972e1e0b77725482",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw05:manager-neutral",
+          "episode_manifest_sha256": "9840f8d2a0f5c853ccd78f5d7b836970025e50b72aa88349f7440e2b586c4d74",
+          "gameweek": 5,
+          "hidden_outcome_sha256": "341975e13ff1b25ec92bb32211a1863dc9cd2efd91673a83aca09fea19b583ff",
+          "observed_sha256": "a5aa385d797a10afd0214b23445d65cdae70da6ffcb7c7c2e5b14e817aa0077d",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw06:manager-neutral",
+          "episode_manifest_sha256": "76c700b8a886db6491ad0a99671e9332aae78e66473b0986c2b758fcb5de08b0",
+          "gameweek": 6,
+          "hidden_outcome_sha256": "c35354c140445d73d7f9d860203eeaab396053b9487f3dfd32e6c42ff10165ee",
+          "observed_sha256": "9f901b0898b1aaa4326fe7a74d23f0a45c756afb53c094b81e4edf32376e6514",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw07:manager-neutral",
+          "episode_manifest_sha256": "9dbe2791055e6cb0d8580e938a32ee3757dedd15d7f8e2cb0e3284507a66a9fe",
+          "gameweek": 7,
+          "hidden_outcome_sha256": "5cfcacdab920a128fd315c54948ac50ca009774348c28ef4d19e8add5022044a",
+          "observed_sha256": "0b973fcf0e101567c0c2f9d5ddd4b184c4884f762bc209fcac0692d799d4ed83",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw08:manager-neutral",
+          "episode_manifest_sha256": "1d3e6006307838e23d7b41c50a96dc5c552be5c7a8a5249dd39b4138c684ba16",
+          "gameweek": 8,
+          "hidden_outcome_sha256": "6feb0ce723e961b69a84378a19fc3ad860e9066eda1a9d3adc357ca6b679ce58",
+          "observed_sha256": "3f31efb820bbbab61da3674eca43a422e32c1ce185b598ee6a073592b66fc93d",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw09:manager-neutral",
+          "episode_manifest_sha256": "74903a827ee9f4257db8878a1faf8de606bc56d293038a9ec92098a4dd4a8d17",
+          "gameweek": 9,
+          "hidden_outcome_sha256": "2aa5654cdf5039174744b422d96fdb116b684d2338d0fea1e4a282e850414feb",
+          "observed_sha256": "6bab54c2efc947f4d761744b6f3307593e3326e6d25f817fbca096506bbe63fa",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw10:manager-neutral",
+          "episode_manifest_sha256": "aa968dd62047c9c56f8d1f7ef49d68402175caf39d0b9c6e263251495232338f",
+          "gameweek": 10,
+          "hidden_outcome_sha256": "666803acaa12c3b17563398728c6fd19a12f89266efad964ec774dd786f344ac",
+          "observed_sha256": "743d1edcc6dc1c7c91a07311e14b0ee7143047af4c11da8336cb80da6ee56127",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw11:manager-neutral",
+          "episode_manifest_sha256": "eea0afeab7ccb14dcd691c4ca42044a16b9e0d39645213400ac4286495426625",
+          "gameweek": 11,
+          "hidden_outcome_sha256": "3e1f55a2e907c7bdaa8aa7488921df3758f7e456c1fa2dc34823f3ac50652fe9",
+          "observed_sha256": "d9de80927acf0d139dcfa80dc96775e26beb6a6f06c27cd5aaf4f43eb2e0f4cc",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw12:manager-neutral",
+          "episode_manifest_sha256": "58586618f9bacb0746b12622cc84e7c46a8551f8d62ad840334e20f2fab54fa8",
+          "gameweek": 12,
+          "hidden_outcome_sha256": "b5db36b9fe5ab463eb2074684e00fe2fd885c0381c9b23b21bbf472159cae67a",
+          "observed_sha256": "87a7d2744c03344ecddd37142f86e24bff036071c129fd479942bd8543cad1ea",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw13:manager-neutral",
+          "episode_manifest_sha256": "9c25463b3648c15784791ae9814d4d3cac8dc3d4e2a977cdd67bde8c451c6ea5",
+          "gameweek": 13,
+          "hidden_outcome_sha256": "20a1bbc9e750be97fe7bdcdea460107be5845c67169adf9d7af0085941a8e043",
+          "observed_sha256": "d76fe137cc521c43305be39721d7593d8dd5b879d7015c6d6bf161b020a62cb4",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw14:manager-neutral",
+          "episode_manifest_sha256": "f4b7edc2159472991983b1ba5476112be456cc162f4b9596a56f2682c77038fc",
+          "gameweek": 14,
+          "hidden_outcome_sha256": "062bd1f19ccb9893f5cd5ad0eee9b0c729fd3060b11cad6ba6aa668080fd3f2d",
+          "observed_sha256": "3b153f3f2dcd2f11a1d635f3ab3f8dfb48be35e448376578296b2e70cd05a908",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw15:manager-neutral",
+          "episode_manifest_sha256": "12993ba275c90bdce4ccc9e844387ce517b211c9ceb52233e6ea4065db8a3b43",
+          "gameweek": 15,
+          "hidden_outcome_sha256": "c706d168c8fe31391732281c985c026f6a7ae07c08ad87ebfd05c35b8f8426e0",
+          "observed_sha256": "1e8b8315babb0998a867c55f6c063a0d8c461bc3ace3932121c08b4f5693ad9f",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw16:manager-neutral",
+          "episode_manifest_sha256": "d628b68e714da69c59c5135d118f7e54aaaf8e4ff8f9888e7e05e99b70e0bb73",
+          "gameweek": 16,
+          "hidden_outcome_sha256": "7c7481da9bed27107026dab4f6cc7c715b5e0945805095fcaedd27344659a0f5",
+          "observed_sha256": "dcdaa62c7afb55209ab494e63ac9bfddda89a9bccadf3b083d3f92e20ae7bd6f",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw17:manager-neutral",
+          "episode_manifest_sha256": "4e471b0f6ef0e791c5a5103a0b08e781f1c043a25594a89cbcd77825b818ff62",
+          "gameweek": 17,
+          "hidden_outcome_sha256": "3e5efb0d18043bc2902a87b471734ca8a0c3238bec0db0e0233702e964db41f3",
+          "observed_sha256": "aba24da3ee6d35b5392237041f79ed171f899bd262359022906eeab08a28b1d6",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw18:manager-neutral",
+          "episode_manifest_sha256": "d73782b56d3dc175c34a2bb0095d01307f7ed87055cd7a1fb8caefc2bf973d5f",
+          "gameweek": 18,
+          "hidden_outcome_sha256": "5132fe48d11d0a5f3d230944db93914d0830c48ecebdaa447eaf7bb7ea53c6d9",
+          "observed_sha256": "c29d96747a105bc86046cacc4e54916cb6af85afa3ec3039e643dfbbb5da3cad",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw19:manager-neutral",
+          "episode_manifest_sha256": "bc08cc7759052d0ca1d43b267279376a5fbff2ce74de10005283c9a58a6a7b30",
+          "gameweek": 19,
+          "hidden_outcome_sha256": "52a82c3bc505b018308a90d0bdb427a52521bf302cf293147328966551276641",
+          "observed_sha256": "c3fa65ddd1ed5fb34570dbc105c2622d5b6a77e6692810ad37ec9e7739cc0e59",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw20:manager-neutral",
+          "episode_manifest_sha256": "cac127d52e04f71d584d59312485dbca57e09c4259d6cc6eabc0ae565fe7b8b1",
+          "gameweek": 20,
+          "hidden_outcome_sha256": "39b0d1474d07a7243b6461cd88dd352e703cfae4a2c7bef4c3b5a78de68b76ad",
+          "observed_sha256": "dd9fa0160d73506bc61777542eefad2a9a73c264e563ab1c3dcf13f9162fcf02",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw21:manager-neutral",
+          "episode_manifest_sha256": "5e84b3439cc01346813c0b1a42cbda9acf8836d35ddf13d90afb637bdea6c46a",
+          "gameweek": 21,
+          "hidden_outcome_sha256": "5a588de6a6c7a4b1c5132cdaffd0ad22920da944640bae4b97e30ab0e648df5d",
+          "observed_sha256": "b9b4f80a86d8b136a7b4e3f8694b831d7278030a32a5dad0b23a2769a1523be3",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw22:manager-neutral",
+          "episode_manifest_sha256": "ffef84e2588a6ef1756fe05e280ad95b81065da695861ed11e4553e818cd9551",
+          "gameweek": 22,
+          "hidden_outcome_sha256": "46b3ca79fe312afa29072e0b23e7bf6bd1814da1b5fbebbfdd22ccd2239c6a90",
+          "observed_sha256": "e2df246f0c522306578ac27dab0c633890ce9800c6cfe4b903acf2a47d69d5e6",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw23:manager-neutral",
+          "episode_manifest_sha256": "8790b714385897f1f5c426ff320f4c0a8b151cb6bec0965d4c280c597f50adce",
+          "gameweek": 23,
+          "hidden_outcome_sha256": "fd3458335f6519566c3671420a77088dd6a15377e1ca3ea429693e62f161584d",
+          "observed_sha256": "c4e41c8b69d721f31b283c221783dadf179a0e764c1ca40ccc55293941a06296",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw24:manager-neutral",
+          "episode_manifest_sha256": "9d2240ecc6b32a4ef4a23cdd1f8d7856dbd5100455e2fd1c85f98d71baaca09b",
+          "gameweek": 24,
+          "hidden_outcome_sha256": "aec2bd04fb56e8f264ed392d0315250aa36e85dc52017722c9b10695278e2024",
+          "observed_sha256": "528e95ce18ac29487525a609a5e98f943f203a0c65152eb3c56c7c4f14c51d01",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw25:manager-neutral",
+          "episode_manifest_sha256": "7c7e629d697007dd3d79e7e1b722d79b714c2456554641d33d4eb6c406821616",
+          "gameweek": 25,
+          "hidden_outcome_sha256": "96ee5ffe59fd9a2819ebbe7c53f6d1cf00f74ddca70714321c5e82a5511cd533",
+          "observed_sha256": "be3adebe1c21ad62c09edc3b02cedd9c3a983385cb951259962b3450c1845047",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw26:manager-neutral",
+          "episode_manifest_sha256": "81177a6b07a334c89eabefbffc1d40c1297c4fe0cc2d8c1ed181bd94dae401a9",
+          "gameweek": 26,
+          "hidden_outcome_sha256": "939d48ed2fdbcedf9be1799f314ce5b9e16fb4161cf2119c7535827e05abd4e9",
+          "observed_sha256": "b89836107dbd17d817e2ccf11d28c9b77f19b6ec234224c5495937c3c5c1c6bf",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw27:manager-neutral",
+          "episode_manifest_sha256": "5e45b6aabf2a931b33ab8de2c1fdcd9e9064f302d40c685b5a5826ab22fd6d3e",
+          "gameweek": 27,
+          "hidden_outcome_sha256": "246e42643b26b203320c1d37b6f2eaf15564221c1ca147186764aa7aaa41d351",
+          "observed_sha256": "23c689f87b5a6641232ee9e9b9753cf4c45c9916e475cbb5be3a3a316b2fa7e9",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw28:manager-neutral",
+          "episode_manifest_sha256": "efadd3ac7795fde6f1414fe40e4387a37de80396e02c49966ecdb7a23d3d49cc",
+          "gameweek": 28,
+          "hidden_outcome_sha256": "381866d573acb8570888903a8c3c6c69b01002b7a8f8b25957cae79f0205ef12",
+          "observed_sha256": "926d01aa35d6c803032f0f07a83d47e186ea6cf9946ae2429a8888724ed074e4",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw29:manager-neutral",
+          "episode_manifest_sha256": "6fd379e4e335d3fe1620b2362a4fc76f0e06fa6405caeff13f02252ece22a811",
+          "gameweek": 29,
+          "hidden_outcome_sha256": "c83e18e51b4efbd803e09c2e684baf0310fcf64a443d1fee2c0791ab8c292da9",
+          "observed_sha256": "32000c8c7209c25e77312eb607fdae4af9aecbd07d2a332b7139059a78e55b31",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw30:manager-neutral",
+          "episode_manifest_sha256": "71930fceab221e593da60b3a2073d19852bad8e30c41a2cb114858042bc059c6",
+          "gameweek": 30,
+          "hidden_outcome_sha256": "d6c832cd2c76c1817e33b2ee3462250f9aec2693b7b9510bf4cba19516ac8935",
+          "observed_sha256": "ab768da15aec84eb91ef6e75a6dd46c725714786362d57b1c2002a61c89aa89a",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw31:manager-neutral",
+          "episode_manifest_sha256": "ba9ebb67070c22debd727ce820267dd2e83eeb46db7b5339fbbd34f8b369f764",
+          "gameweek": 31,
+          "hidden_outcome_sha256": "2825b38abc8505f95ea61b41c30f418dc86e7e7cbce98b5cbe83ee2724091e78",
+          "observed_sha256": "1775d2402355c94b6f2b8f0e7ef20cd9849f7aa153e9952bf6e4c8d6f641bc69",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw32:manager-neutral",
+          "episode_manifest_sha256": "851ced8b9b1705472941ece7365cb72fa3947d9b5a35dec9fd5c9b39b85ab33d",
+          "gameweek": 32,
+          "hidden_outcome_sha256": "a6a51d40be06ccf59ec4533fb5c6055d03095cf15d28248bd7aa50a029eade17",
+          "observed_sha256": "d15be35917385ba6252668b39a495439d3f713f0ef262e9d136a6d8753d2e2ab",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw33:manager-neutral",
+          "episode_manifest_sha256": "d4f3e50987556b1e03d33e66b1b2cb2ac2ea59d02031bafb04f3ecf8aaf0f2ef",
+          "gameweek": 33,
+          "hidden_outcome_sha256": "59c2c693709ffdebf65a151ec993732892ca5d6b019280c8cdc96787933f3671",
+          "observed_sha256": "6490fe863832296a78d533f50b5aef13c80b5c6ef565f8f5f87adaa2211948b7",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw34:manager-neutral",
+          "episode_manifest_sha256": "2dda1e24e367eb12b4297f3775eef5a2496ef3b0ce1da80b855c5325f2230373",
+          "gameweek": 34,
+          "hidden_outcome_sha256": "c7d093d4e16971bf88b0e17f0a3a80fb5be3c82180404c67155db31269a2745a",
+          "observed_sha256": "ae183e74aede2a0ae43f01ed45cd1e9c4cc27b7d72772c6f528e2642bfbdcb87",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw35:manager-neutral",
+          "episode_manifest_sha256": "a9084c7024dd073715acafc1da16197bf504ab7e236c413341ab70bd659a3e98",
+          "gameweek": 35,
+          "hidden_outcome_sha256": "8387ba37f2529a3d1ac5bd4d2becc0fe98e911d6b3f89b49483ab2d3165cfa8d",
+          "observed_sha256": "86c42fcbbc076e7d3d6ded47d9e5eae4456fba42e23a3316d170644403b73fee",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw36:manager-neutral",
+          "episode_manifest_sha256": "47768d62a7d33644ba116787f54c89b0ca607c3e08fe5389064274d697293db5",
+          "gameweek": 36,
+          "hidden_outcome_sha256": "5cdc0c0ee1ce5d9af1649aca957a929be0fd3fcc5d629417ee42354e33ad766f",
+          "observed_sha256": "37068c102db082812cd7431decce273eef43c76753fca81bcbc77d85c6862630",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw37:manager-neutral",
+          "episode_manifest_sha256": "216d1cb851cea96aea0339575f5358e2b8583373c5912891ec0a604684710b9e",
+          "gameweek": 37,
+          "hidden_outcome_sha256": "9a4d9d9c4f5fffa6f9f361cb65eb75d88c1662c13f188f25b26e30db03e089ed",
+          "observed_sha256": "c5fd0fb77e8e00602d4c74ebc1bf7f87b9ee8d311bdd2fd590c237ee08896b38",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        },
+        {
+          "episode_id": "benchmark-v0:2025-26:gw38:manager-neutral",
+          "episode_manifest_sha256": "45d79ef1540d5cfd30f0e15f497b5ae277df872e41775de932b5b0b83137188a",
+          "gameweek": 38,
+          "hidden_outcome_sha256": "6397da09b8ab5816fff91507fb4ca6e6c977e9ec4c09f908b58d45e7941e57f5",
+          "observed_sha256": "34a9237f5bb0354583fdd1dd250a6b0ce00c27ef71846220a88afaf9123259ab",
+          "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+        }
+      ],
+      "evidence_embedded_content_sha256": "d424c7e60ae85aca8967f12b91ae82ddc496c2de8738070d38324d39c7fa44f9",
+      "evidence_report_path": "reports/forecasting/live-faithful-v2-recalibrated.json",
+      "evidence_report_sha256": "d424c7e60ae85aca8967f12b91ae82ddc496c2de8738070d38324d39c7fa44f9",
+      "gates": {
+        "bounded_degradation": true,
+        "configuration_integrity": true,
+        "control_fallback": true,
+        "deterministic_reproduction": true,
+        "episode_integrity": true,
+        "legal_replay": true,
+        "locked_held_out_gate": false,
+        "no_known_temporal_leakage": true
+      },
+      "resources": {
+        "cost_gbp": 0.0,
+        "external_tool_calls": 0,
+        "latency_and_memory_evidence": "reports/performance/core-baseline.json and reports/performance/optimiser-scale.json"
+      },
+      "selection_metrics": {
+        "calibration": -0.03597056123610365,
+        "full_replay_realised_net_points": 0.0,
+        "held_out_decision_quality": -15.26315789473685,
+        "operational_cost": 1.0
+      },
+      "uncertainty": "selected top-15 MAE improved, but locked top-15 precision, ranking regret, premium rank correlation and overall RMSE worsened"
+    },
+    {
       "category": "selection",
       "challenger_id": "squad-contingency-v1",
       "configuration_sha256": "8ea3c3cc0ca7b04d054538f039b390727c90b569a5c04593df336a25a8f29383",
@@ -1459,7 +1792,7 @@
     {
       "category": "transfer",
       "challenger_id": "transfer-horizon-v1",
-      "configuration_sha256": "e3fb07d357a97c56e7510869972f14901028542045dc158d8dd4af212b01b8fd",
+      "configuration_sha256": "fd711b362ee8ddd12f9fff43e34aa63b4060c092c8858cfc1cf07df27ab23190",
       "decision": "exploratory_only",
       "degradation": "node-budget exhaustion returns the deterministic one-week control",
       "disqualifiers": [
@@ -2125,7 +2458,7 @@
     {
       "category": "chip",
       "challenger_id": "chip-policy-v1",
-      "configuration_sha256": "1110c08c118689f156cd237e7287117c18453d04cac7fc5215d820c91bc17b67",
+      "configuration_sha256": "0a2519cc7ba6a10d5a0ea00e7099dd9c3c983643fa594b291bc1945fdc2109e1",
       "decision": "exploratory_only",
       "degradation": "no-chip control is retained and chip use always requires human review",
       "disqualifiers": [

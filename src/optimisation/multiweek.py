@@ -63,6 +63,52 @@ def validate_horizon(
         raise MultiweekPlanningError(
             "every horizon week must bind one feature-state hash"
         )
+    fixture_hashes = {
+        str(week["fixture_state_sha256"])
+        for week in horizon
+        if week.get("fixture_state_sha256") is not None
+    }
+    count_table_hashes = {
+        str(week["fixture_count_table_sha256"])
+        for week in horizon
+        if week.get("fixture_count_table_sha256") is not None
+    }
+    if fixture_hashes:
+        if (
+            len(fixture_hashes) != 1
+            or len(fixture_hashes) != len(
+                {str(week.get("fixture_state_sha256")) for week in horizon}
+            )
+            or any(len(value) != 64 for value in fixture_hashes)
+            or len(count_table_hashes) != 1
+            or len(count_table_hashes) != len(
+                {str(week.get("fixture_count_table_sha256")) for week in horizon}
+            )
+            or any(len(value) != 64 for value in count_table_hashes)
+        ):
+            raise MultiweekPlanningError(
+                "fixture-state-bound weeks must share state and count SHA-256s"
+            )
+        for week in horizon:
+            counts = week.get("team_fixture_counts")
+            if not isinstance(counts, Mapping):
+                raise MultiweekPlanningError(
+                    "fixture-state-bound horizon lacks team fixture counts"
+                )
+            for player in week.get("players", []):
+                club_id = str(player["club_id"])
+                components = player.get("horizon_fixture_components")
+                if club_id not in counts or not isinstance(components, list):
+                    raise MultiweekPlanningError(
+                        "fixture-state-bound player lacks count/component lineage"
+                    )
+                fixture_count = int(player.get("fixture_count", -1))
+                if fixture_count != int(counts[club_id]) or fixture_count != len(
+                    components
+                ):
+                    raise MultiweekPlanningError(
+                        "fixture-state count differs from projected components"
+                    )
     base_ids = {str(row["player_id"]) for row in base_input.players}
     for week in horizon:
         ids = [str(row["player_id"]) for row in week.get("players", [])]
@@ -140,6 +186,8 @@ def _fallback(
     ruleset_sha256: str,
     reason: str,
     elapsed: float,
+    fixture_state_sha256: str | None = None,
+    fixture_count_table_sha256: str | None = None,
 ) -> dict[str, Any]:
     safe = deepcopy(base_input)
     safe.transfer_value_policy = "none"
@@ -161,6 +209,11 @@ def _fallback(
         },
         "search": {"elapsed_seconds": round(elapsed, 6)},
     }
+    if fixture_state_sha256 is not None:
+        result["lineage"] = {
+            "fixture_state_sha256": fixture_state_sha256,
+            "fixture_count_table_sha256": fixture_count_table_sha256,
+        }
     result["content_sha256"] = multiweek_plan_hash(result)
     return result
 
@@ -175,6 +228,8 @@ def plan_multiweek(
 ) -> dict[str, Any]:
     """Plan a bounded trajectory and expose only its first action for execution."""
     validate_horizon(horizon, base_input=base_input)
+    fixture_state_sha256 = horizon[0].get("fixture_state_sha256")
+    fixture_count_table_sha256 = horizon[0].get("fixture_count_table_sha256")
     if int(config["horizon_gameweeks"]) != len(horizon):
         raise MultiweekPlanningError("config horizon differs from supplied horizon")
     discount = float(config["discount_factor"])
@@ -202,6 +257,8 @@ def plan_multiweek(
                     ruleset_sha256=ruleset_sha256,
                     reason="expanded_node_budget_exhausted",
                     elapsed=perf_counter() - started,
+                    fixture_state_sha256=fixture_state_sha256,
+                    fixture_count_table_sha256=fixture_count_table_sha256,
                 )
             solver_input = _week_input(base_input, path["state"], week, config)
             output = solve(
@@ -251,6 +308,8 @@ def plan_multiweek(
                 ruleset_sha256=ruleset_sha256,
                 reason="no_complete_legal_trajectory",
                 elapsed=perf_counter() - started,
+                fixture_state_sha256=fixture_state_sha256,
+                fixture_count_table_sha256=fixture_count_table_sha256,
             )
         by_state: dict[str, dict[str, Any]] = {}
         for path in next_paths:
@@ -305,5 +364,12 @@ def plan_multiweek(
             "config_sha256": str(config["content_sha256"]),
         },
     }
+    if horizon[0].get("fixture_state_sha256") is not None:
+        result["lineage"]["fixture_state_sha256"] = str(
+            horizon[0]["fixture_state_sha256"]
+        )
+        result["lineage"]["fixture_count_table_sha256"] = str(
+            fixture_count_table_sha256
+        )
     result["content_sha256"] = multiweek_plan_hash(result)
     return result
