@@ -476,3 +476,174 @@ count increase.
 4. Implement and evaluate the wider acquisition/retrieval design in
    `FPL-bsw.38.14` prospectively for 2026/27 rather than tuning this historical
    path using known results.
+## GW26-GW30 checkpoint
+
+Status: `paused_for_review`
+
+Checkpoint:
+`reports/benchmarks/2025-26-enhanced/checkpoints/gw-26-gw-30.json`
+
+Checkpoint SHA-256:
+`170b0a8713d8c1bd9afdcef56b2eda3a857bc7e2bd7a246ba675179fc0bffc61`
+
+The tranche resumes every arm from its own sealed GW25 successor. Accepted
+agent namespaces are GW26 `sol-v3`, GW27-GW29 `sol-v1`, and GW30 `sol-v5`.
+The earlier GW26 and GW30 versions failed evidence or challenger contracts and
+remain immutable diagnostics rather than replay inputs.
+
+| GW | Scout structured | Optimized structured | Scout evidence | Optimized evidence |
+| ---: | ---: | ---: | ---: | ---: |
+| 26 | 68 (1346) | 62 (1376) | 62 (1330) | 64 (1420) |
+| 27 | 43 (1389) | 42 (1418) | 36 (1366) | 36 (1456) |
+| 28 | 67 (1456) | 70 (1488) | 74 (1440) | 74 (1530) |
+| 29 | 53 (1509) | 64 (1552) | 58 (1498) | 58 (1588) |
+| 30 | 45 (1554) | 40 (1592) | 39 (1537) | 39 (1627) |
+
+During GW26-GW30 the arms scored 276, 278, 269, and 271 respectively in
+table order. The optimized structured seed lead increased from 36 to 38; the
+optimized evidence seed lead increased from 88 to 90. Both evidence arms
+scored seven fewer than their corresponding structured arm during this
+tranche, but that is inherited trajectory performance rather than a direct
+effect of the current evidence cases.
+
+No arm paid a hit or used a chip. Tranche transfer counts were four Scout
+structured, four optimized structured, three Scout evidence, and four
+optimized evidence.
+
+## GW26-GW30 evidence review
+
+| GW | Adapter result | Scout same-state result | Optimized same-state result |
+| ---: | --- | ---: | ---: |
+| 26 | applied | 0 | 0 |
+| 27 | abstained | 0 | 0 |
+| 28 | applied | 0 | 0 |
+| 29 | abstained | 0 | 0 |
+| 30 | abstained | 0 | 0 |
+
+There was no direct evidence effect in this tranche. The GW26 and GW28
+adjustments passed both hosted gates but did not alter realised same-state
+points; the other three weeks abstained. This is useful negative evidence
+about the current sparse historical cases, not proof that broader live
+evidence has no value. It reinforces the need to measure decision-boundary
+coverage and retrieval omissions in `FPL-bsw.38.14`.
+
+By GW30 all arms still report zero chip use. Chip planning is intentionally
+outside this frozen path, but its absence is now a material limitation: the
+replay can assess squad, transfer, captaincy, lineup and evidence state, but
+cannot establish the value of a production-shaped multiweek chip policy.
+
+## Integrity at GW30
+
+- Checkpoint is paused with `next_gameweek: 31`; no GW31 comparison exists.
+- Canonical artifacts are unchanged.
+- Focused enhanced replay and accepted-agent-artifact regressions: 30 passed.
+- Full repository suite: 631 passed in 336.92 seconds, with empty stderr and retained JUnit output.
+- Every arm has a continuous independently owned state through GW30.
+- No rejected GW26 or GW30 namespace was admitted to the replay.
+- No hits or chips occurred in the tranche.
+
+## Review questions before GW31
+
+1. Preserve the current evidence path through the season; do not tune the
+   all-zero GW26-GW30 cases using known outcomes.
+2. Keep accepted-but-non-decisive evidence separate from abstention and from
+   missed retrieval opportunities in the final review.
+3. Treat chip generation and multiweek valuation as a separate required
+   production layer rather than retrofitting it into this trajectory.
+4. Continue to GW31-GW35 as the next five-week tranche, then use a final
+   GW36-GW38 tranche to close the season without inventing a playable GW39.
+## GW31-GW35 checkpoint
+
+Status: `paused_for_review`
+
+Checkpoint SHA-256:
+`764e158533c240a9fb515619951c45abee26eac3aa751e67e13e8435ea6843c6`
+
+Accepted immutable namespaces are GW31 `sol-v3`, GW32 `sol-v1`, GW33
+`sol-v3`, and GW34-GW35 `sol-v1`. Earlier incomplete or degraded namespaces
+remain diagnostics and are not replay inputs.
+
+| GW | Scout structured | Optimized structured | Scout evidence | Optimized evidence |
+| ---: | ---: | ---: | ---: | ---: |
+| 31 | 63 (1617) | 60 (1652) | 57 (1594) | 61 (1688) |
+| 32 | 53 (1670) | 71 (1723) | 65 (1659) | 65 (1753) |
+| 33 | 79 (1749) | 84 (1807) | 81 (1740) | 82 (1835) |
+| 34 | 28 (1777) | 44 (1851) | 33 (1773) | 39 (1874) |
+| 35 | 44 (1821) | 45 (1896) | 55 (1828) | 43 (1917) |
+
+The tranche scores were 267, 304, 291, and 290 in table order. Transfer
+counts were 10, 9, 10, and 9. GW34 charged eight points to each Scout path
+and four points to each optimized path; these deductions are already included
+in weekly net scores. No chip was used.
+
+GW31 and GW33-GW35 applied accepted evidence proposals, while GW32 abstained.
+Every paired same-state evidence delta was zero. Headline differences therefore
+measure inherited policy-state trajectories, not direct causal evidence value
+in these five weeks.
+
+## Final GW36-GW38 checkpoint
+
+Status: `completed`
+
+Checkpoint SHA-256:
+`67f8e15797de6004a4b0f8badf73c55ccd9b4e9e8ab944d3dc162d3f217857cf`
+
+All three weeks use completed `sol-v1` evidence and challenger artifacts.
+
+| GW | Scout structured | Optimized structured | Scout evidence | Optimized evidence |
+| ---: | ---: | ---: | ---: | ---: |
+| 36 | 89 (1910) | 79 (1975) | 66 (1894) | 77 (1994) |
+| 37 | 70 (1980) | 48 (2023) | 65 (1959) | 60 (2054) |
+| 38 | 28 (2008) | 30 (2053) | 34 (1993) | 52 (2106) |
+
+The final tranche scores were 187, 157, 165, and 189. GW36 Scout evidence
+paid a four-point hit; no other final-tranche hit occurred. Evidence was
+applied at GW36 and abstained at GW37-GW38, with zero paired same-state delta
+in every case. No chip was used.
+
+GW38 transitions each arm to a sealed `season_complete` terminal policy state
+at state boundary 39, using the GW38 market to value the retained squad. This
+is not a playable GW39: the completed checkpoint has no `next_gameweek`, no
+GW39 comparison exists, and continuation review is false.
+
+## Full-season result and attribution
+
+| Arm | Final points | Transfers | Hit cost | Chip uses |
+| --- | ---: | ---: | ---: | ---: |
+| Scout structured | 2008 | 37 | 8 | 0 |
+| Optimized structured | 2053 | 37 | 4 | 0 |
+| Scout evidence | 1993 | 37 | 12 | 0 |
+| Optimized evidence | 2106 | 35 | 4 | 0 |
+
+The optimized initial seed finished +45 without evidence and +113 with the
+evidence trajectory. Evidence trajectories finished -15 relative to Scout
+structured and +53 relative to optimized structured, producing a +68
+seed-evidence interaction. These longitudinal values include every inherited
+squad, bank, free-transfer, purchase-price and hit consequence.
+
+The stricter paired same-state attribution tells a smaller causal story. Across
+the season, direct evidence deltas sum to 0 on Scout-owned states and +11 on
+optimized-owned states. Only GW7, GW12, GW17, GW18 and GW22 had any non-zero
+paired result. Each evidence arm recorded 17 applied weeks, 16 abstentions,
+four degraded fallbacks and the non-applicable GW1 seed. Consequently, the
+optimized evidence arm's headline +53 over optimized structured must not be
+reported as 53 points produced directly by agent prose: +11 is the sum of
+measured same-week causal effects and the balance is inherited path interaction.
+
+The replay establishes that independent state, legal transfers, hit charging,
+automatic substitutions, temporal boundaries, immutable evidence gates and
+factorial attribution work across all 38 weeks. It does not establish a
+production chip policy or broad live evidence skill: no arm used a chip, and
+the retrospective evidence surface was intentionally sparse. The next system
+step is `FPL-bsw.38.14`: accumulated point-in-time evidence acquisition,
+boundary-aware deterministic retrieval, independent reviewer shards,
+contradiction reduction, bounded decision packets and a continuously frozen
+no-evidence shadow.
+## Final integrity
+
+- Focused enhanced replay and accepted-agent-artifact validation: 26 passed.
+- Full repository suite: 635 passed in 434.99 seconds; stderr is empty and
+  retained JUnit output is stored under the enhanced validation artifacts.
+- All 38 comparisons and all four independent successor chains are sealed.
+- Canonical replay artifacts remained unchanged across every tranche.
+- The completed checkpoint has no continuation and no playable GW39 exists.

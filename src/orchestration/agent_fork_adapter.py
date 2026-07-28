@@ -381,16 +381,19 @@ def run_sequential_agent_fork_week(
     )
     successor = transition = None
     if transition_to_next:
-        next_feature = _read(
-            canonical_root
-            / f"gw-{gameweek + 1:02d}/setup/shared-feature-state.json"
-        )
+        next_market = adjusted_input["players"]
+        if gameweek < 38:
+            next_feature = _read(
+                canonical_root
+                / f"gw-{gameweek + 1:02d}/setup/shared-feature-state.json"
+            )
+            next_market = _market_from_feature_state(next_feature)
         successor, transition = transition_policy_state(
             state,
             plan,
             outcome,
             decision_market=adjusted_input["players"],
-            next_market=_market_from_feature_state(next_feature),
+            next_market=next_market,
             rules=rules,
             ruleset_sha256=rules_hash,
         )

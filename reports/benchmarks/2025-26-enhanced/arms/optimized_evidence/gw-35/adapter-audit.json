@@ -1,0 +1,34 @@
+{
+  "adjustments": [
+    {
+      "adjustment_id": "adjustment:gw35-timber-expected-minutes",
+      "after": {
+        "expected_minutes": 0.0,
+        "expected_points": 0.0,
+        "start_probability": 0.0,
+        "status": "i"
+      },
+      "before": {
+        "expected_minutes": 36.0,
+        "expected_points": 2.24,
+        "start_probability": 0.8099,
+        "status": "a"
+      },
+      "claim_ids": [
+        "signal:adjustment:gw35-timber-expected-minutes"
+      ],
+      "confidence": 0.99,
+      "player_id": "player:2025-26:8",
+      "ratio": 0.0,
+      "target": "expected_minutes"
+    }
+  ],
+  "applied": true,
+  "challenger_run_sha256": "32e8708e7db9057cbe2702cac6ca47baf1469514ac0663b7411f5e399dd57d00",
+  "content_sha256": "c4133de725bd3611a13b6401353b437ef4cefc5f7690d1c366fe9c163f76e7ba",
+  "evidence_run_sha256": "069ed9d77e65e9a81c0e677ae2f7ed53631ca1d4a9d369dac000fdf81e8cfbb5",
+  "fallback_reason": null,
+  "policy_id": "agent-fork-adapter-v1",
+  "policy_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+  "schema_version": "1.0"
+}

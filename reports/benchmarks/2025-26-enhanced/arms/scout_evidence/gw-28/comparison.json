@@ -1,0 +1,40 @@
+{
+  "adapter_audit_sha256": "d778600fa88a123a20c3597f87821d36ace2f7fbc5f1858f82ac9fe88a0e6ac0",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 74,
+  "agent_vs_canonical_delta": 7,
+  "canonical_gross_points": 67,
+  "canonical_tree_sha256_after": "08ff23cfb12eca53dc123df4f759687cc2c6df773d0b6f167f71033a4032b532",
+  "canonical_tree_sha256_before": "08ff23cfb12eca53dc123df4f759687cc2c6df773d0b6f167f71033a4032b532",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "e7b94f7aaea56d209024ae342cd1672561c29bfb949ed255970772f199616e0e",
+  "content_sha256": "600240dbaa5e700e01b302bf5382c4f6c584cee5e9cc7050d7d0a0ba9c054d5e",
+  "evidence_run_sha256": "c1cc6ea659560b175032f1018c8edd795e79c862a3f5fd1613732057f9982fe6",
+  "experiment_id": "2025-26-enhanced-gw28-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 28,
+  "hit_cost": 0,
+  "host_bundle_sha256": "120c8176f5c3e291c99a17be4884709235bb17b9534984baaa0b1a08ce7a55d0",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "cb8f707dbc6b3d2afdd90dc51cb5800185ba89be5e952aa6e5471d5b2a368216",
+  "plan_sha256": "d1cc9971ab82bb70b5813ac23d93738db1c08124bdbc95f0d9fa9cdbd28b25b3",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Virgil van Dijk",
+      "player_out": "Trevoh Chalobah"
+    }
+  ],
+  "solver_input_sha256": "aaf784526d719926b54d7bf4d5872f7975950297767243d17a3e6c3e4ccbc142",
+  "solver_output_sha256": "2e769bccbb767741b3ed1a8b4552676eb5c388a4c2062a55be86d9105830bc3b",
+  "starting_state_sha256": "f0d5b0797b4856d06623427c0dd5b5ea41076a5796baa74e66915ef0bb0b4aee"
+}

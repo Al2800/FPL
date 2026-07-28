@@ -1,0 +1,324 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_challenger",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw34-sol-challenger-v1",
+      "content_sha256": "89f5759a3afe6224a1636a910ff264c8cea1a212513088db680596e2d753d6cf",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "turn_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "438e035af66ca7a50b6b751a75dd44f750248c785d25c677a0e32c5e340ebbcf",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "0.144.6",
+        "completed_at": "2026-07-26T20:00:38Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "438e035af66ca7a50b6b751a75dd44f750248c785d25c677a0e32c5e340ebbcf",
+        "response_sha256": "b89c0dc37a7f1b8bb502cad6779d350a61433bdb7c2d3ff6b49863d8d83e18e3",
+        "structured_output": {
+          "escalation_outcome": "dismissed",
+          "notes": "The confirmed absence supports reducing Timber expected minutes to zero, so the proposed adjustment is well grounded and no escalation is warranted.",
+          "review_id": "review:gw34-sol-challenger-v1",
+          "reviewed_adjustment_ids": [
+            "adjustment:gw34-timber-expected-minutes"
+          ],
+          "role": "challenger",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 2048,
+          "output_tokens": 118,
+          "tool_calls": 0,
+          "total_tokens": 2166,
+          "wall_clock_ms": 17000
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw34-sol-challenger-v1",
+      "content_sha256": "520d5d12f60cffc5ca73165aca363eb3f104e3fa8b2891872052eae474c84b90",
+      "payload": {
+        "approval_gate": {
+          "automatic_approval_allowed": false,
+          "confidence_downgraded": false,
+          "force_rerun": false,
+          "notes": [
+            "review:gw34-sol-challenger-v1:dismissed"
+          ],
+          "requires_human_review": false,
+          "unresolved_challenges": []
+        },
+        "authority": "review_only_not_applied",
+        "content_sha256": "520d5d12f60cffc5ca73165aca363eb3f104e3fa8b2891872052eae474c84b90",
+        "proposal_sha256": "707481e8045ccc1b2482bd50afa8a3dee3c61ede603634b833024a3f64713268",
+        "review": {
+          "agent_run_id": "gw34-sol-evidence-v1",
+          "available_at": "2026-07-26T20:00:38Z",
+          "escalation_outcome": "dismissed",
+          "notes": "The confirmed absence supports reducing Timber expected minutes to zero, so the proposed adjustment is well grounded and no escalation is warranted.",
+          "observed_at": "2026-07-26T20:00:38Z",
+          "provenance": {
+            "agent_run_id": "gw34-sol-evidence-v1",
+            "source_ids": [
+              "gpt-5.6-sol-challenger"
+            ],
+            "transformation_version": "challenger-agent-v1"
+          },
+          "review_id": "review:gw34-sol-challenger-v1"
+        },
+        "role": "challenger",
+        "schema_version": "1.0",
+        "unopposed_proposed_adjustment_ids": [
+          "adjustment:gw34-timber-expected-minutes"
+        ]
+      }
+    }
+  },
+  "content_sha256": "d72adc0c36d55b47ced9deeea9ba4e3544e200055e8e12b4defd966ae947f030",
+  "run_id": "gw34-sol-challenger-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.2,
+    "banked_option_units": 0,
+    "hit_cost": 8,
+    "immediate_objective": 32.77,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:348",
+        "player:2025-26:72",
+        "player:2025-26:84"
+      ],
+      "captain_id": "player:2025-26:449",
+      "formation": {
+        "DEF": 3,
+        "FWD": 3,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:253",
+        "player:2025-26:5",
+        "player:2025-26:373",
+        "player:2025-26:8",
+        "player:2025-26:449",
+        "player:2025-26:21",
+        "player:2025-26:47",
+        "player:2025-26:783",
+        "player:2025-26:749",
+        "player:2025-26:249",
+        "player:2025-26:430"
+      ],
+      "vice_captain_id": "player:2025-26:5"
+    },
+    "next_gameweek_free_transfers": 1,
+    "objective": 32.77,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 0.0,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:21",
+        "player_out_id": "player:2025-26:235"
+      },
+      {
+        "player_in_id": "player:2025-26:373",
+        "player_out_id": "player:2025-26:260"
+      },
+      {
+        "player_in_id": "player:2025-26:449",
+        "player_out_id": "player:2025-26:82"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "challenger",
+    "available_at": "2026-07-26T20:00:38Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 2048,
+        "output_tokens": 118,
+        "tool_calls": 0,
+        "total_tokens": 2166,
+        "wall_clock_ms": 17000
+      }
+    },
+    "decision_cutoff": "2026-04-24T17:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw34:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw34-sol-challenger-v1",
+          "content_sha256": "df590f47fb7f6d8e38a94120e3e7cf6a0cac03fbb94acb83988b959656e1fbc6"
+        }
+      ],
+      "input_sha256": "df590f47fb7f6d8e38a94120e3e7cf6a0cac03fbb94acb83988b959656e1fbc6",
+      "rendered_prompt_sha256": "438e035af66ca7a50b6b751a75dd44f750248c785d25c677a0e32c5e340ebbcf"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw34-sol-challenger-v1",
+          "content_sha256": "89f5759a3afe6224a1636a910ff264c8cea1a212513088db680596e2d753d6cf"
+        },
+        "call_id": "model:gw34-sol-challenger-v1",
+        "input_tokens": 2048,
+        "output_tokens": 118,
+        "request_sha256": "438e035af66ca7a50b6b751a75dd44f750248c785d25c677a0e32c5e340ebbcf",
+        "response_sha256": "b89c0dc37a7f1b8bb502cad6779d350a61433bdb7c2d3ff6b49863d8d83e18e3",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T20:00:38Z",
+    "observed_episode_sha256": "ae183e74aede2a0ae43f01ed45cd1e9c4cc27b7d72772c6f528e2642bfbdcb87",
+    "output": {
+      "output_sha256": "520d5d12f60cffc5ca73165aca363eb3f104e3fa8b2891872052eae474c84b90",
+      "response_ref": {
+        "artifact_id": "cached-response:gw34-sol-challenger-v1",
+        "content_sha256": "89f5759a3afe6224a1636a910ff264c8cea1a212513088db680596e2d753d6cf"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw34-sol-challenger-v1",
+        "content_sha256": "520d5d12f60cffc5ca73165aca363eb3f104e3fa8b2891872052eae474c84b90"
+      }
+    },
+    "policy_arm": "evidence_challenger",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw34-sol-challenger-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "0.144.6",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw34-sol-challenger-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw34-sol-challenger-v1.jsonl",
+    "versions": {
+      "code_commit": "efad847e05a311568c82c8947f6d1d86026ee86f",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+        "prompt_id": "challenger",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "approval_gate": {
+      "automatic_approval_allowed": false,
+      "confidence_downgraded": false,
+      "force_rerun": false,
+      "notes": [
+        "review:gw34-sol-challenger-v1:dismissed"
+      ],
+      "requires_human_review": false,
+      "unresolved_challenges": []
+    },
+    "authority": "review_only_not_applied",
+    "content_sha256": "520d5d12f60cffc5ca73165aca363eb3f104e3fa8b2891872052eae474c84b90",
+    "proposal_sha256": "707481e8045ccc1b2482bd50afa8a3dee3c61ede603634b833024a3f64713268",
+    "review": {
+      "agent_run_id": "gw34-sol-evidence-v1",
+      "available_at": "2026-07-26T20:00:38Z",
+      "escalation_outcome": "dismissed",
+      "notes": "The confirmed absence supports reducing Timber expected minutes to zero, so the proposed adjustment is well grounded and no escalation is warranted.",
+      "observed_at": "2026-07-26T20:00:38Z",
+      "provenance": {
+        "agent_run_id": "gw34-sol-evidence-v1",
+        "source_ids": [
+          "gpt-5.6-sol-challenger"
+        ],
+        "transformation_version": "challenger-agent-v1"
+      },
+      "review_id": "review:gw34-sol-challenger-v1"
+    },
+    "role": "challenger",
+    "schema_version": "1.0",
+    "unopposed_proposed_adjustment_ids": [
+      "adjustment:gw34-timber-expected-minutes"
+    ]
+  }
+}

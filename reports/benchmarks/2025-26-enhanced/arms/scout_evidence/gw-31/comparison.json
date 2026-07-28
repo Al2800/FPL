@@ -1,0 +1,48 @@
+{
+  "adapter_audit_sha256": "ac229946b6e40f9492a6230a2a923a873d15f0e855d164e0cfff66ecd4ee8e6e",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 57,
+  "agent_vs_canonical_delta": -6,
+  "canonical_gross_points": 63,
+  "canonical_tree_sha256_after": "2d266233a634182b0012ec0a4e2bdbfa09c63525aa714e9be6a75f7e2ab2bc19",
+  "canonical_tree_sha256_before": "2d266233a634182b0012ec0a4e2bdbfa09c63525aa714e9be6a75f7e2ab2bc19",
+  "captain": "Bruno Borges Fernandes",
+  "challenger_run_sha256": "613713c96b23b1d37897d386ef4e6ca8cd6a92dacf3488be4eb7d7f103e6b286",
+  "content_sha256": "983b800c5d88b5e746d414315a6e7c174d9b416ececd3b6b8acc3efd8aa353e0",
+  "evidence_run_sha256": "bb676eb1c0e9fdb64c7a85d4cde182fdc43f60d3ee107f12d9c7f78b6b84542b",
+  "experiment_id": "2025-26-enhanced-gw31-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 31,
+  "hit_cost": 0,
+  "host_bundle_sha256": "f8124d061ebd8878b03b67973e57017009f7ff2e96903d7474af8f31cdf54a01",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "2324f19af87937e59bad234b5ad20a9d20273fc122e8730507c1a276aed659a1",
+  "plan_sha256": "83479c633112013643e3eb96a7ac6f9dc8150931f213ecaa53eea622604e1494",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Bryan Mbeumo",
+      "player_out": "Declan Rice"
+    },
+    {
+      "player_in": "João Pedro Junqueira de Jesus",
+      "player_out": "Erling Haaland"
+    },
+    {
+      "player_in": "Bruno Borges Fernandes",
+      "player_out": "Antoine Semenyo"
+    }
+  ],
+  "solver_input_sha256": "54abc5d12522ac8db6c60122b16f75f01f9f122dac120c6a0af58e0b8d4b7ffb",
+  "solver_output_sha256": "b09957ba5001e34ef73fb2f7e117ed0f93b3bfb93817d447aae6eed6e3861308",
+  "starting_state_sha256": "d6bf264bca78f9a7ffdbd108f19e1153b04ed315ac79ccc0fef20f9e3921dccb"
+}

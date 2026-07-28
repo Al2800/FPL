@@ -1,0 +1,166 @@
+{
+  "arms": [
+    "scout_structured",
+    "optimized_structured",
+    "scout_evidence",
+    "optimized_evidence"
+  ],
+  "canonical_artifacts": {
+    "file_count": 3065,
+    "tree_sha256_after": "aa1131c2c65c6f0199d7cc1537f8077b9a9f7e4290e81981ec7dfcf8d2732d02",
+    "tree_sha256_before": "aa1131c2c65c6f0199d7cc1537f8077b9a9f7e4290e81981ec7dfcf8d2732d02",
+    "unchanged": true
+  },
+  "classification": "exploratory_production_ineligible",
+  "content_sha256": "764e158533c240a9fb515619951c45abee26eac3aa751e67e13e8435ea6843c6",
+  "experiment_id": "2025-26-enhanced-season-replay-v1",
+  "input_index_sha256": "f7f834691b803d161414bbc7b7baab9ca4dc1c96512a1e12eb09d5af0544f5f2",
+  "limitations": [
+    "retrospective_optimized_seed_is_production_ineligible",
+    "historical_evidence_cases_are_not_preregistered",
+    "enhanced_input_packs_include_explicit_degraded_and_exploratory_fallbacks",
+    "odds_are_not_applied_to_the_structured_projection_in_this_tranche",
+    "ratings_and_set_piece_inputs_are_unavailable_in_this_tranche"
+  ],
+  "next_gameweek": 36,
+  "predecessor_checkpoint": {
+    "content_sha256": "170b0a8713d8c1bd9afdcef56b2eda3a857bc7e2bd7a246ba675179fc0bffc61",
+    "path": "reports/benchmarks/2025-26-enhanced/checkpoints/gw-26-gw-30.json"
+  },
+  "review_required_before_continuation": true,
+  "schema_version": "1.1",
+  "season_to_date_totals": {
+    "optimized_evidence": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 16,
+      "hit_cost": 4,
+      "net_points": 1917,
+      "terminal_cumulative_points": 1917,
+      "transfer_count": 33
+    },
+    "optimized_structured": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 0,
+      "hit_cost": 4,
+      "net_points": 1896,
+      "terminal_cumulative_points": 1896,
+      "transfer_count": 35
+    },
+    "scout_evidence": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 16,
+      "hit_cost": 8,
+      "net_points": 1828,
+      "terminal_cumulative_points": 1828,
+      "transfer_count": 34
+    },
+    "scout_structured": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 0,
+      "hit_cost": 8,
+      "net_points": 1821,
+      "terminal_cumulative_points": 1821,
+      "transfer_count": 35
+    }
+  },
+  "start_gameweek": 31,
+  "status": "paused_for_review",
+  "stop_gameweek": 35,
+  "terminal_effects": {
+    "evidence_effect_with_optimized_seed": 21,
+    "evidence_effect_with_scout_seed": 7,
+    "seed_effect_with_evidence": 89,
+    "seed_effect_without_evidence": 75,
+    "seed_evidence_interaction": 14
+  },
+  "totals": {
+    "optimized_evidence": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 16,
+      "hit_cost": 4,
+      "net_points": 1917,
+      "terminal_cumulative_points": 1917,
+      "transfer_count": 33
+    },
+    "optimized_structured": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 0,
+      "hit_cost": 4,
+      "net_points": 1896,
+      "terminal_cumulative_points": 1896,
+      "transfer_count": 35
+    },
+    "scout_evidence": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 16,
+      "hit_cost": 8,
+      "net_points": 1828,
+      "terminal_cumulative_points": 1828,
+      "transfer_count": 34
+    },
+    "scout_structured": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 0,
+      "hit_cost": 8,
+      "net_points": 1821,
+      "terminal_cumulative_points": 1821,
+      "transfer_count": 35
+    }
+  },
+  "tranche_totals": {
+    "optimized_evidence": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 4,
+      "hit_cost": 4,
+      "net_points": 290,
+      "terminal_cumulative_points": 1917,
+      "transfer_count": 9
+    },
+    "optimized_structured": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 0,
+      "hit_cost": 4,
+      "net_points": 304,
+      "terminal_cumulative_points": 1896,
+      "transfer_count": 9
+    },
+    "scout_evidence": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 4,
+      "hit_cost": 8,
+      "net_points": 291,
+      "terminal_cumulative_points": 1828,
+      "transfer_count": 10
+    },
+    "scout_structured": {
+      "chip_uses": 0,
+      "evidence_action_weeks": 0,
+      "hit_cost": 8,
+      "net_points": 267,
+      "terminal_cumulative_points": 1821,
+      "transfer_count": 10
+    }
+  },
+  "weeks": [
+    {
+      "comparison_sha256": "f8bf6e7e7ae95cca786469efcdabc86b4bf3ffb79955edb3f2efac65f87af7e7",
+      "gameweek": 31
+    },
+    {
+      "comparison_sha256": "eeff725c69826156fe5ad5f6f6992399995bd06bafbd68d7c4c634db7ca2575c",
+      "gameweek": 32
+    },
+    {
+      "comparison_sha256": "b5f466b85d3f0c9c918f47eeb96a3fe20f5c25fbcb3b083a8d5945b795f872c8",
+      "gameweek": 33
+    },
+    {
+      "comparison_sha256": "4aa1a376be82bfd248c057b83db619a2605a78c31e3c2b0fe39fdfe75c5f8ca8",
+      "gameweek": 34
+    },
+    {
+      "comparison_sha256": "f8d0ae3c63da321222b2832eb56cfd497d7cfd4e2b3074face74e520cccf4783",
+      "gameweek": 35
+    }
+  ]
+}

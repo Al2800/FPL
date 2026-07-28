@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "9ff1fea57c748e0946f4af83ef271178800ef944a0643b9b01564ff8244be9f0",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 39,
+  "agent_vs_canonical_delta": -6,
+  "canonical_gross_points": 45,
+  "canonical_tree_sha256_after": "af52a0426b7a5a77b090a4ecc29079fb95521af53952429ccde7e57bf5ced77b",
+  "canonical_tree_sha256_before": "af52a0426b7a5a77b090a4ecc29079fb95521af53952429ccde7e57bf5ced77b",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "224a649298debaa31b98803c29b2728e46c1ac024ef3a6029340ae2909bf2892",
+  "content_sha256": "e77a0b76158a2534e69ea127b5c847e13a011d10a53dfd11943637541355ba24",
+  "evidence_run_sha256": "fc0e5e744b38631d61165fa872e57288f09de50868a3583fe7a6f4fed548735c",
+  "experiment_id": "2025-26-enhanced-gw30-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 30,
+  "hit_cost": 0,
+  "host_bundle_sha256": "a80eeb4ad5dc0e2b007f40db47beed18f7e2dd71cfafc48584566f22d7c8e779",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "general_rotation_warning_not_player_specific",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "d6bf264bca78f9a7ffdbd108f19e1153b04ed315ac79ccc0fef20f9e3921dccb",
+  "plan_sha256": "0623bcc4905eec031dd197d1dd8f7ca4960191cb67c0a5b266a1295eec55065f",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Dean Henderson",
+      "player_out": "Jordan Pickford"
+    }
+  ],
+  "solver_input_sha256": "b467e1316229ccf3f416496e8841a51a81b50448cc5203b84b80ead1c29a6ac0",
+  "solver_output_sha256": "fca73f08c84177f41b4b093b190a09df866c2496756f78c88dd32411b7f4e40d",
+  "starting_state_sha256": "dccc8e4a043a7fa6fbcb2a599aa4947f5937b3df3c9ae1488567fa2e7a9e3813"
+}

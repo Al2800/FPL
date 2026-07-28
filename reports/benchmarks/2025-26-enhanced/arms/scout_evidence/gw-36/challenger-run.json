@@ -1,0 +1,320 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_challenger",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw36-sol-challenger-v1",
+      "content_sha256": "aab5d53cd2be788c0fd87b113f5161e7798ee87b503ec65d883afb67bb16e99e",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "6f2c2c82cb6a08559f3dee101d880b2026010fec7df29653ff01481378c4222b",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T20:14:10Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "6f2c2c82cb6a08559f3dee101d880b2026010fec7df29653ff01481378c4222b",
+        "response_sha256": "18cc3a7615c6a9d01c9c685adc00c9485fd4e000c8e55dd1a1f1944ce8330fd4",
+        "structured_output": {
+          "escalation_outcome": "dismissed",
+          "notes": "The zero-minute proposal is directly grounded in the cited pre-deadline team news, matches Timber's identity and the supplied baseline, and remains proposal-only; its post-decision observation and availability are explicitly marked production-ineligible, so no unresolved issue warrants escalation.",
+          "review_id": "review:gw36-sol-challenger-v1",
+          "reviewed_adjustment_ids": [
+            "adjustment:gw36-timber-expected-minutes"
+          ],
+          "role": "challenger",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw36-sol-challenger-v1",
+      "content_sha256": "9b2059611c2eb25a82ecd53b512518d0bd27400b6a97d9f158ce8c99bd55597a",
+      "payload": {
+        "approval_gate": {
+          "automatic_approval_allowed": false,
+          "confidence_downgraded": false,
+          "force_rerun": false,
+          "notes": [
+            "review:gw36-sol-challenger-v1:dismissed"
+          ],
+          "requires_human_review": false,
+          "unresolved_challenges": []
+        },
+        "authority": "review_only_not_applied",
+        "content_sha256": "9b2059611c2eb25a82ecd53b512518d0bd27400b6a97d9f158ce8c99bd55597a",
+        "proposal_sha256": "f9f17b7bafcd2a02d61bf88a09720ebc333cd28726ec506bba48c1195cc06bff",
+        "review": {
+          "agent_run_id": "gw36-sol-evidence-v1",
+          "available_at": "2026-07-26T20:14:10Z",
+          "escalation_outcome": "dismissed",
+          "notes": "The zero-minute proposal is directly grounded in the cited pre-deadline team news, matches Timber's identity and the supplied baseline, and remains proposal-only; its post-decision observation and availability are explicitly marked production-ineligible, so no unresolved issue warrants escalation.",
+          "observed_at": "2026-07-26T20:14:10Z",
+          "provenance": {
+            "agent_run_id": "gw36-sol-evidence-v1",
+            "source_ids": [
+              "gpt-5.6-sol-challenger"
+            ],
+            "transformation_version": "challenger-agent-v1"
+          },
+          "review_id": "review:gw36-sol-challenger-v1"
+        },
+        "role": "challenger",
+        "schema_version": "1.0",
+        "unopposed_proposed_adjustment_ids": [
+          "adjustment:gw36-timber-expected-minutes"
+        ]
+      }
+    }
+  },
+  "content_sha256": "96c60d6d66a4af55f9db9d3ac12fe4ea8d8a90efe670654318d03c6b9dfc3867",
+  "run_id": "gw36-sol-challenger-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.0,
+    "banked_option_units": 0,
+    "hit_cost": 0,
+    "immediate_objective": 90.18,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:249",
+        "player:2025-26:749",
+        "player:2025-26:348"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 4,
+        "FWD": 1,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:253",
+        "player:2025-26:260",
+        "player:2025-26:5",
+        "player:2025-26:373",
+        "player:2025-26:72",
+        "player:2025-26:82",
+        "player:2025-26:449",
+        "player:2025-26:21",
+        "player:2025-26:783",
+        "player:2025-26:84",
+        "player:2025-26:430"
+      ],
+      "vice_captain_id": "player:2025-26:82"
+    },
+    "next_gameweek_free_transfers": 1,
+    "objective": 90.18,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 0.0,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:82",
+        "player_out_id": "player:2025-26:47"
+      },
+      {
+        "player_in_id": "player:2025-26:260",
+        "player_out_id": "player:2025-26:8"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "challenger",
+    "available_at": "2026-07-26T20:14:10Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2026-05-09T10:00:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw36:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw36-sol-challenger-v1",
+          "content_sha256": "deed0e31b5d04b867758a2125abea0ce3e775656a089f9780f619257722202d5"
+        }
+      ],
+      "input_sha256": "deed0e31b5d04b867758a2125abea0ce3e775656a089f9780f619257722202d5",
+      "rendered_prompt_sha256": "6f2c2c82cb6a08559f3dee101d880b2026010fec7df29653ff01481378c4222b"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw36-sol-challenger-v1",
+          "content_sha256": "aab5d53cd2be788c0fd87b113f5161e7798ee87b503ec65d883afb67bb16e99e"
+        },
+        "call_id": "model:gw36-sol-challenger-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "6f2c2c82cb6a08559f3dee101d880b2026010fec7df29653ff01481378c4222b",
+        "response_sha256": "18cc3a7615c6a9d01c9c685adc00c9485fd4e000c8e55dd1a1f1944ce8330fd4",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T20:14:10Z",
+    "observed_episode_sha256": "37068c102db082812cd7431decce273eef43c76753fca81bcbc77d85c6862630",
+    "output": {
+      "output_sha256": "9b2059611c2eb25a82ecd53b512518d0bd27400b6a97d9f158ce8c99bd55597a",
+      "response_ref": {
+        "artifact_id": "cached-response:gw36-sol-challenger-v1",
+        "content_sha256": "aab5d53cd2be788c0fd87b113f5161e7798ee87b503ec65d883afb67bb16e99e"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw36-sol-challenger-v1",
+        "content_sha256": "9b2059611c2eb25a82ecd53b512518d0bd27400b6a97d9f158ce8c99bd55597a"
+      }
+    },
+    "policy_arm": "evidence_challenger",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw36-sol-challenger-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw36-sol-challenger-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw36-sol-challenger-v1.jsonl",
+    "versions": {
+      "code_commit": "efad847e05a311568c82c8947f6d1d86026ee86f",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+        "prompt_id": "challenger",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "approval_gate": {
+      "automatic_approval_allowed": false,
+      "confidence_downgraded": false,
+      "force_rerun": false,
+      "notes": [
+        "review:gw36-sol-challenger-v1:dismissed"
+      ],
+      "requires_human_review": false,
+      "unresolved_challenges": []
+    },
+    "authority": "review_only_not_applied",
+    "content_sha256": "9b2059611c2eb25a82ecd53b512518d0bd27400b6a97d9f158ce8c99bd55597a",
+    "proposal_sha256": "f9f17b7bafcd2a02d61bf88a09720ebc333cd28726ec506bba48c1195cc06bff",
+    "review": {
+      "agent_run_id": "gw36-sol-evidence-v1",
+      "available_at": "2026-07-26T20:14:10Z",
+      "escalation_outcome": "dismissed",
+      "notes": "The zero-minute proposal is directly grounded in the cited pre-deadline team news, matches Timber's identity and the supplied baseline, and remains proposal-only; its post-decision observation and availability are explicitly marked production-ineligible, so no unresolved issue warrants escalation.",
+      "observed_at": "2026-07-26T20:14:10Z",
+      "provenance": {
+        "agent_run_id": "gw36-sol-evidence-v1",
+        "source_ids": [
+          "gpt-5.6-sol-challenger"
+        ],
+        "transformation_version": "challenger-agent-v1"
+      },
+      "review_id": "review:gw36-sol-challenger-v1"
+    },
+    "role": "challenger",
+    "schema_version": "1.0",
+    "unopposed_proposed_adjustment_ids": [
+      "adjustment:gw36-timber-expected-minutes"
+    ]
+  }
+}

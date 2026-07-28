@@ -1,0 +1,482 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw34-sol-evidence-v1",
+      "content_sha256": "f6b995d947a4c1b44936b0e4ffc5e73be40b63715bd86267c67cc4dfaa308e07",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "342605cb78514cd4044232320dfd32991672343391f21ff1e3a48ea4001d2c6c",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T19:58:16Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "342605cb78514cd4044232320dfd32991672343391f21ff1e3a48ea4001d2c6c",
+        "response_sha256": "0e969ea3cdf5c2ff5046a275d9bb5e9a19e12035961dceaf325c0deb3640c0de",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "Jurrien Timber is out of Arsenal's clash with Newcastle United on Sunday.",
+              "citation_excerpt_sha256": "1efcdeb429c9bb570eaa412d23522763a0541ab760f851e1b0a5d830eebd196a",
+              "claim_id": "claim-gw34-timber-out",
+              "claim_text": "Jurrien Timber is unavailable for Arsenal's GW34 clash with Newcastle United.",
+              "confidence": 0.99,
+              "document_id": "document:ffs-gw34-timber-out-2026-04-24",
+              "expires_at": "2026-04-27T23:59:59Z",
+              "passage_id": "passage:claim-gw34-timber-out",
+              "player_uid": "player:2025-26:8",
+              "source_id": "ffs-gw34-timber-out-2026-04-24"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "No start-probability adjustment is proposed because reducing the 0.8337 baseline to 0.0 would exceed the policy cap."
+          ],
+          "proposed_adjustments": [
+            {
+              "adjustment_id": "adjustment:gw34-timber-expected-minutes",
+              "after_value": 0.0,
+              "before_value": 43.0,
+              "claim_ids": [
+                "claim-gw34-timber-out"
+              ],
+              "confidence": 0.99,
+              "expires_at": "2026-04-27T23:59:59Z",
+              "player_uid": "player:2025-26:8",
+              "rationale": "The cited team-news passage confirms Timber is out of the GW34 fixture, so his expected minutes should be reduced to zero.",
+              "target": "expected_minutes",
+              "unit": "minutes"
+            }
+          ],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw34-sol-evidence-v1",
+      "content_sha256": "707481e8045ccc1b2482bd50afa8a3dee3c61ede603634b833024a3f64713268",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim-gw34-timber-out",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:8",
+            "provenance": {
+              "content_hash_sha256": "3c101bd595c6ea7def67e0a15fd97642cdad0ef87bed768ad9296af673582414",
+              "source_ids": [
+                "ffs-gw34-timber-out-2026-04-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-26T19:25:00Z",
+            "claim_id": "claim-gw34-timber-out",
+            "claim_text": "Jurrien Timber is unavailable for Arsenal's GW34 clash with Newcastle United.",
+            "confidence": 0.99,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:ffs-gw34-timber-out-2026-04-24",
+            "expires_at": "2026-04-27T23:59:59Z",
+            "observed_at": "2026-07-26T19:25:00Z",
+            "provenance": {
+              "content_hash_sha256": "3c101bd595c6ea7def67e0a15fd97642cdad0ef87bed768ad9296af673582414",
+              "source_ids": [
+                "ffs-gw34-timber-out-2026-04-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-04-24T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "707481e8045ccc1b2482bd50afa8a3dee3c61ede603634b833024a3f64713268",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "No start-probability adjustment is proposed because reducing the 0.8337 baseline to 0.0 would exceed the policy cap."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [
+          {
+            "adjustment_id": "adjustment:gw34-timber-expected-minutes",
+            "after_value": 0.0,
+            "available_at": "2026-07-26T19:58:16Z",
+            "before_value": 43.0,
+            "confidence": 0.99,
+            "expires_at": "2026-04-27T23:59:59Z",
+            "observed_at": "2026-07-26T19:58:16Z",
+            "player_uid": "player:2025-26:8",
+            "provenance": {
+              "source_ids": [
+                "ffs-gw34-timber-out-2026-04-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-07-26T19:58:16Z",
+            "rationale": "The cited team-news passage confirms Timber is out of the GW34 fixture, so his expected minutes should be reduced to zero.",
+            "signal_ids": [
+              "signal:adjustment:gw34-timber-expected-minutes"
+            ],
+            "status": "proposed",
+            "target": "expected_minutes",
+            "unit": "minutes"
+          }
+        ],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": [
+          {
+            "available_at": "2026-07-26T19:58:16Z",
+            "claim_ids": [
+              "claim-gw34-timber-out"
+            ],
+            "interpretation": "The cited team-news passage confirms Timber is out of the GW34 fixture, so his expected minutes should be reduced to zero.",
+            "observed_at": "2026-07-26T19:58:16Z",
+            "player_uid": "player:2025-26:8",
+            "provenance": {
+              "source_ids": [
+                "ffs-gw34-timber-out-2026-04-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-04-24T00:00:00Z",
+            "signal_id": "signal:adjustment:gw34-timber-expected-minutes"
+          }
+        ]
+      }
+    }
+  },
+  "content_sha256": "945a2843a846b97b3728d0be01366175eec2850922f9b86865b733fa5512b79a",
+  "run_id": "gw34-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.2,
+    "banked_option_units": 0,
+    "hit_cost": 8,
+    "immediate_objective": 32.77,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:348",
+        "player:2025-26:72",
+        "player:2025-26:84"
+      ],
+      "captain_id": "player:2025-26:449",
+      "formation": {
+        "DEF": 3,
+        "FWD": 3,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:253",
+        "player:2025-26:5",
+        "player:2025-26:373",
+        "player:2025-26:8",
+        "player:2025-26:449",
+        "player:2025-26:21",
+        "player:2025-26:47",
+        "player:2025-26:783",
+        "player:2025-26:749",
+        "player:2025-26:249",
+        "player:2025-26:430"
+      ],
+      "vice_captain_id": "player:2025-26:5"
+    },
+    "next_gameweek_free_transfers": 1,
+    "objective": 32.77,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 0.0,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:21",
+        "player_out_id": "player:2025-26:235"
+      },
+      {
+        "player_in_id": "player:2025-26:373",
+        "player_out_id": "player:2025-26:260"
+      },
+      {
+        "player_in_id": "player:2025-26:449",
+        "player_out_id": "player:2025-26:82"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-26T19:58:16Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2026-04-24T17:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw34:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw34-sol-evidence-v1",
+          "content_sha256": "d197d1aed7216df6c64620659722ac5928c2de076c02c2169ca024e439a7d478"
+        }
+      ],
+      "input_sha256": "d197d1aed7216df6c64620659722ac5928c2de076c02c2169ca024e439a7d478",
+      "rendered_prompt_sha256": "342605cb78514cd4044232320dfd32991672343391f21ff1e3a48ea4001d2c6c"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw34-sol-evidence-v1",
+          "content_sha256": "f6b995d947a4c1b44936b0e4ffc5e73be40b63715bd86267c67cc4dfaa308e07"
+        },
+        "call_id": "model:gw34-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "342605cb78514cd4044232320dfd32991672343391f21ff1e3a48ea4001d2c6c",
+        "response_sha256": "0e969ea3cdf5c2ff5046a275d9bb5e9a19e12035961dceaf325c0deb3640c0de",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T19:58:16Z",
+    "observed_episode_sha256": "ae183e74aede2a0ae43f01ed45cd1e9c4cc27b7d72772c6f528e2642bfbdcb87",
+    "output": {
+      "output_sha256": "707481e8045ccc1b2482bd50afa8a3dee3c61ede603634b833024a3f64713268",
+      "response_ref": {
+        "artifact_id": "cached-response:gw34-sol-evidence-v1",
+        "content_sha256": "f6b995d947a4c1b44936b0e4ffc5e73be40b63715bd86267c67cc4dfaa308e07"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw34-sol-evidence-v1",
+        "content_sha256": "707481e8045ccc1b2482bd50afa8a3dee3c61ede603634b833024a3f64713268"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw34-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw34-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw34-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "efad847e05a311568c82c8947f6d1d86026ee86f",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim-gw34-timber-out",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:8",
+        "provenance": {
+          "content_hash_sha256": "3c101bd595c6ea7def67e0a15fd97642cdad0ef87bed768ad9296af673582414",
+          "source_ids": [
+            "ffs-gw34-timber-out-2026-04-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-26T19:25:00Z",
+        "claim_id": "claim-gw34-timber-out",
+        "claim_text": "Jurrien Timber is unavailable for Arsenal's GW34 clash with Newcastle United.",
+        "confidence": 0.99,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:ffs-gw34-timber-out-2026-04-24",
+        "expires_at": "2026-04-27T23:59:59Z",
+        "observed_at": "2026-07-26T19:25:00Z",
+        "provenance": {
+          "content_hash_sha256": "3c101bd595c6ea7def67e0a15fd97642cdad0ef87bed768ad9296af673582414",
+          "source_ids": [
+            "ffs-gw34-timber-out-2026-04-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-04-24T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "707481e8045ccc1b2482bd50afa8a3dee3c61ede603634b833024a3f64713268",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "No start-probability adjustment is proposed because reducing the 0.8337 baseline to 0.0 would exceed the policy cap."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw34-timber-expected-minutes",
+        "after_value": 0.0,
+        "available_at": "2026-07-26T19:58:16Z",
+        "before_value": 43.0,
+        "confidence": 0.99,
+        "expires_at": "2026-04-27T23:59:59Z",
+        "observed_at": "2026-07-26T19:58:16Z",
+        "player_uid": "player:2025-26:8",
+        "provenance": {
+          "source_ids": [
+            "ffs-gw34-timber-out-2026-04-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-07-26T19:58:16Z",
+        "rationale": "The cited team-news passage confirms Timber is out of the GW34 fixture, so his expected minutes should be reduced to zero.",
+        "signal_ids": [
+          "signal:adjustment:gw34-timber-expected-minutes"
+        ],
+        "status": "proposed",
+        "target": "expected_minutes",
+        "unit": "minutes"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": [
+      {
+        "available_at": "2026-07-26T19:58:16Z",
+        "claim_ids": [
+          "claim-gw34-timber-out"
+        ],
+        "interpretation": "The cited team-news passage confirms Timber is out of the GW34 fixture, so his expected minutes should be reduced to zero.",
+        "observed_at": "2026-07-26T19:58:16Z",
+        "player_uid": "player:2025-26:8",
+        "provenance": {
+          "source_ids": [
+            "ffs-gw34-timber-out-2026-04-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-04-24T00:00:00Z",
+        "signal_id": "signal:adjustment:gw34-timber-expected-minutes"
+      }
+    ]
+  }
+}

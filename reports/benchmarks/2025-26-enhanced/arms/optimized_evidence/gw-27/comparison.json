@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "0b3ca11e22fce141c90e6f6bd95f1570edcd807f9d1a870f09755fc86a6693e8",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 36,
+  "agent_vs_canonical_delta": -7,
+  "canonical_gross_points": 43,
+  "canonical_tree_sha256_after": "2b519051a9e697c7e3495ecd549a0d0f47ef8518071c9c578b75c1050fd90f2a",
+  "canonical_tree_sha256_before": "2b519051a9e697c7e3495ecd549a0d0f47ef8518071c9c578b75c1050fd90f2a",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "586851957a43037c72ee396e958341b803c0bb2a6b8c1e1b4181f3248f8a7689",
+  "content_sha256": "1d4b6b2cbdab80ab4be6a2c78ab4715122af53659a8b29284b9499e001fb721e",
+  "evidence_run_sha256": "db27421b060d14c4b7e60029fbd68ea933db0bd9746b509a4bcbb072f14684e7",
+  "experiment_id": "2025-26-enhanced-gw27-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 27,
+  "hit_cost": 0,
+  "host_bundle_sha256": "7b734a606687ceed66436be57bed6374d17c71a18f5bf53ae322ab714b68c874",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "fitness_signal_was_nonverbal",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "f42b602cbbaccadf270f8f38857e8f0592cc99324121489f63d092917009eafb",
+  "plan_sha256": "9a90fe8d8d1f7f25d3c15a35ea93659881ef00615776692af5b3cca00b56dfc1",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Marc Guéhi",
+      "player_out": "Neco Williams"
+    }
+  ],
+  "solver_input_sha256": "f697a101714aca88109174137f85e33907a5d952c925b69f40a4d32c2fa27f95",
+  "solver_output_sha256": "a061494a41162d0d710a82fce15b5126a27e82566d0e838ee2b5d85da165cc5d",
+  "starting_state_sha256": "c4330a7e8862ec8a8ccb434da5c9ca4b8a5f996a18a0082468ae63dc2e4a4b44"
+}

@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "9ff1fea57c748e0946f4af83ef271178800ef944a0643b9b01564ff8244be9f0",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 39,
+  "agent_vs_canonical_delta": -6,
+  "canonical_gross_points": 45,
+  "canonical_tree_sha256_after": "af52a0426b7a5a77b090a4ecc29079fb95521af53952429ccde7e57bf5ced77b",
+  "canonical_tree_sha256_before": "af52a0426b7a5a77b090a4ecc29079fb95521af53952429ccde7e57bf5ced77b",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "224a649298debaa31b98803c29b2728e46c1ac024ef3a6029340ae2909bf2892",
+  "content_sha256": "1e6991a4fcca3e084998118cb4a28acf31c5ce78977708b1ea259be4465da524",
+  "evidence_run_sha256": "fc0e5e744b38631d61165fa872e57288f09de50868a3583fe7a6f4fed548735c",
+  "experiment_id": "2025-26-enhanced-gw30-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 30,
+  "hit_cost": 0,
+  "host_bundle_sha256": "637637adb8ffd1ee6e916409c7f3cd8315897a7a40941af0062d3f21077fdae0",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "general_rotation_warning_not_player_specific",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "40de50c3efdd21dc61adaa11717f0ec3435ac0eba5cbf7c6ed9cb65933c28ba2",
+  "plan_sha256": "84ce4f79a685f65a267fec745cc8cc333eb3a50d7d243c3abb9fd216838cb58c",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Dean Henderson",
+      "player_out": "Jordan Pickford"
+    }
+  ],
+  "solver_input_sha256": "c85af561f3e400ae72416eebf05e6816f426fe046af804ba76c331e48b207431",
+  "solver_output_sha256": "b30c6b68d8f436b2b20f389d5cb6d639e9ce48efe190b50d8d95c838094c2bd1",
+  "starting_state_sha256": "98d4cdfddfb8a422eb605e98ab2220b4941785de1406e3d3ae919ce74ac62403"
+}

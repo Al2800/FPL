@@ -1,0 +1,48 @@
+{
+  "adapter_audit_sha256": "c837b74bbbeabebb5675a5f967cc721779eff106294de04416c38eb72747d0af",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 82,
+  "agent_vs_canonical_delta": 3,
+  "canonical_gross_points": 79,
+  "canonical_tree_sha256_after": "2733586d6b58bbe95464c32c3278e16e08a66cf07f5cda64ed30b523f793a5f6",
+  "canonical_tree_sha256_before": "2733586d6b58bbe95464c32c3278e16e08a66cf07f5cda64ed30b523f793a5f6",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "c99b3cbad9bdc69519f1027b8a5361b1d4a38fb244daffe312927aebecd326a3",
+  "content_sha256": "11bf588ea3f8db89d13bc6650b7114ed143a634a1b2eedfffe9a0bc3ea300f7a",
+  "evidence_run_sha256": "6a7af15d6b445aaaad7f2658f5a4c6698c04843ccac4f77fc6bf0e3671caf80f",
+  "experiment_id": "2025-26-enhanced-gw33-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 33,
+  "hit_cost": 0,
+  "host_bundle_sha256": "4ace7750aab080fbcbced919ff0da0e63a301819d2ca2ca6ef2fe06f2c3bf94c",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "724da2b5d0b51baaf1f32532d23ae98129b9b7ca6418f02fabbbf0abe5e62dc2",
+  "plan_sha256": "14aa98a05d93c25d5f7cbf4d57e53a92f23f67acfc399af3402119b5b4618ad8",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Erling Haaland",
+      "player_out": "Igor Thiago Nascimento Rodrigues"
+    },
+    {
+      "player_in": "Matheus Nunes",
+      "player_out": "Virgil van Dijk"
+    },
+    {
+      "player_in": "Pascal Groß",
+      "player_out": "Bruno Borges Fernandes"
+    }
+  ],
+  "solver_input_sha256": "c2b2faf95525452db09d21099d7347ceda86207458064c799b3606cc17360748",
+  "solver_output_sha256": "1e03baf9100f8f11e11b7795556531ad5d46218a500899c2f63e0b4e2ebda885",
+  "starting_state_sha256": "820dcef772f166d9f78f4d6c13d384f0ee39a719bc93f0d1fe563b839a31ba93"
+}

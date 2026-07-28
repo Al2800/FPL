@@ -1,0 +1,150 @@
+{
+  "bank": 0.5,
+  "chip_history": [],
+  "chips_available": [
+    "wildcard_sh",
+    "free_hit_sh",
+    "triple_captain_sh",
+    "bench_boost_sh"
+  ],
+  "content_sha256": "2337aa3a0d0e7280a01d3c6dfbe7e99c8eafcaa81e74cc62054cabb62b741811",
+  "cumulative_points": 1994,
+  "free_transfers": 1,
+  "gameweek": 37,
+  "origin": {
+    "seed_id": "benchmark-v0-structured-prior-gw1-counterfactual",
+    "seed_sha256": "b9693afe9cfb1984d465be7abe23240b567e1323391d8e7b3726576b4928f591",
+    "type": "controlled_shared_seed"
+  },
+  "policy_arm": "evidence_agent",
+  "previous_state_sha256": "fe08433bacc01f5f4e3a08b4915be764070cc7fbb762536d01b737ff7adf5db9",
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "squad": [
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 7.2,
+      "player_id": "player:2025-26:21",
+      "position": "MID",
+      "purchase_price": 7.2,
+      "selling_price": 7.2
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "current_price": 5.1,
+      "player_id": "player:2025-26:253",
+      "position": "GKP",
+      "purchase_price": 5.0,
+      "selling_price": 5.0
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "current_price": 5.2,
+      "player_id": "player:2025-26:257",
+      "position": "DEF",
+      "purchase_price": 5.1,
+      "selling_price": 5.1
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 5.1,
+      "player_id": "player:2025-26:260",
+      "position": "DEF",
+      "purchase_price": 5.2,
+      "selling_price": 5.1
+    },
+    {
+      "club_id": "team:2025-26:10",
+      "current_price": 5.9,
+      "player_id": "player:2025-26:329",
+      "position": "MID",
+      "purchase_price": 5.7,
+      "selling_price": 5.8
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 5.3,
+      "player_id": "player:2025-26:407",
+      "position": "DEF",
+      "purchase_price": 5.3,
+      "selling_price": 5.3
+    },
+    {
+      "club_id": "team:2025-26:13",
+      "current_price": 14.7,
+      "player_id": "player:2025-26:430",
+      "position": "FWD",
+      "purchase_price": 14.6,
+      "selling_price": 14.6
+    },
+    {
+      "club_id": "team:2025-26:14",
+      "current_price": 10.4,
+      "player_id": "player:2025-26:449",
+      "position": "MID",
+      "purchase_price": 10.3,
+      "selling_price": 10.3
+    },
+    {
+      "club_id": "team:2025-26:2",
+      "current_price": 7.5,
+      "player_id": "player:2025-26:47",
+      "position": "MID",
+      "purchase_price": 7.0,
+      "selling_price": 7.2
+    },
+    {
+      "club_id": "team:2025-26:1",
+      "current_price": 7.2,
+      "player_id": "player:2025-26:5",
+      "position": "DEF",
+      "purchase_price": 6.9,
+      "selling_price": 7.0
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "current_price": 4.6,
+      "player_id": "player:2025-26:502",
+      "position": "GKP",
+      "purchase_price": 5.0,
+      "selling_price": 4.6
+    },
+    {
+      "club_id": "team:2025-26:19",
+      "current_price": 4.1,
+      "player_id": "player:2025-26:610",
+      "position": "DEF",
+      "purchase_price": 4.5,
+      "selling_price": 4.1
+    },
+    {
+      "club_id": "team:2025-26:19",
+      "current_price": 7.7,
+      "player_id": "player:2025-26:624",
+      "position": "FWD",
+      "purchase_price": 7.6,
+      "selling_price": 7.6
+    },
+    {
+      "club_id": "team:2025-26:20",
+      "current_price": 4.2,
+      "player_id": "player:2025-26:749",
+      "position": "FWD",
+      "purchase_price": 4.6,
+      "selling_price": 4.2
+    },
+    {
+      "club_id": "team:2025-26:6",
+      "current_price": 5.6,
+      "player_id": "player:2025-26:783",
+      "position": "MID",
+      "purchase_price": 5.5,
+      "selling_price": 5.5
+    }
+  ],
+  "state_id": "policy-state:benchmark-v0-structured-prior-gw1-counterfactual:evidence_agent:gw37:336eae2ec8d6",
+  "status": "active",
+  "transition_id": "state-transition:2025-26:gw36:evidence_agent:336eae2ec8d6"
+}

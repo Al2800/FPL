@@ -1,0 +1,305 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_challenger",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw38-sol-challenger-v1",
+      "content_sha256": "d6a531792ffbd9d8f9a2db35d84946c3cbaf25170724d0903f5c8814654fb727",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "turn_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "6f6c9f0f497addd3f07c1748c9fdafadf5b98d22ec18b37ee70875ea4ef1924f",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "0.144.6",
+        "completed_at": "2026-07-26T20:24:25Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "6f6c9f0f497addd3f07c1748c9fdafadf5b98d22ec18b37ee70875ea4ef1924f",
+        "response_sha256": "185bb27f6ce361ca394348fb66b415bc95e34c86a003aca904d75edf4659331d",
+        "structured_output": {
+          "escalation_outcome": "dismissed",
+          "notes": "The vague possibility of a return to training and absence of any selection clue support abstention because they do not justify a defensible adjustment to Timber's expected minutes or start probability.",
+          "review_id": "review:gw38-sol-challenger-v1",
+          "reviewed_adjustment_ids": [],
+          "role": "challenger",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 1800,
+          "output_tokens": 120,
+          "tool_calls": 0,
+          "total_tokens": 1920,
+          "wall_clock_ms": 1200
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw38-sol-challenger-v1",
+      "content_sha256": "789b548a57644eb7d83cd80ec32936123e72f6d44c43826be230f66eb82061ea",
+      "payload": {
+        "approval_gate": {
+          "automatic_approval_allowed": false,
+          "confidence_downgraded": false,
+          "force_rerun": false,
+          "notes": [
+            "review:gw38-sol-challenger-v1:dismissed"
+          ],
+          "requires_human_review": false,
+          "unresolved_challenges": []
+        },
+        "authority": "review_only_not_applied",
+        "content_sha256": "789b548a57644eb7d83cd80ec32936123e72f6d44c43826be230f66eb82061ea",
+        "proposal_sha256": "d0f0a7b7e6218d7009a1f5bde20c631cad422afac9d18d2d2c6e550b5c54fe51",
+        "review": {
+          "agent_run_id": "gw38-sol-evidence-v1",
+          "available_at": "2026-07-26T20:24:25Z",
+          "escalation_outcome": "dismissed",
+          "notes": "The vague possibility of a return to training and absence of any selection clue support abstention because they do not justify a defensible adjustment to Timber's expected minutes or start probability.",
+          "observed_at": "2026-07-26T20:24:25Z",
+          "provenance": {
+            "agent_run_id": "gw38-sol-evidence-v1",
+            "source_ids": [
+              "gpt-5.6-sol-challenger"
+            ],
+            "transformation_version": "challenger-agent-v1"
+          },
+          "review_id": "review:gw38-sol-challenger-v1"
+        },
+        "role": "challenger",
+        "schema_version": "1.0",
+        "unopposed_proposed_adjustment_ids": []
+      }
+    }
+  },
+  "content_sha256": "38d545c8c195557f8c685c3e01f17bc3da7c5503ed57e1402833b0cb99824827",
+  "run_id": "gw38-sol-challenger-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.0,
+    "banked_option_units": 2,
+    "hit_cost": 0,
+    "immediate_objective": 59.79,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:84",
+        "player:2025-26:749",
+        "player:2025-26:348"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:253",
+        "player:2025-26:5",
+        "player:2025-26:260",
+        "player:2025-26:373",
+        "player:2025-26:72",
+        "player:2025-26:449",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:783",
+        "player:2025-26:430",
+        "player:2025-26:249"
+      ],
+      "vice_captain_id": "player:2025-26:449"
+    },
+    "next_gameweek_free_transfers": 3,
+    "objective": 63.39,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "challenger",
+    "available_at": "2026-07-26T20:24:25Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 1800,
+        "output_tokens": 120,
+        "tool_calls": 0,
+        "total_tokens": 1920,
+        "wall_clock_ms": 1200
+      }
+    },
+    "decision_cutoff": "2026-05-24T13:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw38:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw38-sol-challenger-v1",
+          "content_sha256": "afa5bb44b057781f781da11ab45e8c3fc06b3fbd59b8f0dc926c05f2c4ca4659"
+        }
+      ],
+      "input_sha256": "afa5bb44b057781f781da11ab45e8c3fc06b3fbd59b8f0dc926c05f2c4ca4659",
+      "rendered_prompt_sha256": "6f6c9f0f497addd3f07c1748c9fdafadf5b98d22ec18b37ee70875ea4ef1924f"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw38-sol-challenger-v1",
+          "content_sha256": "d6a531792ffbd9d8f9a2db35d84946c3cbaf25170724d0903f5c8814654fb727"
+        },
+        "call_id": "model:gw38-sol-challenger-v1",
+        "input_tokens": 1800,
+        "output_tokens": 120,
+        "request_sha256": "6f6c9f0f497addd3f07c1748c9fdafadf5b98d22ec18b37ee70875ea4ef1924f",
+        "response_sha256": "185bb27f6ce361ca394348fb66b415bc95e34c86a003aca904d75edf4659331d",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T20:24:25Z",
+    "observed_episode_sha256": "34a9237f5bb0354583fdd1dd250a6b0ce00c27ef71846220a88afaf9123259ab",
+    "output": {
+      "output_sha256": "789b548a57644eb7d83cd80ec32936123e72f6d44c43826be230f66eb82061ea",
+      "response_ref": {
+        "artifact_id": "cached-response:gw38-sol-challenger-v1",
+        "content_sha256": "d6a531792ffbd9d8f9a2db35d84946c3cbaf25170724d0903f5c8814654fb727"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw38-sol-challenger-v1",
+        "content_sha256": "789b548a57644eb7d83cd80ec32936123e72f6d44c43826be230f66eb82061ea"
+      }
+    },
+    "policy_arm": "evidence_challenger",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw38-sol-challenger-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "0.144.6",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw38-sol-challenger-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw38-sol-challenger-v1.jsonl",
+    "versions": {
+      "code_commit": "efad847e05a311568c82c8947f6d1d86026ee86f",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+        "prompt_id": "challenger",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "approval_gate": {
+      "automatic_approval_allowed": false,
+      "confidence_downgraded": false,
+      "force_rerun": false,
+      "notes": [
+        "review:gw38-sol-challenger-v1:dismissed"
+      ],
+      "requires_human_review": false,
+      "unresolved_challenges": []
+    },
+    "authority": "review_only_not_applied",
+    "content_sha256": "789b548a57644eb7d83cd80ec32936123e72f6d44c43826be230f66eb82061ea",
+    "proposal_sha256": "d0f0a7b7e6218d7009a1f5bde20c631cad422afac9d18d2d2c6e550b5c54fe51",
+    "review": {
+      "agent_run_id": "gw38-sol-evidence-v1",
+      "available_at": "2026-07-26T20:24:25Z",
+      "escalation_outcome": "dismissed",
+      "notes": "The vague possibility of a return to training and absence of any selection clue support abstention because they do not justify a defensible adjustment to Timber's expected minutes or start probability.",
+      "observed_at": "2026-07-26T20:24:25Z",
+      "provenance": {
+        "agent_run_id": "gw38-sol-evidence-v1",
+        "source_ids": [
+          "gpt-5.6-sol-challenger"
+        ],
+        "transformation_version": "challenger-agent-v1"
+      },
+      "review_id": "review:gw38-sol-challenger-v1"
+    },
+    "role": "challenger",
+    "schema_version": "1.0",
+    "unopposed_proposed_adjustment_ids": []
+  }
+}

@@ -40,6 +40,9 @@ REVIEW_TRANCHES = {
     11: 15,
     16: 20,
     21: 25,
+    26: 30,
+    31: 35,
+    36: 38,
 }
 ARM_IDS = (
     "scout_structured",
@@ -120,6 +123,10 @@ def _later_artifact_version(gameweek: int) -> str:
         22: "sol-v3",
         23: "sol-v2",
         25: "sol-v3",
+        26: "sol-v3",
+        30: "sol-v5",
+        31: "sol-v3",
+        33: "sol-v3",
     }
     return accepted_versions.get(gameweek, "sol-v1")
 
@@ -354,16 +361,19 @@ def _run_owned_structured_week(
             _read(canonical_gw / "shared-context.json")["identity_map_sha256"]
         ),
     )
-    next_feature = _read(
-        canonical_root
-        / f"gw-{gameweek + 1:02d}/setup/shared-feature-state.json"
-    )
+    next_market = solver_input["players"]
+    if gameweek < 38:
+        next_feature = _read(
+            canonical_root
+            / f"gw-{gameweek + 1:02d}/setup/shared-feature-state.json"
+        )
+        next_market = _market_from_feature_state(next_feature)
     successor, transition = transition_policy_state(
         state,
         plan,
         outcome,
         decision_market=solver_input["players"],
-        next_market=_market_from_feature_state(next_feature),
+        next_market=next_market,
         rules=rules,
         ruleset_sha256=rules_hash,
     )
@@ -833,14 +843,14 @@ def run_enhanced_season_replay(
     tranche_totals = _summarise_totals(weeks)
     season_totals = _summarise_totals(season_weeks)
 
+    season_complete = stop_gameweek == 38
     checkpoint_body: dict[str, Any] = {
         "schema_version": "1.0" if start_gameweek == 1 else "1.1",
         "experiment_id": "2025-26-enhanced-season-replay-v1",
         "classification": "exploratory_production_ineligible",
         "start_gameweek": start_gameweek,
         "stop_gameweek": stop_gameweek,
-        "status": "paused_for_review",
-        "next_gameweek": stop_gameweek + 1,
+        "status": "completed" if season_complete else "paused_for_review",
         "input_index_sha256": str(input_index["content_sha256"]),
         "arms": list(ARM_IDS),
         "weeks": [
@@ -861,7 +871,7 @@ def run_enhanced_season_replay(
             "tree_sha256_after": canonical_after,
             "unchanged": True,
         },
-        "review_required_before_continuation": True,
+        "review_required_before_continuation": not season_complete,
         "limitations": [
             "retrospective_optimized_seed_is_production_ineligible",
             "historical_evidence_cases_are_not_preregistered",
@@ -870,6 +880,8 @@ def run_enhanced_season_replay(
             "ratings_and_set_piece_inputs_are_unavailable_in_this_tranche",
         ],
     }
+    if not season_complete:
+        checkpoint_body["next_gameweek"] = stop_gameweek + 1
     if previous_checkpoint is not None:
         checkpoint_body["predecessor_checkpoint"] = {
             "path": (

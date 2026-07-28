@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "902351009df74a66fe7c259b3cfe9ef8acd28e8f8dd032db750018dfb37148af",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 65,
+  "agent_vs_canonical_delta": 12,
+  "canonical_gross_points": 53,
+  "canonical_tree_sha256_after": "1207c2943604b5d68943050a41c0f4ec929d73839ce52eb8b6735e74b1c7d417",
+  "canonical_tree_sha256_before": "1207c2943604b5d68943050a41c0f4ec929d73839ce52eb8b6735e74b1c7d417",
+  "captain": "Bruno Borges Fernandes",
+  "challenger_run_sha256": "6ada5335fe40c9fb3304851d6eb3d3ec3ec33958b5dec0d8173828e66f2e3ace",
+  "content_sha256": "ff2aff920f10e40726f2df1efcc25ef365a4d350b1e6368454c3cb3853a67eb6",
+  "evidence_run_sha256": "4a3d64649d949000041e1c7fd152f45860a5425f1eb17f8f60dd792f0578005b",
+  "experiment_id": "2025-26-enhanced-gw32-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 32,
+  "hit_cost": 0,
+  "host_bundle_sha256": "437e25a263d46d64bcf6a355f6cceb175e6d2ea211abe69851048a1a8e8aa1b8",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_normalized_to_day_start",
+    "midweek_appearance_does_not_guarantee_gw32_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "ec759e417c9a65e2a0f93ad6f7fae8cf8a935da6a094c3972a9d5b49eb489062",
+  "plan_sha256": "abd190a409fa61b8ee32ff955435149a8a346f7815c39151bd9c75597a0298b8",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Bukayo Saka",
+      "player_out": "Enzo Fernández"
+    }
+  ],
+  "solver_input_sha256": "fc4d27c14c7011d88d240f8c34c9f6a6d3e68b9e6bd69655c2f256108bf88d6c",
+  "solver_output_sha256": "eb80557b28d116fd7b94727282460df9ab8cc5a7ba860b0057484afe14da0f02",
+  "starting_state_sha256": "2324f19af87937e59bad234b5ad20a9d20273fc122e8730507c1a276aed659a1"
+}

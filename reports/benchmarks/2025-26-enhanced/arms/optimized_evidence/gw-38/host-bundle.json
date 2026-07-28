@@ -1,0 +1,182 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "efad847e05a311568c82c8947f6d1d86026ee86f",
+  "content_sha256": "f5a80d73e2cfe6e8f262319522a8f32d9d99903172c83c3702766e4f4141e476",
+  "deterministic_candidate": {
+    "bank_after": 1.0,
+    "banked_option_units": 2,
+    "hit_cost": 0,
+    "immediate_objective": 59.79,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:84",
+        "player:2025-26:749",
+        "player:2025-26:348"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:253",
+        "player:2025-26:5",
+        "player:2025-26:260",
+        "player:2025-26:373",
+        "player:2025-26:72",
+        "player:2025-26:449",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:783",
+        "player:2025-26:430",
+        "player:2025-26:249"
+      ],
+      "vice_captain_id": "player:2025-26:449"
+    },
+    "next_gameweek_free_transfers": 3,
+    "objective": 63.39,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2026-05-24T13:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw38:manager-neutral",
+    "observed_episode_sha256": "34a9237f5bb0354583fdd1dd250a6b0ce00c27ef71846220a88afaf9123259ab",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T19:25:00Z",
+      "content_sha256": "923537c5eeda9f12a23853a255be5c6097131d1993eee8c2939b366b5a3651bf",
+      "document_id": "document:ffs-gw38-timber-possible-return-2026-05-21",
+      "observed_at": "2026-07-26T19:25:00Z",
+      "passages": {
+        "passage:claim-gw38-timber-possible-return": "Merino to start training, Timber potentially to follow suit, no clues from Arteta."
+      },
+      "published_at": "2026-05-21T00:00:00Z",
+      "source_id": "ffs-gw38-timber-possible-return-2026-05-21",
+      "title": "FPL Gameweek 38 team news: Thursday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "ee58feda4c7caa70863c09befb56972b4eef59a128390e1f7e7b2df8fa95f388",
+    "deterministic_candidate_sha256": "37be8dd3534ffd769b0da55fd0c79383ca630d3873b1979c712d9eca09e3e455",
+    "episode": {
+      "decision_at": "2026-05-24T13:30:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw38:manager-neutral",
+      "observed_episode_sha256": "34a9237f5bb0354583fdd1dd250a6b0ce00c27ef71846220a88afaf9123259ab",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T19:25:00Z",
+        "content_sha256": "923537c5eeda9f12a23853a255be5c6097131d1993eee8c2939b366b5a3651bf",
+        "document_id": "document:ffs-gw38-timber-possible-return-2026-05-21",
+        "observed_at": "2026-07-26T19:25:00Z",
+        "passages": {
+          "passage:claim-gw38-timber-possible-return": "Merino to start training, Timber potentially to follow suit, no clues from Arteta."
+        },
+        "published_at": "2026-05-21T00:00:00Z",
+        "source_id": "ffs-gw38-timber-possible-return-2026-05-21",
+        "title": "FPL Gameweek 38 team news: Thursday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:8": {
+        "expected_minutes": 33.5,
+        "start_probability": 0.7459
+      }
+    },
+    "player_ids": [
+      "player:2025-26:8"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "ae8aa05c4ceb853ab58069d9572981b8256fb5ed1dff8f2feb031747f6acc66f",
+    "run_id": "gw38-sol-evidence-v1",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-enhanced-gw38-optimized_evidence-evidence-v1",
+  "gameweek": 38,
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "citation_excerpt_is_the_article_summary_not_a_direct_manager_quote",
+    "post_deadline_lineups_explicitly_excluded",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "player_baselines": {
+    "player:2025-26:8": {
+      "expected_minutes": 33.5,
+      "start_probability": 0.7459
+    }
+  },
+  "replay_application": {
+    "arm_id": "optimized_evidence",
+    "reuse_basis": "Frozen evidence and challenger interpretations are decision-independent projection proposals; exact target-player baselines must match before application.",
+    "source_host_bundle_sha256": "31f4cbf9f97fc0bae93c416a3fb8d224fceb653d9d3302ce31169370ce254ccc",
+    "starting_state_sha256": "1cb6514a001e8d79f1eb585c2f5e3075596c33ab335158c6afa4a006d54caf81"
+  },
+  "research_summary": "Jurrien Timber was only potentially close to returning before the final-day deadline, while Arsenal gave no firm selection clues.",
+  "schema_version": "1.0"
+}

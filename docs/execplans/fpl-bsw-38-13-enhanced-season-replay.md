@@ -87,6 +87,17 @@ No GW6 work is authorized by the first tranche.
 - [x] Audit and bind the accepted GW21-GW25 hosted-artifact namespaces.
 - [x] Resume all four arm-owned states and run GW21-GW25.
 - [x] Seal the GW21-GW25 checkpoint and pause before GW26.
+- [x] Audit and bind the accepted GW26-GW30 hosted-artifact namespaces.
+- [x] Resume all four arm-owned states and run GW26-GW30.
+- [x] Seal the GW26-GW30 checkpoint and pause before GW31.
+- [x] Audit and bind the accepted GW31-GW35 hosted-artifact namespaces.
+- [x] Resume all four arm-owned states and run GW31-GW35.
+- [x] Seal the GW31-GW35 checkpoint and pause before GW36.
+- [x] Implement canonical terminal-state semantics for the final Gameweek.
+- [x] Run GW36-GW38 and seal four `season_complete` successor states.
+- [x] Complete the checkpoint without a playable GW39 or continuation field.
+- [x] Pass the focused end-to-end replay validation (26 tests).
+- [x] Pass and retain the final full repository suite (635 passed in 434.99s).
 
 ## Discoveries and decisions
 
@@ -134,8 +145,39 @@ No GW6 work is authorized by the first tranche.
 - Focused enhanced replay and accepted-agent-artifact validation completed 29
   tests successfully after the GW25 extension.
 - The full project suite completed 629 tests successfully in 408.64 seconds after GW25; stderr was empty and JUnit output is retained with the enhanced validation artifacts.
+- Accepted hosted namespaces for GW26-GW30 are respectively `sol-v3`,
+  `sol-v1`, `sol-v1`, `sol-v1`, and `sol-v5`.
+- At GW30 the totals are 1,554 Scout structured, 1,592 optimized structured,
+  1,537 Scout evidence, and 1,627 optimized evidence. The terminal
+  seed/evidence interaction remains +52.
+- Every paired GW26-GW30 evidence effect is zero. GW26 and GW28 applied
+  accepted adjustments without changing realised same-state points; the other
+  weeks abstained.
+- Focused enhanced replay and accepted-agent-artifact validation completed 30
+  tests successfully after the GW30 extension.
+- The full project suite completed 631 tests successfully in 336.92 seconds after GW30; stderr was empty and JUnit output is retained with the enhanced validation artifacts.
+- Accepted hosted namespaces for GW31-GW35 are `sol-v3`, `sol-v1`,
+  `sol-v3`, `sol-v1`, and `sol-v1`. Every paired same-state evidence delta
+  in the tranche was zero.
+- GW34 charged eight hit points to each Scout path and four to each optimized
+  path, proving the final trajectory includes non-trivial transfer penalties.
+- The final GW36-GW38 tranche uses completed `sol-v1` namespaces. Terminal
+  totals are 2,008 Scout structured, 2,053 optimized structured, 1,993 Scout
+  evidence, and 2,106 optimized evidence.
+- GW38 uses the canonical terminal-state convention: it transitions to a
+  `season_complete` state at boundary 39 using the current market. It produces
+  no playable GW39 episode, comparison or checkpoint continuation.
+- Full-season paired same-state evidence deltas sum to 0 on Scout states and
+  +11 on optimized states. Longitudinal evidence differences (-15 and +53)
+  therefore contain substantial inherited path interaction.
+- No arm used a chip. Chip generation and multiweek valuation remain a
+  production-shaped gap rather than a skill claim from this replay.
 
 
+
+
+- The final full repository suite completed 635 tests in 434.99 seconds;
+  retained JUnit output is `reports/benchmarks/2025-26-enhanced/validation/full-suite-gw38.junit.xml` and stderr is empty.
 
 ## Validation commands
 
@@ -145,15 +187,18 @@ No GW6 work is authorized by the first tranche.
     .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 11 --stop-gameweek 15
     .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 16 --stop-gameweek 20
     .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 21 --stop-gameweek 25
+    .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 26 --stop-gameweek 30
+    .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 31 --stop-gameweek 35
+    .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 36 --stop-gameweek 38
     .venv\Scripts\python.exe -m pytest
 
-## Remaining work after tranche five
+## Remaining work after replay completion
 
-Review the causal GW22 difference before authorising GW26. The next
-tranche must resume all four arm-owned GW25 successor states, preserve the
-frozen no-evidence controls, and continue the same later evidence regime unless
-a separately named fork is registered. The broad production evidence
-acquisition and deterministic candidate-boundary retrieval design is tracked
-separately by `FPL-bsw.38.14`; it must not silently alter this frozen
-retrospective path. Chip-policy integration and named data ablations remain
-explicit future layers.
+The enhanced historical replay is complete. After the final full-suite result is
+recorded, close `FPL-bsw.38.13` and begin `FPL-bsw.38.14`. That bead must build
+the prospective evidence system without rewriting this frozen trajectory:
+point-in-time accumulation, deterministic candidate-boundary retrieval,
+independent reviewer shards, expiry/supersession and contradictions, bounded
+decision packets, coverage metrics, and a continuously frozen no-evidence
+shadow. Chip generation, multiweek valuation and named data-family ablations
+remain separate explicit layers for the 2026/27 engine.

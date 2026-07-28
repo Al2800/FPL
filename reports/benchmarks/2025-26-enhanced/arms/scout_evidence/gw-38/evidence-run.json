@@ -1,0 +1,368 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw38-sol-evidence-v1",
+      "content_sha256": "d64c6fca8af2632fc12d0079810dfafebbb50839e7b448da4bb74a34947f3850",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "turn_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "ae8aa05c4ceb853ab58069d9572981b8256fb5ed1dff8f2feb031747f6acc66f",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "0.144.6",
+        "completed_at": "2026-07-26T20:22:13Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "ae8aa05c4ceb853ab58069d9572981b8256fb5ed1dff8f2feb031747f6acc66f",
+        "response_sha256": "5e711c732ad88713d4484ffed0bf7ddf6f59a950a6b296e5765a3eb9c1dada2a",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "Merino to start training, Timber potentially to follow suit, no clues from Arteta.",
+              "citation_excerpt_sha256": "88b2705e7c6e1267541931b4a0829bdffe4715f80eaba18837c2d613c8512c14",
+              "claim_id": "claim-gw38-timber-possible-return",
+              "claim_text": "Jurrien Timber was potentially going to return to training, but Mikel Arteta provided no selection clues.",
+              "confidence": 0.8,
+              "document_id": "document:ffs-gw38-timber-possible-return-2026-05-21",
+              "expires_at": "2026-05-25T23:59:59Z",
+              "passage_id": "passage:claim-gw38-timber-possible-return",
+              "player_uid": "player:2025-26:8",
+              "source_id": "ffs-gw38-timber-possible-return-2026-05-21"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "No adjustment is proposed: the source says only that Timber could potentially return to training and reports no Arteta selection clues, so it does not quantify a defensible change from 33.5 expected minutes or 0.7459 start probability."
+          ],
+          "proposed_adjustments": [],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw38-sol-evidence-v1",
+      "content_sha256": "d0f0a7b7e6218d7009a1f5bde20c631cad422afac9d18d2d2c6e550b5c54fe51",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim-gw38-timber-possible-return",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:8",
+            "provenance": {
+              "content_hash_sha256": "923537c5eeda9f12a23853a255be5c6097131d1993eee8c2939b366b5a3651bf",
+              "source_ids": [
+                "ffs-gw38-timber-possible-return-2026-05-21"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-26T19:25:00Z",
+            "claim_id": "claim-gw38-timber-possible-return",
+            "claim_text": "Jurrien Timber was potentially going to return to training, but Mikel Arteta provided no selection clues.",
+            "confidence": 0.8,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:ffs-gw38-timber-possible-return-2026-05-21",
+            "expires_at": "2026-05-25T23:59:59Z",
+            "observed_at": "2026-07-26T19:25:00Z",
+            "provenance": {
+              "content_hash_sha256": "923537c5eeda9f12a23853a255be5c6097131d1993eee8c2939b366b5a3651bf",
+              "source_ids": [
+                "ffs-gw38-timber-possible-return-2026-05-21"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-05-21T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "d0f0a7b7e6218d7009a1f5bde20c631cad422afac9d18d2d2c6e550b5c54fe51",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "No adjustment is proposed: the source says only that Timber could potentially return to training and reports no Arteta selection clues, so it does not quantify a defensible change from 33.5 expected minutes or 0.7459 start probability."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": []
+      }
+    }
+  },
+  "content_sha256": "a1edc2a53a9c5af3780c765dd0b7c27f56c5bc78896170b389135654baa8fbcb",
+  "run_id": "gw38-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.0,
+    "banked_option_units": 2,
+    "hit_cost": 0,
+    "immediate_objective": 59.79,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:84",
+        "player:2025-26:749",
+        "player:2025-26:348"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 4,
+        "FWD": 2,
+        "MID": 4
+      },
+      "starting_xi_ids": [
+        "player:2025-26:253",
+        "player:2025-26:5",
+        "player:2025-26:260",
+        "player:2025-26:373",
+        "player:2025-26:72",
+        "player:2025-26:449",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:783",
+        "player:2025-26:430",
+        "player:2025-26:249"
+      ],
+      "vice_captain_id": "player:2025-26:449"
+    },
+    "next_gameweek_free_transfers": 3,
+    "objective": 63.39,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 3.6,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-26T20:22:13Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2026-05-24T13:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw38:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw38-sol-evidence-v1",
+          "content_sha256": "ee58feda4c7caa70863c09befb56972b4eef59a128390e1f7e7b2df8fa95f388"
+        }
+      ],
+      "input_sha256": "ee58feda4c7caa70863c09befb56972b4eef59a128390e1f7e7b2df8fa95f388",
+      "rendered_prompt_sha256": "ae8aa05c4ceb853ab58069d9572981b8256fb5ed1dff8f2feb031747f6acc66f"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw38-sol-evidence-v1",
+          "content_sha256": "d64c6fca8af2632fc12d0079810dfafebbb50839e7b448da4bb74a34947f3850"
+        },
+        "call_id": "model:gw38-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "ae8aa05c4ceb853ab58069d9572981b8256fb5ed1dff8f2feb031747f6acc66f",
+        "response_sha256": "5e711c732ad88713d4484ffed0bf7ddf6f59a950a6b296e5765a3eb9c1dada2a",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T20:22:13Z",
+    "observed_episode_sha256": "34a9237f5bb0354583fdd1dd250a6b0ce00c27ef71846220a88afaf9123259ab",
+    "output": {
+      "output_sha256": "d0f0a7b7e6218d7009a1f5bde20c631cad422afac9d18d2d2c6e550b5c54fe51",
+      "response_ref": {
+        "artifact_id": "cached-response:gw38-sol-evidence-v1",
+        "content_sha256": "d64c6fca8af2632fc12d0079810dfafebbb50839e7b448da4bb74a34947f3850"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw38-sol-evidence-v1",
+        "content_sha256": "d0f0a7b7e6218d7009a1f5bde20c631cad422afac9d18d2d2c6e550b5c54fe51"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw38-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "0.144.6",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw38-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw38-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "efad847e05a311568c82c8947f6d1d86026ee86f",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim-gw38-timber-possible-return",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:8",
+        "provenance": {
+          "content_hash_sha256": "923537c5eeda9f12a23853a255be5c6097131d1993eee8c2939b366b5a3651bf",
+          "source_ids": [
+            "ffs-gw38-timber-possible-return-2026-05-21"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-26T19:25:00Z",
+        "claim_id": "claim-gw38-timber-possible-return",
+        "claim_text": "Jurrien Timber was potentially going to return to training, but Mikel Arteta provided no selection clues.",
+        "confidence": 0.8,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:ffs-gw38-timber-possible-return-2026-05-21",
+        "expires_at": "2026-05-25T23:59:59Z",
+        "observed_at": "2026-07-26T19:25:00Z",
+        "provenance": {
+          "content_hash_sha256": "923537c5eeda9f12a23853a255be5c6097131d1993eee8c2939b366b5a3651bf",
+          "source_ids": [
+            "ffs-gw38-timber-possible-return-2026-05-21"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-05-21T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "d0f0a7b7e6218d7009a1f5bde20c631cad422afac9d18d2d2c6e550b5c54fe51",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "No adjustment is proposed: the source says only that Timber could potentially return to training and reports no Arteta selection clues, so it does not quantify a defensible change from 33.5 expected minutes or 0.7459 start probability."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": []
+  }
+}

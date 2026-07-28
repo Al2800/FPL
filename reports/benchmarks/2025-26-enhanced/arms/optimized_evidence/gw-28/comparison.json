@@ -1,0 +1,40 @@
+{
+  "adapter_audit_sha256": "d778600fa88a123a20c3597f87821d36ace2f7fbc5f1858f82ac9fe88a0e6ac0",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 74,
+  "agent_vs_canonical_delta": 7,
+  "canonical_gross_points": 67,
+  "canonical_tree_sha256_after": "08ff23cfb12eca53dc123df4f759687cc2c6df773d0b6f167f71033a4032b532",
+  "canonical_tree_sha256_before": "08ff23cfb12eca53dc123df4f759687cc2c6df773d0b6f167f71033a4032b532",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "e7b94f7aaea56d209024ae342cd1672561c29bfb949ed255970772f199616e0e",
+  "content_sha256": "34bf158a22ef9c360e22e179a5c94fd2e885a8294661ec6201f643a61e888161",
+  "evidence_run_sha256": "c1cc6ea659560b175032f1018c8edd795e79c862a3f5fd1613732057f9982fe6",
+  "experiment_id": "2025-26-enhanced-gw28-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 28,
+  "hit_cost": 0,
+  "host_bundle_sha256": "5868f397386607572f2ebcca81bec06138b276ed839ff64a81608abb257fe1a9",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "4596e9acb17626bd18f1f0506b140d106e394e9ea620d0bdc3782e5d0f202d94",
+  "plan_sha256": "ad8bd1f553d5a112270936fef5eee23357078df67e8c918d7cd36e35c173e6e5",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Virgil van Dijk",
+      "player_out": "Trevoh Chalobah"
+    }
+  ],
+  "solver_input_sha256": "d48b34deb7480bb93f60144a4ee51930e41db5ddf8427b7c24b1e7bf6d9c9a98",
+  "solver_output_sha256": "4725e423ccc6ac3ccbeb24eb6a80c701f8ad40bf94ca1cad5c66573e851a5db1",
+  "starting_state_sha256": "f42b602cbbaccadf270f8f38857e8f0592cc99324121489f63d092917009eafb"
+}

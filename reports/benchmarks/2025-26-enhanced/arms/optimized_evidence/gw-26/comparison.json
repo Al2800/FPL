@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "1e9be1203a741de2a056b757758953be717d77036681a80e4e378bd804931675",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 64,
+  "agent_vs_canonical_delta": -4,
+  "canonical_gross_points": 68,
+  "canonical_tree_sha256_after": "e6499c6931c6b86a0ab08928cd98a0cf7b9dead7b1c402539f16a10ebcec1961",
+  "canonical_tree_sha256_before": "e6499c6931c6b86a0ab08928cd98a0cf7b9dead7b1c402539f16a10ebcec1961",
+  "captain": "Gabriel dos Santos Magalhães",
+  "challenger_run_sha256": "ec7e0a689ba5c851bb0e9d666f666ce36f07b6b784b03e79a041db8d5b08b715",
+  "content_sha256": "2e08b1c612c8d6f71c6d850fe96f2c4de23b7b39aa1c4f885a13ed8f0ea6010a",
+  "evidence_run_sha256": "574073fb6bf5821a3a41de7b6f374da94777581c4f776330a9acdd8987b68fee",
+  "experiment_id": "2025-26-enhanced-gw26-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 26,
+  "hit_cost": 0,
+  "host_bundle_sha256": "a5785e9f2ab63ac089447443ed6c420c34cc0791c454d523af503cce06ea8c48",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "double_gameweek_fixture_count_is_already_encoded_by_the_episode",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "c4330a7e8862ec8a8ccb434da5c9ca4b8a5f996a18a0082468ae63dc2e4a4b44",
+  "plan_sha256": "d0ab70e23d244942cb0372e1a6c12e63b873fd1784d3397dc32c4749571b448f",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Mateus Mané",
+      "player_out": "Rodrigo Muniz Carvalho"
+    }
+  ],
+  "solver_input_sha256": "8d31dbcf4262607fe0c87050e421b2944c46cd9cd60b07a043e8f4ba5b18ebfb",
+  "solver_output_sha256": "035e34b4bc9146d6b17b7ce0abac0671dab165e26b7a886a720da7a88ca3886e",
+  "starting_state_sha256": "01e462b920fd2a3b33a5ac558914739a982f03466c04110dca245ea702acce8f"
+}

@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "0b3ca11e22fce141c90e6f6bd95f1570edcd807f9d1a870f09755fc86a6693e8",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 36,
+  "agent_vs_canonical_delta": -7,
+  "canonical_gross_points": 43,
+  "canonical_tree_sha256_after": "2b519051a9e697c7e3495ecd549a0d0f47ef8518071c9c578b75c1050fd90f2a",
+  "canonical_tree_sha256_before": "2b519051a9e697c7e3495ecd549a0d0f47ef8518071c9c578b75c1050fd90f2a",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "586851957a43037c72ee396e958341b803c0bb2a6b8c1e1b4181f3248f8a7689",
+  "content_sha256": "224efc397153f04d17fc0848587a747fd389c293a62150dc1c5dc581fc757acf",
+  "evidence_run_sha256": "db27421b060d14c4b7e60029fbd68ea933db0bd9746b509a4bcbb072f14684e7",
+  "experiment_id": "2025-26-enhanced-gw27-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 27,
+  "hit_cost": 0,
+  "host_bundle_sha256": "4e5132e29c4d97eb5737d114208202b3ae8b6147ceed23a88e767a51f8c01f19",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "fitness_signal_was_nonverbal",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "f0d5b0797b4856d06623427c0dd5b5ea41076a5796baa74e66915ef0bb0b4aee",
+  "plan_sha256": "9d78375751ba1efb5b2f0694c051601b7c70deddc80644bffdedf7db85e8ccfa",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Marc Guéhi",
+      "player_out": "Pedro Porro Sauceda"
+    }
+  ],
+  "solver_input_sha256": "f68678226791ab66e1c0371cb09029c1df39aedceec9c98b8dcff7cff6ab6d36",
+  "solver_output_sha256": "37b5f30641f31d9832a583cd3c12f53c6f94fe1b19fe2bbfe4588525e288bf39",
+  "starting_state_sha256": "f01f773da9a9ead9af77388ed28ef17b2b4563448114ad609f6bd5d455b8f7da"
+}
