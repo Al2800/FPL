@@ -4,6 +4,9 @@
 **Status:** advisory review — not an ADR; nothing here changes any frozen replay,
 policy or registry entry. Recommendations that carry trade-offs should be
 ratified through `docs/decisions/` before implementation.
+**Implementation:** recommendations R1–R7 are decomposed into bounded,
+agent-claimable work items in
+`docs/reviews/2026-07-review-implementation-handoff.md`.
 
 This review answers four questions posed by the owner:
 
