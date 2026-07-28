@@ -84,6 +84,9 @@ No GW6 work is authorized by the first tranche.
   complete `sol-v3` bundle.
 - [x] Resume all four arm-owned states and run GW16-GW20.
 - [x] Seal the GW16-GW20 checkpoint and pause before GW21.
+- [x] Audit and bind the accepted GW21-GW25 hosted-artifact namespaces.
+- [x] Resume all four arm-owned states and run GW21-GW25.
+- [x] Seal the GW21-GW25 checkpoint and pause before GW26.
 
 ## Discoveries and decisions
 
@@ -119,6 +122,19 @@ No GW6 work is authorized by the first tranche.
 - Focused enhanced replay and agent-fork validation completed 34 tests
   successfully after the GW20 extension.
 - The full project suite completed 627 tests successfully in 414.70 seconds after GW20; stderr was empty and JUnit output is retained with the enhanced validation artifacts.
+- Accepted hosted namespaces for GW21-GW25 are respectively `sol-v3`,
+  `sol-v3`, `sol-v2`, `sol-v1`, and `sol-v3`. Incomplete and invalid versions
+  remain immutable diagnostics and are never selected.
+- At GW25 the totals are 1,278 Scout structured, 1,314 optimized structured,
+  1,268 Scout evidence, and 1,356 optimized evidence. The terminal
+  seed/evidence interaction is +52.
+- GW22 produced the tranche's only non-zero paired evidence effect: +8 on the
+  Scout state and 0 on the optimized state. All other GW21-GW25 same-state
+  effects were zero.
+- Focused enhanced replay and accepted-agent-artifact validation completed 29
+  tests successfully after the GW25 extension.
+- The full project suite completed 629 tests successfully in 408.64 seconds after GW25; stderr was empty and JUnit output is retained with the enhanced validation artifacts.
+
 
 
 ## Validation commands
@@ -128,12 +144,13 @@ No GW6 work is authorized by the first tranche.
     .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 6 --stop-gameweek 10
     .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 11 --stop-gameweek 15
     .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 16 --stop-gameweek 20
+    .venv\Scripts\python.exe -m scripts.run_enhanced_season_replay --start-gameweek 21 --stop-gameweek 25
     .venv\Scripts\python.exe -m pytest
 
-## Remaining work after tranche four
+## Remaining work after tranche five
 
-Review the causal GW17-GW18 differences before authorising GW21. The next
-tranche must resume all four arm-owned GW20 successor states, preserve the
+Review the causal GW22 difference before authorising GW26. The next
+tranche must resume all four arm-owned GW25 successor states, preserve the
 frozen no-evidence controls, and continue the same later evidence regime unless
 a separately named fork is registered. The broad production evidence
 acquisition and deterministic candidate-boundary retrieval design is tracked

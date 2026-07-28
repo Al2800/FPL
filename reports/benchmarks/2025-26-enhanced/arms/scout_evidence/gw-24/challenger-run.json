@@ -1,0 +1,310 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_challenger",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw24-sol-challenger-v1",
+      "content_sha256": "0eaaf137441a2e4b17bdd054606429b0a861b9a0be1b2f7d626ac0d8b0ff90a8",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "8670f95702722a1ecc864a3ad29197b14bbe4a917c61cdbb6a5eb6b9c3531534",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T18:16:53Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "8670f95702722a1ecc864a3ad29197b14bbe4a917c61cdbb6a5eb6b9c3531534",
+        "response_sha256": "8ca54e716a1e9347bfb6fcb5d216103d4fc7ccfb7d3916b80814d0c9e6b98965",
+        "structured_output": {
+          "escalation_outcome": "dismissed",
+          "notes": "The proposal contains no adjustments to review. Its cited passage supports general availability but does not quantify a change from the supplied baseline, and the proposal correctly limits the post-decision observation to retrospective exploratory use.",
+          "review_id": "gw24-sol-challenger-v1",
+          "reviewed_adjustment_ids": [],
+          "role": "challenger",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw24-sol-challenger-v1",
+      "content_sha256": "46f07f3b272c94e2178f92136f3fe8307eb1e697577eda63da53b906e1893643",
+      "payload": {
+        "approval_gate": {
+          "automatic_approval_allowed": false,
+          "confidence_downgraded": false,
+          "force_rerun": false,
+          "notes": [
+            "gw24-sol-challenger-v1:dismissed"
+          ],
+          "requires_human_review": false,
+          "unresolved_challenges": []
+        },
+        "authority": "review_only_not_applied",
+        "content_sha256": "46f07f3b272c94e2178f92136f3fe8307eb1e697577eda63da53b906e1893643",
+        "proposal_sha256": "73d8cef7d3e8468ab5e3a1c04dd056dd6d01a59e15a0996a06068802e0d96c38",
+        "review": {
+          "agent_run_id": "gw24-sol-evidence-v1",
+          "available_at": "2026-07-26T18:16:53Z",
+          "escalation_outcome": "dismissed",
+          "notes": "The proposal contains no adjustments to review. Its cited passage supports general availability but does not quantify a change from the supplied baseline, and the proposal correctly limits the post-decision observation to retrospective exploratory use.",
+          "observed_at": "2026-07-26T18:16:53Z",
+          "provenance": {
+            "agent_run_id": "gw24-sol-evidence-v1",
+            "source_ids": [
+              "gpt-5.6-sol-challenger"
+            ],
+            "transformation_version": "challenger-agent-v1"
+          },
+          "review_id": "gw24-sol-challenger-v1"
+        },
+        "role": "challenger",
+        "schema_version": "1.0",
+        "unopposed_proposed_adjustment_ids": []
+      }
+    }
+  },
+  "content_sha256": "926c94d7dc913a80e4864f67a6d80535e24e9121ea0fcab6e627f5a56233b6f0",
+  "run_id": "gw24-sol-challenger-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.8,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 61.47,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:5",
+        "player:2025-26:226",
+        "player:2025-26:8",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:47",
+        "player:2025-26:329",
+        "player:2025-26:414",
+        "player:2025-26:430",
+        "player:2025-26:136"
+      ],
+      "vice_captain_id": "player:2025-26:82"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 68.67,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:329",
+        "player_out_id": "player:2025-26:488"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "challenger",
+    "available_at": "2026-07-26T18:16:53Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2026-01-31T13:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw24:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw24-sol-challenger-v1",
+          "content_sha256": "6f50a01733e624b8e23f0ba08da265bd214daecb82e65e81383f9fae34164f15"
+        }
+      ],
+      "input_sha256": "6f50a01733e624b8e23f0ba08da265bd214daecb82e65e81383f9fae34164f15",
+      "rendered_prompt_sha256": "8670f95702722a1ecc864a3ad29197b14bbe4a917c61cdbb6a5eb6b9c3531534"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw24-sol-challenger-v1",
+          "content_sha256": "0eaaf137441a2e4b17bdd054606429b0a861b9a0be1b2f7d626ac0d8b0ff90a8"
+        },
+        "call_id": "model:gw24-sol-challenger-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "8670f95702722a1ecc864a3ad29197b14bbe4a917c61cdbb6a5eb6b9c3531534",
+        "response_sha256": "8ca54e716a1e9347bfb6fcb5d216103d4fc7ccfb7d3916b80814d0c9e6b98965",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T18:16:53Z",
+    "observed_episode_sha256": "528e95ce18ac29487525a609a5e98f943f203a0c65152eb3c56c7c4f14c51d01",
+    "output": {
+      "output_sha256": "46f07f3b272c94e2178f92136f3fe8307eb1e697577eda63da53b906e1893643",
+      "response_ref": {
+        "artifact_id": "cached-response:gw24-sol-challenger-v1",
+        "content_sha256": "0eaaf137441a2e4b17bdd054606429b0a861b9a0be1b2f7d626ac0d8b0ff90a8"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw24-sol-challenger-v1",
+        "content_sha256": "46f07f3b272c94e2178f92136f3fe8307eb1e697577eda63da53b906e1893643"
+      }
+    },
+    "policy_arm": "evidence_challenger",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw24-sol-challenger-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw24-sol-challenger-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw24-sol-challenger-v1.jsonl",
+    "versions": {
+      "code_commit": "ef174fe6cf1530aa028f3bdc08b01dbcf3a71a4d",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+        "prompt_id": "challenger",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "approval_gate": {
+      "automatic_approval_allowed": false,
+      "confidence_downgraded": false,
+      "force_rerun": false,
+      "notes": [
+        "gw24-sol-challenger-v1:dismissed"
+      ],
+      "requires_human_review": false,
+      "unresolved_challenges": []
+    },
+    "authority": "review_only_not_applied",
+    "content_sha256": "46f07f3b272c94e2178f92136f3fe8307eb1e697577eda63da53b906e1893643",
+    "proposal_sha256": "73d8cef7d3e8468ab5e3a1c04dd056dd6d01a59e15a0996a06068802e0d96c38",
+    "review": {
+      "agent_run_id": "gw24-sol-evidence-v1",
+      "available_at": "2026-07-26T18:16:53Z",
+      "escalation_outcome": "dismissed",
+      "notes": "The proposal contains no adjustments to review. Its cited passage supports general availability but does not quantify a change from the supplied baseline, and the proposal correctly limits the post-decision observation to retrospective exploratory use.",
+      "observed_at": "2026-07-26T18:16:53Z",
+      "provenance": {
+        "agent_run_id": "gw24-sol-evidence-v1",
+        "source_ids": [
+          "gpt-5.6-sol-challenger"
+        ],
+        "transformation_version": "challenger-agent-v1"
+      },
+      "review_id": "gw24-sol-challenger-v1"
+    },
+    "role": "challenger",
+    "schema_version": "1.0",
+    "unopposed_proposed_adjustment_ids": []
+  }
+}

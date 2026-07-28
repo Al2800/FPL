@@ -1,0 +1,44 @@
+{
+  "adapter_audit_sha256": "4c47216e6472f2fdca6671862a58f800366e12027803f1ed1433a93565090172",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 61,
+  "agent_vs_canonical_delta": 3,
+  "canonical_gross_points": 58,
+  "canonical_tree_sha256_after": "63ba69d46552f19c3199384f0f0e8b8314f9ec2765740c89dc612c27c9bfcc96",
+  "canonical_tree_sha256_before": "63ba69d46552f19c3199384f0f0e8b8314f9ec2765740c89dc612c27c9bfcc96",
+  "captain": "Gabriel dos Santos Magalhães",
+  "challenger_run_sha256": "5f96858005013987c06def2fd0ad235063483f070edb4e49e13dd9c15d46ed3b",
+  "content_sha256": "4b7f80afe72cb18092343aa7a00194a2541158036b51dcda9ed2e1bb1b0ea30f",
+  "evidence_run_sha256": "15d95344b6879d4005be1b057806c7a059512dbc7bbde3fd8241a456135eb7a2",
+  "experiment_id": "2025-26-enhanced-gw25-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 25,
+  "hit_cost": 0,
+  "host_bundle_sha256": "9fd0a71ac69c3eb88c90e7929e54c1e9b7377332cdf79c71be26d9c685021072",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "63d40284718e7960558c9acc7231ecc4748a080a4fe8f4dc3a07830525835647",
+  "plan_sha256": "cef52bc9c86e2ec86e487ba376ece3c3705f33016e5267c15ffaa47ae6574686",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Gabriel dos Santos Magalhães",
+      "player_out": "James Tarkowski"
+    },
+    {
+      "player_in": "Enzo Fernández",
+      "player_out": "Florian Wirtz"
+    }
+  ],
+  "solver_input_sha256": "0f1e27cd0b9671e3f28564ec4a833acdd708cd6595e07cce5358bb1e1084bc66",
+  "solver_output_sha256": "4182a4b8fccb19e819837655f3d2d9427ae801baa3d60845fea8be7eaf1b9c20",
+  "starting_state_sha256": "3afaa7a5c389c87a97501b926a6b8dead7723a3bf18f13c2ed5113adece1904e"
+}

@@ -25,6 +25,9 @@ SECOND_CHECKPOINT_SHA256 = (
 THIRD_CHECKPOINT_SHA256 = (
     "be2e5d45d4f7db41e5f7b71e077b57334f9406b066eff98849f359033f9e2d16"
 )
+FOURTH_CHECKPOINT_SHA256 = (
+    "f69e3890193899634c74051706b3e4baf94bdf95c1eeb15ffd576387bc6ce5a7"
+)
 
 
 def _runner_kwargs() -> dict:
@@ -129,14 +132,37 @@ def test_gw16_gw20_checkpoint_binds_predecessor_and_pauses() -> None:
         ] == terminal["arms"][arm_id]["cumulative_points"]
 
 
-def test_later_artifact_version_uses_clean_gw20_repair() -> None:
+def test_gw21_gw25_checkpoint_binds_predecessor_and_pauses() -> None:
+    checkpoint = _read(REPORT_ROOT / "checkpoints/gw-21-gw-25.json")
+    assert checkpoint["content_sha256"] == artifact_hash(checkpoint)
+    assert checkpoint["start_gameweek"] == 21
+    assert checkpoint["stop_gameweek"] == 25
+    assert checkpoint["next_gameweek"] == 26
+    assert checkpoint["status"] == "paused_for_review"
+    assert checkpoint["predecessor_checkpoint"]["content_sha256"] == (
+        FOURTH_CHECKPOINT_SHA256
+    )
+    assert checkpoint["canonical_artifacts"]["unchanged"] is True
+    terminal = _read(REPORT_ROOT / "weeks/gw-25/comparison.json")
+    for arm_id in ARM_IDS:
+        assert checkpoint["season_to_date_totals"][arm_id][
+            "terminal_cumulative_points"
+        ] == terminal["arms"][arm_id]["cumulative_points"]
+
+
+def test_later_artifact_version_uses_only_accepted_namespaces() -> None:
     assert _later_artifact_version(19) == "sol-v1"
     assert _later_artifact_version(20) == "sol-v3"
+    assert _later_artifact_version(21) == "sol-v3"
+    assert _later_artifact_version(22) == "sol-v3"
+    assert _later_artifact_version(23) == "sol-v2"
+    assert _later_artifact_version(24) == "sol-v1"
+    assert _later_artifact_version(25) == "sol-v3"
 
 def test_each_week_has_identical_inputs_and_independent_continuous_state() -> None:
     previous = None
     state_paths: set[str] = set()
-    for gameweek in range(1, 21):
+    for gameweek in range(1, 26):
         week = _read(
             REPORT_ROOT / f"weeks/gw-{gameweek:02d}/comparison.json"
         )
@@ -157,11 +183,11 @@ def test_each_week_has_identical_inputs_and_independent_continuous_state() -> No
                     == arm["starting_state_sha256"]
                 )
         previous = week["arms"]
-    assert len(state_paths) == len(ARM_IDS) * 20
+    assert len(state_paths) == len(ARM_IDS) * 25
 
 
 def test_reported_factorial_effects_are_exact() -> None:
-    for gameweek in range(1, 21):
+    for gameweek in range(1, 26):
         week = _read(
             REPORT_ROOT / f"weeks/gw-{gameweek:02d}/comparison.json"
         )
@@ -228,5 +254,19 @@ def test_fourth_tranche_refuses_to_cross_gw20_or_skip_boundary() -> None:
         run_enhanced_season_replay(
             start_gameweek=17,
             stop_gameweek=20,
+            **_runner_kwargs(),
+        )
+
+def test_fifth_tranche_refuses_to_cross_gw25_or_skip_boundary() -> None:
+    with pytest.raises(EvidenceForkError, match="hard review stop at GW25"):
+        run_enhanced_season_replay(
+            start_gameweek=21,
+            stop_gameweek=26,
+            **_runner_kwargs(),
+        )
+    with pytest.raises(EvidenceForkError, match="approved review boundary"):
+        run_enhanced_season_replay(
+            start_gameweek=22,
+            stop_gameweek=25,
             **_runner_kwargs(),
         )

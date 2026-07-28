@@ -1,0 +1,40 @@
+{
+  "adapter_audit_sha256": "e709120d9d8cf25d26ea28ca2f3071b19cafcbdf7a4fe8325fd8ce5e906af9b4",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 41,
+  "agent_vs_canonical_delta": 0,
+  "canonical_gross_points": 41,
+  "canonical_tree_sha256_after": "6536be43f08825fdcf3387511f234c4c7a1cb72aaa3536ad9aab5472c0f1a924",
+  "canonical_tree_sha256_before": "6536be43f08825fdcf3387511f234c4c7a1cb72aaa3536ad9aab5472c0f1a924",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "1f0920f543bf2aff5e8e1b0f6d8be84e0100c6fb56106c6e0f80a83160fdadee",
+  "content_sha256": "f175eabab639095c6283c18117a0592ec3f3622b92bfc25965a3f2dc4e405d56",
+  "evidence_run_sha256": "2b3c9597cc4d21bb6de02232361d2e9ff3c25ab7a260eb2a4f9cfbd4b1c4b6be",
+  "experiment_id": "2025-26-enhanced-gw23-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 23,
+  "hit_cost": 0,
+  "host_bundle_sha256": "206823e62fa719028a2d07a675a60739713509d9fce8160fd589d76e3c655749",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "b9ae17be50d453c7cc0e2f474fc829de6807a8c6ad113ca4212cc1ac5b36b288",
+  "plan_sha256": "31997adc6c38301f44c69a7d8df9441acf71a3ff9c3833d35cfef1c34072cce2",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Nathan Collins",
+      "player_out": "Matheus Nunes"
+    }
+  ],
+  "solver_input_sha256": "b6212c5d6a7e0bda88ad36cdaf2298bcf08581071fd7284176d295e1b398c01b",
+  "solver_output_sha256": "45c370b39702f087589449c8c04fedf44d8faf4d065e133daf6b03ebe4cb5917",
+  "starting_state_sha256": "66bcc554c214210639c1fc9546e6c8bf55befa2e6ccf507d6154dbb019b58886"
+}

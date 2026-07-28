@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "59b7ce886d49cd5776b76fbc93c57152dc3ea93ea30c77c9394faed3b5bf4cc4",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 70,
+  "agent_vs_canonical_delta": 15,
+  "canonical_gross_points": 55,
+  "canonical_tree_sha256_after": "f38afd47cec47895abc55c4a52f16e847fbca5cdd8977f802de218b82cee7dca",
+  "canonical_tree_sha256_before": "f38afd47cec47895abc55c4a52f16e847fbca5cdd8977f802de218b82cee7dca",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "5df36bd1a012f2091a8bac89006086f069a19321b0c8ab4340ac1c07993e900b",
+  "content_sha256": "3f3be93e33b226a3d0cb6a5fe4633b264093619c0fe99368b86e33184dc24ac4",
+  "evidence_run_sha256": "86590f64685f1db32db0a9a5027658b70f228e4ad94f122dc0db79b60d4c1c0f",
+  "experiment_id": "2025-26-enhanced-gw21-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 21,
+  "hit_cost": 0,
+  "host_bundle_sha256": "38e19431ea06b9e09b2e64d1a556badf4fa55ec745de589a3e1e572f1c64deb5",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "positive_semenyo_evidence_cannot_create_uplift",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "bfb700303fd9885d9771eea233e40ca2172bd6095c5d02fbe99f42be8c7f6dba",
+  "plan_sha256": "9c56272c44fd411d3f826b73d28a0550a92b77d25d6d487f39f6c97444f380b4",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Igor Thiago Nascimento Rodrigues",
+      "player_out": "Nick Woltemade"
+    }
+  ],
+  "solver_input_sha256": "5ce9768a9e39e08cc1ab1da4c28be23bb8907b23f7af1a91e5b7f98f393ac355",
+  "solver_output_sha256": "7246275f915bd790b9476673b4c1cd3ff65a714729c2ed08799d7d64954b3810",
+  "starting_state_sha256": "034342564d00e20ab442e6e0c018df4173dfdfb8975b8160f31e2033dbc09a82"
+}

@@ -1,0 +1,220 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "fa509e416367edb6871ac24d42f934bf2e6b24dd",
+  "content_sha256": "38e19431ea06b9e09b2e64d1a556badf4fa55ec745de589a3e1e572f1c64deb5",
+  "deterministic_candidate": {
+    "bank_after": 1.0,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 61.65,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:226",
+        "player:2025-26:8",
+        "player:2025-26:260",
+        "player:2025-26:414",
+        "player:2025-26:82",
+        "player:2025-26:47",
+        "player:2025-26:21",
+        "player:2025-26:450",
+        "player:2025-26:430",
+        "player:2025-26:136"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 68.85,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:136",
+        "player_out_id": "player:2025-26:714"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2026-01-06T18:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw21:manager-neutral",
+    "observed_episode_sha256": "b9b4f80a86d8b136a7b4e3f8694b831d7278030a32a5dad0b23a2769a1523be3",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "9d188696064c2f79a9d110001111b31f89176d7313b06b2873f778bf472529ea",
+      "document_id": "document:ffs-gw21-gvardiol-long-term-2026-01-06",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw21-gvardiol-long-term": "Out for a long time."
+      },
+      "published_at": "2026-01-06T00:00:00Z",
+      "source_id": "ffs-gw21-gvardiol-long-term-2026-01-06",
+      "title": "FPL Gameweek 21 team news: Tuesday's live injury updates"
+    },
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "4820e2ab8afbb2e4fda4040d0ccef9bd0df84f4e24a50534407439a088a43cc5",
+      "document_id": "document:ffs-gw21-semenyo-last-game-2026-01-06",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw21-semenyo-available": "Bournemouth: Kluivert undergoes knee surgery, Semenyo set for last game"
+      },
+      "published_at": "2026-01-06T00:00:00Z",
+      "source_id": "ffs-gw21-semenyo-last-game-2026-01-06",
+      "title": "FPL Gameweek 21 team news: Tuesday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "00fb81b36a3562935cda6394b1a7b3f3908090f6761b5c57d3f76361503e9aec",
+    "deterministic_candidate_sha256": "5f77f94eec77f5fdffd000da145890c4ea8371b6245315c54ab3a5f00eee58a1",
+    "episode": {
+      "decision_at": "2026-01-06T18:30:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw21:manager-neutral",
+      "observed_episode_sha256": "b9b4f80a86d8b136a7b4e3f8694b831d7278030a32a5dad0b23a2769a1523be3",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T14:47:00Z",
+        "content_sha256": "9d188696064c2f79a9d110001111b31f89176d7313b06b2873f778bf472529ea",
+        "document_id": "document:ffs-gw21-gvardiol-long-term-2026-01-06",
+        "observed_at": "2026-07-26T14:47:00Z",
+        "passages": {
+          "passage:claim-gw21-gvardiol-long-term": "Out for a long time."
+        },
+        "published_at": "2026-01-06T00:00:00Z",
+        "source_id": "ffs-gw21-gvardiol-long-term-2026-01-06",
+        "title": "FPL Gameweek 21 team news: Tuesday's live injury updates"
+      },
+      {
+        "available_at": "2026-07-26T14:47:00Z",
+        "content_sha256": "4820e2ab8afbb2e4fda4040d0ccef9bd0df84f4e24a50534407439a088a43cc5",
+        "document_id": "document:ffs-gw21-semenyo-last-game-2026-01-06",
+        "observed_at": "2026-07-26T14:47:00Z",
+        "passages": {
+          "passage:claim-gw21-semenyo-available": "Bournemouth: Kluivert undergoes knee surgery, Semenyo set for last game"
+        },
+        "published_at": "2026-01-06T00:00:00Z",
+        "source_id": "ffs-gw21-semenyo-last-game-2026-01-06",
+        "title": "FPL Gameweek 21 team news: Tuesday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:403": {
+        "expected_minutes": 63.8,
+        "start_probability": 0.7606
+      },
+      "player:2025-26:82": {
+        "expected_minutes": 86.2,
+        "start_probability": 0.944
+      }
+    },
+    "player_ids": [
+      "player:2025-26:403",
+      "player:2025-26:82"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "d8d5cb55f6467ae5e287d251090b03c637caa8cb4a41c2c7890b7055f52689ee",
+    "run_id": "gw21-sol-evidence-v3",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-enhanced-gw21-scout_evidence-evidence-v1",
+  "gameweek": 21,
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "positive_semenyo_evidence_cannot_create_uplift",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "player_baselines": {
+    "player:2025-26:403": {
+      "expected_minutes": 63.8,
+      "start_probability": 0.7606
+    },
+    "player:2025-26:82": {
+      "expected_minutes": 86.2,
+      "start_probability": 0.944
+    }
+  },
+  "replay_application": {
+    "arm_id": "scout_evidence",
+    "reuse_basis": "Frozen evidence and challenger interpretations are decision-independent projection proposals; exact target-player baselines must match before application.",
+    "source_host_bundle_sha256": "9d3b5a58202ec9199c9ff3608724f10cb63a49ceac23b2c7504d083a929ae6df",
+    "starting_state_sha256": "034342564d00e20ab442e6e0c018df4173dfdfb8975b8160f31e2033dbc09a82"
+  },
+  "research_summary": "The pre-deadline report contains definitive long-term Gvardiol injury evidence and positive evidence that Semenyo remains available for his final Bournemouth match.",
+  "schema_version": "1.0"
+}

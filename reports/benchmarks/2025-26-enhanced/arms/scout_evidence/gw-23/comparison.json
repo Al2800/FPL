@@ -1,0 +1,40 @@
+{
+  "adapter_audit_sha256": "e709120d9d8cf25d26ea28ca2f3071b19cafcbdf7a4fe8325fd8ce5e906af9b4",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 44,
+  "agent_vs_canonical_delta": 3,
+  "canonical_gross_points": 41,
+  "canonical_tree_sha256_after": "6536be43f08825fdcf3387511f234c4c7a1cb72aaa3536ad9aab5472c0f1a924",
+  "canonical_tree_sha256_before": "6536be43f08825fdcf3387511f234c4c7a1cb72aaa3536ad9aab5472c0f1a924",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "1f0920f543bf2aff5e8e1b0f6d8be84e0100c6fb56106c6e0f80a83160fdadee",
+  "content_sha256": "5b4bab2f796512cd641c095333d40c589f76b4678db8d76016af80a0ca7a34eb",
+  "evidence_run_sha256": "2b3c9597cc4d21bb6de02232361d2e9ff3c25ab7a260eb2a4f9cfbd4b1c4b6be",
+  "experiment_id": "2025-26-enhanced-gw23-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 23,
+  "hit_cost": 0,
+  "host_bundle_sha256": "34218d723c01bc6be36001afc4a3dbdabf2e7ea7255b092034879d77766acb76",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "7e94fa1c051699d2cfa08f55f89407b82072a63dcfed6c2b5f55c44e07065c18",
+  "plan_sha256": "f9acceb4d23c28f79356a38b60223041ba1238cecb5717c297ff19a8a630bdc8",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "James Tarkowski",
+      "player_out": "Maxence Lacroix"
+    }
+  ],
+  "solver_input_sha256": "1f9efcd41114f39faa709e70f5b69a7b780758560755ec931b6bf3f78c6c4e02",
+  "solver_output_sha256": "b39de0ace65915f5e17cc185f246b5bf06a8ed0f776be7659369e5527199b1ba",
+  "starting_state_sha256": "6d5ae4feea6c76a8a6c5b8052ed678b31050217ddb385e8d6e78a6fd64649dd7"
+}

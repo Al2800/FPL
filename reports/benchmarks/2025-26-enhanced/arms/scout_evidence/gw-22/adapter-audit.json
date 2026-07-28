@@ -1,0 +1,34 @@
+{
+  "adjustments": [
+    {
+      "adjustment_id": "adjustment:gw22:guehi-expected-minutes-zero",
+      "after": {
+        "expected_minutes": 0.0,
+        "expected_points": 0.0,
+        "start_probability": 0.0,
+        "status": "i"
+      },
+      "before": {
+        "expected_minutes": 86.9,
+        "expected_points": 4.07,
+        "start_probability": 0.936,
+        "status": "a"
+      },
+      "claim_ids": [
+        "signal:adjustment:gw22:guehi-expected-minutes-zero"
+      ],
+      "confidence": 0.99,
+      "player_id": "player:2025-26:260",
+      "ratio": 0.0,
+      "target": "expected_minutes"
+    }
+  ],
+  "applied": true,
+  "challenger_run_sha256": "6f3c1cf355c848ca6c38f5ce619d8e44098c20bb7e27922ad35eab0f1eb88e45",
+  "content_sha256": "44f79b1ede9751f20a035108ec3a1aa899ee50ac41e92214691581cfd9e5bfb1",
+  "evidence_run_sha256": "d082895be42997a0260076dee0034cc3d8df9a137f72cbb458b601684da285d5",
+  "fallback_reason": null,
+  "policy_id": "agent-fork-adapter-v1",
+  "policy_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,316 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_challenger",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw22-sol-challenger-v3",
+      "content_sha256": "62f587d81213d9f4fabf578e0619367a9ae6cb0ed16fbfffc7c8148e5b4263b1",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "38f6596d860ba4e094824a303849c9aae15dff7a4125b19a90a9bae955afa65f",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T16:31:15Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "38f6596d860ba4e094824a303849c9aae15dff7a4125b19a90a9bae955afa65f",
+        "response_sha256": "daf670300d3af10a338a679030abb499fd8c047a19b78f320d442ff471f6369e",
+        "structured_output": {
+          "escalation_outcome": "dismissed",
+          "notes": "Pre-deadline quote directly identifies Marc Guehi as unavailable for the next match; timing, identity, direction, magnitude to zero minutes, 0.99 confidence, and expiry are supported.",
+          "review_id": "review:gw22:guehi-not-playing:v3",
+          "reviewed_adjustment_ids": [
+            "adjustment:gw22:guehi-expected-minutes-zero"
+          ],
+          "role": "challenger",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw22-sol-challenger-v3",
+      "content_sha256": "8159917fe5fdac319e213f54be6916e9f91a49af9e7a2f5346e239856e3f5ed3",
+      "payload": {
+        "approval_gate": {
+          "automatic_approval_allowed": false,
+          "confidence_downgraded": false,
+          "force_rerun": false,
+          "notes": [
+            "review:gw22:guehi-not-playing:v3:dismissed"
+          ],
+          "requires_human_review": false,
+          "unresolved_challenges": []
+        },
+        "authority": "review_only_not_applied",
+        "content_sha256": "8159917fe5fdac319e213f54be6916e9f91a49af9e7a2f5346e239856e3f5ed3",
+        "proposal_sha256": "3ac8dbf86d4500e5ae42298d351ed1b4c3c3d8a2b3b4d08871b5d22d98907130",
+        "review": {
+          "agent_run_id": "gw22-sol-evidence-v3",
+          "available_at": "2026-07-26T16:31:15Z",
+          "escalation_outcome": "dismissed",
+          "notes": "Pre-deadline quote directly identifies Marc Guehi as unavailable for the next match; timing, identity, direction, magnitude to zero minutes, 0.99 confidence, and expiry are supported.",
+          "observed_at": "2026-07-26T16:31:15Z",
+          "provenance": {
+            "agent_run_id": "gw22-sol-evidence-v3",
+            "source_ids": [
+              "gpt-5.6-sol-challenger"
+            ],
+            "transformation_version": "challenger-agent-v1"
+          },
+          "review_id": "review:gw22:guehi-not-playing:v3"
+        },
+        "role": "challenger",
+        "schema_version": "1.0",
+        "unopposed_proposed_adjustment_ids": [
+          "adjustment:gw22:guehi-expected-minutes-zero"
+        ]
+      }
+    }
+  },
+  "content_sha256": "6f3c1cf355c848ca6c38f5ce619d8e44098c20bb7e27922ad35eab0f1eb88e45",
+  "run_id": "gw22-sol-challenger-v3",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 2.0,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 61.64,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:8",
+        "player:2025-26:226",
+        "player:2025-26:260",
+        "player:2025-26:488",
+        "player:2025-26:47",
+        "player:2025-26:414",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:430",
+        "player:2025-26:136"
+      ],
+      "vice_captain_id": "player:2025-26:488"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 68.84,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:488",
+        "player_out_id": "player:2025-26:450"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "challenger",
+    "available_at": "2026-07-26T16:31:15Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2026-01-17T11:00:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw22:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw22-sol-challenger-v3",
+          "content_sha256": "902f654d86c02c1fdf3ab930ceaae26f8fe15be9d94ca56127fc304d65cd5f11"
+        }
+      ],
+      "input_sha256": "902f654d86c02c1fdf3ab930ceaae26f8fe15be9d94ca56127fc304d65cd5f11",
+      "rendered_prompt_sha256": "38f6596d860ba4e094824a303849c9aae15dff7a4125b19a90a9bae955afa65f"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw22-sol-challenger-v3",
+          "content_sha256": "62f587d81213d9f4fabf578e0619367a9ae6cb0ed16fbfffc7c8148e5b4263b1"
+        },
+        "call_id": "model:gw22-sol-challenger-v3",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "38f6596d860ba4e094824a303849c9aae15dff7a4125b19a90a9bae955afa65f",
+        "response_sha256": "daf670300d3af10a338a679030abb499fd8c047a19b78f320d442ff471f6369e",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T16:31:15Z",
+    "observed_episode_sha256": "e2df246f0c522306578ac27dab0c633890ce9800c6cfe4b903acf2a47d69d5e6",
+    "output": {
+      "output_sha256": "8159917fe5fdac319e213f54be6916e9f91a49af9e7a2f5346e239856e3f5ed3",
+      "response_ref": {
+        "artifact_id": "cached-response:gw22-sol-challenger-v3",
+        "content_sha256": "62f587d81213d9f4fabf578e0619367a9ae6cb0ed16fbfffc7c8148e5b4263b1"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw22-sol-challenger-v3",
+        "content_sha256": "8159917fe5fdac319e213f54be6916e9f91a49af9e7a2f5346e239856e3f5ed3"
+      }
+    },
+    "policy_arm": "evidence_challenger",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw22-sol-challenger-v3",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw22-sol-challenger-v3",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw22-sol-challenger-v3.jsonl",
+    "versions": {
+      "code_commit": "fa509e416367edb6871ac24d42f934bf2e6b24dd",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+        "prompt_id": "challenger",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "approval_gate": {
+      "automatic_approval_allowed": false,
+      "confidence_downgraded": false,
+      "force_rerun": false,
+      "notes": [
+        "review:gw22:guehi-not-playing:v3:dismissed"
+      ],
+      "requires_human_review": false,
+      "unresolved_challenges": []
+    },
+    "authority": "review_only_not_applied",
+    "content_sha256": "8159917fe5fdac319e213f54be6916e9f91a49af9e7a2f5346e239856e3f5ed3",
+    "proposal_sha256": "3ac8dbf86d4500e5ae42298d351ed1b4c3c3d8a2b3b4d08871b5d22d98907130",
+    "review": {
+      "agent_run_id": "gw22-sol-evidence-v3",
+      "available_at": "2026-07-26T16:31:15Z",
+      "escalation_outcome": "dismissed",
+      "notes": "Pre-deadline quote directly identifies Marc Guehi as unavailable for the next match; timing, identity, direction, magnitude to zero minutes, 0.99 confidence, and expiry are supported.",
+      "observed_at": "2026-07-26T16:31:15Z",
+      "provenance": {
+        "agent_run_id": "gw22-sol-evidence-v3",
+        "source_ids": [
+          "gpt-5.6-sol-challenger"
+        ],
+        "transformation_version": "challenger-agent-v1"
+      },
+      "review_id": "review:gw22:guehi-not-playing:v3"
+    },
+    "role": "challenger",
+    "schema_version": "1.0",
+    "unopposed_proposed_adjustment_ids": [
+      "adjustment:gw22:guehi-expected-minutes-zero"
+    ]
+  }
+}

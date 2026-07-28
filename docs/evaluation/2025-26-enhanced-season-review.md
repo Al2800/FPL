@@ -387,3 +387,92 @@ paired outcome impact rather than by document or claim volume.
    from this retrospective trajectory.
 4. Keep chips and data-family ablations out of the path unless introduced as
    preregistered comparison arms.
+## GW21-GW25 checkpoint
+
+Status: `paused_for_review`
+
+Checkpoint:
+`reports/benchmarks/2025-26-enhanced/checkpoints/gw-21-gw-25.json`
+
+Checkpoint SHA-256:
+`d75958cf9ee92e4d7e762a8a533c2672d98887c0e9eb0346de1bd9569e32c92c`
+
+The tranche resumes every arm from its own sealed GW20 successor and binds
+each week to the accepted immutable agent namespace: GW21-GW22 `sol-v3`,
+GW23 `sol-v2`, GW24 `sol-v1`, and GW25 `sol-v3`. Rejected or incomplete
+namespaces remain audit evidence but cannot enter the enhanced replay.
+
+| GW | Scout structured | Optimized structured | Scout evidence | Optimized evidence |
+| ---: | ---: | ---: | ---: | ---: |
+| 21 | 55 (1072) | 73 (1135) | 70 (1073) | 63 (1157) |
+| 22 | 47 (1119) | 41 (1176) | 40 (1113) | 45 (1202) |
+| 23 | 41 (1160) | 41 (1217) | 44 (1157) | 41 (1243) |
+| 24 | 60 (1220) | 35 (1252) | 50 (1207) | 52 (1295) |
+| 25 | 58 (1278) | 62 (1314) | 61 (1268) | 61 (1356) |
+
+During GW21-GW25 the arms scored 261, 252, 265, and 262 respectively in
+table order. The optimized structured seed lead narrowed from 45 to 36, while
+the optimized evidence seed lead narrowed from 91 to 88. The longitudinal
+evidence effect at GW25 is +42 on the optimized seed and -10 on the Scout seed;
+the resulting +52 interaction still includes all inherited squad-state
+differences and is not direct agent value.
+
+No arm paid a hit or used a chip. Tranche transfer counts were five Scout
+structured, six optimized structured, six Scout evidence, and five optimized
+evidence.
+
+## GW21-GW25 evidence review
+
+| GW | Adapter result | Scout same-state result | Optimized same-state result |
+| ---: | --- | ---: | ---: |
+| 21 | applied | 0 | 0 |
+| 22 | applied | +8 | 0 |
+| 23 | abstained | 0 | 0 |
+| 24 | abstained | 0 | 0 |
+| 25 | abstained | 0 | 0 |
+
+GW22 is the only direct causal evidence gain in this tranche. On the Scout
+evidence arm's own state, the accepted adjustment changed the decision and
+added eight realised points. The no-evidence control used Pickford to Raya, while the accepted Guéhi exclusion redirected the decision to Guéhi to Chalobah. That arm nevertheless scored seven fewer than
+Scout structured in the headline weekly comparison because the two policies
+entered GW22 with different squads. The optimized evidence state received the
+same governed evidence proposal but its selected plan and realised score were
+unchanged.
+
+Across the tranche, optimized evidence scored ten more than optimized
+structured and Scout evidence scored four more than Scout structured. Those
+are valid longitudinal policy outcomes, but they must not be labelled as ten
+and four points of direct evidence value. The paired direct totals are +8
+Scout and 0 optimized.
+
+The sparse historical bundles still test protocol, state and causal
+attribution rather than the likely live evidence surface. `FPL-bsw.38.14`
+records the end-of-replay design for a governed accumulated ledger, multiple
+independent reviewer agents over decision-scoped shards, deterministic
+deduplication and contradiction reduction, and bounded transfer, minutes,
+captaincy, bench and chip packets. That future system must retain the frozen
+no-evidence shadow and measure marginal value as evidence volume and reviewer
+count increase.
+
+## Integrity at GW25
+
+- Checkpoint is paused with `next_gameweek: 26`; no GW26 comparison exists.
+- Canonical artifacts are unchanged.
+- Focused enhanced replay and accepted-agent-artifact regressions: 29 passed.
+- Full repository suite: 629 passed in 408.64 seconds, with empty stderr and retained JUnit output.
+- Every arm has a continuous independently owned state through GW25.
+- Every applied adjustment passed completed evidence and challenger gates.
+- No rejected hosted namespace was admitted to the replay.
+
+## Review questions before GW26
+
+1. Preserve the current path and evidence regime through the historical replay;
+   do not add the broader multi-agent evidence system mid-experiment.
+2. Inspect the GW22 Scout same-state +8 case as the tranche's informative
+   causal example, including the exact projection, transfer and lineup change.
+3. At the end of the season, compare direct evidence effects, inherited
+   trajectory effects, abstention coverage and missed decision boundaries
+   before choosing live evidence budgets.
+4. Implement and evaluate the wider acquisition/retrieval design in
+   `FPL-bsw.38.14` prospectively for 2026/27 rather than tuning this historical
+   path using known results.

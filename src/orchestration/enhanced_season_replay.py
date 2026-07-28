@@ -39,6 +39,7 @@ REVIEW_TRANCHES = {
     6: 10,
     11: 15,
     16: 20,
+    21: 25,
 }
 ARM_IDS = (
     "scout_structured",
@@ -113,9 +114,14 @@ def _input_pack(
 
 def _later_artifact_version(gameweek: int) -> str:
     """Select the immutable completed hosted-artifact namespace."""
-    if gameweek == 20:
-        return "sol-v3"
-    return "sol-v1"
+    accepted_versions = {
+        20: "sol-v3",
+        21: "sol-v3",
+        22: "sol-v3",
+        23: "sol-v2",
+        25: "sol-v3",
+    }
+    return accepted_versions.get(gameweek, "sol-v1")
 
 def _standard_arm_summary(
     *,

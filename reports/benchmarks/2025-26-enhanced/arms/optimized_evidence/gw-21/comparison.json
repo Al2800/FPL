@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "59b7ce886d49cd5776b76fbc93c57152dc3ea93ea30c77c9394faed3b5bf4cc4",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 63,
+  "agent_vs_canonical_delta": 8,
+  "canonical_gross_points": 55,
+  "canonical_tree_sha256_after": "f38afd47cec47895abc55c4a52f16e847fbca5cdd8977f802de218b82cee7dca",
+  "canonical_tree_sha256_before": "f38afd47cec47895abc55c4a52f16e847fbca5cdd8977f802de218b82cee7dca",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "5df36bd1a012f2091a8bac89006086f069a19321b0c8ab4340ac1c07993e900b",
+  "content_sha256": "fff75b49dd614fa7c6385a95b2da0f7a55ba003d56dc0c2af054200b1412cc8d",
+  "evidence_run_sha256": "86590f64685f1db32db0a9a5027658b70f228e4ad94f122dc0db79b60d4c1c0f",
+  "experiment_id": "2025-26-enhanced-gw21-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 21,
+  "hit_cost": 0,
+  "host_bundle_sha256": "8bbe27032a8db53c7a5959d6413e668f1561c80adecc0e8236f7ea807e8f9846",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "positive_semenyo_evidence_cannot_create_uplift",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "f560474c81029358b6cd0b2612654d54237e854d175237eeffb67cc16bac923a",
+  "plan_sha256": "71fb968a34bad286593098256d379f995dc7ce8496c53a788734c41739ec3347",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "James Tarkowski",
+      "player_out": "Maxence Lacroix"
+    }
+  ],
+  "solver_input_sha256": "902d8f349f021e37560a9b12d3fccdc57bfb210602c1e82ce3ee66643a4d0cb7",
+  "solver_output_sha256": "6be3158f2fcb8d545ffec8f0e47d9c37dfc7d2b2407b264098d32bc2dddc5cfa",
+  "starting_state_sha256": "38da97505f6eec62dcbfed8def143db19510dbb7925df7410a6151b18632e263"
+}

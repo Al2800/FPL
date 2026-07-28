@@ -1,0 +1,40 @@
+{
+  "adapter_audit_sha256": "25d24ea3d8d8ec166fee953abbae21a42c54894979982afeada5eacaa8c79032",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 50,
+  "agent_vs_canonical_delta": -10,
+  "canonical_gross_points": 60,
+  "canonical_tree_sha256_after": "c2db44936e991ac500059ceaff2be865d24ac351e8d8b25d4c66eff5b225ed19",
+  "canonical_tree_sha256_before": "c2db44936e991ac500059ceaff2be865d24ac351e8d8b25d4c66eff5b225ed19",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "926c94d7dc913a80e4864f67a6d80535e24e9121ea0fcab6e627f5a56233b6f0",
+  "content_sha256": "7e1b7c2eff3c92f46aed84e7ad74ba4dd5afd45073d13115eb7e884f6f1ee353",
+  "evidence_run_sha256": "8f7e163fabf3141be45868920e7b0392e4c4b20ba5be5020c7ae72c52a1fdee1",
+  "experiment_id": "2025-26-enhanced-gw24-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 24,
+  "hit_cost": 0,
+  "host_bundle_sha256": "e5a7097c09d9471922cadc5ae2a7bb6abb60a3eb0355f841bb9b7f5724b7f680",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "3afaa7a5c389c87a97501b926a6b8dead7723a3bf18f13c2ed5113adece1904e",
+  "plan_sha256": "828bbe5a89677f4f5c639e9a6ad44e103d8ad2aa3d953b8e9618146f8799d089",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Florian Wirtz",
+      "player_out": "Phil Foden"
+    }
+  ],
+  "solver_input_sha256": "b3170b5c26526bb2b4ae88ee9c1de4447d5cf3b33efce9bec5b8bd8a5655bd9e",
+  "solver_output_sha256": "984b505e0d9edfc7178ecba87a814d4e8104627f983ecbbff9667c78b922770a",
+  "starting_state_sha256": "7e94fa1c051699d2cfa08f55f89407b82072a63dcfed6c2b5f55c44e07065c18"
+}
