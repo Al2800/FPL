@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "e0493a06904e8e24e7171d7d20a456b10bcecad85a2956c7b97db27d9020ccea",
+  "agent_decision": "degraded_fallback",
+  "agent_fork_gross_points": 31,
+  "agent_vs_canonical_delta": -5,
+  "canonical_gross_points": 36,
+  "canonical_tree_sha256_after": "f01a128e0da9e0e0e9b86047d1ae161fc0cb921ad7cef075169f99a9bb976a5c",
+  "canonical_tree_sha256_before": "f01a128e0da9e0e0e9b86047d1ae161fc0cb921ad7cef075169f99a9bb976a5c",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "62b1f291195b356a0a4060c0800f5ae67dcd769a1eef9ca3b600613f55ca136b",
+  "content_sha256": "71ee231ea225bf194977e7bd6f9b23318cd0931d036d9f64d7cfdf6d75574ba4",
+  "evidence_run_sha256": "414b464e7ed507f8dfee84382f5720d8653ddbac16f72f63812ea037a8ab05fd",
+  "experiment_id": "2025-26-enhanced-gw13-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 13,
+  "hit_cost": 0,
+  "host_bundle_sha256": "59801ff7084c54ab8ead8123b7196c8cb53095415f414ffb3dfd795236347446",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "bbc_live_page_is_secondary_reporting_and_expert_interpretation",
+    "positive_availability_language_is_not_a_confirmed_start",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "4309811f582ec3938992480bfbce86ecc1fb3e74aa0fb485576b70ac81f1166d",
+  "plan_sha256": "45cffac5ad76fdbd2c1c309b9546a7da330d09afbe9ad564a4df4e5957450717",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Maxence Lacroix",
+      "player_out": "Marc Guéhi"
+    }
+  ],
+  "solver_input_sha256": "c89877827ee24f22d056966fcb8457dad3c22574127d0b9d32d38e2b10e54760",
+  "solver_output_sha256": "453cb85ccfb820f8b1a8145096241b0a1a90ee9d4f4bda9e3c36757738e5ee02",
+  "starting_state_sha256": "72ab3c662d1dd3609ec0fb282d58bf0d513f5f6b75869cb3aae3f9f38e5d4f12"
+}

@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "69f64e0c8c6d339ae10b440c4e2d43fc1489742c6ad06efde8326b512eb08d8c",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 49,
+  "agent_vs_canonical_delta": -10,
+  "canonical_gross_points": 59,
+  "canonical_tree_sha256_after": "393e8d7996817948b539a11a38a05b057b8b75383f4d84b87c2cdb3a37a8e700",
+  "canonical_tree_sha256_before": "393e8d7996817948b539a11a38a05b057b8b75383f4d84b87c2cdb3a37a8e700",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "730f5e9f38b06b00f437561ec1ada649e0fc5a60adf46335d047e7af6f94d679",
+  "content_sha256": "0a36d12314ebb02bd2c9b6ff20204586b08fca775dfec3427bfce2382d3efdc3",
+  "evidence_run_sha256": "0b4e14aaaa2fc3c68b0646fcb0a28d740a7e37866dc2b15677b95a6f17f69677",
+  "experiment_id": "2025-26-enhanced-gw16-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 16,
+  "hit_cost": 0,
+  "host_bundle_sha256": "bc6fe9969eb7ce5903bdc252d8ab8199905e6517567eef58bfbda33a90b80df1",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "source_language_is_norwegian_and_claim_text_is_an_english_translation",
+    "secondary_fpl_analysis_reporting_injury_news",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "0d01d87525362d72a0f4b6c06017fe6bfee8d55ba8874a2f3fb316ca20f2094a",
+  "plan_sha256": "80e78b86aa266fda362f68c036474ae92078f040366bf29d95243ee12635a74a",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Nick Woltemade",
+      "player_out": "João Pedro Junqueira de Jesus"
+    }
+  ],
+  "solver_input_sha256": "e5544af7fd3045ef7d99dcf54e74c7b1d454dc0cb7b458cba5949d45977cfc62",
+  "solver_output_sha256": "d8eea1bef492af2df66f179c820cdfae61a83c03808704da8286208f7fd22de2",
+  "starting_state_sha256": "50839719e9c8cb3ce2489a265249ad0d56dd74350da0deb075121795eec9591b"
+}

@@ -1,0 +1,43 @@
+{
+  "adapter_audit_sha256": "374a8d57adec05dd2339958c751ea37ae856f262c77a2c4b637eb7fee2183dc4",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 41,
+  "agent_vs_canonical_delta": 12,
+  "canonical_gross_points": 29,
+  "canonical_tree_sha256_after": "64d06384c005c69c4e37a0b85682f0bb0234eeebe861b021aa0fe241fe1279fe",
+  "canonical_tree_sha256_before": "64d06384c005c69c4e37a0b85682f0bb0234eeebe861b021aa0fe241fe1279fe",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "395f5d3ac18d7f89c2dda769aa19ec5b28231a29f2fc9dfd15cbbfba06bceca1",
+  "content_sha256": "40db2c84b5f375c2c959874e957e5abae658b7de29668d974152b8c3271dab9d",
+  "evidence_run_sha256": "a97d9deff40790d40eb90e37eed64b0146151ec940087d96a81b422da5a30928",
+  "experiment_id": "2025-26-enhanced-gw12-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 12,
+  "hit_cost": 0,
+  "host_bundle_sha256": "04dcc6d2aebd8ac76edf338ab7b1855f3c51b9f8a54b3660dfa5318e1bd47878",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "not_eligible_for_headline_agent_performance",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "40c628751658572fac6926eec512f3c3ef60ffab614b90ad8817164ca2dc0024",
+  "plan_sha256": "3443fbcaed15ebb2e7a10fcd415f930049019d45ecce395103934a15f116e274",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Declan Rice",
+      "player_out": "Tijjani Reijnders"
+    },
+    {
+      "player_in": "Maxence Lacroix",
+      "player_out": "Gabriel dos Santos Magalhães"
+    }
+  ],
+  "solver_input_sha256": "4cd934a8397784fd1cc8199056e7df9f042b81bcaddfc9bc3a896982ac6ba487",
+  "solver_output_sha256": "245ee44e9a67138d2405da7d759e340a26006d4865c515fe72ffbcd6861d1cf3",
+  "starting_state_sha256": "28b1025c93a4c0f0624a4d5c6c4a35110e4f594438639659cb21c01bccda1c77"
+}

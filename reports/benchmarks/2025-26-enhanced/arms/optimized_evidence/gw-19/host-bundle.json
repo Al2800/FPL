@@ -1,0 +1,187 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "4cad6a24ee890bb50263706b9d4b5cc2fcc63346",
+  "content_sha256": "21bedb0529787d719a81144c5cf3e81f3dbdad871d2ccc8424ebeb4dbdbe9b15",
+  "deterministic_candidate": {
+    "bank_after": 0.5,
+    "banked_option_units": 3,
+    "hit_cost": 0,
+    "immediate_objective": 62.65,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:226",
+        "player:2025-26:260",
+        "player:2025-26:8",
+        "player:2025-26:414",
+        "player:2025-26:21",
+        "player:2025-26:450",
+        "player:2025-26:82",
+        "player:2025-26:47",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "next_gameweek_free_transfers": 4,
+    "objective": 68.05,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 5.4,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:450",
+        "player_out_id": "player:2025-26:266"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2025-12-30T18:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw19:manager-neutral",
+    "observed_episode_sha256": "c3fa65ddd1ed5fb34570dbc105c2622d5b6a77e6692810ad37ec9e7739cc0e59",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "a81e75dcf07c70758d4150e782b407befe65eea2679f50552d195ad802f5419a",
+      "document_id": "document:ffs-gw19-timber-missed-2025-12-29",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw19-timber-recent-absence": "We refer you to our Scout Notes for quotes on Jurrien Timber and Riccardo Calafiori, who both missed out in Gameweek 18."
+      },
+      "published_at": "2025-12-29T00:00:00Z",
+      "source_id": "ffs-gw19-timber-missed-2025-12-29",
+      "title": "FPL Gameweek 19 team news: Monday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "9e94adc8df41ec7e2a5bc959cf0e214d039aa145f9ea569434c92801bd300ac2",
+    "deterministic_candidate_sha256": "a9b6f13b0a1be4c4246b85a81558941382e1aa9180f802e5edf21637c77e052c",
+    "episode": {
+      "decision_at": "2025-12-30T18:00:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw19:manager-neutral",
+      "observed_episode_sha256": "c3fa65ddd1ed5fb34570dbc105c2622d5b6a77e6692810ad37ec9e7739cc0e59",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T14:47:00Z",
+        "content_sha256": "a81e75dcf07c70758d4150e782b407befe65eea2679f50552d195ad802f5419a",
+        "document_id": "document:ffs-gw19-timber-missed-2025-12-29",
+        "observed_at": "2026-07-26T14:47:00Z",
+        "passages": {
+          "passage:claim-gw19-timber-recent-absence": "We refer you to our Scout Notes for quotes on Jurrien Timber and Riccardo Calafiori, who both missed out in Gameweek 18."
+        },
+        "published_at": "2025-12-29T00:00:00Z",
+        "source_id": "ffs-gw19-timber-missed-2025-12-29",
+        "title": "FPL Gameweek 19 team news: Monday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:8": {
+        "expected_minutes": 66.2,
+        "start_probability": 0.8172
+      }
+    },
+    "player_ids": [
+      "player:2025-26:8"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "d1d886d9bc7e18602434c4f2b64c029a0bd4cd695d5a425212c3e8c2b52f0c38",
+    "run_id": "gw19-sol-evidence-v1",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-enhanced-gw19-optimized_evidence-evidence-v1",
+  "gameweek": 19,
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "prior_match_absence_does_not_confirm_gw19_absence",
+    "festive_press_conference_coverage_incomplete",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "player_baselines": {
+    "player:2025-26:8": {
+      "expected_minutes": 66.2,
+      "start_probability": 0.8172
+    }
+  },
+  "replay_application": {
+    "arm_id": "optimized_evidence",
+    "reuse_basis": "Frozen evidence and challenger interpretations are decision-independent projection proposals; exact target-player baselines must match before application.",
+    "source_host_bundle_sha256": "b1a64137367fd5c219b346bc5306aee9b1e699473e5bb18d29cf416eeefe375d",
+    "starting_state_sha256": "600b9cb877f92065c8485b9aa9cf1bb2467a175b7956e4c1b13698138de8e06e"
+  },
+  "research_summary": "The latest pre-deadline report says Timber missed GW18 but contains no fresh manager confirmation for GW19. It is retained as an uncertainty and abstention test.",
+  "schema_version": "1.0"
+}

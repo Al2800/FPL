@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "bf683f16cb8bcc13b89be3e4494d4658415e1cc4e6fa0c6da6cd87e21068ee15",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 49,
+  "agent_vs_canonical_delta": -3,
+  "canonical_gross_points": 52,
+  "canonical_tree_sha256_after": "f8bad471d8f838c44f5823bff39d00e020bcdd482f24d286df8f7fa405bee1fa",
+  "canonical_tree_sha256_before": "f8bad471d8f838c44f5823bff39d00e020bcdd482f24d286df8f7fa405bee1fa",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "24ac5bcd5461d1875d8b39b86ee540faebff77190b9e6d655560194c051e6182",
+  "content_sha256": "36dce92b3fee22669500abb70d7a2471b1242159a7b9dc3c43bdabca017bf7f6",
+  "evidence_run_sha256": "5570c7d15353de6390e12da115e4b800ac85d7643e27e90014584a2801890a92",
+  "experiment_id": "2025-26-gw08-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 8,
+  "hit_cost": 0,
+  "host_bundle_sha256": "7092b7057c00bfff1639a4ee8b4e8ae16e500d1ec195bbfcb9d63766ec2dddf1",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "5e2e9e2f4abd19d07290731973acea1f4026c31d60f8ca318eeb602fe9873d0d",
+  "plan_sha256": "2ea370e9dc2030cf31c4e1cdb370df0fc5c204d9dbfbe2ec151b6ea4652e2768",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Dominik Szoboszlai",
+      "player_out": "Jacob Murphy"
+    }
+  ],
+  "solver_input_sha256": "aaf3d7a8c0922027664d654e823d8ccc493f0d797f128ca8287b88d7410d55ee",
+  "solver_output_sha256": "6375d28da05c5fba2116d1efd2c539829431b76e38f3bd2f81735efb884a9f5f",
+  "starting_state_sha256": "a3295963acf03a98ece9ef83d5ae8eef51f20761e5182b5e4f7ff69cd7c531b5"
+}

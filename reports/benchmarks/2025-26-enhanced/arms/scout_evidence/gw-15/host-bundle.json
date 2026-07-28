@@ -1,0 +1,215 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "c1283d1933abe6e36466d66cfb92cebcfb502afe",
+  "content_sha256": "7256a25ac4ac64716f71052a4b87fec2ab4e305c165d9922476668656dd5bbc7",
+  "deterministic_candidate": {
+    "bank_after": 0.8,
+    "banked_option_units": 3,
+    "hit_cost": 0,
+    "immediate_objective": 61.94,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:348",
+        "player:2025-26:72",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:256",
+        "player:2025-26:226",
+        "player:2025-26:8",
+        "player:2025-26:119",
+        "player:2025-26:384",
+        "player:2025-26:387",
+        "player:2025-26:82",
+        "player:2025-26:266",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:119"
+    },
+    "next_gameweek_free_transfers": 4,
+    "objective": 67.34,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 5.4,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2025-12-06T11:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw15:manager-neutral",
+    "observed_episode_sha256": "1e8b8315babb0998a867c55f6c063a0d8c461bc3ace3932121c08b4f5693ad9f",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T13:28:00Z",
+      "content_sha256": "4321792c970a31fcdb45c12f2d90e1bb7ff75fa28bad9d10ae82fbb50538664f",
+      "document_id": "document:ffs-gw15-senesi-return-2025-12-05",
+      "observed_at": "2026-07-26T13:28:00Z",
+      "passages": {
+        "passage:claim-gw15-senesi-returns": "Marcos Senesi and David Brooks return from suspension this weekend."
+      },
+      "published_at": "2025-12-05T00:00:00Z",
+      "source_id": "ffs-gw15-senesi-return-2025-12-05",
+      "title": "FPL Gameweek 15 team news: Friday's live injury updates"
+    },
+    {
+      "available_at": "2026-07-26T13:28:00Z",
+      "content_sha256": "29204aadaa36bb93fe341f68e4eb28964dc0382f6ef82729652c43a1c313cf7a",
+      "document_id": "document:ffs-gw15-semenyo-role-2025-12-05",
+      "observed_at": "2026-07-26T13:28:00Z",
+      "passages": {
+        "passage:claim-gw15-semenyo-role-positive": "He's trying to help us in every game and I haven't seen any change in his attitude."
+      },
+      "published_at": "2025-12-05T00:00:00Z",
+      "source_id": "ffs-gw15-semenyo-role-2025-12-05",
+      "title": "FPL Gameweek 15 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "fb8664bc201812e07edd24072f09af5909b82949ce713b1bd2957dfb2b86a8a0",
+    "deterministic_candidate_sha256": "be576a34b93e3697d5658689f84afb2c7279811b68435717b75b6070007c97f0",
+    "episode": {
+      "decision_at": "2025-12-06T11:00:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw15:manager-neutral",
+      "observed_episode_sha256": "1e8b8315babb0998a867c55f6c063a0d8c461bc3ace3932121c08b4f5693ad9f",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T13:28:00Z",
+        "content_sha256": "4321792c970a31fcdb45c12f2d90e1bb7ff75fa28bad9d10ae82fbb50538664f",
+        "document_id": "document:ffs-gw15-senesi-return-2025-12-05",
+        "observed_at": "2026-07-26T13:28:00Z",
+        "passages": {
+          "passage:claim-gw15-senesi-returns": "Marcos Senesi and David Brooks return from suspension this weekend."
+        },
+        "published_at": "2025-12-05T00:00:00Z",
+        "source_id": "ffs-gw15-senesi-return-2025-12-05",
+        "title": "FPL Gameweek 15 team news: Friday's live injury updates"
+      },
+      {
+        "available_at": "2026-07-26T13:28:00Z",
+        "content_sha256": "29204aadaa36bb93fe341f68e4eb28964dc0382f6ef82729652c43a1c313cf7a",
+        "document_id": "document:ffs-gw15-semenyo-role-2025-12-05",
+        "observed_at": "2026-07-26T13:28:00Z",
+        "passages": {
+          "passage:claim-gw15-semenyo-role-positive": "He's trying to help us in every game and I haven't seen any change in his attitude."
+        },
+        "published_at": "2025-12-05T00:00:00Z",
+        "source_id": "ffs-gw15-semenyo-role-2025-12-05",
+        "title": "FPL Gameweek 15 team news: Friday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:72": {
+        "expected_minutes": 65.8,
+        "start_probability": 0.8539
+      },
+      "player:2025-26:82": {
+        "expected_minutes": 70.4,
+        "start_probability": 0.923
+      }
+    },
+    "player_ids": [
+      "player:2025-26:72",
+      "player:2025-26:82"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "6144514c339df13243b1af12903ca7157d924024be12b1571ae2eb712f05dad9",
+    "run_id": "gw15-sol-evidence-v1",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-enhanced-gw15-scout_evidence-evidence-v1",
+  "gameweek": 15,
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "positive_evidence_cannot_create_an_uplift_under_reduction_only_policy",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "player_baselines": {
+    "player:2025-26:72": {
+      "expected_minutes": 65.8,
+      "start_probability": 0.8539
+    },
+    "player:2025-26:82": {
+      "expected_minutes": 70.4,
+      "start_probability": 0.923
+    }
+  },
+  "replay_application": {
+    "arm_id": "scout_evidence",
+    "reuse_basis": "Frozen evidence and challenger interpretations are decision-independent projection proposals; exact target-player baselines must match before application.",
+    "source_host_bundle_sha256": "62a118ecf4d9cc483f565dc706c76ccfdcdb6b2eb85bb5f45f0cdd4c20681e5c",
+    "starting_state_sha256": "a2d72b6a48c86ff9c8051246b552ad9a2a74bbde4d5bc3567c997f566d747e58"
+  },
+  "research_summary": "The deadline-safe search found positive evidence that Senesi returns from suspension and that Iraola continued to support Semenyo's role. This is an intentional abstention test because the adapter may reduce forecasts but may not turn positive prose into an uplift.",
+  "schema_version": "1.0"
+}

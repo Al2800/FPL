@@ -1,0 +1,40 @@
+{
+  "adapter_audit_sha256": "cbd1c6f1c2d4532cdd56420a62d35151a80acb80fc795c1b3acb097bf9e82a36",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 38,
+  "agent_vs_canonical_delta": 5,
+  "canonical_gross_points": 33,
+  "canonical_tree_sha256_after": "6f969868d3873cc3c14d7c81395cf383e55dd42e1d3b8517b8629241ce17cfc8",
+  "canonical_tree_sha256_before": "6f969868d3873cc3c14d7c81395cf383e55dd42e1d3b8517b8629241ce17cfc8",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "c06110a5e46359d880102510c1f6dcc201adec60277a0c4fb190061fdbda02d5",
+  "content_sha256": "31fa52a203d96ce240fe81553c8eea2864c17d28d01394cf522fcc03f44a659f",
+  "evidence_run_sha256": "8e9e119e24c21da32a0b55a31a4bb48806c571e9e4b8eaa83fb7b3cb9d8307c5",
+  "experiment_id": "2025-26-enhanced-gw18-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 18,
+  "hit_cost": 0,
+  "host_bundle_sha256": "4204c359a7e5222ab07446cb045af68ac6754fd9b4390ebdb8c5f74001695ead",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "52b32c171a25ea0151bd7fab2a6d31fca1f1fe04e47a38bf7a793f09c5f9dc6f",
+  "plan_sha256": "3c82eba5b42b35da0387536c2521330f54166eedc8d2430a83f1821f047022e0",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Harry Wilson",
+      "player_out": "Dominik Szoboszlai"
+    }
+  ],
+  "solver_input_sha256": "c8982b7bf3eda595b4e3d89c70723ae7a55579916e1497dbfddaa329361654b1",
+  "solver_output_sha256": "087236018780c315043f05cd69a90acd8200f25a07f99908501f38d78a6a932a",
+  "starting_state_sha256": "a387b16fb6959049b0c669dc715e42b712849227f10054077c5f3cc1928004cc"
+}

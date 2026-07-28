@@ -1,0 +1,40 @@
+{
+  "adapter_audit_sha256": "3a64c26be6f48bf98cceecdf4d208735ecfd6bbdf3c2bb14184fb80d21a17996",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 45,
+  "agent_vs_canonical_delta": -20,
+  "canonical_gross_points": 65,
+  "canonical_tree_sha256_after": "637a7ccf9890232cb3d004a90812b4665744173fb1c6f234252fffcbb96338c5",
+  "canonical_tree_sha256_before": "637a7ccf9890232cb3d004a90812b4665744173fb1c6f234252fffcbb96338c5",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "3c9eb92121becfd6e622228ca16754e2646a7941cccdf771b1c27c62d952e912",
+  "content_sha256": "d5a263703b65b1c16ff55fd9f3e22bb9dcb052c010787beb4e205df991b49573",
+  "evidence_run_sha256": "43ae516d5525bbaf48f9a7de1b93c86509f81d2122713944c043243fc1b3f087",
+  "experiment_id": "2025-26-enhanced-gw20-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 20,
+  "hit_cost": 0,
+  "host_bundle_sha256": "284932a8295a36daec27f69ae0cb6a78d17477b69bf5497cd1cd5ac078d93c6a",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "summary_is_secondary_team_news",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "034342564d00e20ab442e6e0c018df4173dfdfb8975b8160f31e2033dbc09a82",
+  "plan_sha256": "c9cd6cd9065eb96a9727d630a01abc6fb66fc2e2ee52c1bb5b97f8762b350d25",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Jordan Pickford",
+      "player_out": "Robert Lynch Sánchez"
+    }
+  ],
+  "solver_input_sha256": "97c0db00aefbf3159c1fec8e0803fa0460cf205fbbff548228474453777087d1",
+  "solver_output_sha256": "0e1a043de8e1277651659f150829bfde1f4166ef5a12c1674f3e62369a69e4ef",
+  "starting_state_sha256": "7b9529562922a37c6343cefeb5c39d4b6f8e0ceae7f9e3207a82f144dee1d122"
+}

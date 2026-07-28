@@ -1,0 +1,181 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "fa509e416367edb6871ac24d42f934bf2e6b24dd",
+  "content_sha256": "284932a8295a36daec27f69ae0cb6a78d17477b69bf5497cd1cd5ac078d93c6a",
+  "deterministic_candidate": {
+    "bank_after": 0.5,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 58.5,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:8",
+        "player:2025-26:260",
+        "player:2025-26:226",
+        "player:2025-26:414",
+        "player:2025-26:47",
+        "player:2025-26:82",
+        "player:2025-26:21",
+        "player:2025-26:450",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 65.7,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2026-01-03T11:00:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw20:manager-neutral",
+    "observed_episode_sha256": "dd9fa0160d73506bc61777542eefad2a9a73c264e563ab1c3dcf13f9162fcf02",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "74cf98b83ad0add3d72ea0a35007dbf4f904d98e30f91d709dca586c180735e2",
+      "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw20-rodon-out": "Leeds United: Ampadu banned, Longstaff, Rodon + James still out"
+      },
+      "published_at": "2026-01-02T00:00:00Z",
+      "source_id": "ffs-gw20-rodon-out-2026-01-02",
+      "title": "FPL Gameweek 20 team news: Friday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "cc344902fe84ec50d8cee6e5b38a417e77eabdde35a15b3b14816522cf5acf3f",
+    "deterministic_candidate_sha256": "72b76aa1d09a1fa641cca463224a77410f1f24d456f2f319b752e98d210fe320",
+    "episode": {
+      "decision_at": "2026-01-03T11:00:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw20:manager-neutral",
+      "observed_episode_sha256": "dd9fa0160d73506bc61777542eefad2a9a73c264e563ab1c3dcf13f9162fcf02",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T14:47:00Z",
+        "content_sha256": "74cf98b83ad0add3d72ea0a35007dbf4f904d98e30f91d709dca586c180735e2",
+        "document_id": "document:ffs-gw20-rodon-out-2026-01-02",
+        "observed_at": "2026-07-26T14:47:00Z",
+        "passages": {
+          "passage:claim-gw20-rodon-out": "Leeds United: Ampadu banned, Longstaff, Rodon + James still out"
+        },
+        "published_at": "2026-01-02T00:00:00Z",
+        "source_id": "ffs-gw20-rodon-out-2026-01-02",
+        "title": "FPL Gameweek 20 team news: Friday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:348": {
+        "expected_minutes": 58.3,
+        "start_probability": 0.8875
+      }
+    },
+    "player_ids": [
+      "player:2025-26:348"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "73b96fe2f4b7ff0f2aca59154927673b89001ef34a11d9f65dc9d230330f6316",
+    "run_id": "gw20-sol-evidence-v3",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-enhanced-gw20-scout_evidence-evidence-v1",
+  "gameweek": 20,
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "summary_is_secondary_team_news",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "player_baselines": {
+    "player:2025-26:348": {
+      "expected_minutes": 58.3,
+      "start_probability": 0.8875
+    }
+  },
+  "replay_application": {
+    "arm_id": "scout_evidence",
+    "reuse_basis": "Frozen evidence and challenger interpretations are decision-independent projection proposals; exact target-player baselines must match before application.",
+    "source_host_bundle_sha256": "fd642ab2712cbe6e46ee7501c3c5cdc25d99f4a732911c3372e34b1369a7825c",
+    "starting_state_sha256": "7b9529562922a37c6343cefeb5c39d4b6f8e0ceae7f9e3207a82f144dee1d122"
+  },
+  "research_summary": "Friday's pre-deadline summary explicitly lists owned defender Joe Rodon among Leeds players still out.",
+  "schema_version": "1.0"
+}

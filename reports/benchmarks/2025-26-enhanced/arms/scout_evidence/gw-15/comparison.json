@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "81f4db32d6fd4793fdbc5d90e3908edd70447d13fb3218473c53265f8d53f20e",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 55,
+  "agent_vs_canonical_delta": 0,
+  "canonical_gross_points": 55,
+  "canonical_tree_sha256_after": "a9657494d4804611a1677b25e3afeebe3c77e4bf600fa987cd620c61caabd654",
+  "canonical_tree_sha256_before": "a9657494d4804611a1677b25e3afeebe3c77e4bf600fa987cd620c61caabd654",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "f1bae232c89276f676f4fcada50540ba86cd3dce27d4ee1a140eee995db40c03",
+  "content_sha256": "0020c568c373e26600b58c98ee68d9aa400cf57b2121d9eb22d7c75b3dba10fb",
+  "evidence_run_sha256": "38917c93540b35ceb8e475df13d53b4e46f696e4824b6683ce8b180b95adbefa",
+  "experiment_id": "2025-26-enhanced-gw15-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 15,
+  "hit_cost": 0,
+  "host_bundle_sha256": "7256a25ac4ac64716f71052a4b87fec2ab4e305c165d9922476668656dd5bbc7",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "positive_evidence_cannot_create_an_uplift_under_reduction_only_policy",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "50839719e9c8cb3ce2489a265249ad0d56dd74350da0deb075121795eec9591b",
+  "plan_sha256": "7119a52f37a4406f6dae8ef3b7e3e146515bca60e5f9e2368327930a13cb491a",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Marc Guéhi",
+      "player_out": "Murillo Costa dos Santos"
+    }
+  ],
+  "solver_input_sha256": "05ef562254748e49aa88b979e1888e20b46cacf3b6e4d43d553fcf806d8d5526",
+  "solver_output_sha256": "88582efa7d6ba60f83b02ac0557f04dc7bd8929f94951025cd0e0b894fb0dcfa",
+  "starting_state_sha256": "a2d72b6a48c86ff9c8051246b552ad9a2a74bbde4d5bc3567c997f566d747e58"
+}

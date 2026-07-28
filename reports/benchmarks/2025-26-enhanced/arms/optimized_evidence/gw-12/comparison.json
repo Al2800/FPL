@@ -1,0 +1,39 @@
+{
+  "adapter_audit_sha256": "374a8d57adec05dd2339958c751ea37ae856f262c77a2c4b637eb7fee2183dc4",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 65,
+  "agent_vs_canonical_delta": 36,
+  "canonical_gross_points": 29,
+  "canonical_tree_sha256_after": "64d06384c005c69c4e37a0b85682f0bb0234eeebe861b021aa0fe241fe1279fe",
+  "canonical_tree_sha256_before": "64d06384c005c69c4e37a0b85682f0bb0234eeebe861b021aa0fe241fe1279fe",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "395f5d3ac18d7f89c2dda769aa19ec5b28231a29f2fc9dfd15cbbfba06bceca1",
+  "content_sha256": "b572ae69df4f344fe155505d36dc270f9626add07ed43c27ad43df8f4f2ad8bc",
+  "evidence_run_sha256": "a97d9deff40790d40eb90e37eed64b0146151ec940087d96a81b422da5a30928",
+  "experiment_id": "2025-26-enhanced-gw12-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 12,
+  "hit_cost": 0,
+  "host_bundle_sha256": "28ee9ac06bcbc88a2ed41dbdcad9ab59cf98990f1923ec11e63c6b93521a10db",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "not_eligible_for_headline_agent_performance",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "72ab3c662d1dd3609ec0fb282d58bf0d513f5f6b75869cb3aae3f9f38e5d4f12",
+  "plan_sha256": "20508a9ff22bf3ae7d80e508e665111f1b16de5ef05a56f8081ad9aebe99cc0f",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Jurriën Timber",
+      "player_out": "Gabriel dos Santos Magalhães"
+    }
+  ],
+  "solver_input_sha256": "1866eec65d7fc70eb0ff35a7c56f262437999fac83ce36a215a75141ea59167b",
+  "solver_output_sha256": "92de37f2d9911467f9e82f289b941d7b47be2b2840195798452e39695102efb4",
+  "starting_state_sha256": "cab64048bdba6fd5ae03e9a2d0d1f4c453eeee98482951849610099428484cf2"
+}

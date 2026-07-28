@@ -1,0 +1,56 @@
+{
+  "adjustments": [
+    {
+      "adjustment_id": "adjustment:gw12:gabriel-expected-minutes-zero",
+      "after": {
+        "expected_minutes": 0.0,
+        "expected_points": 0.0,
+        "start_probability": 0.0,
+        "status": "i"
+      },
+      "before": {
+        "expected_minutes": 85.6,
+        "expected_points": 6.09,
+        "start_probability": 0.9524,
+        "status": "a"
+      },
+      "claim_ids": [
+        "signal:adjustment:gw12:gabriel-expected-minutes-zero"
+      ],
+      "confidence": 0.99,
+      "player_id": "player:2025-26:5",
+      "ratio": 0.0,
+      "target": "expected_minutes"
+    },
+    {
+      "adjustment_id": "adjustment:gw12:semenyo-start-probability-reduction",
+      "after": {
+        "expected_minutes": 65.4,
+        "expected_points": 4.55,
+        "start_probability": 0.7321,
+        "status": "a"
+      },
+      "before": {
+        "expected_minutes": 87.7,
+        "expected_points": 6.11,
+        "start_probability": 0.9821,
+        "status": "a"
+      },
+      "claim_ids": [
+        "signal:adjustment:gw12:semenyo-start-probability-reduction"
+      ],
+      "confidence": 0.74,
+      "player_id": "player:2025-26:82",
+      "ratio": 0.7454434375318195,
+      "target": "start_probability"
+    }
+  ],
+  "applied": true,
+  "challenger_run_sha256": "395f5d3ac18d7f89c2dda769aa19ec5b28231a29f2fc9dfd15cbbfba06bceca1",
+  "content_sha256": "374a8d57adec05dd2339958c751ea37ae856f262c77a2c4b637eb7fee2183dc4",
+  "evidence_run_sha256": "a97d9deff40790d40eb90e37eed64b0146151ec940087d96a81b422da5a30928",
+  "fallback_reason": null,
+  "policy_id": "agent-fork-adapter-v1",
+  "policy_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+  "schema_version": "1.0"
+}

@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "c5e8018c9c37c22597941c64c21705c25c4cafda5075770891c22b616b599b87",
+  "agent_decision": "degraded_fallback",
+  "agent_fork_gross_points": 64,
+  "agent_vs_canonical_delta": 5,
+  "canonical_gross_points": 59,
+  "canonical_tree_sha256_after": "a13d79f739b8318230d36f6e3fc14078b3694aebac6b8c085c19372f74000843",
+  "canonical_tree_sha256_before": "a13d79f739b8318230d36f6e3fc14078b3694aebac6b8c085c19372f74000843",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "1d7b84a52a03561ef8f8e94629404d32ed81dce4f0128c9f825cf1dcb3e8946b",
+  "content_sha256": "b21333cb8d2fc181eff9797deaf8ec35977099dc6270da12a0cbdf67ceaa7e00",
+  "evidence_run_sha256": "64e8016d406bd3e7ac9c00a0eab901c417d6eb5cef8ef07a2f50a6115873dbf1",
+  "experiment_id": "2025-26-gw03-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 3,
+  "hit_cost": 0,
+  "host_bundle_sha256": "6e84ca46c345caeded1c8d573021932a5741b6846ec7c5c32167c0cec5a2e5a0",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "23acb19dc53984d1dc2b38f5aa6dea2deb5403807f046a0fe6202fc77ab4b011",
+  "plan_sha256": "7d941f81b96e6ace68402f3a827eed36acd608286ac7628a7c8c88c79181e3c6",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "João Pedro Junqueira de Jesus",
+      "player_out": "Yoane Wissa"
+    }
+  ],
+  "solver_input_sha256": "da59ed8ac86cab734902138184abbc582020586655e2930b4333534d414afd00",
+  "solver_output_sha256": "3073d6c841eeeef7ac5b6d28f9508e9ea358d04907da1ebda831e101de2460ac",
+  "starting_state_sha256": "6012849d4bbb639e12c859ceded4a1aca9db08be058457ee089c49f9543c5b5a"
+}

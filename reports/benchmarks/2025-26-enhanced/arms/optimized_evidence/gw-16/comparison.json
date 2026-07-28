@@ -1,0 +1,41 @@
+{
+  "adapter_audit_sha256": "69f64e0c8c6d339ae10b440c4e2d43fc1489742c6ad06efde8326b512eb08d8c",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 61,
+  "agent_vs_canonical_delta": 2,
+  "canonical_gross_points": 59,
+  "canonical_tree_sha256_after": "393e8d7996817948b539a11a38a05b057b8b75383f4d84b87c2cdb3a37a8e700",
+  "canonical_tree_sha256_before": "393e8d7996817948b539a11a38a05b057b8b75383f4d84b87c2cdb3a37a8e700",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "730f5e9f38b06b00f437561ec1ada649e0fc5a60adf46335d047e7af6f94d679",
+  "content_sha256": "041592cef55226175b0187f9ae169a2d118d4cd8b41a447cb479a4bedf3775f1",
+  "evidence_run_sha256": "0b4e14aaaa2fc3c68b0646fcb0a28d740a7e37866dc2b15677b95a6f17f69677",
+  "experiment_id": "2025-26-enhanced-gw16-optimized_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 16,
+  "hit_cost": 0,
+  "host_bundle_sha256": "397aa35bb2c7f6f65fc9b4b8b89e97f02a4bf9593bedcb7b16dc6d8c361a71a1",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "source_language_is_norwegian_and_claim_text_is_an_english_translation",
+    "secondary_fpl_analysis_reporting_injury_news",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "e1a5e3c75aa57dbcac143024149bdea22816793aee05f0d991eafc98816e6d9a",
+  "plan_sha256": "b37d1825f9f560f429ffa28467ec843c5757b8f7b9dbbebb38231b0958072f26",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Trevoh Chalobah",
+      "player_out": "Daniel Muñoz Mejía"
+    }
+  ],
+  "solver_input_sha256": "eafe2f0e63b604a72dff77d107094f2c7062050129b80da05ad9571252d4f3f7",
+  "solver_output_sha256": "1926ca5ac6e0ffcbf19f6dd7cdf661253fd2a812c9f20b13d81ec58e6d9bd746",
+  "starting_state_sha256": "69aca9f66b3c01f09a040b6087a06798fa84400073f218db9c66d87514604ef8"
+}

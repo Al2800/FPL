@@ -1,0 +1,241 @@
+{
+  "arms": {
+    "optimized_evidence": {
+      "active_chip": null,
+      "artifacts": {
+        "comparison": {
+          "content_sha256": "71ee231ea225bf194977e7bd6f9b23318cd0931d036d9f64d7cfdf6d75574ba4",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_evidence/gw-13/comparison.json"
+        },
+        "next_state": {
+          "content_sha256": "4309811f582ec3938992480bfbce86ecc1fb3e74aa0fb485576b70ac81f1166d",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_evidence/gw-13/next-policy-state.json"
+        },
+        "outcome": {
+          "content_sha256": "6acccbb938a0c6e9dde446d6b7de5f5263867dceeb92c6c3973ebb26121637a1",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_evidence/gw-13/realised-outcome.json"
+        },
+        "plan": {
+          "content_sha256": "45cffac5ad76fdbd2c1c309b9546a7da330d09afbe9ad564a4df4e5957450717",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_evidence/gw-13/validated-plan.json"
+        },
+        "same_state_attribution": {
+          "content_sha256": "7af0bcacea8d9d7bd3a3bd5cd3d650260ec04096b135f8bd03b43f2b01dfdddf",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_evidence/gw-13/same-state-attribution.json"
+        },
+        "transition": {
+          "content_sha256": "c4b71fb9c794bcd5f265dbadff1ed1bc6aa8e9b5f978d8dfbee5cccfeaa4b62f",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_evidence/gw-13/state-transition.json"
+        }
+      },
+      "bank": 0.2,
+      "captain_id": "player:2025-26:381",
+      "cumulative_points": 687,
+      "evidence_decision": "degraded_fallback",
+      "free_transfers": 5,
+      "hit_cost": 0,
+      "next_state_sha256": "4309811f582ec3938992480bfbce86ecc1fb3e74aa0fb485576b70ac81f1166d",
+      "same_state_evidence_delta": 0,
+      "starting_state_sha256": "72ab3c662d1dd3609ec0fb282d58bf0d513f5f6b75869cb3aae3f9f38e5d4f12",
+      "substitutions": [
+        {
+          "player_in_id": "player:2025-26:508",
+          "player_out_id": "player:2025-26:381"
+        }
+      ],
+      "transfer_count": 1,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:257",
+          "player_out_id": "player:2025-26:260",
+          "position": "DEF",
+          "purchase_price": 5.0,
+          "selling_price": 4.8
+        }
+      ],
+      "weekly_net_points": 31
+    },
+    "optimized_structured": {
+      "active_chip": null,
+      "artifacts": {
+        "next_state": {
+          "content_sha256": "2ba50e3e8d9080ef37983224fe2e664e57e57b5adc7afbd9c6224866a45e43bf",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_structured/gw-13/next-policy-state.json"
+        },
+        "outcome": {
+          "content_sha256": "7424d4e45b6c0750a3afc87bc2e8de189db7d3768344069c24d4119098c6ea3c",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_structured/gw-13/realised-outcome.json"
+        },
+        "plan": {
+          "content_sha256": "d75412ec2239b846c3cc8a6f405cfae36bb8b826550e111aa3c000b7d9f976e6",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_structured/gw-13/validated-plan.json"
+        },
+        "transition": {
+          "content_sha256": "fc30625e676ae535cdb408bdd5c7dde6d6fc57280304ec03c0a1c5224e711444",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/optimized_structured/gw-13/state-transition.json"
+        }
+      },
+      "bank": 0.6,
+      "captain_id": "player:2025-26:381",
+      "cumulative_points": 677,
+      "evidence_decision": "frozen_no_evidence",
+      "free_transfers": 5,
+      "hit_cost": 0,
+      "next_state_sha256": "2ba50e3e8d9080ef37983224fe2e664e57e57b5adc7afbd9c6224866a45e43bf",
+      "starting_state_sha256": "e416e93e97ca09db332b877ebbae5045c7c4637f897a49d7dd019bd6a0b09183",
+      "substitutions": [
+        {
+          "player_in_id": "player:2025-26:508",
+          "player_out_id": "player:2025-26:5"
+        },
+        {
+          "player_in_id": "player:2025-26:610",
+          "player_out_id": "player:2025-26:381"
+        }
+      ],
+      "transfer_count": 1,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:257",
+          "player_out_id": "player:2025-26:260",
+          "position": "DEF",
+          "purchase_price": 5.0,
+          "selling_price": 4.8
+        }
+      ],
+      "weekly_net_points": 20
+    },
+    "scout_evidence": {
+      "active_chip": null,
+      "artifacts": {
+        "comparison": {
+          "content_sha256": "62d9488ed4f09b3f054113ad414ff5e37d300fd1b5dede0b3bdd4dab1bdcdd6b",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_evidence/gw-13/comparison.json"
+        },
+        "next_state": {
+          "content_sha256": "0ac489828196297fb588c2161a129f556ab0add2a8755894ca05844c6d8086f7",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_evidence/gw-13/next-policy-state.json"
+        },
+        "outcome": {
+          "content_sha256": "f3ee255eb0d8faff6007ad0e9e54b827a742f839703b71d551444b9c088e3672",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_evidence/gw-13/realised-outcome.json"
+        },
+        "plan": {
+          "content_sha256": "da99dd3291a9df0decd024e3b3fb3f225c0fd841def0c8eaf1615711728fb539",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_evidence/gw-13/validated-plan.json"
+        },
+        "same_state_attribution": {
+          "content_sha256": "78a6ecbbafa643df8a457df2e1462c45819e8da9c5c703dd53d2d9031f3dfade",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_evidence/gw-13/same-state-attribution.json"
+        },
+        "transition": {
+          "content_sha256": "7e3ce6aaf91f96a2e2390dba3303bada39983172533e653a143ab0a725bd79d9",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_evidence/gw-13/state-transition.json"
+        }
+      },
+      "bank": 0.2,
+      "captain_id": "player:2025-26:430",
+      "cumulative_points": 625,
+      "evidence_decision": "degraded_fallback",
+      "free_transfers": 4,
+      "hit_cost": 0,
+      "next_state_sha256": "0ac489828196297fb588c2161a129f556ab0add2a8755894ca05844c6d8086f7",
+      "same_state_evidence_delta": 0,
+      "starting_state_sha256": "40c628751658572fac6926eec512f3c3ef60ffab614b90ad8817164ca2dc0024",
+      "substitutions": [],
+      "transfer_count": 0,
+      "transfers": [],
+      "weekly_net_points": 38
+    },
+    "scout_structured": {
+      "active_chip": null,
+      "artifacts": {
+        "next_state": {
+          "content_sha256": "9b5a3bf15993e1e80ad55751020cf0433a36b3e29a36103e111c94d49f35767a",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_structured/gw-13/next-policy-state.json"
+        },
+        "outcome": {
+          "content_sha256": "5af4bdccfebcd18ab2f166bff2a9525c2d219a6d3a5a16aa1a34cc10857f15e0",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_structured/gw-13/realised-outcome.json"
+        },
+        "plan": {
+          "content_sha256": "49b5ea37407c5f36befeacefbb8860b52632e0e5e9abf2b981b17f46694bc4dc",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_structured/gw-13/validated-plan.json"
+        },
+        "transition": {
+          "content_sha256": "87139ca5ff8f6e3c49ec08d42b6336d9664707c90e3838468748d2489656776b",
+          "path": "reports/benchmarks/2025-26-enhanced/arms/scout_structured/gw-13/state-transition.json"
+        }
+      },
+      "bank": 0.5,
+      "captain_id": "player:2025-26:381",
+      "cumulative_points": 618,
+      "evidence_decision": "frozen_no_evidence",
+      "free_transfers": 5,
+      "hit_cost": 0,
+      "next_state_sha256": "9b5a3bf15993e1e80ad55751020cf0433a36b3e29a36103e111c94d49f35767a",
+      "starting_state_sha256": "d27ff6087a9c62260dcd26608f1c6cc47f16fb16e2507cb329b2f34353411135",
+      "substitutions": [
+        {
+          "player_in_id": "player:2025-26:72",
+          "player_out_id": "player:2025-26:5"
+        },
+        {
+          "player_in_id": "player:2025-26:348",
+          "player_out_id": "player:2025-26:381"
+        }
+      ],
+      "transfer_count": 1,
+      "transfers": [
+        {
+          "player_in_id": "player:2025-26:256",
+          "player_out_id": "player:2025-26:568",
+          "position": "DEF",
+          "purchase_price": 5.8,
+          "selling_price": 5.5
+        }
+      ],
+      "weekly_net_points": 36
+    }
+  },
+  "classification": "exploratory_production_ineligible",
+  "content_sha256": "15d00711f9a81b7c84282c41aec77012f12151293ee5ed4f6d37bce921827bc8",
+  "cumulative_effects": {
+    "evidence_effect_with_optimized_seed": 10,
+    "evidence_effect_with_scout_seed": 7,
+    "seed_effect_with_evidence": 62,
+    "seed_effect_without_evidence": 59,
+    "seed_evidence_interaction": 3
+  },
+  "enhanced_input": {
+    "classification": "exploratory_production_ineligible",
+    "content_sha256": "5417832930f16bd8e5715bf9215e2f8d7b4c50caa4c5bb61eb3a2e5dc6dc6185",
+    "decision_cutoff": "2025-11-29T13:30:00Z",
+    "feature_availability": {
+      "odds": "exploratory_only",
+      "official_fpl_state": "degraded",
+      "player_ratings": "unavailable",
+      "promoted_transfer_context": "unavailable",
+      "set_piece_roles": "unavailable",
+      "team_strength": "strict_available",
+      "unstructured_evidence": "exploratory_only"
+    },
+    "path": "evals/episodes/enhanced/2025-26/gw-13/input-pack.json"
+  },
+  "experiment_id": "2025-26-enhanced-season-replay-v1",
+  "gameweek": 13,
+  "identical_input_binding": {
+    "optimized_evidence": "5417832930f16bd8e5715bf9215e2f8d7b4c50caa4c5bb61eb3a2e5dc6dc6185",
+    "optimized_structured": "5417832930f16bd8e5715bf9215e2f8d7b4c50caa4c5bb61eb3a2e5dc6dc6185",
+    "scout_evidence": "5417832930f16bd8e5715bf9215e2f8d7b4c50caa4c5bb61eb3a2e5dc6dc6185",
+    "scout_structured": "5417832930f16bd8e5715bf9215e2f8d7b4c50caa4c5bb61eb3a2e5dc6dc6185"
+  },
+  "schema_version": "1.0",
+  "weekly_effects": {
+    "evidence_effect_with_optimized_seed": 11,
+    "evidence_effect_with_scout_seed": 2,
+    "seed_effect_with_evidence": -7,
+    "seed_effect_without_evidence": -16,
+    "seed_evidence_interaction": 9
+  }
+}

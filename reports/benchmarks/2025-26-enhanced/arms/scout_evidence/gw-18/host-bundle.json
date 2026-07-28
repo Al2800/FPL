@@ -1,0 +1,186 @@
+{
+  "case_selection": "retrospective_exploratory_not_preregistered",
+  "code_commit": "4cad6a24ee890bb50263706b9d4b5cc2fcc63346",
+  "content_sha256": "4204c359a7e5222ab07446cb045af68ac6754fd9b4390ebdb8c5f74001695ead",
+  "deterministic_candidate": {
+    "bank_after": 2.0,
+    "banked_option_units": 3,
+    "hit_cost": 0,
+    "immediate_objective": 64.06,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:8",
+        "player:2025-26:260",
+        "player:2025-26:226",
+        "player:2025-26:414",
+        "player:2025-26:21",
+        "player:2025-26:82",
+        "player:2025-26:47",
+        "player:2025-26:387",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "next_gameweek_free_transfers": 4,
+    "objective": 69.46,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 5.4,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:21",
+        "player_out_id": "player:2025-26:266"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "episode": {
+    "decision_cutoff": "2025-12-26T18:30:00Z",
+    "episode_id": "benchmark-v0:2025-26:gw18:manager-neutral",
+    "observed_episode_sha256": "c29d96747a105bc86046cacc4e54916cb6af85afa3ec3039e643dfbbb5da3cad",
+    "ruleset_id": "2025-26-v1.0",
+    "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ]
+  },
+  "evidence_documents": [
+    {
+      "available_at": "2026-07-26T14:47:00Z",
+      "content_sha256": "951488f1e516e025f82cbf57894ceb34f563a5cede63d7d1fffc6093df32a34a",
+      "document_id": "document:ffs-gw18-szoboszlai-ban-2025-12-23",
+      "observed_at": "2026-07-26T14:47:00Z",
+      "passages": {
+        "passage:claim-gw18-szoboszlai-suspended": "Dominik Szoboszlai has to serve a one-match ban for yellow card accumulation, too."
+      },
+      "published_at": "2025-12-23T00:00:00Z",
+      "source_id": "ffs-gw18-szoboszlai-ban-2025-12-23",
+      "title": "FPL Gameweek 18 team news: Tuesday's live injury updates"
+    }
+  ],
+  "evidence_mode": "retrospective_published_before_deadline",
+  "evidence_request": {
+    "allowed_tools": [],
+    "arm": "evidence_agent",
+    "authority": {
+      "may_apply_adjustment": false,
+      "may_approve": false,
+      "may_execute_fpl": false,
+      "may_modify_rules": false,
+      "may_propose": true,
+      "may_read_hidden_outcome": false
+    },
+    "budget": {
+      "cost": {
+        "amount": 0.0,
+        "currency": "GBP"
+      },
+      "input_tokens": 20000,
+      "output_tokens": 4000,
+      "tool_calls": 0,
+      "total_tokens": 24000,
+      "wall_clock_ms": 120000
+    },
+    "content_sha256": "b8f8b60a65a52ebc2bbcf24c4b9c156562a34502b15f1f0c12d021692ecaf227",
+    "deterministic_candidate_sha256": "16af766d5c791fc0d336c91de510112e6d712f9eb08f9792d4a0e13454463cf4",
+    "episode": {
+      "decision_at": "2025-12-26T18:30:00Z",
+      "episode_id": "benchmark-v0:2025-26:gw18:manager-neutral",
+      "observed_episode_sha256": "c29d96747a105bc86046cacc4e54916cb6af85afa3ec3039e643dfbbb5da3cad",
+      "ruleset_id": "2025-26-v1.0",
+      "snapshot_ids": [
+        "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+        "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+        "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+        "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+        "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+      ]
+    },
+    "evidence_documents": [
+      {
+        "available_at": "2026-07-26T14:47:00Z",
+        "content_sha256": "951488f1e516e025f82cbf57894ceb34f563a5cede63d7d1fffc6093df32a34a",
+        "document_id": "document:ffs-gw18-szoboszlai-ban-2025-12-23",
+        "observed_at": "2026-07-26T14:47:00Z",
+        "passages": {
+          "passage:claim-gw18-szoboszlai-suspended": "Dominik Szoboszlai has to serve a one-match ban for yellow card accumulation, too."
+        },
+        "published_at": "2025-12-23T00:00:00Z",
+        "source_id": "ffs-gw18-szoboszlai-ban-2025-12-23",
+        "title": "FPL Gameweek 18 team news: Tuesday's live injury updates"
+      }
+    ],
+    "evidence_mode": "retrospective_published_before_deadline",
+    "evidence_proposal": null,
+    "player_baselines": {
+      "player:2025-26:387": {
+        "expected_minutes": 82.2,
+        "start_probability": 0.9656
+      }
+    },
+    "player_ids": [
+      "player:2025-26:387"
+    ],
+    "prompt": {
+      "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+      "prompt_id": "evidence-agent",
+      "version": "1.0"
+    },
+    "provider": {
+      "model_id": "gpt-5.6-sol",
+      "provider_id": "openai-chatgpt-subscription",
+      "reasoning_effort": "high",
+      "surface": "codex_subscription_subagent"
+    },
+    "rendered_input_sha256": "acb8fd29faea6cdf45a90619653d17e6ace4f4c61f0ae89aad886ee76ef153e5",
+    "run_id": "gw18-sol-evidence-v1",
+    "schema_version": "1.0"
+  },
+  "experiment_id": "2025-26-enhanced-gw18-scout_evidence-evidence-v1",
+  "gameweek": 18,
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "player_baselines": {
+    "player:2025-26:387": {
+      "expected_minutes": 82.2,
+      "start_probability": 0.9656
+    }
+  },
+  "replay_application": {
+    "arm_id": "scout_evidence",
+    "reuse_basis": "Frozen evidence and challenger interpretations are decision-independent projection proposals; exact target-player baselines must match before application.",
+    "source_host_bundle_sha256": "4c6b7d19f39233fa5546c9991389c04d2fb617511d52cac5436fecef894db233",
+    "starting_state_sha256": "a387b16fb6959049b0c669dc715e42b712849227f10054077c5f3cc1928004cc"
+  },
+  "research_summary": "Pre-deadline team news definitively records owned midfielder Dominik Szoboszlai's one-match yellow-card suspension.",
+  "schema_version": "1.0"
+}

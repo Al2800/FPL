@@ -1,0 +1,554 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw13-sol-evidence-v1",
+      "content_sha256": "5febb0bcbfd8813d36a1f942aa3dcba247c19be33459fb1f5c8d5038a5f61eeb",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "4b7290ac094e9c90bb7fa1fba226e07002690a490ddeb2c1b533c0a2d06ab537",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T12:19:14Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "4b7290ac094e9c90bb7fa1fba226e07002690a490ddeb2c1b533c0a2d06ab537",
+        "response_sha256": "d41d560fbeda1cd1e9c8a3fcb84a99aadc11b0849be5a52a9b4406c4cb4eecfb",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "For Bournemouth Andoni Iraola is hopeful Antoine Semenyo will be available.",
+              "citation_excerpt_sha256": "df09d3f6d1c5cb922d5943032a875edb0b91c525fac2ff0919f64ba443906e75",
+              "claim_id": "claim:gw13:semenyo:hopeful",
+              "claim_text": "Bournemouth manager Andoni Iraola was hopeful Antoine Semenyo would be available, but his availability and starting status were not confirmed.",
+              "confidence": 0.72,
+              "document_id": "document:bbc-fpl-gw13-semenyo-2025-11-28-1554",
+              "expires_at": "2025-11-29T18:00:00Z",
+              "passage_id": "passage:claim-gw13-semenyo-hopeful",
+              "player_uid": "player:2025-26:82",
+              "source_id": "bbc-fpl-gw13-semenyo-2025-11-28-1554"
+            },
+            {
+              "citation_excerpt": "Gabriel's injury may not be long-term; however, we are in a time when games come thick and fast. GW13-15 all happen in the space of 9 days. With that in mind, I'd say Gabriel is a sell.",
+              "citation_excerpt_sha256": "cc9fcf95c9bd65cfde6d8e9d241af9fc505c81fd441ffb61eb7f41e156344cba",
+              "claim_id": "claim:gw13:gabriel:injury-sell",
+              "claim_text": "A secondary expert assessment recommended selling Gabriel because his injury coincided with three gameweeks in nine days, while noting the injury might not be long-term.",
+              "confidence": 0.64,
+              "document_id": "document:bbc-fpl-gw13-gabriel-sell-2025-11-28-1559",
+              "expires_at": "2025-12-04T23:59:59Z",
+              "passage_id": "passage:claim-gw13-gabriel-still-injured",
+              "player_uid": "player:2025-26:5",
+              "source_id": "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "No negative adjustment is proposed for Semenyo because hopeful availability is positive but uncertain evidence and does not justify reducing his baseline projection."
+          ],
+          "proposed_adjustments": [
+            {
+              "adjustment_id": "adjustment:gw13:gabriel:expected-minutes",
+              "after_value": 50.0,
+              "before_value": 68.0,
+              "claim_ids": [
+                "claim:gw13:gabriel:injury-sell"
+              ],
+              "confidence": 0.6,
+              "expires_at": "2025-12-04T23:59:59Z",
+              "player_uid": "player:2025-26:5",
+              "rationale": "The injury-related sell recommendation supports a cautious minutes reduction during a compressed schedule, but the reduction is limited because this is secondary expert interpretation rather than manager confirmation and the injury may be short-term.",
+              "target": "expected_minutes"
+            }
+          ],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw13-sol-evidence-v1",
+      "content_sha256": "5abdacb26b6c7e68ed1cded2cb8c79ef9e573f8e5e29736937a4bc9892d6160b",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:gw13:semenyo:hopeful",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:82",
+            "provenance": {
+              "content_hash_sha256": "ad2ec235ee320b935ccfef7334d47b9fcb80eddaacae2c5a7abd04e99a94f61e",
+              "source_ids": [
+                "bbc-fpl-gw13-semenyo-2025-11-28-1554"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          },
+          {
+            "claim_id": "claim:gw13:gabriel:injury-sell",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:5",
+            "provenance": {
+              "content_hash_sha256": "411f1c26052f853040c8f3fc8097f35b5a222a466a3e9c105118486ac00deaba",
+              "source_ids": [
+                "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-26T12:15:47Z",
+            "claim_id": "claim:gw13:semenyo:hopeful",
+            "claim_text": "Bournemouth manager Andoni Iraola was hopeful Antoine Semenyo would be available, but his availability and starting status were not confirmed.",
+            "confidence": 0.72,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:bbc-fpl-gw13-semenyo-2025-11-28-1554",
+            "expires_at": "2025-11-29T18:00:00Z",
+            "observed_at": "2026-07-26T12:15:47Z",
+            "provenance": {
+              "content_hash_sha256": "ad2ec235ee320b935ccfef7334d47b9fcb80eddaacae2c5a7abd04e99a94f61e",
+              "source_ids": [
+                "bbc-fpl-gw13-semenyo-2025-11-28-1554"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-11-28T15:54:00Z"
+          },
+          {
+            "available_at": "2026-07-26T12:15:47Z",
+            "claim_id": "claim:gw13:gabriel:injury-sell",
+            "claim_text": "A secondary expert assessment recommended selling Gabriel because his injury coincided with three gameweeks in nine days, while noting the injury might not be long-term.",
+            "confidence": 0.64,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:bbc-fpl-gw13-gabriel-sell-2025-11-28-1559",
+            "expires_at": "2025-12-04T23:59:59Z",
+            "observed_at": "2026-07-26T12:15:47Z",
+            "provenance": {
+              "content_hash_sha256": "411f1c26052f853040c8f3fc8097f35b5a222a466a3e9c105118486ac00deaba",
+              "source_ids": [
+                "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-11-28T15:59:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "5abdacb26b6c7e68ed1cded2cb8c79ef9e573f8e5e29736937a4bc9892d6160b",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "No negative adjustment is proposed for Semenyo because hopeful availability is positive but uncertain evidence and does not justify reducing his baseline projection."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [
+          {
+            "adjustment_id": "adjustment:gw13:gabriel:expected-minutes",
+            "after_value": 50.0,
+            "available_at": "2026-07-26T12:19:14Z",
+            "before_value": 68.0,
+            "confidence": 0.6,
+            "expires_at": "2025-12-04T23:59:59Z",
+            "observed_at": "2026-07-26T12:19:14Z",
+            "player_uid": "player:2025-26:5",
+            "provenance": {
+              "source_ids": [
+                "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-07-26T12:19:14Z",
+            "rationale": "The injury-related sell recommendation supports a cautious minutes reduction during a compressed schedule, but the reduction is limited because this is secondary expert interpretation rather than manager confirmation and the injury may be short-term.",
+            "signal_ids": [
+              "signal:adjustment:gw13:gabriel:expected-minutes"
+            ],
+            "status": "proposed",
+            "target": "expected_minutes"
+          }
+        ],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": [
+          {
+            "available_at": "2026-07-26T12:19:14Z",
+            "claim_ids": [
+              "claim:gw13:gabriel:injury-sell"
+            ],
+            "interpretation": "The injury-related sell recommendation supports a cautious minutes reduction during a compressed schedule, but the reduction is limited because this is secondary expert interpretation rather than manager confirmation and the injury may be short-term.",
+            "observed_at": "2026-07-26T12:19:14Z",
+            "player_uid": "player:2025-26:5",
+            "provenance": {
+              "source_ids": [
+                "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-11-28T15:59:00Z",
+            "signal_id": "signal:adjustment:gw13:gabriel:expected-minutes"
+          }
+        ]
+      }
+    }
+  },
+  "content_sha256": "414b464e7ed507f8dfee84382f5720d8653ddbac16f72f63812ea037a8ab05fd",
+  "run_id": "gw13-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.4,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 59.02,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:568",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:381",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:256",
+        "player:2025-26:8",
+        "player:2025-26:72",
+        "player:2025-26:381",
+        "player:2025-26:119",
+        "player:2025-26:387",
+        "player:2025-26:384",
+        "player:2025-26:82",
+        "player:2025-26:249",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:256"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 66.22,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-26T12:19:14Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-11-29T13:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw13:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw13-sol-evidence-v1",
+          "content_sha256": "4e99dd6ca58e59ced11f55bc7a09dfa6ab3a8e9a5778e1a99443609cad0995a7"
+        }
+      ],
+      "input_sha256": "4e99dd6ca58e59ced11f55bc7a09dfa6ab3a8e9a5778e1a99443609cad0995a7",
+      "rendered_prompt_sha256": "4b7290ac094e9c90bb7fa1fba226e07002690a490ddeb2c1b533c0a2d06ab537"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw13-sol-evidence-v1",
+          "content_sha256": "5febb0bcbfd8813d36a1f942aa3dcba247c19be33459fb1f5c8d5038a5f61eeb"
+        },
+        "call_id": "model:gw13-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "4b7290ac094e9c90bb7fa1fba226e07002690a490ddeb2c1b533c0a2d06ab537",
+        "response_sha256": "d41d560fbeda1cd1e9c8a3fcb84a99aadc11b0849be5a52a9b4406c4cb4eecfb",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T12:19:14Z",
+    "observed_episode_sha256": "d76fe137cc521c43305be39721d7593d8dd5b879d7015c6d6bf161b020a62cb4",
+    "output": {
+      "output_sha256": "5abdacb26b6c7e68ed1cded2cb8c79ef9e573f8e5e29736937a4bc9892d6160b",
+      "response_ref": {
+        "artifact_id": "cached-response:gw13-sol-evidence-v1",
+        "content_sha256": "5febb0bcbfd8813d36a1f942aa3dcba247c19be33459fb1f5c8d5038a5f61eeb"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw13-sol-evidence-v1",
+        "content_sha256": "5abdacb26b6c7e68ed1cded2cb8c79ef9e573f8e5e29736937a4bc9892d6160b"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw13-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw13-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw13-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "0e8dd1194d8e084498183db1fec03d948cdd71f9",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:gw13:semenyo:hopeful",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:82",
+        "provenance": {
+          "content_hash_sha256": "ad2ec235ee320b935ccfef7334d47b9fcb80eddaacae2c5a7abd04e99a94f61e",
+          "source_ids": [
+            "bbc-fpl-gw13-semenyo-2025-11-28-1554"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      },
+      {
+        "claim_id": "claim:gw13:gabriel:injury-sell",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:5",
+        "provenance": {
+          "content_hash_sha256": "411f1c26052f853040c8f3fc8097f35b5a222a466a3e9c105118486ac00deaba",
+          "source_ids": [
+            "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-26T12:15:47Z",
+        "claim_id": "claim:gw13:semenyo:hopeful",
+        "claim_text": "Bournemouth manager Andoni Iraola was hopeful Antoine Semenyo would be available, but his availability and starting status were not confirmed.",
+        "confidence": 0.72,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:bbc-fpl-gw13-semenyo-2025-11-28-1554",
+        "expires_at": "2025-11-29T18:00:00Z",
+        "observed_at": "2026-07-26T12:15:47Z",
+        "provenance": {
+          "content_hash_sha256": "ad2ec235ee320b935ccfef7334d47b9fcb80eddaacae2c5a7abd04e99a94f61e",
+          "source_ids": [
+            "bbc-fpl-gw13-semenyo-2025-11-28-1554"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-11-28T15:54:00Z"
+      },
+      {
+        "available_at": "2026-07-26T12:15:47Z",
+        "claim_id": "claim:gw13:gabriel:injury-sell",
+        "claim_text": "A secondary expert assessment recommended selling Gabriel because his injury coincided with three gameweeks in nine days, while noting the injury might not be long-term.",
+        "confidence": 0.64,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:bbc-fpl-gw13-gabriel-sell-2025-11-28-1559",
+        "expires_at": "2025-12-04T23:59:59Z",
+        "observed_at": "2026-07-26T12:15:47Z",
+        "provenance": {
+          "content_hash_sha256": "411f1c26052f853040c8f3fc8097f35b5a222a466a3e9c105118486ac00deaba",
+          "source_ids": [
+            "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-11-28T15:59:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "5abdacb26b6c7e68ed1cded2cb8c79ef9e573f8e5e29736937a4bc9892d6160b",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "No negative adjustment is proposed for Semenyo because hopeful availability is positive but uncertain evidence and does not justify reducing his baseline projection."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw13:gabriel:expected-minutes",
+        "after_value": 50.0,
+        "available_at": "2026-07-26T12:19:14Z",
+        "before_value": 68.0,
+        "confidence": 0.6,
+        "expires_at": "2025-12-04T23:59:59Z",
+        "observed_at": "2026-07-26T12:19:14Z",
+        "player_uid": "player:2025-26:5",
+        "provenance": {
+          "source_ids": [
+            "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-07-26T12:19:14Z",
+        "rationale": "The injury-related sell recommendation supports a cautious minutes reduction during a compressed schedule, but the reduction is limited because this is secondary expert interpretation rather than manager confirmation and the injury may be short-term.",
+        "signal_ids": [
+          "signal:adjustment:gw13:gabriel:expected-minutes"
+        ],
+        "status": "proposed",
+        "target": "expected_minutes"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": [
+      {
+        "available_at": "2026-07-26T12:19:14Z",
+        "claim_ids": [
+          "claim:gw13:gabriel:injury-sell"
+        ],
+        "interpretation": "The injury-related sell recommendation supports a cautious minutes reduction during a compressed schedule, but the reduction is limited because this is secondary expert interpretation rather than manager confirmation and the injury may be short-term.",
+        "observed_at": "2026-07-26T12:19:14Z",
+        "player_uid": "player:2025-26:5",
+        "provenance": {
+          "source_ids": [
+            "bbc-fpl-gw13-gabriel-sell-2025-11-28-1559"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-11-28T15:59:00Z",
+        "signal_id": "signal:adjustment:gw13:gabriel:expected-minutes"
+      }
+    ]
+  }
+}

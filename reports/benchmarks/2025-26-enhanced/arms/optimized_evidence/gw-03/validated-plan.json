@@ -1,0 +1,148 @@
+{
+  "active_chip": null,
+  "content_sha256": "7d941f81b96e6ace68402f3a827eed36acd608286ac7628a7c8c88c79181e3c6",
+  "episode_id": "benchmark-v0:2025-26:gw03:manager-neutral",
+  "finance": {
+    "bank_after": 0.0,
+    "bank_before": 0.0,
+    "free_transfers_before": 1,
+    "hit_cost": 0,
+    "transfer_count": 1
+  },
+  "frozen_at": "2025-08-30T10:00:00Z",
+  "gameweek": 3,
+  "lineup": {
+    "bench_ids": [
+      "player:2025-26:502",
+      "player:2025-26:338",
+      "player:2025-26:610",
+      "player:2025-26:489"
+    ],
+    "captain_id": "player:2025-26:381",
+    "formation": {
+      "DEF": 4,
+      "FWD": 2,
+      "MID": 4
+    },
+    "starting_xi_ids": [
+      "player:2025-26:287",
+      "player:2025-26:256",
+      "player:2025-26:507",
+      "player:2025-26:508",
+      "player:2025-26:260",
+      "player:2025-26:381",
+      "player:2025-26:119",
+      "player:2025-26:82",
+      "player:2025-26:450",
+      "player:2025-26:249",
+      "player:2025-26:624"
+    ],
+    "vice_captain_id": "player:2025-26:119"
+  },
+  "plan_id": "validated-plan:benchmark-v0:2025-26:gw03:manager-neutral:evidence_agent",
+  "policy_arm": "evidence_agent",
+  "previous_state_sha256": "6012849d4bbb639e12c859ceded4a1aca9db08be058457ee089c49f9543c5b5a",
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "squad_after": [
+    {
+      "club_id": "team:2025-26:14",
+      "player_id": "player:2025-26:119",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:7",
+      "player_id": "player:2025-26:249",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "player_id": "player:2025-26:256",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:8",
+      "player_id": "player:2025-26:260",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:9",
+      "player_id": "player:2025-26:287",
+      "position": "GKP"
+    },
+    {
+      "club_id": "team:2025-26:10",
+      "player_id": "player:2025-26:338",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:12",
+      "player_id": "player:2025-26:381",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:14",
+      "player_id": "player:2025-26:450",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:15",
+      "player_id": "player:2025-26:489",
+      "position": "MID"
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "player_id": "player:2025-26:502",
+      "position": "GKP"
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "player_id": "player:2025-26:507",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:16",
+      "player_id": "player:2025-26:508",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:19",
+      "player_id": "player:2025-26:610",
+      "position": "DEF"
+    },
+    {
+      "club_id": "team:2025-26:19",
+      "player_id": "player:2025-26:624",
+      "position": "FWD"
+    },
+    {
+      "club_id": "team:2025-26:4",
+      "player_id": "player:2025-26:82",
+      "position": "MID"
+    }
+  ],
+  "transfers": [
+    {
+      "player_in_id": "player:2025-26:249",
+      "player_out_id": "player:2025-26:135",
+      "position": "FWD",
+      "purchase_price": 7.5,
+      "selling_price": 7.5
+    }
+  ],
+  "validation": {
+    "checks": [
+      "predecessor_and_rules_bound",
+      "transfer_finance_recomputed",
+      "squad_legal",
+      "lineup_legal_and_ordered",
+      "chip_legal"
+    ],
+    "content_sha256": "69dfb613c64ac252dcf7c4d964f186ca1c5efba2a9777f312417bd115b97ae85",
+    "status": "passed"
+  }
+}

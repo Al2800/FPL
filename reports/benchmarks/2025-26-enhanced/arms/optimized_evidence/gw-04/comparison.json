@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "137646526f75cf6222ca78e9e79f978fe4ed925113991b5640750bba3cd8abe1",
+  "agent_decision": "degraded_fallback",
+  "agent_fork_gross_points": 64,
+  "agent_vs_canonical_delta": 7,
+  "canonical_gross_points": 57,
+  "canonical_tree_sha256_after": "75a50dfe0a1e9664f7e4a0a2019587898bb62110c4888f8b9e5bd93f422dec29",
+  "canonical_tree_sha256_before": "75a50dfe0a1e9664f7e4a0a2019587898bb62110c4888f8b9e5bd93f422dec29",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "2e09a9210aa0b96d0ff40b1879add64e4fe859fb3f26b064b2a5e5ed99ed334d",
+  "content_sha256": "cd3d1450f775a9067aa186f3628fabfdecb1d57a1f5db3dacadc87e50e6c9490",
+  "evidence_run_sha256": "7425b1ea15204c3aa14b14b9b4d5cecf8021222e3ad68a1f404d6315942e0bc5",
+  "experiment_id": "2025-26-gw04-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 4,
+  "hit_cost": 0,
+  "host_bundle_sha256": "8f7ae509899a9975e7507db63744c29f6f0c29e7132d9339cb7e02850a89581c",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "5b1d93b5f93bc468c5d6ad3f19defc2f0118db74f4e038ed9cf5655a514f4a72",
+  "plan_sha256": "617d23781abe1521fb339f2560b43ba948bc314a87ee0ca4fa4aba6d24203769",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Cody Gakpo",
+      "player_out": "Matheus Santos Carneiro da Cunha"
+    }
+  ],
+  "solver_input_sha256": "d7d727388c06db56ebb4e87171e5b0d8304d18a98c8360bccaee02af7fd4c9bd",
+  "solver_output_sha256": "2b27a2bff3e69d9a6bb15e7239678452618e88421d36112eaa30ec0fe98e22d3",
+  "starting_state_sha256": "23acb19dc53984d1dc2b38f5aa6dea2deb5403807f046a0fe6202fc77ab4b011"
+}

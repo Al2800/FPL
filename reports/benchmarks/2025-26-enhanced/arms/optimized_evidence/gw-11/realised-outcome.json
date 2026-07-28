@@ -1,0 +1,138 @@
+{
+  "aggregated_players": [
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:119",
+      "position": "MID",
+      "total_points": 7
+    },
+    {
+      "minutes": 84,
+      "player_id": "player:2025-26:178",
+      "position": "FWD",
+      "total_points": 2
+    },
+    {
+      "minutes": 82,
+      "player_id": "player:2025-26:249",
+      "position": "FWD",
+      "total_points": 7
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:256",
+      "position": "DEF",
+      "total_points": 6
+    },
+    {
+      "minutes": 0,
+      "player_id": "player:2025-26:260",
+      "position": "DEF",
+      "total_points": 0
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:287",
+      "position": "GKP",
+      "total_points": 7
+    },
+    {
+      "minutes": 16,
+      "player_id": "player:2025-26:338",
+      "position": "FWD",
+      "total_points": 1
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:381",
+      "position": "MID",
+      "total_points": 2
+    },
+    {
+      "minutes": 34,
+      "player_id": "player:2025-26:384",
+      "position": "MID",
+      "total_points": 1
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:387",
+      "position": "MID",
+      "total_points": 1
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:5",
+      "position": "DEF",
+      "total_points": 1
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:502",
+      "position": "GKP",
+      "total_points": 2
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:508",
+      "position": "DEF",
+      "total_points": 2
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:610",
+      "position": "DEF",
+      "total_points": 3
+    },
+    {
+      "minutes": 90,
+      "player_id": "player:2025-26:82",
+      "position": "MID",
+      "total_points": 0
+    }
+  ],
+  "bench_points": 8,
+  "captain": {
+    "extra_points": 2,
+    "multiplier": 2,
+    "player_id": "player:2025-26:381",
+    "raw_points": 2,
+    "source": "captain",
+    "total_minutes": 90
+  },
+  "content_sha256": "1c60b28ef28e879ba49d693d3368424f37a0f97dde1f5a2f5cf67ac132bfcf37",
+  "effective_lineup_ids": [
+    "player:2025-26:287",
+    "player:2025-26:5",
+    "player:2025-26:508",
+    "player:2025-26:256",
+    "player:2025-26:381",
+    "player:2025-26:119",
+    "player:2025-26:82",
+    "player:2025-26:384",
+    "player:2025-26:387",
+    "player:2025-26:249",
+    "player:2025-26:178"
+  ],
+  "episode_id": "benchmark-v0:2025-26:gw11:manager-neutral",
+  "gameweek": 11,
+  "gross_points": 38,
+  "identity_map_sha256": "b402a0a2d110bcc55c7077425a1d363e1b486e19bb4ea95a65c5e6431eae33c6",
+  "outcome_id": "realised-outcome:benchmark-v0:2025-26:gw11:manager-neutral:evidence_agent",
+  "plan_id": "validated-plan:benchmark-v0:2025-26:gw11:manager-neutral:evidence_agent",
+  "plan_sha256": "611ade0f745f29d307e333c6a1f4653f6df62e69f35a328e53d4323d7443ca24",
+  "revealed_at": "2025-11-09T20:30:00Z",
+  "ruleset": {
+    "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+    "ruleset_id": "2025-26-v1.0"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "source_outcome_sha256": "3e1f55a2e907c7bdaa8aa7488921df3758f7e456c1fa2dc34823f3ac50652fe9",
+  "substitutions": [
+    {
+      "player_in_id": "player:2025-26:508",
+      "player_out_id": "player:2025-26:260"
+    }
+  ]
+}

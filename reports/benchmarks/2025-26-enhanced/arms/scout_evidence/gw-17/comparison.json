@@ -1,0 +1,45 @@
+{
+  "adapter_audit_sha256": "d84c106c2bacb56552234bd6fea346a908fb3364899685ccaf698988079782a2",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 97,
+  "agent_vs_canonical_delta": 9,
+  "canonical_gross_points": 88,
+  "canonical_tree_sha256_after": "78a2b73b401f689efc91637c06f11eb5403a45ee3785b9dee24cbf8ba25e6f48",
+  "canonical_tree_sha256_before": "78a2b73b401f689efc91637c06f11eb5403a45ee3785b9dee24cbf8ba25e6f48",
+  "captain": "Erling Haaland",
+  "challenger_run_sha256": "0293f945db27376993b1109455ebd21880cfa68523994bdf9102835b9fcc0238",
+  "content_sha256": "5612326e5ff2d3ab8b733e9cdbcd7a71785947d6c0836263fbc8ab5f4074e436",
+  "evidence_run_sha256": "2547cfed7d23e0b2882d18109c392652b858aa88ace72348a8a986b3e4423cbd",
+  "experiment_id": "2025-26-enhanced-gw17-scout_evidence-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 17,
+  "hit_cost": 0,
+  "host_bundle_sha256": "612e4fe7eb3b76901c9a30fa7bd7340b515504cafd9ea0663bf30240306ce08b",
+  "limitations": [
+    "source_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_time_is_day_precision_but_entire_day_precedes_cutoff",
+    "later_gw17_liverpool_updates_excluded_for_unproven_or_post_cutoff_timing",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface",
+    "frozen_hosted_interpretation_reused_on_exact_player_baselines",
+    "hosted_run_original_candidate_may_differ_from_application_candidate"
+  ],
+  "next_state_sha256": "a387b16fb6959049b0c669dc715e42b712849227f10054077c5f3cc1928004cc",
+  "plan_sha256": "d06636db5c1adb4e3a6553818f9248d061cfd0674e8718d2f866a32dd2a59035",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Phil Foden",
+      "player_out": "Bryan Mbeumo"
+    },
+    {
+      "player_in": "Morgan Rogers",
+      "player_out": "Cody Gakpo"
+    }
+  ],
+  "solver_input_sha256": "07f127b588a3632fa3cdcca1c19a1b09108dd43c230319721b5ca1ef35752813",
+  "solver_output_sha256": "248477b33cdfa7e2814c5ac4b03043d0b3bdb4c764fc8515d7317ab1ea9ba4fa",
+  "starting_state_sha256": "0d01d87525362d72a0f4b6c06017fe6bfee8d55ba8874a2f3fb316ca20f2094a"
+}

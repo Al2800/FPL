@@ -1,0 +1,475 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw09-early-sol-evidence-v1",
+      "content_sha256": "483363416fc20ea1c2ee259cfd1ecc7be6f85584f465829d4d1a9c673c16db62",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "turn_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "ab5a977b9b4995537aadc62783e889bc5c1dfd62b37ee7e5a0f42efe5f38a6b4",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-27T11:45:00Z",
+        "envelope_version": "1.0",
+        "metadata_owner": "host",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "ab5a977b9b4995537aadc62783e889bc5c1dfd62b37ee7e5a0f42efe5f38a6b4",
+        "response_sha256": "ba5a1ec6d1c0bdcb822ab95d99e6f156ce251dff304f3aa266209adb3cd48320",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "For the second time in three Gameweeks, Gabriel Magalhaes is set to be flagged going into a deadline.",
+              "citation_excerpt_sha256": "bd3f0a699c0219f652dddcb080b859cdbae6c51f1c909a3e058c8a629e9c5c74",
+              "claim_id": "claim:gw09:gabriel-flagged",
+              "claim_text": "Gabriel Magalhaes was expected to carry an availability flag into the Gameweek 9 deadline, for the second time in three Gameweeks.",
+              "confidence": 0.9,
+              "document_id": "document:gw09-ffscout-gabriel-flag",
+              "expires_at": "2025-10-27T17:30:00Z",
+              "passage_id": "passage:gw09-ffscout-gabriel-flag",
+              "player_uid": "player:2025-26:5",
+              "source_id": "fantasy-football-scout-gw9-team-news-2025-10-24"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "This is a proposal-only downward adjustment based solely on the supplied passage.",
+            "The evidence was recovered after the historical decision and is exploratory rather than production eligible."
+          ],
+          "proposed_adjustments": [
+            {
+              "adjustment_id": "adjustment:gw09:gabriel-start-probability",
+              "after_value": 0.7882,
+              "before_value": 0.9382,
+              "claim_ids": [
+                "claim:gw09:gabriel-flagged"
+              ],
+              "confidence": 0.66,
+              "expires_at": "2025-10-27T17:30:00Z",
+              "player_uid": "player:2025-26:5",
+              "rationale": "The supplied pre-deadline report establishes renewed availability uncertainty but does not confirm absence or quantify severity; a conservative 0.15 reduction reflects the flag without treating it as a ruled-out status.",
+              "target": "start_probability",
+              "unit": "probability"
+            }
+          ],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw09-early-sol-evidence-v1",
+      "content_sha256": "f45128e73b735ce8be12ef7406e182769b1f23c9ba91b792a92062817c935d5b",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:gw09:gabriel-flagged",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:5",
+            "provenance": {
+              "content_hash_sha256": "40acbbc52732c0c978e0ea36a00e435a172f47c3118be4cc28d66acdfb10e8f8",
+              "source_ids": [
+                "fantasy-football-scout-gw9-team-news-2025-10-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-27T10:18:35Z",
+            "claim_id": "claim:gw09:gabriel-flagged",
+            "claim_text": "Gabriel Magalhaes was expected to carry an availability flag into the Gameweek 9 deadline, for the second time in three Gameweeks.",
+            "confidence": 0.9,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:gw09-ffscout-gabriel-flag",
+            "expires_at": "2025-10-27T17:30:00Z",
+            "observed_at": "2026-07-27T10:18:35Z",
+            "provenance": {
+              "content_hash_sha256": "40acbbc52732c0c978e0ea36a00e435a172f47c3118be4cc28d66acdfb10e8f8",
+              "source_ids": [
+                "fantasy-football-scout-gw9-team-news-2025-10-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-10-24T00:00:00Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "f45128e73b735ce8be12ef7406e182769b1f23c9ba91b792a92062817c935d5b",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "This is a proposal-only downward adjustment based solely on the supplied passage.",
+          "The evidence was recovered after the historical decision and is exploratory rather than production eligible."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [
+          {
+            "adjustment_id": "adjustment:gw09:gabriel-start-probability",
+            "after_value": 0.7882,
+            "available_at": "2026-07-27T11:45:00Z",
+            "before_value": 0.9382,
+            "confidence": 0.66,
+            "expires_at": "2025-10-27T17:30:00Z",
+            "observed_at": "2026-07-27T11:45:00Z",
+            "player_uid": "player:2025-26:5",
+            "provenance": {
+              "source_ids": [
+                "fantasy-football-scout-gw9-team-news-2025-10-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-07-27T11:45:00Z",
+            "rationale": "The supplied pre-deadline report establishes renewed availability uncertainty but does not confirm absence or quantify severity; a conservative 0.15 reduction reflects the flag without treating it as a ruled-out status.",
+            "signal_ids": [
+              "signal:adjustment:gw09:gabriel-start-probability"
+            ],
+            "status": "proposed",
+            "target": "start_probability",
+            "unit": "probability"
+          }
+        ],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": [
+          {
+            "available_at": "2026-07-27T11:45:00Z",
+            "claim_ids": [
+              "claim:gw09:gabriel-flagged"
+            ],
+            "interpretation": "The supplied pre-deadline report establishes renewed availability uncertainty but does not confirm absence or quantify severity; a conservative 0.15 reduction reflects the flag without treating it as a ruled-out status.",
+            "observed_at": "2026-07-27T11:45:00Z",
+            "player_uid": "player:2025-26:5",
+            "provenance": {
+              "source_ids": [
+                "fantasy-football-scout-gw9-team-news-2025-10-24"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-10-24T00:00:00Z",
+            "signal_id": "signal:adjustment:gw09:gabriel-start-probability"
+          }
+        ]
+      }
+    }
+  },
+  "content_sha256": "c5ed00e56c72d48dc4bae25377482bbdccfaae7876a61215f47ab4edb33079c4",
+  "retry_disposition": null,
+  "run_id": "gw09-early-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 2.0,
+    "banked_option_units": 3,
+    "hit_cost": 0,
+    "immediate_objective": 62.36,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:348",
+        "player:2025-26:568",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:381",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:5",
+        "player:2025-26:8",
+        "player:2025-26:72",
+        "player:2025-26:381",
+        "player:2025-26:82",
+        "player:2025-26:384",
+        "player:2025-26:387",
+        "player:2025-26:427",
+        "player:2025-26:249",
+        "player:2025-26:64"
+      ],
+      "vice_captain_id": "player:2025-26:82"
+    },
+    "next_gameweek_free_transfers": 4,
+    "objective": 67.76,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 5.4,
+    "transfers": [],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-27T11:45:00Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-10-24T17:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw09:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw09-early-sol-evidence-v1",
+          "content_sha256": "fabde14d27afcaffdc1f285aa5f7d0fe042a2b30ee4e57799d61acc6930402d8"
+        }
+      ],
+      "input_sha256": "fabde14d27afcaffdc1f285aa5f7d0fe042a2b30ee4e57799d61acc6930402d8",
+      "rendered_prompt_sha256": "ab5a977b9b4995537aadc62783e889bc5c1dfd62b37ee7e5a0f42efe5f38a6b4"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw09-early-sol-evidence-v1",
+          "content_sha256": "483363416fc20ea1c2ee259cfd1ecc7be6f85584f465829d4d1a9c673c16db62"
+        },
+        "call_id": "model:gw09-early-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "ab5a977b9b4995537aadc62783e889bc5c1dfd62b37ee7e5a0f42efe5f38a6b4",
+        "response_sha256": "ba5a1ec6d1c0bdcb822ab95d99e6f156ce251dff304f3aa266209adb3cd48320",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-27T11:45:00Z",
+    "observed_episode_sha256": "6bab54c2efc947f4d761744b6f3307593e3326e6d25f817fbca096506bbe63fa",
+    "output": {
+      "output_sha256": "f45128e73b735ce8be12ef7406e182769b1f23c9ba91b792a92062817c935d5b",
+      "response_ref": {
+        "artifact_id": "cached-response:gw09-early-sol-evidence-v1",
+        "content_sha256": "483363416fc20ea1c2ee259cfd1ecc7be6f85584f465829d4d1a9c673c16db62"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw09-early-sol-evidence-v1",
+        "content_sha256": "f45128e73b735ce8be12ef7406e182769b1f23c9ba91b792a92062817c935d5b"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw09-early-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw09-early-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw09-early-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "a8b7f15ef90a47dc98d926cd201612c331f9f59c",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:gw09:gabriel-flagged",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:5",
+        "provenance": {
+          "content_hash_sha256": "40acbbc52732c0c978e0ea36a00e435a172f47c3118be4cc28d66acdfb10e8f8",
+          "source_ids": [
+            "fantasy-football-scout-gw9-team-news-2025-10-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-27T10:18:35Z",
+        "claim_id": "claim:gw09:gabriel-flagged",
+        "claim_text": "Gabriel Magalhaes was expected to carry an availability flag into the Gameweek 9 deadline, for the second time in three Gameweeks.",
+        "confidence": 0.9,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:gw09-ffscout-gabriel-flag",
+        "expires_at": "2025-10-27T17:30:00Z",
+        "observed_at": "2026-07-27T10:18:35Z",
+        "provenance": {
+          "content_hash_sha256": "40acbbc52732c0c978e0ea36a00e435a172f47c3118be4cc28d66acdfb10e8f8",
+          "source_ids": [
+            "fantasy-football-scout-gw9-team-news-2025-10-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-10-24T00:00:00Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "f45128e73b735ce8be12ef7406e182769b1f23c9ba91b792a92062817c935d5b",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "This is a proposal-only downward adjustment based solely on the supplied passage.",
+      "The evidence was recovered after the historical decision and is exploratory rather than production eligible."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw09:gabriel-start-probability",
+        "after_value": 0.7882,
+        "available_at": "2026-07-27T11:45:00Z",
+        "before_value": 0.9382,
+        "confidence": 0.66,
+        "expires_at": "2025-10-27T17:30:00Z",
+        "observed_at": "2026-07-27T11:45:00Z",
+        "player_uid": "player:2025-26:5",
+        "provenance": {
+          "source_ids": [
+            "fantasy-football-scout-gw9-team-news-2025-10-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-07-27T11:45:00Z",
+        "rationale": "The supplied pre-deadline report establishes renewed availability uncertainty but does not confirm absence or quantify severity; a conservative 0.15 reduction reflects the flag without treating it as a ruled-out status.",
+        "signal_ids": [
+          "signal:adjustment:gw09:gabriel-start-probability"
+        ],
+        "status": "proposed",
+        "target": "start_probability",
+        "unit": "probability"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": [
+      {
+        "available_at": "2026-07-27T11:45:00Z",
+        "claim_ids": [
+          "claim:gw09:gabriel-flagged"
+        ],
+        "interpretation": "The supplied pre-deadline report establishes renewed availability uncertainty but does not confirm absence or quantify severity; a conservative 0.15 reduction reflects the flag without treating it as a ruled-out status.",
+        "observed_at": "2026-07-27T11:45:00Z",
+        "player_uid": "player:2025-26:5",
+        "provenance": {
+          "source_ids": [
+            "fantasy-football-scout-gw9-team-news-2025-10-24"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-10-24T00:00:00Z",
+        "signal_id": "signal:adjustment:gw09:gabriel-start-probability"
+      }
+    ]
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_challenger",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw17-sol-challenger-v1",
+      "content_sha256": "972b1c66171d1dadd316963a58cb418bd26d546bf875eadcbdb2a4355c95ca74",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "c74137b8ba449381ca4e4e485e8422cbe753f706f259e2d3175bdfaf79989271",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T13:03:00Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "c74137b8ba449381ca4e4e485e8422cbe753f706f259e2d3175bdfaf79989271",
+        "response_sha256": "347736c79bea2d1d6289743967b623ba0ff26dc22a391179cfb678e488c5744e",
+        "structured_output": {
+          "escalation_outcome": "dismissed",
+          "notes": "Grounding is an approved, pre-cutoff passage explicitly establishing that the identified AFCON-bound Mbeumo is unavailable for club selection from GW17 onward. Player identity player:2025-26:119 and the adjustment subject are coherent. The 88.8-minute baseline is superseded by confirmed unavailability, so expected_minutes=0 is appropriate. The 2026-01-18T23:59:59Z expiry is coherent with the temporary AFCON absence and does not undermine the GW17 adjustment. No material contradiction or unsupported inference found.",
+          "review_id": "review:mbeumo-gw17-afcon-expected-minutes:challenger",
+          "reviewed_adjustment_ids": [
+            "adjustment:mbeumo-gw17-afcon-expected-minutes"
+          ],
+          "role": "challenger",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw17-sol-challenger-v1",
+      "content_sha256": "f7afb5abe6ec8f3e91b05c661fc944b5f3073fa224181247cdf1358bc0ea5ccc",
+      "payload": {
+        "approval_gate": {
+          "automatic_approval_allowed": false,
+          "confidence_downgraded": false,
+          "force_rerun": false,
+          "notes": [
+            "review:mbeumo-gw17-afcon-expected-minutes:challenger:dismissed"
+          ],
+          "requires_human_review": false,
+          "unresolved_challenges": []
+        },
+        "authority": "review_only_not_applied",
+        "content_sha256": "f7afb5abe6ec8f3e91b05c661fc944b5f3073fa224181247cdf1358bc0ea5ccc",
+        "proposal_sha256": "097fc115c37d209a32d29a1af6e18e1fc3f308dae803b4c4eee0f4110883327f",
+        "review": {
+          "agent_run_id": "gw17-sol-evidence-v1",
+          "available_at": "2026-07-26T13:03:00Z",
+          "escalation_outcome": "dismissed",
+          "notes": "Grounding is an approved, pre-cutoff passage explicitly establishing that the identified AFCON-bound Mbeumo is unavailable for club selection from GW17 onward. Player identity player:2025-26:119 and the adjustment subject are coherent. The 88.8-minute baseline is superseded by confirmed unavailability, so expected_minutes=0 is appropriate. The 2026-01-18T23:59:59Z expiry is coherent with the temporary AFCON absence and does not undermine the GW17 adjustment. No material contradiction or unsupported inference found.",
+          "observed_at": "2026-07-26T13:03:00Z",
+          "provenance": {
+            "agent_run_id": "gw17-sol-evidence-v1",
+            "source_ids": [
+              "gpt-5.6-sol-challenger"
+            ],
+            "transformation_version": "challenger-agent-v1"
+          },
+          "review_id": "review:mbeumo-gw17-afcon-expected-minutes:challenger"
+        },
+        "role": "challenger",
+        "schema_version": "1.0",
+        "unopposed_proposed_adjustment_ids": [
+          "adjustment:mbeumo-gw17-afcon-expected-minutes"
+        ]
+      }
+    }
+  },
+  "content_sha256": "0293f945db27376993b1109455ebd21880cfa68523994bdf9102835b9fcc0238",
+  "run_id": "gw17-sol-challenger-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 0.3,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 62.05,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:72",
+        "player:2025-26:348",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:260",
+        "player:2025-26:226",
+        "player:2025-26:8",
+        "player:2025-26:414",
+        "player:2025-26:82",
+        "player:2025-26:119",
+        "player:2025-26:387",
+        "player:2025-26:266",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:414"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 69.25,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:414",
+        "player_out_id": "player:2025-26:384"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "challenger",
+    "available_at": "2026-07-26T13:03:00Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-12-20T11:00:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw17:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw17-sol-challenger-v1",
+          "content_sha256": "839c221e611820b5c9fd8bcb976a4751e425aee4f6e02a13b7c157cf9d1560df"
+        }
+      ],
+      "input_sha256": "839c221e611820b5c9fd8bcb976a4751e425aee4f6e02a13b7c157cf9d1560df",
+      "rendered_prompt_sha256": "c74137b8ba449381ca4e4e485e8422cbe753f706f259e2d3175bdfaf79989271"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw17-sol-challenger-v1",
+          "content_sha256": "972b1c66171d1dadd316963a58cb418bd26d546bf875eadcbdb2a4355c95ca74"
+        },
+        "call_id": "model:gw17-sol-challenger-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "c74137b8ba449381ca4e4e485e8422cbe753f706f259e2d3175bdfaf79989271",
+        "response_sha256": "347736c79bea2d1d6289743967b623ba0ff26dc22a391179cfb678e488c5744e",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T13:03:00Z",
+    "observed_episode_sha256": "aba24da3ee6d35b5392237041f79ed171f899bd262359022906eeab08a28b1d6",
+    "output": {
+      "output_sha256": "f7afb5abe6ec8f3e91b05c661fc944b5f3073fa224181247cdf1358bc0ea5ccc",
+      "response_ref": {
+        "artifact_id": "cached-response:gw17-sol-challenger-v1",
+        "content_sha256": "972b1c66171d1dadd316963a58cb418bd26d546bf875eadcbdb2a4355c95ca74"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw17-sol-challenger-v1",
+        "content_sha256": "f7afb5abe6ec8f3e91b05c661fc944b5f3073fa224181247cdf1358bc0ea5ccc"
+      }
+    },
+    "policy_arm": "evidence_challenger",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw17-sol-challenger-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw17-sol-challenger-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw17-sol-challenger-v1.jsonl",
+    "versions": {
+      "code_commit": "c1283d1933abe6e36466d66cfb92cebcfb502afe",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "a5c4dbe951529eb63520cd3f2d5ffdf3cdde824338056997dd1f3a2af929db88",
+        "prompt_id": "challenger",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "approval_gate": {
+      "automatic_approval_allowed": false,
+      "confidence_downgraded": false,
+      "force_rerun": false,
+      "notes": [
+        "review:mbeumo-gw17-afcon-expected-minutes:challenger:dismissed"
+      ],
+      "requires_human_review": false,
+      "unresolved_challenges": []
+    },
+    "authority": "review_only_not_applied",
+    "content_sha256": "f7afb5abe6ec8f3e91b05c661fc944b5f3073fa224181247cdf1358bc0ea5ccc",
+    "proposal_sha256": "097fc115c37d209a32d29a1af6e18e1fc3f308dae803b4c4eee0f4110883327f",
+    "review": {
+      "agent_run_id": "gw17-sol-evidence-v1",
+      "available_at": "2026-07-26T13:03:00Z",
+      "escalation_outcome": "dismissed",
+      "notes": "Grounding is an approved, pre-cutoff passage explicitly establishing that the identified AFCON-bound Mbeumo is unavailable for club selection from GW17 onward. Player identity player:2025-26:119 and the adjustment subject are coherent. The 88.8-minute baseline is superseded by confirmed unavailability, so expected_minutes=0 is appropriate. The 2026-01-18T23:59:59Z expiry is coherent with the temporary AFCON absence and does not undermine the GW17 adjustment. No material contradiction or unsupported inference found.",
+      "observed_at": "2026-07-26T13:03:00Z",
+      "provenance": {
+        "agent_run_id": "gw17-sol-evidence-v1",
+        "source_ids": [
+          "gpt-5.6-sol-challenger"
+        ],
+        "transformation_version": "challenger-agent-v1"
+      },
+      "review_id": "review:mbeumo-gw17-afcon-expected-minutes:challenger"
+    },
+    "role": "challenger",
+    "schema_version": "1.0",
+    "unopposed_proposed_adjustment_ids": [
+      "adjustment:mbeumo-gw17-afcon-expected-minutes"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "adapter_audit_sha256": "199b82500f7e969d98113b69dbc6135b69e2484443dbf97f92a571f62468899f",
+  "agent_decision": "abstained",
+  "agent_fork_gross_points": 47,
+  "agent_vs_canonical_delta": -12,
+  "canonical_gross_points": 59,
+  "canonical_tree_sha256_after": "a3f0d771c9efd8dd8771505224e715037c13491cdbeffa6379168541d540cbf4",
+  "canonical_tree_sha256_before": "a3f0d771c9efd8dd8771505224e715037c13491cdbeffa6379168541d540cbf4",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "c13cc0b5e9ad811ede59b9641fd3331e2dc4c8096eed058135b0004f0d208c33",
+  "content_sha256": "d19613ff79d18080e34e479f8577999ff09b8fa9a312fda645c3a460bf44538e",
+  "evidence_run_sha256": "f38fdd04e38fb45b41ccb82bf645c109c0883c3c98b98fe0039092630b7d4346",
+  "experiment_id": "2025-26-gw02-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 2,
+  "hit_cost": 0,
+  "host_bundle_sha256": "d32237f781aabc7e1df2feda7686b3fb3e6201856a06bb1c45b39cdd42ba2110",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "6012849d4bbb639e12c859ceded4a1aca9db08be058457ee089c49f9543c5b5a",
+  "plan_sha256": "9cd753562066b377df5e822f6b95885193ce393d773b6e086d84be9bc31313b0",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [
+    {
+      "player_in": "Antoine Semenyo",
+      "player_out": "Justin Kluivert"
+    }
+  ],
+  "solver_input_sha256": "a69bc6695d2edefd3bde73f371741f2e8ede1ca76be8b61517cbec690e51e759",
+  "solver_output_sha256": "71a4b1634e6cdbac0d4135f81751bdc91843d0a54f87d571664835a7ceb19e35",
+  "starting_state_sha256": "38302b36b19a2ffc2a77ae022c7f9523bd66f5a9e59736bf007abaf80573efe9"
+}

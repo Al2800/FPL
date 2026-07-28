@@ -1,0 +1,471 @@
+{
+  "adjustments_applied": [],
+  "arm": "evidence_agent",
+  "artifacts": {
+    "response": {
+      "artifact_id": "cached-response:gw16-sol-evidence-v1",
+      "content_sha256": "0df73e9c599311acdecf8278bbaae9f5b22d7df1dd355e9e01d75d3103efbf94",
+      "payload": {
+        "attestation": {
+          "auth_mode": "chatgpt_subscription",
+          "event_types": [
+            "thread_started",
+            "agent_message",
+            "turn_completed"
+          ],
+          "network_access": false,
+          "rendered_input_sha256": "a9b41ba587e15233331782fb9bf8be9ef46786badbace40c45dbffb0127d8931",
+          "sandbox": "read-only"
+        },
+        "cache_hit": false,
+        "cli_version": "collaboration-subagent",
+        "completed_at": "2026-07-26T12:55:00Z",
+        "model_id": "gpt-5.6-sol",
+        "model_version": "gpt-5.6-sol",
+        "provider_id": "openai-chatgpt-subscription",
+        "request_sha256": "a9b41ba587e15233331782fb9bf8be9ef46786badbace40c45dbffb0127d8931",
+        "response_sha256": "be5a9fff28e2bc88f9c07e234c497dea3b969380ce2176a7c210deec4e893830",
+        "structured_output": {
+          "claims": [
+            {
+              "citation_excerpt": "Onsdag kom altså nyheten om at Munoz må opereres og er ikke forventet tilbake før 17. januar.",
+              "citation_excerpt_sha256": "44a94f324be7f795b6286980b3bf8fced317cdaaa2f1830ab9be34b489875b92",
+              "claim_id": "claim:gw16-munoz-surgery-absence",
+              "claim_text": "Daniel Muñoz required surgery and was not expected back before 17 January.",
+              "confidence": 0.99,
+              "document_id": "document:vg-gw16-munoz-surgery-2025-12-12-091620",
+              "expires_at": "2026-01-17T23:59:59Z",
+              "passage_id": "passage:claim-gw16-munoz-surgery",
+              "player_uid": "player:2025-26:256",
+              "source_id": "vg-gw16-munoz-surgery-2025-12-12-091620"
+            }
+          ],
+          "conflicts": [],
+          "notes": [
+            "Proposal only; not applied or approved."
+          ],
+          "proposed_adjustments": [
+            {
+              "adjustment_id": "adjustment:gw16-munoz-expected-minutes-zero",
+              "after_value": 0,
+              "before_value": 70.7,
+              "claim_ids": [
+                "claim:gw16-munoz-surgery-absence"
+              ],
+              "confidence": 0.99,
+              "expires_at": "2026-01-17T23:59:59Z",
+              "player_uid": "player:2025-26:256",
+              "rationale": "Confirmed surgery and an expected absence through at least 17 January rule out GW16 participation.",
+              "target": "expected_minutes"
+            }
+          ],
+          "role": "evidence",
+          "schema_version": "1.0"
+        },
+        "usage": {
+          "cost": {
+            "amount": null,
+            "currency": "GBP",
+            "metering_status": "unavailable"
+          },
+          "input_tokens": 0,
+          "measurement_status": "unavailable_from_collaboration_surface",
+          "output_tokens": 0,
+          "tool_calls": 0,
+          "total_tokens": 0,
+          "wall_clock_ms": 0
+        }
+      }
+    },
+    "validated_output": {
+      "artifact_id": "validated-output:gw16-sol-evidence-v1",
+      "content_sha256": "3cf572b514a94fb036a8eb0c678753ac65b0c57f26ee104aad67d7cca3fa1b5d",
+      "payload": {
+        "authority": "proposal_only_not_applied",
+        "claim_entities": [
+          {
+            "claim_id": "claim:gw16-munoz-surgery-absence",
+            "entity_type": "player",
+            "entity_uid": "player:2025-26:256",
+            "provenance": {
+              "content_hash_sha256": "313fee7ecb8502c875886122043b9077b2d00953c93cf7c116bfcf8539dab844",
+              "source_ids": [
+                "vg-gw16-munoz-surgery-2025-12-12-091620"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            }
+          }
+        ],
+        "claims": [
+          {
+            "available_at": "2026-07-26T13:28:00Z",
+            "claim_id": "claim:gw16-munoz-surgery-absence",
+            "claim_text": "Daniel Muñoz required surgery and was not expected back before 17 January.",
+            "confidence": 0.99,
+            "decision_eligibility": {
+              "evidence_mode": "retrospective_published_before_deadline",
+              "exploratory_admissible": true,
+              "production_eligible": false,
+              "production_ineligibility_reasons": [
+                "observed_at_after_decision",
+                "available_at_after_decision"
+              ]
+            },
+            "document_id": "document:vg-gw16-munoz-surgery-2025-12-12-091620",
+            "expires_at": "2026-01-17T23:59:59Z",
+            "observed_at": "2026-07-26T13:28:00Z",
+            "provenance": {
+              "content_hash_sha256": "313fee7ecb8502c875886122043b9077b2d00953c93cf7c116bfcf8539dab844",
+              "source_ids": [
+                "vg-gw16-munoz-surgery-2025-12-12-091620"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-12-12T09:16:20Z"
+          }
+        ],
+        "conflicts": [],
+        "content_sha256": "3cf572b514a94fb036a8eb0c678753ac65b0c57f26ee104aad67d7cca3fa1b5d",
+        "evidence_mode": "retrospective_published_before_deadline",
+        "exploratory_admissible": true,
+        "notes": [
+          "Proposal only; not applied or approved."
+        ],
+        "production_eligible": false,
+        "proposed_adjustments": [
+          {
+            "adjustment_id": "adjustment:gw16-munoz-expected-minutes-zero",
+            "after_value": 0,
+            "available_at": "2026-07-26T12:55:00Z",
+            "before_value": 70.7,
+            "confidence": 0.99,
+            "expires_at": "2026-01-17T23:59:59Z",
+            "observed_at": "2026-07-26T12:55:00Z",
+            "player_uid": "player:2025-26:256",
+            "provenance": {
+              "source_ids": [
+                "vg-gw16-munoz-surgery-2025-12-12-091620"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2026-07-26T12:55:00Z",
+            "rationale": "Confirmed surgery and an expected absence through at least 17 January rule out GW16 participation.",
+            "signal_ids": [
+              "signal:adjustment:gw16-munoz-expected-minutes-zero"
+            ],
+            "status": "proposed",
+            "target": "expected_minutes"
+          }
+        ],
+        "role": "evidence",
+        "schema_version": "1.0",
+        "signals": [
+          {
+            "available_at": "2026-07-26T12:55:00Z",
+            "claim_ids": [
+              "claim:gw16-munoz-surgery-absence"
+            ],
+            "interpretation": "Confirmed surgery and an expected absence through at least 17 January rule out GW16 participation.",
+            "observed_at": "2026-07-26T12:55:00Z",
+            "player_uid": "player:2025-26:256",
+            "provenance": {
+              "source_ids": [
+                "vg-gw16-munoz-surgery-2025-12-12-091620"
+              ],
+              "transformation_version": "evidence-agent-v1"
+            },
+            "published_at": "2025-12-12T09:16:20Z",
+            "signal_id": "signal:adjustment:gw16-munoz-expected-minutes-zero"
+          }
+        ]
+      }
+    }
+  },
+  "content_sha256": "0b4e14aaaa2fc3c68b0646fcb0a28d740a7e37866dc2b15677b95a6f17f69677",
+  "run_id": "gw16-sol-evidence-v1",
+  "schema_version": "1.0",
+  "selected_candidate": {
+    "bank_after": 1.4,
+    "banked_option_units": 4,
+    "hit_cost": 0,
+    "immediate_objective": 61.36,
+    "lineup": {
+      "bench_ids": [
+        "player:2025-26:470",
+        "player:2025-26:348",
+        "player:2025-26:72",
+        "player:2025-26:252"
+      ],
+      "captain_id": "player:2025-26:430",
+      "formation": {
+        "DEF": 3,
+        "FWD": 2,
+        "MID": 5
+      },
+      "starting_xi_ids": [
+        "player:2025-26:220",
+        "player:2025-26:226",
+        "player:2025-26:8",
+        "player:2025-26:256",
+        "player:2025-26:119",
+        "player:2025-26:21",
+        "player:2025-26:82",
+        "player:2025-26:384",
+        "player:2025-26:387",
+        "player:2025-26:430",
+        "player:2025-26:714"
+      ],
+      "vice_captain_id": "player:2025-26:119"
+    },
+    "next_gameweek_free_transfers": 5,
+    "objective": 68.56,
+    "optimality": "highest_ev_in_declared_candidate_pool",
+    "strategy": "highest_ev",
+    "transfer_option_value": 7.2,
+    "transfers": [
+      {
+        "player_in_id": "player:2025-26:21",
+        "player_out_id": "player:2025-26:266"
+      }
+    ],
+    "validation": {
+      "chips_ok": true,
+      "lineup_ok": true,
+      "squad_ok": true
+    }
+  },
+  "status": "completed",
+  "trace": {
+    "agent_role": "evidence",
+    "available_at": "2026-07-26T12:55:00Z",
+    "budget": {
+      "exhausted": [],
+      "limit": {
+        "cost": {
+          "amount": 0.0,
+          "currency": "GBP",
+          "metering_status": "limit_only"
+        },
+        "input_tokens": 20000,
+        "output_tokens": 4000,
+        "tool_calls": 0,
+        "total_tokens": 24000,
+        "wall_clock_ms": 120000
+      },
+      "used": {
+        "cost": {
+          "amount": null,
+          "currency": "GBP",
+          "metering_status": "unavailable"
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "tool_calls": 0,
+        "total_tokens": 0,
+        "wall_clock_ms": 0
+      }
+    },
+    "decision_cutoff": "2025-12-13T13:30:00Z",
+    "degradation": {
+      "used": false
+    },
+    "episode_id": "benchmark-v0:2025-26:gw16:manager-neutral",
+    "execution_status": "completed",
+    "inputs": {
+      "context_refs": [
+        {
+          "artifact_id": "hosted-request:gw16-sol-evidence-v1",
+          "content_sha256": "5b7e3bb6520da32a7d077664bce5a0281e006afcf5198936ac73343c34fa1684"
+        }
+      ],
+      "input_sha256": "5b7e3bb6520da32a7d077664bce5a0281e006afcf5198936ac73343c34fa1684",
+      "rendered_prompt_sha256": "a9b41ba587e15233331782fb9bf8be9ef46786badbace40c45dbffb0127d8931"
+    },
+    "model": {
+      "reasoning_effort": "high",
+      "reported_model": "gpt-5.6-sol",
+      "requested_model": "gpt-5.6-sol"
+    },
+    "model_calls": [
+      {
+        "cache_hit": false,
+        "cached_response_ref": {
+          "artifact_id": "cached-response:gw16-sol-evidence-v1",
+          "content_sha256": "0df73e9c599311acdecf8278bbaae9f5b22d7df1dd355e9e01d75d3103efbf94"
+        },
+        "call_id": "model:gw16-sol-evidence-v1",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "request_sha256": "a9b41ba587e15233331782fb9bf8be9ef46786badbace40c45dbffb0127d8931",
+        "response_sha256": "be5a9fff28e2bc88f9c07e234c497dea3b969380ce2176a7c210deec4e893830",
+        "sequence": 0
+      }
+    ],
+    "observed_at": "2026-07-26T12:55:00Z",
+    "observed_episode_sha256": "dcdaa62c7afb55209ab494e63ac9bfddda89a9bccadf3b083d3f92e20ae7bd6f",
+    "output": {
+      "output_sha256": "3cf572b514a94fb036a8eb0c678753ac65b0c57f26ee104aad67d7cca3fa1b5d",
+      "response_ref": {
+        "artifact_id": "cached-response:gw16-sol-evidence-v1",
+        "content_sha256": "0df73e9c599311acdecf8278bbaae9f5b22d7df1dd355e9e01d75d3103efbf94"
+      },
+      "structured_output_ref": {
+        "artifact_id": "validated-output:gw16-sol-evidence-v1",
+        "content_sha256": "3cf572b514a94fb036a8eb0c678753ac65b0c57f26ee104aad67d7cca3fa1b5d"
+      }
+    },
+    "policy_arm": "evidence_agent",
+    "privacy": {
+      "forbidden_categories": [
+        "credentials",
+        "cookies",
+        "tokens",
+        "personal_data"
+      ],
+      "prohibited_data_detected": false,
+      "redaction_status": "passed"
+    },
+    "provenance": {
+      "agent_run_id": "gw16-sol-evidence-v1",
+      "model_version": "gpt-5.6-sol",
+      "prompt_version": "1.0",
+      "source_ids": [
+        "benchmark-kernel",
+        "openai-chatgpt-subscription"
+      ],
+      "transformation_version": "agent-arm-v1"
+    },
+    "provider": {
+      "api_surface": "codex_subscription_subagent",
+      "auth_mode": "chatgpt_subscription",
+      "cli_version": "collaboration-subagent",
+      "provider_id": "openai-chatgpt-subscription"
+    },
+    "run_id": "gw16-sol-evidence-v1",
+    "run_mode": "retrospective",
+    "schema_version": "1.0",
+    "snapshot_ids": [
+      "sha256:0d09f1f1cb1b5520ec8e2f25238aa652efe2a263d8ca7cb2b6538b27bf86727d",
+      "sha256:2d7e3950d346df14ca486cb09e9b9ba406d37d943775244eed06cdc021ffb3a9",
+      "sha256:3e3a8352f9ada6789c508d6ca184424421fed56a30400904a4a327c583407e62",
+      "sha256:412ce0172016f8f98f25177dc6de9f3cd2a8ec7a6135f9aa638d7fdee784d67b",
+      "sha256:b29df099cb0ad25413e284e53116099b0e0496874f99743dbc0870d8241b46c5"
+    ],
+    "tool_calls": [],
+    "trace_path": "reports/traces/gw16-sol-evidence-v1.jsonl",
+    "versions": {
+      "code_commit": "c1283d1933abe6e36466d66cfb92cebcfb502afe",
+      "policy": {
+        "content_sha256": "0ba83bd08f5230245bda9a51883ec06c81bd88c57101e1a41bebfa450a19719a",
+        "policy_id": "evidence-adjustments-v0.1",
+        "version": "0.1"
+      },
+      "prompt": {
+        "content_sha256": "90703a48bb4b7d143aaa6fab4d6573b6a1133df9f35ad2489c6d6b660ea4d2fb",
+        "prompt_id": "evidence-agent",
+        "version": "1.0"
+      },
+      "ruleset_id": "2025-26-v1.0",
+      "tools": []
+    }
+  },
+  "validated_output": {
+    "authority": "proposal_only_not_applied",
+    "claim_entities": [
+      {
+        "claim_id": "claim:gw16-munoz-surgery-absence",
+        "entity_type": "player",
+        "entity_uid": "player:2025-26:256",
+        "provenance": {
+          "content_hash_sha256": "313fee7ecb8502c875886122043b9077b2d00953c93cf7c116bfcf8539dab844",
+          "source_ids": [
+            "vg-gw16-munoz-surgery-2025-12-12-091620"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        }
+      }
+    ],
+    "claims": [
+      {
+        "available_at": "2026-07-26T13:28:00Z",
+        "claim_id": "claim:gw16-munoz-surgery-absence",
+        "claim_text": "Daniel Muñoz required surgery and was not expected back before 17 January.",
+        "confidence": 0.99,
+        "decision_eligibility": {
+          "evidence_mode": "retrospective_published_before_deadline",
+          "exploratory_admissible": true,
+          "production_eligible": false,
+          "production_ineligibility_reasons": [
+            "observed_at_after_decision",
+            "available_at_after_decision"
+          ]
+        },
+        "document_id": "document:vg-gw16-munoz-surgery-2025-12-12-091620",
+        "expires_at": "2026-01-17T23:59:59Z",
+        "observed_at": "2026-07-26T13:28:00Z",
+        "provenance": {
+          "content_hash_sha256": "313fee7ecb8502c875886122043b9077b2d00953c93cf7c116bfcf8539dab844",
+          "source_ids": [
+            "vg-gw16-munoz-surgery-2025-12-12-091620"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-12-12T09:16:20Z"
+      }
+    ],
+    "conflicts": [],
+    "content_sha256": "3cf572b514a94fb036a8eb0c678753ac65b0c57f26ee104aad67d7cca3fa1b5d",
+    "evidence_mode": "retrospective_published_before_deadline",
+    "exploratory_admissible": true,
+    "notes": [
+      "Proposal only; not applied or approved."
+    ],
+    "production_eligible": false,
+    "proposed_adjustments": [
+      {
+        "adjustment_id": "adjustment:gw16-munoz-expected-minutes-zero",
+        "after_value": 0,
+        "available_at": "2026-07-26T12:55:00Z",
+        "before_value": 70.7,
+        "confidence": 0.99,
+        "expires_at": "2026-01-17T23:59:59Z",
+        "observed_at": "2026-07-26T12:55:00Z",
+        "player_uid": "player:2025-26:256",
+        "provenance": {
+          "source_ids": [
+            "vg-gw16-munoz-surgery-2025-12-12-091620"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2026-07-26T12:55:00Z",
+        "rationale": "Confirmed surgery and an expected absence through at least 17 January rule out GW16 participation.",
+        "signal_ids": [
+          "signal:adjustment:gw16-munoz-expected-minutes-zero"
+        ],
+        "status": "proposed",
+        "target": "expected_minutes"
+      }
+    ],
+    "role": "evidence",
+    "schema_version": "1.0",
+    "signals": [
+      {
+        "available_at": "2026-07-26T12:55:00Z",
+        "claim_ids": [
+          "claim:gw16-munoz-surgery-absence"
+        ],
+        "interpretation": "Confirmed surgery and an expected absence through at least 17 January rule out GW16 participation.",
+        "observed_at": "2026-07-26T12:55:00Z",
+        "player_uid": "player:2025-26:256",
+        "provenance": {
+          "source_ids": [
+            "vg-gw16-munoz-surgery-2025-12-12-091620"
+          ],
+          "transformation_version": "evidence-agent-v1"
+        },
+        "published_at": "2025-12-12T09:16:20Z",
+        "signal_id": "signal:adjustment:gw16-munoz-expected-minutes-zero"
+      }
+    ]
+  }
+}

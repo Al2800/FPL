@@ -1,0 +1,33 @@
+{
+  "adapter_audit_sha256": "e776ea9e2658a980414984c1bc2288b53f1b400947de0a2b953600c649cd9373",
+  "agent_decision": "applied",
+  "agent_fork_gross_points": 57,
+  "agent_vs_canonical_delta": 4,
+  "canonical_gross_points": 53,
+  "canonical_tree_sha256_after": "154bba27fa7e0573a32d391212d279bfe0525e39eccd4e819c9c73f92fe594b5",
+  "canonical_tree_sha256_before": "154bba27fa7e0573a32d391212d279bfe0525e39eccd4e819c9c73f92fe594b5",
+  "captain": "Mohamed Salah",
+  "challenger_run_sha256": "d91c77f032d854b2ad480f78de433d93a4bb520ae9053dde34dd536c834057d9",
+  "content_sha256": "ffa74429e4a397b634fe3cbeb5b3b7f8c9c85dd84c2a926e900b3f26aeac00e6",
+  "evidence_run_sha256": "c5ed00e56c72d48dc4bae25377482bbdccfaae7876a61215f47ab4edb33079c4",
+  "experiment_id": "2025-26-gw09-early-evidence-v1",
+  "exploratory_only": true,
+  "gameweek": 9,
+  "hit_cost": 0,
+  "host_bundle_sha256": "dfc648f983a7596238c7d642ea0669bfe2ec8a1cabd18e250abd66b50eab0b0e",
+  "limitations": [
+    "sources_recovered_after_historical_decision",
+    "case_selected_after_outcome_was_known",
+    "publication_precision_may_be_date_only_or_inferred",
+    "not_eligible_for_headline_agent_performance",
+    "subscription_subagent_is_an_experimental_host_surface"
+  ],
+  "next_state_sha256": "e26a11ac129cb357f4d1c36cfa18de69870912052559856434c09a0b616f0783",
+  "plan_sha256": "0fdb7b9e245298a0bc8b697afcd505372eb5489cf707465f53b2a62317ee4909",
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "selected_transfer_names": [],
+  "solver_input_sha256": "f95211eaac76343539be9699f129e3365b6d7d47b871e413711063f0c443c235",
+  "solver_output_sha256": "f74be79f27cfe77187c8602848b2fe41f890708866ee6247355bdd46ce60c805",
+  "starting_state_sha256": "5e2e9e2f4abd19d07290731973acea1f4026c31d60f8ca318eeb602fe9873d0d"
+}
