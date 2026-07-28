@@ -2,8 +2,8 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.4.0"
-updated_at: "2026-07-27"
+registry_version: "0.6.0"
+updated_at: "2026-07-28"
 
 sources:
   - source_id: fpl-official-endpoints
@@ -15,21 +15,26 @@ sources:
     allowed_use: private_analysis_local_retention_no_redistribution
     authentication: none
     collection_method: api
-    expected_cadence: daily_and_pre_deadline
+    expected_cadence: daily_predeadline_and_postmatch
     max_staleness: "6h"
     failure_policy: use_cache_and_report
     retention_policy: local_indefinite_private_per_ADR-0002
     attribution: "Fantasy Premier League (fantasy.premierleague.com)"
     enabled: true
     review_date: "2026-09-01"
+    activation_approval:
+      terms: approved
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-07-28"
+      scope: private_read_only_public_endpoint_automation_no_redistribution
     notes: >
       Unofficial/unsupported as a developer API. Endpoints may 404 off-season.
-      Tier 0. Capture bootstrap-static and fixtures daily and at T-48h/T-8h/T-2h;
-      they contain the pre-deadline price, status, news and ownership fields.
-      Capture event/{gw}/live after lock and retain immutable raw snapshots plus
-      hashes. Public entry history, picks and transfers may reconcile final outcomes;
-      authenticated purchase price, selling price, free transfers and chip state stay
-      manual while fpl-authenticated-manager-state is disabled.
+      Tier 0. Capture bootstrap-static and fixtures at configured pre-deadline
+      checkpoints. Capture element-summary only for explicit bounded player IDs
+      at daily preseason and T-24h. Capture event/{gw}/live only after the lock.
+      Public entry and authenticated manager endpoints are outside this automated
+      collector; manager finance and chip state remain manual.
       licence_status is restricted (not prohibited): private local snapshots permitted
       under ADR-0001/0002; redistribution is not.
     endpoints:
@@ -37,7 +42,6 @@ sources:
       - "https://fantasy.premierleague.com/api/fixtures/"
       - "https://fantasy.premierleague.com/api/element-summary/{player_id}/"
       - "https://fantasy.premierleague.com/api/event/{gw}/live/"
-      - "https://fantasy.premierleague.com/api/entry/{manager_id}/"
 
   - source_id: fpl-official-rules-news
     owner: Premier League
@@ -296,6 +300,37 @@ sources:
       degrade the relevant capture slot and never block official FPL inputs.
       Alternative: run the official structured forecast with timestamped odds
       recorded as an explicit evidence gap.
+
+  - source_id: the-odds-api
+    owner: The Odds API Pty Ltd
+    source_type: api
+    authority: secondary
+    terms_url: "https://the-odds-api.com/terms-and-conditions.html"
+    licence_status: restricted
+    allowed_use: private_local_analytical_tool_no_raw_feed_redistribution
+    authentication: api_key_environment
+    collection_method: api
+    expected_cadence: "T-24h_T-8h_T-2h_final_pre_deadline"
+    max_staleness: "slot-specific"
+    failure_policy: degrade_to_shared_structured_forecast_without_odds
+    retention_policy: local_gitignored_private_no_redistribution
+    attribution: "The Odds API (the-odds-api.com)"
+    enabled: true
+    review_date: "2026-10-01"
+    activation_approval:
+      terms: approved
+      cost: approved
+      owner: Alastair
+      reviewed_at: "2026-07-28"
+      scope: private_local_FPL_analysis_no_raw_redistribution
+    notes: >
+      Owner-selected live EPL odds provider. Capture soccer_epl from the UK
+      region in decimal format. h2h is required; totals is retained where
+      available. Credentials are read only from THE_ODDS_API_KEY and may never
+      be written to manifests, logs or request URLs. Raw responses stay local
+      and are not redistributed. Every observation is timestamped before the
+      decision cutoff and missing or rate-limited slots degrade without blocking
+      the shared structured forecast.
 
   - source_id: clubelo
     owner: ClubElo / Lars Rønn Olsen

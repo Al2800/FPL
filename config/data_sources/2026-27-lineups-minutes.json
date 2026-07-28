@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "selected_provider": null,
+  "collection_status": "trial_required_before_activation",
+  "reconciliation_oracle": "fpl-official-endpoints",
+  "maximum_observation_delay_minutes": 180,
+  "minutes_tolerance": 0,
+  "providers": [
+    {"provider_id": "api-football", "status": "candidate", "credential_environment": "API_FOOTBALL_KEY", "required_trial": "representative_epl_fixture"},
+    {"provider_id": "football-data-org", "status": "candidate", "credential_environment": "FOOTBALL_DATA_ORG_TOKEN", "required_trial": "representative_epl_fixture"},
+    {"provider_id": "thesportsdb", "status": "fallback_candidate", "credential_environment": "THESPORTSDB_API_KEY", "required_trial": "representative_epl_fixture"}
+  ],
+  "admission": {"require_explicit_player_alias": true, "require_fixture_alias": true, "quarantine_on_minutes_disagreement": true, "missing_provider_snapshot": "degrade"}
+}

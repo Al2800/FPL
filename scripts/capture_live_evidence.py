@@ -7,6 +7,9 @@ import argparse
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import httpx
 
@@ -29,6 +32,28 @@ def main() -> None:
         description="Capture automated, governed official FPL evidence"
     )
     parser.add_argument("--season", default="2026-27")
+    parser.add_argument(
+        "--checkpoint",
+        default="availability_only",
+        choices=(
+            "availability_only",
+            "daily_preseason",
+            "T-48h",
+            "T-24h",
+            "T-8h",
+            "T-2h",
+            "final_pre_deadline",
+            "post_match",
+        ),
+    )
+    parser.add_argument(
+        "--player-id",
+        action="append",
+        dest="player_ids",
+        type=int,
+        help="Explicit element-summary player ID; repeatable and capped by config",
+    )
+    parser.add_argument("--gameweek", type=int)
     parser.add_argument(
         "--observed-at",
         default=datetime.now(timezone.utc)
@@ -70,6 +95,9 @@ def main() -> None:
             config=config,
             base_url=args.base_url,
             previous_ledger=previous,
+            checkpoint_id=args.checkpoint,
+            player_ids=args.player_ids,
+            gameweek=args.gameweek,
         )
     write_live_evidence_artifact(args.output, capture)
     print(
@@ -77,6 +105,10 @@ def main() -> None:
             {
                 "output": str(args.output),
                 "status": capture["status"],
+                "checkpoint_id": capture["checkpoint_id"],
+                "request_count_planned": capture["request_count_planned"],
+                "request_count_attempted": capture["request_count_attempted"],
+                "retry_after_seconds": capture["retry_after_seconds"],
                 "claim_count_added": capture["claim_count_added"],
                 "gap_count": len(capture["gaps"]),
                 "content_sha256": capture["content_sha256"],

@@ -168,3 +168,24 @@ def test_transport_failure_is_persisted_without_raising(tmp_path: Path):
     assert manifest["http_status"] == 0
     assert manifest["bytes"] == 0
     assert manifest["failure"]["category"] == "transport"
+
+
+def test_fpl_snapshot_refuses_unapproved_path_before_network(tmp_path: Path):
+    class BombClient:
+        called = False
+
+        def get(self, url: str, *, timeout: float):
+            self.called = True
+            raise AssertionError("unapproved path must not reach network")
+
+    client = BombClient()
+    with pytest.raises(ValueError, match="approved public FPL endpoint"):
+        snapshot_endpoint(
+            client,
+            base_url="https://fantasy.premierleague.com",
+            path="/api/entry/123/",
+            out_dir=tmp_path,
+            registry_version="test-registry",
+            observed_at="2026-07-22T09:00:00Z",
+        )
+    assert client.called is False

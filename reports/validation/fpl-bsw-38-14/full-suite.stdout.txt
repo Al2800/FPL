@@ -1,0 +1,10 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\Alastair\FPL
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.14.2
+collected 649 items
+
+tests\agent-evals\test_agent_arm.py ............................         [  4%]
+tests\agent-evals\test_agent_fork_adapter.py ........

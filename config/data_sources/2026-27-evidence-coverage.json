@@ -1,0 +1,193 @@
+{
+  "candidate_discovery": {
+    "availability_risk_statuses": [
+      "d",
+      "i",
+      "s",
+      "u"
+    ],
+    "maximum_external_candidates": 32,
+    "maximum_external_per_position": 8,
+    "maximum_owned_watchlist": 15,
+    "maximum_transfer_boundaries": 24,
+    "near_optimal_objective_margin_points": 4.0,
+    "start_probability_risk_below": 0.75,
+    "underperformance_replacement_gain_points": 1.0
+  },
+  "checkpoints": [
+    {
+      "checkpoint_id": "daily_preseason",
+      "required_source_families": [
+        "official_fpl_state",
+        "official_club_news",
+        "training_and_injury"
+      ]
+    },
+    {
+      "checkpoint_id": "T-48h",
+      "required_source_families": [
+        "official_fpl_state",
+        "official_club_news",
+        "press_conferences",
+        "training_and_injury"
+      ]
+    },
+    {
+      "checkpoint_id": "T-24h",
+      "required_source_families": [
+        "official_fpl_state",
+        "official_club_news",
+        "press_conferences",
+        "training_and_injury"
+      ]
+    },
+    {
+      "checkpoint_id": "T-8h",
+      "required_source_families": [
+        "official_fpl_state",
+        "official_club_news",
+        "press_conferences",
+        "training_and_injury"
+      ]
+    },
+    {
+      "checkpoint_id": "T-2h",
+      "required_source_families": [
+        "official_fpl_state",
+        "official_club_news",
+        "press_conferences",
+        "training_and_injury"
+      ]
+    },
+    {
+      "checkpoint_id": "final_pre_deadline",
+      "required_source_families": [
+        "official_fpl_state",
+        "official_club_news",
+        "press_conferences",
+        "training_and_injury"
+      ]
+    },
+    {
+      "checkpoint_id": "post_match",
+      "required_source_families": [
+        "official_lineups_and_minutes"
+      ]
+    }
+  ],
+  "coverage_sla": {
+    "minimum_automated_source_success_rate": 1.0,
+    "minimum_expected_club_observation_rate": 0.8,
+    "minimum_expected_player_observation_rate": 0.9,
+    "minimum_required_source_family_rate": 0.8,
+    "silence_interpretation": "unknown_not_available"
+  },
+  "forbidden_outcome_fields": [
+    "actual_points",
+    "event_points",
+    "gross_points",
+    "hidden_outcome",
+    "outcome",
+    "realised_points"
+  ],
+  "retrieval": {
+    "authority_rank": {
+      "canonical": 0,
+      "primary": 1,
+      "secondary": 2,
+      "unknown": 3
+    },
+    "decision_type_rank": {
+      "transfer": 0,
+      "lineup": 1,
+      "captaincy": 2,
+      "chip": 3
+    },
+    "maximum_claim_characters": 12000,
+    "maximum_claims": 12,
+    "maximum_packet_latency_ms": 250,
+    "maximum_staleness_hours": 72
+  },
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "source_families": [
+    {
+      "channels": [
+        "bootstrap_static"
+      ],
+      "collection_mode": "automated_snapshot",
+      "family_id": "official_fpl_state",
+      "manual_alternative": null,
+      "max_staleness_hours": 6,
+      "source_id": "fpl-official-endpoints"
+    },
+    {
+      "channels": [
+        "rules",
+        "official_fpl_news"
+      ],
+      "collection_mode": "manual_citation",
+      "family_id": "official_fpl_news",
+      "manual_alternative": "linked_derived_claim",
+      "max_staleness_hours": 24,
+      "source_id": "fpl-official-rules-news"
+    },
+    {
+      "channels": [
+        "team_news",
+        "injury_update",
+        "return_to_training"
+      ],
+      "collection_mode": "manual_citation",
+      "family_id": "official_club_news",
+      "manual_alternative": "linked_derived_claim",
+      "max_staleness_hours": 24,
+      "source_id": "official-club-communications"
+    },
+    {
+      "channels": [
+        "manager_press_conference"
+      ],
+      "collection_mode": "manual_citation",
+      "family_id": "press_conferences",
+      "manual_alternative": "linked_derived_claim",
+      "max_staleness_hours": 48,
+      "source_id": "official-club-communications"
+    },
+    {
+      "channels": [
+        "training",
+        "injury",
+        "recovery"
+      ],
+      "collection_mode": "manual_citation",
+      "family_id": "training_and_injury",
+      "manual_alternative": "linked_derived_claim",
+      "max_staleness_hours": 48,
+      "source_id": "official-club-communications"
+    },
+    {
+      "channels": [
+        "starting_lineup",
+        "substitution",
+        "minutes",
+        "cup_and_europe_workload"
+      ],
+      "collection_mode": "manual_citation",
+      "family_id": "official_lineups_and_minutes",
+      "manual_alternative": "fpl_live_minutes_plus_linked_citations",
+      "max_staleness_hours": 24,
+      "source_id": "official-lineups-minutes"
+    },
+    {
+      "channels": [
+        "approved_analysis"
+      ],
+      "collection_mode": "blocked_pending_registry",
+      "family_id": "approved_analyst_sources",
+      "manual_alternative": "reject_until_exact_source_registration_and_owner_approval",
+      "max_staleness_hours": 24,
+      "source_id": "approved-analyst-or-blog"
+    }
+  ]
+}

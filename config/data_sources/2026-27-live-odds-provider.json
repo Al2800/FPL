@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "provider": {
+    "source_id": "the-odds-api",
+    "name": "The Odds API",
+    "base_url": "https://api.the-odds-api.com",
+    "terms_url": "https://the-odds-api.com/terms-and-conditions.html",
+    "documentation_url": "https://the-odds-api.com/liveapi/guides/v4/",
+    "owner_approval": {
+      "status": "approved",
+      "approved_by": "Alastair",
+      "approved_at": "2026-07-28",
+      "cost": "free_tier",
+      "scope": "private_local_FPL_analysis_no_raw_redistribution"
+    }
+  },
+  "request": {
+    "sport_key": "soccer_epl",
+    "regions": [
+      "uk"
+    ],
+    "requested_markets": [
+      "h2h",
+      "totals"
+    ],
+    "required_markets": [
+      "h2h"
+    ],
+    "odds_format": "decimal",
+    "date_format": "iso",
+    "timeout_seconds": 30,
+    "secret_environment_variable": "THE_ODDS_API_KEY"
+  },
+  "quota": {
+    "free_credits_per_month": 500,
+    "maximum_expected_credits_per_capture": 2,
+    "minimum_remaining_credits_to_attempt": 2,
+    "response_headers": {
+      "last": "x-requests-last",
+      "remaining": "x-requests-remaining",
+      "used": "x-requests-used"
+    }
+  },
+  "slots": {
+    "T-24h": {
+      "exclusive_minimum_lead_hours": 18.0,
+      "inclusive_maximum_lead_hours": 30.0
+    },
+    "T-8h": {
+      "exclusive_minimum_lead_hours": 5.0,
+      "inclusive_maximum_lead_hours": 12.0
+    },
+    "T-2h": {
+      "exclusive_minimum_lead_hours": 0.5,
+      "inclusive_maximum_lead_hours": 4.0
+    },
+    "final": {
+      "exclusive_minimum_lead_hours": 0.0,
+      "inclusive_maximum_lead_hours": 0.5
+    }
+  },
+  "retention": {
+    "raw_payload": "local_gitignored_no_redistribution",
+    "derived_snapshot": "content_addressed_private_analysis",
+    "api_key": "environment_only_never_logged_or_persisted"
+  },
+  "failure_policy": "degrade_to_shared_structured_forecast_without_odds",
+  "promotion_status": "shadow_only_pending_live_ablation"
+}

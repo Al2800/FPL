@@ -1,0 +1,108 @@
+schema_version: "1.0"
+season: "2026-27"
+sources:
+  - club_id: premier-league
+    club_name: Premier League
+    official_domain: premierleague.com
+    news_url: https://www.premierleague.com/en/news
+    source_status: official_domain_search_fallback
+  - club_id: arsenal
+    club_name: Arsenal
+    official_domain: arsenal.com
+    news_url: https://www.arsenal.com/news
+    source_status: official_domain_search_fallback
+  - club_id: aston-villa
+    club_name: Aston Villa
+    official_domain: avfc.co.uk
+    news_url: https://www.avfc.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: bournemouth
+    club_name: AFC Bournemouth
+    official_domain: afcb.co.uk
+    news_url: https://www.afcb.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: brentford
+    club_name: Brentford
+    official_domain: brentfordfc.com
+    news_url: https://www.brentfordfc.com/en/news
+    source_status: official_domain_search_fallback
+  - club_id: brighton
+    club_name: Brighton & Hove Albion
+    official_domain: brightonandhovealbion.com
+    news_url: https://www.brightonandhovealbion.com/news
+    source_status: official_domain_search_fallback
+  - club_id: chelsea
+    club_name: Chelsea
+    official_domain: chelseafc.com
+    news_url: https://www.chelseafc.com/en/news
+    source_status: official_domain_search_fallback
+  - club_id: coventry
+    club_name: Coventry City
+    official_domain: ccfc.co.uk
+    news_url: https://www.ccfc.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: crystal-palace
+    club_name: Crystal Palace
+    official_domain: cpfc.co.uk
+    news_url: https://www.cpfc.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: everton
+    club_name: Everton
+    official_domain: evertonfc.com
+    news_url: https://www.evertonfc.com/news
+    source_status: official_domain_search_fallback
+  - club_id: fulham
+    club_name: Fulham
+    official_domain: fulhamfc.com
+    news_url: https://www.fulhamfc.com/news/
+    source_status: official_domain_search_fallback
+  - club_id: hull
+    club_name: Hull City
+    official_domain: wearehullcity.co.uk
+    news_url: https://www.wearehullcity.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: ipswich
+    club_name: Ipswich Town
+    official_domain: itfc.co.uk
+    news_url: https://www.itfc.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: leeds
+    club_name: Leeds United
+    official_domain: leedsunited.com
+    news_url: https://www.leedsunited.com/news
+    source_status: official_domain_search_fallback
+  - club_id: liverpool
+    club_name: Liverpool
+    official_domain: liverpoolfc.com
+    news_url: https://www.liverpoolfc.com/news
+    source_status: official_domain_search_fallback
+  - club_id: manchester-city
+    club_name: Manchester City
+    official_domain: mancity.com
+    news_url: https://www.mancity.com/news
+    source_status: official_domain_search_fallback
+  - club_id: manchester-united
+    club_name: Manchester United
+    official_domain: manutd.com
+    news_url: https://www.manutd.com/en/news
+    source_status: official_domain_search_fallback
+  - club_id: newcastle
+    club_name: Newcastle United
+    official_domain: nufc.co.uk
+    news_url: https://www.nufc.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: nottingham-forest
+    club_name: Nottingham Forest
+    official_domain: nottinghamforest.co.uk
+    news_url: https://www.nottinghamforest.co.uk/news/
+    source_status: official_domain_search_fallback
+  - club_id: sunderland
+    club_name: Sunderland
+    official_domain: safc.com
+    news_url: https://www.safc.com/news/
+    source_status: official_domain_search_fallback
+  - club_id: tottenham
+    club_name: Tottenham Hotspur
+    official_domain: tottenhamhotspur.com
+    news_url: https://www.tottenhamhotspur.com/news/
+    source_status: official_domain_search_fallback

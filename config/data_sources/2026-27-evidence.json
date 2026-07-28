@@ -44,9 +44,20 @@
   "unregistered_analyst_or_blog_policy": "reject_until_source_registry_and_owner_approval",
   "write_policy": "append_only_content_addressed_no_overwrite",
   "automated_collection": {
+    "owner_approval": {
+      "approved_at": "2026-07-28",
+      "approved_by": "Alastair",
+      "scope": "private_read_only_official_fpl_public_endpoints",
+      "status": "approved"
+    },
     "adapters": [
       {
-        "endpoint": "/api/bootstrap-static/",
+        "endpoint_ids": [
+          "bootstrap-static",
+          "fixtures",
+          "element-summary",
+          "event-live"
+        ],
         "source_id": "fpl-official-endpoints",
         "status": "enabled"
       },
@@ -64,15 +75,101 @@
       }
     ],
     "checkpoint_schedule": [
+      "availability_only",
       "daily_preseason",
       "T-48h",
       "T-24h",
       "T-8h",
       "T-2h",
-      "final_pre_deadline"
+      "final_pre_deadline",
+      "post_match"
     ],
     "default_availability_impact_points": 6.0,
     "failure_policy": "record_gap_and_preserve_no_evidence_control",
-    "official_fpl_news_expiry_hours": 72
+    "official_fpl_news_expiry_hours": 72,
+    "official_fpl_endpoints": {
+      "maximum_player_ids_per_run": 40,
+      "maximum_requests_per_run": 64,
+      "rate_limit_policy": "serial_requests_stop_on_429_respect_retry_after",
+      "contracts": [
+        {
+          "checkpoint_role": "predeadline_state_and_availability",
+          "checkpoints": [
+            "availability_only",
+            "daily_preseason",
+            "T-48h",
+            "T-24h",
+            "T-8h",
+            "T-2h",
+            "final_pre_deadline"
+          ],
+          "endpoint_id": "bootstrap-static",
+          "path_template": "/api/bootstrap-static/",
+          "schema": {
+            "required_fields": [
+              "element_types",
+              "elements",
+              "events",
+              "teams"
+            ],
+            "top_level_type": "object"
+          }
+        },
+        {
+          "checkpoint_role": "predeadline_fixture_state",
+          "checkpoints": [
+            "daily_preseason",
+            "T-48h",
+            "T-24h",
+            "T-8h",
+            "T-2h",
+            "final_pre_deadline"
+          ],
+          "endpoint_id": "fixtures",
+          "path_template": "/api/fixtures/",
+          "schema": {
+            "sample_required_fields": [
+              "event",
+              "id",
+              "kickoff_time",
+              "team_a",
+              "team_h"
+            ],
+            "top_level_type": "array"
+          }
+        },
+        {
+          "checkpoint_role": "explicit_owned_watchlist_candidate_history",
+          "checkpoints": [
+            "daily_preseason",
+            "T-24h"
+          ],
+          "endpoint_id": "element-summary",
+          "path_template": "/api/element-summary/{player_id}/",
+          "schema": {
+            "required_fields": [
+              "fixtures",
+              "history",
+              "history_past"
+            ],
+            "top_level_type": "object"
+          }
+        },
+        {
+          "checkpoint_role": "post_deadline_outcome_reconciliation_only",
+          "checkpoints": [
+            "post_match"
+          ],
+          "endpoint_id": "event-live",
+          "path_template": "/api/event/{gameweek}/live/",
+          "schema": {
+            "required_fields": [
+              "elements"
+            ],
+            "top_level_type": "object"
+          }
+        }
+      ]
+    }
   }
 }

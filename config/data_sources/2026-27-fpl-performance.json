@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "source_id": "fpl-official-endpoints",
+  "identity": {
+    "stable_field": "code",
+    "transient_field": "id"
+  },
+  "metrics": [
+    {
+      "output": "fpl_points",
+      "source_fields": ["total_points"],
+      "kind": "integer",
+      "required": true,
+      "tolerance": 0.0
+    },
+    {
+      "output": "minutes",
+      "source_fields": ["minutes"],
+      "kind": "integer",
+      "required": true,
+      "tolerance": 0.0
+    },
+    {
+      "output": "starts",
+      "source_fields": ["starts"],
+      "kind": "integer",
+      "required": false,
+      "tolerance": 0.0
+    },
+    {
+      "output": "bps",
+      "source_fields": ["bps"],
+      "kind": "integer",
+      "required": true,
+      "tolerance": 0.0
+    },
+    {
+      "output": "influence",
+      "source_fields": ["influence"],
+      "kind": "decimal",
+      "required": false,
+      "tolerance": 0.2
+    },
+    {
+      "output": "creativity",
+      "source_fields": ["creativity"],
+      "kind": "decimal",
+      "required": false,
+      "tolerance": 0.2
+    },
+    {
+      "output": "threat",
+      "source_fields": ["threat"],
+      "kind": "decimal",
+      "required": false,
+      "tolerance": 0.2
+    },
+    {
+      "output": "ict_index",
+      "source_fields": ["ict_index"],
+      "kind": "decimal",
+      "required": false,
+      "tolerance": 0.2
+    },
+    {
+      "output": "xg",
+      "source_fields": ["expected_goals"],
+      "kind": "decimal",
+      "required": false,
+      "tolerance": 0.02
+    },
+    {
+      "output": "xa",
+      "source_fields": ["expected_assists"],
+      "kind": "decimal",
+      "required": false,
+      "tolerance": 0.02
+    },
+    {
+      "output": "xgi",
+      "source_fields": ["expected_goal_involvements"],
+      "kind": "decimal",
+      "required": false,
+      "tolerance": 0.02
+    },
+    {
+      "output": "defensive_contributions",
+      "source_fields": ["defensive_contribution", "defensive_contributions"],
+      "kind": "integer",
+      "required": false,
+      "tolerance": 0.0
+    },
+    {
+      "output": "recoveries",
+      "source_fields": ["recoveries"],
+      "kind": "integer",
+      "required": false,
+      "tolerance": 0.0
+    }
+  ],
+  "reconciliation": {
+    "weekly_primary": "event-live",
+    "fixture_detail": "element-summary",
+    "cumulative_check": "bootstrap-after-minus-bootstrap-before",
+    "disagreement_policy": "quarantine_metric_not_player",
+    "missing_optional_policy": "null_with_visible_gap",
+    "missing_required_policy": "quarantine_player"
+  },
+  "ablation": {
+    "family_id": "fpl_native_performance",
+    "external_match_ratings_are_distinct": true,
+    "missing_input": "byte_identical_shared_baseline",
+    "promotion_status": "shadow_only_pending_isolated_ablation"
+  }
+}
+

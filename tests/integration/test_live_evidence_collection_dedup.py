@@ -40,6 +40,8 @@ def test_unrelated_bootstrap_change_does_not_duplicate_unchanged_news(
                     }
                 ],
                 "events": [{"id": 1, "unrelated_revision": request_count}],
+                "teams": [],
+                "element_types": [],
             },
             request=request,
         )

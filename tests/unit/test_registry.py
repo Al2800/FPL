@@ -37,6 +37,7 @@ def test_only_assessment_sources_enabled():
             "fpl-official-endpoints",
             "football-data-co-uk",
             "statsbomb-open",
+            "the-odds-api",
             "vaastav-fpl",
         ]
     )

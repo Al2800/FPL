@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -21,6 +22,18 @@ DEFAULT_PATHS = [
 ]
 
 
+def _assert_approved_public_path(path: str) -> None:
+    if path in DEFAULT_PATHS:
+        return
+    if re.fullmatch(r"/api/element-summary/[1-9][0-9]*/", path):
+        return
+    if re.fullmatch(r"/api/event/[1-9][0-9]*/live/", path):
+        return
+    raise ValueError(
+        "path is not an approved public FPL endpoint for automated capture"
+    )
+
+
 def snapshot_endpoint(
     client: httpx.Client,
     *,
@@ -33,6 +46,7 @@ def snapshot_endpoint(
 ) -> dict[str, object]:
     """Capture one FPL endpoint through the source-neutral acquisition boundary."""
 
+    _assert_approved_public_path(path)
     url = base_url.rstrip("/") + path
     safe_name = path.strip("/").replace("/", "_") or "root"
     return acquire_http(

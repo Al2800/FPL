@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "daily_schedule": "daily_preseason_and_predeadline_checkpoints",
+  "source_preference": ["verified_rss_or_api", "official_domain_search_fallback"],
+  "query_template": "site:{official_domain} (injury OR training OR \"press conference\" OR \"team news\")",
+  "maximum_result_age_hours": 72,
+  "maximum_leads_per_source": 12,
+  "search_result_policy": "discovery_lead_only_follow_official_original",
+  "raw_snippet_policy": "never_admit_or_retain",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "deduplication": "canonical_official_url",
+  "syndication_policy": "reject_non_official_domain",
+  "missing_coverage_policy": "degrade_unknown_not_available"
+}
