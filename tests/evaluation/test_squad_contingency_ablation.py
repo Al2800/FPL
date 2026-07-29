@@ -6,6 +6,8 @@ from copy import deepcopy
 import json
 from pathlib import Path
 
+import pytest
+
 from src.evaluation.squad_contingency import paired_decision_hash
 from src.evaluation.squad_contingency_ablation import (
     ABLATION_COMPONENTS,
@@ -111,6 +113,127 @@ def _mini_squad() -> list[dict]:
     ]
 
 
+def _uncertain_squad() -> list[dict]:
+    """Squad with risky high-ceiling players alongside reliable lower-ceiling ones.
+
+    The first DEF and MID have high expected_points but very low
+    start_probability, so that appearance-weighted ranking (start_probability ×
+    expected_points) selects them last rather than first.
+    """
+    certain = (0.0, 0.0, 1.0)
+    return [
+        {
+            "player_id": "g1",
+            "position": "GKP",
+            "club_id": "1",
+            "now_cost": 4.5,
+            "expected_points": 4.0,
+            "start_probability": 0.9,
+            "appearance_distribution": {
+                "zero": certain[0],
+                "under_60": certain[1],
+                "60_plus": certain[2],
+                "source": "test",
+            },
+        },
+        {
+            "player_id": "g2",
+            "position": "GKP",
+            "club_id": "1",
+            "now_cost": 4.0,
+            "expected_points": 3.0,
+            "start_probability": 0.1,
+            "appearance_distribution": {
+                "zero": 0.9,
+                "under_60": 0.05,
+                "60_plus": 0.05,
+                "source": "test",
+            },
+        },
+        # Risky DEF: high expected_points, very low start_probability.
+        {
+            "player_id": "d_risky",
+            "position": "DEF",
+            "club_id": "1",
+            "now_cost": 5.0,
+            "expected_points": 8.0,
+            "start_probability": 0.1,
+            "appearance_distribution": {
+                "zero": 0.9,
+                "under_60": 0.05,
+                "60_plus": 0.05,
+                "source": "test",
+            },
+        },
+        *[
+            {
+                "player_id": f"d{i}",
+                "position": "DEF",
+                "club_id": "1",
+                "now_cost": 4.5,
+                "expected_points": float(4 - i * 0.1),
+                "start_probability": 0.9,
+                "appearance_distribution": {
+                    "zero": 0.05,
+                    "under_60": 0.05,
+                    "60_plus": 0.9,
+                    "source": "test",
+                },
+            }
+            for i in range(1, 5)
+        ],
+        # Risky MID: high expected_points, very low start_probability.
+        {
+            "player_id": "m_risky",
+            "position": "MID",
+            "club_id": "1",
+            "now_cost": 6.0,
+            "expected_points": 9.0,
+            "start_probability": 0.1,
+            "appearance_distribution": {
+                "zero": 0.9,
+                "under_60": 0.05,
+                "60_plus": 0.05,
+                "source": "test",
+            },
+        },
+        *[
+            {
+                "player_id": f"m{i}",
+                "position": "MID",
+                "club_id": "1",
+                "now_cost": 5.5,
+                "expected_points": float(5 - i * 0.1),
+                "start_probability": 0.9,
+                "appearance_distribution": {
+                    "zero": 0.05,
+                    "under_60": 0.05,
+                    "60_plus": 0.9,
+                    "source": "test",
+                },
+            }
+            for i in range(1, 5)
+        ],
+        *[
+            {
+                "player_id": f"f{i}",
+                "position": "FWD",
+                "club_id": "1",
+                "now_cost": 5.0,
+                "expected_points": float(5 - i * 0.2),
+                "start_probability": 0.9,
+                "appearance_distribution": {
+                    "zero": 0.05,
+                    "under_60": 0.05,
+                    "60_plus": 0.9,
+                    "source": "test",
+                },
+            }
+            for i in range(1, 4)
+        ],
+    ]
+
+
 def _calibration() -> dict:
     return json.loads(
         (ROOT / "control/models/appearance-distribution-v1.json").read_text(
@@ -176,6 +299,14 @@ def test_each_component_changes_only_its_decision_lever() -> None:
         control_lineup["bench_ids"]
     )
 
+    # xi_formation arm: bench GKP must be first slot and bench is not permuted.
+    assert xi_only["bench"][0]["position"] == "GKP"
+    # With uniform start_probability (0.8) the appearance-weighted ranking
+    # produces the same XI and captain as the pure expected-points control.
+    assert set(p["player_id"] for p in xi_only["starting_xi"]) == set(
+        control_lineup["starting_xi_ids"]
+    )
+    assert xi_only["captain_id"] == control_lineup["captain_id"]
 
     assert [player["player_id"] for player in captain_only["bench"]] == list(
         control_lineup["bench_ids"]
@@ -183,6 +314,74 @@ def test_each_component_changes_only_its_decision_lever() -> None:
     assert set(player["player_id"] for player in captain_only["starting_xi"]) == set(
         control_lineup["starting_xi_ids"]
     )
+
+
+def test_xi_formation_arm_varies_xi_with_uncertain_starters() -> None:
+    """XI arm selects players by appearance-weighted points, not raw ceiling."""
+    rules = load_rules(ROOT / "control/rules/2025-26.yaml")
+    constraints = get_rule(rules, "lineup.formation_constraints")["value"]
+    calibration = _calibration()
+    squad = _uncertain_squad()
+    formations = legal_formations(rules)
+
+    control = solve(
+        SolverInput.from_dict(
+            {
+                "season": "test",
+                "gameweek": 1,
+                "ruleset_id": rules["meta"]["ruleset_id"],
+                "bank": 0.0,
+                "free_transfers": 1,
+                "squad_player_ids": [row["player_id"] for row in squad],
+                "players": squad,
+                "max_transfers": 0,
+            }
+        ),
+        rules=rules,
+        ruleset_sha256=ruleset_sha256(ROOT / "control/rules/2025-26.yaml"),
+    )
+    xi_only = choose_ablated_contingency_lineup(
+        squad,
+        component="xi_formation",
+        formations=formations,
+        calibration=calibration,
+        constraints=constraints,
+        active_chip=None,
+    )
+
+    control_lineup = control["selected"]["lineup"]
+    xi_ids = {player["player_id"] for player in xi_only["starting_xi"]}
+    control_xi_ids = set(control_lineup["starting_xi_ids"])
+
+    # Control selects by raw expected_points — risky high-ceiling players in.
+    assert "d_risky" in control_xi_ids or "m_risky" in control_xi_ids, (
+        "control should include at least one risky high-ceiling player"
+    )
+    # The xi_formation arm uses start_probability × expected_points — risky
+    # players score very low and should be excluded.
+    assert xi_ids != control_xi_ids, (
+        "xi_formation arm must select a different XI when start_probability "
+        "and expected_points rankings diverge"
+    )
+    # Bench GKP is always the first bench slot.
+    assert xi_only["bench"][0]["position"] == "GKP"
+
+
+def test_verify_w10_reference_checks_content_hash() -> None:
+    """verify_w10_reference must reject a tampered W10 report."""
+    w10 = json.loads(
+        (ROOT / "reports/evaluation/squad-contingency-v1.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    # Valid report must not raise.
+    verify_w10_reference(w10)
+
+    # A tampered report (wrong content_sha256) must raise.
+    tampered = deepcopy(w10)
+    tampered["content_sha256"] = "0" * 64
+    with pytest.raises(ValueError, match="content_sha256"):
+        verify_w10_reference(tampered)
 
 
 def test_single_locked_component_is_legal_and_hash_stable() -> None:
@@ -276,7 +475,19 @@ def test_report_keeps_scopes_separate_and_references_w10() -> None:
         "net_points_delta"
     ] == 22
     assert report["v2_proposal"]["selection_on_2025_26"] is False
+    assert report["v2_proposal"]["promotion_gate_season"] == "2026-27"
     assert report["content_sha256"] == artifact_hash(report)
+    # Attribution must include an explicit residual reconciling v1 vs marginal sum.
+    for scope in ("locked_2024_25", "descriptive_2025_26"):
+        attr = report[scope]["attribution"]
+        assert "residual_unattributed" in attr
+        marginal_sum = sum(
+            attr["by_component"][c]["net_points_delta"]
+            for c in attr["by_component"]
+        )
+        assert attr["residual_unattributed"] == (
+            attr["probabilistic_v1_net_points_delta"] - marginal_sum
+        )
 
 
 def test_committed_ablation_report_matches_contract() -> None:
@@ -294,10 +505,16 @@ def test_committed_ablation_report_matches_contract() -> None:
     assert report["content_sha256"] == artifact_hash(report)
     assert report["reference"]["w10_content_sha256"] == w10["content_sha256"]
     assert set(report["policy"]["ablation_components"]) == set(ABLATION_COMPONENTS)
+    assert report["v2_proposal"]["promotion_gate_season"] == "2026-27"
     for scope in ("locked_2024_25", "descriptive_2025_26"):
         for component in ABLATION_COMPONENTS:
             entry = report[scope]["components"][component]
             assert len(entry["decision_sha256"]) == 64
             assert entry["summary"]["all_plans_valid"] is True
+        attr = report[scope]["attribution"]
+        assert "residual_unattributed" in attr
+        assert attr["probabilistic_v1_net_points_delta"] - attr[
+            "residual_unattributed"
+        ] == attr["marginal_component_sum"]
     locked_attr = report["locked_2024_25"]["attribution"]
     assert locked_attr["probabilistic_v1_net_points_delta"] == -10

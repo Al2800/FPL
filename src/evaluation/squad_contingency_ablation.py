@@ -250,65 +250,71 @@ def choose_ablated_contingency_lineup(
     if len(goalkeepers) != 2:
         raise SquadContingencyError("Squad must contain two goalkeepers")
     extra_multiplier = 2 if active_chip and "triple_captain" in active_chip else 1
-    best_xi: tuple[tuple[float, tuple[str, ...], str, str], dict[str, Any]] | None = None
+    best_xi: tuple[tuple[float, tuple[str, ...]], dict[str, Any]] | None = None
     for source_formation in formations:
         formation = {
             position: int(source_formation[position]) for position in ("DEF", "MID", "FWD")
         }
+        # Rank players by appearance-weighted expected points so the arm is
+        # sensitive to the start-probability distribution, not just raw ceiling.
         starting = [goalkeepers[0]]
         for position, count in formation.items():
-            starting.extend(
-                [
-                    player
-                    for player in ranked
-                    if player["position"] == position
-                ][:count]
+            candidates = sorted(
+                [p for p in ranked if p["position"] == position],
+                key=lambda p: (
+                    -float(p["start_probability"]) * float(p["expected_points"]),
+                    str(p["player_id"]),
+                ),
             )
+            starting.extend(candidates[:count])
         if len(starting) != 11:
             continue
-        used = {str(player["player_id"]) for player in starting}
-        bench_pool = [
-            player for player in ranked if str(player["player_id"]) not in used
-        ]
-        bench_gkp = next(
-            player for player in bench_pool if player["position"] == "GKP"
+        xi_ids = {str(p["player_id"]) for p in starting}
+        # Select captain using the same pure expected-points method as control,
+        # applied to the new appearance-weighted XI; bench order is fixed.
+        captain_id, vice_id, captain_extra, _ = _best_captain_pair(
+            starting, appearances, extra_multiplier=extra_multiplier
         )
-        outfield = [
-            player for player in bench_pool if player["position"] != "GKP"
-        ]
-        for ordered_outfield in permutations(outfield):
-            ordered_bench = [bench_gkp, *ordered_outfield]
-            captain_id, vice_id, captain_extra, _ = _best_captain_pair(
-                starting, appearances, extra_multiplier=extra_multiplier
-            )
-            score = _xi_expected_points(starting) + captain_extra
-            identity = tuple(
-                str(player["player_id"]) for player in [*starting, *ordered_bench]
-            )
-            key = (-score, identity, captain_id, vice_id)
-            evaluation = evaluate_contingency_lineup(
-                starting_xi=starting,
-                bench=ordered_bench,
-                formation=formation,
-                calibration=calibration,
-                constraints=constraints,
-                active_chip=active_chip,
-                appearance_distributions=appearances,
-            )
-            result = _lineup_result(
-                formation=formation,
-                starting_xi=starting,
-                bench=ordered_bench,
-                captain_id=captain_id,
-                vice_captain_id=vice_id,
-                evaluation={
-                    **evaluation,
-                    "planning_value": round(score, 6),
-                    "bench_contingency_value": 0.0,
-                },
-            )
-            if best_xi is None or key < best_xi[0]:
-                best_xi = (key, result)
+        # Fix bench in natural order: GKP first, then remaining outfield in
+        # expected_points order — no permutation optimisation.
+        bench_pool = [p for p in ranked if str(p["player_id"]) not in xi_ids]
+        bench_gkp = next(p for p in bench_pool if p["position"] == "GKP")
+        outfield_bench = [p for p in bench_pool if p["position"] != "GKP"]
+        ordered_bench = [bench_gkp, *outfield_bench]
+        bench_val = _bench_contingency_value(
+            starting_xi=starting,
+            bench=ordered_bench,
+            formation=formation,
+            appearances=appearances,
+            constraints=constraints,
+            active_chip=active_chip,
+        )
+        score = _xi_expected_points(starting) + captain_extra + bench_val
+        identity = tuple(str(p["player_id"]) for p in [*starting, *ordered_bench])
+        key = (-score, identity)
+        evaluation = evaluate_contingency_lineup(
+            starting_xi=starting,
+            bench=ordered_bench,
+            formation=formation,
+            calibration=calibration,
+            constraints=constraints,
+            active_chip=active_chip,
+            appearance_distributions=appearances,
+        )
+        result = _lineup_result(
+            formation=formation,
+            starting_xi=starting,
+            bench=ordered_bench,
+            captain_id=captain_id,
+            vice_captain_id=vice_id,
+            evaluation={
+                **evaluation,
+                "planning_value": round(score, 6),
+                "bench_contingency_value": round(bench_val, 6),
+            },
+        )
+        if best_xi is None or key < best_xi[0]:
+            best_xi = (key, result)
     if best_xi is None:
         raise SquadContingencyError("XI/formation ablation could not be built")
     return best_xi[1]
@@ -761,8 +767,11 @@ def _attribution_for_scope(
         for row in v1_rows
         if int(row["delta_challenger_minus_control"]["net_points"]) != 0
     ]
+    marginal_sum = sum(by_component[c]["net_points_delta"] for c in by_component)
     return {
         "probabilistic_v1_net_points_delta": int(v1_delta),
+        "marginal_component_sum": marginal_sum,
+        "residual_unattributed": int(v1_delta) - marginal_sum,
         "by_component": by_component,
         "probabilistic_v1_non_zero_weeks": loss_weeks,
         "reconciliation": reconciliation,
@@ -780,6 +789,10 @@ def build_ablation_report(
 
     locked_v1 = w10_report["locked_2024_25"]
     descriptive_v1 = w10_report["descriptive_2025_26"]
+    _verify_ablation_w10_bindings(
+        locked_components=locked_components,
+        w10_locked_rows=locked_v1["rows"],
+    )
     locked_attribution = _attribution_for_scope(
         component_results=locked_components,
         v1_rows=locked_v1["rows"],
@@ -850,14 +863,16 @@ def build_ablation_report(
             "train_seasons": ["2022-23", "2023-24"],
             "calibration_validation_season": "2024-25",
             "component_selection_holdout": "2025-26",
-            "promotion_gate_season": "2024-25",
+            "promotion_gate_season": "2026-27",
             "rationale": (
                 "Component ablation findings inform which v2 terms to retain, "
                 "but no parameter or policy weight may be fit on 2024/25 or "
-                "2025/26. Appearance calibration continues to train only on "
-                "2022/23 and 2023/24; locked 2024/25 remains the sole "
-                "promotion gate; 2025/26 is descriptive holdout for component "
-                "behaviour only."
+                "2025/26 — both are exploratory after this ablation observed "
+                "their outcomes. Appearance calibration continues to train "
+                "only on 2022/23 and 2023/24. The sole promotion gate is the "
+                "genuinely prospective 2026/27 season (not yet observed at "
+                "analysis time), which was not used in any design decision "
+                "for this ablation."
             ),
         },
         "limitations": [
@@ -920,11 +935,51 @@ def run_full_ablation(
     )
 
 
+def _verify_ablation_w10_bindings(
+    *,
+    locked_components: Mapping[str, Mapping[str, Any]],
+    w10_locked_rows: Sequence[Mapping[str, Any]],
+) -> None:
+    """Fail if any ablation locked-arm row diverges from its W10 counterpart."""
+
+    w10_by_gw: dict[int, Mapping[str, Any]] = {
+        int(row["gameweek"]): row for row in w10_locked_rows
+    }
+    for component, result in locked_components.items():
+        for row in result.get("rows", []):
+            gameweek = int(row["gameweek"])
+            w10_row = w10_by_gw.get(gameweek)
+            if w10_row is None:
+                raise ValueError(
+                    f"ablation component {component!r} gw{gameweek} has no "
+                    "matching W10 locked row"
+                )
+            if row.get("reference_squad_sha256") != w10_row.get(
+                "reference_squad_sha256"
+            ):
+                raise ValueError(
+                    f"ablation {component!r} gw{gameweek}: "
+                    "reference_squad_sha256 does not match W10 row"
+                )
+            ablation_bindings = row.get("bindings", {})
+            w10_bindings = w10_row.get("bindings", {})
+            for key in ("hidden_outcome_sha256", "ruleset_sha256"):
+                if ablation_bindings.get(key) != w10_bindings.get(key):
+                    raise ValueError(
+                        f"ablation {component!r} gw{gameweek}: "
+                        f"bindings.{key} does not match W10 row"
+                    )
+
+
 def verify_w10_reference(w10_report: Mapping[str, Any]) -> None:
-    """Ensure the sealed W10 report is unchanged."""
+    """Ensure the sealed W10 report is intact and content hash is valid."""
 
     if w10_report.get("report_id") != "squad-contingency-v1-paired-evaluation":
         raise ValueError("unexpected W10 report identifier")
+    if artifact_hash(w10_report) != w10_report.get("content_sha256", ""):
+        raise ValueError(
+            "W10 content_sha256 mismatch — report has been modified"
+        )
     if int(w10_report["locked_2024_25"]["summary"]["net_points_delta"]) != -10:
         raise ValueError("W10 locked net_points_delta is no longer -10")
     if int(w10_report["descriptive_2025_26"]["summary"]["net_points_delta"]) != 22:

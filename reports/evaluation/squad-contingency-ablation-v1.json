@@ -1,5 +1,5 @@
 {
-  "content_sha256": "28beffd3d66b0e21c9f6d2d37406bbb2405ebfa3363531eadedc45a63c4c5be4",
+  "content_sha256": "159ac07cc4ceb7f475b2f37a307324ef044727733b331ccfc6fc06419897fd03",
   "descriptive_2025_26": {
     "attribution": {
       "by_component": {
@@ -354,7 +354,9 @@
           ],
           "weeks_matching_probabilistic_v1": 4
         }
-      }
+      },
+      "marginal_component_sum": 26,
+      "residual_unattributed": -4
     },
     "components": {
       "bench_order_only": {
@@ -657,7 +659,9 @@
           ],
           "weeks_matching_probabilistic_v1": 11
         }
-      }
+      },
+      "marginal_component_sum": -6,
+      "residual_unattributed": -4
     },
     "components": {
       "bench_order_only": {
@@ -791,8 +795,8 @@
   "v2_proposal": {
     "calibration_validation_season": "2024-25",
     "component_selection_holdout": "2025-26",
-    "promotion_gate_season": "2024-25",
-    "rationale": "Component ablation findings inform which v2 terms to retain, but no parameter or policy weight may be fit on 2024/25 or 2025/26. Appearance calibration continues to train only on 2022/23 and 2023/24; locked 2024/25 remains the sole promotion gate; 2025/26 is descriptive holdout for component behaviour only.",
+    "promotion_gate_season": "2026-27",
+    "rationale": "Component ablation findings inform which v2 terms to retain, but no parameter or policy weight may be fit on 2024/25 or 2025/26 — both are exploratory after this ablation observed their outcomes. Appearance calibration continues to train only on 2022/23 and 2023/24. The sole promotion gate is the genuinely prospective 2026/27 season (not yet observed at analysis time), which was not used in any design decision for this ablation.",
     "selection_on_2025_26": false,
     "status": "preregistered_not_fitted",
     "train_seasons": [
