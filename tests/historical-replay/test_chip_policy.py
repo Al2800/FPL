@@ -56,6 +56,19 @@ def _candidate(candidate_id: str, chip: str | None, immediate: float) -> dict:
     }
 
 
+def test_canonical_tree_hash_is_checkout_newline_stable(tmp_path: Path) -> None:
+    lf_root = tmp_path / "lf"
+    crlf_root = tmp_path / "crlf"
+    for root, newline in ((lf_root, b"\n"), (crlf_root, b"\r\n")):
+        gameweek = root / "gw-01"
+        gameweek.mkdir(parents=True)
+        (gameweek / "artifact.json").write_bytes(b'{"value": 1}' + newline)
+        (gameweek / "report.html").write_bytes(b"<p>stable</p>" + newline)
+
+    assert _canonical_tree_hash(lf_root, through_gameweek=1) == (
+        _canonical_tree_hash(crlf_root, through_gameweek=1)
+    )
+
 def test_chip_policy_reserve_prevents_marginal_deployment():
     config = _read(CONFIG_PATH)
     candidates = [

@@ -791,16 +791,21 @@
     }
   ],
   "canonical_artifacts": {
-    "file_count": 2229,
+    "file_count": 2232,
+    "identity_migration": {
+      "reason": "PR #25 migrated three canonical GW4 payloads to content-addressed refs",
+      "replay_decisions_or_outcomes_changed": false,
+      "source_merge_commit": "b1d468fade43b5dd0d9827f1922eed92ee66389c"
+    },
     "gw31_outcome_sha256": "8066bb8d6965abd39802874bd27e6eef1f45d3e9410ee62540473b85c801f33d",
     "gw31_plan_sha256": "d5b0ba9e47e3956a3be24e09914def74c52ca681e0092b70f8b2c702e5a334b3",
     "through_gameweek": 31,
-    "tree_sha256_after": "0cf20fd5a6eac9c5e52ba10fdd39520a25bc24d7e01d089d3babdf9efaac34d4",
-    "tree_sha256_before": "0cf20fd5a6eac9c5e52ba10fdd39520a25bc24d7e01d089d3babdf9efaac34d4",
+    "tree_sha256_after": "199c5267026d40eb3c2094dfbb2329d730602020ce1905076b219e3ac9e70573",
+    "tree_sha256_before": "199c5267026d40eb3c2094dfbb2329d730602020ce1905076b219e3ac9e70573",
     "unchanged": true
   },
   "comparison_type": "sealed_chip_matrix_and_longitudinal_free_hit",
-  "content_sha256": "f7d92d386fd08cc8b25165ba8e8c6c9b8e514040ea37ef86f8f2a6e969b3c7c5",
+  "content_sha256": "549628f03c7b890455d814ba6fa413cb827e30ecd7892118b17462486c6cb3b2",
   "decision_cutoff": "2026-03-20T18:30:00Z",
   "episode_id": "benchmark-v0:2025-26:gw31:manager-neutral",
   "feature_state_sha256": "02795be6b47468970eb1a4f6e4e635924d26c35103031e4cb7a088ae8f1238aa",
