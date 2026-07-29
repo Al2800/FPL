@@ -224,6 +224,14 @@ def solve(
     if contingency_policy_active and solver_input.appearance_calibration is None:
         raise ValueError("probabilistic_v1 requires an appearance_calibration")
     if (
+        solver_input.search_candidate_budget is not None
+        and (
+            isinstance(solver_input.search_candidate_budget, bool)
+            or solver_input.search_candidate_budget < 1
+        )
+    ):
+        raise ValueError("search_candidate_budget must be a positive integer when set")
+    if (
         solver_input.search_deadline_ms is not None
         and (
             isinstance(solver_input.search_deadline_ms, bool)
@@ -316,8 +324,17 @@ def solve(
         else solver_input.search_deadline_ms / 1000.0
     )
     search_degraded = False
+    search_degraded_reason: str | None = None
     searched_transfer_widths: list[int] = []
     incomplete_transfer_width: int | None = None
+    baseline_state: tuple[
+        list[tuple[tuple[Any, ...], int, dict[str, Any]]],
+        dict[str, dict[str, Any]],
+        dict[int, dict[str, Any]],
+        int,
+        dict[tuple[Any, ...], dict[str, Any]],
+        dict[tuple[Any, ...], dict[str, Any]],
+    ] | None = None
 
     def deadline_exceeded() -> bool:
         return (
@@ -412,14 +429,32 @@ def solve(
             banked["strategy"] = "bank_transfer"
             consider(banked)
 
+    baseline_state = (
+        deepcopy(top_ranked),
+        deepcopy(by_strategy),
+        deepcopy(by_transfer_count),
+        candidate_count,
+        deepcopy(contingency_lineup_cache),
+        deepcopy(contingency_evaluation_cache),
+    )
+
     max_t = solver_input.max_transfers
     free = solver_input.free_transfers
 
     for n in range(1, max_t + 1):
         if not solver_input.allow_hits and n > free:
             break
+        if (
+            solver_input.search_candidate_budget is not None
+            and candidate_count >= solver_input.search_candidate_budget
+        ):
+            search_degraded = True
+            search_degraded_reason = "candidate_budget"
+            incomplete_transfer_width = n
+            break
         if deadline_exceeded():
             search_degraded = True
+            search_degraded_reason = "operational_deadline"
             incomplete_transfer_width = n
             break
         # Wildcard / Free Hit: treat as unlimited free transfers for hit accounting
@@ -441,8 +476,18 @@ def solve(
         )
         width_complete = True
         for moves in move_sets:
+            if (
+                solver_input.search_candidate_budget is not None
+                and candidate_count >= solver_input.search_candidate_budget
+            ):
+                search_degraded = True
+                search_degraded_reason = "candidate_budget"
+                incomplete_transfer_width = n
+                width_complete = False
+                break
             if deadline_exceeded():
                 search_degraded = True
+                search_degraded_reason = "operational_deadline"
                 incomplete_transfer_width = n
                 width_complete = False
                 break
@@ -483,14 +528,28 @@ def solve(
         else:
             break
 
+    if search_degraded_reason == "operational_deadline":
+        if baseline_state is None:
+            raise RuntimeError("deadline fallback baseline was not captured")
+        (
+            top_ranked,
+            by_strategy,
+            by_transfer_count,
+            candidate_count,
+            contingency_lineup_cache,
+            contingency_evaluation_cache,
+        ) = deepcopy(baseline_state)
+        searched_transfer_widths = []
+
     top_candidates = [entry[2] for entry in top_ranked]
     selected = top_candidates[0] if top_candidates else None
     highest = dict(selected) if selected else None
-    optimality = (
-        "highest_ev_in_partial_deadline_bounded_pool"
-        if search_degraded
-        else "highest_ev_in_declared_candidate_pool"
-    )
+    if search_degraded_reason == "candidate_budget":
+        optimality = "highest_ev_in_deterministic_candidate_budget"
+    elif search_degraded_reason == "operational_deadline":
+        optimality = "deterministic_no_transfer_deadline_fallback"
+    else:
+        optimality = "highest_ev_in_declared_candidate_pool"
     if highest:
         highest["strategy"] = "highest_ev"
 
@@ -518,11 +577,12 @@ def solve(
             "wildcard_free_hit_hit_accounting": True,
             "searched_transfer_widths": searched_transfer_widths,
             "search_degraded": search_degraded,
+            "search_degraded_reason": search_degraded_reason,
+            "search_candidate_budget": solver_input.search_candidate_budget,
             "search_deadline_ms": solver_input.search_deadline_ms,
             "incomplete_transfer_width": incomplete_transfer_width,
             "contingency_lineup_cache_entries": len(contingency_lineup_cache),
             "contingency_evaluation_cache_entries": len(contingency_evaluation_cache),
-            "wall_ms": round((time.perf_counter() - search_started) * 1000.0, 3),
         },
         "selected": highest,
         "plans": {

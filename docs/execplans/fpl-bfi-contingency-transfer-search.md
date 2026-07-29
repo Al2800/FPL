@@ -8,14 +8,17 @@ Outcomes current.
 Remove the known runtime roadblock when `probabilistic_v1` squad-contingency
 valuation is combined with transfer search, without changing the selected output
 for the same declared candidate set. Profile the W10/kcc scale fixture first,
-then apply equivalence-preserving levers and an explicit search deadline.
+then apply equivalence-preserving levers, a deterministic candidate budget and an operational deadline fallback.
 
 ## Progress
 
 - [x] Mapped the contingency × transfer hot path and sealed policy-off widths.
 - [x] Added memoisation, shared missing-state reuse, hot-path caches, formation
   upper-bound pruning and `search_deadline_ms`.
-- [x] Added profiler, focused tests, performance report and evaluation note.
+- [x] Added profiler, focused tests, initial performance report and evaluation note.
+- [x] Replaced timing-dependent partial pools with deterministic candidate budgets and
+  a stable no-transfer watchdog fallback.
+- [ ] Regenerate reconstructible before/after profiles and opportunity matrix.
 - [x] Confirmed one-transfer isomorphic fingerprint and rejected promoting
   three-transfer contingency as the production default.
 
@@ -38,11 +41,12 @@ then apply equivalence-preserving levers and an explicit search deadline.
   unchanged; reject enabling three-transfer contingency.
   Rationale: bead closure allows budget failure evidence for three-transfer.
   Date/Author: 2026-07-29 / Cursor agent.
-- Decision: expose `search_deadline_ms` and label partial results as
-  `highest_ev_in_partial_deadline_bounded_pool`, never as full declared-pool
-  equivalence.
-  Rationale: a hang is worse than an explicit degraded advisory result.
-  Date/Author: 2026-07-29 / Cursor agent.
+- Decision: use `search_candidate_budget` for reproducible partial-pool
+  benchmarks. Treat `search_deadline_ms` only as an operational watchdog; on
+  expiry discard timing-dependent partial candidates and return the deterministic
+  no-transfer baseline.
+  Rationale: machine scheduling must never change a sealed solver result.
+  Date/Author: 2026-07-29 / Codex takeover review.
 - Decision: apply only equivalence-preserving levers in this bead; any shortlist
   challenger must be a separately named non-isomorphic arm.
   Rationale: prevents silent policy change under a performance label.

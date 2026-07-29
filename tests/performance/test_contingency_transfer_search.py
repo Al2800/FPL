@@ -23,7 +23,12 @@ CALIBRATION = json.loads(CALIBRATION_PATH.read_text(encoding="utf-8"))
 DECLARED = {1: 120, 2: 5_856, 3: 151_672}
 
 
-def _scale_input(max_transfers: int, *, deadline_ms: int | None = None) -> SolverInput:
+def _scale_input(
+    max_transfers: int,
+    *,
+    candidate_budget: int | None = None,
+    deadline_ms: int | None = None,
+) -> SolverInput:
     counts = {"GKP": 2, "DEF": 5, "MID": 5, "FWD": 3}
     players: list[dict[str, object]] = []
     squad_ids: list[str] = []
@@ -77,6 +82,7 @@ def _scale_input(max_transfers: int, *, deadline_ms: int | None = None) -> Solve
         buy_pool_per_pos=8,
         squad_contingency_policy="probabilistic_v1",
         appearance_calibration=CALIBRATION,
+        search_candidate_budget=candidate_budget,
         search_deadline_ms=deadline_ms,
     )
 
@@ -108,7 +114,8 @@ def test_one_transfer_contingency_is_deterministic_and_fingerprint_stable() -> N
     solver_input = _scale_input(1)
     first = solve(solver_input, rules=RULES, ruleset_sha256=RULES_HASH)
     second = solve(solver_input, rules=RULES, ruleset_sha256=RULES_HASH)
-    assert first["output_fingerprint"] == second["output_fingerprint"]
+    assert first == second
+    assert json.dumps(first, sort_keys=True) == json.dumps(second, sort_keys=True)
     assert first["n_candidates"] == 122
     assert first["selected"]["objective"] == second["selected"]["objective"]
     assert first["selected"]["lineup"] == second["selected"]["lineup"]
@@ -119,21 +126,45 @@ def test_one_transfer_contingency_is_deterministic_and_fingerprint_stable() -> N
     )
 
 
-def test_deadline_returns_deterministic_degraded_partial_pool() -> None:
-    solver_input = _scale_input(2, deadline_ms=250)
+def test_candidate_budget_returns_reproducible_partial_pool() -> None:
+    solver_input = _scale_input(2, candidate_budget=50, deadline_ms=60_000)
     first = solve(solver_input, rules=RULES, ruleset_sha256=RULES_HASH)
     second = solve(solver_input, rules=RULES, ruleset_sha256=RULES_HASH)
+    assert first == second
     assert first["search_scope"]["search_degraded"] is True
+    assert first["search_scope"]["search_degraded_reason"] == "candidate_budget"
     assert (
         first["search_scope"]["optimality"]
-        == "highest_ev_in_partial_deadline_bounded_pool"
+        == "highest_ev_in_deterministic_candidate_budget"
     )
-    assert first["output_fingerprint"] == second["output_fingerprint"]
-    assert first["n_candidates"] == second["n_candidates"]
-    assert first["n_candidates"] < 5978
-    # Must not claim full-search equivalence.
+    assert first["n_candidates"] == 50
     assert "declared_candidate_pool" not in first["search_scope"]["optimality"]
 
+
+def test_deadline_discards_partial_pool_and_returns_deterministic_baseline(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import src.optimisation.solver as solver_module
+
+    solver_input = _scale_input(2, deadline_ms=1)
+
+    def run_with_forced_deadline() -> dict[str, object]:
+        calls = iter((0.0, 1.0))
+        monkeypatch.setattr(solver_module.time, "perf_counter", lambda: next(calls, 1.0))
+        return solve(solver_input, rules=RULES, ruleset_sha256=RULES_HASH)
+
+    first = run_with_forced_deadline()
+    second = run_with_forced_deadline()
+    assert first == second
+    assert first["search_scope"]["search_degraded"] is True
+    assert first["search_scope"]["search_degraded_reason"] == "operational_deadline"
+    assert (
+        first["search_scope"]["optimality"]
+        == "deterministic_no_transfer_deadline_fallback"
+    )
+    assert first["search_scope"]["searched_transfer_widths"] == []
+    assert first["n_candidates"] == 2
+    assert all(not candidate["transfers"] for candidate in first["all_candidates"])
 
 def test_policy_off_scale_fingerprints_remain_unchanged() -> None:
     """Regression lock against the sealed FPL-kcc policy-off report."""

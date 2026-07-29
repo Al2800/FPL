@@ -17,7 +17,9 @@ import time
 import tracemalloc
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[1]
+REPO = Path(
+    os.environ.get("FPL_PROFILE_CODE_ROOT", Path(__file__).resolve().parents[1])
+).resolve()
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
@@ -131,12 +133,22 @@ def layer_candidate_hash(solver_input: SolverInput, rules: dict, n_transfers: in
     )
 
 
+def _ram_bytes() -> int | None:
+    if hasattr(os, "sysconf"):
+        try:
+            return int(os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES"))
+        except (OSError, ValueError):
+            pass
+    return None
+
+
 def host_metadata(code_commit: str) -> dict:
     return {
         "python": platform.python_version(),
         "platform": platform.platform(),
         "processor": platform.processor() or platform.machine(),
         "cpu_count": os.cpu_count(),
+        "ram_bytes": _ram_bytes(),
         "code_commit": code_commit,
     }
 
@@ -170,7 +182,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--widths", default="1,2,3")
     parser.add_argument("--samples", type=int, default=5)
-    parser.add_argument("--skip-three-full", action="store_true")
+    parser.add_argument("--three-candidate-budget", type=int, default=300)
     parser.add_argument("--three-deadline-ms", type=int, default=300_000)
     parser.add_argument("--output", type=Path, default=OUT)
     args = parser.parse_args(argv)
@@ -205,9 +217,10 @@ def main(argv: list[str] | None = None) -> int:
             )
         )) == declared
 
-        use_deadline = width == 3 and args.skip_three_full
-        if use_deadline:
+        use_candidate_budget = width == 3 and args.three_candidate_budget is not None
+        if use_candidate_budget:
             payload = solver_input.as_dict()
+            payload["search_candidate_budget"] = args.three_candidate_budget
             payload["search_deadline_ms"] = args.three_deadline_ms
             solver_input = SolverInput.from_dict(payload)
 
@@ -232,6 +245,15 @@ def main(argv: list[str] | None = None) -> int:
         tracemalloc.start()
         solve(solver_input, rules=rules, ruleset_sha256=rules_hash)
         _, peak = tracemalloc.get_traced_memory()
+        snapshot = tracemalloc.take_snapshot()
+        allocation_hotspots = [
+            {
+                "location": str(stat.traceback[0]),
+                "bytes": stat.size,
+                "allocations": stat.count,
+            }
+            for stat in snapshot.statistics("lineno")[:5]
+        ]
         tracemalloc.stop()
 
         hotspots = profile_hotspots(solver_input, rules, rules_hash)
@@ -257,6 +279,7 @@ def main(argv: list[str] | None = None) -> int:
                 if timings and n_candidates
                 else None,
                 "python_heap_peak_bytes": peak,
+                "allocation_hotspots": allocation_hotspots,
                 "output_fingerprint": next(iter(fingerprints)),
                 "deterministic": len(fingerprints) == 1,
                 "selected_objective": selected_objective,
@@ -280,7 +303,7 @@ def main(argv: list[str] | None = None) -> int:
                 "lineup_and_evaluation_memoisation",
                 "hot_path_local_appearance_caches",
                 "formation_upper_bound_pruning",
-                "configurable_search_deadline_ms",
+                "deterministic_candidate_budget_with_operational_deadline_fallback",
             ],
         },
         "host": host_metadata(code_commit),

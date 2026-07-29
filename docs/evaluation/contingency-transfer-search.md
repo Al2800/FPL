@@ -31,11 +31,12 @@ Exact layer candidate SHA-256 digests are recorded in
 2. Memoize full contingency lineups and per-lineup evaluations inside one solve.
 3. Localise appearance probabilities inside `expected_auto_sub_points`.
 4. Prune formations whose optimistic upper bound cannot beat the current best.
-5. Enforce `search_deadline_ms` and return a deterministic degraded partial pool.
+5. Bound benchmark work with `search_candidate_budget`; retain `search_deadline_ms` only as an operational watchdog that discards timing-dependent partial work and returns the no-transfer baseline.
 
 A shortlist or truncated width is **not** isomorphic to the full declared set.
-Degraded searches use optimality label
-`highest_ev_in_partial_deadline_bounded_pool`.
+Candidate-budget searches use `highest_ev_in_deterministic_candidate_budget`.
+Watchdog expiry uses `deterministic_no_transfer_deadline_fallback`; elapsed wall time
+is recorded only by the profiler and never changes semantic solver output.
 
 ## Promotion decision
 
