@@ -14,6 +14,7 @@ from src.optimisation.io import fingerprint
 from src.optimisation.robust_objective import robust_solver_input
 from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
+from src.orchestration.replay_payload_store import load_reviewed_payload
 from src.orchestration.validated_plan import validate_and_freeze_plan
 from src.scoring.rules_loader import load_rules, ruleset_sha256
 
@@ -115,8 +116,14 @@ def evaluate_robust_legal_replay(
         episode_dir = episodes_root / f"gw-{gameweek:02d}"
         arm_setup = report_dir / "setup/arms/forecast_optimizer"
         state = _read(arm_setup / "starting-policy-state.json")
-        raw_input = _read(arm_setup / "reviewed-engine-input.json")
-        raw_output = _read(arm_setup / "reviewed-engine-output.json")
+        raw_input = load_reviewed_payload(
+            arm_setup / "reviewed-engine-input.json",
+            expected_kind="solver_input",
+        )
+        raw_output = load_reviewed_payload(
+            arm_setup / "reviewed-engine-output.json",
+            expected_kind="solver_output",
+        )
         forecast = _read(report_dir / "setup/shared-locked-forecast.json")
         canonical_plan = _read(report_dir / "forecast_optimizer/validated-plan.json")
         canonical_outcome = _read(

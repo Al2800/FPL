@@ -29,6 +29,7 @@ from src.optimisation.trajectory import (
     trajectory_state_hash,
 )
 from src.optimisation.types import SolverInput
+from src.orchestration.replay_payload_store import load_reviewed_payload
 from src.orchestration.multiweek_challenger import build_same_cutoff_horizon
 from src.orchestration.policy_state import transition_policy_state
 from src.orchestration.validated_plan import validate_and_freeze_plan
@@ -521,9 +522,15 @@ def evaluate_gw31_chip_policy(
     arm_setup = setup / "arms" / "forecast_optimizer"
     episode = episode_root / "gw-31"
     state = _read(arm_setup / "starting-policy-state.json")
-    base_input_value = _read(arm_setup / "reviewed-engine-input.json")
+    base_input_value = load_reviewed_payload(
+        arm_setup / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
     base_input = SolverInput.from_dict(base_input_value)
-    canonical_output = _read(arm_setup / "reviewed-engine-output.json")
+    canonical_output = load_reviewed_payload(
+        arm_setup / "reviewed-engine-output.json",
+        expected_kind="solver_output",
+    )
     locked_forecast = _read(setup / "shared-locked-forecast.json")
     feature_state = _read(setup / "shared-feature-state.json")
     manifest = _read(episode / "episode-manifest.json")

@@ -28,6 +28,7 @@ from src.orchestration.evidence_fork import (
     _write_once,
 )
 from src.orchestration.policy_state import transition_policy_state
+from src.orchestration.replay_payload_store import load_reviewed_payload
 from src.orchestration.validated_plan import validate_and_freeze_plan
 
 
@@ -78,8 +79,14 @@ def build_gw12_agent_host_bundle(
     if reconstructed.get("decision_cutoff") != manifest.get("deadline"):
         raise EvidenceForkError("Evidence cutoff does not match the GW12 episode")
     arm = canonical_root / "gw-12/setup/arms/evidence_agent"
-    solver_input = _read(arm / "reviewed-engine-input.json")
-    solver_output = _read(arm / "reviewed-engine-output.json")
+    solver_input = load_reviewed_payload(
+        arm / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
+    solver_output = load_reviewed_payload(
+        arm / "reviewed-engine-output.json",
+        expected_kind="solver_output",
+    )
     player_ids = sorted(str(row["player_id"]) for row in reconstructed["sources"])
     indexed = {str(row["player_id"]): row for row in solver_input["players"]}
     if any(player_id not in indexed for player_id in player_ids):
@@ -733,7 +740,10 @@ def run_isolated_agent_fork(
     manifest = _read(episode / "episode-manifest.json")
     arm = canonical_gw / "setup/arms/evidence_agent"
     state = _read(arm / "starting-policy-state.json")
-    original_input = _read(arm / "reviewed-engine-input.json")
+    original_input = load_reviewed_payload(
+        arm / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
     adjusted_input, audit = apply_agent_adjustments(
         original_input, evidence_run, challenger_run
     )

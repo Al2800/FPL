@@ -11,6 +11,7 @@ from typing import Any
 from src.evaluation.outcome_scorer import score_revealed_outcome
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.captaincy import choose_captain_pair
+from src.orchestration.replay_payload_store import load_reviewed_payload
 from src.orchestration.validated_plan import validate_and_freeze_plan
 from src.scoring.rules_loader import load_rules, ruleset_sha256
 
@@ -38,13 +39,15 @@ def evaluate_captain_challenger(
             report_dir
             / "setup/arms/forecast_optimizer/starting-policy-state.json"
         )
-        solver_input = _read(
+        solver_input = load_reviewed_payload(
             report_dir
-            / "setup/arms/forecast_optimizer/reviewed-engine-input.json"
+            / "setup/arms/forecast_optimizer/reviewed-engine-input.json",
+            expected_kind="solver_input",
         )
-        solver_output = _read(
+        solver_output = load_reviewed_payload(
             report_dir
-            / "setup/arms/forecast_optimizer/reviewed-engine-output.json"
+            / "setup/arms/forecast_optimizer/reviewed-engine-output.json",
+            expected_kind="solver_output",
         )
         canonical_plan = _read(
             report_dir / "forecast_optimizer/validated-plan.json"

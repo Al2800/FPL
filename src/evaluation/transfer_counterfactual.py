@@ -13,6 +13,7 @@ import yaml
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.io import fingerprint
 from src.optimisation.types import SolverInput
+from src.orchestration.replay_payload_store import load_reviewed_payload
 
 
 class TransferCounterfactualError(ValueError):
@@ -389,9 +390,15 @@ def evaluate_gw34_transfer_hit(
     arm = setup / "arms/forecast_optimizer"
     episode = episode_root / "gw-34"
     state = _read(arm / "starting-policy-state.json")
-    base_value = _read(arm / "reviewed-engine-input.json")
+    base_value = load_reviewed_payload(
+        arm / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
     base_input = SolverInput.from_dict(base_value)
-    solver_output = _read(arm / "reviewed-engine-output.json")
+    solver_output = load_reviewed_payload(
+        arm / "reviewed-engine-output.json",
+        expected_kind="solver_output",
+    )
     locked_forecast = _read(setup / "shared-locked-forecast.json")
     feature_state = _read(setup / "shared-feature-state.json")
     manifest = _read(episode / "episode-manifest.json")

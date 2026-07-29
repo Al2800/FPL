@@ -19,6 +19,7 @@ from src.optimisation.io import fingerprint
 from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
 from src.orchestration.policy_state import transition_policy_state
+from src.orchestration.replay_payload_store import load_reviewed_payload
 from src.orchestration.validated_plan import validate_and_freeze_plan
 
 
@@ -461,12 +462,13 @@ def build_gw12_score_ceiling_review(
         / "evidence_agent"
         / "starting-policy-state.json"
     )
-    solver_input = _read(
+    solver_input = load_reviewed_payload(
         canonical_gw
         / "setup"
         / "arms"
         / "evidence_agent"
-        / "reviewed-engine-input.json"
+        / "reviewed-engine-input.json",
+        expected_kind="solver_input",
     )
     hidden = _read(episode / "hidden-outcome.json")
     identity = _read(episode / "identity-map.json")
@@ -574,7 +576,10 @@ def run_isolated_evidence_fork(
     if bundle["decision_cutoff"] != manifest["deadline"]:
         raise EvidenceForkError("Evidence bundle cutoff does not match episode deadline")
     state = _read(setup_arm / "starting-policy-state.json")
-    solver_input = _read(setup_arm / "reviewed-engine-input.json")
+    solver_input = load_reviewed_payload(
+        setup_arm / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
     adjusted_input, applied = apply_reconstructed_adjustments(solver_input, bundle)
     rules = yaml.safe_load((episode / "ruleset.yaml").read_text(encoding="utf-8"))
     rules_hash = str(manifest["ruleset"]["content_sha256"])

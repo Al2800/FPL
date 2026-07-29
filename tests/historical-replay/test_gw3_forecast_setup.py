@@ -169,10 +169,12 @@ def test_prepare_writes_content_addressed_payload_store_once_per_hash(
         )
         assert is_payload_ref(input_ref)
         assert is_payload_ref(output_ref)
-        assert input_ref["content_sha256"] == manifest["solver_inputs"][0]
-        assert output_ref["content_sha256"] == manifest["solver_outputs"][0]
+        assert input_ref["payload_sha256"] == manifest["solver_inputs"][0]
+        assert output_ref["payload_sha256"] == manifest["solver_outputs"][0]
+        assert input_ref["content_sha256"] != input_ref["payload_sha256"]
+        assert output_ref["content_sha256"] != output_ref["payload_sha256"]
         assert payload_path(
-            setup, "solver_input", input_ref["content_sha256"]
+            setup, "solver_input", input_ref["payload_sha256"]
         ).exists()
         assert resolve_reviewed_payload(arm_dir, "solver_input")["gameweek"] == 3
 
@@ -194,7 +196,7 @@ def test_payload_store_rejects_hash_mismatch(tmp_path: Path) -> None:
     input_ref = json.loads(
         (arm_dir / "reviewed-engine-input.json").read_text(encoding="utf-8")
     )
-    stored_path = payload_path(setup, "solver_input", input_ref["content_sha256"])
+    stored_path = payload_path(setup, "solver_input", input_ref["payload_sha256"])
     stored = json.loads(stored_path.read_text(encoding="utf-8"))
     stored["bank"] = round(float(stored["bank"]) + 0.1, 1)
     stored_path.write_text(json.dumps(stored, indent=2, sort_keys=True) + "\n")
