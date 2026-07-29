@@ -2,14 +2,51 @@
   "schema_version": "1.0",
   "season": "2026-27",
   "selected_provider": null,
-  "collection_status": "trial_required_before_activation",
+  "collection_status": "degraded_pending_credential_trial",
   "reconciliation_oracle": "fpl-official-endpoints",
   "maximum_observation_delay_minutes": 180,
-  "minutes_tolerance": 0,
+  "minutes_tolerance": 1,
   "providers": [
-    {"provider_id": "api-football", "status": "candidate", "credential_environment": "API_FOOTBALL_KEY", "required_trial": "representative_epl_fixture"},
-    {"provider_id": "football-data-org", "status": "candidate", "credential_environment": "FOOTBALL_DATA_ORG_TOKEN", "required_trial": "representative_epl_fixture"},
-    {"provider_id": "thesportsdb", "status": "fallback_candidate", "credential_environment": "THESPORTSDB_API_KEY", "required_trial": "representative_epl_fixture"}
+    {
+      "provider_id": "api-football",
+      "status": "candidate_access_gated",
+      "credential_environment": "API_FOOTBALL_KEY",
+      "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
+      "registry_note": "not_enabled_in_source_registry"
+    },
+    {
+      "provider_id": "football-data-org",
+      "status": "candidate_access_gated",
+      "credential_environment": "FOOTBALL_DATA_ORG_TOKEN",
+      "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
+      "registry_source_id": "football-data-org",
+      "registry_enabled": false
+    },
+    {
+      "provider_id": "thesportsdb",
+      "status": "fallback_candidate_access_gated",
+      "credential_environment": "THESPORTSDB_API_KEY",
+      "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
+      "registry_note": "not_enabled_in_source_registry"
+    }
   ],
-  "admission": {"require_explicit_player_alias": true, "require_fixture_alias": true, "quarantine_on_minutes_disagreement": true, "missing_provider_snapshot": "degrade"}
+  "admission": {
+    "require_explicit_player_alias": true,
+    "require_fixture_alias": true,
+    "quarantine_on_minutes_disagreement": true,
+    "missing_provider_snapshot": "degrade",
+    "missing_credential": "degrade_no_network",
+    "timeout": "degrade_no_retry",
+    "rate_limit": "degrade_no_retry",
+    "provider_outage": "degrade_no_retry",
+    "owner_approval_required_before_enable": true
+  },
+  "trial_status": {
+    "status": "blocked_access_gate",
+    "fixtures_measured": 0,
+    "matchdays_measured": 0,
+    "blocker_bead": "FPL-lpm",
+    "reason": "No candidate credential is present in the environment and no provider has owner-approved terms, retention and automated-collection enablement in the source registry."
+  },
+  "baseline_policy": "shared_structured_forecast_unchanged_when_family_degraded"
 }
