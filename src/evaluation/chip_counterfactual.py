@@ -73,7 +73,10 @@ def _canonical_tree_hash(root: Path, *, through_gameweek: int) -> tuple[str, int
             relative = path.relative_to(root).as_posix().encode("utf-8")
             digest.update(len(relative).to_bytes(8, "big"))
             digest.update(relative)
-            body_hash = hashlib.sha256(path.read_bytes()).digest()
+            body = path.read_bytes()
+            if path.suffix.lower() in {".html", ".json"}:
+                body = body.replace(b"\r\n", b"\n")
+            body_hash = hashlib.sha256(body).digest()
             digest.update(body_hash)
             count += 1
     return digest.hexdigest(), count
