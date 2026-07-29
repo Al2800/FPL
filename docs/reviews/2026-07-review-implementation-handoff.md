@@ -28,7 +28,14 @@ Non-negotiable constraints that apply to **every** item below:
    evidence caps) has its thresholds recorded in
    `docs/evaluation/2026-27-preregistration.md` before the Gameweek it first
    applies to.
-5. Full suite green before any push: `python3 -m pytest tests/ -q`.
+5. **Portable suite** (no ignored data): `python3 -m pytest tests/ -q` must be
+   green in a fresh clone before any push. Tests that require gitignored
+   historical data (`data/raw/`, episode payloads under `data/`) are
+   **artifact-backed integration tests**; restore those artifacts first via
+   `python3 -m scripts.download_historical` (registered sources only) before
+   running calibration or replay validation. CI runs the portable suite only
+   and deterministically passes from a clean checkout; artifact-backed
+   validation is a local/pre-push step documented per work item.
 
 **Data prerequisite for calibration items (W2, W7, W9, W11):** raw vaastav and
 football-data files under `data/raw/` are gitignored and may be absent in a
@@ -46,33 +53,67 @@ them.
 - **blocked-on-data** — design can be built and tested on fixtures, but the
   real evaluation waits for live 2026/27 captures to accumulate.
 
+## Point-in-time notice — Beads are authoritative
+
+> **This handoff was written on 28 July 2026.** Main has since advanced;
+> several work items below were implemented and their Beads closed. Consult
+> `.beads/issues.jsonl` for current status before claiming any item. The table
+> below carries a **Bead** column that cross-references the authoritative
+> issue; where a Bead is listed as **superseded**, the work is complete and
+> must not be duplicated.
+
+## Bead crosswalk (W1–W19 → current status)
+
+| ID | Bead | Bead status | Note |
+|---|---|---|---|
+| W1 | `FPL-dah` | closed | Implemented; event-sourced fixture state live |
+| W2 | — | not yet opened | Still agent-ready once W1 consumed |
+| W3 | — | not yet opened | Owner-gated; W1 and W2 first |
+| W4 | `FPL-uwu` | open | In progress; availability persistence |
+| W5 | — | not yet opened | Owner-gated ADR; depends on W4 |
+| W6 | `FPL-f55` | closed | Implemented; claim-value ledger live |
+| W7 | — | not yet opened | Raw data prerequisite applies |
+| W8 | `FPL-ejl` | closed | Implemented; decision-aligned metrics live |
+| W9 | `FPL-y0e` | closed | Implemented; **gate rejected** — top-bin recalibration did not clear locked-validation bar; rejection report is the deliverable |
+| W10 | `FPL-4r6` | closed | Implemented; autosub/bench evaluation complete |
+| W11 | — | not yet opened | Agent-ready; W8 prerequisite now satisfied |
+| W12 | — | — | Owner-only; no bead |
+| W13 | — | not yet opened | Owner-gated registry step first |
+| W14 | — | not yet opened | Owner-gated registry step first |
+| W15 | — | blocked-on-data | Awaiting ≥4 live GW odds captures |
+| W16 | — | not yet opened | Agent-ready; W8 prerequisite now satisfied |
+| W17 | — | blocked-on-data | Awaiting live shadow weeks |
+| W18 | `FPL-1co` | closed | Implemented; hosted-response linter live |
+| W19 | `FPL-sw0` | closed | Implemented; governance doc drift corrected |
+
 ## Work item index
 
-| ID | Item | From | Status | Depends on |
-|---|---|---|---|---|
-| W1 | Event-sourced fixture state and DGW/BGW detection | R1 | agent-ready | — |
-| W2 | Elo-based future-fixture EP for multiweek/chip projection | R1 | agent-ready (promotion owner-gated) | W1 helps, not required |
-| W3 | Chip policy preregistration draft | R1 | owner-gated | W1, W2 |
-| W4 | Persistent availability state in the production projection | R2 | agent-ready | — |
-| W5 | Bounded upward evidence adjustments (policy revision) | R2 | owner-gated (ADR) | W4 |
-| W6 | Claim-value ledger (ex-post evidence accounting) | R3 | agent-ready | — |
-| W7 | Calibrate FPL availability flags to start probability | R3 | agent-ready | raw data |
-| W8 | Decision-aligned metrics in challenger gates | R4 | agent-ready | — |
-| W9 | Per-position top-bin forecast recalibration challenger | R4 | agent-ready (promotion owner-gated) | W8 |
-| W10 | Default expected-autosub/bench objective | R4 | owner-gated (promotion) | W8 |
-| W11 | Captain haul-probability challenger | R4 | agent-ready (promotion owner-gated) | W8 |
-| W12 | Club-domain rights review tranche | R5 | owner-only | — |
-| W13 | Predicted-lineups provider trial | R5 | owner-gated (registry) | W12-style rights step |
-| W14 | Competition-calendar source registration and congestion feature | R5 | owner-gated (registry) | — |
-| W15 | Odds team-context ablation rerun on real captures | R6 | blocked-on-data | ≥4–6 live GWs of Odds API slots |
-| W16 | xG-rate event challenger | R6 | agent-ready (data caveat) | W8 |
-| W17 | Set-piece role effect ablation | R6 | blocked-on-data | live shadow weeks |
-| W18 | Hosted-response linter (reject-and-reprompt) | §5 | agent-ready | — |
-| W19 | Governance doc drift fixes | §5 | agent-ready | — |
+| ID | Item | From | Bead | Status | Depends on |
+|---|---|---|---|---|---|
+| W1 | Event-sourced fixture state and DGW/BGW detection | R1 | `FPL-dah` | **superseded** (closed) | — |
+| W2 | Elo-based future-fixture EP for multiweek/chip projection | R1 | — | agent-ready (promotion owner-gated) | W1 helps, not required |
+| W3 | Chip policy preregistration draft | R1 | — | owner-gated | W1, W2 |
+| W4 | Persistent availability state in the production projection | R2 | `FPL-uwu` | agent-ready (in progress) | — |
+| W5 | Bounded upward evidence adjustments (policy revision) | R2 | — | owner-gated (ADR) | W4 |
+| W6 | Claim-value ledger (ex-post evidence accounting) | R3 | `FPL-f55` | **superseded** (closed) | — |
+| W7 | Calibrate FPL availability flags to start probability | R3 | — | agent-ready | raw data |
+| W8 | Decision-aligned metrics in challenger gates | R4 | `FPL-ejl` | **superseded** (closed) | — |
+| W9 | Per-position top-bin forecast recalibration challenger | R4 | `FPL-y0e` | **superseded** (closed — gate rejected) | W8 |
+| W10 | Default expected-autosub/bench objective | R4 | `FPL-4r6` | **superseded** (closed) | W8 |
+| W11 | Captain haul-probability challenger | R4 | — | agent-ready (promotion owner-gated) | W8 |
+| W12 | Club-domain rights review tranche | R5 | — | owner-only | — |
+| W13 | Predicted-lineups provider trial | R5 | — | owner-gated (registry) | W12-style rights step |
+| W14 | Competition-calendar source registration and congestion feature | R5 | — | owner-gated (registry) | — |
+| W15 | Odds team-context ablation rerun on real captures | R6 | — | blocked-on-data | ≥4–6 live GWs of Odds API slots |
+| W16 | xG-rate event challenger | R6 | — | agent-ready (data caveat) | W8 |
+| W17 | Set-piece role effect ablation | R6 | — | blocked-on-data | live shadow weeks |
+| W18 | Hosted-response linter (reject-and-reprompt) | §5 | `FPL-1co` | **superseded** (closed) | — |
+| W19 | Governance doc drift fixes | §5 | `FPL-sw0` | **superseded** (closed) | — |
 
-Suggested first wave for a single agent: W19 → W4 → W6 → W8 (each is
-self-contained, none is owner-gated, and W6/W8 produce the measurement
-substrate every later item needs).
+Suggested next items for a single agent (as of 29 July 2026): W4 is open
+(`FPL-uwu`); once closed, W5 (ADR) and W11 and W16 are the natural follow-ons.
+W2, W7 and W11 are agent-ready with no open gates beyond W8 (now closed).
+W19, W6, W8 and W18 are complete — do not re-implement.
 
 ---
 
@@ -200,7 +241,7 @@ This is the measurement substrate for recalibrating every evidence constant,
 and it operationalises the deferred `source-reputation` capability as pure
 reporting (no ML, no behaviour change).
 
-**Touch points.** New `src/evaluation/claim_value_ledger.py` + 
+**Touch points.** New `src/evaluation/claim_value_ledger.py` +
 `scripts/build_claim_value_ledger.py`. Inputs all exist:
 `data/live-shadow/evidence/ledgers/`, packet artifacts and application records
 from `src/orchestration/live_evidence_arm.py` outputs, paired deltas from
