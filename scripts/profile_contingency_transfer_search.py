@@ -182,7 +182,10 @@ def profile_hotspots(solver_input: SolverInput, rules: dict, rules_hash: str) ->
     stats = __import__("pstats").Stats(profiler, stream=stream)
     stats.sort_stats("tottime")
     rows: list[dict] = []
-    for func, (cc, nc, tt, ct, callers) in list(stats.stats.items())[:8]:
+    ranked = sorted(
+        stats.stats.items(), key=lambda item: item[1][2], reverse=True
+    )[:5]
+    for func, (cc, nc, tt, ct, callers) in ranked:
         filename, line, name = func
         rows.append(
             {
@@ -194,8 +197,7 @@ def profile_hotspots(solver_input: SolverInput, rules: dict, rules_hash: str) ->
                 "calls": nc,
             }
         )
-    rows.sort(key=lambda item: item["tottime_s"], reverse=True)
-    return rows[:5]
+    return rows
 
 
 def main(argv: list[str] | None = None) -> int:
