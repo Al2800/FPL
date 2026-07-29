@@ -1,0 +1,173 @@
+{
+  "appearance_calibration_sha256": "8ea3c3cc0ca7b04d054538f039b390727c90b569a5c04593df336a25a8f29383",
+  "fixture": "scripts/profile_contingency_transfer_search.scale_input",
+  "host": {
+    "code_commit": "7afd19903948458edf871a4a2214f3a60d545783",
+    "cpu_count": 16,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+    "python": "3.14.0",
+    "ram_bytes": 29798842368,
+    "profiling_harness_commit": "a739245"
+  },
+  "method": {
+    "deep_profile_widths": [
+      1
+    ],
+    "latency": "5 warm-process perf_counter samples after one warmup",
+    "levers": [
+      "shared_missing_state_per_starting_xi",
+      "lineup_and_evaluation_memoisation",
+      "hot_path_local_appearance_caches",
+      "formation_upper_bound_pruning",
+      "deterministic_candidate_budget_with_operational_deadline_fallback"
+    ],
+    "memory": "separate tracemalloc run for declared deep-profile widths; profiler overhead excluded from latency",
+    "percentiles": "linear interpolation",
+    "scope": "probabilistic_v1 contingency valuation over the declared transfer pool"
+  },
+  "production_default_unchanged": true,
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "three_transfer_contingency_enabled": false,
+  "verdict": {
+    "one_transfer_budget_met": false,
+    "promotion_decision": "reject_three_transfer_contingency_default",
+    "three_transfer_isomorphic_budget_met": false,
+    "two_transfer_budget_met": false
+  },
+  "widths": [
+    {
+      "allocation_hotspots": [
+        {
+          "allocations": 89,
+          "bytes": 9336,
+          "location": "C:\\Users\\Alastair\\FPL\\src\\forecasting\\appearance_distribution.py:59"
+        },
+        {
+          "allocations": 20,
+          "bytes": 1120,
+          "location": "C:\\Python314\\Lib\\json\\encoder.py:261"
+        },
+        {
+          "allocations": 7,
+          "bytes": 616,
+          "location": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\squad_contingency.py:233"
+        },
+        {
+          "allocations": 5,
+          "bytes": 600,
+          "location": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\squad_contingency.py:33"
+        },
+        {
+          "allocations": 21,
+          "bytes": 504,
+          "location": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\squad_contingency.py:42"
+        }
+      ],
+      "budget_p95_ms": 5000.0,
+      "cumulative_valid_candidates_including_no_transfer": 122,
+      "declared_layer_candidates": 120,
+      "deterministic": true,
+      "full_declared_set": true,
+      "hotspots": [
+        {
+          "calls": 5808,
+          "cumtime_s": 19.839695,
+          "file": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\squad_contingency.py",
+          "function": "expected_auto_sub_points",
+          "line": 175,
+          "tottime_s": 16.677371
+        },
+        {
+          "calls": 5808,
+          "cumtime_s": 0.590515,
+          "file": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\squad_contingency.py",
+          "function": "_best_captain_pair",
+          "line": 244,
+          "tottime_s": 0.590515
+        },
+        {
+          "calls": 5808,
+          "cumtime_s": 21.166166,
+          "file": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\squad_contingency.py",
+          "function": "evaluate_contingency_lineup",
+          "line": 271,
+          "tottime_s": 0.281477
+        },
+        {
+          "calls": 121,
+          "cumtime_s": 21.760532,
+          "file": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\squad_contingency.py",
+          "function": "choose_contingency_lineup",
+          "line": 336,
+          "tottime_s": 0.22643
+        },
+        {
+          "calls": 1,
+          "cumtime_s": 0.000544,
+          "file": "C:\\Users\\Alastair\\FPL\\src\\optimisation\\transfers.py",
+          "function": "owned_records",
+          "line": 40,
+          "tottime_s": 0.000103
+        }
+      ],
+      "layer_candidate_sha256": "ca63b6259cf2554f5b5bbb13610d16c09ddaa41883b34ac0fc7da9a52ded82cc",
+      "max_transfers": 1,
+      "meets_budget": false,
+      "output_fingerprint": "692ffa8cbc8ff6837ef0e40518a9ec20d1d55e060723c395484914406b4fad66",
+      "python_heap_peak_bytes": 458423,
+      "samples": 5,
+      "search_degraded": false,
+      "selected_objective": 78.3086,
+      "throughput_candidates_per_second": 20.511,
+      "wall_ms": {
+        "mean": 5947.981,
+        "p50": 5920.777,
+        "p95": 6021.384,
+        "p99": 6024.798
+      },
+      "wall_ms_samples": [
+        6025.652,
+        6004.312,
+        5898.79,
+        5890.372,
+        5920.777
+      ],
+      "warmup": 1
+    },
+    {
+      "allocation_hotspots": [],
+      "budget_p95_ms": 60000.0,
+      "cumulative_valid_candidates_including_no_transfer": 5978,
+      "declared_layer_candidates": 5856,
+      "deterministic": true,
+      "full_declared_set": true,
+      "hotspots": [],
+      "layer_candidate_sha256": "125660876d6bd381c20967498fcbd92890bc0be81e2a8a6950a1604b812467ba",
+      "max_transfers": 2,
+      "meets_budget": false,
+      "output_fingerprint": "bd5140cdb34bd61dedea649d9068e67b9f7facc482ad8618261813efb450ac57",
+      "python_heap_peak_bytes": null,
+      "samples": 5,
+      "search_degraded": false,
+      "selected_objective": 94.7706,
+      "throughput_candidates_per_second": 21.023,
+      "wall_ms": {
+        "mean": 284351.166,
+        "p50": 287324.707,
+        "p95": 289657.026,
+        "p99": 290041.973
+      },
+      "wall_ms_samples": [
+        290138.209,
+        279929.986,
+        287732.295,
+        287324.707,
+        276630.632
+      ],
+      "warmup": 1
+    }
+  ]
+}

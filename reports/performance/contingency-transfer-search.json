@@ -2,23 +2,27 @@
   "appearance_calibration_sha256": "8ea3c3cc0ca7b04d054538f039b390727c90b569a5c04593df336a25a8f29383",
   "fixture": "scripts/profile_contingency_transfer_search.scale_input",
   "host": {
-    "code_commit": "7afd19903948458edf871a4a2214f3a60d545783",
-    "cpu_count": 4,
-    "platform": "Linux-6.12.94+-x86_64-with-glibc2.39",
-    "processor": "x86_64",
-    "python": "3.12.3"
+    "code_commit": "172fb1387fd6c3210a4a4e7696ab71c6fe2d0705",
+    "cpu_count": 16,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+    "python": "3.14.0",
+    "ram_bytes": 29798842368,
+    "diagnostic_profile_commit": "d00175a"
   },
   "method": {
+    "deep_profile_widths": [
+      1
+    ],
     "latency": "5 warm-process perf_counter samples after one warmup",
-    "latency_note": "one-transfer: 5 warm profiler samples; two-transfer: two timed full-set solves (~105.6s) after levers; three-transfer: deadline-bounded degraded probe only",
     "levers": [
       "shared_missing_state_per_starting_xi",
       "lineup_and_evaluation_memoisation",
       "hot_path_local_appearance_caches",
       "formation_upper_bound_pruning",
-      "configurable_search_deadline_ms"
+      "deterministic_candidate_budget_with_operational_deadline_fallback"
     ],
-    "memory": "separate tracemalloc run; profiler overhead excluded from latency",
+    "memory": "separate tracemalloc run for declared deep-profile widths; profiler overhead excluded from latency",
     "percentiles": "linear interpolation",
     "scope": "probabilistic_v1 contingency valuation over the declared transfer pool"
   },
@@ -35,6 +39,33 @@
   },
   "widths": [
     {
+      "allocation_hotspots": [
+        {
+          "allocations": 447,
+          "bytes": 30520,
+          "location": "C:\\Users\\Alastair\\FPL-pr-review\\src\\optimisation\\squad_contingency.py:475"
+        },
+        {
+          "allocations": 173,
+          "bytes": 11016,
+          "location": "C:\\Users\\Alastair\\FPL-pr-review\\src\\optimisation\\squad_contingency.py:46"
+        },
+        {
+          "allocations": 66,
+          "bytes": 7920,
+          "location": "C:\\Python314\\Lib\\copy.py:202"
+        },
+        {
+          "allocations": 81,
+          "bytes": 4920,
+          "location": "C:\\Python314\\Lib\\json\\encoder.py:261"
+        },
+        {
+          "allocations": 40,
+          "bytes": 3200,
+          "location": "C:\\Users\\Alastair\\FPL-pr-review\\src\\optimisation\\solver.py:346"
+        }
+      ],
       "budget_p95_ms": 5000.0,
       "cumulative_valid_candidates_including_no_transfer": 122,
       "declared_layer_candidates": 120,
@@ -42,165 +73,132 @@
       "full_declared_set": true,
       "hotspots": [
         {
-          "calls": 155047,
-          "cumtime_s": 0.021775,
-          "file": "~",
-          "function": "<method 'get' of 'dict' objects>",
-          "line": 0,
-          "tottime_s": 0.021775
+          "calls": 5808,
+          "cumtime_s": 2.81406,
+          "file": "C:\\Users\\Alastair\\FPL-pr-review\\src\\optimisation\\squad_contingency.py",
+          "function": "expected_auto_sub_points",
+          "line": 176,
+          "tottime_s": 2.687586
         },
         {
-          "calls": 52917,
-          "cumtime_s": 0.007596,
-          "file": "~",
-          "function": "<method 'items' of 'dict' objects>",
-          "line": 0,
-          "tottime_s": 0.007596
+          "calls": 6776,
+          "cumtime_s": 0.272538,
+          "file": "C:\\Users\\Alastair\\FPL-pr-review\\src\\optimisation\\squad_contingency.py",
+          "function": "_best_captain_pair",
+          "line": 257,
+          "tottime_s": 0.272538
         },
         {
-          "calls": 8313,
-          "cumtime_s": 0.001021,
+          "calls": 594609,
+          "cumtime_s": 0.205664,
           "file": "~",
-          "function": "<method 'append' of 'list' objects>",
+          "function": "<built-in method builtins.round>",
           "line": 0,
-          "tottime_s": 0.001021
+          "tottime_s": 0.205664
         },
         {
-          "calls": 2904,
-          "cumtime_s": 0.000656,
-          "file": "~",
-          "function": "<method 'extend' of 'list' objects>",
-          "line": 0,
-          "tottime_s": 0.000656
+          "calls": 968,
+          "cumtime_s": 0.129825,
+          "file": "C:\\Users\\Alastair\\FPL-pr-review\\src\\optimisation\\squad_contingency.py",
+          "function": "_missing_count_distribution",
+          "line": 29,
+          "tottime_s": 0.128577
         },
         {
-          "calls": 129,
-          "cumtime_s": 0.00018,
-          "file": "~",
-          "function": "<method 'sort' of 'list' objects>",
-          "line": 0,
-          "tottime_s": 0.000132
+          "calls": 121,
+          "cumtime_s": 3.956967,
+          "file": "C:\\Users\\Alastair\\FPL-pr-review\\src\\optimisation\\squad_contingency.py",
+          "function": "choose_contingency_lineup",
+          "line": 351,
+          "tottime_s": 0.103008
         }
       ],
       "layer_candidate_sha256": "ca63b6259cf2554f5b5bbb13610d16c09ddaa41883b34ac0fc7da9a52ded82cc",
       "max_transfers": 1,
       "meets_budget": true,
       "output_fingerprint": "692ffa8cbc8ff6837ef0e40518a9ec20d1d55e060723c395484914406b4fad66",
-      "python_heap_peak_bytes": 48908866,
+      "python_heap_peak_bytes": 49429750,
       "samples": 5,
       "search_degraded": false,
       "selected_objective": 78.3086,
-      "throughput_candidates_per_second": 58.454,
+      "throughput_candidates_per_second": 33.57,
       "wall_ms": {
-        "mean": 2087.123,
-        "p50": 2079.118,
-        "p95": 2105.913,
-        "p99": 2109.058
+        "mean": 3634.183,
+        "p50": 3599.38,
+        "p95": 3778.157,
+        "p99": 3793.73
       },
+      "wall_ms_samples": [
+        3597.576,
+        3476.044,
+        3797.623,
+        3700.29,
+        3599.38
+      ],
       "warmup": 1
     },
     {
+      "allocation_hotspots": [],
       "budget_p95_ms": 60000.0,
       "cumulative_valid_candidates_including_no_transfer": 5978,
       "declared_layer_candidates": 5856,
       "deterministic": true,
       "full_declared_set": true,
-      "hotspots": [
-        {
-          "file": "src/optimisation/squad_contingency.py",
-          "function": "expected_auto_sub_points",
-          "note": "dominant from 1T cProfile"
-        },
-        {
-          "file": "src/optimisation/squad_contingency.py",
-          "function": "choose_contingency_lineup"
-        },
-        {
-          "file": "src/optimisation/squad_contingency.py",
-          "function": "evaluate_contingency_lineup"
-        }
-      ],
+      "hotspots": [],
       "layer_candidate_sha256": "125660876d6bd381c20967498fcbd92890bc0be81e2a8a6950a1604b812467ba",
       "max_transfers": 2,
-      "measurement_note": "Two timed full-set solves on this host after levers; five-sample profiler deferred due to wall-clock cost",
       "meets_budget": false,
       "output_fingerprint": "bd5140cdb34bd61dedea649d9068e67b9f7facc482ad8618261813efb450ac57",
       "python_heap_peak_bytes": null,
-      "samples": 2,
+      "samples": 5,
       "search_degraded": false,
       "selected_objective": 94.7706,
-      "throughput_candidates_per_second": 56.588,
+      "throughput_candidates_per_second": 26.724,
       "wall_ms": {
-        "mean": 105641.0,
-        "p50": 105641.0,
-        "p95": 105641.0,
-        "p99": 105641.0
+        "mean": 223697.492,
+        "p50": 190614.822,
+        "p95": 287988.398,
+        "p99": 290625.575
       },
+      "wall_ms_samples": [
+        274802.518,
+        291284.869,
+        175265.599,
+        186519.652,
+        190614.822
+      ],
       "warmup": 1
     },
     {
+      "allocation_hotspots": [],
       "budget_p95_ms": 300000.0,
-      "cumulative_valid_candidates_including_no_transfer": 290,
+      "cumulative_valid_candidates_including_no_transfer": 300,
       "declared_layer_candidates": 151672,
       "deterministic": true,
       "full_declared_set": false,
-      "hotspots": [
-        {
-          "calls": 257963,
-          "cumtime_s": 0.035594,
-          "file": "~",
-          "function": "<method 'get' of 'dict' objects>",
-          "line": 0,
-          "tottime_s": 0.035594
-        },
-        {
-          "calls": 87879,
-          "cumtime_s": 0.0125,
-          "file": "~",
-          "function": "<method 'items' of 'dict' objects>",
-          "line": 0,
-          "tottime_s": 0.0125
-        },
-        {
-          "calls": 13756,
-          "cumtime_s": 0.001675,
-          "file": "~",
-          "function": "<method 'append' of 'list' objects>",
-          "line": 0,
-          "tottime_s": 0.001675
-        },
-        {
-          "calls": 4824,
-          "cumtime_s": 0.001086,
-          "file": "~",
-          "function": "<method 'extend' of 'list' objects>",
-          "line": 0,
-          "tottime_s": 0.001086
-        },
-        {
-          "calls": 219,
-          "cumtime_s": 0.00036,
-          "file": "~",
-          "function": "<method 'sort' of 'list' objects>",
-          "line": 0,
-          "tottime_s": 0.000258
-        }
-      ],
+      "hotspots": [],
       "layer_candidate_sha256": "ff4f2025a58ec4291f661b1bba3b5c304af097dbc9671f1a57507906f2916248",
       "max_transfers": 3,
       "meets_budget": false,
-      "output_fingerprint": "4b04e64afa385d0b80fcd32561a9b1f7d3fa279d2d4910d7c9b5aece852fcd6c",
-      "python_heap_peak_bytes": 8183662,
-      "samples": 1,
+      "output_fingerprint": "5172c3537ac48081a25f6a3f3ff66d1adea9654f2c20f6d2e8457b8750c7b015",
+      "python_heap_peak_bytes": null,
+      "samples": 5,
       "search_degraded": true,
       "selected_objective": 93.1503,
-      "throughput_candidates_per_second": 57.524,
+      "throughput_candidates_per_second": 16.42,
       "wall_ms": {
-        "mean": 5041.352,
-        "p50": 5041.352,
-        "p95": 5041.352,
-        "p99": 5041.352
+        "mean": 18269.909,
+        "p50": 18352.309,
+        "p95": 19044.619,
+        "p99": 19172.095
       },
+      "wall_ms_samples": [
+        17487.949,
+        17898.078,
+        18352.309,
+        19203.963,
+        18407.243
+      ],
       "warmup": 1
     }
   ]

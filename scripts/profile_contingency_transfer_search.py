@@ -162,37 +162,6 @@ def _ram_bytes() -> int | None:
     return None
 
 
-def _process_peak_memory() -> dict[str, int | None]:
-    if os.name == "nt":
-        import ctypes
-
-        class ProcessMemoryCounters(ctypes.Structure):
-            _fields_ = [
-                ("cb", ctypes.c_ulong),
-                ("page_fault_count", ctypes.c_ulong),
-                ("peak_working_set_size", ctypes.c_size_t),
-                ("working_set_size", ctypes.c_size_t),
-                ("quota_peak_paged_pool_usage", ctypes.c_size_t),
-                ("quota_paged_pool_usage", ctypes.c_size_t),
-                ("quota_peak_non_paged_pool_usage", ctypes.c_size_t),
-                ("quota_non_paged_pool_usage", ctypes.c_size_t),
-                ("pagefile_usage", ctypes.c_size_t),
-                ("peak_pagefile_usage", ctypes.c_size_t),
-            ]
-
-        counters = ProcessMemoryCounters()
-        counters.cb = ctypes.sizeof(ProcessMemoryCounters)
-        process = ctypes.windll.kernel32.GetCurrentProcess()
-        ok = ctypes.windll.psapi.GetProcessMemoryInfo(
-            process, ctypes.byref(counters), counters.cb
-        )
-        if ok:
-            return {
-                "peak_working_set_bytes": int(counters.peak_working_set_size),
-                "peak_pagefile_bytes": int(counters.peak_pagefile_usage),
-            }
-    return {"peak_working_set_bytes": None, "peak_pagefile_bytes": None}
-
 def host_metadata(code_commit: str) -> dict:
     return {
         "python": platform.python_version(),
@@ -344,7 +313,6 @@ def main(argv: list[str] | None = None) -> int:
                 if timings and n_candidates
                 else None,
                 "python_heap_peak_bytes": peak,
-                "python_process_peak_memory": _process_peak_memory(),
                 "allocation_hotspots": allocation_hotspots,
                 "output_fingerprint": next(iter(fingerprints)),
                 "deterministic": len(fingerprints) == 1,

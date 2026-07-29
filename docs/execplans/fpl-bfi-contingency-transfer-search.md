@@ -18,7 +18,7 @@ then apply equivalence-preserving levers, a deterministic candidate budget and a
 - [x] Added profiler, focused tests, initial performance report and evaluation note.
 - [x] Replaced timing-dependent partial pools with deterministic candidate budgets and
   a stable no-transfer watchdog fallback.
-- [ ] Regenerate reconstructible before/after profiles and opportunity matrix.
+- [x] Regenerated reconstructible before/after profiles and ranked opportunity matrix.
 - [x] Confirmed one-transfer isomorphic fingerprint and rejected promoting
   three-transfer contingency as the production default.
 
@@ -31,9 +31,14 @@ then apply equivalence-preserving levers, a deterministic candidate budget and a
 - Observation: `expected_auto_sub_points` dominates CPU time; local appearance
   caches and shared missing-state reuse preserve fingerprints while cutting
   wall time roughly in half versus the unoptimised path.
-- Observation: two-transfer isomorphic search still exceeds the 60s p95 budget
-  on this host after equivalence-preserving levers; three-transfer remains
-  impractical without a non-isomorphic shortlist.
+- Observation: width-one p50 improved 1.64x and width-two p50 improved 1.51x
+  with identical candidate hashes, counts and output fingerprints. Width two
+  still exceeds the 60s p95 budget; three-transfer full search remains
+  impractical without a separately labelled non-isomorphic bound.
+- Observation: an attempted deep width-two tracemalloc/cProfile pass exceeded
+  21 minutes because instrumentation dominated runtime. Deep profiles are now
+  restricted to representative width one; five clean latency samples remain
+  mandatory at widths one and two.
 
 ## Decision Log
 
@@ -47,6 +52,10 @@ then apply equivalence-preserving levers, a deterministic candidate budget and a
   no-transfer baseline.
   Rationale: machine scheduling must never change a sealed solver result.
   Date/Author: 2026-07-29 / Codex takeover review.
+- Decision: defer a full width-two deep-memory pass by owner direction after
+  establishing that runtime, not observed memory growth, is the roadblock.
+  Rationale: avoid delaying replay/process work for optional profiling.
+  Date/Author: 2026-07-29 / Alastair and Codex.
 - Decision: apply only equivalence-preserving levers in this bead; any shortlist
   challenger must be a separately named non-isomorphic arm.
   Rationale: prevents silent policy change under a performance label.
@@ -54,10 +63,12 @@ then apply equivalence-preserving levers, a deterministic candidate budget and a
 
 ## Outcomes & Retrospective
 
-Focused tests lock one-transfer contingency fingerprints, declared widths,
-deadline degradation and policy-off scale fingerprints. The performance report
-records host/commit, candidate hashes, latency percentiles, hotspots and the
-promotion rejection for three-transfer contingency.
+Focused tests lock exact repeated output, one-transfer contingency fingerprints,
+declared widths, deterministic candidate budgeting, stable watchdog fallback
+and policy-off scale fingerprints. Exact-commit baseline and optimized reports
+record five-sample latency distributions, host metadata, candidate hashes,
+profiles and the three-transfer promotion rejection. Width one meets budget;
+width two and the full width-three search do not.
 
 ## Validation
 
@@ -66,5 +77,5 @@ python -m pytest -q \
   tests/performance/test_contingency_transfer_search.py \
   tests/optimisation/test_squad_contingency.py \
   tests/test_optimiser.py
-python scripts/profile_contingency_transfer_search.py --widths 1,2 --samples 5
+python scripts/profile_contingency_transfer_search.py --widths 1,2,3 --samples 5 --deep-profile-widths 1
 ```
