@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
+from copy import deepcopy
 from functools import lru_cache
 from itertools import combinations, permutations, product
 from typing import Any
@@ -141,7 +142,7 @@ def _selected_bench_indices(
     )
 
 
-@lru_cache(maxsize=256)
+@lru_cache(maxsize=4096)
 def _substitution_lookup(
     formation_items: tuple[tuple[str, int], ...],
     bench_positions: tuple[str, ...],
@@ -179,6 +180,7 @@ def expected_auto_sub_points(
     appearances: Mapping[str, AppearanceDistribution],
     formation: Mapping[str, int],
     constraints: Mapping[str, Any],
+    missing_states: Mapping[tuple[int, int, int], float] | None = None,
 ) -> dict[str, Any]:
     """Return expected goalkeeper and formation-valid outfield bench points."""
 
@@ -190,7 +192,11 @@ def expected_auto_sub_points(
     )
 
     outfield_bench = [player for player in bench if player["position"] != "GKP"]
-    missing_states = _missing_count_distribution(starting_xi, appearances)
+    states = (
+        dict(missing_states)
+        if missing_states is not None
+        else _missing_count_distribution(starting_xi, appearances)
+    )
     formation_items = tuple(
         sorted((str(key), int(value)) for key, value in formation.items())
     )
@@ -208,28 +214,35 @@ def expected_auto_sub_points(
     selection_probability = {
         str(player["player_id"]): 0.0 for player in outfield_bench
     }
-    for missing, missing_probability in missing_states.items():
+    zero_probs = [
+        appearances[str(player["player_id"])].zero for player in outfield_bench
+    ]
+    appear_probs = [
+        appearances[str(player["player_id"])].appears for player in outfield_bench
+    ]
+    expected_points = [
+        float(player["expected_points"]) for player in outfield_bench
+    ]
+    player_ids = [str(player["player_id"]) for player in outfield_bench]
+    conditional_points = [
+        (points / appears) if appears > 0.0 else 0.0
+        for points, appears in zip(expected_points, appear_probs, strict=True)
+    ]
+    for missing, missing_probability in states.items():
         for appeared in product((False, True), repeat=len(outfield_bench)):
             scenario_probability = missing_probability
-            for player, did_appear in zip(outfield_bench, appeared, strict=True):
-                distribution = appearances[str(player["player_id"])]
+            for index, did_appear in enumerate(appeared):
                 scenario_probability *= (
-                    distribution.appears if did_appear else distribution.zero
+                    appear_probs[index] if did_appear else zero_probs[index]
                 )
+                if scenario_probability == 0.0:
+                    break
             if scenario_probability == 0.0:
                 continue
-            selected = substitution_lookup[(missing, tuple(appeared))]
+            selected = substitution_lookup[(missing, appeared)]
             for index in selected:
-                player = outfield_bench[index]
-                player_id = str(player["player_id"])
-                appears = appearances[player_id].appears
-                conditional_points = (
-                    float(player["expected_points"]) / appears
-                    if appears > 0.0
-                    else 0.0
-                )
-                outfield_points += scenario_probability * conditional_points
-                selection_probability[player_id] += scenario_probability
+                outfield_points += scenario_probability * conditional_points[index]
+                selection_probability[player_ids[index]] += scenario_probability
     return {
         "goalkeeper": round(goalkeeper_points, 6),
         "outfield": round(outfield_points, 6),
@@ -277,6 +290,7 @@ def evaluate_contingency_lineup(
     constraints: Mapping[str, Any],
     active_chip: str | None,
     appearance_distributions: Mapping[str, AppearanceDistribution] | None = None,
+    missing_states: Mapping[tuple[int, int, int], float] | None = None,
 ) -> dict[str, Any]:
     """Return an auditable expected-value decomposition for one legal lineup."""
 
@@ -311,6 +325,7 @@ def evaluate_contingency_lineup(
             appearances=appearances,
             formation=formation,
             constraints=constraints,
+            missing_states=missing_states,
         )
         bench_value = float(auto_sub["total"])
     total = xi_points + captain_extra + bench_value
@@ -340,10 +355,58 @@ def choose_contingency_lineup(
     calibration: Mapping[str, Any],
     constraints: Mapping[str, Any],
     active_chip: str | None,
+    lineup_cache: dict[tuple[Any, ...], dict[str, Any]] | None = None,
+    evaluation_cache: dict[tuple[Any, ...], dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Choose formation, ordered bench and captain pair by contingency value."""
 
     ranked = sorted((dict(player) for player in squad), key=_rank_key)
+    cache_key: tuple[Any, ...] | None = None
+    if lineup_cache is not None:
+        appearance_items: list[tuple[Any, ...]] = []
+        for player in ranked:
+            player_id = str(player["player_id"])
+            explicit = player.get("appearance_distribution")
+            if explicit is not None:
+                appearance_items.append(
+                    (
+                        player_id,
+                        float(player["expected_points"]),
+                        str(player["position"]),
+                        round(float(explicit["zero"]), 8),
+                        round(float(explicit["under_60"]), 8),
+                        round(float(explicit["60_plus"]), 8),
+                    )
+                )
+            else:
+                appearance_items.append(
+                    (
+                        player_id,
+                        float(player["expected_points"]),
+                        str(player["position"]),
+                        round(float(player["start_probability"]), 8),
+                        int(player.get("fixture_count", 1)),
+                    )
+                )
+        cache_key = (
+            tuple(appearance_items),
+            active_chip,
+            str(calibration.get("content_sha256")),
+            tuple(
+                tuple(sorted((str(k), int(v)) for k, v in formation.items()))
+                for formation in formations
+            ),
+            tuple(
+                sorted(
+                    (str(position), int(bounds["min"]), int(bounds["max"]))
+                    for position, bounds in constraints.items()
+                )
+            ),
+        )
+        cached = lineup_cache.get(cache_key)
+        if cached is not None:
+            return deepcopy(cached)
+
     goalkeepers = [player for player in ranked if player["position"] == "GKP"]
     if len(goalkeepers) != 2:
         raise SquadContingencyError("Squad must contain two goalkeepers")
@@ -351,7 +414,21 @@ def choose_contingency_lineup(
         str(player["player_id"]): distribution_for_player(player, calibration)
         for player in ranked
     }
+
+    def player_token(player: Mapping[str, Any]) -> tuple[Any, ...]:
+        player_id = str(player["player_id"])
+        distribution = appearances[player_id]
+        return (
+            player_id,
+            float(player["expected_points"]),
+            str(player["position"]),
+            round(distribution.zero, 8),
+            round(distribution.under_60, 8),
+            round(distribution.sixty_plus, 8),
+        )
+
     best: tuple[tuple[float, tuple[str, ...], str, str], dict[str, Any]] | None = None
+    best_value = float("-inf")
     for source_formation in formations:
         formation = {
             position: int(source_formation[position]) for position in POSITIONS
@@ -373,22 +450,65 @@ def choose_contingency_lineup(
             player for player in bench_pool if player["position"] == "GKP"
         )
         outfield = [player for player in bench_pool if player["position"] != "GKP"]
+        xi_points = sum(float(player["expected_points"]) for player in starting)
+        _, _, captain_extra_bound, _ = _best_captain_pair(
+            starting, appearances, extra_multiplier=(
+                2 if active_chip and "triple_captain" in active_chip else 1
+            )
+        )
+        if active_chip and "bench_boost" in active_chip:
+            bench_upper = sum(float(player["expected_points"]) for player in bench_pool)
+        else:
+            # Optimistic: every remaining outfielder and the bench keeper can contribute
+            # their full expected points through auto-subs.
+            bench_upper = sum(float(player["expected_points"]) for player in bench_pool)
+        upper_bound = xi_points + captain_extra_bound + bench_upper
+        if best is not None and upper_bound < best_value - 1e-12:
+            continue
+        # Shared across every bench permutation of this starting XI.
+        missing_states = _missing_count_distribution(starting, appearances)
         for ordered_outfield in permutations(outfield):
             ordered_bench = [bench_gkp, *ordered_outfield]
-            evaluation = evaluate_contingency_lineup(
-                starting_xi=starting,
-                bench=ordered_bench,
-                formation=formation,
-                calibration=calibration,
-                constraints=constraints,
-                active_chip=active_chip,
-                appearance_distributions=appearances,
-            )
+            evaluation_key = None
+            if evaluation_cache is not None:
+                evaluation_key = (
+                    tuple(sorted((str(k), int(v)) for k, v in formation.items())),
+                    tuple(player_token(player) for player in starting),
+                    tuple(player_token(player) for player in ordered_bench),
+                    active_chip,
+                )
+                cached_evaluation = evaluation_cache.get(evaluation_key)
+                if cached_evaluation is not None:
+                    evaluation = cached_evaluation
+                else:
+                    evaluation = evaluate_contingency_lineup(
+                        starting_xi=starting,
+                        bench=ordered_bench,
+                        formation=formation,
+                        calibration=calibration,
+                        constraints=constraints,
+                        active_chip=active_chip,
+                        appearance_distributions=appearances,
+                        missing_states=missing_states,
+                    )
+                    evaluation_cache[evaluation_key] = evaluation
+            else:
+                evaluation = evaluate_contingency_lineup(
+                    starting_xi=starting,
+                    bench=ordered_bench,
+                    formation=formation,
+                    calibration=calibration,
+                    constraints=constraints,
+                    active_chip=active_chip,
+                    appearance_distributions=appearances,
+                    missing_states=missing_states,
+                )
             identity = tuple(
                 str(player["player_id"]) for player in [*starting, *ordered_bench]
             )
+            planning_value = float(evaluation["planning_value"])
             key = (
-                -float(evaluation["planning_value"]),
+                -planning_value,
                 identity,
                 str(evaluation["captain_id"]),
                 str(evaluation["vice_captain_id"]),
@@ -399,13 +519,14 @@ def choose_contingency_lineup(
                 "bench": ordered_bench,
                 "captain_id": evaluation["captain_id"],
                 "vice_captain_id": evaluation["vice_captain_id"],
-                "expected_xi_points": round(
-                    float(evaluation["planning_value"]), 2
-                ),
+                "expected_xi_points": round(planning_value, 2),
                 "contingency": evaluation,
             }
             if best is None or key < best[0]:
                 best = (key, result)
+                best_value = planning_value
     if best is None:
         raise SquadContingencyError("No legal contingency lineup could be built")
+    if lineup_cache is not None and cache_key is not None:
+        lineup_cache[cache_key] = deepcopy(best[1])
     return best[1]

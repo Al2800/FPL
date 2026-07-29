@@ -6,6 +6,7 @@ from bisect import insort
 from collections import Counter
 from collections.abc import Mapping, Sequence
 from copy import deepcopy
+import time
 from typing import Any
 
 from src.optimisation.io import fingerprint
@@ -114,6 +115,8 @@ def _evaluate_squad(
     appearance_calibration: Mapping[str, Any] | None = None,
     formation_constraints: Mapping[str, Any] | None = None,
     allow_club_limit_exception: bool = False,
+    contingency_lineup_cache: dict[tuple[Any, ...], dict[str, Any]] | None = None,
+    contingency_evaluation_cache: dict[tuple[Any, ...], dict[str, Any]] | None = None,
 ) -> dict[str, Any] | None:
     if len(squad_rows) != 15 or len({str(row["player_id"]) for row in squad_rows}) != 15:
         return None
@@ -142,6 +145,8 @@ def _evaluate_squad(
                 calibration=appearance_calibration,
                 constraints=formation_constraints,
                 active_chip=active_chip,
+                lineup_cache=contingency_lineup_cache,
+                evaluation_cache=contingency_evaluation_cache,
             )
         else:
             lineup = choose_starting_xi_rows(squad_rows, formations=formations)
@@ -218,6 +223,22 @@ def solve(
     )
     if contingency_policy_active and solver_input.appearance_calibration is None:
         raise ValueError("probabilistic_v1 requires an appearance_calibration")
+    if (
+        solver_input.search_candidate_budget is not None
+        and (
+            isinstance(solver_input.search_candidate_budget, bool)
+            or solver_input.search_candidate_budget < 1
+        )
+    ):
+        raise ValueError("search_candidate_budget must be a positive integer when set")
+    if (
+        solver_input.search_deadline_ms is not None
+        and (
+            isinstance(solver_input.search_deadline_ms, bool)
+            or solver_input.search_deadline_ms < 1
+        )
+    ):
+        raise ValueError("search_deadline_ms must be a positive integer when set")
     if not 0.0 <= solver_input.probability_extra_transfer_needed <= 1.0:
         raise ValueError("probability_extra_transfer_needed must be between 0 and 1")
     if not 0.0 <= solver_input.future_transfer_discount <= 1.0:
@@ -294,6 +315,32 @@ def solve(
     by_strategy: dict[str, dict[str, Any]] = {}
     by_transfer_count: dict[int, dict[str, Any]] = {}
     candidate_count = 0
+    contingency_lineup_cache: dict[tuple[Any, ...], dict[str, Any]] = {}
+    contingency_evaluation_cache: dict[tuple[Any, ...], dict[str, Any]] = {}
+    search_started = time.perf_counter()
+    deadline_seconds = (
+        None
+        if solver_input.search_deadline_ms is None
+        else solver_input.search_deadline_ms / 1000.0
+    )
+    search_degraded = False
+    search_degraded_reason: str | None = None
+    searched_transfer_widths: list[int] = []
+    incomplete_transfer_width: int | None = None
+    baseline_state: tuple[
+        list[tuple[tuple[Any, ...], int, dict[str, Any]]],
+        dict[str, dict[str, Any]],
+        dict[int, dict[str, Any]],
+        int,
+        dict[tuple[Any, ...], dict[str, Any]],
+        dict[tuple[Any, ...], dict[str, Any]],
+    ] | None = None
+
+    def deadline_exceeded() -> bool:
+        return (
+            deadline_seconds is not None
+            and (time.perf_counter() - search_started) >= deadline_seconds
+        )
 
     def rank_key(candidate: Mapping[str, Any]) -> tuple[Any, ...]:
         return (
@@ -372,6 +419,8 @@ def solve(
         appearance_calibration=solver_input.appearance_calibration,
         formation_constraints=formation_constraints,
         allow_club_limit_exception=True,
+        contingency_lineup_cache=contingency_lineup_cache,
+        contingency_evaluation_cache=contingency_evaluation_cache,
     )
     if base:
         consider(base)
@@ -380,11 +429,33 @@ def solve(
             banked["strategy"] = "bank_transfer"
             consider(banked)
 
+    baseline_state = (
+        deepcopy(top_ranked),
+        deepcopy(by_strategy),
+        deepcopy(by_transfer_count),
+        candidate_count,
+        deepcopy(contingency_lineup_cache),
+        deepcopy(contingency_evaluation_cache),
+    )
+
     max_t = solver_input.max_transfers
     free = solver_input.free_transfers
 
     for n in range(1, max_t + 1):
         if not solver_input.allow_hits and n > free:
+            break
+        if (
+            solver_input.search_candidate_budget is not None
+            and candidate_count >= solver_input.search_candidate_budget
+        ):
+            search_degraded = True
+            search_degraded_reason = "candidate_budget"
+            incomplete_transfer_width = n
+            break
+        if deadline_exceeded():
+            search_degraded = True
+            search_degraded_reason = "operational_deadline"
+            incomplete_transfer_width = n
             break
         # Wildcard / Free Hit: treat as unlimited free transfers for hit accounting
         effective_free = free
@@ -403,7 +474,23 @@ def solve(
             availability_policy=solver_input.availability_policy,
             rules=rules_dict,
         )
+        width_complete = True
         for moves in move_sets:
+            if (
+                solver_input.search_candidate_budget is not None
+                and candidate_count >= solver_input.search_candidate_budget
+            ):
+                search_degraded = True
+                search_degraded_reason = "candidate_budget"
+                incomplete_transfer_width = n
+                width_complete = False
+                break
+            if deadline_exceeded():
+                search_degraded = True
+                search_degraded_reason = "operational_deadline"
+                incomplete_transfer_width = n
+                width_complete = False
+                break
             applied = apply_transfers(
                 owned,
                 moves,
@@ -432,16 +519,41 @@ def solve(
                 squad_contingency_policy=solver_input.squad_contingency_policy,
                 appearance_calibration=solver_input.appearance_calibration,
                 formation_constraints=formation_constraints,
+                contingency_lineup_cache=contingency_lineup_cache,
+                contingency_evaluation_cache=contingency_evaluation_cache,
             )
             consider(plan)
+        if width_complete:
+            searched_transfer_widths.append(n)
+        else:
+            break
+
+    if search_degraded_reason == "operational_deadline":
+        if baseline_state is None:
+            raise RuntimeError("deadline fallback baseline was not captured")
+        (
+            top_ranked,
+            by_strategy,
+            by_transfer_count,
+            candidate_count,
+            contingency_lineup_cache,
+            contingency_evaluation_cache,
+        ) = deepcopy(baseline_state)
+        searched_transfer_widths = []
 
     top_candidates = [entry[2] for entry in top_ranked]
     selected = top_candidates[0] if top_candidates else None
     highest = dict(selected) if selected else None
+    if search_degraded_reason == "candidate_budget":
+        optimality = "highest_ev_in_deterministic_candidate_budget"
+    elif search_degraded_reason == "operational_deadline":
+        optimality = "deterministic_no_transfer_deadline_fallback"
+    else:
+        optimality = "highest_ev_in_declared_candidate_pool"
     if highest:
         highest["strategy"] = "highest_ev"
 
-        highest["optimality"] = "highest_ev_in_declared_candidate_pool"
+        highest["optimality"] = optimality
     output = {
         "solver_version": SOLVER_VERSION,
         "ruleset_id": rules_dict["meta"]["ruleset_id"],
@@ -451,7 +563,7 @@ def solve(
         "ruleset_note": ruleset_note,
         "n_candidates": candidate_count,
         "search_scope": {
-            "optimality": "highest_ev_in_declared_candidate_pool",
+            "optimality": optimality,
             "global_optimality_guaranteed": False,
             "max_transfers": solver_input.max_transfers,
             "sell_pool_per_pos": solver_input.sell_pool_per_pos,
@@ -463,6 +575,14 @@ def solve(
             "retained_ranked_candidates": len(top_candidates),
             "full_rebuild_search": False,
             "wildcard_free_hit_hit_accounting": True,
+            "searched_transfer_widths": searched_transfer_widths,
+            "search_degraded": search_degraded,
+            "search_degraded_reason": search_degraded_reason,
+            "search_candidate_budget": solver_input.search_candidate_budget,
+            "search_deadline_ms": solver_input.search_deadline_ms,
+            "incomplete_transfer_width": incomplete_transfer_width,
+            "contingency_lineup_cache_entries": len(contingency_lineup_cache),
+            "contingency_evaluation_cache_entries": len(contingency_evaluation_cache),
         },
         "selected": highest,
         "plans": {
