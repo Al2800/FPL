@@ -317,6 +317,7 @@ def test_deadline_relative_late_capture_rejected(tmp_path: Path) -> None:
             update_index=False,
         )
     assert not (tmp_path / "preseason" / "T-48h" / "manifest.json").exists()
+    assert not (tmp_path / "preseason" / "T-48h").exists()
 
 
 def test_deadline_relative_correct_window_accepted(tmp_path: Path) -> None:
@@ -554,7 +555,11 @@ def test_non_json_optional_with_valid_sidecar_is_admitted(tmp_path: Path) -> Non
     registry = load_registry()
     csv_path = tmp_path / "priors.csv"
     csv_path.write_text("player_id,prior\n1,0.5\n", encoding="utf-8")
-    sidecar = {"available_at": "2026-07-01T00:00:00Z", "source": "manual"}
+    sidecar = {
+        "source_id": "the-odds-api",
+        "observed_at": "2026-07-01T00:01:00Z",
+        "available_at": "2026-07-01T00:00:00Z",
+    }
     sidecar_path = tmp_path / "priors_sidecar.json"
     sidecar_path.write_text(json.dumps(sidecar), encoding="utf-8")
     result = _bind_optional_artifact(
@@ -572,6 +577,39 @@ def test_non_json_optional_with_valid_sidecar_is_admitted(tmp_path: Path) -> Non
     ckpt_copy = tmp_path / "ckpt" / result["artifact_path"]
     assert ckpt_copy.exists()
 
+
+def test_sidecar_observed_after_capture_is_quarantined(tmp_path: Path) -> None:
+    """A sidecar created after the checkpoint cannot enter that checkpoint."""
+    registry = load_registry()
+    csv_path = tmp_path / "priors.csv"
+    csv_path.write_text("player_id,prior\n1,0.5\n", encoding="utf-8")
+    sidecar_path = tmp_path / "priors_sidecar.json"
+    sidecar_path.write_text(
+        json.dumps(
+            {
+                "source_id": "the-odds-api",
+                "observed_at": "2026-07-02T00:00:00Z",
+                "available_at": "2026-07-01T00:00:00Z",
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = _bind_optional_artifact(
+        family_id="promoted_team_priors",
+        path=csv_path,
+        deadline=DEADLINE,
+        source_id="the-odds-api",
+        missing_reason="optional_promoted_team_priors_not_supplied",
+        checkpoint_dir=tmp_path / "ckpt",
+        sidecar_path=sidecar_path,
+        registry=registry,
+        capture_observed_at="2026-07-01T12:00:00Z",
+    )
+
+    assert result["status"] == "degraded"
+    assert result["counts"]["admitted"] == 0
+    assert "sidecar_observed_after_capture" in result["reasons"]
 
 def test_non_object_records_explicitly_quarantined(tmp_path: Path) -> None:
     """Non-Mapping rows inside a records list are quarantined, not silently dropped."""
@@ -647,3 +685,149 @@ def test_source_id_from_config_not_hardcoded(tmp_path: Path) -> None:
     odds_family = manifest["families"]["licensed_odds"]
     assert odds_family["source_id"] == "the-odds-api"
     assert "registry_source_status" in odds_family
+
+
+def test_checkpoint_windows_do_not_overlap() -> None:
+    """A capture is assigned to the nearest deadline-relative slot only."""
+    schedule = expected_deadline_schedule(_bootstrap())
+    deadline_utc = datetime.fromisoformat(DEADLINE.replace("Z", "+00:00"))
+    observed_t_minus_30h = datetime.fromisoformat("2026-08-20T11:30:00+00:00")
+
+    with pytest.raises(PreseasonSnapshotError, match="outside the assigned window"):
+        enforce_checkpoint_window(
+            "T-48h", observed_t_minus_30h, schedule, deadline_utc
+        )
+    enforce_checkpoint_window(
+        "T-24h", observed_t_minus_30h, schedule, deadline_utc
+    )
+
+
+def test_timestamp_less_json_optional_is_quarantined(tmp_path: Path) -> None:
+    """Being valid JSON is not evidence that an optional snapshot is pre-cutoff."""
+    registry = load_registry()
+    artifact = tmp_path / "ratings.json"
+    artifact.write_text(json.dumps({"ratings": []}), encoding="utf-8")
+
+    result = _bind_optional_artifact(
+        family_id="player_ratings",
+        path=artifact,
+        deadline=DEADLINE,
+        source_id="statsbomb-open",
+        missing_reason="optional_player_ratings_not_supplied",
+        checkpoint_dir=tmp_path / "checkpoint",
+        sidecar_path=None,
+        registry=registry,
+    )
+
+    assert result["status"] == "degraded"
+    assert result["counts"]["admitted"] == 0
+    assert result["counts"]["quarantined"] == 1
+    assert "missing_temporal_envelope" in result["reasons"]
+
+
+def test_disabled_optional_source_is_never_admitted(tmp_path: Path) -> None:
+    """A registered but disabled/unresolved source remains a named gap."""
+    registry = load_registry()
+    artifact = tmp_path / "world-cup.json"
+    artifact.write_text(
+        json.dumps({"available_at": "2026-07-01T00:00:00Z", "players": []}),
+        encoding="utf-8",
+    )
+
+    result = _bind_optional_artifact(
+        family_id="world_cup_return_fatigue",
+        path=artifact,
+        deadline=DEADLINE,
+        source_id="world-cup-2026",
+        missing_reason="optional_world_cup_priors_not_supplied",
+        checkpoint_dir=tmp_path / "checkpoint",
+        sidecar_path=None,
+        registry=registry,
+    )
+
+    assert result["status"] == "degraded"
+    assert result["registry_source_status"] == "disabled"
+    assert result["counts"]["admitted"] == 0
+    assert "source_not_collectable:disabled" in result["reasons"]
+
+
+def test_sidecar_change_conflicts_and_sidecar_is_copied(tmp_path: Path) -> None:
+    """Temporal/provenance sidecars are immutable request inputs."""
+    bootstrap, fixtures = _bodies()
+    artifact = tmp_path / "odds.csv"
+    artifact.write_text("player_id,price\n1,2.0\n", encoding="utf-8")
+    sidecar = tmp_path / "odds.sidecar.json"
+    sidecar.write_text(
+        json.dumps(
+            {
+                "source_id": "the-odds-api",
+                "observed_at": "2026-08-19T12:01:00Z",
+                "available_at": "2026-08-19T12:00:00Z",
+            }
+        ),
+        encoding="utf-8",
+    )
+    base: dict = dict(
+        season="2026-27",
+        checkpoint_id="T-48h",
+        deadline=DEADLINE,
+        output_root=tmp_path / "preseason",
+        observed_at="2026-08-19T17:30:00Z",
+        bootstrap_body=bootstrap,
+        fixtures_body=fixtures,
+        rules_path=RULES,
+        config_path=CONFIG,
+        index_manifest_path=tmp_path / "index.json",
+        code_commit=COMMIT,
+        optional_artifacts={"licensed_odds": artifact},
+        optional_sidecars={"licensed_odds": sidecar},
+    )
+
+    manifest = capture_preseason_snapshot(**base)
+    family = manifest["families"]["licensed_odds"]
+    assert family["status"] == "admitted"
+    assert family["sidecar_sha256"]
+    assert (tmp_path / "preseason" / "T-48h" / family["sidecar_path"]).exists()
+
+    sidecar.write_text(
+        json.dumps(
+            {
+                "source_id": "the-odds-api",
+                "observed_at": "2026-08-19T12:31:00Z",
+                "available_at": "2026-08-19T12:30:00Z",
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(PreseasonSnapshotConflict):
+        capture_preseason_snapshot(**base)
+
+
+def test_optional_record_available_after_checkpoint_is_quarantined(tmp_path: Path) -> None:
+    """A T-48 snapshot cannot use evidence first available after T-48."""
+    bootstrap, fixtures = _bodies()
+    artifact = tmp_path / "future-odds.json"
+    artifact.write_text(
+        json.dumps({"available_at": "2026-08-20T00:00:00Z", "quotes": []}),
+        encoding="utf-8",
+    )
+
+    manifest = capture_preseason_snapshot(
+        season="2026-27",
+        checkpoint_id="T-48h",
+        deadline=DEADLINE,
+        output_root=tmp_path / "preseason",
+        observed_at="2026-08-19T17:30:00Z",
+        bootstrap_body=bootstrap,
+        fixtures_body=fixtures,
+        rules_path=RULES,
+        config_path=CONFIG,
+        index_manifest_path=tmp_path / "index.json",
+        code_commit=COMMIT,
+        optional_artifacts={"licensed_odds": artifact},
+    )
+
+    family = manifest["families"]["licensed_odds"]
+    assert family["status"] == "degraded"
+    assert family["counts"]["admitted"] == 0
+    assert "available_at_at_or_after_deadline" in family["reasons"]

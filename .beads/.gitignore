@@ -15,12 +15,6 @@ bd.sock
 db.sqlite
 bd.db
 
-# Embedded Dolt store and runtime artefacts (never committed)
-embeddeddolt
-backup/
-.local_version
-last-touched
-
 # Merge artifacts (temporary files from 3-way merge)
 beads.base.jsonl
 beads.base.meta.json

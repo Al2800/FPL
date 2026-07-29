@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
 from src.ingestion.acquisition import content_hash, record_acquisition
-from src.ingestion.registry import get_source, load_registry
+from src.ingestion.registry import assert_collectable, load_registry
 from src.orchestration.evidence_checkpoint_runner import (
     EvidenceCheckpointConflict,
     _exclusive_lock,
@@ -209,29 +209,29 @@ def enforce_checkpoint_window(
         return
 
     idx = _CHECKPOINT_ORDER.index(checkpoint_id)
-    _, nominal = _timestamp(schedule[checkpoint_id], "nominal_slot")
-
-    if idx < len(_CHECKPOINT_ORDER) - 1:
-        _, upper = _timestamp(schedule[_CHECKPOINT_ORDER[idx + 1]], "next_slot")
+    nominal_times = [
+        _timestamp(schedule[item], f"schedule.{item}")[1]
+        for item in _CHECKPOINT_ORDER
+    ]
+    nominal = nominal_times[idx]
+    if idx == 0:
+        lower = nominal - CHECKPOINT_WINDOW_TOLERANCE
     else:
+        previous = nominal_times[idx - 1]
+        lower = previous + (nominal - previous) / 2
+    if idx == len(_CHECKPOINT_ORDER) - 1:
         upper = deadline_utc
+    else:
+        following = nominal_times[idx + 1]
+        upper = nominal + (following - nominal) / 2
 
-    if observed_at_utc >= upper:
+    if observed_at_utc < lower or observed_at_utc >= upper:
         raise PreseasonSnapshotError(
-            f"checkpoint_id={checkpoint_id!r}: observed_at {observed_at_utc.isoformat()} "
-            f"is at or after the start of the next checkpoint window "
-            f"{upper.isoformat()}; a missed checkpoint cannot be backfilled "
-            "under an earlier label"
+            f"checkpoint_id={checkpoint_id!r}: observed_at "
+            f"{observed_at_utc.isoformat()} is outside the assigned window "
+            f"[{lower.isoformat()}, {upper.isoformat()}); a missed checkpoint "
+            "cannot be backfilled under an earlier label"
         )
-
-    lower = nominal - CHECKPOINT_WINDOW_TOLERANCE
-    if observed_at_utc < lower:
-        raise PreseasonSnapshotError(
-            f"checkpoint_id={checkpoint_id!r}: observed_at {observed_at_utc.isoformat()} "
-            f"is more than {CHECKPOINT_WINDOW_TOLERANCE} before the nominal slot "
-            f"{nominal.isoformat()}; use the launch or weekly label for non-deadline captures"
-        )
-
 
 def expected_deadline_schedule(bootstrap: Mapping[str, Any], *, gameweek: int = 1) -> dict[str, str]:
     """Map bead checkpoint IDs onto official deadline-relative timestamps."""
@@ -353,6 +353,10 @@ def _family_status(
     counts: Mapping[str, int],
     artifact_path: str | None = None,
     artifact_sha256: str | None = None,
+    sidecar_path: str | None = None,
+    sidecar_sha256: str | None = None,
+    observed_at: str | None = None,
+    available_at: str | None = None,
     reasons: Sequence[str] | None = None,
     source_id: str | None = None,
     registry_source_status: str | None = None,
@@ -363,17 +367,22 @@ def _family_status(
         "status": status,
         "source_id": source_id,
         "registry_source_status": registry_source_status,
+        "observed_at": observed_at,
+        "available_at": available_at,
         "counts": dict(counts),
         "artifact_path": artifact_path,
         "artifact_sha256": artifact_sha256,
+        "sidecar_path": sidecar_path,
+        "sidecar_sha256": sidecar_sha256,
         "reasons": list(reasons or []),
     }
 
 
 def _validate_source_id(source_id: str | None, registry: dict[str, Any]) -> str:
-    """Return the registry collectable status: 'ok', 'disabled', 'prohibited', 'unregistered', 'unknown'."""
+    """Return the authoritative registry admission state for a source."""
+
     if not source_id:
-        return "unknown"
+        return "missing_source_id"
     registered = {
         str(row.get("source_id", "")): row
         for row in registry.get("sources", [])
@@ -382,12 +391,34 @@ def _validate_source_id(source_id: str | None, registry: dict[str, Any]) -> str:
     source = registered.get(source_id)
     if source is None:
         return "unregistered"
-    if source.get("licence_status") in {"prohibited"}:
-        return "prohibited"
     if not source.get("enabled"):
         return "disabled"
-    if source.get("licence_status") in {None, "unknown"}:
+    licence_status = source.get("licence_status")
+    if licence_status == "prohibited":
+        return "prohibited"
+    if licence_status in {None, "", "unknown"}:
         return "licence_unresolved"
+    allowed_use = source.get("allowed_use")
+    if not isinstance(allowed_use, str) or not allowed_use.strip() or allowed_use in {
+        "unknown",
+        "prohibited",
+    }:
+        return "allowed_use_unresolved"
+    try:
+        assert_collectable(source_id)
+    except KeyError:
+        return "unregistered"
+    except PermissionError as exc:
+        message = str(exc).lower()
+        if "disabled" in message:
+            return "disabled"
+        if "licence" in message:
+            return "licence_unresolved"
+        if "allowed_use" in message:
+            return "allowed_use_unresolved"
+        return "not_collectable"
+    except ValueError:
+        return "invalid_registry_entry"
     return "ok"
 
 
@@ -398,22 +429,23 @@ def _copy_optional_bytes(
     digest: str,
     checkpoint_dir: Path,
     extension: str = "bin",
+    suffix: str = "artifact",
 ) -> str:
-    """Content-addressably copy optional artifact bytes into the checkpoint.
+    """Content-addressably copy optional bytes inside the checkpoint lock."""
 
-    Returns the checkpoint-relative path string.
-    """
     safe_family = re.sub(r"[^A-Za-z0-9_-]", "-", family_id)
-    dest = checkpoint_dir / "raw" / "optional" / f"{safe_family}-{digest}.{extension}"
+    safe_extension = re.sub(r"[^A-Za-z0-9]", "", extension.lower()) or "bin"
+    safe_suffix = re.sub(r"[^A-Za-z0-9_-]", "-", suffix)
+    filename = f"{safe_family}-{safe_suffix}-{digest}.{safe_extension}"
+    dest = checkpoint_dir / "raw" / "optional" / filename
     dest.parent.mkdir(parents=True, exist_ok=True)
-    encoded = body
     if not dest.exists():
-        dest.write_bytes(encoded)
-    elif dest.read_bytes() != encoded:
+        dest.write_bytes(body)
+    elif dest.read_bytes() != body:
         raise PreseasonSnapshotConflict(
             f"Content-addressed optional artifact already exists with different bytes: {dest}"
         )
-    return (Path("raw") / "optional" / f"{safe_family}-{digest}.{extension}").as_posix()
+    return (Path("raw") / "optional" / filename).as_posix()
 
 
 def _bind_optional_artifact(
@@ -426,17 +458,12 @@ def _bind_optional_artifact(
     checkpoint_dir: Path,
     sidecar_path: Path | None = None,
     registry: dict[str, Any],
+    capture_observed_at: str | None = None,
 ) -> dict[str, Any]:
-    """Bind one optional artifact into the checkpoint.
+    """Validate, temporally admit, and immutably bind one optional artifact."""
 
-    Behaviours:
-    - Missing path → degraded/missing.
-    - Source ID not collectable via registry → degraded.
-    - Non-JSON binary/CSV without a temporal sidecar → quarantined.
-    - Malformed (non-object) records are quarantined explicitly, never silently dropped.
-    - Valid bytes are copied content-addressably into checkpoint_dir/raw/optional/.
-    """
     counts = _empty_family_counts()
+    reg_status = _validate_source_id(source_id, registry)
 
     if path is None:
         counts["missing"] = 1
@@ -447,8 +474,8 @@ def _bind_optional_artifact(
             counts=counts,
             reasons=[missing_reason],
             source_id=source_id,
+            registry_source_status=reg_status,
         )
-
     if not path.exists():
         counts["missing"] = 1
         return _family_status(
@@ -458,12 +485,11 @@ def _bind_optional_artifact(
             counts=counts,
             reasons=[f"optional_artifact_missing:{path.as_posix()}"],
             source_id=source_id,
+            registry_source_status=reg_status,
         )
-
-    # Validate source ID against registry before trusting any bytes.
-    reg_status = _validate_source_id(source_id, registry)
-    if reg_status in {"unregistered", "prohibited"}:
-        counts["missing"] = 1
+    if reg_status != "ok":
+        counts["input"] = 1
+        counts["quarantined"] = 1
         return _family_status(
             family_id=family_id,
             mandatory=False,
@@ -477,189 +503,181 @@ def _bind_optional_artifact(
     body = path.read_bytes()
     digest = content_hash(body)
     counts["input"] = 1
+    extension = path.suffix.lstrip(".") or "bin"
+    artifact_relative = _copy_optional_bytes(
+        body,
+        family_id=family_id,
+        digest=digest,
+        checkpoint_dir=checkpoint_dir,
+        extension=extension,
+    )
 
-    try:
-        payload = json.loads(body)
-    except (json.JSONDecodeError, UnicodeDecodeError):
-        # Non-JSON optional artifacts (e.g. CSV priors) require a temporal sidecar.
-        if sidecar_path is None:
-            counts["quarantined"] = 1
-            return _family_status(
-                family_id=family_id,
-                mandatory=False,
-                status="degraded",
-                counts=counts,
-                reasons=["missing_temporal_sidecar_for_binary"],
-                source_id=source_id,
-                registry_source_status=reg_status,
-            )
+    sidecar: dict[str, Any] | None = None
+    sidecar_relative: str | None = None
+    sidecar_digest: str | None = None
+    sidecar_observed_at: str | None = None
+    sidecar_available_at: str | None = None
+    sidecar_reason: str | None = None
+    if sidecar_path is not None:
         if not sidecar_path.exists():
-            counts["quarantined"] = 1
-            return _family_status(
+            sidecar_reason = f"sidecar_missing:{sidecar_path.as_posix()}"
+        else:
+            sidecar_body = sidecar_path.read_bytes()
+            sidecar_digest = content_hash(sidecar_body)
+            sidecar_relative = _copy_optional_bytes(
+                sidecar_body,
                 family_id=family_id,
-                mandatory=False,
-                status="degraded",
-                counts=counts,
-                reasons=[f"sidecar_missing:{sidecar_path.as_posix()}"],
-                source_id=source_id,
-                registry_source_status=reg_status,
+                digest=sidecar_digest,
+                checkpoint_dir=checkpoint_dir,
+                extension="json",
+                suffix="sidecar",
             )
-        try:
-            sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, UnicodeDecodeError, OSError):
-            counts["quarantined"] = 1
-            return _family_status(
-                family_id=family_id,
-                mandatory=False,
-                status="degraded",
-                counts=counts,
-                reasons=["sidecar_not_valid_json"],
-                source_id=source_id,
-                registry_source_status=reg_status,
-            )
-        if not isinstance(sidecar, dict) or "available_at" not in sidecar:
-            counts["quarantined"] = 1
-            return _family_status(
-                family_id=family_id,
-                mandatory=False,
-                status="degraded",
-                counts=counts,
-                reasons=["sidecar_missing_available_at"],
-                source_id=source_id,
-                registry_source_status=reg_status,
-            )
-        # Treat the sidecar as a single record and admit it.
-        admission = admit_temporal_records([sidecar], deadline=deadline)
-        counts["input"] = 1
-        counts["admitted"] = admission["admitted_count"]
-        counts["quarantined"] = admission["quarantined_count"]
-        if admission["admitted_count"] == 0:
-            counts["missing"] = 1
-            reasons = sorted({row["reason"] for row in admission["quarantined"]}) or [missing_reason]
-            return _family_status(
-                family_id=family_id,
-                mandatory=False,
-                status="degraded",
-                counts=counts,
-                reasons=reasons,
-                source_id=source_id,
-                registry_source_status=reg_status,
-            )
-        artifact_relative = _copy_optional_bytes(
-            body, family_id=family_id, digest=digest, checkpoint_dir=checkpoint_dir
-        )
-        return _family_status(
-            family_id=family_id,
-            mandatory=False,
-            status="admitted",
-            counts=counts,
-            artifact_path=artifact_relative,
-            artifact_sha256=digest,
-            source_id=source_id,
-            registry_source_status=reg_status,
-        )
-
-    # JSON payload: determine record list.
-    records: list[Any]
-    if isinstance(payload, dict) and isinstance(payload.get("records"), list):
-        raw_records = payload["records"]
-        records = []
-        extra_quarantined: list[dict[str, Any]] = []
-        for idx, row in enumerate(raw_records):
-            if isinstance(row, Mapping):
-                records.append(row)
+            try:
+                parsed_sidecar = json.loads(sidecar_body)
+            except (json.JSONDecodeError, UnicodeDecodeError):
+                sidecar_reason = "sidecar_not_valid_json"
             else:
-                extra_quarantined.append(
-                    {
-                        "index": idx,
-                        "reason": "record_must_be_object",
-                        "record": None,
-                    }
-                )
-        extra_q = len(extra_quarantined)
-    elif isinstance(payload, dict) and "available_at" in payload:
-        records = [payload]
-        extra_quarantined = []
-        extra_q = 0
-    elif isinstance(payload, dict):
-        counts["admitted"] = 1
-        artifact_relative = _copy_optional_bytes(
-            body, family_id=family_id, digest=digest, checkpoint_dir=checkpoint_dir, extension="json"
-        )
+                if not isinstance(parsed_sidecar, dict):
+                    sidecar_reason = "sidecar_must_be_object"
+                else:
+                    sidecar = parsed_sidecar
+                    missing_fields = [
+                        field
+                        for field in ("source_id", "observed_at", "available_at")
+                        if not sidecar.get(field)
+                    ]
+                    if missing_fields:
+                        sidecar_reason = "sidecar_missing_fields:" + ",".join(missing_fields)
+                    elif sidecar.get("source_id") != source_id:
+                        sidecar_reason = "sidecar_source_id_mismatch"
+                    else:
+                        try:
+                            sidecar_observed_at, observed_dt = _timestamp(
+                                sidecar["observed_at"], "sidecar.observed_at"
+                            )
+                            sidecar_available_at, available_dt = _timestamp(
+                                sidecar["available_at"], "sidecar.available_at"
+                            )
+                        except PreseasonSnapshotError:
+                            sidecar_reason = "sidecar_invalid_timestamp"
+                        else:
+                            capture_dt = (
+                                _timestamp(capture_observed_at, "capture_observed_at")[1]
+                                if capture_observed_at is not None
+                                else None
+                            )
+                            if observed_dt < available_dt:
+                                sidecar_reason = "sidecar_observed_before_available"
+                            elif capture_dt is not None and observed_dt > capture_dt:
+                                sidecar_reason = "sidecar_observed_after_capture"
+                            else:
+                                sidecar_admission = admit_temporal_records(
+                                    [{"available_at": sidecar_available_at}],
+                                    deadline=deadline,
+                                )
+                                if sidecar_admission["admitted_count"] != 1:
+                                    sidecar_reason = sidecar_admission["quarantined"][0][
+                                        "reason"
+                                    ]
+
+    def bound_status(
+        *,
+        status: str,
+        reasons: Sequence[str] | None = None,
+        available_at: str | None = None,
+    ) -> dict[str, Any]:
         return _family_status(
             family_id=family_id,
             mandatory=False,
-            status="admitted",
+            status=status,
             counts=counts,
             artifact_path=artifact_relative,
             artifact_sha256=digest,
-            source_id=source_id,
-            registry_source_status=reg_status,
-        )
-    else:
-        counts["quarantined"] = 1
-        return _family_status(
-            family_id=family_id,
-            mandatory=False,
-            status="degraded",
-            counts=counts,
-            reasons=["payload_must_be_json_object"],
-            source_id=source_id,
-            registry_source_status=reg_status,
-        )
-
-    admission = admit_temporal_records(records, deadline=deadline)
-    counts["input"] = admission["input_count"] + extra_q
-    counts["admitted"] = admission["admitted_count"]
-    counts["quarantined"] = admission["quarantined_count"] + extra_q
-
-    if admission["admitted_count"] == 0:
-        counts["missing"] = 1 if (admission["input_count"] + extra_q) == 0 else 0
-        reasons = sorted({row["reason"] for row in admission["quarantined"] + extra_quarantined})
-        if not reasons:
-            reasons = [missing_reason]
-        return _family_status(
-            family_id=family_id,
-            mandatory=False,
-            status="degraded",
-            counts=counts,
-            artifact_path=path.as_posix(),
-            artifact_sha256=digest,
+            sidecar_path=sidecar_relative,
+            sidecar_sha256=sidecar_digest,
+            observed_at=sidecar_observed_at or capture_observed_at,
+            available_at=sidecar_available_at or available_at,
             reasons=reasons,
             source_id=source_id,
             registry_source_status=reg_status,
         )
 
-    status = "admitted" if (admission["quarantined_count"] + extra_q) == 0 else "degraded"
-    reasons = sorted({row["reason"] for row in admission["quarantined"] + extra_quarantined})
-    artifact_relative = _copy_optional_bytes(
-        body, family_id=family_id, digest=digest, checkpoint_dir=checkpoint_dir, extension="json"
+    if sidecar_reason is not None:
+        counts["quarantined"] = 1
+        return bound_status(status="degraded", reasons=[sidecar_reason])
+
+    try:
+        payload = json.loads(body)
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        if sidecar is None:
+            counts["quarantined"] = 1
+            return bound_status(
+                status="degraded", reasons=["missing_temporal_sidecar_for_binary"]
+            )
+        counts["admitted"] = 1
+        return bound_status(status="admitted")
+
+    records: list[Any]
+    extra_quarantined: list[dict[str, Any]] = []
+    if isinstance(payload, dict) and isinstance(payload.get("records"), list):
+        records = []
+        for index, row in enumerate(payload["records"]):
+            if isinstance(row, Mapping):
+                records.append(row)
+            else:
+                extra_quarantined.append(
+                    {"index": index, "reason": "record_must_be_object", "record": None}
+                )
+    elif isinstance(payload, dict) and "available_at" in payload:
+        records = [payload]
+    elif isinstance(payload, dict) and sidecar is not None:
+        records = [{"available_at": sidecar_available_at}]
+    elif isinstance(payload, dict):
+        counts["quarantined"] = 1
+        return bound_status(
+            status="degraded", reasons=["missing_temporal_envelope"]
+        )
+    else:
+        counts["quarantined"] = 1
+        return bound_status(
+            status="degraded", reasons=["payload_must_be_json_object"]
+        )
+
+    admission = admit_temporal_records(records, deadline=deadline)
+    extra_count = len(extra_quarantined)
+    counts["input"] = admission["input_count"] + extra_count
+    counts["admitted"] = admission["admitted_count"]
+    counts["quarantined"] = admission["quarantined_count"] + extra_count
+    reasons = sorted(
+        {
+            row["reason"]
+            for row in admission["quarantined"] + extra_quarantined
+        }
     )
-    return _family_status(
-        family_id=family_id,
-        mandatory=False,
+    if admission["admitted_count"] == 0:
+        counts["missing"] = 1 if counts["input"] == 0 else 0
+        return bound_status(
+            status="degraded", reasons=reasons or [missing_reason]
+        )
+
+    admitted_available = [
+        _timestamp(row["available_at"], "available_at")[0]
+        for row in admission["admitted"]
+        if row.get("available_at") is not None
+    ]
+    latest_available = max(admitted_available) if admitted_available else None
+    status = "admitted" if counts["quarantined"] == 0 else "degraded"
+    return bound_status(
         status=status,
-        counts=counts,
-        artifact_path=artifact_relative,
-        artifact_sha256=digest,
         reasons=reasons,
-        source_id=source_id,
-        registry_source_status=reg_status,
+        available_at=latest_available,
     )
 
-
-def _persist_official_payload(
-    *,
-    family_id: str,
-    body: bytes,
-    checkpoint_dir: Path,
-    artifact_name: str,
-    observed_at: str,
-    registry_version: str,
-    origin: str,
-) -> dict[str, Any]:
+def _decode_official_payload(family_id: str, body: bytes) -> Any:
     if not body:
-        raise PreseasonSnapshotError(f"Mandatory family {family_id} returned an empty body")
+        raise PreseasonSnapshotError(
+            f"Mandatory family {family_id} returned an empty body"
+        )
     try:
         payload = json.loads(body)
     except json.JSONDecodeError as exc:
@@ -670,6 +688,20 @@ def _persist_official_payload(
         raise PreseasonSnapshotError("official bootstrap must be a JSON object")
     if family_id == "official_fixtures" and not isinstance(payload, list):
         raise PreseasonSnapshotError("official fixtures must be a JSON array")
+    return payload
+
+
+def _persist_official_payload(
+    *,
+    family_id: str,
+    body: bytes,
+    payload: Any,
+    checkpoint_dir: Path,
+    artifact_name: str,
+    observed_at: str,
+    registry_version: str,
+    origin: str,
+) -> dict[str, Any]:
     acquisition = record_acquisition(
         source_id="fpl-official-endpoints",
         mode="fixture",
@@ -700,12 +732,13 @@ def _persist_official_payload(
             counts=counts,
             artifact_path=relative,
             artifact_sha256=str(acquisition["content_hash_sha256"]),
+            observed_at=observed_at,
+            available_at=observed_at,
             source_id="fpl-official-endpoints",
             registry_source_status="ok",
         ),
         "acquisition": acquisition,
     }
-
 
 def _optional_source_ids_from_config(config: Mapping[str, Any]) -> dict[str, str | None]:
     """Read optional family source IDs from config rather than hardcoding them."""
@@ -720,19 +753,72 @@ def _optional_source_ids_from_config(config: Mapping[str, Any]) -> dict[str, str
 
 def _compute_optional_digests(
     optional_paths: Mapping[str, Path | None],
-) -> dict[str, str | None]:
-    """Pre-compute content digests for all optional artifacts provided.
+    sidecar_paths: Mapping[str, Path | None],
+) -> dict[str, dict[str, str | None]]:
+    """Hash every optional artifact and temporal sidecar before request sealing."""
 
-    Returns a mapping from family_id to digest (or None if path is absent/missing).
-    """
-    result: dict[str, str | None] = {}
-    for family_id, path in optional_paths.items():
-        if path is not None and path.exists():
-            result[family_id] = content_hash(path.read_bytes())
-        else:
-            result[family_id] = None
+    result: dict[str, dict[str, str | None]] = {}
+    for family_id in OPTIONAL_FAMILIES:
+        artifact_path = optional_paths.get(family_id)
+        sidecar_path = sidecar_paths.get(family_id)
+        result[family_id] = {
+            "artifact_sha256": (
+                content_hash(artifact_path.read_bytes())
+                if artifact_path is not None and artifact_path.exists()
+                else None
+            ),
+            "sidecar_sha256": (
+                content_hash(sidecar_path.read_bytes())
+                if sidecar_path is not None and sidecar_path.exists()
+                else None
+            ),
+        }
     return result
 
+
+def _verify_existing_bound_artifacts(
+    manifest: Mapping[str, Any], checkpoint_dir: Path
+) -> None:
+    """Fail closed if any artifact bound by an existing manifest is missing or changed."""
+
+    families = manifest.get("families")
+    if not isinstance(families, Mapping):
+        raise PreseasonSnapshotConflict("Existing manifest families must be an object")
+    checkpoint_root = checkpoint_dir.resolve()
+    for family_id, raw_family in families.items():
+        if not isinstance(raw_family, Mapping):
+            raise PreseasonSnapshotConflict(
+                f"Existing family entry is invalid: {family_id}"
+            )
+        for path_key, digest_key in (
+            ("artifact_path", "artifact_sha256"),
+            ("sidecar_path", "sidecar_sha256"),
+        ):
+            path_text = raw_family.get(path_key)
+            expected = raw_family.get(digest_key)
+            if path_text is None and expected is None:
+                continue
+            if not isinstance(path_text, str) or not _SHA256.fullmatch(str(expected)):
+                raise PreseasonSnapshotConflict(
+                    f"Existing {family_id} {path_key}/{digest_key} binding is invalid"
+                )
+            candidate_path = Path(path_text)
+            if candidate_path.is_absolute():
+                candidate = candidate_path.resolve()
+            else:
+                candidate = (checkpoint_root / candidate_path).resolve()
+                if candidate != checkpoint_root and checkpoint_root not in candidate.parents:
+                    raise PreseasonSnapshotConflict(
+                        f"Existing {family_id} artifact escapes checkpoint root"
+                    )
+            if not candidate.is_file():
+                raise PreseasonSnapshotConflict(
+                    f"Existing {family_id} artifact is missing: {candidate}"
+                )
+            if content_hash(candidate.read_bytes()) != expected:
+                raise PreseasonSnapshotConflict(
+                    f"Existing {family_id} artifact failed hash validation: {candidate}"
+                )
 
 def capture_preseason_snapshot(
     *,
@@ -810,7 +896,7 @@ def capture_preseason_snapshot(
             sidecars[key] = value
 
     # Compute optional artifact digests before request hash.
-    optional_digests = _compute_optional_digests(optional_paths)
+    optional_digests = _compute_optional_digests(optional_paths, sidecars)
 
     request = {
         "season": season,
@@ -824,7 +910,7 @@ def capture_preseason_snapshot(
         "config_sha256": content_hash(
             json.dumps(config, sort_keys=True, separators=(",", ":")).encode("utf-8")
         ),
-        "optional_artifact_sha256": {k: v for k, v in sorted(optional_digests.items())},
+        "optional_input_sha256": {k: v for k, v in sorted(optional_digests.items())},
     }
     request_sha256 = artifact_hash({"request": request})
 
@@ -840,6 +926,7 @@ def capture_preseason_snapshot(
                 raise PreseasonSnapshotConflict(
                     f"Refusing to overwrite immutable preseason checkpoint: {manifest_path}"
                 )
+            _verify_existing_bound_artifacts(existing, checkpoint_dir)
             # Same logical request: verify supplied mandatory bytes still match.
             bootstrap_bytes = bootstrap_body
             if bootstrap_bytes is None and bootstrap_fetcher is not None:
@@ -872,9 +959,30 @@ def capture_preseason_snapshot(
                 "Mandatory official state is missing: bootstrap and fixtures are required"
             )
 
+        # Parse and validate mandatory bytes and the checkpoint window before
+        # creating any acquisition path beneath the checkpoint directory.
+        bootstrap_payload = _decode_official_payload(
+            "official_bootstrap", bootstrap_bytes
+        )
+        fixtures_payload = _decode_official_payload(
+            "official_fixtures", fixtures_bytes
+        )
+        assert isinstance(bootstrap_payload, dict)
+        official_deadline = assert_deadline_matches_bootstrap(
+            bootstrap_payload, deadline=deadline_text
+        )
+        schedule = expected_deadline_schedule(bootstrap_payload)
+        enforce_checkpoint_window(
+            checkpoint_id,
+            observed_utc,
+            schedule,
+            deadline_utc,
+        )
+
         bootstrap_result = _persist_official_payload(
             family_id="official_bootstrap",
             body=bootstrap_bytes,
+            payload=bootstrap_payload,
             checkpoint_dir=checkpoint_dir,
             artifact_name="bootstrap-static.json",
             observed_at=observed_text,
@@ -884,28 +992,13 @@ def capture_preseason_snapshot(
         fixtures_result = _persist_official_payload(
             family_id="official_fixtures",
             body=fixtures_bytes,
+            payload=fixtures_payload,
             checkpoint_dir=checkpoint_dir,
             artifact_name="fixtures.json",
             observed_at=observed_text,
             registry_version=registry_version,
             origin="fixture://fpl/fixtures",
         )
-
-        bootstrap_payload = bootstrap_result["payload"]
-        assert isinstance(bootstrap_payload, dict)
-        official_deadline = assert_deadline_matches_bootstrap(
-            bootstrap_payload, deadline=deadline_text
-        )
-        schedule = expected_deadline_schedule(bootstrap_payload)
-
-        # Enforce scheduling contract: verify observed_at is in the correct window.
-        enforce_checkpoint_window(
-            checkpoint_id,
-            observed_utc,
-            schedule,
-            deadline_utc,
-        )
-
         rules_counts = _empty_family_counts()
         rules_counts["input"] = 1
         rules_counts["admitted"] = 1
@@ -939,12 +1032,13 @@ def capture_preseason_snapshot(
             families[family_id] = _bind_optional_artifact(
                 family_id=family_id,
                 path=optional_paths[family_id],
-                deadline=official_deadline,
+                deadline=observed_text,
                 source_id=optional_sources[family_id],
                 missing_reason=optional_missing_reasons[family_id],
                 checkpoint_dir=checkpoint_dir,
                 sidecar_path=sidecars[family_id],
                 registry=registry,
+                capture_observed_at=observed_text,
             )
 
         source_gaps = sorted(

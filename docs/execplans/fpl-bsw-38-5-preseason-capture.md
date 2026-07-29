@@ -18,6 +18,9 @@ only hash-verified manifests produced here.
 - [x] Added the preseason config, capture module, CLI, index manifest, focused
   tests and operator runbook.
 - [x] Verified focused preseason and evidence-checkpoint suites.
+- [x] Remediated review findings: non-overlapping checkpoint windows, pre-write
+  official validation, registry-gated optional inputs, immutable artifact/sidecar
+  binding, restart verification, and checkpoint-time temporal cutoffs.
 - [ ] Operator continues scheduled live captures through the GW1 deadline under
   the sealed contract (operational, not a code change).
 
@@ -33,6 +36,12 @@ only hash-verified manifests produced here.
   `src/orchestration/evidence_checkpoint_runner.py`.
 - Observation: bead checkpoint ID `final` maps to runner ID
   `final_pre_deadline`; `launch` and `weekly-YYYY-MM-DD` are preseason-specific.
+- Observation: optional evidence must be bounded by the checkpoint observation
+  time, not merely by the later GW1 deadline; otherwise a historical T-48h
+  capture can silently admit T-24h knowledge.
+  Evidence: regression coverage in
+  `test_optional_record_available_after_checkpoint_is_quarantined` and
+  `test_sidecar_observed_after_capture_is_quarantined`.
 
 ## Decision Log
 
@@ -57,13 +66,20 @@ only hash-verified manifests produced here.
   admitted manifest.
   Rationale: absence must never become an implicit zero feature.
   Date/Author: 2026-07-29 / Cursor agent.
+- Decision: treat each checkpoint observation time as the latest admissible
+  `available_at`, require binary optional inputs to carry a temporal/provenance
+  sidecar, and hash-bind both files into the request and sealed manifest.
+  Rationale: a replay checkpoint must be reproducible without future knowledge,
+  and changing metadata must conflict exactly as changing data bytes does.
+  Date/Author: 2026-07-29 / Codex.
 
 ## Outcomes & Retrospective
 
 The capture contract is implemented. Mandatory official state, ruleset hashing,
-deadline-relative ID validation, temporal quarantine for
-`available_at >= deadline`, idempotent restarts and fail-closed overwrite
-refusal are covered by focused tests. Optional odds, ratings, World Cup priors,
+deadline-relative ID validation, non-overlapping execution windows, temporal
+quarantine for evidence unavailable at the checkpoint, immutable sidecar
+binding, idempotent restarts and fail-closed overwrite refusal are covered by
+focused tests. Optional odds, ratings, World Cup priors,
 set pieces and transfer context remain explicitly degradable until supplied.
 Operational weekly and T-minus captures continue against this sealed interface
 until GW1.

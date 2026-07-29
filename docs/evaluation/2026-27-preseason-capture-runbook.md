@@ -30,13 +30,18 @@ checkpoint hashes for downstream consumers (`FPL-guz`, `FPL-jm0`).
 Official GW1 deadline: **2026-08-21 18:30 Europe/London** (`2026-08-21T17:30:00Z`).
 
 A missed checkpoint remains a recorded gap. Never backfill it from later
-observations. Records with `available_at >= deadline` are quarantined.
+observations. Records whose `available_at` is later than the checkpoint's
+`observed_at` are quarantined, even when they precede the GW1 deadline.
 
 ## Prerequisites
 
 - Registered official FPL bootstrap and fixtures sources remain enabled.
 - `control/rules/2026-27.yaml` is present and hashable.
 - Optional families may be absent; the manifest must name each gap.
+- Every binary optional artifact requires a JSON sidecar containing the exact
+  registered `source_id`, `observed_at`, and `available_at`. The artifact and
+  sidecar are copied into the checkpoint and independently hash-bound.
+- Disabled, prohibited, unregistered, or rights-unresolved sources are rejected.
 - No FPL account credentials are required or accepted.
 
 ## Successful launch (fixture / offline)
@@ -76,8 +81,8 @@ python scripts/capture_preseason_snapshot.py \
   --no-network
 ```
 
-If the odds artifact is missing, or every quote has
-`available_at >= deadline`, the checkpoint still admits mandatory official state
+If the odds artifact is missing, or every quote was first available after this
+checkpoint's `observed_at`, the checkpoint still admits mandatory official state
 and records `licensed_odds` under `source_gaps` with an explicit reason. It must
 never invent zero odds.
 
