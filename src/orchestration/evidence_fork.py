@@ -31,6 +31,14 @@ def _read(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def load_evidence_fork_reviewed_input(arm_setup: Path) -> dict[str, Any]:
+    """Load a reviewed solver input through the shared ref-aware boundary."""
+
+    return load_reviewed_payload(
+        arm_setup / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
+
 def _timestamp(value: Any, field: str) -> datetime:
     try:
         parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
@@ -462,13 +470,8 @@ def build_gw12_score_ceiling_review(
         / "evidence_agent"
         / "starting-policy-state.json"
     )
-    solver_input = load_reviewed_payload(
-        canonical_gw
-        / "setup"
-        / "arms"
-        / "evidence_agent"
-        / "reviewed-engine-input.json",
-        expected_kind="solver_input",
+    solver_input = load_evidence_fork_reviewed_input(
+        canonical_gw / "setup" / "arms" / "evidence_agent"
     )
     hidden = _read(episode / "hidden-outcome.json")
     identity = _read(episode / "identity-map.json")
@@ -576,10 +579,8 @@ def run_isolated_evidence_fork(
     if bundle["decision_cutoff"] != manifest["deadline"]:
         raise EvidenceForkError("Evidence bundle cutoff does not match episode deadline")
     state = _read(setup_arm / "starting-policy-state.json")
-    solver_input = load_reviewed_payload(
-        setup_arm / "reviewed-engine-input.json",
-        expected_kind="solver_input",
-    )
+    solver_input = load_evidence_fork_reviewed_input(setup_arm)
+
     adjusted_input, applied = apply_reconstructed_adjustments(solver_input, bundle)
     rules = yaml.safe_load((episode / "ruleset.yaml").read_text(encoding="utf-8"))
     rules_hash = str(manifest["ruleset"]["content_sha256"])

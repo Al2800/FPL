@@ -44,6 +44,22 @@ def _read(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def load_chip_reviewed_payloads(
+    arm_setup: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Load the reviewed solver pair through the shared ref-aware boundary."""
+
+    return (
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-input.json",
+            expected_kind="solver_input",
+        ),
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-output.json",
+            expected_kind="solver_output",
+        ),
+    )
+
 def _canonical_tree_hash(root: Path, *, through_gameweek: int) -> tuple[str, int]:
     """Hash every canonical file through the declared Gameweek without writing."""
 
@@ -522,15 +538,8 @@ def evaluate_gw31_chip_policy(
     arm_setup = setup / "arms" / "forecast_optimizer"
     episode = episode_root / "gw-31"
     state = _read(arm_setup / "starting-policy-state.json")
-    base_input_value = load_reviewed_payload(
-        arm_setup / "reviewed-engine-input.json",
-        expected_kind="solver_input",
-    )
+    base_input_value, canonical_output = load_chip_reviewed_payloads(arm_setup)
     base_input = SolverInput.from_dict(base_input_value)
-    canonical_output = load_reviewed_payload(
-        arm_setup / "reviewed-engine-output.json",
-        expected_kind="solver_output",
-    )
     locked_forecast = _read(setup / "shared-locked-forecast.json")
     feature_state = _read(setup / "shared-feature-state.json")
     manifest = _read(episode / "episode-manifest.json")

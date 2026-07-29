@@ -63,6 +63,28 @@ def _document(source: Mapping[str, Any]) -> dict[str, Any]:
     return document
 
 
+def load_agent_fork_reviewed_input(arm_setup: Path) -> dict[str, Any]:
+    """Load a reviewed solver input through the shared ref-aware boundary."""
+
+    return load_reviewed_payload(
+        arm_setup / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
+
+
+def load_agent_fork_reviewed_payloads(
+    arm_setup: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Load the reviewed solver pair through the shared ref-aware boundary."""
+
+    return (
+        load_agent_fork_reviewed_input(arm_setup),
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-output.json",
+            expected_kind="solver_output",
+        ),
+    )
+
 def build_gw12_agent_host_bundle(
     *,
     evidence_bundle_path: Path,
@@ -79,14 +101,8 @@ def build_gw12_agent_host_bundle(
     if reconstructed.get("decision_cutoff") != manifest.get("deadline"):
         raise EvidenceForkError("Evidence cutoff does not match the GW12 episode")
     arm = canonical_root / "gw-12/setup/arms/evidence_agent"
-    solver_input = load_reviewed_payload(
-        arm / "reviewed-engine-input.json",
-        expected_kind="solver_input",
-    )
-    solver_output = load_reviewed_payload(
-        arm / "reviewed-engine-output.json",
-        expected_kind="solver_output",
-    )
+    solver_input, solver_output = load_agent_fork_reviewed_payloads(arm)
+
     player_ids = sorted(str(row["player_id"]) for row in reconstructed["sources"])
     indexed = {str(row["player_id"]): row for row in solver_input["players"]}
     if any(player_id not in indexed for player_id in player_ids):
@@ -740,10 +756,8 @@ def run_isolated_agent_fork(
     manifest = _read(episode / "episode-manifest.json")
     arm = canonical_gw / "setup/arms/evidence_agent"
     state = _read(arm / "starting-policy-state.json")
-    original_input = load_reviewed_payload(
-        arm / "reviewed-engine-input.json",
-        expected_kind="solver_input",
-    )
+    original_input = load_agent_fork_reviewed_input(arm)
+
     adjusted_input, audit = apply_agent_adjustments(
         original_input, evidence_run, challenger_run
     )

@@ -356,6 +356,22 @@ def _read(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def load_transfer_reviewed_payloads(
+    arm_setup: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Load the reviewed solver pair through the shared ref-aware boundary."""
+
+    return (
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-input.json",
+            expected_kind="solver_input",
+        ),
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-output.json",
+            expected_kind="solver_output",
+        ),
+    )
+
 def evaluate_gw34_transfer_hit(
     *,
     canonical_root: Path,
@@ -390,15 +406,8 @@ def evaluate_gw34_transfer_hit(
     arm = setup / "arms/forecast_optimizer"
     episode = episode_root / "gw-34"
     state = _read(arm / "starting-policy-state.json")
-    base_value = load_reviewed_payload(
-        arm / "reviewed-engine-input.json",
-        expected_kind="solver_input",
-    )
+    base_value, solver_output = load_transfer_reviewed_payloads(arm)
     base_input = SolverInput.from_dict(base_value)
-    solver_output = load_reviewed_payload(
-        arm / "reviewed-engine-output.json",
-        expected_kind="solver_output",
-    )
     locked_forecast = _read(setup / "shared-locked-forecast.json")
     feature_state = _read(setup / "shared-feature-state.json")
     manifest = _read(episode / "episode-manifest.json")

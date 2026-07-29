@@ -62,6 +62,22 @@ def _read(path: Path) -> dict[str, Any]:
     return value
 
 
+def load_challenger_reviewed_payloads(
+    arm_setup: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Load the reviewed solver pair through the shared ref-aware boundary."""
+
+    return (
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-input.json",
+            expected_kind="solver_input",
+        ),
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-output.json",
+            expected_kind="solver_output",
+        ),
+    )
+
 def _assert_content_hash(value: Mapping[str, Any], label: str) -> str:
     expected = value.get("content_sha256")
     if not isinstance(expected, str) or expected != artifact_hash(value):
@@ -116,14 +132,8 @@ def evaluate_robust_legal_replay(
         episode_dir = episodes_root / f"gw-{gameweek:02d}"
         arm_setup = report_dir / "setup/arms/forecast_optimizer"
         state = _read(arm_setup / "starting-policy-state.json")
-        raw_input = load_reviewed_payload(
-            arm_setup / "reviewed-engine-input.json",
-            expected_kind="solver_input",
-        )
-        raw_output = load_reviewed_payload(
-            arm_setup / "reviewed-engine-output.json",
-            expected_kind="solver_output",
-        )
+        raw_input, raw_output = load_challenger_reviewed_payloads(arm_setup)
+
         forecast = _read(report_dir / "setup/shared-locked-forecast.json")
         canonical_plan = _read(report_dir / "forecast_optimizer/validated-plan.json")
         canonical_outcome = _read(

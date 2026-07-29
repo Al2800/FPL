@@ -20,6 +20,22 @@ def _read(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def load_captain_reviewed_payloads(
+    arm_setup: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Load the reviewed solver pair through the shared ref-aware boundary."""
+
+    return (
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-input.json",
+            expected_kind="solver_input",
+        ),
+        load_reviewed_payload(
+            arm_setup / "reviewed-engine-output.json",
+            expected_kind="solver_output",
+        ),
+    )
+
 def evaluate_captain_challenger(
     *,
     reports_root: Path,
@@ -39,15 +55,8 @@ def evaluate_captain_challenger(
             report_dir
             / "setup/arms/forecast_optimizer/starting-policy-state.json"
         )
-        solver_input = load_reviewed_payload(
-            report_dir
-            / "setup/arms/forecast_optimizer/reviewed-engine-input.json",
-            expected_kind="solver_input",
-        )
-        solver_output = load_reviewed_payload(
-            report_dir
-            / "setup/arms/forecast_optimizer/reviewed-engine-output.json",
-            expected_kind="solver_output",
+        solver_input, solver_output = load_captain_reviewed_payloads(
+            report_dir / "setup/arms/forecast_optimizer"
         )
         canonical_plan = _read(
             report_dir / "forecast_optimizer/validated-plan.json"

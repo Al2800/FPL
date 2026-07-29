@@ -5,7 +5,18 @@ from pathlib import Path
 
 import pytest
 
+from src.evaluation.captain_counterfactual import load_captain_reviewed_payloads
+from src.evaluation.challenger_matrix import load_challenger_reviewed_payloads
+from src.evaluation.chip_counterfactual import load_chip_reviewed_payloads
+from src.evaluation.squad_contingency import load_contingency_reviewed_input
+from src.evaluation.transfer_counterfactual import load_transfer_reviewed_payloads
 from src.optimisation.io import fingerprint
+from src.orchestration.agent_fork_adapter import (
+    load_agent_fork_reviewed_input,
+    load_agent_fork_reviewed_payloads,
+)
+from src.orchestration.evidence_fork import load_evidence_fork_reviewed_input
+from src.orchestration.multiweek_challenger import load_multiweek_reviewed_input
 from src.orchestration.replay_payload_store import (
     ReplayPayloadStoreError,
     build_payload_ref,
@@ -55,7 +66,7 @@ def test_divergent_solver_inputs_receive_distinct_payload_files(
     assert len(list((setup / "payloads" / "solver-input").glob("*.json"))) == 2
     assert resolve_reviewed_payload(arm_a, "solver_input") == input_a
     assert resolve_reviewed_payload(arm_b, "solver_input") == input_b
-    ref = json.loads((arm_a / "reviewed-engine-input.json").read_text())
+    ref = json.loads((arm_a / "reviewed-engine-input.json").read_text(encoding="utf-8"))
     assert is_payload_ref(ref)
     assert ref["payload_sha256"] == hash_a
     assert "content_sha256" in ref
@@ -135,17 +146,18 @@ def test_gw4_cross_consumer_payload_resolution_matrix() -> None:
     assert "players" in via_arm and len(via_arm["players"]) > 0
     assert "selected" in via_output
 
-    # Central loader is what captain/challenger/chip/contingency/transfer/
-    # agent_fork/evidence_fork/multiweek paths now share.
     consumers = {
-        "captain_counterfactual": via_arm,
-        "challenger_matrix": via_arm,
-        "chip_counterfactual": via_arm,
-        "squad_contingency": via_arm,
-        "transfer_counterfactual": via_arm,
-        "agent_fork_adapter": via_arm,
-        "evidence_fork": via_arm,
-        "multiweek_challenger": via_arm,
+        "captain_counterfactual": load_captain_reviewed_payloads(arm)[0],
+        "challenger_matrix": load_challenger_reviewed_payloads(arm)[0],
+        "chip_counterfactual": load_chip_reviewed_payloads(arm)[0],
+        "squad_contingency": load_contingency_reviewed_input(arm),
+        "transfer_counterfactual": load_transfer_reviewed_payloads(arm)[0],
+        "agent_fork_adapter": load_agent_fork_reviewed_payloads(arm)[0],
+        "agent_fork_isolated": load_agent_fork_reviewed_input(arm),
+        "evidence_fork": load_evidence_fork_reviewed_input(arm),
+        "multiweek_challenger": load_multiweek_reviewed_input(
+            arm / "reviewed-engine-input.json"
+        ),
     }
     for name, payload in consumers.items():
         assert payload["gameweek"] == 4, name
@@ -153,7 +165,7 @@ def test_gw4_cross_consumer_payload_resolution_matrix() -> None:
 
     for arm_name in ARMS:
         arm_dir = GW4 / "setup/arms" / arm_name
-        ref = json.loads((arm_dir / "reviewed-engine-input.json").read_text())
+        ref = json.loads((arm_dir / "reviewed-engine-input.json").read_text(encoding="utf-8"))
         assert is_payload_ref(ref)
         assert ref["payload_sha256"] != ref["content_sha256"]
         resolved = resolve_reviewed_payload(arm_dir, "solver_input")
@@ -163,7 +175,7 @@ def test_gw4_cross_consumer_payload_resolution_matrix() -> None:
 @pytest.mark.skipif(not GW3.exists(), reason="GW3 sealed setup absent")
 def test_gw3_inline_payloads_still_load_via_central_loader() -> None:
     arm = GW3 / "setup/arms/forecast_optimizer"
-    inline = json.loads((arm / "reviewed-engine-input.json").read_text())
+    inline = json.loads((arm / "reviewed-engine-input.json").read_text(encoding="utf-8"))
     assert not is_payload_ref(inline)
     loaded = load_reviewed_payload(
         arm / "reviewed-engine-input.json", expected_kind="solver_input"

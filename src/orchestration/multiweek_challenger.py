@@ -31,6 +31,11 @@ def multiweek_report_hash(value: Mapping[str, Any]) -> str:
     return artifact_hash(projection)
 
 
+def load_multiweek_reviewed_input(path: Path) -> dict[str, Any]:
+    """Load a reviewed solver input through the shared ref-aware boundary."""
+
+    return load_reviewed_payload(path, expected_kind="solver_input")
+
 def _fixture_components(
     *,
     club_id: str,
@@ -277,7 +282,7 @@ def run_historical_multiweek_challenger(
     config_path: Path,
     rules_path: Path,
 ) -> dict[str, Any]:
-    base = load_reviewed_payload(base_input_path, expected_kind="solver_input")
+    base = load_multiweek_reviewed_input(base_input_path)
     forecast = json.loads(locked_forecast_path.read_text(encoding="utf-8"))
     config = json.loads(config_path.read_text(encoding="utf-8"))
     if config.get("content_sha256") != artifact_hash(config):
@@ -355,9 +360,8 @@ def score_historical_first_action(
     """Freeze and score only the executable action against the canonical outcome."""
     result = deepcopy(dict(report))
     state = json.loads(state_path.read_text(encoding="utf-8"))
-    solver_input = load_reviewed_payload(
-        solver_input_path, expected_kind="solver_input"
-    )
+    solver_input = load_multiweek_reviewed_input(solver_input_path)
+
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     hidden = json.loads(hidden_outcome_path.read_text(encoding="utf-8"))
     identity = json.loads(identity_map_path.read_text(encoding="utf-8"))
