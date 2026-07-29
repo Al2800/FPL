@@ -16,6 +16,8 @@ from src.ingestion.lineups_minutes import (
     degraded_lineups_family,
     provider_credential_status,
     reconcile_lineups_minutes,
+    source_snapshot_hash,
+    verify_snapshot_integrity,
     write_immutable_json,
 )
 
@@ -111,7 +113,8 @@ def _reseal(snapshot: dict) -> dict:
         for key, value in snapshot.items()
         if key not in {"content_sha256", "source_sha256"}
     }
-    return {**body, "content_sha256": artifact_hash(body)}
+    with_source = {**body, "source_sha256": source_snapshot_hash(body)}
+    return {**with_source, "content_sha256": artifact_hash(with_source)}
 
 def test_disagreement_unmapped_and_after_cutoff_do_not_admit() -> None:
     changed = _reseal({**_sealed_snapshot(), "players": [
@@ -304,6 +307,48 @@ def test_fetch_never_called_for_null_disabled_or_unapproved_provider() -> None:
     assert out["reason"] == "rights_unapproved"
     assert calls == []
 
+
+def test_capture_timestamps_and_hash_layers_are_independent() -> None:
+    raw = _raw_snapshot()
+
+    with pytest.raises(LineupsMinutesError, match="must equal capture"):
+        admit_raw_provider_snapshot(
+            raw,
+            expected_provider_id="api-football",
+            observed_at="2026-08-20T10:01:00Z",
+        )
+
+    available_after_observed = {
+        **raw,
+        "available_at": "2026-08-20T10:01:00Z",
+    }
+    with pytest.raises(LineupsMinutesError, match="must not be after"):
+        admit_raw_provider_snapshot(
+            available_after_observed,
+            expected_provider_id="api-football",
+            observed_at="2026-08-20T10:00:00Z",
+        )
+
+    raw["source_sha256"] = source_snapshot_hash(raw)
+    admitted = admit_raw_provider_snapshot(
+        raw,
+        expected_provider_id="api-football",
+        observed_at="2026-08-20T10:00:00Z",
+    )
+    assert admitted["source_sha256"] == source_snapshot_hash(admitted)
+    assert admitted["content_sha256"] == artifact_hash(admitted)
+    verify_snapshot_integrity(admitted)
+
+    source_tampered = dict(admitted)
+    source_tampered["source_sha256"] = "0" * 64
+    source_tampered["content_sha256"] = artifact_hash(source_tampered)
+    with pytest.raises(LineupsMinutesError, match="source_sha256 mismatch"):
+        verify_snapshot_integrity(source_tampered)
+
+    envelope_tampered = dict(admitted)
+    envelope_tampered["content_sha256"] = "f" * 64
+    with pytest.raises(LineupsMinutesError, match="content hash mismatch"):
+        verify_snapshot_integrity(envelope_tampered)
 
 def test_malformed_hash_mismatch_and_incomplete_xi() -> None:
     cfg = _approved_config(min_started_xi=11, min_admitted=11)

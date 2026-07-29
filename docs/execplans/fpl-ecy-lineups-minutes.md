@@ -18,6 +18,9 @@ degraded feature family.
 - [x] (2026-07-29) Credential-presence probe, degraded family helpers (missing
   credential / timeout / rate-limit / outage), research access-gate matrix and
   blocker bead `FPL-lpm`.
+- [x] (2026-07-29) Review remediation: exact capture/provider timestamp
+  equality, available-before-observed ordering, independent raw-source/envelope
+  hashes, activation gating and negative tamper tests.
 - [ ] Owner-approved credentials and measured ≥10-fixture / ≥3-matchday trial
   (`FPL-lpm`).
 - [ ] Enable exactly one provider only after admission gates pass.
@@ -50,10 +53,23 @@ degraded feature family.
   be closed as integrated.
   Date/Author: 2026-07-29 / Cursor agent.
 
+- Decision: model `observed_at` as the exact host capture time and reject a
+  provider envelope that claims a different observation time; require
+  `available_at <= observed_at`.
+  Rationale: accepting advisory/mismatched timestamps would allow stale or
+  future data to be sealed under a trusted checkpoint.
+  Date/Author: 2026-07-29 / Codex.
+- Decision: hash canonical captured source bytes as `source_sha256`, then include
+  that digest when independently sealing the normalized envelope as
+  `content_sha256`.
+  Rationale: source provenance and envelope integrity are separate claims and
+  must detect tampering independently.
+  Date/Author: 2026-07-29 / Codex.
 ## Outcomes & Retrospective
 
 Evaluation complete without provider activation. The reconcile path, immutable
-writes and degraded failure modes are tested. Integration remains blocked on
+writes, timestamp admission, independent digest layers and degraded failure
+modes are tested (9 focused tests). Integration remains blocked on
 `FPL-lpm`. Downstream `FPL-cm6` can operationalise credentials only after a
 provider clears the measured gates.
 

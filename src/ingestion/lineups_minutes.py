@@ -54,6 +54,19 @@ def _bytes(value: Any) -> bytes:
     ).encode()
 
 
+def source_snapshot_hash(value: Mapping[str, Any]) -> str:
+    """Hash canonical captured source bytes independently of envelope hashes."""
+
+    return hashlib.sha256(
+        _bytes(
+            {
+                key: deepcopy(item)
+                for key, item in value.items()
+                if key not in {"content_sha256", "source_sha256"}
+            }
+        )
+    ).hexdigest()
+
 def artifact_hash(value: Mapping[str, Any]) -> str:
     return hashlib.sha256(
         _bytes(
@@ -251,15 +264,21 @@ def admit_raw_provider_snapshot(
         raise LineupsMinutesError("Raw snapshot source_version is required")
     if str(snapshot.get("provider_fixture_id", "")) == "":
         raise LineupsMinutesError("Raw snapshot provider_fixture_id is required")
-    observed_text, _ = _time(snapshot.get("observed_at"), "provider.observed_at")
-    available_text, _ = _time(
+    observed_text, provider_observed_at = _time(
+        snapshot.get("observed_at"), "provider.observed_at"
+    )
+    available_text, provider_available_at = _time(
         snapshot.get("available_at", observed_text), "provider.available_at"
     )
-    # Prefer caller-observed wall clock when the provider omits it, but never
-    # invent times that disagree with an explicit provider timestamp.
-    if observed_text != _time(observed_at, "observed_at")[0]:
-        # Allow exact provider timestamps; capture wall-clock is advisory only.
-        pass
+    capture_observed_text, _ = _time(observed_at, "observed_at")
+    if observed_text != capture_observed_text:
+        raise LineupsMinutesError(
+            "provider.observed_at must equal capture observed_at"
+        )
+    if provider_available_at > provider_observed_at:
+        raise LineupsMinutesError(
+            "provider.available_at must not be after provider.observed_at"
+        )
     players = snapshot.get("players")
     if not isinstance(players, list) or not players:
         raise LineupsMinutesError("Raw snapshot players must be a non-empty list")
@@ -278,9 +297,20 @@ def admit_raw_provider_snapshot(
     if "http_status" in snapshot:
         sealed_body["http_status"] = snapshot["http_status"]
 
-    expected_hash = snapshot.get("content_sha256") or snapshot.get("source_sha256")
+    source_digest = source_snapshot_hash(sealed_body)
+    claimed_source_digest = snapshot.get("source_sha256")
+    if (
+        claimed_source_digest is not None
+        and str(claimed_source_digest) != source_digest
+    ):
+        raise LineupsMinutesError("Raw snapshot source_sha256 mismatch")
+    sealed_body["source_sha256"] = source_digest
     sealed = _seal(sealed_body)
-    if expected_hash is not None and str(expected_hash) != sealed["content_sha256"]:
+    claimed_content_digest = snapshot.get("content_sha256")
+    if (
+        claimed_content_digest is not None
+        and str(claimed_content_digest) != sealed["content_sha256"]
+    ):
         raise LineupsMinutesError("Raw snapshot content hash mismatch")
     return sealed
 
@@ -293,7 +323,7 @@ def verify_snapshot_integrity(snapshot: Mapping[str, Any]) -> str:
     if not isinstance(claimed, str) or claimed != digest:
         raise LineupsMinutesError("Provider snapshot content hash mismatch")
     source = snapshot.get("source_sha256")
-    if source is not None and str(source) not in {digest, claimed}:
+    if not isinstance(source, str) or source != source_snapshot_hash(snapshot):
         raise LineupsMinutesError("Provider snapshot source_sha256 mismatch")
     return digest
 
