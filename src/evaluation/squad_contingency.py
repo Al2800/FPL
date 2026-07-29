@@ -27,6 +27,7 @@ from src.optimisation.solver import solve
 from src.optimisation.types import SolverInput
 from src.orchestration.policy_state import state_hash
 from src.orchestration.validated_plan import validate_and_freeze_plan
+from src.orchestration.replay_payload_store import load_reviewed_payload
 from src.scoring.rules_loader import load_rules, ruleset_sha256
 
 
@@ -44,6 +45,14 @@ LOCKED_PARAMETERS = ForecastParameters(
 def _read(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
+
+def load_contingency_reviewed_input(arm_setup: Path) -> dict[str, Any]:
+    """Load a reviewed solver input through the shared ref-aware boundary."""
+
+    return load_reviewed_payload(
+        arm_setup / "reviewed-engine-input.json",
+        expected_kind="solver_input",
+    )
 
 def _canonical_hash(value: Any) -> str:
     payload = json.dumps(
@@ -271,7 +280,8 @@ def evaluate_sealed_forks(
         report_root = reports_root / f"gw-{int(gameweek):02d}"
         episode_root = episodes_root / f"gw-{int(gameweek):02d}"
         setup = report_root / "setup/arms/forecast_optimizer"
-        raw_input = _read(setup / "reviewed-engine-input.json")
+        raw_input = load_contingency_reviewed_input(setup)
+
         state = _read(setup / "starting-policy-state.json")
         control_plan = _read(
             report_root / "forecast_optimizer/validated-plan.json"

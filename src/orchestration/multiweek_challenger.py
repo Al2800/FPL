@@ -13,6 +13,7 @@ import yaml
 from src.data.fixture_state import fixture_view_at, fixture_weeks_from_view
 from src.evaluation.outcome_scorer import score_revealed_outcome
 from src.forecasting.live_faithful import artifact_hash
+from src.orchestration.replay_payload_store import load_reviewed_payload
 from src.optimisation.multiweek import multiweek_plan_hash, plan_multiweek
 from src.optimisation.types import SolverInput
 from src.orchestration.validated_plan import validate_and_freeze_plan
@@ -29,6 +30,11 @@ def multiweek_report_hash(value: Mapping[str, Any]) -> str:
     projection.get("plan", {}).get("search", {}).pop("elapsed_seconds", None)
     return artifact_hash(projection)
 
+
+def load_multiweek_reviewed_input(path: Path) -> dict[str, Any]:
+    """Load a reviewed solver input through the shared ref-aware boundary."""
+
+    return load_reviewed_payload(path, expected_kind="solver_input")
 
 def _fixture_components(
     *,
@@ -276,7 +282,7 @@ def run_historical_multiweek_challenger(
     config_path: Path,
     rules_path: Path,
 ) -> dict[str, Any]:
-    base = json.loads(base_input_path.read_text(encoding="utf-8"))
+    base = load_multiweek_reviewed_input(base_input_path)
     forecast = json.loads(locked_forecast_path.read_text(encoding="utf-8"))
     config = json.loads(config_path.read_text(encoding="utf-8"))
     if config.get("content_sha256") != artifact_hash(config):
@@ -354,7 +360,8 @@ def score_historical_first_action(
     """Freeze and score only the executable action against the canonical outcome."""
     result = deepcopy(dict(report))
     state = json.loads(state_path.read_text(encoding="utf-8"))
-    solver_input = json.loads(solver_input_path.read_text(encoding="utf-8"))
+    solver_input = load_multiweek_reviewed_input(solver_input_path)
+
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     hidden = json.loads(hidden_outcome_path.read_text(encoding="utf-8"))
     identity = json.loads(identity_map_path.read_text(encoding="utf-8"))

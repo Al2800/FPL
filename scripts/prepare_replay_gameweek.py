@@ -24,6 +24,11 @@ from src.orchestration.genuine_replay import (
     select_policy_candidate,
 )
 from src.orchestration.policy_state import POLICY_ARMS
+from src.orchestration.replay_payload_store import (
+    store_payload_once,
+    write_arm_payload_ref,
+    write_store_manifest,
+)
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -200,8 +205,10 @@ def prepare(
             },
         }
         review["content_sha256"] = artifact_hash(review)
-        _write_once(arm_dir / "reviewed-engine-input.json", input_value)
-        _write_once(arm_dir / "reviewed-engine-output.json", output)
+        store_payload_once(setup, "solver_input", input_value)
+        store_payload_once(setup, "solver_output", output)
+        write_arm_payload_ref(arm_dir, "solver_input", input_hash)
+        write_arm_payload_ref(arm_dir, "solver_output", output_hash)
         _write_once(arm_dir / "forecast-plan-review.json", review)
         arm_reviews[arm] = {
             "state_sha256": state["content_sha256"],
@@ -227,6 +234,11 @@ def prepare(
         "shared_forecast": True,
         "shared_solver_input": len(input_hashes) == 1,
         "shared_solver_output": len(output_hashes) == 1,
+        "payload_store": write_store_manifest(
+            setup,
+            input_hashes=input_hashes,
+            output_hashes=output_hashes,
+        ),
         "forecast_diagnostics": {
             "model_version": forecast["model_version"],
             "model_status": forecast["model_status"],
