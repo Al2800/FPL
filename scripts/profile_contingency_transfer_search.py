@@ -267,6 +267,7 @@ def main(argv: list[str] | None = None) -> int:
                 "cumulative_valid_candidates_including_no_transfer": n_candidates,
                 "samples": args.samples,
                 "warmup": 1,
+                "wall_ms_samples": [round(value, 3) for value in timings],
                 "wall_ms": {
                     "mean": round(statistics.mean(timings), 3),
                     "p50": round(percentile(timings, 0.50), 3),
