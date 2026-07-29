@@ -28,14 +28,17 @@ Non-negotiable constraints that apply to **every** item below:
    evidence caps) has its thresholds recorded in
    `docs/evaluation/2026-27-preregistration.md` before the Gameweek it first
    applies to.
-5. **Portable suite** (no ignored data): `python3 -m pytest tests/ -q` must be
-   green in a fresh clone before any push. Tests that require gitignored
-   historical data (`data/raw/`, episode payloads under `data/`) are
-   **artifact-backed integration tests**; restore those artifacts first via
-   `python3 -m scripts.download_historical` (registered sources only) before
-   running calibration or replay validation. CI runs the portable suite only
-   and deterministically passes from a clean checkout; artifact-backed
-   validation is a local/pre-push step documented per work item.
+5. **Validation boundary (pending `FPL-cfb`):** current CI still runs
+   `python3 -m pytest` and is not fresh-clone green because some tests require
+   gitignored historical episode/raw artifacts and some sealed hashes remain
+   platform-dependent. `FPL-cfb` is the authoritative P0 bug for separating a
+   tracked-safe portable suite from an explicitly artifact-backed integration
+   suite. Until it closes, every work item must publish and pass its focused
+   tracked-safe command, name any required local artifacts, and report the
+   corresponding artifact-backed command separately. Do not describe the
+   repository-wide suite or CI as green, silently skip an ordinary contract,
+   or treat `python3 -m scripts.download_historical` as provisioning governed
+   episode trees: that command restores registered raw history only.
 
 **Data prerequisite for calibration items (W2, W7, W9, W11):** raw vaastav and
 football-data files under `data/raw/` are gitignored and may be absent in a
@@ -93,7 +96,7 @@ them.
 | W1 | Event-sourced fixture state and DGW/BGW detection | R1 | `FPL-dah` | **superseded** (closed) | — |
 | W2 | Elo-based future-fixture EP for multiweek/chip projection | R1 | — | agent-ready (promotion owner-gated) | W1 helps, not required |
 | W3 | Chip policy preregistration draft | R1 | — | owner-gated | W1, W2 |
-| W4 | Persistent availability state in the production projection | R2 | `FPL-uwu` | agent-ready (in progress) | — |
+| W4 | Persistent availability state in the production projection | R2 | `FPL-uwu` | agent-ready (open) | — |
 | W5 | Bounded upward evidence adjustments (policy revision) | R2 | — | owner-gated (ADR) | W4 |
 | W6 | Claim-value ledger (ex-post evidence accounting) | R3 | `FPL-f55` | **superseded** (closed) | — |
 | W7 | Calibrate FPL availability flags to start probability | R3 | — | agent-ready | raw data |
