@@ -7,7 +7,17 @@ import pytest
 
 import scripts.prepare_replay_gameweek as replay_setup
 from src.forecasting.live_faithful import artifact_hash
+from src.optimisation.io import fingerprint
+from src.orchestration.genuine_replay import (
+    GenuineReplayError,
+    _load_reviewed_gameweek_setup,
+)
 from src.orchestration.policy_state import POLICY_ARMS
+from src.orchestration.replay_payload_store import (
+    is_payload_ref,
+    payload_path,
+    resolve_reviewed_payload,
+)
 from scripts.prepare_replay_gameweek import prepare
 
 
@@ -15,6 +25,7 @@ REPO = Path(__file__).resolve().parents[2]
 EPISODES = REPO / "data" / "benchmark-v0" / "episodes" / "v2" / "2025-26"
 GW2 = REPO / "reports" / "benchmarks" / "2025-26" / "gw-02"
 GW3 = REPO / "reports" / "benchmarks" / "2025-26" / "gw-03"
+GW4 = REPO / "reports" / "benchmarks" / "2025-26" / "gw-04"
 
 
 def _require_local_data() -> None:
@@ -102,6 +113,102 @@ def test_gw3_locked_forecast_setup_is_sealed_state_bound_and_reproducible(
         assert review["state_sha256"] == row["state_sha256"]
 
 
+def test_gw3_checked_in_legacy_inline_payloads_still_load() -> None:
+    setup = GW3 / "setup"
+    previous_summary = json.loads(
+        (GW2 / "run-summary.json").read_text(encoding="utf-8")
+    )
+    feature_state, states, solver_inputs, solver_outputs = (
+        _load_reviewed_gameweek_setup(
+            setup,
+            season="2025-26",
+            gameweek=3,
+            previous_summary=previous_summary,
+        )
+    )
+    assert set(states) == set(POLICY_ARMS)
+    shared_input_hash = fingerprint(next(iter(solver_inputs.values())))
+    assert all(
+        fingerprint(value) == shared_input_hash for value in solver_inputs.values()
+    )
+    for arm in POLICY_ARMS:
+        arm_dir = setup / "arms" / arm
+        inline = json.loads(
+            (arm_dir / "reviewed-engine-input.json").read_text(encoding="utf-8")
+        )
+        assert not is_payload_ref(inline)
+        assert resolve_reviewed_payload(arm_dir, "solver_input") == inline
+
+
+def test_prepare_writes_content_addressed_payload_store_once_per_hash(
+    tmp_path: Path,
+) -> None:
+    _require_local_data()
+    summary = prepare(
+        season="2025-26",
+        gameweek=3,
+        episode_root=EPISODES,
+        output_root=tmp_path,
+        previous_checkpoint_dir=GW2,
+        code_commit="e" * 40,
+    )
+    setup = tmp_path / "gw-03" / "setup"
+    manifest = summary["payload_store"]
+    assert manifest["unique_solver_inputs"] == 1
+    assert manifest["unique_solver_outputs"] == 1
+    assert manifest["content_sha256"] == artifact_hash(manifest)
+    assert len(list((setup / "payloads" / "solver-input").glob("*.json"))) == 1
+    assert len(list((setup / "payloads" / "solver-output").glob("*.json"))) == 1
+    for arm in POLICY_ARMS:
+        arm_dir = setup / "arms" / arm
+        input_ref = json.loads(
+            (arm_dir / "reviewed-engine-input.json").read_text(encoding="utf-8")
+        )
+        output_ref = json.loads(
+            (arm_dir / "reviewed-engine-output.json").read_text(encoding="utf-8")
+        )
+        assert is_payload_ref(input_ref)
+        assert is_payload_ref(output_ref)
+        assert input_ref["content_sha256"] == manifest["solver_inputs"][0]
+        assert output_ref["content_sha256"] == manifest["solver_outputs"][0]
+        assert payload_path(
+            setup, "solver_input", input_ref["content_sha256"]
+        ).exists()
+        assert resolve_reviewed_payload(arm_dir, "solver_input")["gameweek"] == 3
+
+
+def test_payload_store_rejects_hash_mismatch(tmp_path: Path) -> None:
+    from src.orchestration.replay_payload_store import ReplayPayloadStoreError
+
+    _require_local_data()
+    prepare(
+        season="2025-26",
+        gameweek=3,
+        episode_root=EPISODES,
+        output_root=tmp_path,
+        previous_checkpoint_dir=GW2,
+        code_commit="f" * 40,
+    )
+    setup = tmp_path / "gw-03" / "setup"
+    arm_dir = setup / "arms" / "naive_baseline"
+    input_ref = json.loads(
+        (arm_dir / "reviewed-engine-input.json").read_text(encoding="utf-8")
+    )
+    stored_path = payload_path(setup, "solver_input", input_ref["content_sha256"])
+    stored = json.loads(stored_path.read_text(encoding="utf-8"))
+    stored["bank"] = round(float(stored["bank"]) + 0.1, 1)
+    stored_path.write_text(json.dumps(stored, indent=2, sort_keys=True) + "\n")
+    with pytest.raises(ReplayPayloadStoreError, match="hash mismatch"):
+        _load_reviewed_gameweek_setup(
+            setup,
+            season="2025-26",
+            gameweek=3,
+            previous_summary=json.loads(
+                (GW2 / "run-summary.json").read_text(encoding="utf-8")
+            ),
+        )
+
+
 def test_gw4_review_records_the_policy_candidate_each_arm_will_freeze(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -137,4 +244,6 @@ def test_gw4_review_records_the_policy_candidate_each_arm_will_freeze(
         ("Cole Palmer", "Cody Gakpo"),
         ("Elliot Anderson", "Dominik Szoboszlai"),
     }
+    assert summary["payload_store"]["unique_solver_inputs"] == 1
+    assert summary["payload_store"]["unique_solver_outputs"] == 1
     assert not [path for path in requested if path.name == "hidden-outcome.json"]

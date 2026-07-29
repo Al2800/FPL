@@ -26,6 +26,7 @@ from src.orchestration.policy_state import (
     initialise_policy_states,
     transition_policy_state,
 )
+from src.orchestration.replay_payload_store import resolve_reviewed_payload
 from src.orchestration.validated_plan import validate_and_freeze_plan
 from src.reporting.decision_record import build_decision_record
 from src.scoring.rules_loader import load_rules, ruleset_sha256
@@ -703,8 +704,8 @@ def _load_reviewed_gameweek_setup(
     for arm in POLICY_ARMS:
         arm_dir = setup_dir / "arms" / arm
         state = _read_json(arm_dir / "starting-policy-state.json")
-        solver_input = _read_json(arm_dir / "reviewed-engine-input.json")
-        solver_output = _read_json(arm_dir / "reviewed-engine-output.json")
+        solver_input = resolve_reviewed_payload(arm_dir, "solver_input")
+        solver_output = resolve_reviewed_payload(arm_dir, "solver_output")
         review = _read_json(arm_dir / "forecast-plan-review.json")
         arm_summary = summary.get("arms", {}).get(arm, {})
         if review.get("content_sha256") != artifact_hash(review):

@@ -387,7 +387,7 @@
   "contains_hidden_outcome": false,
   "contains_state_transition": false,
   "contains_validated_plan": false,
-  "content_sha256": "f3f06c009c0106234b5dae1b34d3a89114a8e2e6eceb0de3cabeb1fd91a8107d",
+  "content_sha256": "4e9dfb7bbd330a41d51430f50b77c25d69d83ab38d915c48567f05148312026c",
   "feature_state_sha256": "1ead1a4409902c60939e149806694f28cec52a0ccc38ce9cfc13a95f700ad80a",
   "forecast_diagnostics": {
     "availability_policy": "historical availability/news unavailable; market rows remain available and expected minutes carries the observable signal",
@@ -416,6 +416,18 @@
     "untimestamped_market_odds_excluded"
   ],
   "model_config_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+  "payload_store": {
+    "content_sha256": "a44d2332d4dcfce41d369e09a81eb557d8c7a8d4d591d454848aaf1a269068ad",
+    "schema_version": "1.0",
+    "solver_inputs": [
+      "ef077eb9ace6dfae5903c5f5aa5282c0f3c8417aa8024824f7752410f170922d"
+    ],
+    "solver_outputs": [
+      "0c2efccfb5282200e063f5d4303cd04677081304406f15fac297e01e330cb28f"
+    ],
+    "unique_solver_inputs": 1,
+    "unique_solver_outputs": 1
+  },
   "schema_version": "1.0",
   "season": "2025-26",
   "shared_forecast": true,
