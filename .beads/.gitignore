@@ -27,3 +27,9 @@ beads.right.meta.json
 !issues.jsonl
 !metadata.json
 !config.json
+
+# Local Beads runtime / embedded database (never commit)
+.local_version
+last-touched
+backup/
+embeddeddolt/

@@ -23,7 +23,27 @@ DEGRADED_REASONS = frozenset(
         "provider_outage",
         "trial_access_gated",
         "no_provider_selected",
+        "provider_not_enabled",
+        "rights_unapproved",
         "empty_snapshot",
+        "invalid_snapshot",
+    }
+)
+
+RAW_SNAPSHOT_FIELDS = frozenset(
+    {
+        "schema_version",
+        "provider_id",
+        "source_id",
+        "source_version",
+        "provider_fixture_id",
+        "observed_at",
+        "available_at",
+        "players",
+        "acquisition_status",
+        "http_status",
+        "content_sha256",
+        "source_sha256",
     }
 )
 
@@ -83,6 +103,45 @@ def _alias_index(
     return players, fixtures
 
 
+def _provider_entry(config: Mapping[str, Any], provider_id: str) -> Mapping[str, Any]:
+    providers = {
+        str(item.get("provider_id")): item
+        for item in config.get("providers", [])
+        if isinstance(item, Mapping)
+    }
+    if provider_id not in providers:
+        raise LineupsMinutesError("Unregistered provider")
+    return providers[provider_id]
+
+
+def provider_activation_gate(
+    config: Mapping[str, Any], provider_id: str
+) -> str | None:
+    """Return a degraded reason if the provider must not be fetched or admitted.
+
+    Exact selection, registry enablement, and completed rights approval are all
+    required. A null selected_provider never activates a fetch.
+    """
+
+    selected = config.get("selected_provider")
+    if selected is None or selected == "":
+        return "no_provider_selected"
+    if str(selected) != provider_id:
+        return "no_provider_selected"
+    entry = _provider_entry(config, provider_id)
+    if entry.get("registry_enabled") is not True:
+        return "provider_not_enabled"
+    if entry.get("rights_approved") is not True:
+        return "rights_unapproved"
+    admission = config.get("admission", {})
+    if isinstance(admission, Mapping) and admission.get(
+        "owner_approval_required_before_enable", True
+    ):
+        if entry.get("owner_approved") is not True:
+            return "rights_unapproved"
+    return None
+
+
 def provider_credential_status(
     config: Mapping[str, Any], *, environ: Mapping[str, str] | None = None
 ) -> dict[str, Any]:
@@ -102,6 +161,8 @@ def provider_credential_status(
                 "credential_environment": env_name,
                 "credential_present": present,
                 "status": str(item.get("status", "candidate")),
+                "registry_enabled": item.get("registry_enabled") is True,
+                "rights_approved": item.get("rights_approved") is True,
                 # Never echo credential values.
                 "value_redacted": True,
             }
@@ -159,6 +220,83 @@ def degraded_lineups_family(
     )
 
 
+def _require_bool(value: Any, field: str) -> bool:
+    if not isinstance(value, bool):
+        raise LineupsMinutesError(f"{field} must be a boolean")
+    return value
+
+
+def admit_raw_provider_snapshot(
+    snapshot: Mapping[str, Any],
+    *,
+    expected_provider_id: str,
+    observed_at: str,
+) -> dict[str, Any]:
+    """Validate a closed raw-snapshot envelope and seal it before admission."""
+
+    if not isinstance(snapshot, Mapping):
+        raise LineupsMinutesError("provider fetch must return a mapping")
+    unknown = set(snapshot) - RAW_SNAPSHOT_FIELDS
+    if unknown:
+        raise LineupsMinutesError(
+            f"Raw snapshot contains unexpected fields: {sorted(unknown)}"
+        )
+    if str(snapshot.get("schema_version")) != "1.0":
+        raise LineupsMinutesError("Raw snapshot schema_version must be 1.0")
+    if str(snapshot.get("provider_id")) != expected_provider_id:
+        raise LineupsMinutesError("Raw snapshot provider_id mismatch")
+    if str(snapshot.get("source_id", "")) == "":
+        raise LineupsMinutesError("Raw snapshot source_id is required")
+    if str(snapshot.get("source_version", "")) == "":
+        raise LineupsMinutesError("Raw snapshot source_version is required")
+    if str(snapshot.get("provider_fixture_id", "")) == "":
+        raise LineupsMinutesError("Raw snapshot provider_fixture_id is required")
+    observed_text, _ = _time(snapshot.get("observed_at"), "provider.observed_at")
+    available_text, _ = _time(
+        snapshot.get("available_at", observed_text), "provider.available_at"
+    )
+    # Prefer caller-observed wall clock when the provider omits it, but never
+    # invent times that disagree with an explicit provider timestamp.
+    if observed_text != _time(observed_at, "observed_at")[0]:
+        # Allow exact provider timestamps; capture wall-clock is advisory only.
+        pass
+    players = snapshot.get("players")
+    if not isinstance(players, list) or not players:
+        raise LineupsMinutesError("Raw snapshot players must be a non-empty list")
+
+    sealed_body = {
+        "schema_version": "1.0",
+        "provider_id": expected_provider_id,
+        "source_id": str(snapshot["source_id"]),
+        "source_version": str(snapshot["source_version"]),
+        "provider_fixture_id": str(snapshot["provider_fixture_id"]),
+        "observed_at": observed_text,
+        "available_at": available_text,
+        "acquisition_status": str(snapshot.get("acquisition_status", "success")),
+        "players": deepcopy(list(players)),
+    }
+    if "http_status" in snapshot:
+        sealed_body["http_status"] = snapshot["http_status"]
+
+    expected_hash = snapshot.get("content_sha256") or snapshot.get("source_sha256")
+    sealed = _seal(sealed_body)
+    if expected_hash is not None and str(expected_hash) != sealed["content_sha256"]:
+        raise LineupsMinutesError("Raw snapshot content hash mismatch")
+    return sealed
+
+
+def verify_snapshot_integrity(snapshot: Mapping[str, Any]) -> str:
+    """Recompute and verify the snapshot content digest."""
+
+    digest = artifact_hash(snapshot)
+    claimed = snapshot.get("content_sha256")
+    if not isinstance(claimed, str) or claimed != digest:
+        raise LineupsMinutesError("Provider snapshot content hash mismatch")
+    source = snapshot.get("source_sha256")
+    if source is not None and str(source) not in {digest, claimed}:
+        raise LineupsMinutesError("Provider snapshot source_sha256 mismatch")
+    return digest
+
 def capture_provider_snapshot_or_degrade(
     *,
     config: Mapping[str, Any],
@@ -167,29 +305,24 @@ def capture_provider_snapshot_or_degrade(
     environ: Mapping[str, str] | None = None,
     fetch: Any | None = None,
 ) -> dict[str, Any]:
-    """Attempt a live provider capture only when a credential is present.
+    """Attempt a live provider capture only when activation gates pass.
 
-    Without a credential, or when the fetch reports timeout / rate-limit /
-    outage, return a degraded family. Never retries. Never mutates the shared
-    structured baseline.
+    Null selection, disabled registry entries, and incomplete rights approval
+    always degrade without invoking fetch. Never retries. Never mutates the
+    shared structured baseline.
     """
 
-    providers = {
-        str(item.get("provider_id")): item
-        for item in config.get("providers", [])
-        if isinstance(item, Mapping)
-    }
-    if provider_id not in providers:
-        raise LineupsMinutesError("Unregistered provider")
-    if config.get("selected_provider") not in {None, provider_id}:
+    gate = provider_activation_gate(config, provider_id)
+    if gate is not None:
         return degraded_lineups_family(
-            reason="no_provider_selected",
+            reason=gate,
             observed_at=observed_at,
             provider_id=provider_id,
-            detail="selected_provider is null or different; capture refused",
+            detail="provider activation gate refused fetch",
         )
 
-    env_name = str(providers[provider_id].get("credential_environment", ""))
+    entry = _provider_entry(config, provider_id)
+    env_name = str(entry.get("credential_environment", ""))
     env = environ if environ is not None else os.environ
     if not env_name or not env.get(env_name):
         return degraded_lineups_family(
@@ -247,7 +380,29 @@ def capture_provider_snapshot_or_degrade(
             observed_at=observed_at,
             provider_id=provider_id,
         )
-    return _seal(dict(snapshot))
+    try:
+        return admit_raw_provider_snapshot(
+            snapshot,
+            expected_provider_id=provider_id,
+            observed_at=observed_at,
+        )
+    except LineupsMinutesError as exc:
+        return degraded_lineups_family(
+            reason="invalid_snapshot",
+            observed_at=observed_at,
+            provider_id=provider_id,
+            detail=str(exc),
+        )
+
+
+def _completeness_threshold(config: Mapping[str, Any]) -> dict[str, int]:
+    admission = config.get("admission", {})
+    if not isinstance(admission, Mapping):
+        admission = {}
+    return {
+        "min_started_xi": int(admission.get("min_started_xi", 11)),
+        "min_admitted_players": int(admission.get("min_admitted_players", 11)),
+    }
 
 
 def reconcile_lineups_minutes(
@@ -264,10 +419,12 @@ def reconcile_lineups_minutes(
         raise LineupsMinutesError("Unsupported config schema")
     cutoff_text, cutoff_at = _time(cutoff, "cutoff")
     provider_id = str(provider_snapshot.get("provider_id", ""))
-    if provider_id not in {
-        str(item.get("provider_id")) for item in config.get("providers", [])
-    }:
-        raise LineupsMinutesError("Unregistered provider")
+    gate = provider_activation_gate(config, provider_id)
+    if gate is not None:
+        raise LineupsMinutesError(
+            f"Reconciliation refused for unselected/unapproved provider: {gate}"
+        )
+    source_sha256 = verify_snapshot_integrity(provider_snapshot)
     observed_text, observed_at = _time(
         provider_snapshot.get("observed_at"), "provider.observed_at"
     )
@@ -294,18 +451,31 @@ def reconcile_lineups_minutes(
     quarantined = 0
     source_id = str(provider_snapshot.get("source_id", provider_id))
     source_version = str(provider_snapshot.get("source_version", "unknown"))
-    source_sha256 = provider_snapshot.get("content_sha256") or provider_snapshot.get(
-        "source_sha256"
-    )
+    seen_provider_ids: set[str] = set()
+    seen_fpl_ids: set[str] = set()
+    started_count = 0
 
     for row in rows:
         if not isinstance(row, Mapping):
             raise LineupsMinutesError("provider player must be an object")
         provider_player_id = str(row.get("provider_player_id", ""))
+        if not provider_player_id:
+            raise LineupsMinutesError("provider_player_id is required")
+        if provider_player_id in seen_provider_ids:
+            raise LineupsMinutesError(
+                f"Duplicate provider_player_id: {provider_player_id}"
+            )
+        seen_provider_ids.add(provider_player_id)
+        started = _require_bool(row.get("started"), "started")
+        if started:
+            started_count += 1
         fpl_id = player_aliases.get(provider_player_id)
         if fpl_id is None:
             gaps.append(f"unmapped_provider_player:{provider_player_id}")
             continue
+        if fpl_id in seen_fpl_ids:
+            raise LineupsMinutesError(f"Duplicate fpl_player_id: {fpl_id}")
+        seen_fpl_ids.add(fpl_id)
         minutes = row.get("minutes")
         if (
             isinstance(minutes, bool)
@@ -334,14 +504,23 @@ def reconcile_lineups_minutes(
             {
                 "fpl_player_id": fpl_id,
                 "provider_player_id": provider_player_id,
-                "started": bool(row.get("started")),
+                "started": started,
                 "minutes": admitted_minutes,
                 "status": status,
                 "reasons": reasons,
             }
         )
 
-    status = "complete" if out and not gaps and not quarantined else "degraded"
+    thresholds = _completeness_threshold(config)
+    admitted_count = sum(1 for row in out if row["status"] == "admitted")
+    complete = (
+        bool(out)
+        and not gaps
+        and not quarantined
+        and started_count >= thresholds["min_started_xi"]
+        and admitted_count >= thresholds["min_admitted_players"]
+    )
+    status = "complete" if complete else "degraded"
     return _seal(
         {
             "schema_version": "1.0",
@@ -358,9 +537,10 @@ def reconcile_lineups_minutes(
             "quality": {
                 "gaps": sorted(gaps),
                 "quarantined_player_count": quarantined,
-                "admitted_player_count": sum(
-                    1 for row in out if row["status"] == "admitted"
-                ),
+                "admitted_player_count": admitted_count,
+                "started_count": started_count,
+                "min_started_xi": thresholds["min_started_xi"],
+                "min_admitted_players": thresholds["min_admitted_players"],
                 "identity_coverage": (
                     1.0
                     if not gaps and out
