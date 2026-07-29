@@ -29,7 +29,7 @@ from src.orchestration.preseason_snapshot import (
     PreseasonSnapshotConflict,
     PreseasonSnapshotError,
     capture_preseason_snapshot,
-)
+)  # noqa: F401 — PreseasonSnapshotConflict used in except clause
 
 DEFAULT_OUT = REPO_ROOT / "data" / "snapshots" / "2026-27" / "preseason"
 USER_AGENT = "fpl-agentic-decision-lab/0.1 (private read-only research)"
@@ -79,12 +79,19 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--predecessor-checkpoint-hash", default=None)
     parser.add_argument("--code-commit", default=None)
     parser.add_argument("--availability-artifact", type=Path, default=None)
+    parser.add_argument("--availability-sidecar", type=Path, default=None)
     parser.add_argument("--transfers-artifact", type=Path, default=None)
+    parser.add_argument("--transfers-sidecar", type=Path, default=None)
     parser.add_argument("--set-pieces-artifact", type=Path, default=None)
+    parser.add_argument("--set-pieces-sidecar", type=Path, default=None)
     parser.add_argument("--promoted-priors-artifact", type=Path, default=None)
+    parser.add_argument("--promoted-priors-sidecar", type=Path, default=None)
     parser.add_argument("--world-cup-priors-artifact", type=Path, default=None)
+    parser.add_argument("--world-cup-priors-sidecar", type=Path, default=None)
     parser.add_argument("--odds-artifact", type=Path, default=None)
+    parser.add_argument("--odds-sidecar", type=Path, default=None)
     parser.add_argument("--ratings-artifact", type=Path, default=None)
+    parser.add_argument("--ratings-sidecar", type=Path, default=None)
     parser.add_argument(
         "--no-network",
         action="store_true",
@@ -100,6 +107,15 @@ def main(argv: list[str] | None = None) -> int:
         "world_cup_return_fatigue": args.world_cup_priors_artifact,
         "licensed_odds": args.odds_artifact,
         "player_ratings": args.ratings_artifact,
+    }
+    optional_sidecars = {
+        "availability_role_evidence": args.availability_sidecar,
+        "transfers_and_signings": args.transfers_sidecar,
+        "set_pieces": args.set_pieces_sidecar,
+        "promoted_team_priors": args.promoted_priors_sidecar,
+        "world_cup_return_fatigue": args.world_cup_priors_sidecar,
+        "licensed_odds": args.odds_sidecar,
+        "player_ratings": args.ratings_sidecar,
     }
 
     bootstrap_body = None
@@ -146,6 +162,7 @@ def main(argv: list[str] | None = None) -> int:
             predecessor_checkpoint_hash=args.predecessor_checkpoint_hash,
             code_commit=args.code_commit,
             optional_artifacts=optional,
+            optional_sidecars=optional_sidecars,
         )
     except (PreseasonSnapshotError, PreseasonSnapshotConflict, OSError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

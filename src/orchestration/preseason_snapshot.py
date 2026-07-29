@@ -9,7 +9,7 @@ only; it does not optimise a squad or write to an FPL account.
 from __future__ import annotations
 
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import json
 import re
@@ -18,8 +18,12 @@ from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
 from src.ingestion.acquisition import content_hash, record_acquisition
-from src.ingestion.registry import load_registry
+from src.ingestion.registry import get_source, load_registry
 from src.orchestration.evidence_checkpoint_runner import (
+    EvidenceCheckpointConflict,
+    _exclusive_lock,
+    _write_immutable_json as _ecr_write_immutable_json,
+    _write_mutable_json,
     derive_deadline_checkpoints,
 )
 from src.scoring.rules_loader import ruleset_sha256
@@ -43,6 +47,13 @@ OPTIONAL_FAMILIES = (
     "licensed_odds",
     "player_ratings",
 )
+
+# Maximum time before the nominal checkpoint slot that an observation is accepted.
+# The upper bound (must be before the next slot) is the primary enforcement gate.
+CHECKPOINT_WINDOW_TOLERANCE = timedelta(hours=12)
+
+# Ordered sequence of deadline-relative checkpoint IDs.
+_CHECKPOINT_ORDER = ["T-48h", "T-24h", "T-8h", "T-2h", "final"]
 
 
 class PreseasonSnapshotError(ValueError):
@@ -87,6 +98,14 @@ def _timestamp(value: Any, field: str) -> tuple[str, datetime]:
     return utc.isoformat().replace("+00:00", "Z"), utc
 
 
+def _write_immutable_json(path: Path, value: Mapping[str, Any]) -> None:
+    """Delegate to evidence_checkpoint_runner's atomic immutable writer."""
+    try:
+        _ecr_write_immutable_json(path, value)
+    except EvidenceCheckpointConflict as exc:
+        raise PreseasonSnapshotConflict(str(exc)) from exc
+
+
 def _git_commit(code_commit: str | None = None) -> str:
     if code_commit is not None:
         if not re.fullmatch(r"[0-9a-f]{40}", code_commit):
@@ -103,20 +122,6 @@ def _git_commit(code_commit: str | None = None) -> str:
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
         raise PreseasonSnapshotError("Unable to resolve a full Git SHA for code_commit")
     return commit
-
-
-def _write_immutable_json(path: Path, value: Mapping[str, Any]) -> bytes:
-    encoded = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode("utf-8")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    if path.exists():
-        existing = path.read_bytes()
-        if existing != encoded:
-            raise PreseasonSnapshotConflict(
-                f"Refusing to overwrite immutable preseason artifact: {path}"
-            )
-        return existing
-    path.write_bytes(encoded)
-    return encoded
 
 
 def _load_json_object(path: Path, label: str) -> dict[str, Any]:
@@ -139,7 +144,13 @@ def load_preseason_config(path: Path | None = None) -> dict[str, Any]:
 
 
 def validate_checkpoint_id(checkpoint_id: str, *, deadline: str) -> str:
-    """Accept launch, weekly-YYYY-MM-DD, and deadline-relative IDs only."""
+    """Accept launch, weekly-YYYY-MM-DD, and deadline-relative IDs only.
+
+    This function validates the checkpoint ID format and deadline parsing only.
+    Schedule-window enforcement (observed_at within the correct slot window)
+    is performed separately by enforce_checkpoint_window once bootstrap data
+    is available.
+    """
 
     if not isinstance(checkpoint_id, str) or not checkpoint_id:
         raise PreseasonSnapshotError("checkpoint_id must be a non-empty string")
@@ -156,14 +167,70 @@ def validate_checkpoint_id(checkpoint_id: str, *, deadline: str) -> str:
             ) from exc
         return checkpoint_id
     if checkpoint_id in DEADLINE_RELATIVE_IDS:
-        # Presence of a validated deadline is enough; exact offset checking is
-        # performed when bootstrap is available via expected_deadline_schedule.
         _ = deadline_text, deadline_at
         return checkpoint_id
     raise PreseasonSnapshotError(
         "checkpoint_id must be launch, weekly-YYYY-MM-DD, "
         "T-48h, T-24h, T-8h, T-2h, or final"
     )
+
+
+def enforce_checkpoint_window(
+    checkpoint_id: str,
+    observed_at_utc: datetime,
+    schedule: dict[str, str],
+    deadline_utc: datetime,
+) -> None:
+    """Raise PreseasonSnapshotError if observed_at falls outside the valid window.
+
+    For deadline-relative IDs the window is:
+      lower: nominal_slot - CHECKPOINT_WINDOW_TOLERANCE
+      upper: next_slot (or deadline for 'final') — exclusive
+
+    A capture labelled T-48h must have been observed before the T-24h window
+    opens; it cannot be backdated from a T-2h observation.
+
+    For weekly-YYYY-MM-DD the observation date (UTC) must equal the label date.
+    """
+
+    weekly = _WEEKLY.fullmatch(checkpoint_id)
+    if weekly:
+        label_date = datetime.strptime(weekly.group(1), "%Y-%m-%d").date()
+        obs_date = observed_at_utc.date()
+        if obs_date != label_date:
+            raise PreseasonSnapshotError(
+                f"weekly checkpoint_id={checkpoint_id!r}: label date {label_date} "
+                f"does not match observation date {obs_date} (UTC); "
+                "capture on the labelled date or use the correct date label"
+            )
+        return
+
+    if checkpoint_id not in DEADLINE_RELATIVE_IDS:
+        return
+
+    idx = _CHECKPOINT_ORDER.index(checkpoint_id)
+    _, nominal = _timestamp(schedule[checkpoint_id], "nominal_slot")
+
+    if idx < len(_CHECKPOINT_ORDER) - 1:
+        _, upper = _timestamp(schedule[_CHECKPOINT_ORDER[idx + 1]], "next_slot")
+    else:
+        upper = deadline_utc
+
+    if observed_at_utc >= upper:
+        raise PreseasonSnapshotError(
+            f"checkpoint_id={checkpoint_id!r}: observed_at {observed_at_utc.isoformat()} "
+            f"is at or after the start of the next checkpoint window "
+            f"{upper.isoformat()}; a missed checkpoint cannot be backfilled "
+            "under an earlier label"
+        )
+
+    lower = nominal - CHECKPOINT_WINDOW_TOLERANCE
+    if observed_at_utc < lower:
+        raise PreseasonSnapshotError(
+            f"checkpoint_id={checkpoint_id!r}: observed_at {observed_at_utc.isoformat()} "
+            f"is more than {CHECKPOINT_WINDOW_TOLERANCE} before the nominal slot "
+            f"{nominal.isoformat()}; use the launch or weekly label for non-deadline captures"
+        )
 
 
 def expected_deadline_schedule(bootstrap: Mapping[str, Any], *, gameweek: int = 1) -> dict[str, str]:
@@ -288,17 +355,65 @@ def _family_status(
     artifact_sha256: str | None = None,
     reasons: Sequence[str] | None = None,
     source_id: str | None = None,
+    registry_source_status: str | None = None,
 ) -> dict[str, Any]:
     return {
         "family_id": family_id,
         "mandatory": mandatory,
         "status": status,
         "source_id": source_id,
+        "registry_source_status": registry_source_status,
         "counts": dict(counts),
         "artifact_path": artifact_path,
         "artifact_sha256": artifact_sha256,
         "reasons": list(reasons or []),
     }
+
+
+def _validate_source_id(source_id: str | None, registry: dict[str, Any]) -> str:
+    """Return the registry collectable status: 'ok', 'disabled', 'prohibited', 'unregistered', 'unknown'."""
+    if not source_id:
+        return "unknown"
+    registered = {
+        str(row.get("source_id", "")): row
+        for row in registry.get("sources", [])
+        if isinstance(row, Mapping)
+    }
+    source = registered.get(source_id)
+    if source is None:
+        return "unregistered"
+    if source.get("licence_status") in {"prohibited"}:
+        return "prohibited"
+    if not source.get("enabled"):
+        return "disabled"
+    if source.get("licence_status") in {None, "unknown"}:
+        return "licence_unresolved"
+    return "ok"
+
+
+def _copy_optional_bytes(
+    body: bytes,
+    *,
+    family_id: str,
+    digest: str,
+    checkpoint_dir: Path,
+    extension: str = "bin",
+) -> str:
+    """Content-addressably copy optional artifact bytes into the checkpoint.
+
+    Returns the checkpoint-relative path string.
+    """
+    safe_family = re.sub(r"[^A-Za-z0-9_-]", "-", family_id)
+    dest = checkpoint_dir / "raw" / "optional" / f"{safe_family}-{digest}.{extension}"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    encoded = body
+    if not dest.exists():
+        dest.write_bytes(encoded)
+    elif dest.read_bytes() != encoded:
+        raise PreseasonSnapshotConflict(
+            f"Content-addressed optional artifact already exists with different bytes: {dest}"
+        )
+    return (Path("raw") / "optional" / f"{safe_family}-{digest}.{extension}").as_posix()
 
 
 def _bind_optional_artifact(
@@ -308,8 +423,21 @@ def _bind_optional_artifact(
     deadline: str,
     source_id: str | None,
     missing_reason: str,
+    checkpoint_dir: Path,
+    sidecar_path: Path | None = None,
+    registry: dict[str, Any],
 ) -> dict[str, Any]:
+    """Bind one optional artifact into the checkpoint.
+
+    Behaviours:
+    - Missing path → degraded/missing.
+    - Source ID not collectable via registry → degraded.
+    - Non-JSON binary/CSV without a temporal sidecar → quarantined.
+    - Malformed (non-object) records are quarantined explicitly, never silently dropped.
+    - Valid bytes are copied content-addressably into checkpoint_dir/raw/optional/.
+    """
     counts = _empty_family_counts()
+
     if path is None:
         counts["missing"] = 1
         return _family_status(
@@ -320,6 +448,7 @@ def _bind_optional_artifact(
             reasons=[missing_reason],
             source_id=source_id,
         )
+
     if not path.exists():
         counts["missing"] = 1
         return _family_status(
@@ -330,47 +459,163 @@ def _bind_optional_artifact(
             reasons=[f"optional_artifact_missing:{path.as_posix()}"],
             source_id=source_id,
         )
+
+    # Validate source ID against registry before trusting any bytes.
+    reg_status = _validate_source_id(source_id, registry)
+    if reg_status in {"unregistered", "prohibited"}:
+        counts["missing"] = 1
+        return _family_status(
+            family_id=family_id,
+            mandatory=False,
+            status="degraded",
+            counts=counts,
+            reasons=[f"source_not_collectable:{reg_status}"],
+            source_id=source_id,
+            registry_source_status=reg_status,
+        )
+
     body = path.read_bytes()
     digest = content_hash(body)
     counts["input"] = 1
+
     try:
         payload = json.loads(body)
-    except json.JSONDecodeError:
-        # Non-JSON optional artifacts (for example CSV priors) are bound by hash
-        # when the caller supplied an explicit path; temporal fields are absent.
-        counts["admitted"] = 1
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        # Non-JSON optional artifacts (e.g. CSV priors) require a temporal sidecar.
+        if sidecar_path is None:
+            counts["quarantined"] = 1
+            return _family_status(
+                family_id=family_id,
+                mandatory=False,
+                status="degraded",
+                counts=counts,
+                reasons=["missing_temporal_sidecar_for_binary"],
+                source_id=source_id,
+                registry_source_status=reg_status,
+            )
+        if not sidecar_path.exists():
+            counts["quarantined"] = 1
+            return _family_status(
+                family_id=family_id,
+                mandatory=False,
+                status="degraded",
+                counts=counts,
+                reasons=[f"sidecar_missing:{sidecar_path.as_posix()}"],
+                source_id=source_id,
+                registry_source_status=reg_status,
+            )
+        try:
+            sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError, OSError):
+            counts["quarantined"] = 1
+            return _family_status(
+                family_id=family_id,
+                mandatory=False,
+                status="degraded",
+                counts=counts,
+                reasons=["sidecar_not_valid_json"],
+                source_id=source_id,
+                registry_source_status=reg_status,
+            )
+        if not isinstance(sidecar, dict) or "available_at" not in sidecar:
+            counts["quarantined"] = 1
+            return _family_status(
+                family_id=family_id,
+                mandatory=False,
+                status="degraded",
+                counts=counts,
+                reasons=["sidecar_missing_available_at"],
+                source_id=source_id,
+                registry_source_status=reg_status,
+            )
+        # Treat the sidecar as a single record and admit it.
+        admission = admit_temporal_records([sidecar], deadline=deadline)
+        counts["input"] = 1
+        counts["admitted"] = admission["admitted_count"]
+        counts["quarantined"] = admission["quarantined_count"]
+        if admission["admitted_count"] == 0:
+            counts["missing"] = 1
+            reasons = sorted({row["reason"] for row in admission["quarantined"]}) or [missing_reason]
+            return _family_status(
+                family_id=family_id,
+                mandatory=False,
+                status="degraded",
+                counts=counts,
+                reasons=reasons,
+                source_id=source_id,
+                registry_source_status=reg_status,
+            )
+        artifact_relative = _copy_optional_bytes(
+            body, family_id=family_id, digest=digest, checkpoint_dir=checkpoint_dir
+        )
         return _family_status(
             family_id=family_id,
             mandatory=False,
             status="admitted",
             counts=counts,
-            artifact_path=path.as_posix(),
+            artifact_path=artifact_relative,
             artifact_sha256=digest,
             source_id=source_id,
+            registry_source_status=reg_status,
         )
-    records: list[Mapping[str, Any]]
+
+    # JSON payload: determine record list.
+    records: list[Any]
     if isinstance(payload, dict) and isinstance(payload.get("records"), list):
-        records = [row for row in payload["records"] if isinstance(row, Mapping)]
+        raw_records = payload["records"]
+        records = []
+        extra_quarantined: list[dict[str, Any]] = []
+        for idx, row in enumerate(raw_records):
+            if isinstance(row, Mapping):
+                records.append(row)
+            else:
+                extra_quarantined.append(
+                    {
+                        "index": idx,
+                        "reason": "record_must_be_object",
+                        "record": None,
+                    }
+                )
+        extra_q = len(extra_quarantined)
     elif isinstance(payload, dict) and "available_at" in payload:
         records = [payload]
-    else:
+        extra_quarantined = []
+        extra_q = 0
+    elif isinstance(payload, dict):
         counts["admitted"] = 1
+        artifact_relative = _copy_optional_bytes(
+            body, family_id=family_id, digest=digest, checkpoint_dir=checkpoint_dir, extension="json"
+        )
         return _family_status(
             family_id=family_id,
             mandatory=False,
             status="admitted",
             counts=counts,
-            artifact_path=path.as_posix(),
+            artifact_path=artifact_relative,
             artifact_sha256=digest,
             source_id=source_id,
+            registry_source_status=reg_status,
         )
+    else:
+        counts["quarantined"] = 1
+        return _family_status(
+            family_id=family_id,
+            mandatory=False,
+            status="degraded",
+            counts=counts,
+            reasons=["payload_must_be_json_object"],
+            source_id=source_id,
+            registry_source_status=reg_status,
+        )
+
     admission = admit_temporal_records(records, deadline=deadline)
-    counts["input"] = admission["input_count"]
+    counts["input"] = admission["input_count"] + extra_q
     counts["admitted"] = admission["admitted_count"]
-    counts["quarantined"] = admission["quarantined_count"]
+    counts["quarantined"] = admission["quarantined_count"] + extra_q
+
     if admission["admitted_count"] == 0:
-        counts["missing"] = 1 if admission["input_count"] == 0 else 0
-        reasons = sorted({row["reason"] for row in admission["quarantined"]})
+        counts["missing"] = 1 if (admission["input_count"] + extra_q) == 0 else 0
+        reasons = sorted({row["reason"] for row in admission["quarantined"] + extra_quarantined})
         if not reasons:
             reasons = [missing_reason]
         return _family_status(
@@ -382,18 +627,24 @@ def _bind_optional_artifact(
             artifact_sha256=digest,
             reasons=reasons,
             source_id=source_id,
+            registry_source_status=reg_status,
         )
-    status = "admitted" if admission["quarantined_count"] == 0 else "degraded"
-    reasons = sorted({row["reason"] for row in admission["quarantined"]})
+
+    status = "admitted" if (admission["quarantined_count"] + extra_q) == 0 else "degraded"
+    reasons = sorted({row["reason"] for row in admission["quarantined"] + extra_quarantined})
+    artifact_relative = _copy_optional_bytes(
+        body, family_id=family_id, digest=digest, checkpoint_dir=checkpoint_dir, extension="json"
+    )
     return _family_status(
         family_id=family_id,
         mandatory=False,
         status=status,
         counts=counts,
-        artifact_path=path.as_posix(),
+        artifact_path=artifact_relative,
         artifact_sha256=digest,
         reasons=reasons,
         source_id=source_id,
+        registry_source_status=reg_status,
     )
 
 
@@ -450,9 +701,37 @@ def _persist_official_payload(
             artifact_path=relative,
             artifact_sha256=str(acquisition["content_hash_sha256"]),
             source_id="fpl-official-endpoints",
+            registry_source_status="ok",
         ),
         "acquisition": acquisition,
     }
+
+
+def _optional_source_ids_from_config(config: Mapping[str, Any]) -> dict[str, str | None]:
+    """Read optional family source IDs from config rather than hardcoding them."""
+    result: dict[str, str | None] = {fid: None for fid in OPTIONAL_FAMILIES}
+    for entry in config.get("optional_families", []):
+        fid = str(entry.get("family_id", ""))
+        src = entry.get("source_id")
+        if fid in result:
+            result[fid] = str(src) if src else None
+    return result
+
+
+def _compute_optional_digests(
+    optional_paths: Mapping[str, Path | None],
+) -> dict[str, str | None]:
+    """Pre-compute content digests for all optional artifacts provided.
+
+    Returns a mapping from family_id to digest (or None if path is absent/missing).
+    """
+    result: dict[str, str | None] = {}
+    for family_id, path in optional_paths.items():
+        if path is not None and path.exists():
+            result[family_id] = content_hash(path.read_bytes())
+        else:
+            result[family_id] = None
+    return result
 
 
 def capture_preseason_snapshot(
@@ -472,19 +751,28 @@ def capture_preseason_snapshot(
     predecessor_checkpoint_hash: str | None = None,
     code_commit: str | None = None,
     optional_artifacts: Mapping[str, Path | None] | None = None,
+    optional_sidecars: Mapping[str, Path | None] | None = None,
     update_index: bool = True,
 ) -> dict[str, Any]:
-    """Capture one immutable preseason checkpoint and return its sealed manifest."""
+    """Capture one immutable preseason checkpoint and return its sealed manifest.
+
+    The entire write sequence (manifest + index update) is protected by an
+    exclusive file lock, reusing the single-writer contract from
+    evidence_checkpoint_runner.  Optional artifacts are copied
+    content-addressably into the checkpoint and their digests are included in
+    the request hash so that a changed artifact at the same checkpoint is
+    detected as a conflict.
+    """
 
     if season != "2026-27":
         raise PreseasonSnapshotError("Only season 2026-27 is supported")
     config = load_preseason_config(config_path)
-    deadline_text, _ = _timestamp(deadline, "deadline")
+    deadline_text, deadline_utc = _timestamp(deadline, "deadline")
     validate_checkpoint_id(checkpoint_id, deadline=deadline_text)
     if observed_at is None:
         raise PreseasonSnapshotError("observed_at is required")
-    observed_text, _ = _timestamp(observed_at, "observed_at")
-    if observed_text >= deadline_text:
+    observed_text, observed_utc = _timestamp(observed_at, "observed_at")
+    if observed_utc >= deadline_utc:
         raise PreseasonSnapshotError(
             "observed_at must be strictly before the GW1 deadline"
         )
@@ -506,6 +794,24 @@ def capture_preseason_snapshot(
 
     checkpoint_dir = output_root / checkpoint_id
     manifest_path = checkpoint_dir / "manifest.json"
+
+    optional_paths: dict[str, Path | None] = {fid: None for fid in OPTIONAL_FAMILIES}
+    if optional_artifacts:
+        for key, value in optional_artifacts.items():
+            if key not in optional_paths:
+                raise PreseasonSnapshotError(f"Unknown optional family: {key}")
+            optional_paths[key] = value
+
+    sidecars: dict[str, Path | None] = {fid: None for fid in OPTIONAL_FAMILIES}
+    if optional_sidecars:
+        for key, value in optional_sidecars.items():
+            if key not in sidecars:
+                raise PreseasonSnapshotError(f"Unknown optional family for sidecar: {key}")
+            sidecars[key] = value
+
+    # Compute optional artifact digests before request hash.
+    optional_digests = _compute_optional_digests(optional_paths)
+
     request = {
         "season": season,
         "checkpoint_id": checkpoint_id,
@@ -518,52 +824,54 @@ def capture_preseason_snapshot(
         "config_sha256": content_hash(
             json.dumps(config, sort_keys=True, separators=(",", ":")).encode("utf-8")
         ),
+        "optional_artifact_sha256": {k: v for k, v in sorted(optional_digests.items())},
     }
     request_sha256 = artifact_hash({"request": request})
 
-    if manifest_path.exists():
-        existing = _load_json_object(manifest_path, "existing preseason manifest")
-        if existing.get("content_sha256") != artifact_hash(existing):
-            raise PreseasonSnapshotConflict(
-                f"Existing manifest failed hash validation: {manifest_path}"
-            )
-        if existing.get("request_sha256") != request_sha256:
-            raise PreseasonSnapshotConflict(
-                f"Refusing to overwrite immutable preseason checkpoint: {manifest_path}"
-            )
-        # Same logical request: verify supplied mandatory bytes still match.
+    lock_path = output_root / ".preseason.lock"
+    with _exclusive_lock(lock_path):
+        if manifest_path.exists():
+            existing = _load_json_object(manifest_path, "existing preseason manifest")
+            if existing.get("content_sha256") != artifact_hash(existing):
+                raise PreseasonSnapshotConflict(
+                    f"Existing manifest failed hash validation: {manifest_path}"
+                )
+            if existing.get("request_sha256") != request_sha256:
+                raise PreseasonSnapshotConflict(
+                    f"Refusing to overwrite immutable preseason checkpoint: {manifest_path}"
+                )
+            # Same logical request: verify supplied mandatory bytes still match.
+            bootstrap_bytes = bootstrap_body
+            if bootstrap_bytes is None and bootstrap_fetcher is not None:
+                bootstrap_bytes = bootstrap_fetcher()
+            fixtures_bytes = fixtures_body
+            if fixtures_bytes is None and fixtures_fetcher is not None:
+                fixtures_bytes = fixtures_fetcher()
+            if bootstrap_bytes is not None:
+                expected = existing["families"]["official_bootstrap"]["artifact_sha256"]
+                if content_hash(bootstrap_bytes) != expected:
+                    raise PreseasonSnapshotConflict(
+                        "Refusing to overwrite immutable official bootstrap bytes"
+                    )
+            if fixtures_bytes is not None:
+                expected = existing["families"]["official_fixtures"]["artifact_sha256"]
+                if content_hash(fixtures_bytes) != expected:
+                    raise PreseasonSnapshotConflict(
+                        "Refusing to overwrite immutable official fixtures bytes"
+                    )
+            return existing
+
         bootstrap_bytes = bootstrap_body
         if bootstrap_bytes is None and bootstrap_fetcher is not None:
             bootstrap_bytes = bootstrap_fetcher()
         fixtures_bytes = fixtures_body
         if fixtures_bytes is None and fixtures_fetcher is not None:
             fixtures_bytes = fixtures_fetcher()
-        if bootstrap_bytes is not None:
-            expected = existing["families"]["official_bootstrap"]["artifact_sha256"]
-            if content_hash(bootstrap_bytes) != expected:
-                raise PreseasonSnapshotConflict(
-                    "Refusing to overwrite immutable official bootstrap bytes"
-                )
-        if fixtures_bytes is not None:
-            expected = existing["families"]["official_fixtures"]["artifact_sha256"]
-            if content_hash(fixtures_bytes) != expected:
-                raise PreseasonSnapshotConflict(
-                    "Refusing to overwrite immutable official fixtures bytes"
-                )
-        return existing
+        if bootstrap_bytes is None or fixtures_bytes is None:
+            raise PreseasonSnapshotError(
+                "Mandatory official state is missing: bootstrap and fixtures are required"
+            )
 
-    bootstrap_bytes = bootstrap_body
-    if bootstrap_bytes is None and bootstrap_fetcher is not None:
-        bootstrap_bytes = bootstrap_fetcher()
-    fixtures_bytes = fixtures_body
-    if fixtures_bytes is None and fixtures_fetcher is not None:
-        fixtures_bytes = fixtures_fetcher()
-    if bootstrap_bytes is None or fixtures_bytes is None:
-        raise PreseasonSnapshotError(
-            "Mandatory official state is missing: bootstrap and fixtures are required"
-        )
-
-    try:
         bootstrap_result = _persist_official_payload(
             family_id="official_bootstrap",
             body=bootstrap_bytes,
@@ -582,140 +890,118 @@ def capture_preseason_snapshot(
             registry_version=registry_version,
             origin="fixture://fpl/fixtures",
         )
-    except Exception:
-        # Fail closed: do not leave an admitted manifest if mandatory capture fails.
-        if manifest_path.exists():
-            raise
-        raise
 
-    bootstrap_payload = bootstrap_result["payload"]
-    assert isinstance(bootstrap_payload, dict)
-    official_deadline = assert_deadline_matches_bootstrap(
-        bootstrap_payload, deadline=deadline_text
-    )
-    schedule = expected_deadline_schedule(bootstrap_payload)
-    if checkpoint_id in schedule and observed_text > schedule[checkpoint_id]:
-        # Soft scheduler lag is out of scope; still refuse post-deadline capture.
-        pass
-    if checkpoint_id in DEADLINE_RELATIVE_IDS:
-        expected_at = schedule[checkpoint_id]
-        # Capture may run slightly after the nominal slot but never at/after deadline.
-        _ = expected_at
+        bootstrap_payload = bootstrap_result["payload"]
+        assert isinstance(bootstrap_payload, dict)
+        official_deadline = assert_deadline_matches_bootstrap(
+            bootstrap_payload, deadline=deadline_text
+        )
+        schedule = expected_deadline_schedule(bootstrap_payload)
 
-    rules_counts = _empty_family_counts()
-    rules_counts["input"] = 1
-    rules_counts["admitted"] = 1
-    families = {
-        "official_bootstrap": bootstrap_result["family"],
-        "official_fixtures": fixtures_result["family"],
-        "ruleset": _family_status(
-            family_id="ruleset",
-            mandatory=True,
-            status="admitted",
-            counts=rules_counts,
-            artifact_path=rules.as_posix(),
-            artifact_sha256=rules_hash,
-            source_id="fpl-official-rules-news",
-        ),
-    }
-
-    optional_paths = {
-        "availability_role_evidence": None,
-        "transfers_and_signings": None,
-        "set_pieces": None,
-        "promoted_team_priors": None,
-        "world_cup_return_fatigue": None,
-        "licensed_odds": None,
-        "player_ratings": None,
-    }
-    if optional_artifacts:
-        for key, value in optional_artifacts.items():
-            if key not in optional_paths:
-                raise PreseasonSnapshotError(f"Unknown optional family: {key}")
-            optional_paths[key] = value
-
-    optional_sources = {
-        "availability_role_evidence": "fpl-official-endpoints",
-        "transfers_and_signings": "fpl-official-endpoints",
-        "set_pieces": "fpl-official-endpoints",
-        "promoted_team_priors": "fpl-official-endpoints",
-        "world_cup_return_fatigue": "world-cup-2026",
-        "licensed_odds": "the-odds-api",
-        "player_ratings": "statsbomb-open",
-    }
-    optional_missing_reasons = {
-        "availability_role_evidence": "optional_availability_evidence_not_supplied",
-        "transfers_and_signings": "optional_transfer_context_not_supplied",
-        "set_pieces": "optional_set_piece_ledger_not_supplied",
-        "promoted_team_priors": "optional_promoted_team_priors_not_supplied",
-        "world_cup_return_fatigue": "optional_world_cup_priors_not_supplied",
-        "licensed_odds": "optional_licensed_odds_not_configured",
-        "player_ratings": "optional_player_ratings_not_supplied",
-    }
-    for family_id in OPTIONAL_FAMILIES:
-        families[family_id] = _bind_optional_artifact(
-            family_id=family_id,
-            path=optional_paths[family_id],
-            deadline=official_deadline,
-            source_id=optional_sources[family_id],
-            missing_reason=optional_missing_reasons[family_id],
+        # Enforce scheduling contract: verify observed_at is in the correct window.
+        enforce_checkpoint_window(
+            checkpoint_id,
+            observed_utc,
+            schedule,
+            deadline_utc,
         )
 
-    source_gaps = sorted(
-        family_id
-        for family_id, row in families.items()
-        if row["status"] == "degraded" or row["counts"]["missing"] > 0
-    )
-    status = "complete"
-    if source_gaps:
-        status = "degraded"
-
-    manifest = _seal(
-        {
-            "schema_version": "1.0",
-            "season": season,
-            "checkpoint_id": checkpoint_id,
-            "status": status,
-            "source_registry_version": registry_version,
-            "observed_at": observed_text,
-            "available_at": observed_text,
-            "deadline": official_deadline,
-            "deadline_schedule": schedule,
-            "request_sha256": request_sha256,
-            "code_commit": commit,
-            "ruleset_sha256": rules_hash,
-            "predecessor_checkpoint_hash": predecessor_checkpoint_hash,
-            "account_writes": False,
-            "families": families,
-            "source_gaps": source_gaps,
-            "artifact_root": checkpoint_dir.as_posix(),
-            "raw_acquisitions": [
-                {
-                    "family_id": "official_bootstrap",
-                    "manifest_id": bootstrap_result["acquisition"]["manifest_id"],
-                    "content_hash_sha256": bootstrap_result["acquisition"][
-                        "content_hash_sha256"
-                    ],
-                },
-                {
-                    "family_id": "official_fixtures",
-                    "manifest_id": fixtures_result["acquisition"]["manifest_id"],
-                    "content_hash_sha256": fixtures_result["acquisition"][
-                        "content_hash_sha256"
-                    ],
-                },
-            ],
+        rules_counts = _empty_family_counts()
+        rules_counts["input"] = 1
+        rules_counts["admitted"] = 1
+        families: dict[str, Any] = {
+            "official_bootstrap": bootstrap_result["family"],
+            "official_fixtures": fixtures_result["family"],
+            "ruleset": _family_status(
+                family_id="ruleset",
+                mandatory=True,
+                status="admitted",
+                counts=rules_counts,
+                artifact_path=rules.as_posix(),
+                artifact_sha256=rules_hash,
+                source_id="fpl-official-rules-news",
+                registry_source_status="ok",
+            ),
         }
-    )
-    _write_immutable_json(manifest_path, manifest)
 
-    if update_index:
-        _update_index_manifest(
-            index_path=index_manifest_path or DEFAULT_MANIFEST_PATH,
-            checkpoint_manifest=manifest,
-            manifest_path=manifest_path,
+        # Read source IDs from config rather than hardcoding them.
+        optional_sources = _optional_source_ids_from_config(config)
+        optional_missing_reasons = {
+            "availability_role_evidence": "optional_availability_evidence_not_supplied",
+            "transfers_and_signings": "optional_transfer_context_not_supplied",
+            "set_pieces": "optional_set_piece_ledger_not_supplied",
+            "promoted_team_priors": "optional_promoted_team_priors_not_supplied",
+            "world_cup_return_fatigue": "optional_world_cup_priors_not_supplied",
+            "licensed_odds": "optional_licensed_odds_not_configured",
+            "player_ratings": "optional_player_ratings_not_supplied",
+        }
+        for family_id in OPTIONAL_FAMILIES:
+            families[family_id] = _bind_optional_artifact(
+                family_id=family_id,
+                path=optional_paths[family_id],
+                deadline=official_deadline,
+                source_id=optional_sources[family_id],
+                missing_reason=optional_missing_reasons[family_id],
+                checkpoint_dir=checkpoint_dir,
+                sidecar_path=sidecars[family_id],
+                registry=registry,
+            )
+
+        source_gaps = sorted(
+            family_id
+            for family_id, row in families.items()
+            if row["status"] == "degraded" or row["counts"]["missing"] > 0
         )
-    return manifest
+        status = "complete"
+        if source_gaps:
+            status = "degraded"
+
+        manifest = _seal(
+            {
+                "schema_version": "1.0",
+                "season": season,
+                "checkpoint_id": checkpoint_id,
+                "status": status,
+                "source_registry_version": registry_version,
+                "observed_at": observed_text,
+                "available_at": observed_text,
+                "deadline": official_deadline,
+                "deadline_schedule": schedule,
+                "request_sha256": request_sha256,
+                "code_commit": commit,
+                "ruleset_sha256": rules_hash,
+                "predecessor_checkpoint_hash": predecessor_checkpoint_hash,
+                "account_writes": False,
+                "families": families,
+                "source_gaps": source_gaps,
+                "artifact_root": checkpoint_dir.as_posix(),
+                "raw_acquisitions": [
+                    {
+                        "family_id": "official_bootstrap",
+                        "manifest_id": bootstrap_result["acquisition"]["manifest_id"],
+                        "content_hash_sha256": bootstrap_result["acquisition"][
+                            "content_hash_sha256"
+                        ],
+                    },
+                    {
+                        "family_id": "official_fixtures",
+                        "manifest_id": fixtures_result["acquisition"]["manifest_id"],
+                        "content_hash_sha256": fixtures_result["acquisition"][
+                            "content_hash_sha256"
+                        ],
+                    },
+                ],
+            }
+        )
+        _write_immutable_json(manifest_path, manifest)
+
+        if update_index:
+            _update_index_manifest(
+                index_path=index_manifest_path or DEFAULT_MANIFEST_PATH,
+                checkpoint_manifest=manifest,
+                manifest_path=manifest_path,
+            )
+        return manifest
 
 
 def _update_index_manifest(
@@ -758,11 +1044,8 @@ def _update_index_manifest(
     index["updated_at"] = checkpoint_manifest["observed_at"]
     index["account_writes"] = False
     sealed = _seal(index)
-    # Index is a mutable coordination pointer: rewrite only through this helper.
-    index_path.parent.mkdir(parents=True, exist_ok=True)
-    index_path.write_text(
-        json.dumps(sealed, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-    )
+    # Index is a mutable coordination pointer: use the atomic mutable writer.
+    _write_mutable_json(index_path, sealed)
 
 
 def load_index_manifest(path: Path | None = None) -> dict[str, Any]:
