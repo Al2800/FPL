@@ -57,6 +57,7 @@ class SolverInput:
     future_transfer_discount: float = 0.9
     squad_contingency_policy: str = "none"
     appearance_calibration: dict[str, Any] | None = None
+    search_deadline_ms: int | None = None
     ruleset_mismatch_policy: str = "fail_closed"
     availability_policy: str = "available_only"
     solver_version: str = SOLVER_VERSION
@@ -99,6 +100,8 @@ class SolverInput:
                     "appearance_calibration": self.appearance_calibration,
                 }
             )
+        if self.search_deadline_ms is not None:
+            value["search_deadline_ms"] = self.search_deadline_ms
         return value
 
     @classmethod
@@ -132,6 +135,11 @@ class SolverInput:
             appearance_calibration=(
                 dict(data["appearance_calibration"])
                 if data.get("appearance_calibration") is not None
+                else None
+            ),
+            search_deadline_ms=(
+                int(data["search_deadline_ms"])
+                if data.get("search_deadline_ms") is not None
                 else None
             ),
             ruleset_mismatch_policy=str(data.get("ruleset_mismatch_policy", "fail_closed")),

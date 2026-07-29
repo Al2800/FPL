@@ -1,0 +1,207 @@
+{
+  "appearance_calibration_sha256": "8ea3c3cc0ca7b04d054538f039b390727c90b569a5c04593df336a25a8f29383",
+  "fixture": "scripts/profile_contingency_transfer_search.scale_input",
+  "host": {
+    "code_commit": "7afd19903948458edf871a4a2214f3a60d545783",
+    "cpu_count": 4,
+    "platform": "Linux-6.12.94+-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python": "3.12.3"
+  },
+  "method": {
+    "latency": "5 warm-process perf_counter samples after one warmup",
+    "latency_note": "one-transfer: 5 warm profiler samples; two-transfer: two timed full-set solves (~105.6s) after levers; three-transfer: deadline-bounded degraded probe only",
+    "levers": [
+      "shared_missing_state_per_starting_xi",
+      "lineup_and_evaluation_memoisation",
+      "hot_path_local_appearance_caches",
+      "formation_upper_bound_pruning",
+      "configurable_search_deadline_ms"
+    ],
+    "memory": "separate tracemalloc run; profiler overhead excluded from latency",
+    "percentiles": "linear interpolation",
+    "scope": "probabilistic_v1 contingency valuation over the declared transfer pool"
+  },
+  "production_default_unchanged": true,
+  "ruleset_id": "2025-26-v1.0",
+  "ruleset_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809",
+  "schema_version": "1.0",
+  "three_transfer_contingency_enabled": false,
+  "verdict": {
+    "one_transfer_budget_met": true,
+    "promotion_decision": "reject_three_transfer_contingency_default",
+    "three_transfer_isomorphic_budget_met": false,
+    "two_transfer_budget_met": false
+  },
+  "widths": [
+    {
+      "budget_p95_ms": 5000.0,
+      "cumulative_valid_candidates_including_no_transfer": 122,
+      "declared_layer_candidates": 120,
+      "deterministic": true,
+      "full_declared_set": true,
+      "hotspots": [
+        {
+          "calls": 155047,
+          "cumtime_s": 0.021775,
+          "file": "~",
+          "function": "<method 'get' of 'dict' objects>",
+          "line": 0,
+          "tottime_s": 0.021775
+        },
+        {
+          "calls": 52917,
+          "cumtime_s": 0.007596,
+          "file": "~",
+          "function": "<method 'items' of 'dict' objects>",
+          "line": 0,
+          "tottime_s": 0.007596
+        },
+        {
+          "calls": 8313,
+          "cumtime_s": 0.001021,
+          "file": "~",
+          "function": "<method 'append' of 'list' objects>",
+          "line": 0,
+          "tottime_s": 0.001021
+        },
+        {
+          "calls": 2904,
+          "cumtime_s": 0.000656,
+          "file": "~",
+          "function": "<method 'extend' of 'list' objects>",
+          "line": 0,
+          "tottime_s": 0.000656
+        },
+        {
+          "calls": 129,
+          "cumtime_s": 0.00018,
+          "file": "~",
+          "function": "<method 'sort' of 'list' objects>",
+          "line": 0,
+          "tottime_s": 0.000132
+        }
+      ],
+      "layer_candidate_sha256": "ca63b6259cf2554f5b5bbb13610d16c09ddaa41883b34ac0fc7da9a52ded82cc",
+      "max_transfers": 1,
+      "meets_budget": true,
+      "output_fingerprint": "692ffa8cbc8ff6837ef0e40518a9ec20d1d55e060723c395484914406b4fad66",
+      "python_heap_peak_bytes": 48908866,
+      "samples": 5,
+      "search_degraded": false,
+      "selected_objective": 78.3086,
+      "throughput_candidates_per_second": 58.454,
+      "wall_ms": {
+        "mean": 2087.123,
+        "p50": 2079.118,
+        "p95": 2105.913,
+        "p99": 2109.058
+      },
+      "warmup": 1
+    },
+    {
+      "budget_p95_ms": 60000.0,
+      "cumulative_valid_candidates_including_no_transfer": 5978,
+      "declared_layer_candidates": 5856,
+      "deterministic": true,
+      "full_declared_set": true,
+      "hotspots": [
+        {
+          "file": "src/optimisation/squad_contingency.py",
+          "function": "expected_auto_sub_points",
+          "note": "dominant from 1T cProfile"
+        },
+        {
+          "file": "src/optimisation/squad_contingency.py",
+          "function": "choose_contingency_lineup"
+        },
+        {
+          "file": "src/optimisation/squad_contingency.py",
+          "function": "evaluate_contingency_lineup"
+        }
+      ],
+      "layer_candidate_sha256": "125660876d6bd381c20967498fcbd92890bc0be81e2a8a6950a1604b812467ba",
+      "max_transfers": 2,
+      "measurement_note": "Two timed full-set solves on this host after levers; five-sample profiler deferred due to wall-clock cost",
+      "meets_budget": false,
+      "output_fingerprint": "bd5140cdb34bd61dedea649d9068e67b9f7facc482ad8618261813efb450ac57",
+      "python_heap_peak_bytes": null,
+      "samples": 2,
+      "search_degraded": false,
+      "selected_objective": 94.7706,
+      "throughput_candidates_per_second": 56.588,
+      "wall_ms": {
+        "mean": 105641.0,
+        "p50": 105641.0,
+        "p95": 105641.0,
+        "p99": 105641.0
+      },
+      "warmup": 1
+    },
+    {
+      "budget_p95_ms": 300000.0,
+      "cumulative_valid_candidates_including_no_transfer": 290,
+      "declared_layer_candidates": 151672,
+      "deterministic": true,
+      "full_declared_set": false,
+      "hotspots": [
+        {
+          "calls": 257963,
+          "cumtime_s": 0.035594,
+          "file": "~",
+          "function": "<method 'get' of 'dict' objects>",
+          "line": 0,
+          "tottime_s": 0.035594
+        },
+        {
+          "calls": 87879,
+          "cumtime_s": 0.0125,
+          "file": "~",
+          "function": "<method 'items' of 'dict' objects>",
+          "line": 0,
+          "tottime_s": 0.0125
+        },
+        {
+          "calls": 13756,
+          "cumtime_s": 0.001675,
+          "file": "~",
+          "function": "<method 'append' of 'list' objects>",
+          "line": 0,
+          "tottime_s": 0.001675
+        },
+        {
+          "calls": 4824,
+          "cumtime_s": 0.001086,
+          "file": "~",
+          "function": "<method 'extend' of 'list' objects>",
+          "line": 0,
+          "tottime_s": 0.001086
+        },
+        {
+          "calls": 219,
+          "cumtime_s": 0.00036,
+          "file": "~",
+          "function": "<method 'sort' of 'list' objects>",
+          "line": 0,
+          "tottime_s": 0.000258
+        }
+      ],
+      "layer_candidate_sha256": "ff4f2025a58ec4291f661b1bba3b5c304af097dbc9671f1a57507906f2916248",
+      "max_transfers": 3,
+      "meets_budget": false,
+      "output_fingerprint": "4b04e64afa385d0b80fcd32561a9b1f7d3fa279d2d4910d7c9b5aece852fcd6c",
+      "python_heap_peak_bytes": 8183662,
+      "samples": 1,
+      "search_degraded": true,
+      "selected_objective": 93.1503,
+      "throughput_candidates_per_second": 57.524,
+      "wall_ms": {
+        "mean": 5041.352,
+        "p50": 5041.352,
+        "p95": 5041.352,
+        "p99": 5041.352
+      },
+      "warmup": 1
+    }
+  ]
+}
