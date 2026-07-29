@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "purpose": "immutable_preseason_and_launch_snapshot_capture",
+  "account_writes": false,
+  "gameweek": 1,
+  "official_deadline": "2026-08-21T17:30:00Z",
+  "checkpoint_ids": [
+    "launch",
+    "weekly-YYYY-MM-DD",
+    "T-48h",
+    "T-24h",
+    "T-8h",
+    "T-2h",
+    "final"
+  ],
+  "mandatory_families": [
+    {
+      "family_id": "official_bootstrap",
+      "source_id": "fpl-official-endpoints",
+      "endpoint": "/api/bootstrap-static/",
+      "missing_policy": "fail_checkpoint"
+    },
+    {
+      "family_id": "official_fixtures",
+      "source_id": "fpl-official-endpoints",
+      "endpoint": "/api/fixtures/",
+      "missing_policy": "fail_checkpoint"
+    },
+    {
+      "family_id": "ruleset",
+      "source_id": "fpl-official-rules-news",
+      "artifact": "control/rules/2026-27.yaml",
+      "missing_policy": "fail_checkpoint"
+    }
+  ],
+  "optional_families": [
+    {
+      "family_id": "availability_role_evidence",
+      "source_id": "fpl-official-endpoints",
+      "missing_policy": "degrade_named_gap"
+    },
+    {
+      "family_id": "transfers_and_signings",
+      "source_id": "fpl-official-endpoints",
+      "missing_policy": "degrade_named_gap"
+    },
+    {
+      "family_id": "set_pieces",
+      "source_id": "fpl-official-endpoints",
+      "missing_policy": "degrade_named_gap"
+    },
+    {
+      "family_id": "promoted_team_priors",
+      "source_id": "fpl-official-endpoints",
+      "missing_policy": "degrade_named_gap"
+    },
+    {
+      "family_id": "world_cup_return_fatigue",
+      "source_id": "world-cup-2026",
+      "missing_policy": "degrade_named_gap"
+    },
+    {
+      "family_id": "licensed_odds",
+      "source_id": "the-odds-api",
+      "missing_policy": "degrade_named_gap"
+    },
+    {
+      "family_id": "player_ratings",
+      "source_id": "statsbomb-open",
+      "missing_policy": "degrade_named_gap"
+    }
+  ],
+  "temporal_admission": {
+    "rule": "available_at_strictly_before_deadline",
+    "backfill": "never",
+    "missed_checkpoint": "record_gap_only"
+  },
+  "immutability": {
+    "write_mode": "create_only",
+    "identical_request": "return_existing_bytes",
+    "differing_bytes_at_path": "fail_closed"
+  },
+  "reuse": {
+    "evidence_checkpoint_runner": "src/orchestration/evidence_checkpoint_runner.py",
+    "deadline_derivation": "derive_deadline_checkpoints",
+    "legacy_launch_capture": "data/live-shadow/fpl/ (gitignored; hash-bind only)"
+  },
+  "output": {
+    "snapshot_root": "data/snapshots/2026-27/preseason/",
+    "index_manifest": "control/manifests/2026-27-preseason.json"
+  }
+}
