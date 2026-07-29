@@ -63,6 +63,12 @@ def main() -> int:
         default=tuple(range(2, 39)),
     )
     parser.add_argument(
+        "--artifact-root",
+        type=Path,
+        default=REPO,
+        help="root containing approved ignored historical artifacts",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=OUTPUT,
@@ -80,6 +86,7 @@ def main() -> int:
         repo_root=REPO,
         calibration=calibration,
         w10_report=w10_report,
+        artifact_root=args.artifact_root,
         locked_gameweeks=args.locked_gameweeks,
         descriptive_gameweeks=args.descriptive_gameweeks,
     )

@@ -1,5 +1,5 @@
 {
-  "content_sha256": "159ac07cc4ceb7f475b2f37a307324ef044727733b331ccfc6fc06419897fd03",
+  "content_sha256": "2d866b4fad5ea679aa81d1c52d68cee7af6f321524b5e6bbe54bff3658882cba",
   "descriptive_2025_26": {
     "attribution": {
       "by_component": {
@@ -14,6 +14,11 @@
             "vice_captain": 0
           },
           "decision_sha256": "c45697e585b4955f0c29b0d65ad9a036aed0dd67a4be488aedb463716862980f",
+          "identification": {
+            "identified": true,
+            "target_term": "expected legal auto-substitution from ordered bench"
+          },
+          "identified": true,
           "net_points_delta": 3
         },
         "captain_vice_fallback": {
@@ -27,22 +32,34 @@
             "vice_captain": 8
           },
           "decision_sha256": "fb58a4b774601ad878819986d07e36e15042e6182c2120b8ff11e44ed532e574",
+          "identification": {
+            "identified": true,
+            "target_term": "captain zero-minute vice fallback"
+          },
+          "identified": true,
           "net_points_delta": 18
         },
         "xi_formation": {
           "all_plans_valid": true,
-          "decision_change_weeks": 37,
+          "decision_change_weeks": 0,
           "decision_changes": {
-            "bench_order": 36,
-            "captain": 8,
-            "starting_xi": 1,
+            "bench_order": 0,
+            "captain": 0,
+            "starting_xi": 0,
             "transfers": 0,
-            "vice_captain": 8
+            "vice_captain": 0
           },
-          "decision_sha256": "fc97d21b21a4f4c77023d937b5a2f42c4bd3caeea7fdbbd8a758cb4ace5b9db9",
-          "net_points_delta": 5
+          "decision_sha256": "887a349dd1068669af5807aea4708e973a71587892e7479e93b39fd47a78507a",
+          "identification": {
+            "identified": false,
+            "reason": "probabilistic_v1 has no independent XI/formation probability term; its XI changes are interactions with bench and captain optimization",
+            "target_term": null
+          },
+          "identified": false,
+          "net_points_delta": 0
         }
       },
+      "marginal_component_sum": 21,
       "probabilistic_v1_net_points_delta": 22,
       "probabilistic_v1_non_zero_weeks": [
         {
@@ -230,146 +247,29 @@
           "weeks_matching_probabilistic_v1": 15
         },
         "xi_formation": {
-          "non_zero_weeks": [
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": false,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": false
-              },
-              "gameweek": 2,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": -8
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": false,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": false
-              },
-              "gameweek": 3,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": -13
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": false,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": false
-              },
-              "gameweek": 12,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": 4
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": false,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": false
-              },
-              "gameweek": 22,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": 3
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": false,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": false
-              },
-              "gameweek": 23,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": 1
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": true,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": true
-              },
-              "gameweek": 24,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": 3
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": true,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": true
-              },
-              "gameweek": 29,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": 4
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": true,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": true
-              },
-              "gameweek": 30,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": 7
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": true,
-                "starting_xi": true,
-                "transfers": false,
-                "vice_captain": true
-              },
-              "gameweek": 34,
-              "matches_probabilistic_v1": true,
-              "net_points_delta": 3
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": true,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": true
-              },
-              "gameweek": 35,
-              "matches_probabilistic_v1": false,
-              "net_points_delta": 1
-            }
-          ],
-          "weeks_matching_probabilistic_v1": 4
+          "non_zero_weeks": [],
+          "weeks_matching_probabilistic_v1": 11
         }
       },
-      "marginal_component_sum": 26,
-      "residual_unattributed": -4
+      "residual_interpretation": "joint interaction plus any structurally unidentified component; not a causal component estimate",
+      "residual_unattributed": 1
     },
     "components": {
       "bench_order_only": {
         "component": "bench_order_only",
         "decision_sha256": "c45697e585b4955f0c29b0d65ad9a036aed0dd67a4be488aedb463716862980f",
+        "identification": {
+          "identified": true,
+          "target_term": "expected legal auto-substitution from ordered bench"
+        },
         "summary": {
           "all_plans_valid": true,
           "challenger_automatic_substitution_points": 88.0,
           "challenger_net_points": 1830,
           "challenger_wall_ms": {
-            "max": 66.377316,
-            "mean": 10.801786432432431,
-            "total": 399.666098
+            "max": 117.1582,
+            "mean": 13.767794594594594,
+            "total": 509.4084
           },
           "control_automatic_substitution_points": 85.0,
           "control_net_points": 1827,
@@ -389,14 +289,18 @@
       "captain_vice_fallback": {
         "component": "captain_vice_fallback",
         "decision_sha256": "fb58a4b774601ad878819986d07e36e15042e6182c2120b8ff11e44ed532e574",
+        "identification": {
+          "identified": true,
+          "target_term": "captain zero-minute vice fallback"
+        },
         "summary": {
           "all_plans_valid": true,
           "challenger_automatic_substitution_points": 85.0,
           "challenger_net_points": 1845,
           "challenger_wall_ms": {
-            "max": 2.320602,
-            "mean": 2.0882973783783783,
-            "total": 77.267003
+            "max": 3.7095,
+            "mean": 2.249564864864865,
+            "total": 83.2339
           },
           "control_automatic_substitution_points": 85.0,
           "control_net_points": 1827,
@@ -415,28 +319,33 @@
       },
       "xi_formation": {
         "component": "xi_formation",
-        "decision_sha256": "fc97d21b21a4f4c77023d937b5a2f42c4bd3caeea7fdbbd8a758cb4ace5b9db9",
+        "decision_sha256": "887a349dd1068669af5807aea4708e973a71587892e7479e93b39fd47a78507a",
+        "identification": {
+          "identified": false,
+          "reason": "probabilistic_v1 has no independent XI/formation probability term; its XI changes are interactions with bench and captain optimization",
+          "target_term": null
+        },
         "summary": {
           "all_plans_valid": true,
-          "challenger_automatic_substitution_points": 72.0,
-          "challenger_net_points": 1832,
+          "challenger_automatic_substitution_points": 85.0,
+          "challenger_net_points": 1827,
           "challenger_wall_ms": {
-            "max": 33.263739,
-            "mean": 32.30715786486487,
-            "total": 1195.364841
+            "max": 2.9715,
+            "mean": 2.340562162162162,
+            "total": 86.6008
           },
           "control_automatic_substitution_points": 85.0,
           "control_net_points": 1827,
-          "decision_change_weeks": 37,
+          "decision_change_weeks": 0,
           "decision_changes": {
-            "bench_order": 36,
-            "captain": 8,
-            "starting_xi": 1,
+            "bench_order": 0,
+            "captain": 0,
+            "starting_xi": 0,
             "transfers": 0,
-            "vice_captain": 8
+            "vice_captain": 0
           },
-          "mean_net_points_delta": 0.13513513513513514,
-          "net_points_delta": 5,
+          "mean_net_points_delta": 0.0,
+          "net_points_delta": 0,
           "pairs": 37
         }
       }
@@ -469,7 +378,7 @@
     }
   },
   "limitations": [
-    "Each ablation arm enables one planning component while holding the other decision levers at the policy-off control baseline.",
+    "Bench-order and captain/vice arms enable one separable planning term while holding other decisions at policy-off control. The XI/formation effect is explicitly unidentified because probabilistic_v1 has no independent XI probability term.",
     "Marginal component deltas do not sum to the joint probabilistic_v1 delta because v1 optimises all components together.",
     "Descriptive 2025/26 forks cannot override the locked 2024/25 promotion gate or be used to select a v2 policy."
   ],
@@ -486,7 +395,12 @@
             "transfers": 0,
             "vice_captain": 0
           },
-          "decision_sha256": "3982ac41828a4b3974275c34e1a38606ca1c5cb5c0ade89805eae9caab434bb0",
+          "decision_sha256": "6d8719497e11b581b1ee6012c0a8032f521832f62a018742e138c052b8dea6d5",
+          "identification": {
+            "identified": true,
+            "target_term": "expected legal auto-substitution from ordered bench"
+          },
+          "identified": true,
           "net_points_delta": -3
         },
         "captain_vice_fallback": {
@@ -499,23 +413,35 @@
             "transfers": 0,
             "vice_captain": 0
           },
-          "decision_sha256": "5ffaa53f77fe95d38c9a8430e2813c7a9f42643256e5881d43c1029306ba2633",
+          "decision_sha256": "c4935ef957a0519340a340dfeb26a3265c1606ed1a4f382c62f391e9915e3cad",
+          "identification": {
+            "identified": true,
+            "target_term": "captain zero-minute vice fallback"
+          },
+          "identified": true,
           "net_points_delta": 0
         },
         "xi_formation": {
           "all_plans_valid": true,
-          "decision_change_weeks": 30,
+          "decision_change_weeks": 0,
           "decision_changes": {
-            "bench_order": 30,
+            "bench_order": 0,
             "captain": 0,
             "starting_xi": 0,
             "transfers": 0,
             "vice_captain": 0
           },
-          "decision_sha256": "d770594a47d48860c04cc07224b5bf5b79dd85de34e6dba5f3822e964e93e0d6",
-          "net_points_delta": -3
+          "decision_sha256": "d381116918f7fe211dbcf0c8a642dadfb1da4dc0e245e319ede94fc8243b2c41",
+          "identification": {
+            "identified": false,
+            "reason": "probabilistic_v1 has no independent XI/formation probability term; its XI changes are interactions with bench and captain optimization",
+            "target_term": null
+          },
+          "identified": false,
+          "net_points_delta": 0
         }
       },
+      "marginal_component_sum": -3,
       "probabilistic_v1_net_points_delta": -10,
       "probabilistic_v1_non_zero_weeks": [
         {
@@ -631,50 +557,29 @@
           "weeks_matching_probabilistic_v1": 21
         },
         "xi_formation": {
-          "non_zero_weeks": [
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": false,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": false
-              },
-              "gameweek": 13,
-              "matches_probabilistic_v1": true,
-              "net_points_delta": 2
-            },
-            {
-              "decision_changes": {
-                "bench_order": true,
-                "captain": false,
-                "starting_xi": false,
-                "transfers": false,
-                "vice_captain": false
-              },
-              "gameweek": 20,
-              "matches_probabilistic_v1": true,
-              "net_points_delta": -5
-            }
-          ],
-          "weeks_matching_probabilistic_v1": 11
+          "non_zero_weeks": [],
+          "weeks_matching_probabilistic_v1": 21
         }
       },
-      "marginal_component_sum": -6,
-      "residual_unattributed": -4
+      "residual_interpretation": "joint interaction plus any structurally unidentified component; not a causal component estimate",
+      "residual_unattributed": -7
     },
     "components": {
       "bench_order_only": {
         "component": "bench_order_only",
-        "decision_sha256": "3982ac41828a4b3974275c34e1a38606ca1c5cb5c0ade89805eae9caab434bb0",
+        "decision_sha256": "6d8719497e11b581b1ee6012c0a8032f521832f62a018742e138c052b8dea6d5",
+        "identification": {
+          "identified": true,
+          "target_term": "expected legal auto-substitution from ordered bench"
+        },
         "summary": {
           "all_plans_valid": true,
           "challenger_automatic_substitution_points": 51.0,
           "challenger_net_points": 2418,
           "challenger_wall_ms": {
-            "max": 36.612136,
-            "mean": 9.539267631578946,
-            "total": 362.49217
+            "max": 68.9746,
+            "mean": 12.389471052631578,
+            "total": 470.7999
           },
           "control_automatic_substitution_points": 54.0,
           "control_net_points": 2421,
@@ -693,15 +598,19 @@
       },
       "captain_vice_fallback": {
         "component": "captain_vice_fallback",
-        "decision_sha256": "5ffaa53f77fe95d38c9a8430e2813c7a9f42643256e5881d43c1029306ba2633",
+        "decision_sha256": "c4935ef957a0519340a340dfeb26a3265c1606ed1a4f382c62f391e9915e3cad",
+        "identification": {
+          "identified": true,
+          "target_term": "captain zero-minute vice fallback"
+        },
         "summary": {
           "all_plans_valid": true,
           "challenger_automatic_substitution_points": 54.0,
           "challenger_net_points": 2421,
           "challenger_wall_ms": {
-            "max": 2.212715,
-            "mean": 1.9562104473684212,
-            "total": 74.335997
+            "max": 3.8272,
+            "mean": 2.625013157894737,
+            "total": 99.7505
           },
           "control_automatic_substitution_points": 54.0,
           "control_net_points": 2421,
@@ -720,28 +629,33 @@
       },
       "xi_formation": {
         "component": "xi_formation",
-        "decision_sha256": "d770594a47d48860c04cc07224b5bf5b79dd85de34e6dba5f3822e964e93e0d6",
+        "decision_sha256": "d381116918f7fe211dbcf0c8a642dadfb1da4dc0e245e319ede94fc8243b2c41",
+        "identification": {
+          "identified": false,
+          "reason": "probabilistic_v1 has no independent XI/formation probability term; its XI changes are interactions with bench and captain optimization",
+          "target_term": null
+        },
         "summary": {
           "all_plans_valid": true,
-          "challenger_automatic_substitution_points": 51.0,
-          "challenger_net_points": 2418,
+          "challenger_automatic_substitution_points": 54.0,
+          "challenger_net_points": 2421,
           "challenger_wall_ms": {
-            "max": 111.82035,
-            "mean": 34.99916447368421,
-            "total": 1329.96825
+            "max": 2.8568,
+            "mean": 2.2342710526315788,
+            "total": 84.9023
           },
           "control_automatic_substitution_points": 54.0,
           "control_net_points": 2421,
-          "decision_change_weeks": 30,
+          "decision_change_weeks": 0,
           "decision_changes": {
-            "bench_order": 30,
+            "bench_order": 0,
             "captain": 0,
             "starting_xi": 0,
             "transfers": 0,
             "vice_captain": 0
           },
-          "mean_net_points_delta": -0.07894736842105263,
-          "net_points_delta": -3,
+          "mean_net_points_delta": 0.0,
+          "net_points_delta": 0,
           "pairs": 38
         }
       }
@@ -793,10 +707,18 @@
   "report_id": "squad-contingency-ablation-v1",
   "schema_version": "1.0",
   "v2_proposal": {
-    "calibration_validation_season": "2024-25",
-    "component_selection_holdout": "2025-26",
+    "historical_component_selection_eligible": false,
+    "historical_scopes": {
+      "2024-25": "exploratory_after_outcome_access",
+      "2025-26": "exploratory_after_outcome_access"
+    },
     "promotion_gate_season": "2026-27",
-    "rationale": "Component ablation findings inform which v2 terms to retain, but no parameter or policy weight may be fit on 2024/25 or 2025/26 — both are exploratory after this ablation observed their outcomes. Appearance calibration continues to train only on 2022/23 and 2023/24. The sole promotion gate is the genuinely prospective 2026/27 season (not yet observed at analysis time), which was not used in any design decision for this ablation.",
+    "prospective_protocol": {
+      "freeze_before_first_deadline": true,
+      "midseason_component_selection_allowed": false,
+      "production_approval_required": true
+    },
+    "rationale": "Component ablation findings inform which v2 terms to retain, but no parameter or policy weight may be fit on 2024/25 or 2025/26 \u2014 both are exploratory after this ablation observed their outcomes. Appearance calibration continues to train only on 2022/23 and 2023/24. The sole promotion gate is the genuinely prospective 2026/27 season (not yet observed at analysis time), which was not used in any design decision for this ablation.",
     "selection_on_2025_26": false,
     "status": "preregistered_not_fitted",
     "train_seasons": [

@@ -11,6 +11,8 @@ import pytest
 from src.evaluation.squad_contingency import paired_decision_hash
 from src.evaluation.squad_contingency_ablation import (
     ABLATION_COMPONENTS,
+    COMPONENT_IDENTIFICATION,
+    _verify_ablation_w10_bindings,
     build_ablation_report,
     choose_ablated_contingency_lineup,
     evaluate_descriptive_component,
@@ -25,6 +27,8 @@ from src.scoring.validator import legal_formations
 
 
 ROOT = Path(__file__).resolve().parents[2]
+VAASTAV_ROOT = ROOT / "data/raw/vaastav/Fantasy-Premier-League/data"
+SEALED_EPISODES = ROOT / "data/benchmark-v0/episodes/v1/2025-26"
 
 
 def _mini_squad() -> list[dict]:
@@ -316,14 +320,14 @@ def test_each_component_changes_only_its_decision_lever() -> None:
     )
 
 
-def test_xi_formation_arm_varies_xi_with_uncertain_starters() -> None:
-    """XI arm selects players by appearance-weighted points, not raw ceiling."""
+def test_xi_formation_effect_is_unidentified_without_invented_proxy() -> None:
+    """The production objective has no separable probabilistic XI term."""
+
     rules = load_rules(ROOT / "control/rules/2025-26.yaml")
     constraints = get_rule(rules, "lineup.formation_constraints")["value"]
     calibration = _calibration()
     squad = _uncertain_squad()
     formations = legal_formations(rules)
-
     control = solve(
         SolverInput.from_dict(
             {
@@ -340,7 +344,7 @@ def test_xi_formation_arm_varies_xi_with_uncertain_starters() -> None:
         rules=rules,
         ruleset_sha256=ruleset_sha256(ROOT / "control/rules/2025-26.yaml"),
     )
-    xi_only = choose_ablated_contingency_lineup(
+    xi_diagnostic = choose_ablated_contingency_lineup(
         squad,
         component="xi_formation",
         formations=formations,
@@ -348,24 +352,17 @@ def test_xi_formation_arm_varies_xi_with_uncertain_starters() -> None:
         constraints=constraints,
         active_chip=None,
     )
-
     control_lineup = control["selected"]["lineup"]
-    xi_ids = {player["player_id"] for player in xi_only["starting_xi"]}
-    control_xi_ids = set(control_lineup["starting_xi_ids"])
-
-    # Control selects by raw expected_points — risky high-ceiling players in.
-    assert "d_risky" in control_xi_ids or "m_risky" in control_xi_ids, (
-        "control should include at least one risky high-ceiling player"
+    assert [p["player_id"] for p in xi_diagnostic["starting_xi"]] == list(
+        control_lineup["starting_xi_ids"]
     )
-    # The xi_formation arm uses start_probability × expected_points — risky
-    # players score very low and should be excluded.
-    assert xi_ids != control_xi_ids, (
-        "xi_formation arm must select a different XI when start_probability "
-        "and expected_points rankings diverge"
+    assert [p["player_id"] for p in xi_diagnostic["bench"]] == list(
+        control_lineup["bench_ids"]
     )
-    # Bench GKP is always the first bench slot.
-    assert xi_only["bench"][0]["position"] == "GKP"
-
+    assert xi_diagnostic["captain_id"] == control_lineup["captain_id"]
+    assert xi_diagnostic["vice_captain_id"] == control_lineup["vice_captain_id"]
+    assert xi_diagnostic["contingency"]["component_identified"] is False
+    assert COMPONENT_IDENTIFICATION["xi_formation"]["identified"] is False
 
 def test_verify_w10_reference_checks_content_hash() -> None:
     """verify_w10_reference must reject a tampered W10 report."""
@@ -384,6 +381,7 @@ def test_verify_w10_reference_checks_content_hash() -> None:
         verify_w10_reference(tampered)
 
 
+@pytest.mark.skipif(not VAASTAV_ROOT.exists(), reason="approved vaastav artifacts absent")
 def test_single_locked_component_is_legal_and_hash_stable() -> None:
     calibration = _calibration()
     result = evaluate_locked_component(
@@ -402,6 +400,9 @@ def test_single_locked_component_is_legal_and_hash_stable() -> None:
     assert paired_decision_hash(result["rows"]) == paired_decision_hash(changed)
 
 
+@pytest.mark.skipif(
+    not SEALED_EPISODES.exists(), reason="sealed benchmark episodes absent"
+)
 def test_single_descriptive_component_preserves_sealed_artifacts() -> None:
     reports = ROOT / "reports/benchmarks/2025-26"
     episodes = ROOT / "data/benchmark-v0/episodes/v1/2025-26"
@@ -427,6 +428,66 @@ def test_single_descriptive_component_preserves_sealed_artifacts() -> None:
     assert result["scope"] == "descriptive_2025_26_same_state_lineup_fork"
     assert {path: path.read_bytes() for path in protected} == before
 
+
+def _component_rows_from_w10(rows: list[dict]) -> dict[str, dict]:
+    return {
+        component: {
+            "component": component,
+            "identification": deepcopy(COMPONENT_IDENTIFICATION[component]),
+            "rows": deepcopy(rows),
+        }
+        for component in ABLATION_COMPONENTS
+    }
+
+
+def test_same_state_binding_rejects_missing_duplicate_and_mismatch() -> None:
+    w10 = json.loads(
+        (ROOT / "reports/evaluation/squad-contingency-v1.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    locked_rows = w10["locked_2024_25"]["rows"][:2]
+    components = _component_rows_from_w10(locked_rows)
+    _verify_ablation_w10_bindings(
+        component_results=components,
+        w10_rows=locked_rows,
+        scope="locked_test",
+        require_reference_squad=True,
+    )
+
+    missing = deepcopy(components)
+    missing["bench_order_only"]["rows"].pop()
+    with pytest.raises(ValueError, match="incomplete same-state join"):
+        _verify_ablation_w10_bindings(
+            component_results=missing,
+            w10_rows=locked_rows,
+            scope="locked_test",
+            require_reference_squad=True,
+        )
+
+    duplicate = deepcopy(components)
+    duplicate["bench_order_only"]["rows"].append(
+        deepcopy(duplicate["bench_order_only"]["rows"][0])
+    )
+    with pytest.raises(ValueError, match="duplicate row"):
+        _verify_ablation_w10_bindings(
+            component_results=duplicate,
+            w10_rows=locked_rows,
+            scope="locked_test",
+            require_reference_squad=True,
+        )
+
+    mismatched = deepcopy(components)
+    mismatched["bench_order_only"]["rows"][0]["bindings"][
+        "control_plan_sha256"
+    ] = "0" * 64
+    with pytest.raises(ValueError, match="control_plan_sha256"):
+        _verify_ablation_w10_bindings(
+            component_results=mismatched,
+            w10_rows=locked_rows,
+            scope="locked_test",
+            require_reference_squad=True,
+        )
 
 def test_report_keeps_scopes_separate_and_references_w10() -> None:
     calibration = _calibration()
@@ -454,11 +515,18 @@ def test_report_keeps_scopes_separate_and_references_w10() -> None:
             "component": component,
             "summary": deepcopy(summary),
             "decision_sha256": "a" * 64,
-            "rows": [],
+            "identification": deepcopy(COMPONENT_IDENTIFICATION[component]),
+            "rows": deepcopy(w10["locked_2024_25"]["rows"]),
         }
         for component in ABLATION_COMPONENTS
     }
-    descriptive_components = deepcopy(locked_components)
+    descriptive_components = {
+        component: {
+            **deepcopy(result),
+            "rows": deepcopy(w10["descriptive_2025_26"]["rows"]),
+        }
+        for component, result in locked_components.items()
+    }
     report = build_ablation_report(
         calibration=calibration,
         w10_report=w10,
@@ -484,6 +552,7 @@ def test_report_keeps_scopes_separate_and_references_w10() -> None:
         marginal_sum = sum(
             attr["by_component"][c]["net_points_delta"]
             for c in attr["by_component"]
+            if attr["by_component"][c]["identified"]
         )
         assert attr["residual_unattributed"] == (
             attr["probabilistic_v1_net_points_delta"] - marginal_sum
@@ -516,5 +585,6 @@ def test_committed_ablation_report_matches_contract() -> None:
         assert attr["probabilistic_v1_net_points_delta"] - attr[
             "residual_unattributed"
         ] == attr["marginal_component_sum"]
+        assert attr["by_component"]["xi_formation"]["identified"] is False
     locked_attr = report["locked_2024_25"]["attribution"]
     assert locked_attr["probabilistic_v1_net_points_delta"] == -10
