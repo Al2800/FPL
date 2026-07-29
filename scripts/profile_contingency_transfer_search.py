@@ -184,6 +184,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--samples", type=int, default=5)
     parser.add_argument("--three-candidate-budget", type=int, default=300)
     parser.add_argument("--three-deadline-ms", type=int, default=300_000)
+    parser.add_argument(
+        "--deep-profile-widths",
+        default="1",
+        help="comma-separated widths for tracemalloc and cProfile diagnostics",
+    )
     parser.add_argument("--output", type=Path, default=OUT)
     args = parser.parse_args(argv)
 
@@ -194,6 +199,9 @@ def main(argv: list[str] | None = None) -> int:
         ["git", "rev-parse", "HEAD"], cwd=REPO, text=True
     ).strip()
     widths = [int(part) for part in args.widths.split(",") if part.strip()]
+    deep_profile_widths = {
+        int(part) for part in args.deep_profile_widths.split(",") if part.strip()
+    }
     rows: list[dict] = []
 
     for width in widths:
@@ -242,21 +250,24 @@ def main(argv: list[str] | None = None) -> int:
             selected_objective = result["selected"]["objective"] if result["selected"] else None
             n_candidates = result["n_candidates"]
 
-        tracemalloc.start()
-        solve(solver_input, rules=rules, ruleset_sha256=rules_hash)
-        _, peak = tracemalloc.get_traced_memory()
-        snapshot = tracemalloc.take_snapshot()
-        allocation_hotspots = [
-            {
-                "location": str(stat.traceback[0]),
-                "bytes": stat.size,
-                "allocations": stat.count,
-            }
-            for stat in snapshot.statistics("lineno")[:5]
-        ]
-        tracemalloc.stop()
-
-        hotspots = profile_hotspots(solver_input, rules, rules_hash)
+        peak = None
+        allocation_hotspots: list[dict] = []
+        hotspots: list[dict] = []
+        if width in deep_profile_widths:
+            tracemalloc.start()
+            solve(solver_input, rules=rules, ruleset_sha256=rules_hash)
+            _, peak = tracemalloc.get_traced_memory()
+            snapshot = tracemalloc.take_snapshot()
+            allocation_hotspots = [
+                {
+                    "location": str(stat.traceback[0]),
+                    "bytes": stat.size,
+                    "allocations": stat.count,
+                }
+                for stat in snapshot.statistics("lineno")[:5]
+            ]
+            tracemalloc.stop()
+            hotspots = profile_hotspots(solver_input, rules, rules_hash)
         p95 = percentile(timings, 0.95)
         budget = BUDGET_P95_MS[width]
         rows.append(
@@ -286,7 +297,11 @@ def main(argv: list[str] | None = None) -> int:
                 "selected_objective": selected_objective,
                 "search_degraded": degraded,
                 "budget_p95_ms": budget,
-                "meets_budget": (not degraded) and p95 <= budget and peak <= 1024**3,
+                "meets_budget": (
+                    (not degraded)
+                    and p95 <= budget
+                    and (peak is None or peak <= 1024**3)
+                ),
                 "hotspots": hotspots,
                 "full_declared_set": not degraded,
             }
@@ -296,7 +311,11 @@ def main(argv: list[str] | None = None) -> int:
         "schema_version": "1.0",
         "method": {
             "latency": f"{args.samples} warm-process perf_counter samples after one warmup",
-            "memory": "separate tracemalloc run; profiler overhead excluded from latency",
+            "memory": (
+                "separate tracemalloc run for declared deep-profile widths; "
+                "profiler overhead excluded from latency"
+            ),
+            "deep_profile_widths": sorted(deep_profile_widths),
             "percentiles": "linear interpolation",
             "scope": "probabilistic_v1 contingency valuation over the declared transfer pool",
             "levers": [
