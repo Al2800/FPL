@@ -82,3 +82,58 @@ The live forecast capture understands the same four-class precedence.
 
 Before GW1, repeat the derivation after each material official squad update.
 Review and commit a new artifact rather than overwriting the snapshot history.
+
+## Immutable successor re-derivation
+
+When the official bootstrap hash changes, do not edit this reviewed 27 July
+artifact. Use `scripts/build_launch_context.py` with immutable local inputs. The
+prior-roster CSV is deliberately narrow and must be UTF-8 with exactly the
+identity fields needed for deterministic derivation:
+
+```text
+code,team_code
+59735,12
+67089,78
+```
+
+`code` is the stable FPL player code and `team_code` is the stable FPL team code
+from the completed 2025/26 roster. Both values are required integers; duplicate
+or blank codes fail the build. Display names, club names and fuzzy matching are
+not accepted.
+
+The builder requires source `observed_at` and `available_at` timestamps for the
+official bootstrap, prior roster and World Cup CSV, plus timestamps for the
+produced context and an intended decision cutoff. Every timestamp must be
+strictly before the cutoff; an input may not be observed before it was
+available; the derived context may not precede one of its inputs. This preserves
+point-in-time validity rather than merely recording a file date.
+
+```powershell
+C:\Users\Alastair\FPL\.venv\Scripts\python.exe scripts\build_launch_context.py `
+  --bootstrap-file C:\data\bootstrap-static.json `
+  --bootstrap-observed-at 2026-08-03T12:00:00Z `
+  --bootstrap-available-at 2026-08-03T12:00:00Z `
+  --prior-roster-file C:\data\2025-26-prior-roster.csv `
+  --prior-roster-observed-at 2026-05-25T12:00:00Z `
+  --prior-roster-available-at 2026-05-25T12:00:00Z `
+  --world-cup-observed-at 2026-07-21T17:21:28Z `
+  --world-cup-available-at 2026-07-21T17:21:28Z `
+  --context-observed-at 2026-08-03T12:05:00Z `
+  --context-available-at 2026-08-03T12:05:00Z `
+  --decision-cutoff 2026-08-21T17:30:00Z
+```
+
+The command is offline. It copies the exact inputs, `context.json`, and a
+self-hashed manifest beneath
+`data/snapshots/2026-27/launch-context/<context-content-sha256>/`. That
+operational evidence is ignored by Git. It reports the input hashes and a
+`universe_delta`: player codes added versus the prior roster, prior codes now
+removed, stable-code team changes, and promoted current team codes. A second
+run with identical inputs verifies and returns the same bytes. Changed inputs
+create another content-addressed directory; they never overwrite an earlier
+context.
+
+Pass the resulting `context_path` and copied World Cup CSV path explicitly to
+`scripts/capture_preseason_snapshot.py`. FPL-756 will admit them only when the
+checkpoint has identical raw bootstrap bytes; a different universe is recorded
+as `official_bootstrap_hash_mismatch` and exposes no context bytes downstream.
