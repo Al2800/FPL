@@ -26,6 +26,8 @@ from src.ingestion.acquisition import utc_now
 from src.ingestion.registry import assert_collectable, load_registry
 from src.ingestion.snapshot_fpl import DEFAULT_PATHS, SOURCE_ID, snapshot_endpoint
 from src.orchestration.preseason_snapshot import (
+    DEFAULT_LAUNCH_CONTEXT_PATH,
+    DEFAULT_WORLD_CUP_PRIORS_PATH,
     PreseasonSnapshotConflict,
     PreseasonSnapshotError,
     capture_preseason_snapshot,
@@ -64,6 +66,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--season", required=True)
     parser.add_argument("--checkpoint-id", required=True)
     parser.add_argument("--deadline", required=True, help="Official GW1 deadline ISO-8601")
+    parser.add_argument(
+        "--launch-context-path", type=Path, default=DEFAULT_LAUNCH_CONTEXT_PATH
+    )
+    parser.add_argument(
+        "--world-cup-priors-path", type=Path, default=DEFAULT_WORLD_CUP_PRIORS_PATH
+    )
     parser.add_argument(
         "--output-root",
         type=Path,
@@ -163,6 +171,8 @@ def main(argv: list[str] | None = None) -> int:
             code_commit=args.code_commit,
             optional_artifacts=optional,
             optional_sidecars=optional_sidecars,
+            launch_context_path=args.launch_context_path,
+            world_cup_priors_path=args.world_cup_priors_path,
         )
     except (PreseasonSnapshotError, PreseasonSnapshotConflict, OSError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

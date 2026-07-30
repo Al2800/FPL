@@ -11,7 +11,9 @@ from pathlib import Path
 
 import pytest
 
+from src.forecasting.launch_context import artifact_hash as launch_context_hash
 from src.ingestion.registry import load_registry
+from src.ingestion.acquisition import content_hash
 from src.orchestration.preseason_snapshot import (
     PreseasonSnapshotConflict,
     PreseasonSnapshotError,
@@ -67,6 +69,64 @@ def _bodies() -> tuple[bytes, bytes]:
     )
 
 
+
+def _write_launch_context_inputs(
+    tmp_path: Path,
+    bootstrap: bytes,
+    *,
+    context_observed: str = OBSERVED,
+    bootstrap_binding: str | None = None,
+    world_cup_binding: str | None = None,
+    seal: bool = True,
+) -> tuple[Path, Path, bytes]:
+    """Create reviewed launch-context sources bound to a fixture universe."""
+
+    world_cup_body = b"fpl_code,fatigue_prior\n1,none\n"
+    world_cup_path = tmp_path / "world-cup-priors.csv"
+    world_cup_path.write_bytes(world_cup_body)
+    context = {
+        "season": "2026-27",
+        "observed_at": context_observed,
+        "source_bindings": {
+            "official_bootstrap": {
+                "sha256": bootstrap_binding or content_hash(bootstrap),
+                "observed_at": context_observed,
+            },
+            "world_cup_priors": {
+                "sha256": world_cup_binding or content_hash(world_cup_body),
+            },
+        },
+    }
+    context["content_sha256"] = launch_context_hash(context)
+    if not seal:
+        context["season"] = "tampered"
+    context_path = tmp_path / "launch-context.json"
+    context_path.write_text(json.dumps(context, sort_keys=True), encoding="utf-8")
+    return context_path, world_cup_path, world_cup_body
+
+
+def _launch_capture_kwargs(
+    tmp_path: Path,
+    bootstrap: bytes,
+    fixtures: bytes,
+    context_path: Path,
+    world_cup_path: Path,
+) -> dict:
+    return {
+        "season": "2026-27",
+        "checkpoint_id": "launch",
+        "deadline": DEADLINE,
+        "output_root": tmp_path / "preseason",
+        "observed_at": OBSERVED,
+        "bootstrap_body": bootstrap,
+        "fixtures_body": fixtures,
+        "rules_path": RULES,
+        "config_path": CONFIG,
+        "index_manifest_path": tmp_path / "index.json",
+        "code_commit": COMMIT,
+        "launch_context_path": context_path,
+        "world_cup_priors_path": world_cup_path,
+    }
 def test_checkpoint_ids_and_deadline_schedule() -> None:
     for checkpoint_id in (
         "launch",
@@ -251,6 +311,7 @@ def test_optional_family_degrades_explicitly_and_cli_succeeds(tmp_path: Path) ->
     payload = json.loads(result.stdout)
     assert payload["status"] == "degraded"
     assert "licensed_odds" in payload["source_gaps"]
+    assert "launch_context" in payload["source_gaps"]
     manifest = json.loads(
         (tmp_path / "preseason" / "weekly-2026-08-03" / "manifest.json").read_text(
             encoding="utf-8"
@@ -831,3 +892,178 @@ def test_optional_record_available_after_checkpoint_is_quarantined(tmp_path: Pat
     assert family["status"] == "degraded"
     assert family["counts"]["admitted"] == 0
     assert "available_at_at_or_after_deadline" in family["reasons"]
+
+# ---------------------------------------------------------------------------
+# FPL-756 — launch context is exact-universe bound and immutable
+# ---------------------------------------------------------------------------
+
+def test_matching_launch_context_is_sealed_with_all_three_artifacts(tmp_path: Path) -> None:
+    bootstrap, fixtures = _bodies()
+    context_path, world_cup_path, world_cup_body = _write_launch_context_inputs(
+        tmp_path, bootstrap
+    )
+    kwargs = _launch_capture_kwargs(
+        tmp_path, bootstrap, fixtures, context_path, world_cup_path
+    )
+
+    first = capture_preseason_snapshot(**kwargs)
+    second = capture_preseason_snapshot(**kwargs)
+    assert second == first
+
+    family = first["families"]["launch_context"]
+    assert family["status"] == "admitted"
+    assert family["counts"] == {
+        "input": 3,
+        "admitted": 3,
+        "duplicate": 0,
+        "quarantined": 0,
+        "missing": 0,
+    }
+    assert family["source_id"] == "launch-context-derived"
+    assert family["registry_source_status"] == "derived_hash_bound"
+    assert family["bound_official_bootstrap_sha256"] == content_hash(bootstrap)
+    assert family["world_cup_priors_sha256"] == content_hash(world_cup_body)
+    assert family["available_at"] == OBSERVED
+
+    checkpoint = tmp_path / "preseason" / "launch"
+    for path_key, hash_key in (
+        ("artifact_path", "artifact_sha256"),
+        ("world_cup_priors_path", "world_cup_priors_sha256"),
+        ("provenance_path", "provenance_sha256"),
+    ):
+        bound = checkpoint / family[path_key]
+        assert bound.is_file()
+        assert content_hash(bound.read_bytes()) == family[hash_key]
+    provenance = json.loads((checkpoint / family["provenance_path"]).read_text())
+    assert provenance["bound_official_bootstrap_sha256"] == content_hash(bootstrap)
+    assert provenance["world_cup_priors_sha256"] == content_hash(world_cup_body)
+
+
+def test_launch_context_bootstrap_or_world_cup_mismatch_degrades_without_paths(
+    tmp_path: Path,
+) -> None:
+    bootstrap, fixtures = _bodies()
+    for label, bootstrap_binding, world_cup_binding, reason in (
+        ("bootstrap", "0" * 64, None, "official_bootstrap_hash_mismatch"),
+        ("world-cup", None, "0" * 64, "world_cup_priors_hash_mismatch"),
+    ):
+        case_dir = tmp_path / label
+        case_dir.mkdir()
+        context_path, world_cup_path, _ = _write_launch_context_inputs(
+            case_dir,
+            bootstrap,
+            bootstrap_binding=bootstrap_binding,
+            world_cup_binding=world_cup_binding,
+        )
+        kwargs = _launch_capture_kwargs(
+            case_dir, bootstrap, fixtures, context_path, world_cup_path
+        )
+        manifest = capture_preseason_snapshot(**kwargs)
+        family = manifest["families"]["launch_context"]
+        assert family["status"] == "degraded"
+        assert family["reasons"] == [reason]
+        assert family["artifact_path"] is None
+        assert family["sidecar_path"] is None
+        assert "world_cup_priors_path" not in family
+        assert "launch_context" in manifest["source_gaps"]
+
+
+def test_tampered_or_late_launch_context_degrades_deterministically(tmp_path: Path) -> None:
+    bootstrap, fixtures = _bodies()
+    for label, observed, seal, reason in (
+        ("tampered", OBSERVED, False, "launch_context_self_hash_invalid"),
+        ("late", "2026-07-28T10:05:27Z", True, "launch_context_observed_after_checkpoint"),
+    ):
+        case_dir = tmp_path / label
+        case_dir.mkdir()
+        context_path, world_cup_path, _ = _write_launch_context_inputs(
+            case_dir, bootstrap, context_observed=observed, seal=seal
+        )
+        manifest = capture_preseason_snapshot(
+            **_launch_capture_kwargs(
+                case_dir, bootstrap, fixtures, context_path, world_cup_path
+            )
+        )
+        family = manifest["families"]["launch_context"]
+        assert family["status"] == "degraded"
+        assert family["reasons"] == [reason]
+        assert family["artifact_path"] is None
+
+
+def test_launch_context_input_change_and_copied_csv_tamper_fail_closed(
+    tmp_path: Path,
+) -> None:
+    bootstrap, fixtures = _bodies()
+    context_path, world_cup_path, original_world_cup = _write_launch_context_inputs(
+        tmp_path, bootstrap
+    )
+    kwargs = _launch_capture_kwargs(
+        tmp_path, bootstrap, fixtures, context_path, world_cup_path
+    )
+    manifest = capture_preseason_snapshot(**kwargs)
+
+    world_cup_path.write_bytes(b"changed\n")
+    with pytest.raises(PreseasonSnapshotConflict):
+        capture_preseason_snapshot(**kwargs)
+
+    world_cup_path.write_bytes(original_world_cup)
+    family = manifest["families"]["launch_context"]
+    copied = tmp_path / "preseason" / "launch" / family["world_cup_priors_path"]
+    copied.write_bytes(b"tampered\n")
+    with pytest.raises(PreseasonSnapshotConflict, match="failed hash validation"):
+        capture_preseason_snapshot(**kwargs)
+
+
+def test_cli_launch_context_overrides_bind_matching_fixture_universe(tmp_path: Path) -> None:
+    bootstrap, fixtures = _bodies()
+    bootstrap_path = tmp_path / "bootstrap.json"
+    fixtures_path = tmp_path / "fixtures.json"
+    bootstrap_path.write_bytes(bootstrap)
+    fixtures_path.write_bytes(fixtures)
+    context_path, world_cup_path, _ = _write_launch_context_inputs(tmp_path, bootstrap)
+    env = dict(os.environ)
+    env["PYTHONPATH"] = str(REPO)
+
+    result = subprocess.run(
+        [
+            "python",
+            str(REPO / "scripts/capture_preseason_snapshot.py"),
+            "--season",
+            "2026-27",
+            "--checkpoint-id",
+            "weekly-2026-08-03",
+            "--deadline",
+            DEADLINE,
+            "--observed-at",
+            "2026-08-03T12:00:00Z",
+            "--output-root",
+            str(tmp_path / "preseason"),
+            "--bootstrap-file",
+            str(bootstrap_path),
+            "--fixtures-file",
+            str(fixtures_path),
+            "--rules-path",
+            str(RULES),
+            "--config-path",
+            str(CONFIG),
+            "--index-manifest-path",
+            str(tmp_path / "index.json"),
+            "--code-commit",
+            COMMIT,
+            "--launch-context-path",
+            str(context_path),
+            "--world-cup-priors-path",
+            str(world_cup_path),
+            "--no-network",
+        ],
+        cwd=REPO,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=env,
+    )
+    assert result.returncode == 0, result.stderr
+    manifest = json.loads(
+        (tmp_path / "preseason" / "weekly-2026-08-03" / "manifest.json").read_text()
+    )
+    assert manifest["families"]["launch_context"]["status"] == "admitted"

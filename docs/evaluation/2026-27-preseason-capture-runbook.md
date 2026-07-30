@@ -116,3 +116,48 @@ secrets on the command line.
   tree.
 - Downstream optimisers must read the index manifest hashes, not ad-hoc current
   files.
+
+## Launch-context binding
+
+Each checkpoint attempts to bind the reviewed launch context by default from:
+
+- `control/identities/2026-27-launch-context.json`
+- `control/identities/world-cup-2026-priors.csv`
+
+This is a derived, local input, not a new collector: it does not enable the
+manual `world-cup-2026` source or fetch any account/private data. The sealed
+`launch_context` family is admitted only when all of the following hold:
+
+- the context semantic `content_sha256` verifies;
+- its `official_bootstrap.sha256` equals the exact raw official bootstrap in
+  this checkpoint;
+- its referenced World Cup CSV digest equals the supplied CSV bytes; and
+- the context and official binding observations are not later than the
+  checkpoint observation and remain strictly before the GW1 deadline.
+
+On admission the checkpoint stores three independently content-addressed files:
+the context JSON, World Cup CSV, and a generated provenance envelope. The family
+records each path and hash, together with the bound official-bootstrap hash.
+
+Use explicit overrides only for a separately reviewed successor context:
+
+```bash
+python scripts/capture_preseason_snapshot.py \
+  --season 2026-27 \
+  --checkpoint-id weekly-2026-08-03 \
+  --deadline 2026-08-21T17:30:00Z \
+  --observed-at 2026-08-03T12:00:00Z \
+  --bootstrap-file /path/to/bootstrap-static.json \
+  --fixtures-file /path/to/fixtures.json \
+  --launch-context-path /path/to/reviewed-launch-context.json \
+  --world-cup-priors-path /path/to/reviewed-world-cup-priors.csv \
+  --no-network
+```
+
+A changed official player universe yields
+`families.launch_context.status: "degraded"` with reason
+`official_bootstrap_hash_mismatch`; it copies no context, World Cup, or
+provenance bytes and cannot provide typed context downstream. Do not suppress the
+gap or reuse the older context: create the reviewed successor through FPL-757.
+A changed context or CSV at an existing checkpoint conflicts rather than
+rewriting the immutable manifest.

@@ -69,6 +69,11 @@
       "family_id": "player_ratings",
       "source_id": "statsbomb-open",
       "missing_policy": "degrade_named_gap"
+    },
+    {
+      "family_id": "launch_context",
+      "source_id": "launch-context-derived",
+      "missing_policy": "degrade_named_gap"
     }
   ],
   "temporal_admission": {

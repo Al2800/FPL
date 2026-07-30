@@ -17,6 +17,8 @@ import subprocess
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
+from src.forecasting.launch_context import LaunchContextError, load_launch_context
+
 from src.ingestion.acquisition import content_hash, record_acquisition
 from src.ingestion.registry import assert_collectable, load_registry
 from src.orchestration.evidence_checkpoint_runner import (
@@ -33,6 +35,8 @@ DEFAULT_CONFIG_PATH = REPO_ROOT / "config" / "data_sources" / "2026-27-preseason
 DEFAULT_RULES_PATH = REPO_ROOT / "control" / "rules" / "2026-27.yaml"
 DEFAULT_MANIFEST_PATH = REPO_ROOT / "control" / "manifests" / "2026-27-preseason.json"
 DEFAULT_OUTPUT_ROOT = REPO_ROOT / "data" / "snapshots" / "2026-27" / "preseason"
+DEFAULT_LAUNCH_CONTEXT_PATH = REPO_ROOT / "control" / "identities" / "2026-27-launch-context.json"
+DEFAULT_WORLD_CUP_PRIORS_PATH = REPO_ROOT / "control" / "identities" / "world-cup-2026-priors.csv"
 
 _WEEKLY = re.compile(r"^weekly-(\d{4}-\d{2}-\d{2})$")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
@@ -46,6 +50,7 @@ OPTIONAL_FAMILIES = (
     "world_cup_return_fatigue",
     "licensed_odds",
     "player_ratings",
+    "launch_context",
 )
 
 # Maximum time before the nominal checkpoint slot that an observation is accepted.
@@ -673,6 +678,192 @@ def _bind_optional_artifact(
         available_at=latest_available,
     )
 
+def _launch_context_input_digests(
+    context_path: Path | None, world_cup_priors_path: Path | None
+) -> dict[str, str | None]:
+    """Bind reviewed launch-context inputs into an immutable checkpoint request."""
+
+    return {
+        "context_sha256": (
+            content_hash(context_path.read_bytes())
+            if context_path is not None and context_path.is_file()
+            else None
+        ),
+        "world_cup_priors_sha256": (
+            content_hash(world_cup_priors_path.read_bytes())
+            if world_cup_priors_path is not None and world_cup_priors_path.is_file()
+            else None
+        ),
+    }
+
+
+def _bind_launch_context(
+    *,
+    context_path: Path | None,
+    world_cup_priors_path: Path | None,
+    bootstrap_sha256: str,
+    checkpoint_dir: Path,
+    checkpoint_observed_at: str,
+    deadline: str,
+    source_id: str | None,
+) -> dict[str, Any]:
+    """Bind a reviewed context only to its exact official player universe.
+
+    This is intentionally separate from generic optional ingestion: it verifies a
+    semantic JSON self-hash and preserves a second reviewed CSV input.
+    """
+
+    counts = _empty_family_counts()
+    derived_status = "derived_hash_bound"
+
+    def degraded(reason: str) -> dict[str, Any]:
+        counts["quarantined"] = max(counts["quarantined"], 1)
+        return _family_status(
+            family_id="launch_context",
+            mandatory=False,
+            status="degraded",
+            counts=counts,
+            reasons=[reason],
+            source_id=source_id,
+            registry_source_status=derived_status,
+        )
+
+    if context_path is None or not context_path.is_file():
+        counts["missing"] = 1
+        return _family_status(
+            family_id="launch_context",
+            mandatory=False,
+            status="degraded",
+            counts=counts,
+            reasons=["launch_context_not_supplied"],
+            source_id=source_id,
+            registry_source_status=derived_status,
+        )
+    if world_cup_priors_path is None or not world_cup_priors_path.is_file():
+        counts["missing"] = 1
+        return _family_status(
+            family_id="launch_context",
+            mandatory=False,
+            status="degraded",
+            counts=counts,
+            reasons=["launch_context_world_cup_priors_missing"],
+            source_id=source_id,
+            registry_source_status=derived_status,
+        )
+
+    context_body = context_path.read_bytes()
+    world_cup_body = world_cup_priors_path.read_bytes()
+    context_digest = content_hash(context_body)
+    world_cup_digest = content_hash(world_cup_body)
+    counts["input"] = 3
+    try:
+        context = load_launch_context(context_path)
+    except (LaunchContextError, OSError, UnicodeDecodeError, json.JSONDecodeError, AttributeError):
+        return degraded("launch_context_self_hash_invalid")
+    if not isinstance(context, Mapping):
+        return degraded("launch_context_must_be_object")
+    if context.get("season") != "2026-27":
+        return degraded("launch_context_season_invalid")
+    bindings = context.get("source_bindings")
+    if not isinstance(bindings, Mapping):
+        return degraded("launch_context_source_bindings_invalid")
+    official_binding = bindings.get("official_bootstrap")
+    world_cup_binding = bindings.get("world_cup_priors")
+    if not isinstance(official_binding, Mapping) or not isinstance(world_cup_binding, Mapping):
+        return degraded("launch_context_source_bindings_invalid")
+    bound_bootstrap = str(official_binding.get("sha256", ""))
+    if not _SHA256.fullmatch(bound_bootstrap):
+        return degraded("launch_context_official_bootstrap_hash_invalid")
+    if bound_bootstrap != bootstrap_sha256:
+        return degraded("official_bootstrap_hash_mismatch")
+    if str(world_cup_binding.get("sha256", "")) != world_cup_digest:
+        return degraded("world_cup_priors_hash_mismatch")
+    try:
+        context_observed, context_observed_at = _timestamp(
+            context.get("observed_at"), "launch_context.observed_at"
+        )
+        binding_observed, binding_observed_at = _timestamp(
+            official_binding.get("observed_at"),
+            "launch_context.official_bootstrap.observed_at",
+        )
+        checkpoint_observed, checkpoint_at = _timestamp(
+            checkpoint_observed_at, "checkpoint_observed_at"
+        )
+        _, deadline_at = _timestamp(deadline, "deadline")
+    except PreseasonSnapshotError:
+        return degraded("launch_context_temporal_metadata_invalid")
+    if context_observed_at > checkpoint_at or binding_observed_at > checkpoint_at:
+        return degraded("launch_context_observed_after_checkpoint")
+    if context_observed_at >= deadline_at or binding_observed_at >= deadline_at:
+        return degraded("launch_context_available_at_or_after_deadline")
+
+    provenance = _seal(
+        {
+            "schema_version": "1.0",
+            "source_id": source_id,
+            "observed_at": checkpoint_observed,
+            "available_at": context_observed,
+            "context_content_sha256": str(context["content_sha256"]),
+            "context_artifact_sha256": context_digest,
+            "world_cup_priors_sha256": world_cup_digest,
+            "bound_official_bootstrap_sha256": bound_bootstrap,
+            "context_observed_at": context_observed,
+            "official_bootstrap_observed_at": binding_observed,
+        }
+    )
+    provenance_body = (json.dumps(provenance, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    provenance_digest = content_hash(provenance_body)
+    context_relative = _copy_optional_bytes(
+        context_body,
+        family_id="launch_context",
+        digest=context_digest,
+        checkpoint_dir=checkpoint_dir,
+        extension="json",
+        suffix="context",
+    )
+    world_cup_relative = _copy_optional_bytes(
+        world_cup_body,
+        family_id="launch_context",
+        digest=world_cup_digest,
+        checkpoint_dir=checkpoint_dir,
+        extension="csv",
+        suffix="world-cup-priors",
+    )
+    provenance_relative = _copy_optional_bytes(
+        provenance_body,
+        family_id="launch_context",
+        digest=provenance_digest,
+        checkpoint_dir=checkpoint_dir,
+        extension="json",
+        suffix="provenance",
+    )
+    counts["admitted"] = 3
+    family = _family_status(
+        family_id="launch_context",
+        mandatory=False,
+        status="admitted",
+        counts=counts,
+        artifact_path=context_relative,
+        artifact_sha256=context_digest,
+        sidecar_path=provenance_relative,
+        sidecar_sha256=provenance_digest,
+        observed_at=checkpoint_observed,
+        available_at=context_observed,
+        source_id=source_id,
+        registry_source_status=derived_status,
+    )
+    family.update(
+        {
+            "context_content_sha256": str(context["content_sha256"]),
+            "world_cup_priors_path": world_cup_relative,
+            "world_cup_priors_sha256": world_cup_digest,
+            "provenance_path": provenance_relative,
+            "provenance_sha256": provenance_digest,
+            "bound_official_bootstrap_sha256": bound_bootstrap,
+        }
+    )
+    return family
+
 def _decode_official_payload(family_id: str, body: bytes) -> Any:
     if not body:
         raise PreseasonSnapshotError(
@@ -793,6 +984,8 @@ def _verify_existing_bound_artifacts(
         for path_key, digest_key in (
             ("artifact_path", "artifact_sha256"),
             ("sidecar_path", "sidecar_sha256"),
+            ("world_cup_priors_path", "world_cup_priors_sha256"),
+            ("provenance_path", "provenance_sha256"),
         ):
             path_text = raw_family.get(path_key)
             expected = raw_family.get(digest_key)
@@ -838,6 +1031,8 @@ def capture_preseason_snapshot(
     code_commit: str | None = None,
     optional_artifacts: Mapping[str, Path | None] | None = None,
     optional_sidecars: Mapping[str, Path | None] | None = None,
+    launch_context_path: Path | None = DEFAULT_LAUNCH_CONTEXT_PATH,
+    world_cup_priors_path: Path | None = DEFAULT_WORLD_CUP_PRIORS_PATH,
     update_index: bool = True,
 ) -> dict[str, Any]:
     """Capture one immutable preseason checkpoint and return its sealed manifest.
@@ -895,8 +1090,19 @@ def capture_preseason_snapshot(
                 raise PreseasonSnapshotError(f"Unknown optional family for sidecar: {key}")
             sidecars[key] = value
 
+    # The launch context has two reviewed source artifacts and an internally
+    # generated provenance envelope, so it cannot use the generic one-file
+    # optional family contract.
+    if optional_paths["launch_context"] is not None or sidecars["launch_context"] is not None:
+        raise PreseasonSnapshotError(
+            "launch_context must use launch_context_path and world_cup_priors_path"
+        )
+
     # Compute optional artifact digests before request hash.
     optional_digests = _compute_optional_digests(optional_paths, sidecars)
+    launch_context_digests = _launch_context_input_digests(
+        launch_context_path, world_cup_priors_path
+    )
 
     request = {
         "season": season,
@@ -911,6 +1117,7 @@ def capture_preseason_snapshot(
             json.dumps(config, sort_keys=True, separators=(",", ":")).encode("utf-8")
         ),
         "optional_input_sha256": {k: v for k, v in sorted(optional_digests.items())},
+        "launch_context_input_sha256": launch_context_digests,
     }
     request_sha256 = artifact_hash({"request": request})
 
@@ -1027,8 +1234,20 @@ def capture_preseason_snapshot(
             "world_cup_return_fatigue": "optional_world_cup_priors_not_supplied",
             "licensed_odds": "optional_licensed_odds_not_configured",
             "player_ratings": "optional_player_ratings_not_supplied",
+            "launch_context": "launch_context_not_supplied",
         }
         for family_id in OPTIONAL_FAMILIES:
+            if family_id == "launch_context":
+                families[family_id] = _bind_launch_context(
+                    context_path=launch_context_path,
+                    world_cup_priors_path=world_cup_priors_path,
+                    bootstrap_sha256=bootstrap_result["family"]["artifact_sha256"],
+                    checkpoint_dir=checkpoint_dir,
+                    checkpoint_observed_at=observed_text,
+                    deadline=official_deadline,
+                    source_id=optional_sources[family_id],
+                )
+                continue
             families[family_id] = _bind_optional_artifact(
                 family_id=family_id,
                 path=optional_paths[family_id],
