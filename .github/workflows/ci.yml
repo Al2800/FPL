@@ -21,7 +21,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        # This application is operated with Python 3.13.  Compatibility
+        # experiments across other versions are deliberately not PR gates.
+        python-version: ["3.13"]
 
     steps:
       - name: Check out repository
