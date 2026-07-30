@@ -1,0 +1,27 @@
+# Additive policy for versioned evidence projection challengers.
+#
+# V1 remains the sealed policy for existing replays. This file is default-disabled:
+# it defines one reversible challenger but does not change any production forecast.
+
+meta:
+  policy_id: evidence-adjustments-v2
+  status: proposed
+  decides: Open Decision 10
+  supersedes: null
+
+persistent_availability:
+  schema_version: "1.0"
+  challenger_id: availability-persistence-v1
+  enabled: false
+  scope: named_challenger_only
+  require_registry_approved_source: true
+  require_exact_identity: true
+  require_source_hash: true
+  effects:
+    unavailable:
+      mode: zero_projection
+    doubtful:
+      mode: bounded_reduction
+      max_start_probability_delta: 0.25
+    available:
+      mode: restore_structured_baseline

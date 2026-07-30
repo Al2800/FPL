@@ -1,0 +1,110 @@
+{
+  "canonical_artifacts": {
+    "file_count_after": 2746,
+    "file_count_before": 2746,
+    "tree_sha256_after": "f9982a38ac2c2ec5b03bd75be6c2ce07c328275c1d7e726b7074fc13913998db",
+    "tree_sha256_before": "f9982a38ac2c2ec5b03bd75be6c2ce07c328275c1d7e726b7074fc13913998db",
+    "unchanged": true
+  },
+  "claim_qualification": [
+    {
+      "captured_at": "2026-07-26T19:25:00Z",
+      "claim_id": "claim-gw33-saka-out",
+      "decision_cutoff": "2026-04-18T10:00:00Z",
+      "eligible_for_live_availability_ledger": false,
+      "gameweek": 33,
+      "player_uid": "player:2025-26:16",
+      "published_at": "2026-04-17T00:00:00Z",
+      "refusal_reasons": [
+        "captured_after_historical_decision",
+        "immutable_source_hash_not_available",
+        "publication_timestamp_not_exact",
+        "source_id_not_in_live_registry"
+      ],
+      "source_id": "ffs-gw33-saka-out-2026-04-17"
+    },
+    {
+      "captured_at": "2026-07-26T19:25:00Z",
+      "claim_id": "claim-gw34-timber-out",
+      "decision_cutoff": "2026-04-24T17:30:00Z",
+      "eligible_for_live_availability_ledger": false,
+      "gameweek": 34,
+      "player_uid": "player:2025-26:8",
+      "published_at": "2026-04-24T00:00:00Z",
+      "refusal_reasons": [
+        "captured_after_historical_decision",
+        "immutable_source_hash_not_available",
+        "publication_timestamp_not_exact",
+        "source_id_not_in_live_registry"
+      ],
+      "source_id": "ffs-gw34-timber-out-2026-04-24"
+    },
+    {
+      "captured_at": "2026-07-26T19:25:00Z",
+      "claim_id": "claim-gw35-timber-out",
+      "decision_cutoff": "2026-05-01T17:30:00Z",
+      "eligible_for_live_availability_ledger": false,
+      "gameweek": 35,
+      "player_uid": "player:2025-26:8",
+      "published_at": "2026-05-01T00:00:00Z",
+      "refusal_reasons": [
+        "captured_after_historical_decision",
+        "immutable_source_hash_not_available",
+        "publication_timestamp_not_exact",
+        "source_id_not_in_live_registry"
+      ],
+      "source_id": "ffs-gw35-timber-out-2026-05-01"
+    },
+    {
+      "captured_at": "2026-07-26T19:25:00Z",
+      "claim_id": "claim-gw36-timber-still-out",
+      "decision_cutoff": "2026-05-09T10:00:00Z",
+      "eligible_for_live_availability_ledger": false,
+      "gameweek": 36,
+      "player_uid": "player:2025-26:8",
+      "published_at": "2026-05-08T00:00:00Z",
+      "refusal_reasons": [
+        "captured_after_historical_decision",
+        "immutable_source_hash_not_available",
+        "publication_timestamp_not_exact",
+        "source_id_not_in_live_registry"
+      ],
+      "source_id": "ffs-gw36-timber-still-out-2026-05-08"
+    }
+  ],
+  "content_sha256": "ac8c9a859726b6509a8ef407ada37c6e1169f2702f33e72a44c5ce36910824ee",
+  "evaluation_id": "w4-persistent-availability-gw33-gw36",
+  "evaluation_status": "qualified_no_historical_injection",
+  "gameweeks": [
+    33,
+    34,
+    35,
+    36
+  ],
+  "mechanics_coverage": {
+    "duplicate_idempotence": "covered_by_focused_contract_test",
+    "expiry_and_recovery": "covered_by_focused_contract_test",
+    "live_official_bridge": "covered_by_focused_contract_test",
+    "n_plus_one_persistence": "covered_by_focused_contract_test",
+    "unregistered_or_post_cutoff_refusal": "covered_by_focused_contract_test"
+  },
+  "policy": {
+    "challenger_id": "availability-persistence-v1",
+    "default_enabled": false,
+    "path": "control/policies/evidence-adjustments-v2.yaml",
+    "policy_sha256": "4981bcb49a292fa7a58da6c371c322ae3b2544257ef402e1ffbb6eab4378ea77"
+  },
+  "production_recommendation": {
+    "reason": "The challenger is default-disabled. Historical qualification does not ratify promotion; live evidence, an ADR and owner approval remain required.",
+    "status": "not_approved"
+  },
+  "schema_version": "1.0",
+  "season": "2025-26",
+  "summary": {
+    "admitted_claim_count": 0,
+    "candidate_claim_count": 4,
+    "projection_effect_count": 0,
+    "realised_score_comparison": "not_run",
+    "reason": "All available GW33--GW36 unstructured sources were recovered after their historical decisions and lack the live source/hash admission contract. They are not injected into the challenger."
+  }
+}
