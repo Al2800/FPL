@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "knowledge_runtime": {
+    "profile_id": "fpl",
+    "overlay_path": "C:/Users/Alastair/knowledge/config/project-overlays/fpl.yaml",
+    "tools_kb_path": "C:/Users/Alastair/knowledge/tools/kb",
+    "mode": "local_read_only_derived_index",
+    "company_corpus_access": "forbidden",
+    "email_corpus_access": "forbidden",
+    "teams_corpus_access": "forbidden"
+  },
+  "materialization": {
+    "accepted_manifest_status": "accepted",
+    "required_context_status": "approved",
+    "raw_content_retention": "forbidden",
+    "immutable_input_policy": "hash_bound"
+  },
+  "retrieval": {
+    "ranking_method": "sqlite_fts5_lexical",
+    "semantic_dependency": "disabled",
+    "allowed_authorities": [
+      "canonical",
+      "primary",
+      "secondary"
+    ],
+    "maximum_claims": 12,
+    "maximum_claim_characters": 12000,
+    "maximum_packet_latency_ms": 250,
+    "maximum_query_characters": 500,
+    "omission_id_limit": 200
+  },
+  "agent_packet": {
+    "identical_packet_required_for_all_agent_arms": true,
+    "frozen_no_evidence_control_required": true,
+    "raw_source_text": "forbidden",
+    "host_audit_fields": [
+      "retrieval_audit",
+      "omitted"
+    ]
+  }
+}
