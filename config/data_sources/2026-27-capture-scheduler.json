@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "task_name": "FPL Deadline-Aware Capture",
+  "time_zone": "Europe/London",
+  "dispatch_interval_minutes": 15,
+  "daily_checkpoints": [
+    {
+      "checkpoint": "daily_am",
+      "local_time": "07:00",
+      "window_minutes": 30
+    },
+    {
+      "checkpoint": "post_lock",
+      "local_time": "10:00",
+      "window_minutes": 30
+    }
+  ],
+  "deadline_checkpoints": [
+    {
+      "checkpoint": "T-48h",
+      "offset_minutes": 2880,
+      "window_minutes": 30,
+      "odds_slot": null
+    },
+    {
+      "checkpoint": "T-24h",
+      "offset_minutes": 1440,
+      "window_minutes": 30,
+      "odds_slot": "T-24h"
+    },
+    {
+      "checkpoint": "T-8h",
+      "offset_minutes": 480,
+      "window_minutes": 30,
+      "odds_slot": "T-8h"
+    },
+    {
+      "checkpoint": "T-2h",
+      "offset_minutes": 120,
+      "window_minutes": 30,
+      "odds_slot": "T-2h"
+    },
+    {
+      "checkpoint": "final",
+      "offset_minutes": 15,
+      "window_minutes": 14,
+      "odds_slot": "final"
+    }
+  ],
+  "active_event_grace_hours": 36,
+  "state_path": "data/live-shadow/scheduler/state.json",
+  "report_root": "data/live-shadow/scheduler/reports",
+  "lock_path": "data/live-shadow/scheduler/dispatch.lock",
+  "official_capture_script": "scripts/capture_fpl_live_shadow.py",
+  "odds_capture_script": "scripts/capture_live_odds.py",
+  "odds_output_root": "data/live-shadow/odds/scheduled",
+  "secret_environment_variable": "THE_ODDS_API_KEY",
+  "account_writes": false,
+  "browser_actions": false,
+  "missed_checkpoint_policy": "record_gap_never_backfill",
+  "failure_policy": "record_degraded_continue_official_capture"
+}
