@@ -55,6 +55,10 @@ reported alongside the selected proposal.
 
 ## Approval and execution boundary
 
+Owner policy sign-off (2026-07-31): the policy contract itself is ratified; see
+`docs/evaluation/2026-27-initial-squad-policy-signoff.md`. No specific squad
+proposal is approved while the live checkpoint remains degraded.
+
 Generation is always advisory-only. The output contains
 `account_writes: false` and has no authenticated FPL or browser interface.
 

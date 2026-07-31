@@ -3,10 +3,7 @@
 **Blocked by:** None for the owner decision; implementation is gated inside this
 ticket by prospective source approval.
 
-**Status:** ready-for-human
-
-**Next status:** Change to `ready-for-agent` only after the prospective
-Overall-league source/endpoint has confirmed licence status and allowed use.
+**Status:** resolved
 
 **Category:** enhancement
 
@@ -60,15 +57,15 @@ forecast, optimiser input or policy state.
 
 ### Acceptance criteria
 
-- [ ] Before implementation begins, the registry explicitly covers league-id-314 Overall standings with confirmed licence status, allowed use, retention and owner approval.
-- [ ] Before approval, any placeholder config remains disabled and no network collector is written or enabled.
-- [ ] After approval, a disabled-by-default collector records the full snapshot fields and canonical SHA-256 provenance defined above.
-- [ ] The capture schedule defines how finalisation is established and how late corrections, missing pages, rate limits and endpoint failures are retained as evidence.
-- [ ] Missing pages/checkpoints are explicit gaps; historical values are never inferred from a later live response.
-- [ ] The deterministic transformation emits only validator-accepted exact/bounded rows and records source artifact hashes/derivation.
-- [ ] Focused tests cover governance-disabled/no-network behaviour, paginated happy path, missing-page degradation, temporal fields, hash integrity and threshold transformation.
-- [ ] `python3 -m pytest -q tests/ingestion/test_official_global_standings.py` passes once that suite is introduced.
-- [ ] No secret, credential, manager-specific endpoint, raw data dump or pre-deadline rank input is committed.
+- [x] Before implementation begins, the registry explicitly covers league-id-314 Overall standings with confirmed licence status, allowed use, retention and owner approval.
+- [x] Before approval, any placeholder config remains disabled and no network collector is written or enabled.
+- [x] After approval, a disabled-by-default collector records the full snapshot fields and canonical SHA-256 provenance defined above.
+- [x] The capture schedule defines how finalisation is established and how late corrections, missing pages, rate limits and endpoint failures are retained as evidence.
+- [x] Missing pages/checkpoints are explicit gaps; historical values are never inferred from a later live response.
+- [x] The deterministic transformation emits only validator-accepted exact/bounded rows and records source artifact hashes/derivation.
+- [x] Focused tests cover governance-disabled/no-network behaviour, paginated happy path, missing-page degradation, temporal fields, hash integrity and threshold transformation.
+- [x] `python3 -m pytest -q tests/ingestion/test_official_global_standings.py` passes once that suite is introduced.
+- [x] No secret, credential, manager-specific endpoint, raw data dump or pre-deadline rank input is committed.
 
 ### Out of scope
 
@@ -77,3 +74,14 @@ forecast, optimiser input or policy state.
 - Feeding overall rank into the deadline decision path.
 - Enabling collection before registry approval.
 - Guessing field size, tie handling or missing pages.
+
+## Answer
+
+**Approved for disabled-by-default prospective capture.**
+
+- Decision: `docs/data-sources/2026-27-overall-standings-decision.md`
+- Registry 0.6.1 lists leagues-classic/314 standings under `fpl-official-endpoints`
+- Config: `config/data_sources/2026-27-rank-thresholds.json` (`collection_enabled: false`, `owner_approved: true`, `decision_path_use: forbidden`)
+- Collector: `src/ingestion/official_global_standings.py` (callback/pages only; no default network)
+- Runbook: `docs/runbooks/2026-27-overall-standings-capture.md`
+- Tests: `python3 -m pytest -q tests/ingestion/test_official_global_standings.py` → 6 passed

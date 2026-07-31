@@ -8,7 +8,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Mapping, Sequence
 
 
 class LineupsMinutesError(ValueError):
@@ -597,3 +597,251 @@ def write_immutable_json(path: str | Path, value: Mapping[str, Any]) -> str:
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(encoded, encoding="utf-8")
     return "created"
+
+
+OFFICIAL_TEAM_SHEETS_PROVIDER = "official-team-sheets"
+OFFICIAL_LINEUPS_SOURCE_ID = "official-lineups-minutes"
+
+
+def build_official_team_sheet_citation(
+    *,
+    citation_url: str,
+    publisher: str,
+    published_at: str,
+    observed_at: str,
+    provider_fixture_id: str,
+    starting_xi: Sequence[Mapping[str, Any]],
+    substitutions: Sequence[Mapping[str, Any]] | None = None,
+    corrections: Sequence[Mapping[str, Any]] | None = None,
+    available_at: str | None = None,
+    source_version: str = "official-team-sheet-citation-v1",
+) -> dict[str, Any]:
+    """Seal an immutable official team-sheet citation without network access.
+
+    This is the governed official-path rehearsal builder. It never enables the
+    production ``selected_provider`` and never fetches remote pages.
+    """
+
+    if not str(citation_url).strip():
+        raise LineupsMinutesError("citation_url is required")
+    if not str(publisher).strip():
+        raise LineupsMinutesError("publisher is required")
+    if not str(provider_fixture_id).strip():
+        raise LineupsMinutesError("provider_fixture_id is required")
+
+    published_text, published_dt = _time(published_at, "published_at")
+    observed_text, observed_dt = _time(observed_at, "observed_at")
+    available_text, available_dt = _time(
+        available_at if available_at is not None else published_at,
+        "available_at",
+    )
+    if available_dt > observed_dt:
+        raise LineupsMinutesError("available_at must not be after observed_at")
+    if published_dt > observed_dt:
+        raise LineupsMinutesError("published_at must not be after observed_at")
+
+    if len(starting_xi) < 11:
+        raise LineupsMinutesError("official citation requires an 11-player starting XI")
+
+    players: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for row in starting_xi:
+        if not isinstance(row, Mapping):
+            raise LineupsMinutesError("starting XI rows must be objects")
+        player_id = str(row.get("provider_player_id", ""))
+        if not player_id or player_id in seen:
+            raise LineupsMinutesError("starting XI provider_player_id must be unique")
+        seen.add(player_id)
+        minutes = row.get("minutes")
+        if (
+            isinstance(minutes, bool)
+            or not isinstance(minutes, int)
+            or not 0 <= minutes <= 130
+        ):
+            raise LineupsMinutesError(
+                "citation player minutes must be an integer from 0 to 130"
+            )
+        players.append(
+            {
+                "provider_player_id": player_id,
+                "started": True,
+                "minutes": minutes,
+                "role": "starting_xi",
+            }
+        )
+
+    for row in substitutions or []:
+        if not isinstance(row, Mapping):
+            raise LineupsMinutesError("substitution rows must be objects")
+        player_id = str(row.get("provider_player_id", ""))
+        if not player_id or player_id in seen:
+            raise LineupsMinutesError("substitution provider_player_id must be unique")
+        seen.add(player_id)
+        minutes = row.get("minutes")
+        if (
+            isinstance(minutes, bool)
+            or not isinstance(minutes, int)
+            or not 0 <= minutes <= 130
+        ):
+            raise LineupsMinutesError(
+                "citation player minutes must be an integer from 0 to 130"
+            )
+        players.append(
+            {
+                "provider_player_id": player_id,
+                "started": False,
+                "minutes": minutes,
+                "role": "substitution",
+                "on_minute": row.get("on_minute"),
+                "off_player_id": row.get("off_player_id"),
+            }
+        )
+
+    correction_rows = []
+    for row in corrections or []:
+        if not isinstance(row, Mapping):
+            raise LineupsMinutesError("correction rows must be objects")
+        correction_rows.append(
+            {
+                "corrected_at": _time(row.get("corrected_at"), "corrected_at")[0],
+                "field": str(row.get("field", "")),
+                "from_value": deepcopy(row.get("from_value")),
+                "to_value": deepcopy(row.get("to_value")),
+                "reason": str(row.get("reason", "")),
+            }
+        )
+
+    citation_body = {
+        "schema_version": "1.0",
+        "provider_id": OFFICIAL_TEAM_SHEETS_PROVIDER,
+        "source_id": OFFICIAL_LINEUPS_SOURCE_ID,
+        "source_version": source_version,
+        "provider_fixture_id": str(provider_fixture_id),
+        "observed_at": observed_text,
+        "available_at": available_text,
+        "acquisition_status": "success",
+        "players": players,
+        "citation": {
+            "url": str(citation_url),
+            "publisher": str(publisher),
+            "published_at": published_text,
+            "capture_method": "manual_citation",
+            "redistribution": False,
+        },
+        "corrections": correction_rows,
+    }
+    # Citation metadata is retained beside the sealed provider envelope via a
+    # separate rehearsal pack; the raw admit path only accepts known fields.
+    raw_for_admit = {
+        key: value
+        for key, value in citation_body.items()
+        if key in RAW_SNAPSHOT_FIELDS or key == "players"
+    }
+    # Drop citation-only player keys before admit while preserving minutes/started.
+    raw_for_admit["players"] = [
+        {
+            "provider_player_id": player["provider_player_id"],
+            "started": player["started"],
+            "minutes": player["minutes"],
+        }
+        for player in players
+    ]
+    sealed = admit_raw_provider_snapshot(
+        raw_for_admit,
+        expected_provider_id=OFFICIAL_TEAM_SHEETS_PROVIDER,
+        observed_at=observed_text,
+    )
+    return _seal(
+        {
+            "schema_version": "official-team-sheet-citation-v1",
+            "provider_snapshot": sealed,
+            "citation": citation_body["citation"],
+            "corrections": correction_rows,
+            "starting_xi_count": sum(1 for player in players if player["started"]),
+            "substitution_count": sum(
+                1 for player in players if not player["started"]
+            ),
+            "account_writes": False,
+            "network_fetch": False,
+        }
+    )
+
+
+def rehearsal_config_for_official_citation(config: Mapping[str, Any]) -> dict[str, Any]:
+    """Return a temporary config that admits official citation reconciliation.
+
+    Production ``selected_provider`` remains null in the committed file; this
+    helper is only for rehearsal/tests.
+    """
+
+    cfg = deepcopy(dict(config))
+    cfg["selected_provider"] = OFFICIAL_TEAM_SHEETS_PROVIDER
+    found = False
+    for item in cfg.get("providers", []):
+        if not isinstance(item, Mapping):
+            continue
+        if item.get("provider_id") != OFFICIAL_TEAM_SHEETS_PROVIDER:
+            continue
+        item["registry_enabled"] = True
+        item["rights_approved"] = True
+        item["owner_approved"] = True
+        found = True
+    if not found:
+        raise LineupsMinutesError("official-team-sheets provider is not registered")
+    return cfg
+
+
+def rehearse_official_team_sheet_capture(
+    *,
+    config: Mapping[str, Any],
+    citation_url: str,
+    publisher: str,
+    published_at: str,
+    observed_at: str,
+    provider_fixture_id: str,
+    starting_xi: Sequence[Mapping[str, Any]],
+    fpl_minutes: Mapping[str, Any],
+    aliases: Mapping[str, Any],
+    cutoff: str,
+    substitutions: Sequence[Mapping[str, Any]] | None = None,
+    corrections: Sequence[Mapping[str, Any]] | None = None,
+    available_at: str | None = None,
+) -> dict[str, Any]:
+    """Run one complete official citation → reconcile rehearsal pack."""
+
+    if config.get("selected_provider") not in {None, ""}:
+        raise LineupsMinutesError(
+            "production selected_provider must remain null during citation rehearsal"
+        )
+
+    citation = build_official_team_sheet_citation(
+        citation_url=citation_url,
+        publisher=publisher,
+        published_at=published_at,
+        observed_at=observed_at,
+        available_at=available_at,
+        provider_fixture_id=provider_fixture_id,
+        starting_xi=starting_xi,
+        substitutions=substitutions,
+        corrections=corrections,
+    )
+    reconcile_config = rehearsal_config_for_official_citation(config)
+    reconciled = reconcile_lineups_minutes(
+        citation["provider_snapshot"],
+        fpl_minutes=fpl_minutes,
+        aliases=aliases,
+        config=reconcile_config,
+        cutoff=cutoff,
+    )
+    return _seal(
+        {
+            "schema_version": "official-team-sheet-rehearsal-v1",
+            "chosen_branch": "official_citation",
+            "production_selected_provider": config.get("selected_provider"),
+            "citation": citation,
+            "reconciliation": reconciled,
+            "disagreement_policy": config.get("disagreement_policy"),
+            "account_writes": False,
+            "network_fetch": False,
+        }
+    )

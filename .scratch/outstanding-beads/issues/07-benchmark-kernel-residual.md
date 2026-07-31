@@ -1,6 +1,6 @@
 # 07 — Close the Benchmark Kernel programme
 
-**Blocked by:** 06 — Approve the live initial-squad policy
+**Blocked by:** None — ticket 06 resolved (policy ratified; live proposal deferred)
 
 **Status:** ready-for-agent
 

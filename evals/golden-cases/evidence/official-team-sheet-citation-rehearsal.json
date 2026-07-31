@@ -1,0 +1,333 @@
+{
+  "aliases": {
+    "aliases": [
+      {
+        "entity_type": "fixture",
+        "fpl_entity_id": "fixture:rehearsal-1",
+        "provider_entity_id": "pl-rehearsal-fixture-1",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "101",
+        "provider_entity_id": "ots-p01",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "102",
+        "provider_entity_id": "ots-p02",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "103",
+        "provider_entity_id": "ots-p03",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "104",
+        "provider_entity_id": "ots-p04",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "105",
+        "provider_entity_id": "ots-p05",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "106",
+        "provider_entity_id": "ots-p06",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "107",
+        "provider_entity_id": "ots-p07",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "108",
+        "provider_entity_id": "ots-p08",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "109",
+        "provider_entity_id": "ots-p09",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "110",
+        "provider_entity_id": "ots-p10",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "111",
+        "provider_entity_id": "ots-p11",
+        "provider_id": "official-team-sheets"
+      },
+      {
+        "entity_type": "player",
+        "fpl_entity_id": "200",
+        "provider_entity_id": "ots-s01",
+        "provider_id": "official-team-sheets"
+      }
+    ]
+  },
+  "case_id": "official-team-sheet-citation-rehearsal",
+  "chosen_branch": "official_citation",
+  "description": "Governed official team-sheet citation rehearsal: immutable XI/sub citation, correction history, identity mapping and FPL minutes reconciliation. Synthetic fixture; no live network fetch.",
+  "fpl_minutes_oracle": {
+    "fixture:rehearsal-1": {
+      "101": 90,
+      "102": 90,
+      "103": 90,
+      "104": 90,
+      "105": 90,
+      "106": 90,
+      "107": 90,
+      "108": 90,
+      "109": 90,
+      "110": 90,
+      "111": 60,
+      "200": 30
+    }
+  },
+  "production_selected_provider": null,
+  "rehearsal": {
+    "account_writes": false,
+    "chosen_branch": "official_citation",
+    "citation": {
+      "account_writes": false,
+      "citation": {
+        "capture_method": "manual_citation",
+        "published_at": "2026-08-16T14:00:00Z",
+        "publisher": "Premier League",
+        "redistribution": false,
+        "url": "https://www.premierleague.com/match/rehearsal-official-team-sheet-1"
+      },
+      "content_sha256": "1f19ea6d684024725dd673d0ec3fee04cd64e5862350f5ff84fc38caa7bf6c58",
+      "corrections": [
+        {
+          "corrected_at": "2026-08-16T14:10:00Z",
+          "field": "starting_xi",
+          "from_value": "ots-p12",
+          "reason": "club corrected published XI before kickoff",
+          "to_value": "ots-p11"
+        }
+      ],
+      "network_fetch": false,
+      "provider_snapshot": {
+        "acquisition_status": "success",
+        "available_at": "2026-08-16T14:00:00Z",
+        "content_sha256": "8345ed336d689cb692b94f0f4db550c7d93c6a16b073645bf9f2cac7647bc2e9",
+        "observed_at": "2026-08-16T14:05:00Z",
+        "players": [
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p01",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p02",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p03",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p04",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p05",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p06",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p07",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p08",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p09",
+            "started": true
+          },
+          {
+            "minutes": 90,
+            "provider_player_id": "ots-p10",
+            "started": true
+          },
+          {
+            "minutes": 60,
+            "provider_player_id": "ots-p11",
+            "started": true
+          },
+          {
+            "minutes": 30,
+            "provider_player_id": "ots-s01",
+            "started": false
+          }
+        ],
+        "provider_fixture_id": "pl-rehearsal-fixture-1",
+        "provider_id": "official-team-sheets",
+        "schema_version": "1.0",
+        "source_id": "official-lineups-minutes",
+        "source_sha256": "13d9a0003191f7d61b243a0dde357f9fa128942f571159a7747e9ba091f04e5d",
+        "source_version": "official-team-sheet-citation-v1"
+      },
+      "schema_version": "official-team-sheet-citation-v1",
+      "starting_xi_count": 11,
+      "substitution_count": 1
+    },
+    "content_sha256": "53e74dbdbb1a3cd7fda7e2195f8213f915533ad5412f65d1640fa1e7421b1a23",
+    "disagreement_policy": "quarantine_and_adjudicate_against_official_team_sheet",
+    "network_fetch": false,
+    "production_selected_provider": null,
+    "reconciliation": {
+      "account_writes": false,
+      "available_at": "2026-08-16T14:00:00Z",
+      "content_sha256": "e153489be6a4bdcdc6e6f003a7170e417ded2b032d999ce9de3fed8f67aa3127",
+      "cutoff": "2026-08-16T16:00:00Z",
+      "fixture_id": "fixture:rehearsal-1",
+      "observed_at": "2026-08-16T14:05:00Z",
+      "oracle": "fpl-official-endpoints",
+      "players": [
+        {
+          "fpl_player_id": "101",
+          "minutes": 90,
+          "provider_player_id": "ots-p01",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "102",
+          "minutes": 90,
+          "provider_player_id": "ots-p02",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "103",
+          "minutes": 90,
+          "provider_player_id": "ots-p03",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "104",
+          "minutes": 90,
+          "provider_player_id": "ots-p04",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "105",
+          "minutes": 90,
+          "provider_player_id": "ots-p05",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "106",
+          "minutes": 90,
+          "provider_player_id": "ots-p06",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "107",
+          "minutes": 90,
+          "provider_player_id": "ots-p07",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "108",
+          "minutes": 90,
+          "provider_player_id": "ots-p08",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "109",
+          "minutes": 90,
+          "provider_player_id": "ots-p09",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "110",
+          "minutes": 90,
+          "provider_player_id": "ots-p10",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "111",
+          "minutes": 60,
+          "provider_player_id": "ots-p11",
+          "reasons": [],
+          "started": true,
+          "status": "admitted"
+        },
+        {
+          "fpl_player_id": "200",
+          "minutes": 30,
+          "provider_player_id": "ots-s01",
+          "reasons": [],
+          "started": false,
+          "status": "admitted"
+        }
+      ],
+      "provider_id": "official-team-sheets",
+      "quality": {
+        "admitted_player_count": 12,
+        "gaps": [],
+        "identity_coverage": 1.0,
+        "min_admitted_players": 11,
+        "min_started_xi": 11,
+        "quarantined_player_count": 0,
+        "started_count": 11
+      },
+      "schema_version": "1.0",
+      "source_id": "official-lineups-minutes",
+      "source_sha256": "8345ed336d689cb692b94f0f4db550c7d93c6a16b073645bf9f2cac7647bc2e9",
+      "source_version": "official-team-sheet-citation-v1",
+      "status": "complete"
+    },
+    "schema_version": "official-team-sheet-rehearsal-v1"
+  }
+}

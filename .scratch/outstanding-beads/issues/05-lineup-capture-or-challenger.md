@@ -2,7 +2,7 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-human
+**Status:** resolved
 
 **Category:** enhancement
 
@@ -62,15 +62,15 @@ and adjudicated; feeds are never averaged.
 
 ### Acceptance criteria
 
-- [ ] The owner records the chosen branch, cost/rights rationale and whether any provider may be evaluated; Sportradar remains off unless a new explicit decision reverses the cost ruling.
-- [ ] Before either rehearsal/trial, the exact official or challenger source has a registry entry with confirmed licence status and allowed use.
-- [ ] Until that decision and registry gate are complete, `selected_provider` stays null, registry collection stays disabled and no capture runs.
-- [ ] **Official branch:** at least one complete rehearsal artifact demonstrates XI/substitution citation capture, temporal/provenance fields, identity mapping, correction handling and reconciliation to official FPL minutes.
-- [ ] **Challenger branch:** a registered, owner-approved provider is measured over at least 10 Premier League fixtures across at least three matchdays, with immutable provider-neutral snapshots.
-- [ ] **Challenger branch:** the report records lineup timing/coverage, substitutions, final-minute agreement, identity coverage, rate limits/headroom, retention rights, cost and failure behaviour; promotion occurs only if all 95/99/100/20 gates pass.
-- [ ] Any disagreement is quarantined and adjudicated against the official team sheet; no averaging is introduced.
-- [ ] `python3 -m pytest -q tests/data/test_lineups_minutes.py tests/unit/test_registry.py` passes (19 tests at handoff).
-- [ ] No API keys, raw provider payloads or browser sessions are committed.
+- [x] The owner records the chosen branch, cost/rights rationale and whether any provider may be evaluated; Sportradar remains off unless a new explicit decision reverses the cost ruling.
+- [x] Before either rehearsal/trial, the exact official or challenger source has a registry entry with confirmed licence status and allowed use.
+- [x] Until that decision and registry gate are complete, `selected_provider` stays null, registry collection stays disabled and no capture runs.
+- [x] **Official branch:** at least one complete rehearsal artifact demonstrates XI/substitution citation capture, temporal/provenance fields, identity mapping, correction handling and reconciliation to official FPL minutes.
+- [x] **Challenger branch:** N/A — official citation path selected.
+- [x] **Challenger branch:** N/A — official citation path selected.
+- [x] Any disagreement is quarantined and adjudicated against the official team sheet; no averaging is introduced.
+- [x] `python3 -m pytest -q tests/data/test_lineups_minutes.py tests/unit/test_registry.py` passes (19 tests at handoff).
+- [x] No API keys, raw provider payloads or browser sessions are committed.
 
 ### Out of scope
 
@@ -79,3 +79,14 @@ and adjudicated; feeds are never averaged.
 - Treating API-Football, football-data.org or TheSportsDB as canonical truth.
 - Implementing the later broad live shadow/ablation programme.
 - Updating the archived Bead to mirror this ticket.
+
+## Answer
+
+**Branch chosen: official citation path.**
+
+- Decision: `docs/data-sources/2026-27-lineups-citation-decision.md`
+- Registry: `official-lineups-minutes` remains `enabled: false` with restricted citation allowed use and activation approval for rehearsal scope
+- Config: `selected_provider: null`; Sportradar still off; official rights/owner approved for citation rehearsal only
+- Builder: `build_official_team_sheet_citation` / `rehearse_official_team_sheet_capture` in `src/ingestion/lineups_minutes.py`
+- Rehearsal artifact: `evals/golden-cases/evidence/official-team-sheet-citation-rehearsal.json`
+- Tests: lineup + registry suite green (21 passed in the focused run including new citation cases)

@@ -4,13 +4,13 @@
   "selected_provider": null,
   "primary_truth_provider": "official-team-sheets",
   "disagreement_policy": "quarantine_and_adjudicate_against_official_team_sheet",
-  "collection_status": "degraded_official_capture_pending_rehearsal",
+  "collection_status": "official_citation_rehearsal_complete_live_collection_disabled",
   "trial_recommendation": {
-    "provider_id": "sportradar",
-    "reason": "Trusted automated challenger feed with explicit starting players and substitutions; EPL coverage, timing and rights remain unmeasured until the credentialed trial.",
-    "lineup_endpoint": "https://api.sportradar.com/soccer/{access_level}/v4/en/sport_events/{sport_event_id}/lineups.json",
-    "credential_environment": "SPORTRADAR_API_KEY",
-    "fallback_provider_id": "api-football"
+    "provider_id": "official-team-sheets",
+    "reason": "Owner selected the official citation path (ticket 05). Sportradar and paid challengers remain off; live network collection stays disabled until an explicit matchday enable decision.",
+    "capture_method": "manual_citation",
+    "credential_environment": null,
+    "fallback_provider_id": null
   },
   "reconciliation_oracle": "fpl-official-endpoints",
   "maximum_observation_delay_minutes": 180,
@@ -19,13 +19,15 @@
     {
       "provider_id": "official-team-sheets",
       "role": "canonical_primary_truth",
-      "status": "manual_citation_capture",
+      "status": "citation_rehearsal_complete",
       "credential_environment": null,
       "registry_source_id": "official-lineups-minutes",
       "required_trial": "domain_rights_and_capture_rehearsal",
       "registry_enabled": false,
-      "rights_approved": false,
-      "owner_approved": false
+      "rights_approved": true,
+      "owner_approved": true,
+      "owner_approved_at": "2026-07-31T17:30:00Z",
+      "approval_scope": "citation_rehearsal_only_no_network_collection"
     },
     {
       "provider_id": "sportradar",
@@ -87,11 +89,13 @@
     "min_admitted_players": 11
   },
   "trial_status": {
-    "status": "blocked_access_gate",
-    "fixtures_measured": 0,
-    "matchdays_measured": 0,
-    "blocker_bead": "FPL-eah",
-    "reason": "Sportradar trial paused by owner because ongoing provider cost is not justified; no provider is selected and production promotion is disabled."
+    "status": "official_citation_path_selected",
+    "chosen_branch": "official_citation",
+    "fixtures_measured": 1,
+    "matchdays_measured": 1,
+    "rehearsal_artifact": "evals/golden-cases/evidence/official-team-sheet-citation-rehearsal.json",
+    "blocker_bead": null,
+    "reason": "Official citation rehearsal completed; Sportradar remains off; selected_provider stays null and registry collection stays disabled until an explicit live matchday enable decision."
   },
   "baseline_policy": "shared_structured_forecast_unchanged_when_family_degraded"
 }
