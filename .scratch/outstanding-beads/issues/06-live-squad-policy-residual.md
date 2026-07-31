@@ -1,10 +1,4 @@
-# 06 — Finish live initial-squad policy and human approval
-
-**What to build:** The residual of the early-season / live-squad epic: a
-prospective, point-in-time, reproducible live 2026/27 starting-15 policy with
-explicit human approval. Child implementation work is already done; this ticket
-owns the policy and approval contract only — no hindsight tuning from sealed
-2025/26 forks.
+# 06 — Approve the live initial-squad policy
 
 **Blocked by:** None — can start immediately.
 
@@ -14,6 +8,66 @@ owns the policy and approval contract only — no hindsight tuning from sealed
 
 **Former bead:** `FPL-bsw.38`
 
-- [ ] Live initial-squad policy is written as prospective and cutoff-safe.
-- [ ] Owner sign-off of the policy is recorded.
-- [ ] GW1 seed selection remains separated from GW2–GW11 weekly evidence; canonical 2025/26 artifacts stay immutable.
+## Human Handoff
+
+**Summary:** Verify the completed early-season/live-squad programme and record
+hash-bound owner approval for the prospective 2026/27 starting 15.
+
+### Current behaviour
+
+All 14 implementation children of the former epic are closed. The repository
+already contains:
+
+- a prospective live initial-squad policy;
+- a versioned policy configuration with an owner-approval gate;
+- deterministic, robust and selected-arm checkpoint/rehearsal paths; and
+- focused optimisation/integration coverage.
+
+The residual is **not** to design or implement the policy again. It is to
+confirm the parent acceptance criteria and record owner approval against an
+exact frozen packet/proposal. Without that approval, outputs remain inspectable
+but `ready_for_manual_entry` must stay false.
+
+### Desired behaviour
+
+The owner reviews a cutoff-safe proposal and records:
+
+- the selected policy arm;
+- the exact frozen evidence packet and proposal hashes;
+- the active 2026/27 ruleset/hash;
+- the decision cutoff and approval timestamp; and
+- an explicit approve/reject outcome.
+
+Approval is advisory/manual-entry only. It grants no FPL account, browser or
+execution authority.
+
+### Key interfaces
+
+- Policy `approval_gate`: owner approval required, active ruleset required, and
+  deterministic/robust/selected arms completed.
+- Checkpoint result: frozen packet/proposal hashes, selected arm, cutoff,
+  validation status and explicit blocked reasons.
+- `ready_for_manual_entry`: true only when every gate passes and approval
+  occurred no later than the cutoff.
+- Parent evidence boundary: GW1 seed selection is distinct from GW2–GW11 weekly
+  evidence; retrospective isolated/longitudinal comparisons cannot alter the
+  canonical 2025/26 trajectory.
+
+### Acceptance criteria
+
+- [ ] The existing policy/config are verified as prospective, point-in-time and reproducible; no retrospective outcome is used to tune the live selection.
+- [ ] Closed-child evidence confirms GW1 seed selection is separated from GW2–GW11 evidence and both isolated and longitudinal comparisons remain documented.
+- [ ] The active ruleset/hash, completed arms and deterministic validation all pass before approval is accepted.
+- [ ] The owner sign-off names the selected arm and binds the exact packet/proposal hashes, cutoff and approval timestamp.
+- [ ] A missing, late or hash-mismatched approval leaves `ready_for_manual_entry: false` with explicit reasons.
+- [ ] Canonical 2025/26 artifacts and hashes are unchanged.
+- [ ] `python3 -m pytest -q tests/optimisation/test_initial_squad.py tests/integration/test_initial_squad_checkpoint.py tests/integration/test_live_readiness_rehearsal.py` passes (21 tests at handoff).
+- [ ] The ticket records the approval or rejection outcome so ticket 07 can close after approval, or remain blocked with a focused remediation ticket after rejection, without consulting Beads.
+
+### Out of scope
+
+- Re-opening or duplicating the 14 closed implementation children.
+- Re-running, retuning or amending the canonical 2025/26 trajectory.
+- Writing to an FPL account or adding authenticated/browser execution.
+- Weakening the separate 2026/27 rules activation/sign-off requirement.
+- Treating optimiser output as owner approval.

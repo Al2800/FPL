@@ -17,14 +17,16 @@ Feature directory: `.scratch/outstanding-beads/`
 | # | Ticket | Status | Blocked by | Former bead |
 |---|---|---|---|---|
 | 01 | Restore fresh-clone CI artifact boundary | ready-for-agent | — | `FPL-cfb` |
-| 02 | Approve historical overall-rank threshold source | ready-for-human | — | `FPL-761` |
+| 02 | Approve or decline a historical overall-rank threshold source | ready-for-human | — | `FPL-761` |
 | 03 | Close historical score-to-overall-rank calibration | ready-for-agent | 02 | `FPL-2xu` |
-| 04 | Capture 2026/27 official global standings snapshots | ready-for-agent | 02 | `FPL-762` |
+| 04 | Capture 2026/27 official global standings snapshots | ready-for-human | — (implementation gated by prospective source approval) | `FPL-762` |
 | 05 | Rehearse official lineup capture or approve a low-cost challenger | ready-for-human | — | `FPL-eah` |
-| 06 | Finish live initial-squad policy and human approval | ready-for-human | — | `FPL-bsw.38` |
+| 06 | Approve the live initial-squad policy | ready-for-human | — | `FPL-bsw.38` |
 | 07 | Close Benchmark Kernel residual | ready-for-agent | 06 | `FPL-bsw` |
 
-Frontier (unblocked now): **01, 02, 05, 06**.
+Frontier (unblocked now): **01, 02, 04, 05, 06**. Tickets 02, 04, 05
+and 06 begin with owner decisions; ticket 04 changes to `ready-for-agent` only
+after its prospective source gate is approved.
 
 ## How to work a ticket
 
