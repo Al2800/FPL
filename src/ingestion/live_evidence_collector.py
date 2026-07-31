@@ -91,6 +91,131 @@ def _claim_id(
     return f"official-fpl-news:{digest[:24]}"
 
 
+def _is_sha256(value: Any) -> bool:
+    candidate = str(value)
+    return len(candidate) == 64 and all(
+        character in "0123456789abcdef" for character in candidate
+    )
+
+
+def _exact_player_uid(claim: Mapping[str, Any]) -> str | None:
+    bindings = claim.get("identity_bindings")
+    if not isinstance(bindings, list):
+        return None
+    matches = [
+        str(row.get("stable_id", ""))
+        for row in bindings
+        if isinstance(row, Mapping) and row.get("entity_type") == "player_uid"
+    ]
+    if len(matches) != 1 or not matches[0]:
+        return None
+    return matches[0]
+
+
+def _official_supersession_ids(
+    ledger: Mapping[str, Any],
+    *,
+    player_uid: str,
+    incoming_available_at: datetime,
+) -> list[str]:
+    """Return the active official predecessor frontier for one exact player.
+
+    The collector owns the official-source chaining policy. Manual claims are
+    deliberately ignored and remain untouched; malformed official claims or
+    references fail closed instead of allowing a new unlinked conflict.
+    """
+
+    claims = ledger.get("claims")
+    if not isinstance(claims, list):
+        raise LiveEvidenceCollectionError("Previous ledger claims must be a list")
+
+    by_id: dict[str, Mapping[str, Any]] = {}
+    official_claims: list[Mapping[str, Any]] = []
+    for row in claims:
+        if not isinstance(row, Mapping):
+            raise LiveEvidenceCollectionError(
+                "Previous ledger claims must be objects"
+            )
+        claim_id = str(row.get("claim_id", ""))
+        if not claim_id:
+            raise LiveEvidenceCollectionError(
+                "Official supersession requires non-empty prior claim IDs"
+            )
+        by_id[claim_id] = row
+        if (
+            str(row.get("source_id")) == SOURCE_ID
+            and str(row.get("claim_type")) == "player_availability"
+        ):
+            prior_uid = _exact_player_uid(row)
+            if prior_uid is None:
+                raise LiveEvidenceCollectionError(
+                    "Official availability claim has unresolved player identity"
+                )
+            source_hash = row.get("source_hash_sha256")
+            if not _is_sha256(source_hash):
+                raise LiveEvidenceCollectionError(
+                    "Official availability claim has invalid source hash"
+                )
+            try:
+                prior_available = datetime.fromisoformat(
+                    str(row.get("available_at", "")).replace("Z", "+00:00")
+                )
+            except ValueError as exc:
+                raise LiveEvidenceCollectionError(
+                    "Official availability claim has invalid available_at"
+                ) from exc
+            if prior_available.tzinfo is None:
+                raise LiveEvidenceCollectionError(
+                    "Official availability claim available_at needs a timezone"
+                )
+            prior_available = prior_available.astimezone(timezone.utc)
+            if (
+                prior_uid == player_uid
+                and prior_available >= incoming_available_at
+            ):
+                raise LiveEvidenceCollectionError(
+                    "Official availability observation is out of order"
+                )
+            official_claims.append(row)
+
+    superseded_ids: set[str] = set()
+    for row in official_claims:
+        references = row.get("supersedes_claim_ids", [])
+        if not isinstance(references, list) or any(
+            not isinstance(value, str) or not value for value in references
+        ):
+            raise LiveEvidenceCollectionError(
+                "Official supersession references must be non-empty strings"
+            )
+        for reference in references:
+            prior = by_id.get(str(reference))
+            if prior is None:
+                raise LiveEvidenceCollectionError(
+                    "Official supersession references an unknown claim"
+                )
+            if (
+                str(prior.get("source_id")) != SOURCE_ID
+                or str(prior.get("claim_type")) != "player_availability"
+                or _exact_player_uid(prior) != _exact_player_uid(row)
+            ):
+                raise LiveEvidenceCollectionError(
+                    "Official supersession crosses source, type or player"
+                )
+            if not _is_sha256(prior.get("source_hash_sha256")):
+                raise LiveEvidenceCollectionError(
+                    "Official supersession predecessor has invalid source hash"
+                )
+            superseded_ids.add(str(reference))
+
+    frontier = [
+        row
+        for row in official_claims
+        if _exact_player_uid(row) == player_uid
+        and str(row["claim_id"]) not in superseded_ids
+    ]
+    return sorted(str(row["claim_id"]) for row in frontier)
+
+
 def _published_at(value: Any) -> str | None:
     if not isinstance(value, str) or not value:
         return None
@@ -113,6 +238,7 @@ def _player_claim(
     source_url: str,
     expiry_hours: int,
     default_impact_points: float,
+    supersedes_claim_ids: Sequence[str] = (),
 ) -> tuple[dict[str, Any] | None, str | None]:
     player_id = str(player.get("id", ""))
     if not player_id:
@@ -182,7 +308,9 @@ def _player_claim(
         "identity_bindings": bindings,
         "decision_boundary_ids": [f"availability:{player_uid}"],
         "estimated_impact_points": default_impact_points,
-        "supersedes_claim_ids": [],
+        "supersedes_claim_ids": sorted(
+            set(str(item) for item in supersedes_claim_ids)
+        ),
     }
     return claim, None
 
@@ -378,6 +506,10 @@ def capture_official_fpl_evidence(
 
     if bootstrap_payload is not None and bootstrap_acquisition is not None:
         source_hash = str(bootstrap_acquisition["content_hash_sha256"])
+        if not _is_sha256(source_hash):
+            raise LiveEvidenceCollectionError(
+                "Bootstrap acquisition has invalid content hash"
+            )
         source_url = base_url.rstrip("/") + BOOTSTRAP_PATH
         for player in bootstrap_payload["elements"]:
             if not isinstance(player, Mapping):
@@ -402,6 +534,11 @@ def capture_official_fpl_evidence(
                 claim_gaps.append(gap)
             if claim is None or claim["claim_id"] in existing:
                 continue
+            claim["supersedes_claim_ids"] = _official_supersession_ids(
+                ledger,
+                player_uid=f"player:{season}:{player_id}",
+                incoming_available_at=observed,
+            )
             ledger = append_live_evidence_claim(
                 ledger,
                 claim,

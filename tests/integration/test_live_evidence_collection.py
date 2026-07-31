@@ -1,12 +1,21 @@
 from __future__ import annotations
 
+from copy import deepcopy
 import json
 from pathlib import Path
 
 import httpx
 import pytest
 
-from src.evidence.live_evidence_ledger import live_evidence_hash
+from src.evidence.availability_ledger import (
+    new_availability_ledger,
+    synchronise_availability_from_live_evidence,
+)
+from src.evidence.live_evidence_ledger import (
+    LiveEvidenceLedgerError,
+    live_evidence_hash,
+    project_live_evidence,
+)
 from src.ingestion.live_evidence_collector import (
     LiveEvidenceCollectionError,
     capture_official_fpl_evidence,
@@ -65,6 +74,275 @@ def client(*, status: int = 200) -> httpx.Client:
         return httpx.Response(status, json=payload, request=request)
 
     return httpx.Client(transport=httpx.MockTransport(handler))
+
+
+def changing_client(snapshots: list[dict]) -> httpx.Client:
+    index = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal index
+        assert request.url.path == "/api/bootstrap-static/"
+        payload = snapshots[min(index, len(snapshots) - 1)]
+        index += 1
+        return httpx.Response(200, json=payload, request=request)
+
+    return httpx.Client(transport=httpx.MockTransport(handler))
+
+
+def availability_snapshot(
+    *,
+    player_one: dict,
+    player_two: dict | None = None,
+) -> dict:
+    second = player_two or {
+        "id": 2,
+        "code": 102,
+        "web_name": "Player Two",
+        "status": "d",
+        "news": "Knock reported",
+        "news_added": "2026-08-14T11:00:00Z",
+        "chance_of_playing_this_round": 50,
+        "chance_of_playing_next_round": 75,
+    }
+    return {
+        "elements": [player_one, second],
+        "events": [],
+        "teams": [],
+        "element_types": [],
+    }
+
+
+def player_uid(row: dict) -> str:
+    return next(
+        binding["stable_id"]
+        for binding in row["identity_bindings"]
+        if binding["entity_type"] == "player_uid"
+    )
+
+
+def test_changed_official_status_chains_and_reaches_availability_bridge(
+    tmp_path: Path,
+) -> None:
+    first_payload = availability_snapshot(
+        player_one={
+            "id": 1,
+            "code": 101,
+            "web_name": "Player One",
+            "status": "i",
+            "news": "Injury confirmed",
+            "news_added": "2026-08-14T11:00:00Z",
+            "chance_of_playing_this_round": 0,
+            "chance_of_playing_next_round": 25,
+        }
+    )
+    second_payload = availability_snapshot(
+        player_one={
+            "id": 1,
+            "code": 101,
+            "web_name": "Player One",
+            "status": "d",
+            "news": "Doubtful after assessment",
+            "news_added": "2026-08-14T12:00:00Z",
+            "chance_of_playing_this_round": 50,
+            "chance_of_playing_next_round": 75,
+        }
+    )
+    third_payload = availability_snapshot(
+        player_one={
+            "id": 1,
+            "code": 101,
+            "web_name": "Player One",
+            "status": "a",
+            "news": "Returned to training",
+            "news_added": "2026-08-14T13:00:00Z",
+            "chance_of_playing_this_round": None,
+            "chance_of_playing_next_round": None,
+        }
+    )
+
+    with changing_client([first_payload, second_payload, third_payload]) as http:
+        first = capture_official_fpl_evidence(
+            http,
+            season="2026-27",
+            observed_at="2026-08-14T12:00:00Z",
+            raw_out_dir=tmp_path / "raw",
+            config=CONFIG,
+            base_url="https://example.test",
+            mode="fixture",
+        )
+        second = capture_official_fpl_evidence(
+            http,
+            season="2026-27",
+            observed_at="2026-08-14T13:00:00Z",
+            raw_out_dir=tmp_path / "raw",
+            config=CONFIG,
+            base_url="https://example.test",
+            mode="fixture",
+            previous_ledger=first["ledger"],
+        )
+        third = capture_official_fpl_evidence(
+            http,
+            season="2026-27",
+            observed_at="2026-08-14T14:00:00Z",
+            raw_out_dir=tmp_path / "raw",
+            config=CONFIG,
+            base_url="https://example.test",
+            mode="fixture",
+            previous_ledger=second["ledger"],
+        )
+
+    first_claims = {
+        row["claim_id"]: row for row in first["ledger"]["claims"]
+    }
+    second_claims = {
+        row["claim_id"]: row for row in second["ledger"]["claims"]
+    }
+    third_claims = {
+        row["claim_id"]: row for row in third["ledger"]["claims"]
+    }
+    player_one_ids = [
+        claim_id
+        for claim_id, row in third_claims.items()
+        if player_uid(row) == "player:2026-27:1"
+    ]
+    assert len(player_one_ids) == 3
+    first_id = next(
+        claim_id
+        for claim_id, row in first_claims.items()
+        if player_uid(row) == "player:2026-27:1"
+    )
+    second_id = next(
+        claim_id
+        for claim_id, row in second_claims.items()
+        if player_uid(row) == "player:2026-27:1"
+        and claim_id != first_id
+    )
+    third_id = next(
+        claim_id
+        for claim_id in third_claims
+        if player_uid(third_claims[claim_id]) == "player:2026-27:1"
+        and claim_id not in {first_id, second_id}
+    )
+    assert second_claims[second_id]["supersedes_claim_ids"] == [first_id]
+    assert third_claims[third_id]["supersedes_claim_ids"] == [second_id]
+
+    view = project_live_evidence(
+        third["ledger"], decision_at="2026-08-14T15:00:00Z"
+    )
+    assert [row["claim_id"] for row in view["accepted"]] == sorted(
+        [third_id]
+        + [
+            claim_id
+            for claim_id, row in third_claims.items()
+            if player_uid(row) == "player:2026-27:2"
+        ]
+    )
+    assert not view["conflicts"]
+    assert {row["claim_id"] for row in view["excluded"]["superseded"]} == {
+        first_id,
+        second_id,
+    }
+
+    persistent = new_availability_ledger(
+        season="2026-27", created_at="2026-08-14T12:00:00Z"
+    )
+    persistent, first_audit = synchronise_availability_from_live_evidence(
+        persistent,
+        live_evidence_ledger=first["ledger"],
+        decision_at="2026-08-14T12:30:00Z",
+    )
+    persistent, second_audit = synchronise_availability_from_live_evidence(
+        persistent,
+        live_evidence_ledger=second["ledger"],
+        decision_at="2026-08-14T13:30:00Z",
+    )
+    persistent, third_audit = synchronise_availability_from_live_evidence(
+        persistent,
+        live_evidence_ledger=third["ledger"],
+        decision_at="2026-08-14T14:30:00Z",
+    )
+    assert first_id in first_audit["appended_claim_ids"]
+    assert second_id in second_audit["appended_claim_ids"]
+    assert third_id in third_audit["appended_claim_ids"]
+    persistent_player_one = [
+        row
+        for row in persistent["claims"]
+        if row["player_uid"] == "player:2026-27:1"
+    ]
+    assert [row["status"] for row in persistent_player_one] == [
+        "unavailable",
+        "doubtful",
+        "available",
+    ]
+    assert persistent_player_one[-1]["supersedes_claim_ids"] == [second_id]
+
+
+def test_tampered_official_predecessor_and_out_of_order_capture_fail_closed(
+    tmp_path: Path,
+) -> None:
+    first_payload = availability_snapshot(
+        player_one={
+            "id": 1,
+            "code": 101,
+            "web_name": "Player One",
+            "status": "i",
+            "news": "Injury confirmed",
+            "news_added": "2026-08-14T11:00:00Z",
+            "chance_of_playing_this_round": 0,
+            "chance_of_playing_next_round": 25,
+        }
+    )
+    changed_payload = availability_snapshot(
+        player_one={
+            "id": 1,
+            "code": 101,
+            "web_name": "Player One",
+            "status": "a",
+            "news": "Returned to training",
+            "news_added": "2026-08-14T12:00:00Z",
+            "chance_of_playing_this_round": None,
+            "chance_of_playing_next_round": None,
+        }
+    )
+    with changing_client([first_payload]) as http:
+        first = capture_official_fpl_evidence(
+            http,
+            season="2026-27",
+            observed_at="2026-08-14T12:00:00Z",
+            raw_out_dir=tmp_path / "raw-first",
+            config=CONFIG,
+            base_url="https://example.test",
+            mode="fixture",
+        )
+
+    tampered = deepcopy(first["ledger"])
+    tampered["claims"][0]["source_hash_sha256"] = "bad"
+    tampered["content_sha256"] = live_evidence_hash(tampered)
+    with changing_client([changed_payload]) as http:
+        with pytest.raises(LiveEvidenceLedgerError, match="source_hash_sha256|source hash"):
+            capture_official_fpl_evidence(
+                http,
+                season="2026-27",
+                observed_at="2026-08-14T13:00:00Z",
+                raw_out_dir=tmp_path / "raw-tampered",
+                config=CONFIG,
+                base_url="https://example.test",
+                mode="fixture",
+                previous_ledger=tampered,
+            )
+
+    with changing_client([changed_payload]) as http:
+        with pytest.raises(LiveEvidenceCollectionError, match="out of order"):
+            capture_official_fpl_evidence(
+                http,
+                season="2026-27",
+                observed_at="2026-08-14T11:00:00Z",
+                raw_out_dir=tmp_path / "raw-order",
+                config=CONFIG,
+                base_url="https://example.test",
+                mode="fixture",
+                previous_ledger=first["ledger"],
+            )
 
 
 def test_official_fpl_collection_is_immutable_deduplicated_and_gap_explicit(

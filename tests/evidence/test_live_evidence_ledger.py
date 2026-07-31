@@ -98,6 +98,26 @@ def test_manual_citation_is_append_only_hashed_and_rights_precise() -> None:
     assert rights["raw_content_retained"] is False
 
 
+def test_cross_player_and_equal_time_supersession_fail_closed() -> None:
+    ledger = new_live_evidence_ledger(
+        season="2026-27", created_at="2026-08-14T07:00:00Z"
+    )
+    ledger = append(ledger, claim("prior"))
+
+    cross_player = claim(
+        "cross-player",
+        available_at="2026-08-14T08:20:00Z",
+        observed_at="2026-08-14T08:19:00Z",
+        supersedes=["prior"],
+    )
+    cross_player["identity_bindings"][0]["stable_id"] = "player:2026-27:2"
+    with pytest.raises(LiveEvidenceLedgerError, match="same subject"):
+        append(ledger, cross_player)
+
+    equal_time = claim("equal-time", supersedes=["prior"])
+    with pytest.raises(LiveEvidenceLedgerError, match="earlier"):
+        append(ledger, equal_time)
+
 def test_unknown_rights_manual_source_refuses_verbatim_and_raw_content() -> None:
     ledger = new_live_evidence_ledger(
         season="2026-27", created_at="2026-08-14T07:00:00Z"

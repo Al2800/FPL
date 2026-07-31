@@ -328,7 +328,29 @@ def validate_live_evidence_ledger(ledger: Mapping[str, Any]) -> None:
             raise LiveEvidenceLedgerError(
                 f"Duplicate or empty evidence claim_id: {claim_id}"
             )
-        _, available = _timestamp(claim.get("available_at"), "available_at")
+        _sha256(claim.get("source_hash_sha256"), "source_hash_sha256")
+        _identity_bindings(claim.get("identity_bindings"))
+        _, published = _timestamp(
+            claim.get("published_at"), "published_at"
+        )
+        _, observed = _timestamp(
+            claim.get("observed_at"), "observed_at"
+        )
+        _, available = _timestamp(
+            claim.get("available_at"), "available_at"
+        )
+        _, expires = _timestamp(claim.get("expires_at"), "expires_at")
+        if not published <= observed <= available < expires:
+            raise LiveEvidenceLedgerError(
+                "Evidence timestamps must satisfy published <= observed <= available < expires"
+            )
+        supersedes = claim.get("supersedes_claim_ids", [])
+        if not isinstance(supersedes, list) or any(
+            not isinstance(value, str) or not value for value in supersedes
+        ) or len(supersedes) != len(set(supersedes)):
+            raise LiveEvidenceLedgerError(
+                "supersedes_claim_ids must contain unique non-empty strings"
+            )
         if previous is not None and available < previous:
             raise LiveEvidenceLedgerError(
                 "Evidence claims must be appended in available_at order"
@@ -353,6 +375,13 @@ def validate_live_evidence_ledger(ledger: Mapping[str, Any]) -> None:
                     for row in claim["identity_bindings"]
                 ),
             )
+            _, prior_available = _timestamp(
+                prior["available_at"], "available_at"
+            )
+            if prior_available >= available:
+                raise LiveEvidenceLedgerError(
+                    "A claim may supersede only an earlier claim"
+                )
             if prior_key != current_key:
                 raise LiveEvidenceLedgerError(
                     "A claim may supersede only the same subject and claim type"
@@ -401,6 +430,14 @@ def append_live_evidence_claim(
             candidate["claim_type"],
             [(row["entity_type"], row["stable_id"]) for row in candidate["identity_bindings"]],
         )
+        _, prior_available = _timestamp(prior["available_at"], "available_at")
+        _, candidate_available = _timestamp(
+            candidate["available_at"], "available_at"
+        )
+        if prior_available >= candidate_available:
+            raise LiveEvidenceLedgerError(
+                "A claim may supersede only an earlier claim"
+            )
         if prior_subject != candidate_subject:
             raise LiveEvidenceLedgerError(
                 "A claim may supersede only the same subject and claim type"
