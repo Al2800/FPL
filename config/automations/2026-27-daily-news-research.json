@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "automation_id": "fpl-daily-official-news-research",
+  "name": "FPL daily official news research",
+  "description": "Scheduled web-search discovery of official club and Premier League news leads for manual citation follow-up.",
+  "status": "recipe_ready_activate_in_cursor_ui",
+  "model": {
+    "id": "composer-2.5",
+    "display_name": "Composer 2.5",
+    "assignment": "required"
+  },
+  "trigger": {
+    "type": "schedule",
+    "cron": "0 8 * * *",
+    "timezone": "UTC",
+    "description": "Daily at 08:00 UTC"
+  },
+  "repository": {
+    "scope": "single",
+    "repo": "Al2800/FPL",
+    "branch": "main"
+  },
+  "tools": {
+    "web_search": true,
+    "computer_use": true,
+    "pull_request_creation": true,
+    "memories": true,
+    "send_to_slack": false,
+    "mcp": []
+  },
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "version": "v1"
+  },
+  "inputs": {
+    "catalogue_path": "control/sources/club-news-catalogue.yaml",
+    "discovery_config_path": "config/data_sources/2026-27-news-discovery.json",
+    "output_schema_path": "prompts/daily-news-research/output.schema.json",
+    "source_registry_id": "official-club-communications"
+  },
+  "outputs": {
+    "search_results_glob": "data/live-shadow/news-discovery/*/search-results.json",
+    "discovery_glob": "data/live-shadow/news-discovery/*/news-discovery.json",
+    "briefing_glob": "reports/news-discovery/*.md",
+    "commit_briefing": true,
+    "commit_raw_discovery": false,
+    "open_draft_pr_for_briefing": true
+  },
+  "governance": {
+    "admission": "discovery_lead_only",
+    "claim_policy": "manual_linked_derived_claim_only",
+    "raw_snippet_policy": "never_admit_or_retain",
+    "html_scrape_collector": "disabled",
+    "phase": "0_1_advisory"
+  },
+  "activation": {
+    "cursor_ui": "https://cursor.com/automations",
+    "steps": [
+      "Create Scheduled automation with cron 0 8 * * * (UTC)",
+      "Set model to Composer 2.5",
+      "Attach repository Al2800/FPL on branch main",
+      "Paste the full text of prompts/daily-news-research/v1.md as the automation prompt",
+      "Enable computer use / web browsing; enable PR creation; enable memories",
+      "Save and activate"
+    ]
+  }
+}

@@ -31,6 +31,17 @@ rules.  This catalogue does not turn `official-club-communications` in the
 source registry on: automated claim extraction remains disabled until the
 separate source-rights and evidence-admission gate approves it.
 
+## Scheduled web search
+
+Daily discovery is intended to run as a Cursor Automation on **Composer 2.5**:
+
+- Recipe: `config/automations/2026-27-daily-news-research.json`
+- Prompt: `prompts/daily-news-research/v1.md`
+- Setup: `docs/data-sources/2026-27-daily-news-research-automation.md`
+
+The automation captures search **metadata only**, runs this script, and writes a
+briefing under `reports/news-discovery/`. It does not admit claims.
+
 ## Run
 
 ```powershell
