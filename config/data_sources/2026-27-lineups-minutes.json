@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
   "season": "2026-27",
-  "selected_provider": null,
+  "selected_provider": "sportradar",
   "primary_truth_provider": "official-team-sheets",
   "disagreement_policy": "quarantine_and_adjudicate_against_official_team_sheet",
-  "collection_status": "degraded_pending_credential_trial",
+  "collection_status": "trial_enabled_pending_measurement",
   "trial_recommendation": {
     "provider_id": "sportradar",
     "reason": "Trusted automated challenger feed with explicit starting players and substitutions; EPL coverage, timing and rights remain unmeasured until the credentialed trial.",
@@ -30,14 +30,14 @@
     {
       "provider_id": "sportradar",
       "role": "automated_challenger_trial",
-      "status": "candidate_access_gated",
+      "status": "trial_enabled",
       "credential_environment": "SPORTRADAR_API_KEY",
       "endpoint_template": "https://api.sportradar.com/soccer/{access_level}/v4/en/sport_events/{sport_event_id}/lineups.json",
       "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
       "registry_source_id": "sportradar-soccer",
-      "registry_enabled": false,
-      "rights_approved": false,
-      "owner_approved": false
+      "registry_enabled": true,
+      "rights_approved": true,
+      "owner_approved": true
     },
     {
       "provider_id": "api-football",
@@ -87,11 +87,12 @@
     "min_admitted_players": 11
   },
   "trial_status": {
-    "status": "blocked_access_gate",
+    "status": "trial_in_progress",
     "fixtures_measured": 0,
     "matchdays_measured": 0,
     "blocker_bead": "FPL-eah",
-    "reason": "No candidate credential is present in the environment and no provider has owner-approved terms, retention and automated-collection enablement in the source registry."
+    "reason": "Owner-authorized controlled trial is enabled for Sportradar; production promotion remains blocked until the 10-fixture/3-matchday admission gates pass."
   },
-  "baseline_policy": "shared_structured_forecast_unchanged_when_family_degraded"
+  "baseline_policy": "shared_structured_forecast_unchanged_when_family_degraded",
+  "operation_mode": "controlled_trial"
 }

@@ -61,9 +61,11 @@ def test_present_key_is_verified_structurally_but_never_serialised() -> None:
 
 def test_null_lineups_selection_does_not_inspect_candidate_credentials() -> None:
     candidate_secret = "fixture-lineups-secret-that-must-not-appear"
+    lineups = deepcopy(LINEUPS_CONFIG)
+    lineups["selected_provider"] = None
     report = build_live_source_preflight(
         odds_config=ODDS_CONFIG,
-        lineups_config=LINEUPS_CONFIG,
+        lineups_config=lineups,
         environ={
             "THE_ODDS_API_KEY": "fixture-odds-secret",
             "API_FOOTBALL_KEY": candidate_secret,

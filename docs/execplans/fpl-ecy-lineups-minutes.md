@@ -8,8 +8,8 @@ Outcomes current.
 Build a provider-neutral capture/reconciliation path that replay and the live
 season both call. Official Premier League/club team sheets are canonical primary
 truth for published lineups and substitutions. Sportradar is the automated,
-trusted challenger. No provider failure may alter the shared structured baseline:
-it surfaces as a degraded feature family.
+trusted challenger. Trial enablement is allowed only inside the explicit local
+trial boundary; production promotion remains gated on measured evidence.
 
 ## Progress
 
@@ -24,23 +24,27 @@ it surfaces as a degraded feature family.
 - [x] (2026-07-31) Two-track policy: official team sheets are canonical primary
   truth; `sportradar-soccer` is the automated challenger; API-Football and
   football-data.org remain fallback-only.
-- [ ] Owner-approved team-sheet rights/capture rehearsal and measured
-  ≥10-fixture / ≥3-matchday Sportradar challenger trial (`FPL-eah`).
-- [ ] Enable exactly one automated provider only after admission gates pass.
-- [ ] Historic fixture reconciliation and live preseason capture under the
-  approved policy.
+- [x] (2026-07-31) Owner-authorized controlled trial enabled with
+  `SPORTRADAR_API_KEY`. Redacted probes reached the competition, seasons,
+  schedule and lineup endpoints; one coverage-shaped historical payload
+  returned HTTP 200 with two competitors and 22 starter rows. No raw response
+  or credential was retained.
+- [ ] Capture at least 10 Premier League fixtures across at least three
+  matchdays through the immutable provider-neutral snapshot contract and compare
+  each against official team sheets and the FPL post-match oracle.
+- [ ] Promote the challenger to production only after the 95/99/100/20 gates
+  pass and the owner signs off the measured matrix.
 
 ## Surprises & Discoveries
 
-- Observation: no `SPORTRADAR_API_KEY` is present in this environment; no
-  automated candidate credential is currently available. Values are never
-  logged.
-- Observation: `official-lineups-minutes` is the canonical citation source and
-  `sportradar-soccer` is registered as a disabled automated challenger.
-  API-Football and football-data.org remain fallback-only.
-- Observation: official team sheets are the primary truth for published lineups;
-  the capture path is manual/citation-only until rights and domain rehearsal are
-  approved.
+- Observation: Sportradar trial authentication and endpoint reachability work
+  with the owner-provided key. Trial season metadata exposes 2025/26 and
+  2026/27; the 2025/26 schedule advertised pre-match lineups for 395 events.
+- Observation: official team sheets remain the adjudication truth; their capture
+  path is manual/citation-only until domain rights and rehearsal are complete.
+- Observation: the historical lineup endpoint can return a valid payload while
+  substitutions/minutes still require explicit mapping and post-match
+  reconciliation; HTTP 200 is not an admission result.
 
 ## Decision Log
 
@@ -48,41 +52,34 @@ it surfaces as a degraded feature family.
   Sportradar is the automated challenger trial. Do not average disagreements:
   quarantine and adjudicate against the official sheet, with FPL event-live /
   element-summary as the post-match minutes oracle.
-  Rationale: this preserves an authoritative published lineup while still
-  measuring a trusted automation path without allowing vendor claims to rewrite
-  truth.
   Date/Author: 2026-07-31 / Codex.
-- Decision: do not select or enable a provider from marketing documentation.
+- Decision: enable Sportradar only in `controlled_trial` mode for local,
+  non-redistributed captures; keep production promotion blocked until the
+  measured matrix passes.
+  Rationale: the owner explicitly requested a credential test, while the
+  provider-neutral admission gates must still prevent an unmeasured vendor from
+  changing live decisions.
+  Date/Author: 2026-07-31 / Codex.
+- Decision: do not select or promote a provider from marketing documentation.
   Rationale: admission gates require measured EPL coverage, identity, quota and
   owner-approved terms.
-  Date/Author: 2026-07-31 / Codex.
-- Decision: treat missing credentials as a hard access gate that records an
-  empty trial matrix rather than inventing coverage.
-  Rationale: bead acceptance permits documenting why a trial could not run.
-  Date/Author: 2026-07-31 / Codex.
-- Decision: keep `selected_provider=null` until the owner-approved trial passes.
-  Rationale: a disabled challenger must not affect live or replay decisions.
   Date/Author: 2026-07-31 / Codex.
 - Decision: model `observed_at` as the exact host capture time and reject a
   provider envelope that claims a different observation time; require
   `available_at <= observed_at`.
-  Rationale: accepting advisory/mismatched timestamps would allow stale or
-  future data to be sealed under a trusted checkpoint.
   Date/Author: 2026-07-29 / Codex.
 - Decision: hash canonical captured source bytes as `source_sha256`, then include
   that digest when independently sealing the normalized envelope as
   `content_sha256`.
-  Rationale: source provenance and envelope integrity are separate claims and
-  must detect tampering independently.
   Date/Author: 2026-07-29 / Codex.
 
 ## Outcomes & Retrospective
 
-Evaluation remains access-gated without provider activation. Official team-sheet
-adjudication, Sportradar challenger selection, immutable writes, timestamp
-admission, independent digest layers and degraded failure modes are specified
-and tested. Integration remains blocked on `FPL-eah`; downstream `FPL-cm6` can
-operationalise credentials only after a provider clears the measured gates.
+Controlled trial enablement and a first redacted endpoint probe succeeded.
+Provider activation is still not production admission: no fixture has yet been
+sealed and reconciled against an official sheet and the FPL minutes oracle.
+Integration remains open on `FPL-eah`; downstream `FPL-cm6` can operationalise
+production credentials only after the measured gates clear.
 
 ## Validation
 
@@ -93,4 +90,5 @@ python -m pytest -q tests/data/test_lineups_minutes.py
 ## Non-goals
 
 Scraping unapproved websites, embedding credentials, name-only identity
-fallback, network retry storms, or treating vendor claims as measured coverage.
+fallback, network retry storms, raw-response redistribution, or treating an
+HTTP 200/vendor claim as measured production coverage.

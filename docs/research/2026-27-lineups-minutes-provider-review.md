@@ -11,8 +11,8 @@ post-match minutes oracle; it is not used to manufacture a pre-kickoff lineup.
 
 | Track | Source | Role | Current state |
 | --- | --- | --- | --- |
-| 1 | Official Premier League / club team sheets | **Canonical primary truth** for the published starting XI, substitutions and cited publication time | Manual/citation capture; disabled for automated collection until domain rights and capture rehearsal are approved |
-| 2 | [Sportradar Soccer Sport Event Lineups](https://developer.sportradar.com/soccer/reference/soccer-sport-event-lineups) | **Automated challenger trial** for starting players, formation and substitutions | Credentialed trial candidate; disabled until EPL coverage, timing, rights, identity and quota gates are measured |
+| 1 | Official Premier League / club team sheets | **Canonical primary truth** for the published starting XI, substitutions and cited publication time | Manual/citation capture; not automated because domain rights and capture rehearsal remain outstanding |
+| 2 | [Sportradar Soccer Sport Event Lineups](https://developer.sportradar.com/soccer/reference/soccer-sport-event-lineups) | **Automated challenger trial** for starting players, formation and substitutions | **Controlled trial enabled**; production promotion remains gated on the measured admission matrix |
 
 The sources are not averaged. If the automated challenger disagrees with an
 official team sheet, quarantine the affected fixture/player and adjudicate
@@ -25,10 +25,30 @@ Sportradar is a suitable trusted challenger because its documented lineup
 response includes starters and substitutions, but coverage is subscription- and
 competition-dependent. Its documented trial is limited to 30 days and 1,000
 requests per rolling 30 days with a default 1 QPS limit, so those limits must be
-checked against the intended capture schedule before activation:
+checked against the intended capture schedule before promotion:
 [lineup endpoint](https://developer.sportradar.com/soccer/reference/soccer-sport-event-lineups),
 [trial/account limits](https://developer.sportradar.com/football/docs/football-ig-account-maintenance),
 [authentication](https://developer.sportradar.com/getting-started/docs/authentication).
+
+## Controlled probe (2026-07-31)
+
+The owner-authorized trial made redacted requests using the key from
+`SPORTRADAR_API_KEY`; the key and raw responses were not logged or retained.
+
+| Probe | Result |
+| --- | --- |
+| Trial competition catalog | HTTP 200; 1,275 competitions returned; Premier League competition `sr:competition:17` present |
+| Premier League seasons | HTTP 200; 3 seasons returned, including 2025/26 (`sr:season:130281`) and 2026/27 (`sr:season:140756`) |
+| 2025/26 schedule | HTTP 200; 395 events returned; all 395 advertised pre-match lineup coverage |
+| Lineup endpoint for `sr:sport_event:61300505` | HTTP 200; one lineup payload, two competitors, 22 starter rows |
+| Raw retention | **False**; only redacted metadata was observed |
+
+This proves authentication, endpoint reachability and a first coverage-shaped
+payload. It is **not** the admission trial: no official team-sheet comparison,
+identity mapping, final-minute reconciliation, correction timing or quota
+headroom measurement has yet been completed. `fixtures_measured` therefore
+remains 0 until a fixture is captured into the immutable provider-neutral
+snapshot contract.
 
 ## Fallbacks (not primary truth)
 
@@ -48,7 +68,7 @@ Run at least **10 Premier League fixtures across at least three matchdays** and
 record endpoint/tier, publication time relative to kickoff, full-XI coverage,
 substitutions, final minutes versus the FPL oracle, correction timing, identity
 coverage, rate limits, retention/redistribution rights, cost and failure
-behaviour. Enable no provider unless all gates pass:
+behaviour. Promote no provider to production unless all gates pass:
 
 - owner-approved terms, retention and credential handling;
 - full XI before kickoff for at least 95% of trial fixtures;
@@ -56,23 +76,23 @@ behaviour. Enable no provider unless all gates pass:
 - 100% stable identity mapping for admitted rows (unknowns quarantine);
 - at least 20% quota headroom at the planned capture cadence.
 
-The current matrix is intentionally empty: no credential is present, no source
-has automated-collection approval, and `selected_provider` remains `null`. The
-family therefore stays degraded and the shared structured baseline is unchanged.
+The current config is explicitly `operation_mode: controlled_trial` with
+`selected_provider: sportradar`. The shared structured baseline remains
+unchanged while the trial is incomplete; failed requests degrade safely and do
+not trigger retry storms.
 
 ## Credential handoff
 
-Provision the challenger key only as a user/process environment variable. Never
-send it in chat or commit it to a manifest, URL or log:
+The key is stored only as a Windows user environment variable. Never send it in
+chat or commit it to a manifest, URL or log:
 
 ```powershell
 [Environment]::SetEnvironmentVariable("SPORTRADAR_API_KEY", "<your-key>", "User")
 ```
 
-After opening a new terminal, preflight may report only
-`credential_present=true`; it must not print the value. The source registry entry
-`sportradar-soccer` remains disabled until the owner approves terms, retention,
-cost and the measured trial.
+The source registry entry `sportradar-soccer` is enabled for this private,
+local-only trial. Production promotion still requires the measured gates and an
+explicit follow-up decision.
 
 ## Existing implementation boundary
 
@@ -82,6 +102,6 @@ cost and the measured trial.
 - `src/ingestion/lineups_minutes.py`
 - `tests/data/test_lineups_minutes.py`
 
-Bead **`FPL-eah`** tracks the owner-approved credential, registry review and the
-10-fixture/3-matchday trial. Until those inputs arrive, no network collection or
-provider enablement occurs.
+Bead **`FPL-eah`** tracks the 10-fixture/3-matchday trial, official-sheet
+adjudication and production-promotion decision. The first probe succeeded, but
+this bead remains open until the admission matrix is measured.

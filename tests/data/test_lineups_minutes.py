@@ -29,20 +29,22 @@ CONFIG = json.loads(
 )
 
 
-def test_two_track_provider_roles_remain_disabled() -> None:
+def test_two_track_provider_roles_keep_truth_and_trial_selection() -> None:
     assert CONFIG["primary_truth_provider"] == "official-team-sheets"
     assert CONFIG["trial_recommendation"]["provider_id"] == "sportradar"
-    assert CONFIG["selected_provider"] is None
+    assert CONFIG["selected_provider"] == "sportradar"
+    assert CONFIG["operation_mode"] == "controlled_trial"
 
     roles = {row["provider_id"]: row["role"] for row in CONFIG["providers"]}
     assert roles["official-team-sheets"] == "canonical_primary_truth"
     assert roles["sportradar"] == "automated_challenger_trial"
     assert roles["api-football"] == "fallback_comparison_feed"
-    assert all(
-        row["registry_enabled"] is False
-        for row in CONFIG["providers"]
-        if row["provider_id"] in {"official-team-sheets", "sportradar", "api-football"}
-    )
+
+    sportradar = next(row for row in CONFIG["providers"] if row["provider_id"] == "sportradar")
+    assert sportradar["status"] == "trial_enabled"
+    assert sportradar["registry_enabled"] is True
+    assert sportradar["rights_approved"] is True
+    assert sportradar["owner_approved"] is True
 
 def _approved_config(*, min_started_xi: int = 2, min_admitted: int = 2) -> dict:
     cfg = deepcopy(CONFIG)
@@ -199,8 +201,10 @@ def test_missing_credential_degrades_without_network() -> None:
         raise RuntimeError("should not fetch")
 
     # Even with credentials, null selected_provider must not fetch.
+    null_config = deepcopy(CONFIG)
+    null_config["selected_provider"] = None
     degraded = capture_provider_snapshot_or_degrade(
-        config=CONFIG,
+        config=null_config,
         provider_id="api-football",
         observed_at="2026-08-20T10:00:00Z",
         environ={"API_FOOTBALL_KEY": "secret"},
@@ -260,8 +264,10 @@ def test_timeout_rate_limit_and_outage_degrade_without_retry() -> None:
         )
 
 
-def test_config_records_access_gated_trial_and_null_provider() -> None:
-    assert CONFIG["selected_provider"] is None
+def test_config_records_controlled_trial_and_no_measured_fixtures() -> None:
+    assert CONFIG["selected_provider"] == "sportradar"
+    assert CONFIG["operation_mode"] == "controlled_trial"
+    assert CONFIG["trial_status"]["status"] == "trial_in_progress"
     assert CONFIG["trial_status"]["fixtures_measured"] == 0
     assert CONFIG["trial_status"]["blocker_bead"] == "FPL-eah"
     assert CONFIG["minutes_tolerance"] == 1
@@ -276,8 +282,10 @@ def test_fetch_never_called_for_null_disabled_or_unapproved_provider() -> None:
         return _raw_snapshot()
 
     # 1) null selection
+    null_config = deepcopy(CONFIG)
+    null_config["selected_provider"] = None
     out = capture_provider_snapshot_or_degrade(
-        config=CONFIG,
+        config=null_config,
         provider_id="api-football",
         observed_at="2026-08-20T10:00:00Z",
         environ={"API_FOOTBALL_KEY": "x"},
