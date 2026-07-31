@@ -20,6 +20,12 @@ does not make a late, stale or unobserved value point-in-time safe.
 | Launch context | Successor context generated from the 31 July bootstrap and the cutoff-safe 2025/26 roster | Context hash `6d9dad02…c62a2dea`; manifest hash `ea6324eb…d8bde4b0`; old 31 July checkpoint remains immutable and is not rewritten |
 | Official FPL availability/news | 55 hash-bound claims captured at 21:30 UTC with no gaps | Local ledger hash `38f6a5e7…d53d856`; official structured fields and derived summaries only |
 
+Using the refreshed prior and official FDR fixtures, the six-Gameweek horizon
+materialised 509 active players with result hash
+`9a8a0813…badaec832`. It remains `degraded` because odds and unstructured
+evidence are absent, the team prior is official-FDR-only and launch-context
+flags are currently applied after rather than inside the forecast calculation.
+
 The restored historical data is useful for calibration and priors, but it does
 not recreate the 2026/27 pre-deadline information environment. It must not be
 used to claim that an evidence-dependent strategy has been fairly replayed.
