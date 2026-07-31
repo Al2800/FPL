@@ -1,0 +1,17 @@
+{
+  "schema_version": "historical-rank-thresholds-config-v1",
+  "season": "2025-26",
+  "selected_source": null,
+  "status": "unavailable",
+  "collection_enabled": false,
+  "required_source_approval": true,
+  "source_registry_version": "0.6.0",
+  "reason": "No approved source currently provides defensible, point-in-time overall-rank thresholds for all 38 gameweeks.",
+  "artifact_path": "data/benchmark-v0/rank-thresholds/2025-26/summary.json",
+  "allowed_modes": ["exact", "bounded", "unavailable"],
+  "policy": {
+    "no_extrapolation": true,
+    "no_point_estimate_as_exact": true,
+    "rank_annotation_is_downstream_only": true
+  }
+}
