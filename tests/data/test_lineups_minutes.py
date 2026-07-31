@@ -29,11 +29,11 @@ CONFIG = json.loads(
 )
 
 
-def test_two_track_provider_roles_keep_truth_and_trial_selection() -> None:
+def test_two_track_provider_roles_remain_disabled() -> None:
     assert CONFIG["primary_truth_provider"] == "official-team-sheets"
     assert CONFIG["trial_recommendation"]["provider_id"] == "sportradar"
-    assert CONFIG["selected_provider"] == "sportradar"
-    assert CONFIG["operation_mode"] == "controlled_trial"
+    assert CONFIG["selected_provider"] is None
+    assert CONFIG["collection_status"] == "degraded_official_capture_pending_rehearsal"
 
     roles = {row["provider_id"]: row["role"] for row in CONFIG["providers"]}
     assert roles["official-team-sheets"] == "canonical_primary_truth"
@@ -41,10 +41,10 @@ def test_two_track_provider_roles_keep_truth_and_trial_selection() -> None:
     assert roles["api-football"] == "fallback_comparison_feed"
 
     sportradar = next(row for row in CONFIG["providers"] if row["provider_id"] == "sportradar")
-    assert sportradar["status"] == "trial_enabled"
-    assert sportradar["registry_enabled"] is True
-    assert sportradar["rights_approved"] is True
-    assert sportradar["owner_approved"] is True
+    assert sportradar["status"] == "candidate_access_gated"
+    assert sportradar["registry_enabled"] is False
+    assert sportradar["rights_approved"] is False
+    assert sportradar["owner_approved"] is False
 
 def _approved_config(*, min_started_xi: int = 2, min_admitted: int = 2) -> dict:
     cfg = deepcopy(CONFIG)
@@ -264,10 +264,9 @@ def test_timeout_rate_limit_and_outage_degrade_without_retry() -> None:
         )
 
 
-def test_config_records_controlled_trial_and_no_measured_fixtures() -> None:
-    assert CONFIG["selected_provider"] == "sportradar"
-    assert CONFIG["operation_mode"] == "controlled_trial"
-    assert CONFIG["trial_status"]["status"] == "trial_in_progress"
+def test_config_records_access_gated_trial_and_null_provider() -> None:
+    assert CONFIG["selected_provider"] is None
+    assert CONFIG["trial_status"]["status"] == "blocked_access_gate"
     assert CONFIG["trial_status"]["fixtures_measured"] == 0
     assert CONFIG["trial_status"]["blocker_bead"] == "FPL-eah"
     assert CONFIG["minutes_tolerance"] == 1

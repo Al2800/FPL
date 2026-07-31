@@ -7,9 +7,9 @@ Outcomes current.
 
 Build a provider-neutral capture/reconciliation path that replay and the live
 season both call. Official Premier League/club team sheets are canonical primary
-truth for published lineups and substitutions. Sportradar is the automated,
-trusted challenger. Trial enablement is allowed only inside the explicit local
-trial boundary; production promotion remains gated on measured evidence.
+truth for published lineups and substitutions. Automated providers remain
+optional, cost-gated challengers and may never alter the shared structured
+baseline without measured admission evidence.
 
 ## Progress
 
@@ -21,65 +21,53 @@ trial boundary; production promotion remains gated on measured evidence.
 - [x] (2026-07-29) Review remediation: exact capture/provider timestamp
   equality, available-before-observed ordering, independent raw-source/envelope
   hashes, activation gating and negative tamper tests.
-- [x] (2026-07-31) Two-track policy: official team sheets are canonical primary
-  truth; `sportradar-soccer` is the automated challenger; API-Football and
-  football-data.org remain fallback-only.
-- [x] (2026-07-31) Owner-authorized controlled trial enabled with
-  `SPORTRADAR_API_KEY`. Redacted probes reached the competition, seasons,
-  schedule and lineup endpoints; one coverage-shaped historical payload
-  returned HTTP 200 with two competitors and 22 starter rows. No raw response
-  or credential was retained.
-- [ ] Capture at least 10 Premier League fixtures across at least three
-  matchdays through the immutable provider-neutral snapshot contract and compare
-  each against official team sheets and the FPL post-match oracle.
-- [ ] Promote the challenger to production only after the 95/99/100/20 gates
-  pass and the owner signs off the measured matrix.
+- [x] (2026-07-31) Official team sheets designated canonical truth; Sportradar
+  was tested once with a redacted historical endpoint probe (HTTP 200, 22
+  starter rows) but no fixture was admitted or reconciled.
+- [x] (2026-07-31) Owner reversed Sportradar enablement because ongoing provider
+  cost was not justified. Config and source registry are back to
+  `selected_provider=null` and degraded/no-network mode; the credential was
+  removed from the user environment.
+- [ ] Select and approve a lower-cost alternative, or proceed with official
+  team-sheet citation capture only.
+- [ ] If a provider is reconsidered, capture at least 10 fixtures across three
+  matchdays and apply the 95/99/100/20 promotion gates.
 
 ## Surprises & Discoveries
 
-- Observation: Sportradar trial authentication and endpoint reachability work
-  with the owner-provided key. Trial season metadata exposes 2025/26 and
-  2026/27; the 2025/26 schedule advertised pre-match lineups for 395 events.
+- Observation: Sportradar authentication and endpoint reachability worked, but
+  a successful HTTP response was not enough to justify its ongoing cost or
+  production use.
 - Observation: official team sheets remain the adjudication truth; their capture
   path is manual/citation-only until domain rights and rehearsal are complete.
-- Observation: the historical lineup endpoint can return a valid payload while
-  substitutions/minutes still require explicit mapping and post-match
-  reconciliation; HTTP 200 is not an admission result.
+- Observation: no fixture has been sealed into the immutable provider-neutral
+  snapshot contract, so `fixtures_measured` remains 0.
 
 ## Decision Log
 
 - Decision: official Premier League/club team sheets are canonical primary truth;
-  Sportradar is the automated challenger trial. Do not average disagreements:
-  quarantine and adjudicate against the official sheet, with FPL event-live /
-  element-summary as the post-match minutes oracle.
+  any future challenger disagreement is quarantined and adjudicated against
+  them, with FPL event-live / element-summary as the post-match minutes oracle.
   Date/Author: 2026-07-31 / Codex.
-- Decision: enable Sportradar only in `controlled_trial` mode for local,
-  non-redistributed captures; keep production promotion blocked until the
-  measured matrix passes.
-  Rationale: the owner explicitly requested a credential test, while the
-  provider-neutral admission gates must still prevent an unmeasured vendor from
-  changing live decisions.
+- Decision: reverse Sportradar controlled-trial enablement and remove its user
+  credential because ongoing cost is not justified.
+  Rationale: the one-off probe proved reachability but did not establish value;
+  no production decision depends on it.
   Date/Author: 2026-07-31 / Codex.
-- Decision: do not select or promote a provider from marketing documentation.
-  Rationale: admission gates require measured EPL coverage, identity, quota and
-  owner-approved terms.
+- Decision: keep `selected_provider=null` and degrade safely until a lower-cost
+  source is explicitly approved and measured.
   Date/Author: 2026-07-31 / Codex.
-- Decision: model `observed_at` as the exact host capture time and reject a
-  provider envelope that claims a different observation time; require
-  `available_at <= observed_at`.
-  Date/Author: 2026-07-29 / Codex.
-- Decision: hash canonical captured source bytes as `source_sha256`, then include
-  that digest when independently sealing the normalized envelope as
-  `content_sha256`.
+- Decision: model `observed_at` as the exact host capture time, require
+  `available_at <= observed_at`, and hash raw source and normalized envelope
+  independently.
   Date/Author: 2026-07-29 / Codex.
 
 ## Outcomes & Retrospective
 
-Controlled trial enablement and a first redacted endpoint probe succeeded.
-Provider activation is still not production admission: no fixture has yet been
-sealed and reconciled against an official sheet and the FPL minutes oracle.
-Integration remains open on `FPL-eah`; downstream `FPL-cm6` can operationalise
-production credentials only after the measured gates clear.
+Sportradar was tested once and then disabled by owner decision. The provider
+adapter, immutable snapshot contract, timestamp admission, independent digest
+layers and degraded failure modes remain available for a future lower-cost
+source. Integration remains open on `FPL-eah`.
 
 ## Validation
 

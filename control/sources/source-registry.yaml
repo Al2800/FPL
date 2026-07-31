@@ -480,24 +480,25 @@ sources:
     source_type: api
     authority: secondary
     terms_url: "https://developer.sportradar.com/sportradar-updates/page/terms-and-conditions"
-    licence_status: restricted
-    allowed_use: private_trial_local_retention
+    licence_status: unknown
+    allowed_use: private_trial_local_retention_pending_review
     authentication: api_key_header
     collection_method: api
     expected_cadence: "pre_kickoff_and_postmatch"
     max_staleness: "slot-specific"
     failure_policy: degrade
-    retention_policy: local_trial_only
+    retention_policy: none_until_owner_review
     attribution: "Sportradar"
-    enabled: true
+    enabled: false
     review_date: "2026-09-01"
     activation_approval:
-      terms: approved_for_private_trial
-      cost: trial
-      owner: Alastair
-      reviewed_at: "2026-07-31"
+      terms: pending
+      cost: pending
+      owner: pending
+      reviewed_at: null
     notes: >
-      Automated challenger for official team-sheet captures. Controlled owner-authorized
-      trial data stays local; no production promotion until the measured admission
-      gates pass. The API key must stay in SPORTRADAR_API_KEY and never enter
-      URLs, manifests or logs.
+      Alternative automated challenger for official team-sheet captures. The one-off
+      endpoint probe succeeded, but ongoing Sportradar cost was judged not
+      justified. No collection or enablement until a future owner-approved
+      cost/retention review and measured trial. The API key must stay in
+      SPORTRADAR_API_KEY and never enter URLs, manifests or logs.

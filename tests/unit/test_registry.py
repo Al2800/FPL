@@ -17,6 +17,7 @@ BENCHMARK_CANDIDATE_IDS = [
     "official-lineups-minutes",
     "commercial-epl-event-data",
     "football-data-org",
+    "sportradar-soccer",
 ]
 
 
@@ -37,7 +38,6 @@ def test_only_assessment_sources_enabled():
             "fpl-official-endpoints",
             "football-data-co-uk",
             "statsbomb-open",
-            "sportradar-soccer",
             "the-odds-api",
             "vaastav-fpl",
         ]
@@ -54,13 +54,12 @@ def test_benchmark_candidates_are_complete_and_disabled():
             assert field in by_id[source_id], f"{source_id} missing {field}"
 
 
-def test_sportradar_trial_source_is_owner_enabled_but_not_production_approved():
+def test_sportradar_trial_source_is_disabled_after_cost_reversal():
     source = get_source("sportradar-soccer")
-    assert source["enabled"] is True
-    assert source["allowed_use"] == "private_trial_local_retention"
-    assert source["retention_policy"] == "local_trial_only"
-    assert source["activation_approval"]["owner"] == "Alastair"
-    assert source["activation_approval"]["terms"] == "approved_for_private_trial"
+    assert source["enabled"] is False
+    assert source["allowed_use"] == "private_trial_local_retention_pending_review"
+    assert source["retention_policy"] == "none_until_owner_review"
+    assert source["activation_approval"]["terms"] == "pending"
 
 
 
