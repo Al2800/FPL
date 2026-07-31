@@ -474,3 +474,32 @@ sources:
       Output: control/identities/world-cup-2026-priors.csv (committed derived table).
       Interim alternative: binary participant flag + nation elimination date only.
 
+
+  - source_id: sportradar-soccer
+    owner: Sportradar
+    source_type: api
+    authority: secondary
+    terms_url: "https://developer.sportradar.com/sportradar-updates/page/terms-and-conditions"
+    licence_status: unknown
+    allowed_use: private_trial_local_retention_pending_review
+    authentication: api_key_header
+    collection_method: api
+    expected_cadence: "pre_kickoff_and_postmatch"
+    max_staleness: "slot-specific"
+    failure_policy: degrade
+    retention_policy: none_until_owner_review
+    attribution: "Sportradar"
+    enabled: false
+    review_date: "2026-09-01"
+    activation_approval:
+      terms: pending
+      cost: pending
+      owner: pending
+      reviewed_at: null
+    notes: >
+      Automated challenger for official team-sheet captures. The documented
+      endpoint returns starting players and substitutions when subscribed EPL
+      coverage supports it. Alternative: official team-sheet citations. No collection or
+      enablement until owner-approved
+      trial, retention and measured admission gates. The API key must stay in
+      SPORTRADAR_API_KEY and never enter URLs, manifests or logs.

@@ -2,21 +2,47 @@
   "schema_version": "1.0",
   "season": "2026-27",
   "selected_provider": null,
+  "primary_truth_provider": "official-team-sheets",
+  "disagreement_policy": "quarantine_and_adjudicate_against_official_team_sheet",
   "collection_status": "degraded_pending_credential_trial",
   "trial_recommendation": {
-    "provider_id": "api-football",
-    "reason": "Official provider documentation specifies starting lineups 20-40 minutes before kickoff where the EPL coverage flag is enabled; this remains an unmeasured claim until the credentialed trial.",
-    "lineup_endpoint": "https://v3.football.api-sports.io/fixtures/lineups",
-    "credential_environment": "API_FOOTBALL_KEY",
-    "fallback_provider_id": "football-data-org"
+    "provider_id": "sportradar",
+    "reason": "Trusted automated challenger feed with explicit starting players and substitutions; EPL coverage, timing and rights remain unmeasured until the credentialed trial.",
+    "lineup_endpoint": "https://api.sportradar.com/soccer/{access_level}/v4/en/sport_events/{sport_event_id}/lineups.json",
+    "credential_environment": "SPORTRADAR_API_KEY",
+    "fallback_provider_id": "api-football"
   },
   "reconciliation_oracle": "fpl-official-endpoints",
   "maximum_observation_delay_minutes": 180,
   "minutes_tolerance": 1,
   "providers": [
     {
-      "provider_id": "api-football",
+      "provider_id": "official-team-sheets",
+      "role": "canonical_primary_truth",
+      "status": "manual_citation_capture",
+      "credential_environment": null,
+      "registry_source_id": "official-lineups-minutes",
+      "required_trial": "domain_rights_and_capture_rehearsal",
+      "registry_enabled": false,
+      "rights_approved": false,
+      "owner_approved": false
+    },
+    {
+      "provider_id": "sportradar",
+      "role": "automated_challenger_trial",
       "status": "candidate_access_gated",
+      "credential_environment": "SPORTRADAR_API_KEY",
+      "endpoint_template": "https://api.sportradar.com/soccer/{access_level}/v4/en/sport_events/{sport_event_id}/lineups.json",
+      "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
+      "registry_source_id": "sportradar-soccer",
+      "registry_enabled": false,
+      "rights_approved": false,
+      "owner_approved": false
+    },
+    {
+      "provider_id": "api-football",
+      "role": "fallback_comparison_feed",
+      "status": "fallback_access_gated",
       "credential_environment": "API_FOOTBALL_KEY",
       "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
       "registry_note": "not_enabled_in_source_registry",
@@ -26,7 +52,8 @@
     },
     {
       "provider_id": "football-data-org",
-      "status": "candidate_access_gated",
+      "role": "low_cost_fallback_feed",
+      "status": "fallback_access_gated",
       "credential_environment": "FOOTBALL_DATA_ORG_TOKEN",
       "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
       "registry_source_id": "football-data-org",
@@ -36,7 +63,8 @@
     },
     {
       "provider_id": "thesportsdb",
-      "status": "fallback_candidate_access_gated",
+      "role": "non_authoritative_fallback_only",
+      "status": "disabled",
       "credential_environment": "THESPORTSDB_API_KEY",
       "required_trial": "representative_epl_fixture_matrix_ge_10_across_3_matchdays",
       "registry_note": "not_enabled_in_source_registry",

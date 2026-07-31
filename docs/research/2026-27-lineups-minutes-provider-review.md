@@ -2,82 +2,86 @@
 
 Access date for this evaluation note: **2026-07-31**.
 
-The production contract is deliberately provider-neutral. A captured provider
-snapshot is mapped only through explicit fixture/player aliases and reconciled
-against official FPL post-match minutes (`event-live` / `element-summary` as the
-reconciliation oracle, never as a pre-kickoff lineup source). Any mismatch
-quarantines that player; missing data degrades the feature family and never
-becomes a zero-minute claim.
+The production contract is provider-neutral. Every pre-kickoff observation is
+captured as an immutable, point-in-time snapshot and mapped only through explicit
+fixture/player aliases. Official FPL `event-live` / `element-summary` remains the
+post-match minutes oracle; it is not used to manufacture a pre-kickoff lineup.
 
-## Candidates
+## Decision: two complementary sources
 
-| Provider | Registry / rights | Credential env | Current decision | Reason |
-| --- | --- | --- | --- | --- |
-| API-Football | Not registered/enabled for automated collection | `API_FOOTBALL_KEY` | **recommended primary trial**, access-gated | Official docs say line-ups are available 20–40 minutes pre-kickoff where competition coverage supports it; endpoint and timing still need measurement. |
-| football-data.org | `football-data-org` registered but `enabled: false`; terms pending | `FOOTBALL_DATA_ORG_TOKEN` | secondary trial candidate, **access-gated** | v4 supports unfolded line-ups/substitutions; pre-kickoff availability and minutes quality remain unmeasured. |
-| TheSportsDB | Not registered/enabled | `THESPORTSDB_API_KEY` | fallback trial candidate, **access-gated** | Free limits and timing make it unsuitable as an assumed authoritative feed. |
+| Track | Source | Role | Current state |
+| --- | --- | --- | --- |
+| 1 | Official Premier League / club team sheets | **Canonical primary truth** for the published starting XI, substitutions and cited publication time | Manual/citation capture; disabled for automated collection until domain rights and capture rehearsal are approved |
+| 2 | [Sportradar Soccer Sport Event Lineups](https://developer.sportradar.com/soccer/reference/soccer-sport-event-lineups) | **Automated challenger trial** for starting players, formation and substitutions | Credentialed trial candidate; disabled until EPL coverage, timing, rights, identity and quota gates are measured |
 
-## Trial matrix (access gate)
+The sources are not averaged. If the automated challenger disagrees with an
+official team sheet, quarantine the affected fixture/player and adjudicate
+against the official team sheet. If the official sheet is unavailable, retain a
+degraded state rather than guessing. The post-match FPL oracle is used to measure
+minutes agreement and to document corrections, not to rewrite the pre-kickoff
+snapshot.
 
-Required trial: at least **10 Premier League fixtures across at least three
-matchdays**, recording endpoint/tier, lineup publication time relative to
-kickoff, full-XI coverage, substitutions, final minutes vs FPL oracle,
-correction timing, identity coverage, rate limits, retention/redistribution
-rights, cost and failure behaviour.
+Sportradar is a suitable trusted challenger because its documented lineup
+response includes starters and substitutions, but coverage is subscription- and
+competition-dependent. Its documented trial is limited to 30 days and 1,000
+requests per rolling 30 days with a default 1 QPS limit, so those limits must be
+checked against the intended capture schedule before activation:
+[lineup endpoint](https://developer.sportradar.com/soccer/reference/soccer-sport-event-lineups),
+[trial/account limits](https://developer.sportradar.com/football/docs/football-ig-account-maintenance),
+[authentication](https://developer.sportradar.com/getting-started/docs/authentication).
 
-| Gate | Result on 2026-07-29 |
-| --- | --- |
-| Owner-approved terms, retention and credential handling | **Fail** — no candidate has automated-collection approval; `official-lineups-minutes` remains citation-only. |
-| Credential present in environment (values never logged) | **Fail** — `API_FOOTBALL_KEY`, `FOOTBALL_DATA_ORG_TOKEN` and `THESPORTSDB_API_KEY` are all absent. |
-| Fixtures measured | **0** (trial not started) |
-| Matchdays measured | **0** |
-| ≥95% full XI before kickoff | Not measured |
-| ≥99% minute agreement ±1 vs FPL oracle | Not measured |
-| 100% admitted identity mapping | Not measured |
-| ≥20% quota headroom | Not measured |
+## Fallbacks (not primary truth)
 
-**Conclusion:** an access/rights gate prevented the representative trial. No
-provider is selected. `selected_provider` remains `null` and the family stays
-**degraded**. Marketing documentation is not treated as measured coverage.
+- **API-Football** remains a fallback comparison feed. Its published line-up
+  timing is a vendor claim and still needs a measured trial:
+  [documentation](https://www.api-football.com/documentation).
+- **football-data.org** remains a low-cost fallback comparison feed. Its v4
+  policies document unfolded line-ups/substitutions, but pre-kickoff timing and
+  final-minute fidelity remain unmeasured:
+  [policies](https://docs.football-data.org/general/v4/policies.html).
+- **TheSportsDB** remains non-authoritative fallback-only and is not a launch
+  dependency.
 
-## Provider-neutral contract already in repo
+## Trial and admission gates
 
-- `config/data_sources/2026-27-lineups-minutes.json`
-- `control/identities/lineup-provider-aliases.yaml` (explicit aliases only)
-- `src/ingestion/lineups_minutes.py` (reconcile + degraded capture helpers)
-- `tests/data/test_lineups_minutes.py`
+Run at least **10 Premier League fixtures across at least three matchdays** and
+record endpoint/tier, publication time relative to kickoff, full-XI coverage,
+substitutions, final minutes versus the FPL oracle, correction timing, identity
+coverage, rate limits, retention/redistribution rights, cost and failure
+behaviour. Enable no provider unless all gates pass:
 
-Missing credential, timeout, rate-limit and outage paths return a degraded
-family with `retry_scheduled=false` and `baseline_unchanged=true`.
+- owner-approved terms, retention and credential handling;
+- full XI before kickoff for at least 95% of trial fixtures;
+- at least 99% of identity-resolved final minute rows within ±1 minute of the FPL oracle;
+- 100% stable identity mapping for admitted rows (unknowns quarantine);
+- at least 20% quota headroom at the planned capture cadence.
 
-## Blocking follow-up
+The current matrix is intentionally empty: no credential is present, no source
+has automated-collection approval, and `selected_provider` remains `null`. The
+family therefore stays degraded and the shared structured baseline is unchanged.
 
-Bead **`FPL-eah`** tracks owner-approved credential provisioning, registry
-enablement where lawful, and the ≥10-fixture / ≥3-matchday measured trial before
-any provider may be enabled.
-## Decision and credential handoff (2026-07-31)
+## Credential handoff
 
-API-Football is the recommended first trial because its published line-up
-contract is the closest match to the live decision boundary: it documents a
-20–40 minute pre-kickoff window when the competition coverage flag is enabled,
-with an update cadence of 15 minutes (see https://www.api-football.com/documentation). This is a vendor claim, not an admission
-result; the EPL coverage flag, timing, identity mapping, quota and final-minute
-agreement must be measured on the required matrix before enablement.
-
-The trial needs one owner-provisioned key. Store it only as a user or process
-environment variable; never commit it, put it in a manifest, or include it in a
-URL. PowerShell setup (replace the placeholder locally, not in chat):
+Provision the challenger key only as a user/process environment variable. Never
+send it in chat or commit it to a manifest, URL or log:
 
 ```powershell
-[Environment]::SetEnvironmentVariable("API_FOOTBALL_KEY", "<your-key>", "User")
+[Environment]::SetEnvironmentVariable("SPORTRADAR_API_KEY", "<your-key>", "User")
 ```
 
-After opening a new terminal, the preflight must report only
-`credential_present=true`; it must not print the value. Until the key and the
-rights/retention decision are present, `selected_provider` remains `null` and
-lineups/minutes stay degraded.
+After opening a new terminal, preflight may report only
+`credential_present=true`; it must not print the value. The source registry entry
+`sportradar-soccer` remains disabled until the owner approves terms, retention,
+cost and the measured trial.
 
-The football-data.org API is retained as the fallback trial: its v4 policies
-support `X-Unfold-Lineups` and `X-Unfold-Subs` (see https://docs.football-data.org/general/v4/policies.html), but we have not yet measured
-pre-kickoff publication or minutes fidelity. TheSportsDB remains a low-cost
-fallback only, not an assumed authoritative source.
+## Existing implementation boundary
+
+- `config/data_sources/2026-27-lineups-minutes.json`
+- `control/sources/source-registry.yaml`
+- `control/identities/lineup-provider-aliases.yaml`
+- `src/ingestion/lineups_minutes.py`
+- `tests/data/test_lineups_minutes.py`
+
+Bead **`FPL-eah`** tracks the owner-approved credential, registry review and the
+10-fixture/3-matchday trial. Until those inputs arrive, no network collection or
+provider enablement occurs.

@@ -88,7 +88,9 @@ def test_null_lineups_selection_does_not_inspect_candidate_credentials() -> None
 def test_selected_provider_key_is_checked_only_after_selection() -> None:
     lineups = deepcopy(LINEUPS_CONFIG)
     lineups["selected_provider"] = "api-football"
-    provider = lineups["providers"][0]
+    provider = next(
+        item for item in lineups["providers"] if item["provider_id"] == "api-football"
+    )
     provider["registry_enabled"] = True
     provider["rights_approved"] = True
     provider["owner_approved"] = True

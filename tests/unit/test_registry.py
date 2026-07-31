@@ -17,6 +17,7 @@ BENCHMARK_CANDIDATE_IDS = [
     "official-lineups-minutes",
     "commercial-epl-event-data",
     "football-data-org",
+    "sportradar-soccer",
 ]
 
 

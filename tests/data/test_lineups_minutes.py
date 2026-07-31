@@ -29,6 +29,21 @@ CONFIG = json.loads(
 )
 
 
+def test_two_track_provider_roles_remain_disabled() -> None:
+    assert CONFIG["primary_truth_provider"] == "official-team-sheets"
+    assert CONFIG["trial_recommendation"]["provider_id"] == "sportradar"
+    assert CONFIG["selected_provider"] is None
+
+    roles = {row["provider_id"]: row["role"] for row in CONFIG["providers"]}
+    assert roles["official-team-sheets"] == "canonical_primary_truth"
+    assert roles["sportradar"] == "automated_challenger_trial"
+    assert roles["api-football"] == "fallback_comparison_feed"
+    assert all(
+        row["registry_enabled"] is False
+        for row in CONFIG["providers"]
+        if row["provider_id"] in {"official-team-sheets", "sportradar", "api-football"}
+    )
+
 def _approved_config(*, min_started_xi: int = 2, min_admitted: int = 2) -> dict:
     cfg = deepcopy(CONFIG)
     cfg["selected_provider"] = "api-football"
