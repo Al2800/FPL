@@ -16,7 +16,7 @@ does not make a late, stale or unobserved value point-in-time safe.
 | Official player/team/fixture state | 2026/27 bootstrap and fixtures captured for the 31 July checkpoint; the live availability run also returned HTTP 200 | Bootstrap `e3b41b91…49431c`; live availability acquisition `31362739…83ebd9`; mandatory structured spine is present |
 | Historical player events | Registered Vaastav history restored locally, including 2025/26 `merged_gw` with 29,757 rows | Private, gitignored source; do not redistribute |
 | Historical results and odds | Registered football-data.co.uk E0 files restored for 2015/16–2024/25 | Historical comparator only; upload timing is not exact pre-deadline evidence |
-| 2025/26 player prior | 841-player prior envelope generated from 29,747 used rows | Hash `4be6801f…e7e1d16`; 10 exact duplicate player-fixture keys were verified and deduplicated; conflicting duplicates would fail closed |
+| 2025/26 player prior | 841-player prior envelope generated from 29,747 used rows | Hash `970686ed…c83668b94`; 10 exact duplicate player-fixture keys were verified and deduplicated; conflicting duplicates would fail closed |
 | Launch context | Successor context generated from the 31 July bootstrap and the cutoff-safe 2025/26 roster | Context hash `6d9dad02…c62a2dea`; manifest hash `ea6324eb…d8bde4b0`; old 31 July checkpoint remains immutable and is not rewritten |
 | Official FPL availability/news | 55 hash-bound claims captured at 21:30 UTC with no gaps | Local ledger hash `38f6a5e7…d53d856`; official structured fields and derived summaries only |
 
