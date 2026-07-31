@@ -13,6 +13,11 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
   a six-GW live-faithful packet, then bind set-pieces from bootstrap.
 - Odds need live slot captures + env credential; ratings stay degraded until
   rights-cleared 2026/27 PL coverage exists.
+- The registered historical datasets were restored locally; the latest
+  2025/26 player-prior build records and removes only exact duplicate
+  player-fixture rows.
+- Official FPL availability capture now has 55 complete claims with no
+  collection gaps; club, press and role claims remain manual-citation-only.
 - Ticket 01 resolved: launch-context cold-start/WC fields now enrich the
   initial-squad packet when admitted; EP horizon still baseline-only.
 - Ticket 02 resolved: `live-faithful-v1.feature-complete` now supplies a
@@ -28,3 +33,5 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
 - A stable-code 2025/26 completed-season player-prior envelope for the next
   successor checkpoint.
 - Whether live-faithful promotion clears owner acceptance with remaining degradations.
+- The complete structured/unstructured audit is
+  `docs/evaluation/2026-07-31-evidence-coverage-audit.md`.

@@ -43,7 +43,7 @@ def _fallback(position: str) -> dict[str, float]:
     }
 
 
-def _player_prior() -> dict:
+def _player_prior(season: str = "2024-25") -> dict:
     fallbacks = {}
     for position in ("GKP", "DEF", "MID", "FWD"):
         fallbacks[position] = _fallback(position)
@@ -51,7 +51,7 @@ def _player_prior() -> dict:
             fallbacks[f"{position}:{band}"] = _fallback(position)
     result = {
         "schema_version": "1.0",
-        "season": "2024-25",
+        "season": season,
         "as_of": "2025-05-26T00:00:00Z",
         "source": {"test": True},
         "price_bands": MODEL["price_bands"],
@@ -155,6 +155,23 @@ def test_live_faithful_horizon_materialises_vectors_and_lineage() -> None:
         assert len(vector["start_probability"]) == 2
         assert len(vector["uncertainty"]) == 2
         assert all(0.0 <= value <= 1.0 for value in vector["start_probability"])
+
+
+def test_horizon_labels_the_actual_player_prior_season() -> None:
+    result = build_live_faithful_initial_squad_horizon(
+        bootstrap=_bootstrap(),
+        fixtures=_fixtures(),
+        official_bootstrap_sha256="a" * 64,
+        official_fixtures_sha256="b" * 64,
+        observed_at="2026-07-31T08:00:00Z",
+        decision_cutoff="2026-08-21T17:30:00Z",
+        horizon_gameweeks=[1],
+        player_prior=_player_prior("2025-26"),
+        model_config=MODEL,
+    )
+
+    assert "historical_player_prior_2025_26" in result["limitations"]
+    assert "historical_player_prior_2024_25" not in result["limitations"]
 
 
 def test_missing_fdr_does_not_invent_a_team_adjustment() -> None:
