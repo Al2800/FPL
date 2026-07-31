@@ -19,6 +19,19 @@ captures therefore cost at most eight credits per gameweek, or 304 credits
 across 38 gameweeks, before retries. Every response records the provider's
 `x-requests-last`, `x-requests-used` and `x-requests-remaining` headers.
 
+The named slot is validated against the decision cutoff before the request:
+
+| Slot | Accepted lead time before cutoff |
+|---|---:|
+| T-24h | `18h < lead ≤ 30h` |
+| T-8h | `5h < lead ≤ 12h` |
+| T-2h | `0.5h < lead ≤ 4h` |
+| final | `0h < lead ≤ 0.5h` |
+
+These windows prevent a late observation from being backdated into an earlier
+checkpoint. A missing slot is recorded as a gap and leaves the shared
+structured forecast unchanged.
+
 ## Secret setup
 
 Never paste the key into chat, a CLI argument, a config file or Git. The
@@ -57,6 +70,12 @@ The raw response and acquisition manifest are immutable and local. The
 derived artifact contains a sanitized endpoint URL, response hashes,
 observation and provider-update timestamps, normalized markets, quota state,
 and any explicit data gaps. It never contains the API key.
+
+Fixture verification covers all four windows, cutoff rejection, missing-key
+no-network behaviour, rate-limit and required-market degradation, secret-free
+output and immutable reruns. A real smoke capture is intentionally not
+represented as complete until the owner supplies the environment key during a
+valid 2026/27 market window.
 
 ## Forecast behavior
 
