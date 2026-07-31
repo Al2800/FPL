@@ -116,6 +116,12 @@ def _rights_snapshot(
             raise LiveEvidenceLedgerError(
                 "Automated evidence admission requires resolved licence status"
             )
+        method = str(registry.get("collection_method", ""))
+        if method in {"", "manual", "manual_citation"}:
+            raise LiveEvidenceLedgerError(
+                "Automated evidence admission requires an automated "
+                "collection method"
+            )
         precision = "registry_enabled_resolved"
     elif mode == "manual_citation":
         if claim_precision == "verbatim_excerpt" and licence == "unknown":
