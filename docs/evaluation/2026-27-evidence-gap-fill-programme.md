@@ -13,7 +13,7 @@
 | Set-piece roles | **bound automatically from official bootstrap**, effect shadow-only | W17 live ablation |
 | Licensed odds | capture_ready, zero 2026/27 slots | Ticket 04 (+ env key) |
 | Availability / role | partially_wired | Ticket 05 (citations + W4) |
-| Player ratings | scaffolded / unavailable | Ticket 06 (gap discipline) |
+| Player ratings | degraded; no verified 2026/27 PL envelope | Ticket 06 resolved; retain byte-identical fallback |
 
 ## Constraints
 

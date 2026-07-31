@@ -20,6 +20,9 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
   2024/25 prior is the available envelope and optional live evidence is absent.
 - Ticket 03 resolved: set-piece ledger is derived from admitted official
   bootstrap bytes; effect weights remain shadow-only.
+- Ticket 06 resolved: the registered StatsBomb Open local-transform path is
+  ready but has no verified 2026/27 Premier League envelope; ratings remain
+  degraded and shadow-only with no effect weights.
 
 ## Fog
 
