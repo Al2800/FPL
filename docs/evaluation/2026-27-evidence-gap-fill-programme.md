@@ -12,7 +12,7 @@
 | Six-GW live-faithful packet | **materialised, degraded** (`feature-complete`, official-FDR baseline) | Build a stable-code 2025/26 prior envelope |
 | Set-piece roles | **bound automatically from official bootstrap**, effect shadow-only | W17 live ablation |
 | Licensed odds | capture_ready, zero 2026/27 slots | Ticket 04 (+ env key) |
-| Availability / role | partially_wired | Ticket 05 (citations + W4) |
+| Availability / role | governed; W4 challenger default-disabled | Ticket 05 resolved; retain manual-citation boundary |
 | Player ratings | scaffolded / unavailable | Ticket 06 (gap discipline) |
 
 ## Constraints

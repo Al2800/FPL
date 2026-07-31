@@ -20,6 +20,9 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
   2024/25 prior is the available envelope and optional live evidence is absent.
 - Ticket 03 resolved: set-piece ledger is derived from admitted official
   bootstrap bytes; effect weights remain shadow-only.
+- Ticket 05 resolved: official FPL availability remains automated; W4
+  persistence is a named, default-disabled challenger; club and high-impact
+  role claims remain manual-citation-only until the W12 rights decision.
 
 ## Fog
 
