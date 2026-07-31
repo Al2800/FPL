@@ -122,16 +122,32 @@ def _lineups_preflight(
             "reason": "selected_provider_not_registered",
             "network_actions": False,
         }
+    try:
+        activation_reason = provider_activation_gate(config, selected)
+    except LineupsMinutesError as exc:
+        raise LiveSourcePreflightError("Invalid selected lineups provider") from exc
+
+    capture_method = entry.get("capture_method")
     environment_name = entry.get("credential_environment")
+    if capture_method == "manual_citation":
+        # Official team-sheet capture is citation-based; no API key and no
+        # automated network scrape are required for structural readiness.
+        return {
+            "family": "lineups_minutes",
+            "selected_provider": selected,
+            "capture_method": "manual_citation",
+            "credential_checked": False,
+            "credential_present": None,
+            "activation_status": "ready" if activation_reason is None else "degraded",
+            "status": "ready_structural" if activation_reason is None else "degraded",
+            "reason": activation_reason,
+            "network_actions": False,
+        }
     if not isinstance(environment_name, str) or not environment_name:
         raise LiveSourcePreflightError(
             "Selected lineups provider requires credential_environment"
         )
 
-    try:
-        activation_reason = provider_activation_gate(config, selected)
-    except LineupsMinutesError as exc:
-        raise LiveSourcePreflightError("Invalid selected lineups provider") from exc
     present = _environment_has_value(environ, environment_name)
     reason = activation_reason or (None if present else "missing_credential_no_network")
     return {

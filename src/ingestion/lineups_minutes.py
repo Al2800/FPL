@@ -27,6 +27,7 @@ DEGRADED_REASONS = frozenset(
         "rights_unapproved",
         "empty_snapshot",
         "invalid_snapshot",
+        "manual_citation_required",
     }
 )
 
@@ -352,6 +353,16 @@ def capture_provider_snapshot_or_degrade(
         )
 
     entry = _provider_entry(config, provider_id)
+    if entry.get("capture_method") == "manual_citation":
+        # Official sheets are admitted via build_official_team_sheet_citation;
+        # this HTTP-oriented helper must not invent a network fetch.
+        return degraded_lineups_family(
+            reason="manual_citation_required",
+            observed_at=observed_at,
+            provider_id=provider_id,
+            detail="use build_official_team_sheet_citation; no network fetch",
+        )
+
     env_name = str(entry.get("credential_environment", ""))
     env = environ if environ is not None else os.environ
     if not env_name or not env.get(env_name):
@@ -768,11 +779,15 @@ def build_official_team_sheet_citation(
 
 
 def rehearsal_config_for_official_citation(config: Mapping[str, Any]) -> dict[str, Any]:
-    """Return a temporary config that admits official citation reconciliation.
+    """Return a config that admits official citation reconciliation.
 
-    Production ``selected_provider`` remains null in the committed file; this
-    helper is only for rehearsal/tests.
+    When production already selects and enables official-team-sheets, the
+    committed config is used as-is. Otherwise a temporary enablement copy is
+    built for rehearsal/tests.
     """
+
+    if provider_activation_gate(config, OFFICIAL_TEAM_SHEETS_PROVIDER) is None:
+        return deepcopy(dict(config))
 
     cfg = deepcopy(dict(config))
     cfg["selected_provider"] = OFFICIAL_TEAM_SHEETS_PROVIDER
@@ -785,6 +800,7 @@ def rehearsal_config_for_official_citation(config: Mapping[str, Any]) -> dict[st
         item["registry_enabled"] = True
         item["rights_approved"] = True
         item["owner_approved"] = True
+        item["capture_method"] = "manual_citation"
         found = True
     if not found:
         raise LineupsMinutesError("official-team-sheets provider is not registered")
@@ -809,9 +825,10 @@ def rehearse_official_team_sheet_capture(
 ) -> dict[str, Any]:
     """Run one complete official citation → reconcile rehearsal pack."""
 
-    if config.get("selected_provider") not in {None, ""}:
+    selected = config.get("selected_provider")
+    if selected not in {None, "", OFFICIAL_TEAM_SHEETS_PROVIDER}:
         raise LineupsMinutesError(
-            "production selected_provider must remain null during citation rehearsal"
+            "citation capture only admits null or official-team-sheets selection"
         )
 
     citation = build_official_team_sheet_citation(

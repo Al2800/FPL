@@ -35,11 +35,8 @@ CONFIG = json.loads(
 def test_two_track_provider_roles_remain_disabled() -> None:
     assert CONFIG["primary_truth_provider"] == "official-team-sheets"
     assert CONFIG["trial_recommendation"]["provider_id"] == "official-team-sheets"
-    assert CONFIG["selected_provider"] is None
-    assert (
-        CONFIG["collection_status"]
-        == "official_citation_rehearsal_complete_live_collection_disabled"
-    )
+    assert CONFIG["selected_provider"] == "official-team-sheets"
+    assert CONFIG["collection_status"] == "official_citation_capture_enabled"
 
     roles = {row["provider_id"]: row["role"] for row in CONFIG["providers"]}
     assert roles["official-team-sheets"] == "canonical_primary_truth"
@@ -49,8 +46,9 @@ def test_two_track_provider_roles_remain_disabled() -> None:
     official = next(
         row for row in CONFIG["providers"] if row["provider_id"] == "official-team-sheets"
     )
-    assert official["status"] == "citation_rehearsal_complete"
-    assert official["registry_enabled"] is False
+    assert official["status"] == "citation_capture_enabled"
+    assert official["capture_method"] == "manual_citation"
+    assert official["registry_enabled"] is True
     assert official["rights_approved"] is True
     assert official["owner_approved"] is True
 
@@ -61,7 +59,8 @@ def test_two_track_provider_roles_remain_disabled() -> None:
     assert sportradar["owner_approved"] is False
 
     source = get_source("official-lineups-minutes")
-    assert source["enabled"] is False
+    assert source["enabled"] is True
+    assert source["collection_method"] == "manual_citation"
     assert source["licence_status"] == "restricted"
     assert "citation" in source["allowed_use"]
 
@@ -284,8 +283,8 @@ def test_timeout_rate_limit_and_outage_degrade_without_retry() -> None:
 
 
 def test_config_records_access_gated_trial_and_null_provider() -> None:
-    assert CONFIG["selected_provider"] is None
-    assert CONFIG["trial_status"]["status"] == "official_citation_path_selected"
+    assert CONFIG["selected_provider"] == "official-team-sheets"
+    assert CONFIG["trial_status"]["status"] == "official_citation_capture_enabled"
     assert CONFIG["trial_status"]["chosen_branch"] == "official_citation"
     assert CONFIG["trial_status"]["fixtures_measured"] == 1
     assert CONFIG["trial_status"]["matchdays_measured"] == 1
@@ -361,7 +360,7 @@ def test_official_citation_rehearsal_completes_without_network() -> None:
         cutoff="2026-08-16T16:00:00Z",
     )
     assert pack["chosen_branch"] == "official_citation"
-    assert pack["production_selected_provider"] is None
+    assert pack["production_selected_provider"] == "official-team-sheets"
     assert pack["network_fetch"] is False
     assert pack["citation"]["starting_xi_count"] == 11
     assert pack["citation"]["substitution_count"] == 1
@@ -369,7 +368,7 @@ def test_official_citation_rehearsal_completes_without_network() -> None:
     assert pack["reconciliation"]["status"] == "complete"
     assert pack["content_sha256"] == artifact_hash(pack)
 
-    # Production null selection must still refuse network capture.
+    # Selected official provider must not invent an HTTP fetch.
     calls: list[str] = []
     degraded = capture_provider_snapshot_or_degrade(
         config=CONFIG,
@@ -378,7 +377,7 @@ def test_official_citation_rehearsal_completes_without_network() -> None:
         fetch=lambda **kwargs: calls.append("called") or {},
     )
     assert calls == []
-    assert degraded["reason"] == "no_provider_selected"
+    assert degraded["reason"] == "manual_citation_required"
 
 
 def test_committed_official_citation_rehearsal_artifact() -> None:

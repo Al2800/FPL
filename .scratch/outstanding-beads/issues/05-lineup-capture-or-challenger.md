@@ -82,11 +82,11 @@ and adjudicated; feeds are never averaged.
 
 ## Answer
 
-**Branch chosen: official citation path.**
+**Branch chosen: official citation path (enabled).**
 
 - Decision: `docs/data-sources/2026-27-lineups-citation-decision.md`
-- Registry: `official-lineups-minutes` remains `enabled: false` with restricted citation allowed use and activation approval for rehearsal scope
-- Config: `selected_provider: null`; Sportradar still off; official rights/owner approved for citation rehearsal only
+- Registry 0.6.2: `official-lineups-minutes` `enabled: true`, manual citation only
+- Config: `selected_provider: official-team-sheets`; Sportradar still off
 - Builder: `build_official_team_sheet_citation` / `rehearse_official_team_sheet_capture` in `src/ingestion/lineups_minutes.py`
 - Rehearsal artifact: `evals/golden-cases/evidence/official-team-sheet-citation-rehearsal.json`
-- Tests: lineup + registry suite green (21 passed in the focused run including new citation cases)
+- HTTP capture helper returns `manual_citation_required` rather than inventing a scrape

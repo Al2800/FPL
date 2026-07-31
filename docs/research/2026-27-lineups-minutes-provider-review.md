@@ -11,8 +11,8 @@ post-match minutes oracle; it is not used to manufacture a pre-kickoff lineup.
 
 | Track | Source | Role | Current state |
 | --- | --- | --- | --- |
-| 1 | Official Premier League / club team sheets | **Canonical primary truth** for the published starting XI, substitutions and cited publication time | **Selected.** Citation rehearsal complete; live network collection remains disabled |
-| 2 | [Sportradar Soccer Sport Event Lineups](https://developer.sportradar.com/soccer/reference/soccer-sport-event-lineups) | Automated challenger candidate | **Disabled** — ongoing provider cost not justified |
+| 1 | Official Premier League / club team sheets | **Canonical primary truth** for the published starting XI, substitutions and cited publication time | **Enabled** for manual citation capture (`selected_provider=official-team-sheets`) |
+| 2 | [Sportradar Soccer Sport Event Lineups](https://developer.sportradar.com/soccer/reference/soccer-sport-event-lineups) | Automated challenger candidate | **Disabled** — ongoing provider cost not justified; stays off |
 
 Owner decision (ticket 05): complete the official citation branch. Do not
 average disagreeing feeds; quarantine and adjudicate against the official sheet.
@@ -41,9 +41,9 @@ Committed artifact:
 
 The rehearsal seals a synthetic official XI/substitution citation with
 publication and observation times, a correction history entry, explicit identity
-aliases and reconciliation to the FPL minutes oracle. Production
-`selected_provider` remains `null`; registry `official-lineups-minutes` remains
-`enabled: false`.
+aliases and reconciliation to the FPL minutes oracle. Production now selects
+`official-team-sheets` with registry `official-lineups-minutes` enabled for
+**manual citation only** (no HTML scrape, no Sportradar).
 
 ## Fallbacks (not primary truth)
 

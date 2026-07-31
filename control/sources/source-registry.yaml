@@ -2,7 +2,7 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.1"
+registry_version: "0.6.2"
 updated_at: "2026-07-31"
 
 sources:
@@ -144,23 +144,23 @@ sources:
     failure_policy: degrade
     retention_policy: local_indefinite_private_per_ADR-0002
     attribution: "Named official competition or club"
-    enabled: false
+    enabled: true
     review_date: "2026-09-01"
     activation_approval:
       terms: approved_citation_capture_only
       cost: approved_zero
       owner: Alastair
       reviewed_at: "2026-07-31"
-      scope: official_team_sheet_citation_rehearsal_no_paid_provider_no_redistribution
+      scope: manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape
     notes: >
       Tier 2 expected-minutes evidence: official starting line-ups and
       substitutions via immutable citation capture. Owner decision 2026-07-31
-      (ticket 05): official citation path selected; Sportradar and other paid
-      challengers remain off. Automated network collection stays disabled;
-      selected_provider remains null until a live matchday capture is explicitly
-      enabled after rehearsal. Alternative until live enablement: manual
-      citation rehearsal artifacts under evals/golden-cases/evidence/; missing
-      live matchday capture remains an explicit evidence gap.
+      (ticket 05, follow-up enablement): official citation path selected and
+      enabled because the source is registered with confirmed restricted
+      citation rights. Sportradar and other paid challengers remain off.
+      Collection is manual citation only — automated HTML scrape stays out of
+      scope. Alternative if a citation is missing for a fixture: retain an
+      explicit evidence gap and leave the shared structured forecast unchanged.
 
   # --- Tier 2: historical / community (plan Section 6.1) ---
 

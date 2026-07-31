@@ -2,23 +2,27 @@
 
 **Ticket:** `.scratch/outstanding-beads/issues/05-lineup-capture-or-challenger.md`  
 **Date:** 2026-07-31  
-**Outcome:** **official citation path selected**
+**Outcome:** **official citation path selected and enabled**
 
 ## Decision
 
 Pre-match lineup evidence for 2026/27 uses the official Premier League / club
 team-sheet **citation** path. Sportradar and other paid challengers remain off.
-`selected_provider` stays `null` and registry collection for
-`official-lineups-minutes` stays disabled until an explicit live matchday enable
-decision after this rehearsal.
+
+Because `official-lineups-minutes` is registered with confirmed restricted
+citation rights, the path is enabled:
+
+- `selected_provider`: `official-team-sheets`
+- registry `official-lineups-minutes`: `enabled: true`
+- capture method: **manual citation only** (no automated HTML scrape, no API key)
 
 ## Rights / cost
 
-- Source: `official-lineups-minutes` (registry 0.6.1+)
+- Source: `official-lineups-minutes` (registry 0.6.2+)
 - Licence: restricted; allowed use private analysis citation snapshots
 - Cost: zero (manual citation; no paid provider)
 - Owner: Alastair, 2026-07-31
-- Scope: citation rehearsal only; no redistribution; no network collector
+- Scope: manual citation capture; no redistribution; no HTML scrape; Sportradar off
 
 ## Rehearsal evidence
 
