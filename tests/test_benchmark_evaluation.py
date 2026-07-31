@@ -7,6 +7,8 @@ import math
 from pathlib import Path
 
 import pytest
+
+pytestmark = pytest.mark.artifact_backed
 from jsonschema import Draft202012Validator
 
 from src.evaluation.calibration import calibration_by_cohort, calibration_summary

@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 from src.evaluation.squad_contingency import (
     build_contingency_report,
     evaluate_sealed_forks,

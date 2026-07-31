@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 import json
 from pathlib import Path
 
@@ -15,14 +17,15 @@ ROOT = Path(__file__).resolve().parents[2]
 CANONICAL = ROOT / "reports/benchmarks/2025-26"
 EPISODES = ROOT / "data/benchmark-v0/episodes/v2/2025-26"
 AGENT = ROOT / "reports/benchmarks/2025-26-agent-forks"
+# Canonical POSIX/LF tree hashes for the committed degraded archives.
 SOL_V1_TREE_HASHES = {
-    20: "9695b3d0db4943b1283fc42700986c6c23e22f0072ac4de98ae21560584f9551",
-    21: "f21d8c6ecba010741ebb1819adbe2cdcb92691d649b4bce42204d32e634d44e6",
-    22: "5d1215207ac4c66c3a2265ca4d80fe54db4af1b26cc5e99546081c70d2202d8e",
+    20: "cc11a35c3dd7096a53ef2ab1eed18915ce1b2db85ac2c5186fbac2e11e0a5889",
+    21: "878ce4541acdcf22149c71174d7f166f7eb374e2a8c8462c02a34932d085f51d",
+    22: "f4c90a635819629089dac11704c8a144717335fb6f83b2535ec07220547f8e1b",
 }
 SOL_V2_PARTIAL_TREE_HASHES = {
-    20: "479b5abfa2edbbdf7c1fbdea8fd0af390744c58427e31c58917d52f722448600",
-    21: "6ad50af80ffe3a5fea522b6bdd356539d7345c19a39558ec1dccd24553078a4f",
+    20: "ef0c8fdefb70b2fb6084f7d268fcdd5db1290e3d347b61ee2bbe14b5052045a1",
+    21: "46e44ebfdbc597203b904c13057886654dcd0c8fea26316ab58b926ac5030f49",
 }
 
 
@@ -30,6 +33,7 @@ def _read(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@pytest.mark.artifact_backed
 def test_gw18_starts_from_actual_gw17_fork() -> None:
     state, transition = derive_next_state_from_agent_fork(
         gameweek=17, canonical_root=CANONICAL, episode_root=EPISODES,

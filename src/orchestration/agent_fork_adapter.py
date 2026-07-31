@@ -38,13 +38,10 @@ EVIDENCE_MODE = "retrospective_published_before_deadline"
 
 
 def _tree_hash(path: Path) -> str:
-    digest = hashlib.sha256()
-    for item in sorted(value for value in path.rglob("*") if value.is_file()):
-        digest.update(item.relative_to(path).as_posix().encode("utf-8"))
-        digest.update(b"\0")
-        digest.update(item.read_bytes())
-        digest.update(b"\0")
-    return digest.hexdigest()
+    from src.evaluation.canonical_tree_hash import canonical_tree_hash
+
+    digest, _count = canonical_tree_hash(path)
+    return digest
 
 
 def _document(source: Mapping[str, Any]) -> dict[str, Any]:

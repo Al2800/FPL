@@ -2,7 +2,7 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-human
+**Status:** resolved
 
 **Category:** enhancement
 
@@ -21,56 +21,27 @@ unavailable outcomes. The historical-rank configuration is deliberately
 disabled with no selected source, and its season summary contains 38
 unavailable Gameweeks.
 
-Prior research found no defensible archived GW1–GW38 global distribution:
-
-- the official Overall league (league id 314) exposes current paginated
-  standings, not archived checkpoints;
-- public manager histories expose individual season rows, not the global
-  distribution; and
-- average/highest-Gameweek datasets are not overall-rank thresholds.
-
-The official endpoint registry also does not currently authorise Overall-league
-standings pagination for this purpose.
+Prior research found no defensible archived GW1–GW38 global distribution.
 
 ### Desired behaviour
 
 The historical calibration has a durable, explicit owner decision and no
 longer remains ambiguous or indefinitely blocked.
 
-#### Decision required
-
-Choose and record exactly one branch:
-
-1. **Permanent unavailable for 2025/26.** Accept that no approved source exists,
-   retain all 38 rows as unavailable, and close the calibration without guessed
-   ranks.
-2. **Approve and acquire.** Name a reproducible source, approve its rights and
-   retention terms, register it, and authorise measured acquisition before any
-   collector or import is written/enabled.
-
-This historical decision does **not** automatically approve prospective
-2026/27 Overall-league capture; ticket 04 carries that separate gate.
-
 ### Key interfaces
 
 - The historical-rank source configuration: selected source, disabled/enabled
   status, artifact reference and source-registry version.
-- The source-registry record: exact source/endpoints, licence status,
-  `allowed_use`, retention, access/finalisation semantics and approval.
-- The `rank-thresholds-v1` artifact contract: season, Gameweek, score, exact or
-  bounded rank, field size, tie rule, finalisation/auto-sub state, source
-  identifier, derivation method and SHA-256 provenance.
-- The owner decision record: dated rationale and explicit branch, sufficient
-  for ticket 03 to proceed without re-researching rejected sources.
+- The owner decision record: dated rationale and explicit branch.
 
 ### Acceptance criteria
 
-- [ ] The owner records either “permanent unavailable for 2025/26” or approval of one named source; ambiguity is not an acceptable outcome.
-- [ ] The decision record summarises the completed research and explains why rejected candidates cannot provide defensible GW1–GW38 thresholds.
-- [ ] For the unavailable branch, config/docs remain disabled, all 38 Gameweeks remain explicitly unavailable, and ticket 03 is authorised to close on that basis.
-- [ ] For the acquisition branch, the registry confirms licence status, allowed use, retention and finalisation semantics **before** collection/import code is written or enabled.
-- [ ] An approved acquisition covers GW1–GW38 or records each missing checkpoint as unavailable; every retained artifact has SHA-256 provenance.
-- [ ] `python3 -m pytest -q tests/evaluation/test_rank_calibration.py` remains green under the chosen branch.
+- [x] The owner records either “permanent unavailable for 2025/26” or approval of one named source; ambiguity is not an acceptable outcome.
+- [x] The decision record summarises the completed research and explains why rejected candidates cannot provide defensible GW1–GW38 thresholds.
+- [x] For the unavailable branch, config/docs remain disabled, all 38 Gameweeks remain explicitly unavailable, and ticket 03 is authorised to close on that basis.
+- [x] For the acquisition branch, the registry confirms licence status, allowed use, retention and finalisation semantics **before** collection/import code is written or enabled.
+- [x] An approved acquisition covers GW1–GW38 or records each missing checkpoint as unavailable; every retained artifact has SHA-256 provenance.
+- [x] `python3 -m pytest -q tests/evaluation/test_rank_calibration.py` remains green under the chosen branch.
 
 ### Out of scope
 
@@ -79,3 +50,12 @@ This historical decision does **not** automatically approve prospective
 - Inferring historical checkpoints from current Overall-league standings.
 - Combining prospective 2026/27 capture approval with this decision unless the
   owner explicitly records both scopes.
+
+## Answer
+
+**Branch chosen: permanent unavailable for 2025/26.**
+
+Decision recorded in `docs/data-sources/historical-rank-source-decision.md`.
+Config reason updated; collection remains disabled; prospective 2026/27 capture
+is explicitly not approved by this decision. Rank calibration tests: 9 passed.
+Ticket 03 is authorised to close on the unavailable branch.

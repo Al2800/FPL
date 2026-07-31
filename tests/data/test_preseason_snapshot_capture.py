@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import subprocess
 import threading
 from datetime import datetime, timezone
@@ -273,7 +274,7 @@ def test_optional_family_degrades_explicitly_and_cli_succeeds(tmp_path: Path) ->
 
     result = subprocess.run(
         [
-            "python",
+            sys.executable,
             str(REPO / "scripts/capture_preseason_snapshot.py"),
             "--season",
             "2026-27",
@@ -328,7 +329,7 @@ def test_cli_missing_mandatory_exits_nonzero(tmp_path: Path) -> None:
     env["PYTHONPATH"] = str(REPO)
     result = subprocess.run(
         [
-            "python",
+            sys.executable,
             str(REPO / "scripts/capture_preseason_snapshot.py"),
             "--season",
             "2026-27",
@@ -1026,7 +1027,7 @@ def test_cli_launch_context_overrides_bind_matching_fixture_universe(tmp_path: P
 
     result = subprocess.run(
         [
-            "python",
+            sys.executable,
             str(REPO / "scripts/capture_preseason_snapshot.py"),
             "--season",
             "2026-27",

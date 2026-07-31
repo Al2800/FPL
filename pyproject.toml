@@ -25,3 +25,6 @@ minversion = "8.0"
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = ["--strict-config", "--strict-markers", "-ra"]
+markers = [
+  "artifact_backed: requires governed local historical artifacts under data/benchmark-v0/episodes or FPL_ARTIFACT_ROOT",
+]

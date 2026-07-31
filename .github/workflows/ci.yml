@@ -15,13 +15,13 @@ concurrency:
 
 jobs:
   test:
-    name: Python ${{ matrix.python-version }}
+    name: Python ${{ matrix.python-version }} portable
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
-        # This application is operated with Python 3.13.  Compatibility
+        # This application is operated with Python 3.13. Compatibility
         # experiments across other versions are deliberately not PR gates.
         python-version: ["3.13"]
 
@@ -39,5 +39,41 @@ jobs:
       - name: Install project and test dependencies
         run: python -m pip install --disable-pip-version-check -e ".[dev]"
 
-      - name: Run authoritative offline suite
-        run: python -m pytest
+      - name: Run portable authoritative suite
+        run: python -m pytest -m "not artifact_backed"
+
+      - name: Summarise intentionally excluded artifact-backed tests
+        run: |
+          python - <<'PY'
+          import subprocess
+          import sys
+          result = subprocess.run(
+              [
+                  sys.executable,
+                  "-m",
+                  "pytest",
+                  "-m",
+                  "artifact_backed",
+                  "--collect-only",
+                  "-q",
+              ],
+              check=False,
+              capture_output=True,
+              text=True,
+          )
+          lines = [
+              line
+              for line in (result.stdout or "").splitlines()
+              if line.strip() and not line.startswith("=")
+          ]
+          # Final pytest collect summary line looks like "N tests collected ..."
+          summary = next((line for line in reversed(lines) if "selected" in line or "collected" in line), "")
+          print(
+              "Artifact-backed tests are excluded from portable CI. "
+              f"Collect-only summary: {summary or 'see pytest output'}"
+          )
+          print(result.stdout)
+          if result.returncode not in (0, 5):
+              # 5 == no tests collected; treat as informational only for summary
+              raise SystemExit(result.returncode)
+          PY

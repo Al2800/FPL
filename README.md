@@ -23,7 +23,7 @@ An LLM is never responsible for enforcing budget, formation or transfer rules â€
 
 ```bash
 python3 -m pip install -e ".[dev]"
-python3 -m pytest tests/ -q
+python3 -m pytest -m "not artifact_backed" -q   # portable authoritative suite
 python3 -m scripts.run_skeleton          # one synthetic historical Gameweek end-to-end
 python3 -m scripts.run_snapshot          # capture bootstrap-static + fixtures into data/raw/fpl/
 python3 -m scripts.run_wp05_eval         # baseline metrics â†’ docs/data-sources/wp05/ (needs local historical data)

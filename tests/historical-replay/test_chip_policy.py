@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 from src.evaluation.chip_counterfactual import _canonical_tree_hash
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.chips import (

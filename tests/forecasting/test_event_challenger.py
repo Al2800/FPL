@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 from src.forecasting.calibrate_event_challenger import run_event_challenger
 from src.forecasting.event_challenger import (
     reblend_locked_forecast,

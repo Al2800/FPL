@@ -5,6 +5,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 import src.orchestration.genuine_replay as replay_module
 from src.forecasting.live_faithful import artifact_hash
 from src.orchestration.genuine_replay import (

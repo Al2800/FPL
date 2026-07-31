@@ -63,23 +63,14 @@ def load_chip_reviewed_payloads(
 def _canonical_tree_hash(root: Path, *, through_gameweek: int) -> tuple[str, int]:
     """Hash every canonical file through the declared Gameweek without writing."""
 
-    digest = hashlib.sha256()
-    count = 0
-    for gameweek in range(1, through_gameweek + 1):
-        directory = root / f"gw-{gameweek:02d}"
-        if not directory.is_dir():
-            raise ChipCounterfactualError(f"missing canonical GW{gameweek} directory")
-        for path in sorted(item for item in directory.rglob("*") if item.is_file()):
-            relative = path.relative_to(root).as_posix().encode("utf-8")
-            digest.update(len(relative).to_bytes(8, "big"))
-            digest.update(relative)
-            body = path.read_bytes()
-            if path.suffix.lower() in {".html", ".json"}:
-                body = body.replace(b"\r\n", b"\n")
-            body_hash = hashlib.sha256(body).digest()
-            digest.update(body_hash)
-            count += 1
-    return digest.hexdigest(), count
+    from src.evaluation.canonical_tree_hash import canonical_span_hash
+
+    try:
+        return canonical_span_hash(
+            root, start_gameweek=1, end_gameweek=through_gameweek
+        )
+    except FileNotFoundError as exc:
+        raise ChipCounterfactualError(str(exc)) from exc
 
 
 def _identity_index(value: Mapping[str, Any]) -> dict[str, str]:

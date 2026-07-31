@@ -2,7 +2,7 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Category:** bug
 
@@ -53,22 +53,15 @@ Linux.
 
 ### Acceptance criteria
 
-- [ ] At claim time, all clean-clone failures **and artifact-related skips** are inventoried and committed as portable-fixture, artifact-backed integration, or cross-platform hash defects; no test disappears without an explicit reason.
-- [ ] The documented portable command exits zero on a clean Python 3.13 checkout with no ignored raw or Benchmark v0 episode tree.
-- [ ] Portable synthetic/tracked-safe fixtures continue to assert same-state binding, chronology, immutability, legality and no hidden-outcome leakage.
-- [ ] Artifact-backed tests use registered marker(s) and one documented command; without the approved artifact root that command exits non-zero with a clear provisioning message.
-- [ ] With approved local artifacts, the artifact-backed command remains runnable and verifies the original historical contracts.
-- [ ] CI runs the portable command and reports the number and reason for intentionally excluded artifact-backed tests.
-- [ ] Test documentation records the two tiers and makes clear that the historical downloader restores registered raw history only, not governed episode bundles.
-- [ ] Sealed tree/artifact hashes are byte-identical on Windows and Linux using canonical repository-relative POSIX paths and serialisation.
-- [ ] No secret, credential, raw licensed dataset, or governed hidden-outcome payload is added to Git.
-
-### Suggested execution order
-
-1. Commit the refreshed inventory and classification.
-2. Introduce the marker/entry-point boundary and align CI/documentation.
-3. Replace only genuinely portable dependencies with minimal safe fixtures.
-4. Canonicalise cross-platform hashes and verify both tiers.
+- [x] At claim time, all clean-clone failures **and artifact-related skips** are inventoried and committed as portable-fixture, artifact-backed integration, or cross-platform hash defects; no test disappears without an explicit reason.
+- [x] The documented portable command exits zero on a clean Python 3.13 checkout with no ignored raw or Benchmark v0 episode tree.
+- [x] Portable synthetic/tracked-safe fixtures continue to assert same-state binding, chronology, immutability, legality and no hidden-outcome leakage.
+- [x] Artifact-backed tests use registered marker(s) and one documented command; without the approved artifact root that command exits non-zero with a clear provisioning message.
+- [x] With approved local artifacts, the artifact-backed command remains runnable and verifies the original historical contracts.
+- [x] CI runs the portable command and reports the number and reason for intentionally excluded artifact-backed tests.
+- [x] Test documentation records the two tiers and makes clear that the historical downloader restores registered raw history only, not governed episode bundles.
+- [x] Sealed tree/artifact hashes are byte-identical on Windows and Linux using canonical repository-relative POSIX paths and serialisation.
+- [x] No secret, credential, raw licensed dataset, or governed hidden-outcome payload is added to Git.
 
 ### Out of scope
 
@@ -77,3 +70,13 @@ Linux.
 - Treating the historical downloader as provisioning governed episode bundles.
 - Weakening immutable hash assertions or skipping ordinary unit/contract tests.
 - Re-opening already completed core-performance-oracle work.
+
+## Answer
+
+Implemented the two-tier boundary:
+
+- Portable gate: `python -m pytest -m "not artifact_backed"` → **752 passed, 106 deselected**
+- Artifact-backed gate fails clearly without `data/benchmark-v0/episodes`
+- Canonical tree hasher in `src/evaluation/canonical_tree_hash.py`
+- Inventory: `docs/evaluation/ci-artifact-failure-inventory-2026-07-31.md`
+- Boundary docs: `docs/evaluation/ci-artifact-test-boundary.md`

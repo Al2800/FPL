@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 from scripts.run_gw30_gw38_agent_forks import _complete_week
 from src.forecasting.live_faithful import artifact_hash
 from src.orchestration.agent_fork_adapter import (

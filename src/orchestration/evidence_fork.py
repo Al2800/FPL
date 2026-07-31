@@ -367,19 +367,14 @@ def _market_from_feature_state(value: Mapping[str, Any]) -> list[dict[str, Any]]
 def _canonical_span_hash(
     root: Path, *, start_gameweek: int, end_gameweek: int
 ) -> tuple[str, int]:
-    digest = hashlib.sha256()
-    count = 0
-    for gameweek in range(start_gameweek, end_gameweek + 1):
-        directory = root / f"gw-{gameweek:02d}"
-        if not directory.is_dir():
-            raise EvidenceForkError(f"Missing canonical GW{gameweek}")
-        for item in sorted(path for path in directory.rglob("*") if path.is_file()):
-            relative = item.relative_to(root).as_posix().encode("utf-8")
-            digest.update(len(relative).to_bytes(8, "big"))
-            digest.update(relative)
-            digest.update(hashlib.sha256(item.read_bytes()).digest())
-            count += 1
-    return digest.hexdigest(), count
+    from src.evaluation.canonical_tree_hash import canonical_span_hash
+
+    try:
+        return canonical_span_hash(
+            root, start_gameweek=start_gameweek, end_gameweek=end_gameweek
+        )
+    except FileNotFoundError as exc:
+        raise EvidenceForkError(str(exc)) from exc
 
 
 def _hindsight_points(
