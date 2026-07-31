@@ -2,8 +2,8 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.0"
-updated_at: "2026-07-28"
+registry_version: "0.6.2"
+updated_at: "2026-07-31"
 
 sources:
   - source_id: fpl-official-endpoints
@@ -37,11 +37,16 @@ sources:
       collector; manager finance and chip state remain manual.
       licence_status is restricted (not prohibited): private local snapshots permitted
       under ADR-0001/0002; redistribution is not.
+      Owner decision 2026-07-31 (ticket 04): Overall classic league standings
+      (league id 314) may be captured only at post-finalisation checkpoints for
+      2026/27 rank calibration, disabled by default, never as a pre-deadline
+      decision input, and never to backfill 2025/26 history from live pages.
     endpoints:
       - "https://fantasy.premierleague.com/api/bootstrap-static/"
       - "https://fantasy.premierleague.com/api/fixtures/"
       - "https://fantasy.premierleague.com/api/element-summary/{player_id}/"
       - "https://fantasy.premierleague.com/api/event/{gw}/live/"
+      - "https://fantasy.premierleague.com/api/leagues-classic/314/standings/?page_standings={page}&phase=1"
 
   - source_id: fpl-official-rules-news
     owner: Premier League
@@ -130,22 +135,32 @@ sources:
     source_type: html
     authority: canonical
     terms_url: per_competition_or_club
-    licence_status: unknown
-    allowed_use: private_analysis_citation_only_pending_review
+    licence_status: restricted
+    allowed_use: private_analysis_citation_snapshots
     authentication: none
-    collection_method: manual
-    expected_cadence: post_match
-    max_staleness: "24h"
+    collection_method: manual_citation
+    expected_cadence: matchday
+    max_staleness: "3h"
     failure_policy: degrade
-    retention_policy: metadata_and_citations_only_until_reviewed
+    retention_policy: local_indefinite_private_per_ADR-0002
     attribution: "Named official competition or club"
-    enabled: false
+    enabled: true
     review_date: "2026-09-01"
+    activation_approval:
+      terms: approved_citation_capture_only
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-07-31"
+      scope: manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape
     notes: >
-      Tier 2 expected-minutes evidence: official starting line-ups, substitutions,
-      return-to-training and minutes across league, cup, Europe and internationals.
-      Automated collection is disabled. Alternative: FPL live minutes plus manual
-      citation records; missing external workload remains an explicit evidence gap.
+      Tier 2 expected-minutes evidence: official starting line-ups and
+      substitutions via immutable citation capture. Owner decision 2026-07-31
+      (ticket 05, follow-up enablement): official citation path selected and
+      enabled because the source is registered with confirmed restricted
+      citation rights. Sportradar and other paid challengers remain off.
+      Collection is manual citation only — automated HTML scrape stays out of
+      scope. Alternative if a citation is missing for a fixture: retain an
+      explicit evidence gap and leave the shared structured forecast unchanged.
 
   # --- Tier 2: historical / community (plan Section 6.1) ---
 

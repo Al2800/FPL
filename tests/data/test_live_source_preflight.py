@@ -41,7 +41,11 @@ def test_absent_odds_key_is_safe_degraded_result_with_no_network() -> None:
         "network_actions": False,
         "value_redacted": True,
     }
-    assert report["eligible_source_families"] == []
+    assert report["eligible_source_families"] == ["lineups_minutes"]
+    assert report["families"][1]["selected_provider"] == "official-team-sheets"
+    assert report["families"][1]["status"] == "ready_structural"
+    assert report["families"][1]["capture_method"] == "manual_citation"
+    assert report["families"][1]["credential_checked"] is False
 
 
 def test_present_key_is_verified_structurally_but_never_serialised() -> None:
@@ -55,8 +59,22 @@ def test_present_key_is_verified_structurally_but_never_serialised() -> None:
     odds = report["families"][0]
     assert odds["status"] == "ready_structural"
     assert odds["credential_present"] is True
-    assert report["eligible_source_families"] == ["odds"]
+    assert report["eligible_source_families"] == ["odds", "lineups_minutes"]
     assert secret not in json.dumps(report, sort_keys=True)
+
+
+def test_official_citation_selection_is_ready_without_api_key() -> None:
+    report = build_live_source_preflight(
+        odds_config=ODDS_CONFIG,
+        lineups_config=LINEUPS_CONFIG,
+        environ={},
+    )
+    lineups = report["families"][1]
+    assert lineups["selected_provider"] == "official-team-sheets"
+    assert lineups["capture_method"] == "manual_citation"
+    assert lineups["status"] == "ready_structural"
+    assert lineups["credential_checked"] is False
+    assert lineups["network_actions"] is False
 
 
 def test_null_lineups_selection_does_not_inspect_candidate_credentials() -> None:

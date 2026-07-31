@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 from src.evaluation.squad_contingency import paired_decision_hash
 from src.evaluation.squad_contingency_ablation import (
     ABLATION_COMPONENTS,

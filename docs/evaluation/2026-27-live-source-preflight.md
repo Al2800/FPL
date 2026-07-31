@@ -3,11 +3,10 @@
 ## Purpose
 
 `scripts/preflight_live_sources.py` is the no-network operational readiness
-check for currently approved live input families. It verifies only whether a
-configured environment-variable value is non-blank in the process that will
-run the capture scheduler. It does not validate a key with a provider, create
-an HTTP client, make a network request, write an account, or print, persist or
-hash a credential value.
+check for currently approved live input families. It verifies structural
+readiness without validating a key with a provider, creating an HTTP client,
+making a network request, writing an account, or printing, persisting or
+hashing a credential value.
 
 A missing credential is a successful **degraded** result, not a reason to
 retry or to manufacture an input. The decision pipeline must retain the shared
@@ -15,17 +14,14 @@ structured forecast and expose the affected family in its decision record.
 
 ## Current source families
 
-| Family | Structural readiness rule | Absent-key result |
+| Family | Structural readiness rule | Absent-key / unused-key result |
 | --- | --- | --- |
 | Odds | `THE_ODDS_API_KEY` is non-blank | `missing_credential_no_network` |
-| Line-ups/minutes | A provider is explicitly selected first; only that provider's key is inspected | `no_provider_selected`, or `missing_credential_no_network` after valid selection |
+| Line-ups/minutes | A provider is explicitly selected; API providers require their key; `manual_citation` providers require no key | `no_provider_selected`, `missing_credential_no_network`, or ready for official citation without a key |
 
-The current line-ups/minutes configuration deliberately has
-`selected_provider: null`. Candidate provider keys are neither read nor named
-in the preflight report until an owner-approved provider selection is made.
-Selection still requires registry enablement, rights approval, owner approval
-and the representative-fixture trial described in
-`config/data_sources/2026-27-lineups-minutes.json`.
+The current line-ups/minutes configuration selects `official-team-sheets` with
+`capture_method: manual_citation`. Sportradar and other paid challengers remain
+off. Candidate API keys for unselected providers are neither read nor named.
 
 ## Operator procedure
 
@@ -46,13 +42,15 @@ and the representative-fixture trial described in
    `families.odds.status` is `ready_structural`. This proves only process-local
    presence. Provider validity, quota and response shape remain the scheduled
    capture's responsibility.
-5. Treat any degraded family as unavailable. Do not compensate by retrying
+5. Confirm `families.lineups_minutes` is `ready_structural` for the official
+   citation path (`capture_method: manual_citation`, no API key).
+6. Treat any degraded family as unavailable. Do not compensate by retrying
    this preflight or by treating missing evidence as positive availability.
 
 ## Safe report contract
 
-The JSON output contains the provider ID, environment-variable *name*, boolean
-presence, degradation reason, `network_actions: false` and
+The JSON output contains the provider ID, environment-variable *name* when
+relevant, boolean presence, degradation reason, `network_actions: false` and
 `account_writes: false`. It intentionally contains no secret value, length,
 prefix, digest, request URL or manifest. The command exits successfully for a
 valid configuration even when sources are degraded, allowing the scheduler to
@@ -66,7 +64,8 @@ closed with a non-zero exit instead.
 - no Odds key produces an explicit safe degraded result;
 - a present test key changes readiness structurally and never appears in the
   report;
+- official citation selection is structurally ready without an API key;
 - no candidate line-ups key is inspected while provider selection is null;
-- the selected provider key is inspected only after explicit selection and
+- the selected API provider key is inspected only after explicit selection and
   approval gates pass; and
 - an unregistered selected provider remains degraded with no network action.

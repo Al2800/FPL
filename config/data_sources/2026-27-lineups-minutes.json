@@ -1,16 +1,16 @@
 {
   "schema_version": "1.0",
   "season": "2026-27",
-  "selected_provider": null,
+  "selected_provider": "official-team-sheets",
   "primary_truth_provider": "official-team-sheets",
   "disagreement_policy": "quarantine_and_adjudicate_against_official_team_sheet",
-  "collection_status": "degraded_official_capture_pending_rehearsal",
+  "collection_status": "official_citation_capture_enabled",
   "trial_recommendation": {
-    "provider_id": "sportradar",
-    "reason": "Trusted automated challenger feed with explicit starting players and substitutions; EPL coverage, timing and rights remain unmeasured until the credentialed trial.",
-    "lineup_endpoint": "https://api.sportradar.com/soccer/{access_level}/v4/en/sport_events/{sport_event_id}/lineups.json",
-    "credential_environment": "SPORTRADAR_API_KEY",
-    "fallback_provider_id": "api-football"
+    "provider_id": "official-team-sheets",
+    "reason": "Official citation source is registered and enabled. Sportradar and paid challengers remain off. Capture is manual citation only — no automated HTML scrape and no API key.",
+    "capture_method": "manual_citation",
+    "credential_environment": null,
+    "fallback_provider_id": null
   },
   "reconciliation_oracle": "fpl-official-endpoints",
   "maximum_observation_delay_minutes": 180,
@@ -19,13 +19,16 @@
     {
       "provider_id": "official-team-sheets",
       "role": "canonical_primary_truth",
-      "status": "manual_citation_capture",
+      "status": "citation_capture_enabled",
+      "capture_method": "manual_citation",
       "credential_environment": null,
       "registry_source_id": "official-lineups-minutes",
       "required_trial": "domain_rights_and_capture_rehearsal",
-      "registry_enabled": false,
-      "rights_approved": false,
-      "owner_approved": false
+      "registry_enabled": true,
+      "rights_approved": true,
+      "owner_approved": true,
+      "owner_approved_at": "2026-07-31T18:05:00Z",
+      "approval_scope": "manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape"
     },
     {
       "provider_id": "sportradar",
@@ -87,11 +90,13 @@
     "min_admitted_players": 11
   },
   "trial_status": {
-    "status": "blocked_access_gate",
-    "fixtures_measured": 0,
-    "matchdays_measured": 0,
-    "blocker_bead": "FPL-eah",
-    "reason": "Sportradar trial paused by owner because ongoing provider cost is not justified; no provider is selected and production promotion is disabled."
+    "status": "official_citation_capture_enabled",
+    "chosen_branch": "official_citation",
+    "fixtures_measured": 1,
+    "matchdays_measured": 1,
+    "rehearsal_artifact": "evals/golden-cases/evidence/official-team-sheet-citation-rehearsal.json",
+    "blocker_bead": null,
+    "reason": "Official-lineups-minutes is an approved source; selected_provider is official-team-sheets for manual citation capture. Sportradar remains off. No automated network scrape."
   },
   "baseline_policy": "shared_structured_forecast_unchanged_when_family_degraded"
 }

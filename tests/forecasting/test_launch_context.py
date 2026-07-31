@@ -5,6 +5,7 @@ from __future__ import annotations
 from copy import deepcopy
 import json
 import os
+import sys
 import subprocess
 from pathlib import Path
 
@@ -417,7 +418,7 @@ def test_successor_builder_cli_reports_paths_hashes_and_delta(tmp_path: Path) ->
     env["PYTHONPATH"] = str(ROOT)
     result = subprocess.run(
         [
-            "python", str(ROOT / "scripts" / "build_launch_context.py"),
+            sys.executable, str(ROOT / "scripts" / "build_launch_context.py"),
             "--bootstrap-file", str(bootstrap_path),
             "--bootstrap-observed-at", "2026-08-03T12:00:00Z",
             "--bootstrap-available-at", "2026-08-03T12:00:00Z",

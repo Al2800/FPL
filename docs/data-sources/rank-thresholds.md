@@ -13,20 +13,18 @@ The contract in `src/evaluation/rank_calibration.py` has three explicit modes:
 - `unavailable`: no approved source is available. Rank fields remain null; the
   report says “rank unavailable” rather than inventing a global position.
 
-The 2025/26 artifact currently contains one explicit `unavailable` row for each
-of GW1-GW38. This is intentional: the source registry has no approved
-historical overall-rank threshold source yet, and no acquisition is enabled.
-The artifact carries a SHA-256 over its canonical rows and each row records the
-source/derivation state. It must not be replaced by a scrape, an average-score
-estimate, or a post-finalisation reconstruction.
+## 2025/26 status
 
-Before enabling collection, add a source-registry entry with the exact source,
-access date, rights/retention decision, finalisation state, field size, tie
-rule, and an immutable artifact hash. The source-acquisition blocker in Beads
-tracks that owner decision separately from this downstream evaluator.
+The 2025/26 artifact contains one explicit `unavailable` row for each of
+GW1–GW38. This is intentional and now covered by the formal decision in
+`docs/data-sources/historical-rank-source-decision.md`: **permanent unavailable
+for 2025/26**. Collection remains disabled. The artifact must not be replaced
+by a scrape, an average-score estimate, or a post-finalisation reconstruction.
 
-Validation:
+Prospective 2026/27 Overall-league capture is out of scope here; see ticket 04.
 
-```powershell
-& 'C:\Users\Alastair\FPL\.venv\Scripts\python.exe' -m pytest -q tests/evaluation/test_rank_calibration.py
+## Validation
+
+```bash
+python3 -m pytest -q tests/evaluation/test_rank_calibration.py
 ```

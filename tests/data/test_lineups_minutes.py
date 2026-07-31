@@ -12,14 +12,17 @@ from src.ingestion.lineups_minutes import (
     LineupsMinutesError,
     admit_raw_provider_snapshot,
     artifact_hash,
+    build_official_team_sheet_citation,
     capture_provider_snapshot_or_degrade,
     degraded_lineups_family,
     provider_credential_status,
+    rehearse_official_team_sheet_capture,
     reconcile_lineups_minutes,
     source_snapshot_hash,
     verify_snapshot_integrity,
     write_immutable_json,
 )
+from src.ingestion.registry import get_source
 
 ROOT = Path(__file__).parents[2]
 CONFIG = json.loads(
@@ -31,20 +34,35 @@ CONFIG = json.loads(
 
 def test_two_track_provider_roles_remain_disabled() -> None:
     assert CONFIG["primary_truth_provider"] == "official-team-sheets"
-    assert CONFIG["trial_recommendation"]["provider_id"] == "sportradar"
-    assert CONFIG["selected_provider"] is None
-    assert CONFIG["collection_status"] == "degraded_official_capture_pending_rehearsal"
+    assert CONFIG["trial_recommendation"]["provider_id"] == "official-team-sheets"
+    assert CONFIG["selected_provider"] == "official-team-sheets"
+    assert CONFIG["collection_status"] == "official_citation_capture_enabled"
 
     roles = {row["provider_id"]: row["role"] for row in CONFIG["providers"]}
     assert roles["official-team-sheets"] == "canonical_primary_truth"
     assert roles["sportradar"] == "automated_challenger_trial"
     assert roles["api-football"] == "fallback_comparison_feed"
 
+    official = next(
+        row for row in CONFIG["providers"] if row["provider_id"] == "official-team-sheets"
+    )
+    assert official["status"] == "citation_capture_enabled"
+    assert official["capture_method"] == "manual_citation"
+    assert official["registry_enabled"] is True
+    assert official["rights_approved"] is True
+    assert official["owner_approved"] is True
+
     sportradar = next(row for row in CONFIG["providers"] if row["provider_id"] == "sportradar")
     assert sportradar["status"] == "candidate_access_gated"
     assert sportradar["registry_enabled"] is False
     assert sportradar["rights_approved"] is False
     assert sportradar["owner_approved"] is False
+
+    source = get_source("official-lineups-minutes")
+    assert source["enabled"] is True
+    assert source["collection_method"] == "manual_citation"
+    assert source["licence_status"] == "restricted"
+    assert "citation" in source["allowed_use"]
 
 def _approved_config(*, min_started_xi: int = 2, min_admitted: int = 2) -> dict:
     cfg = deepcopy(CONFIG)
@@ -265,12 +283,143 @@ def test_timeout_rate_limit_and_outage_degrade_without_retry() -> None:
 
 
 def test_config_records_access_gated_trial_and_null_provider() -> None:
-    assert CONFIG["selected_provider"] is None
-    assert CONFIG["trial_status"]["status"] == "blocked_access_gate"
-    assert CONFIG["trial_status"]["fixtures_measured"] == 0
-    assert CONFIG["trial_status"]["blocker_bead"] == "FPL-eah"
+    assert CONFIG["selected_provider"] == "official-team-sheets"
+    assert CONFIG["trial_status"]["status"] == "official_citation_capture_enabled"
+    assert CONFIG["trial_status"]["chosen_branch"] == "official_citation"
+    assert CONFIG["trial_status"]["fixtures_measured"] == 1
+    assert CONFIG["trial_status"]["matchdays_measured"] == 1
+    assert CONFIG["trial_status"]["blocker_bead"] is None
     assert CONFIG["minutes_tolerance"] == 1
     assert CONFIG["admission"]["min_started_xi"] == 11
+
+
+def test_official_citation_rehearsal_completes_without_network() -> None:
+    starting_xi = [
+        {"provider_player_id": f"ots-p{i:02d}", "minutes": 90} for i in range(1, 12)
+    ]
+    starting_xi[10]["minutes"] = 60
+    aliases = {
+        "aliases": [
+            {
+                "entity_type": "fixture",
+                "provider_id": "official-team-sheets",
+                "provider_entity_id": "fx-test",
+                "fpl_entity_id": "fixture:test",
+            },
+            *[
+                {
+                    "entity_type": "player",
+                    "provider_id": "official-team-sheets",
+                    "provider_entity_id": f"ots-p{i:02d}",
+                    "fpl_entity_id": str(300 + i),
+                }
+                for i in range(1, 12)
+            ],
+            {
+                "entity_type": "player",
+                "provider_id": "official-team-sheets",
+                "provider_entity_id": "ots-s01",
+                "fpl_entity_id": "399",
+            },
+        ]
+    }
+    fpl_minutes = {
+        "fixture:test": {
+            **{str(300 + i): 90 for i in range(1, 11)},
+            "311": 60,
+            "399": 30,
+        }
+    }
+    pack = rehearse_official_team_sheet_capture(
+        config=CONFIG,
+        citation_url="https://example.test/official-sheet",
+        publisher="Premier League",
+        published_at="2026-08-16T14:00:00Z",
+        observed_at="2026-08-16T14:05:00Z",
+        provider_fixture_id="fx-test",
+        starting_xi=starting_xi,
+        substitutions=[
+            {
+                "provider_player_id": "ots-s01",
+                "minutes": 30,
+                "on_minute": 60,
+                "off_player_id": "ots-p11",
+            }
+        ],
+        corrections=[
+            {
+                "corrected_at": "2026-08-16T14:02:00Z",
+                "field": "starting_xi",
+                "from_value": "ots-p12",
+                "to_value": "ots-p11",
+                "reason": "club correction",
+            }
+        ],
+        fpl_minutes=fpl_minutes,
+        aliases=aliases,
+        cutoff="2026-08-16T16:00:00Z",
+    )
+    assert pack["chosen_branch"] == "official_citation"
+    assert pack["production_selected_provider"] == "official-team-sheets"
+    assert pack["network_fetch"] is False
+    assert pack["citation"]["starting_xi_count"] == 11
+    assert pack["citation"]["substitution_count"] == 1
+    assert pack["citation"]["corrections"]
+    assert pack["reconciliation"]["status"] == "complete"
+    assert pack["content_sha256"] == artifact_hash(pack)
+
+    # Selected official provider must not invent an HTTP fetch.
+    calls: list[str] = []
+    degraded = capture_provider_snapshot_or_degrade(
+        config=CONFIG,
+        provider_id="official-team-sheets",
+        observed_at="2026-08-16T14:05:00Z",
+        fetch=lambda **kwargs: calls.append("called") or {},
+    )
+    assert calls == []
+    assert degraded["reason"] == "manual_citation_required"
+
+
+def test_committed_official_citation_rehearsal_artifact() -> None:
+    path = ROOT / "evals/golden-cases/evidence/official-team-sheet-citation-rehearsal.json"
+    artifact = json.loads(path.read_text(encoding="utf-8"))
+    assert artifact["chosen_branch"] == "official_citation"
+    assert artifact["production_selected_provider"] is None
+    rehearsal = artifact["rehearsal"]
+    assert rehearsal["content_sha256"] == artifact_hash(rehearsal)
+    assert rehearsal["reconciliation"]["status"] == "complete"
+    assert rehearsal["citation"]["citation"]["capture_method"] == "manual_citation"
+    citation = build_official_team_sheet_citation(
+        citation_url=rehearsal["citation"]["citation"]["url"],
+        publisher=rehearsal["citation"]["citation"]["publisher"],
+        published_at=rehearsal["citation"]["citation"]["published_at"],
+        observed_at=rehearsal["citation"]["provider_snapshot"]["observed_at"],
+        available_at=rehearsal["citation"]["provider_snapshot"]["available_at"],
+        provider_fixture_id=rehearsal["citation"]["provider_snapshot"][
+            "provider_fixture_id"
+        ],
+        starting_xi=[
+            {
+                "provider_player_id": row["provider_player_id"],
+                "minutes": row["minutes"],
+            }
+            for row in rehearsal["citation"]["provider_snapshot"]["players"]
+            if row["started"]
+        ],
+        substitutions=[
+            {
+                "provider_player_id": row["provider_player_id"],
+                "minutes": row["minutes"],
+            }
+            for row in rehearsal["citation"]["provider_snapshot"]["players"]
+            if not row["started"]
+        ],
+        corrections=rehearsal["citation"]["corrections"],
+    )
+    assert (
+        citation["provider_snapshot"]["content_sha256"]
+        == rehearsal["citation"]["provider_snapshot"]["content_sha256"]
+    )
 
 
 def test_fetch_never_called_for_null_disabled_or_unapproved_provider() -> None:

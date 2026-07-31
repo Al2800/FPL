@@ -14,7 +14,6 @@ TIER1_SOURCE_IDS = [
 BENCHMARK_CANDIDATE_IDS = [
     "betfair-historical",
     "clubelo",
-    "official-lineups-minutes",
     "commercial-epl-event-data",
     "football-data-org",
     "sportradar-soccer",
@@ -37,10 +36,22 @@ def test_only_assessment_sources_enabled():
         [
             "fpl-official-endpoints",
             "football-data-co-uk",
+            "official-lineups-minutes",
             "statsbomb-open",
             "the-odds-api",
             "vaastav-fpl",
         ]
+    )
+
+
+def test_official_lineups_enabled_for_manual_citation_only():
+    source = get_source("official-lineups-minutes")
+    assert source["enabled"] is True
+    assert source["collection_method"] == "manual_citation"
+    assert source["licence_status"] == "restricted"
+    assert "citation" in source["allowed_use"]
+    assert assert_collectable("official-lineups-minutes")["source_id"] == (
+        "official-lineups-minutes"
     )
 
 

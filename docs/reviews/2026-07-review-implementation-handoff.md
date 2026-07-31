@@ -56,14 +56,16 @@ them.
 - **blocked-on-data** — design can be built and tested on fixtures, but the
   real evaluation waits for live 2026/27 captures to accumulate.
 
-## Point-in-time notice — Beads are authoritative
+## Point-in-time notice — `.scratch/` tickets are authoritative
 
 > **This handoff was written on 28 July 2026.** Main has since advanced;
-> several work items below were implemented and their Beads closed. Consult
-> `.beads/issues.jsonl` for current status before claiming any item. The table
-> below carries a **Bead** column that cross-references the authoritative
-> issue; where a Bead is listed as **superseded**, the work is complete and
-> must not be duplicated.
+> several work items below were implemented. **Beads are no longer the
+> active tracker** (archive only under `.beads/`). Consult
+> `.scratch/outstanding-beads/issues/` (mattpocock `/to-tickets`) for
+> outstanding work. The Bead column below remains as a historical
+> cross-reference; where a Bead is listed as **superseded**, the work is
+> complete and must not be duplicated. See
+> `docs/operations/tracker-migration-beads-to-tickets.md`.
 
 ## Bead crosswalk (W1–W19 → current status)
 

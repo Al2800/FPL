@@ -15,6 +15,26 @@ This repository is the FPL Agentic Decision Laboratory. Read `docs/plan.md` befo
 
 Work is organised into non-overlapping packages WP-01 to WP-10 (plan §24). When asked to work on a package, stay within its boundary and record open questions rather than expanding scope. Key sequencing: WP-01 (rules audit) and WP-02 (source governance) gate all automated collection; the rules validator (WP-06) precedes any LLM recommendation workflow.
 
+## Work tracking
+
+**Local tickets under `.scratch/` are authoritative** (mattpocock engineering `/to-tickets` tracker). Beads under `.beads/` are a historical archive only — do not claim, update, close or sync Beads for active work. Outstanding Beads were published as tickets in `.scratch/outstanding-beads/issues/`.
+
+## Agent skills
+
+### Issue tracker
+
+Local markdown under `.scratch/<feature>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default roles: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `docs/plan.md` + `docs/decisions/` (ADRs); optional `CONTEXT.md` via `/domain-modeling`. See `docs/agents/domain.md`.
+
+Installed engineering skills live in `.agents/skills/` (from [mattpocock/skills engineering](https://github.com/mattpocock/skills/tree/main/skills/engineering)). Prefer `/to-tickets`, `/triage`, `/implement`, `/tdd`, and `/setup-matt-pocock-skills` over inventing a parallel tracker.
+
 ## Conventions
 
 - Python for pipeline code; Parquet + DuckDB for analytical data; SQLite/PostgreSQL for operational state (plan §8.2).

@@ -5,6 +5,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 import scripts.prepare_replay_gameweek as replay_setup
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.io import fingerprint

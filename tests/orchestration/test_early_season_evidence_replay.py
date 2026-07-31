@@ -5,6 +5,8 @@ from pathlib import Path
 
 import pytest
 
+pytestmark = pytest.mark.artifact_backed
+
 from src.forecasting.live_faithful import artifact_hash
 from src.orchestration.agent_arm import render_hosted_input
 from src.orchestration.early_season_actionability import (

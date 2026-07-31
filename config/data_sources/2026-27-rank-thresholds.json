@@ -1,0 +1,24 @@
+{
+  "schema_version": "2026-27-rank-thresholds-config-v1",
+  "season": "2026-27",
+  "source_id": "fpl-official-endpoints",
+  "league_id": 314,
+  "endpoint_template": "https://fantasy.premierleague.com/api/leagues-classic/314/standings/?page_standings={page}&phase=1",
+  "collection_enabled": false,
+  "owner_approved": true,
+  "owner_approved_at": "2026-07-31T17:00:00Z",
+  "allowed_use": "private_analysis_local_retention_no_redistribution",
+  "checkpoint_rule": "post_finalisation_only",
+  "finalisation_rule": "capture_only_after_gameweek_scores_are_final_and_auto_subs_applied",
+  "page_size_hint": 50,
+  "max_pages": 20,
+  "tie_rule": "shared_rank_as_published",
+  "artifact_root": "data/benchmark-v0/rank-thresholds/2026-27",
+  "missed_checkpoint_policy": "record_gap_never_backfill_from_later_live_standings",
+  "decision_path_use": "forbidden",
+  "policy": {
+    "no_historical_backfill_from_live": true,
+    "no_pre_deadline_injection": true,
+    "rank_annotation_is_downstream_only": true
+  }
+}

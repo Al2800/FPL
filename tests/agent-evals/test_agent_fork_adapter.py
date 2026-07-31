@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 
 import pytest
+
+pytestmark = pytest.mark.artifact_backed
 import yaml
 
 from src.agents.evidence_agent import EvidenceAgentError

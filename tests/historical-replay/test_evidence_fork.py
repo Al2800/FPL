@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 from copy import deepcopy
-import hashlib
 import json
 from pathlib import Path
 
 import pytest
 
+from src.evaluation.canonical_tree_hash import canonical_tree_hash
 from src.orchestration.evidence_fork import (
     EvidenceForkError,
     _canonical_span_hash,
@@ -28,11 +28,8 @@ FORK = (
 
 
 def _tree_hash(path: Path) -> str:
-    digest = hashlib.sha256()
-    for item in sorted(candidate for candidate in path.rglob("*") if candidate.is_file()):
-        digest.update(item.relative_to(path).as_posix().encode("utf-8"))
-        digest.update(item.read_bytes())
-    return digest.hexdigest()
+    digest, _count = canonical_tree_hash(path)
+    return digest
 
 
 def test_reconstructed_bundle_rejects_post_deadline_publication() -> None:
@@ -44,6 +41,7 @@ def test_reconstructed_bundle_rejects_post_deadline_publication() -> None:
         validate_reconstructed_bundle(invalid)
 
 
+@pytest.mark.artifact_backed
 def test_isolated_gw12_fork_is_deterministic_and_preserves_control(tmp_path: Path) -> None:
     canonical_before = _tree_hash(CANONICAL / "gw-12")
     output = tmp_path / "fork"

@@ -11,6 +11,7 @@ A reproducible decision laboratory that uses official Fantasy Premier League (FP
 - [AGENTS.md](AGENTS.md) — permissions, source restrictions and work-package boundaries.
 - [Handover brief](docs/handover-brief.md) — post–WP-10 live advisory prep.
 - [Decisions](docs/decisions/) — accepted and proposed architecture decision records.
+- [Tracker migration (Beads → tickets)](docs/operations/tracker-migration-beads-to-tickets.md) — active backlog is `.scratch/` tickets via mattpocock engineering skills; Beads are archive only.
 
 ## Core principle
 
@@ -22,7 +23,7 @@ An LLM is never responsible for enforcing budget, formation or transfer rules �
 
 ```bash
 python3 -m pip install -e ".[dev]"
-python3 -m pytest tests/ -q
+python3 -m pytest -m "not artifact_backed" -q   # portable authoritative suite
 python3 -m scripts.run_skeleton          # one synthetic historical Gameweek end-to-end
 python3 -m scripts.run_snapshot          # capture bootstrap-static + fixtures into data/raw/fpl/
 python3 -m scripts.run_wp05_eval         # baseline metrics → docs/data-sources/wp05/ (needs local historical data)
