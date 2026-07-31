@@ -7,16 +7,20 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import sys
 from typing import Any
 
 import pandas as pd
+
+REPO = Path(__file__).resolve().parents[1]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
 
 from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.player_priors import build_player_prior
 from src.ingestion.registry import assert_collectable
 
 
-REPO = Path(__file__).resolve().parents[1]
 DEFAULT_VAASTAV_ROOT = (
     REPO / "data" / "raw" / "vaastav" / "Fantasy-Premier-League"
 )
