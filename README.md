@@ -11,7 +11,7 @@ A reproducible decision laboratory that uses official Fantasy Premier League (FP
 - [AGENTS.md](AGENTS.md) — permissions, source restrictions and work-package boundaries.
 - [Handover brief](docs/handover-brief.md) — post–WP-10 live advisory prep.
 - [Decisions](docs/decisions/) — accepted and proposed architecture decision records.
-- [Tracker migration (Beads → GitHub Issues)](docs/operations/tracker-migration-beads-to-github.md) — active backlog is GitHub Issues; Beads are archive only.
+- [Tracker migration (Beads → tickets)](docs/operations/tracker-migration-beads-to-tickets.md) — active backlog is `.scratch/` tickets via mattpocock engineering skills; Beads are archive only.
 
 ## Core principle
 

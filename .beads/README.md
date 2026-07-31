@@ -1,10 +1,10 @@
 # Beads - AI-Native Issue Tracking (archive)
 
-> **Deprecated for active tracking (31 July 2026).** GitHub Issues are now
-> authoritative. This directory is retained as a historical archive only. Do
-> not claim, update, close or sync Beads for new work. See
-> `docs/operations/tracker-migration-beads-to-github.md` and
-> `.github/issue-defs/`.
+> **Deprecated for active tracking (31 July 2026).** Local `.scratch/` tickets
+> (mattpocock `/to-tickets`) are now authoritative. This directory is retained
+> as a historical archive only. Do not claim, update, close or sync Beads for
+> new work. See `docs/operations/tracker-migration-beads-to-tickets.md` and
+> `.scratch/outstanding-beads/`.
 
 Welcome to Beads! This repository previously used **Beads** for issue tracking - a modern, AI-native tool designed to live directly in your codebase alongside your code.
 

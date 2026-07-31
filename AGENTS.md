@@ -17,7 +17,23 @@ Work is organised into non-overlapping packages WP-01 to WP-10 (plan §24). When
 
 ## Work tracking
 
-**GitHub Issues are authoritative.** Beads under `.beads/` are a historical archive only — do not claim, update, close or sync Beads for active work. Outstanding Beads were converted into issue definitions under `.github/issue-defs/`; materialise them with `python3 -m scripts.create_github_issues_from_defs` or the workflow in `.github/workflows/create-outstanding-issues.yml`. See `docs/operations/tracker-migration-beads-to-github.md` and the skill `.agents/skills/github-issue-from-bead/SKILL.md`.
+**Local tickets under `.scratch/` are authoritative** (mattpocock engineering `/to-tickets` tracker). Beads under `.beads/` are a historical archive only — do not claim, update, close or sync Beads for active work. Outstanding Beads were published as tickets in `.scratch/outstanding-beads/issues/`.
+
+## Agent skills
+
+### Issue tracker
+
+Local markdown under `.scratch/<feature>/`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default roles: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `docs/plan.md` + `docs/decisions/` (ADRs); optional `CONTEXT.md` via `/domain-modeling`. See `docs/agents/domain.md`.
+
+Installed engineering skills live in `.agents/skills/` (from [mattpocock/skills engineering](https://github.com/mattpocock/skills/tree/main/skills/engineering)). Prefer `/to-tickets`, `/triage`, `/implement`, `/tdd`, and `/setup-matt-pocock-skills` over inventing a parallel tracker.
 
 ## Conventions
 
