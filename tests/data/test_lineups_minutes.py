@@ -248,7 +248,7 @@ def test_timeout_rate_limit_and_outage_degrade_without_retry() -> None:
 def test_config_records_access_gated_trial_and_null_provider() -> None:
     assert CONFIG["selected_provider"] is None
     assert CONFIG["trial_status"]["fixtures_measured"] == 0
-    assert CONFIG["trial_status"]["blocker_bead"] == "FPL-lpm"
+    assert CONFIG["trial_status"]["blocker_bead"] == "FPL-eah"
     assert CONFIG["minutes_tolerance"] == 1
     assert CONFIG["admission"]["min_started_xi"] == 11
 

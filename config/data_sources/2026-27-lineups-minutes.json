@@ -3,6 +3,13 @@
   "season": "2026-27",
   "selected_provider": null,
   "collection_status": "degraded_pending_credential_trial",
+  "trial_recommendation": {
+    "provider_id": "api-football",
+    "reason": "Official provider documentation specifies starting lineups 20-40 minutes before kickoff where the EPL coverage flag is enabled; this remains an unmeasured claim until the credentialed trial.",
+    "lineup_endpoint": "https://v3.football.api-sports.io/fixtures/lineups",
+    "credential_environment": "API_FOOTBALL_KEY",
+    "fallback_provider_id": "football-data-org"
+  },
   "reconciliation_oracle": "fpl-official-endpoints",
   "maximum_observation_delay_minutes": 180,
   "minutes_tolerance": 1,
@@ -55,7 +62,7 @@
     "status": "blocked_access_gate",
     "fixtures_measured": 0,
     "matchdays_measured": 0,
-    "blocker_bead": "FPL-lpm",
+    "blocker_bead": "FPL-eah",
     "reason": "No candidate credential is present in the environment and no provider has owner-approved terms, retention and automated-collection enablement in the source registry."
   },
   "baseline_policy": "shared_structured_forecast_unchanged_when_family_degraded"

@@ -17,12 +17,12 @@ degraded feature family.
   focused tests landed.
 - [x] (2026-07-29) Credential-presence probe, degraded family helpers (missing
   credential / timeout / rate-limit / outage), research access-gate matrix and
-  blocker bead `FPL-lpm`.
+  blocker bead `FPL-eah`.
 - [x] (2026-07-29) Review remediation: exact capture/provider timestamp
   equality, available-before-observed ordering, independent raw-source/envelope
   hashes, activation gating and negative tamper tests.
-- [ ] Owner-approved credentials and measured ≥10-fixture / ≥3-matchday trial
-  (`FPL-lpm`).
+- [ ] Owner-approved credentials and measured ≥10-fixture / ≥3-matchday trial; API-Football is the recommended primary candidate, football-data.org the fallback
+  (`FPL-eah`).
 - [ ] Enable exactly one provider only after admission gates pass.
 - [ ] Historic fixture reconciliation and live preseason capture under the
   selected provider.
@@ -43,15 +43,15 @@ degraded feature family.
 - Decision: do not select or enable a provider from marketing documentation.
   Rationale: admission gates require measured EPL coverage, identity, quota and
   owner-approved terms.
-  Date/Author: 2026-07-29 / Cursor agent.
+  Date/Author: 2026-07-31 / Codex.
 - Decision: treat missing credentials as a hard access gate that records an
   empty trial matrix rather than inventing coverage.
   Rationale: bead AC permits documenting why a trial could not run.
-  Date/Author: 2026-07-29 / Cursor agent.
-- Decision: create blocker bead `FPL-lpm` and keep `selected_provider=null`.
+  Date/Author: 2026-07-31 / Codex.
+- Decision: create blocker bead `FPL-eah` and keep `selected_provider=null`.
   Rationale: AC requires a blocker when no provider passes; this bead must not
   be closed as integrated.
-  Date/Author: 2026-07-29 / Cursor agent.
+  Date/Author: 2026-07-31 / Codex.
 
 - Decision: model `observed_at` as the exact host capture time and reject a
   provider envelope that claims a different observation time; require
@@ -67,10 +67,10 @@ degraded feature family.
   Date/Author: 2026-07-29 / Codex.
 ## Outcomes & Retrospective
 
-Evaluation complete without provider activation. The reconcile path, immutable
+Evaluation remains access-gated without provider activation. The reconcile path, immutable
 writes, timestamp admission, independent digest layers and degraded failure
 modes are tested (9 focused tests). Integration remains blocked on
-`FPL-lpm`. Downstream `FPL-cm6` can operationalise credentials only after a
+`FPL-eah`. Downstream `FPL-cm6` can operationalise credentials only after a
 provider clears the measured gates.
 
 ## Validation
