@@ -27,9 +27,9 @@ fetching or admit a claim.
 When an exact club feed or supported API is verified, change only that
 catalogue row to `verified_rss_or_api`, record its endpoint and validation
 evidence, and retain the same timestamp/canonical-URL/immutable-artifact
-rules.  This catalogue does not turn `official-club-communications` in the
-source registry on: automated claim extraction remains disabled until the
-separate source-rights and evidence-admission gate approves it.
+rules.  Registry `official-club-communications` is enabled for manual citation
+only (see `2026-27-club-communications-citation-decision.md`). This catalogue
+still does not automate article fetching or claim extraction.
 
 ## Run
 

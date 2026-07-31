@@ -36,6 +36,7 @@ def test_only_assessment_sources_enabled():
         [
             "fpl-official-endpoints",
             "football-data-co-uk",
+            "official-club-communications",
             "official-lineups-minutes",
             "statsbomb-open",
             "the-odds-api",
@@ -52,6 +53,20 @@ def test_official_lineups_enabled_for_manual_citation_only():
     assert "citation" in source["allowed_use"]
     assert assert_collectable("official-lineups-minutes")["source_id"] == (
         "official-lineups-minutes"
+    )
+
+
+def test_official_club_communications_enabled_for_manual_citation_only():
+    source = get_source("official-club-communications")
+    assert source["enabled"] is True
+    assert source["collection_method"] == "manual_citation"
+    assert source["licence_status"] == "restricted"
+    assert "citation" in source["allowed_use"]
+    assert source["activation_approval"]["scope"] == (
+        "manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape"
+    )
+    assert assert_collectable("official-club-communications")["source_id"] == (
+        "official-club-communications"
     )
 
 

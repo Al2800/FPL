@@ -100,6 +100,9 @@ def _rights_reasons(
             reasons.append("registry_disabled")
         if licence in {"", "unknown"}:
             reasons.append("licence_unresolved_for_automation")
+        method = str(registry.get("collection_method", ""))
+        if method in {"", "manual", "manual_citation"}:
+            reasons.append("collection_method_not_automated")
     return reasons
 
 
