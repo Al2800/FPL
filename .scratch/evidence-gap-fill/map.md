@@ -20,4 +20,6 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
 
 - Club-domain rights tranche (W12) still blocks automated club news.
 - When markets open for Odds API T-24h slots.
+- Which live-faithful model config is first bound for 2026/27 GW1
+  (ticket 02 open design point).
 - Whether live-faithful promotion clears owner acceptance with remaining degradations.
