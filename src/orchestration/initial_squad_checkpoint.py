@@ -18,6 +18,12 @@ from pathlib import Path
 import re
 from typing import Any
 
+from src.forecasting.launch_context import (
+    LaunchContextError,
+    apply_launch_context,
+    load_launch_context,
+    load_world_cup_priors,
+)
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.initial_squad import (
     InitialSquadError,
@@ -358,6 +364,110 @@ def _source_fallbacks(family_states: Mapping[str, Mapping[str, Any]]) -> dict[st
     return result
 
 
+def _apply_launch_context_to_players(
+    *,
+    verified: Mapping[str, Any],
+    bootstrap: Mapping[str, Any],
+    players: list[dict[str, Any]],
+    decision_cutoff: str,
+) -> dict[str, Any]:
+    """Attach cold-start and WC fatigue fields when launch_context is admitted.
+
+    Missing context stays an explicit gap: players keep false/0 defaults and the
+    forecast remains a non-approval baseline until a live-faithful packet binds.
+    """
+
+    for row in players:
+        row.setdefault("promoted_team", False)
+        row.setdefault("new_signing", False)
+        row.setdefault("world_cup_fatigue", 0.0)
+
+    family_states = verified.get("family_states", {})
+    launch_state = family_states.get("launch_context")
+    if not isinstance(launch_state, Mapping) or launch_state.get("state") != "admitted":
+        return {
+            "status": "unavailable",
+            "reason": "launch_context_not_admitted",
+            "players_enriched": 0,
+            "class_counts": {},
+        }
+
+    context_path = verified.get("bound_paths", {}).get("launch_context")
+    if context_path is None:
+        return {
+            "status": "unavailable",
+            "reason": "launch_context_path_missing",
+            "players_enriched": 0,
+            "class_counts": {},
+        }
+
+    families = verified.get("manifest", {}).get("families", {})
+    launch_family = families.get("launch_context", {})
+    if not isinstance(launch_family, Mapping):
+        return {
+            "status": "unavailable",
+            "reason": "launch_context_manifest_invalid",
+            "players_enriched": 0,
+            "class_counts": {},
+        }
+
+    try:
+        world_cup_path = _resolve_bound_artifact(
+            verified["manifest_path"],
+            launch_family.get("world_cup_priors_path"),
+            family_id="launch_context.world_cup_priors",
+        )
+        context = load_launch_context(Path(context_path))
+        world_cup_rows = load_world_cup_priors(world_cup_path)
+        applied = apply_launch_context(
+            bootstrap=bootstrap,
+            context=context,
+            world_cup_rows=world_cup_rows,
+            official_bootstrap_source_sha256=str(
+                family_states["official_bootstrap"]["artifact_sha256"]
+            ),
+            world_cup_source_sha256=str(
+                launch_family.get("world_cup_priors_sha256", "")
+            ),
+            decision_cutoff=decision_cutoff,
+            gameweek=1,
+        )
+    except (LaunchContextError, InitialSquadCheckpointError, KeyError, TypeError, ValueError) as exc:
+        return {
+            "status": "unavailable",
+            "reason": f"launch_context_apply_failed:{exc}",
+            "players_enriched": 0,
+            "class_counts": {},
+        }
+
+    by_id = {str(row["player_id"]): row for row in applied["players"]}
+    enriched = 0
+    for row in players:
+        context_row = by_id.get(str(row["player_id"]))
+        if context_row is None:
+            continue
+        cold_class = str(context_row.get("cold_start_class", "established"))
+        world_cup = context_row.get("world_cup")
+        fatigue = 0.0
+        if isinstance(world_cup, Mapping):
+            fatigue = float(world_cup.get("effective_fatigue", 0.0) or 0.0)
+        row["promoted_team"] = cold_class == "promoted_team"
+        row["new_signing"] = bool(context_row.get("is_new_to_fpl", False))
+        row["world_cup_fatigue"] = fatigue
+        row["cold_start_class"] = cold_class
+        enriched += 1
+
+    return {
+        "status": "applied",
+        "reason": "admitted_launch_context",
+        "players_enriched": enriched,
+        "class_counts": deepcopy(dict(applied.get("class_counts", {}))),
+        "world_cup_coverage": deepcopy(dict(applied.get("world_cup_coverage", {}))),
+        "context_content_sha256": str(context.get("content_sha256", "")),
+        "applied_content_sha256": str(applied.get("content_sha256", "")),
+    }
+
+
 def build_initial_squad_packet(
     verified: Mapping[str, Any],
     *,
@@ -460,8 +570,30 @@ def build_initial_squad_packet(
                 "start_probability": [start_probability] * horizon_size,
                 "uncertainty": [round(1.0 - start_probability, 4)] * horizon_size,
                 "status": "a",
+                "promoted_team": False,
+                "new_signing": False,
+                "world_cup_fatigue": 0.0,
             }
         )
+
+    launch_enrichment = _apply_launch_context_to_players(
+        verified=verified,
+        bootstrap=bootstrap,
+        players=players,
+        decision_cutoff=str(verified["deadline"]),
+    )
+    fallbacks = _source_fallbacks(family_states)
+    if launch_enrichment["status"] == "applied":
+        for family_id in (
+            "promoted_team_priors",
+            "world_cup_return_fatigue",
+            "transfers_and_signings",
+        ):
+            if family_id in fallbacks:
+                fallbacks[family_id] = (
+                    "optional family artifact absent; cold-start/WC fields derived "
+                    "from admitted launch_context"
+                )
 
     feature_state = {
         "schema_version": "1.0",
@@ -477,6 +609,12 @@ def build_initial_squad_packet(
         "projection_strategy": _BASELINE_MODEL,
         "horizon_gameweeks": list(range(1, horizon_size + 1)),
         "source_families": family_states,
+        "launch_context_enrichment": {
+            "status": launch_enrichment["status"],
+            "reason": launch_enrichment["reason"],
+            "players_enriched": launch_enrichment["players_enriched"],
+            "class_counts": launch_enrichment.get("class_counts", {}),
+        },
     }
     feature_state["content_sha256"] = artifact_hash(feature_state)
     packet: dict[str, Any] = {
@@ -500,6 +638,7 @@ def build_initial_squad_packet(
                 "the checkpoint path; a six-GW live-faithful packet is not bound."
             ),
             "manual_entry_eligible": False,
+            "launch_context_enrichment": launch_enrichment["status"],
         },
     }
     validated = validate_initial_squad_packet(
@@ -511,8 +650,9 @@ def build_initial_squad_packet(
         "candidate_universe": candidate_universe,
         "exclusions": exclusions,
         "source_families": family_states,
-        "fallbacks": _source_fallbacks(family_states),
+        "fallbacks": fallbacks,
         "forecast_quality": deepcopy(packet["forecast_quality"]),
+        "launch_context_enrichment": launch_enrichment,
         "fixture_count": len(verified["fixtures"]),
     }
 
