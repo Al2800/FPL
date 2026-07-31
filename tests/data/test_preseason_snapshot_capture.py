@@ -200,6 +200,66 @@ def test_identical_capture_is_idempotent(tmp_path: Path) -> None:
     ).encode("utf-8")
 
 
+def test_set_piece_ledger_is_derived_from_admitted_bootstrap(tmp_path: Path) -> None:
+    bootstrap = _bootstrap()
+    bootstrap["teams"] = [
+        {"id": 1, "name": "Alpha FC"},
+        {"id": 2, "name": "Beta FC"},
+    ]
+    bootstrap["elements"] = [
+        {
+            "id": 1,
+            "code": 101,
+            "web_name": "Alpha Player",
+            "element_type": 3,
+            "team": 1,
+            "penalties_order": 1,
+            "penalties_text": "Alpha Player",
+            "direct_freekicks_order": 1,
+            "direct_freekicks_text": "Alpha Player",
+            "corners_and_indirect_freekicks_order": 1,
+            "corners_and_indirect_freekicks_text": "Alpha Player",
+        },
+        {
+            "id": 2,
+            "code": 102,
+            "web_name": "Beta Player",
+            "element_type": 3,
+            "team": 2,
+            "penalties_order": 1,
+            "penalties_text": "Beta Player",
+            "direct_freekicks_order": 1,
+            "direct_freekicks_text": "Beta Player",
+            "corners_and_indirect_freekicks_order": 1,
+            "corners_and_indirect_freekicks_text": "Beta Player",
+        },
+    ]
+    bootstrap_body = json.dumps(bootstrap, sort_keys=True).encode("utf-8")
+    fixtures_body = json.dumps(_fixtures(), sort_keys=True).encode("utf-8")
+    result = capture_preseason_snapshot(
+        season="2026-27",
+        checkpoint_id="launch",
+        deadline=DEADLINE,
+        output_root=tmp_path / "preseason",
+        observed_at=OBSERVED,
+        bootstrap_body=bootstrap_body,
+        fixtures_body=fixtures_body,
+        rules_path=RULES,
+        config_path=CONFIG,
+        index_manifest_path=tmp_path / "index.json",
+        code_commit=COMMIT,
+    )
+    family = result["families"]["set_pieces"]
+    assert family["status"] == "admitted"
+    assert family["counts"]["admitted"] == 1
+    artifact_path = tmp_path / "preseason" / "launch" / family["artifact_path"]
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    assert artifact["ledger"]["status"] == "complete"
+    assert artifact["feature"]["status"] == "shadow_ready"
+    assert artifact["feature"]["effect_weights"] is None
+    assert artifact["promotion_status"] == "shadow_only_pending_point_in_time_ablation"
+
+
 def test_changed_payload_fails_closed(tmp_path: Path) -> None:
     bootstrap, fixtures = _bodies()
     capture_preseason_snapshot(

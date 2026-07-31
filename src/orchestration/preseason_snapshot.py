@@ -21,6 +21,12 @@ from src.forecasting.launch_context import LaunchContextError, load_launch_conte
 
 from src.ingestion.acquisition import content_hash, record_acquisition
 from src.ingestion.registry import assert_collectable, load_registry
+from src.ingestion.set_piece_roles import (
+    SetPieceRoleError,
+    build_set_piece_feature_payload,
+    build_set_piece_role_ledger,
+    normalise_official_set_piece_snapshot,
+)
 from src.orchestration.evidence_checkpoint_runner import (
     EvidenceCheckpointConflict,
     _exclusive_lock,
@@ -678,6 +684,97 @@ def _bind_optional_artifact(
         available_at=latest_available,
     )
 
+
+def _bind_derived_set_piece_artifact(
+    *,
+    bootstrap: Mapping[str, Any],
+    source_sha256: str,
+    observed_at: str,
+    deadline: str,
+    checkpoint_dir: Path,
+    source_id: str | None,
+    registry: dict[str, Any],
+) -> dict[str, Any]:
+    """Derive and bind the official set-piece ledger from admitted bootstrap bytes."""
+
+    counts = _empty_family_counts()
+    reg_status = _validate_source_id(source_id, registry)
+    if reg_status != "ok":
+        counts["input"] = 1
+        counts["quarantined"] = 1
+        return _family_status(
+            family_id="set_pieces",
+            mandatory=False,
+            status="degraded",
+            counts=counts,
+            reasons=[f"source_not_collectable:{reg_status}"],
+            source_id=source_id,
+            registry_source_status=reg_status,
+        )
+
+    try:
+        snapshot = normalise_official_set_piece_snapshot(
+            bootstrap,
+            source_sha256=source_sha256,
+            observed_at=observed_at,
+            available_at=observed_at,
+        )
+        ledger = build_set_piece_role_ledger([snapshot], as_of=observed_at)
+        feature = build_set_piece_feature_payload(ledger)
+        artifact = _seal(
+            {
+                "schema_version": "preseason-set-piece-bind-v1",
+                "family": "set_pieces",
+                "source_id": source_id,
+                "source_sha256": source_sha256,
+                "observed_at": observed_at,
+                "available_at": observed_at,
+                "snapshot": snapshot,
+                "ledger": ledger,
+                "feature": feature,
+                "promotion_status": "shadow_only_pending_point_in_time_ablation",
+                "effect_weights": None,
+            }
+        )
+    except (SetPieceRoleError, TypeError, ValueError) as exc:
+        counts["input"] = 1
+        counts["quarantined"] = 1
+        return _family_status(
+            family_id="set_pieces",
+            mandatory=False,
+            status="degraded",
+            counts=counts,
+            reasons=[f"derived_set_piece_ledger_failed:{exc}"],
+            source_id=source_id,
+            registry_source_status=reg_status,
+        )
+
+    body = (json.dumps(artifact, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    digest = content_hash(body)
+    artifact_relative = _copy_optional_bytes(
+        body,
+        family_id="set_pieces",
+        digest=digest,
+        checkpoint_dir=checkpoint_dir,
+        extension="json",
+        suffix="derived-ledger",
+    )
+    counts["input"] = 1
+    counts["admitted"] = 1
+    return _family_status(
+        family_id="set_pieces",
+        mandatory=False,
+        status="admitted",
+        counts=counts,
+        artifact_path=artifact_relative,
+        artifact_sha256=digest,
+        observed_at=observed_at,
+        available_at=observed_at,
+        source_id=source_id,
+        registry_source_status=reg_status,
+    )
+
+
 def _launch_context_input_digests(
     context_path: Path | None, world_cup_priors_path: Path | None
 ) -> dict[str, str | None]:
@@ -1246,6 +1343,17 @@ def capture_preseason_snapshot(
                     checkpoint_observed_at=observed_text,
                     deadline=official_deadline,
                     source_id=optional_sources[family_id],
+                )
+                continue
+            if family_id == "set_pieces" and optional_paths[family_id] is None:
+                families[family_id] = _bind_derived_set_piece_artifact(
+                    bootstrap=bootstrap_payload,
+                    source_sha256=bootstrap_result["family"]["artifact_sha256"],
+                    observed_at=observed_text,
+                    deadline=official_deadline,
+                    checkpoint_dir=checkpoint_dir,
+                    source_id=optional_sources[family_id],
+                    registry=registry,
                 )
                 continue
             families[family_id] = _bind_optional_artifact(

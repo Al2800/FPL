@@ -24,6 +24,10 @@ from src.forecasting.launch_context import (
     load_launch_context,
     load_world_cup_priors,
 )
+from src.forecasting.live_initial_squad import (
+    LiveInitialSquadForecastError,
+    build_live_faithful_initial_squad_horizon,
+)
 from src.forecasting.live_faithful import artifact_hash
 from src.optimisation.initial_squad import (
     InitialSquadError,
@@ -47,6 +51,18 @@ from src.scoring.rules_loader import load_rules, ruleset_sha256
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_OUTPUT_ROOT = REPO_ROOT / "reports" / "live" / "2026-27" / "initial-squad"
 DEFAULT_POLICY_PATH = REPO_ROOT / "control" / "policies" / "initial-squad-2026-27.json"
+DEFAULT_PLAYER_PRIOR_PATH = (
+    REPO_ROOT
+    / "reports"
+    / "benchmarks"
+    / "2025-26"
+    / "gw-38"
+    / "setup"
+    / "shared-locked-player-prior.json"
+)
+DEFAULT_LIVE_MODEL_CONFIG_PATH = (
+    REPO_ROOT / "control" / "models" / "live-faithful-v1.feature-complete.json"
+)
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _POSITIONS = {1: "GKP", 2: "DEF", 3: "MID", 4: "FWD"}
 _BASELINE_MODEL = "official-ep-next-flat-horizon-baseline-v1"
@@ -474,13 +490,15 @@ def build_initial_squad_packet(
     policy: Mapping[str, Any],
     rules: Mapping[str, Any],
     rules_hash: str,
+    player_prior_path: Path = DEFAULT_PLAYER_PRIOR_PATH,
+    model_config_path: Path = DEFAULT_LIVE_MODEL_CONFIG_PATH,
 ) -> dict[str, Any]:
-    """Build the provisional official-EP baseline packet from verified bytes.
+    """Build a hash-bound initial-squad packet from verified bytes.
 
-    The production six-week forecast is deliberately not fabricated here.  The
-    adapter repeats the one official ``ep_next`` value solely so every
-    selection, sealing and review component can be rehearsed before that
-    upstream materialisation is available.
+    The live-faithful adapter is attempted from local, content-addressed prior
+    and model artifacts.  If those required inputs are unavailable or invalid,
+    the explicit flat ``ep_next`` ablation remains available for operational
+    rehearsal; it is never silently labelled decision-grade.
     """
 
     manifest = deepcopy(dict(verified["manifest"]))
@@ -595,6 +613,93 @@ def build_initial_squad_packet(
                     "from admitted launch_context"
                 )
 
+    live_horizon: dict[str, Any] | None = None
+    live_horizon_error: str | None = None
+    try:
+        if not player_prior_path.is_file():
+            raise LiveInitialSquadForecastError(
+                f"player prior artifact is missing: {player_prior_path}"
+            )
+        if not model_config_path.is_file():
+            raise LiveInitialSquadForecastError(
+                f"model config artifact is missing: {model_config_path}"
+            )
+        player_prior = _read_json_object(player_prior_path, "live-faithful player prior")
+        model_config = _read_json_object(model_config_path, "live-faithful model config")
+        live_horizon = build_live_faithful_initial_squad_horizon(
+            bootstrap=bootstrap,
+            fixtures=list(verified["fixtures"]),
+            official_bootstrap_sha256=str(
+                family_states["official_bootstrap"]["artifact_sha256"]
+            ),
+            official_fixtures_sha256=str(
+                family_states["official_fixtures"]["artifact_sha256"]
+            ),
+            observed_at=str(verified["observed_at"]),
+            decision_cutoff=str(verified["deadline"]),
+            horizon_gameweeks=list(range(1, horizon_size + 1)),
+            player_prior=player_prior,
+            model_config=model_config,
+            launch_context_status=str(launch_enrichment["status"]),
+        )
+        vectors = live_horizon["player_vectors"]
+        for row in players:
+            vector = vectors.get(str(row["player_id"]))
+            if not isinstance(vector, Mapping):
+                raise LiveInitialSquadForecastError(
+                    f"live-faithful horizon has no player vector: {row['player_id']}"
+                )
+            for field in ("expected_points", "start_probability", "uncertainty"):
+                values = vector.get(field)
+                if not isinstance(values, list) or len(values) != horizon_size:
+                    raise LiveInitialSquadForecastError(
+                        f"live-faithful {field} vector has wrong horizon for "
+                        f"{row['player_id']}"
+                    )
+                row[field] = [round(float(value), 6) for value in values]
+    except (
+        LiveInitialSquadForecastError,
+        InitialSquadCheckpointError,
+        OSError,
+        ValueError,
+        KeyError,
+        TypeError,
+    ) as exc:
+        live_horizon_error = str(exc)
+        live_horizon = None
+
+    if live_horizon is not None:
+        forecast_model_version = str(live_horizon["model_config_id"])
+        projection_strategy = forecast_model_version
+        forecast_quality = {
+            "status": "live_faithful_degraded",
+            "strategy": forecast_model_version,
+            "reason": (
+                "Six-Gameweek live-faithful horizon materialised from the "
+                "hash-bound official checkpoint and historical prior; optional "
+                "evidence gaps remain explicitly degraded."
+            ),
+            "limitations": list(live_horizon["limitations"]),
+            "lineage": deepcopy(dict(live_horizon["lineage"])),
+            "gameweek_forecast_hashes": deepcopy(
+                list(live_horizon["gameweek_forecast_hashes"])
+            ),
+            "manual_entry_eligible": False,
+        }
+    else:
+        forecast_model_version = _BASELINE_MODEL
+        projection_strategy = _BASELINE_MODEL
+        forecast_quality = {
+            "status": "operational_baseline_only",
+            "strategy": _BASELINE_MODEL,
+            "reason": (
+                "Live-faithful horizon unavailable; official ep_next is a "
+                "one-GW estimate repeated only for operational rehearsal."
+            ),
+            "live_faithful_fallback_reason": live_horizon_error,
+            "manual_entry_eligible": False,
+        }
+
     feature_state = {
         "schema_version": "1.0",
         "season": manifest["season"],
@@ -606,7 +711,7 @@ def build_initial_squad_packet(
         "official_fixtures_sha256": family_states["official_fixtures"][
             "artifact_sha256"
         ],
-        "projection_strategy": _BASELINE_MODEL,
+        "projection_strategy": projection_strategy,
         "horizon_gameweeks": list(range(1, horizon_size + 1)),
         "source_families": family_states,
         "launch_context_enrichment": {
@@ -615,6 +720,22 @@ def build_initial_squad_packet(
             "players_enriched": launch_enrichment["players_enriched"],
             "class_counts": launch_enrichment.get("class_counts", {}),
         },
+        "live_faithful_horizon": (
+            {
+                "status": "materialised",
+                "model_config_id": live_horizon["model_config_id"],
+                "content_sha256": live_horizon["content_sha256"],
+                "lineage": deepcopy(dict(live_horizon["lineage"])),
+                "gameweek_forecast_hashes": deepcopy(
+                    list(live_horizon["gameweek_forecast_hashes"])
+                ),
+            }
+            if live_horizon is not None
+            else {
+                "status": "unavailable",
+                "reason": live_horizon_error,
+            }
+        ),
     }
     feature_state["content_sha256"] = artifact_hash(feature_state)
     packet: dict[str, Any] = {
@@ -626,18 +747,12 @@ def build_initial_squad_packet(
         "ruleset_id": str(rules["meta"]["ruleset_id"]),
         "ruleset_sha256": rules_hash,
         "feature_state_sha256": feature_state["content_sha256"],
-        "forecast_model_version": _BASELINE_MODEL,
+        "forecast_model_version": forecast_model_version,
         "horizon_gameweeks": list(range(1, horizon_size + 1)),
         "discount_factors": discounts,
         "players": players,
         "forecast_quality": {
-            "status": "operational_baseline_only",
-            "strategy": _BASELINE_MODEL,
-            "reason": (
-                "Official ep_next is a one-GW estimate repeated only to rehearse "
-                "the checkpoint path; a six-GW live-faithful packet is not bound."
-            ),
-            "manual_entry_eligible": False,
+            **forecast_quality,
             "launch_context_enrichment": launch_enrichment["status"],
         },
     }
@@ -653,6 +768,7 @@ def build_initial_squad_packet(
         "fallbacks": fallbacks,
         "forecast_quality": deepcopy(packet["forecast_quality"]),
         "launch_context_enrichment": launch_enrichment,
+        "live_faithful_horizon": deepcopy(live_horizon),
         "fixture_count": len(verified["fixtures"]),
     }
 

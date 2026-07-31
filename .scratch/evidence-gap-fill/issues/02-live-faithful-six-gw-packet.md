@@ -2,7 +2,7 @@
 
 **Blocked by:** 01 (resolved)
 
-**Status:** ready-for-agent
+**Status:** resolved
 
 **Type:** task
 
@@ -89,18 +89,18 @@ Open design points to resolve inside this ticket (record in Answer):
 
 ### Acceptance criteria
 
-- [ ] Checkpoint packet horizon vectors come from a hash-bound live-faithful
+- [x] Checkpoint packet horizon vectors come from a hash-bound live-faithful
       build when required inputs are present; not from repeating `ep_next`.
-- [ ] `forecast_quality` no longer claims only the flat baseline when
+- [x] `forecast_quality` no longer claims only the flat baseline when
       live-faithful succeeds; `manual_entry_eligible` remains false until
       remaining degradations are owner-accepted.
-- [ ] Missing optional families degrade with named limitations; no invented
+- [x] Missing optional families degrade with named limitations; no invented
       odds/ratings.
-- [ ] Launch-context cold-start / WC fields from ticket 01 still apply.
-- [ ] Focused tests: happy path materialisation, hash seal, missing-prior
+- [x] Launch-context cold-start / WC fields from ticket 01 still apply.
+- [x] Focused tests: happy path materialisation, hash seal, missing-prior
       fallback/degrade, existing checkpoint/readiness suites stay green.
-- [ ] Canonical 2025/26 replay artifacts unchanged.
-- [ ] No network; no account writes.
+- [x] Canonical 2025/26 replay artifacts unchanged.
+- [x] No network; no account writes.
 
 ### Out of scope
 
@@ -109,3 +109,23 @@ Open design points to resolve inside this ticket (record in Answer):
 - Completing odds ablation (W15) or set-piece EP weights (W17).
 - Rival / EO strategy.
 - Expanding ticket 07 Benchmark Kernel residual (separate frontier).
+
+## Answer
+
+Implemented the adapter path:
+
+- `src/forecasting/live_initial_squad.py` runs the locked
+  `live-faithful-v1.feature-complete` config once per GW1–GW6.
+- The initial-squad checkpoint now consumes the resulting hash-bound vectors
+  and records per-Gameweek feature/forecast hashes.
+- The team prior is an explicit official-FDR baseline; it uses no unplayed
+  outcomes and is named as a limitation.
+- The current tracked prior is 2024/25 because a stable-code 2025/26 prior
+  envelope is not yet available. This is visible in `forecast_quality` and
+  does not make the proposal approval-eligible.
+- Missing prior/model artifacts fall back to the old `ep_next` ablation with an
+  explicit failure reason.
+
+Focused adapter and checkpoint tests pass. The live 2026-07-31 checkpoint
+materialised the six-GW horizon with status `live_faithful_degraded` and
+`manual_entry_eligible: false`.

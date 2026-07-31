@@ -33,3 +33,9 @@ promoted / WC / transfers note derivation from admitted launch_context when
 applied. Tests:
 `tests/orchestration/test_initial_squad_launch_context.py` (2 passed with the
 existing checkpoint suite).
+
+The 2026-07-31 live bootstrap has a different hash from the reviewed
+2026-07-27 context, so the fresh checkpoint correctly leaves this family
+degraded rather than reusing stale classifications. Re-derivation is supported
+by `scripts/build_launch_context.py` but still requires a supplied, cutoff-safe
+2025/26 stable-code roster; no roster is fabricated in this ticket.
