@@ -15,6 +15,10 @@ This repository is the FPL Agentic Decision Laboratory. Read `docs/plan.md` befo
 
 Work is organised into non-overlapping packages WP-01 to WP-10 (plan §24). When asked to work on a package, stay within its boundary and record open questions rather than expanding scope. Key sequencing: WP-01 (rules audit) and WP-02 (source governance) gate all automated collection; the rules validator (WP-06) precedes any LLM recommendation workflow.
 
+## Work tracking
+
+**GitHub Issues are authoritative.** Beads under `.beads/` are a historical archive only — do not claim, update, close or sync Beads for active work. Outstanding Beads were converted into issue definitions under `.github/issue-defs/`; materialise them with `python3 -m scripts.create_github_issues_from_defs` or the workflow in `.github/workflows/create-outstanding-issues.yml`. See `docs/operations/tracker-migration-beads-to-github.md` and the skill `.agents/skills/github-issue-from-bead/SKILL.md`.
+
 ## Conventions
 
 - Python for pipeline code; Parquet + DuckDB for analytical data; SQLite/PostgreSQL for operational state (plan §8.2).
