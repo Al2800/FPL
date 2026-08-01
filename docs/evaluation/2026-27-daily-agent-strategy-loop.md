@@ -1,5 +1,8 @@
 # 2026/27 daily agent-driven strategy loop
 
+Architect map of hard stats, ledger join points and weighting:
+`docs/architecture/2026-27-decision-data-flow.md`.
+
 ## Problem
 
 Repeating a six-GW optimiser run each day is necessary but not sufficient.
