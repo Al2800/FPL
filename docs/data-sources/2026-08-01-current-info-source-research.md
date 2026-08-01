@@ -70,7 +70,7 @@ xMins feed. The gap is **wiring and calibration**, not “find a magic scrape.�
 |---|---|---|---|---|
 | **2025/26 player prior** (vaastav-backed envelope) | `vaastav-fpl` enabled local | restricted; no redistribution | `points_per_90`, historical `expected_goals_per_90` in prior build | **Already in live prior** |
 | **FPL bootstrap `expected_goals*` / `expected_assists*`** | `fpl-official-endpoints` | restricted | Season-level Opta-derived fields on elements (e.g. Haaland `expected_goals=25.50` on 31 Jul freeze with `form=0.0` — treat as **carried official season rates**, not live GW xG) | **Research then wire carefully**; do not treat as next-match xG |
-| **Understat** | `understat` **disabled** | **unknown / unresolved** | Player/team xG, xA, PPDA — OpenFPL’s open attack feed | **Rights review required** before any fetch; gap accepted until then |
+| **Understat** | `understat` **enabled** (2026-08-01) | restricted private local via understatAPI | Player/team xG, xA — OpenFPL-class attack feed | Client: collinb9/understatAPI; residual site-terms risk accepted; post-match only |
 | **StatsBomb open data** | `statsbomb-open` enabled local files only | restricted; attribution; no network downloader | Method prototyping; **not** assumed to cover live 2026/27 EPL | Shadow ratings only; not live xG spine |
 | **Commercial EPL event data** | `commercial-epl-event-data` disabled placeholder | unresolved | Production event xG | Buy only after Tier 0–2 ablation proves bottleneck (registry note) |
 | **Live `event_model_weight`** | model config | n/a | Currently **0.0** in live-faithful | Keep off until odds/Understat-class inputs are admissible |
@@ -168,7 +168,7 @@ hallucinated xMins.
 | 1 | Admit WC priors CSV / enable derived path | **Done** — registry + `weekly-2026-08-02` |
 | 2 | Odds slot capture | **Blocked** — `THE_ODDS_API_KEY` not in environment |
 | 3 | ClubElo restricted + attribution + enable | **Done** — PIT capture script ran |
-| 4 | Understat | **Keep gap** — rights unresolved; not enabled |
+| 4 | Understat via understatAPI | **Done** — see `2026-08-01-understatapi-decision.md` |
 | 5 | W7 calibration | **Done provisional** — see enablement log |
 
 See `docs/data-sources/2026-08-01-current-info-enablement.md`.

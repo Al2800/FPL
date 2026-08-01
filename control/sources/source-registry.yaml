@@ -2,7 +2,7 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.5"
+registry_version: "0.6.6"
 updated_at: "2026-08-01"
 
 sources:
@@ -444,23 +444,34 @@ sources:
 
   - source_id: understat
     owner: Understat
-    source_type: html
+    source_type: api_client
     authority: secondary
     terms_url: "https://understat.com/"
-    licence_status: unknown
-    allowed_use: unresolved
+    licence_status: restricted
+    allowed_use: private_analysis_local_retention_no_redistribution
     authentication: none
-    collection_method: permitted_fetch
-    expected_cadence: daily
-    max_staleness: "24h"
-    failure_policy: stop
-    retention_policy: none_until_reviewed
-    attribution: "Understat"
-    enabled: false
-    review_date: "2026-09-01"
+    collection_method: understatapi_client
+    expected_cadence: daily_in_season_postmatch
+    max_staleness: "48h"
+    failure_policy: degrade
+    retention_policy: local_gitignored_private_no_redistribution
+    attribution: "Understat (understat.com); client: collinb9/understatAPI (MIT)"
+    enabled: true
+    review_date: "2026-10-01"
+    activation_approval:
+      terms: approved_private_local_via_understatapi_residual_site_risk_accepted
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-01"
+      scope: private_local_EPL_xg_xa_via_understatAPI_no_redistribution_no_bulk_mirror
     notes: >
-      No supported public API; collection and reuse terms unresolved.
-      Alternative: official FPL stats and football-data match results. Gap accepted.
+      Owner decision 2026-08-01: collect via https://github.com/collinb9/understatAPI
+      (MIT client; author not affiliated with Understat). Understat publishes no
+      official API or licence grant and robots.txt disallows crawling — residual
+      site-terms risk accepted for private local analysis only. Data is post-match
+      xG/xA (not live minutes/news). Prefer bounded EPL league/team/match pulls;
+      raw payloads stay gitignored; never redistribute. Alternative if disabled:
+      official FPL expected_* fields, 2025/26 prior rates, and odds.
 
   - source_id: fbref
     owner: Sports Reference / StatsBomb-derived via FBref

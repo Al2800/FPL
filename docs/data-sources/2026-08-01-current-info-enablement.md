@@ -2,14 +2,14 @@
 
 Follow-up to `2026-08-01-current-info-source-research.md`.
 
-## Registry (v0.6.5)
+## Registry (v0.6.6)
 
 | Source | Change |
 |---|---|
 | `clubelo` | **enabled**; `licence_status=restricted`; reuse-with-citation (About page) |
 | `world-cup-2026` | **enabled** for admitting derived CSV only; no FIFA HTML scrape |
-| `the-odds-api` | already enabled — capture still blocked without `THE_ODDS_API_KEY` |
-| `understat` | **left disabled** — rights still unresolved |
+| `the-odds-api` | enabled; free-tier wiring smoke complete |
+| `understat` | **enabled** via understatAPI (private local; residual site risk accepted) |
 
 ## Highest-leverage execution
 
@@ -47,4 +47,5 @@ Follow-up to `2026-08-01-current-info-source-research.md`.
    `scripts/capture_live_odds.py` for real GW1 slots when windows open.
 2. Decide when provisional W7 table may replace live hard-override (needs PIT bootstrap archive).
 3. Optional: ClubElo → team-prior challenger wiring (capture exists; forecaster integration separate).
-4. Understat rights review remains open before any fetch.
+4. Understat: use `scripts/capture_understat_epl.py` (season `2025` now;
+   `2026` when matches exist); optional event-model wiring is separate.
