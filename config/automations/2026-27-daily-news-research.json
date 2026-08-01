@@ -3,7 +3,8 @@
   "automation_id": "fpl-daily-official-news-research",
   "name": "FPL daily official news research",
   "description": "Scheduled web-search discovery of official club and Premier League news leads for manual citation follow-up.",
-  "status": "recipe_ready_activate_in_cursor_ui",
+  "status": "nested_lane_under_daily_strategy_research",
+  "superseded_by": "fpl-daily-strategy-research",
   "model": {
     "id": "composer-2.5",
     "display_name": "Composer 2.5",

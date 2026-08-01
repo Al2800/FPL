@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "automation_id": "fpl-daily-strategy-research",
+  "name": "FPL daily strategy research",
+  "description": "Composer 2.5 scheduled web-search loop: official discovery plus strategy-depth briefing (chips, premiums, DEFCON, captains, early WC).",
+  "status": "recipe_ready_activate_in_cursor_ui",
+  "supersedes": "fpl-daily-official-news-research",
+  "model": {
+    "id": "composer-2.5",
+    "display_name": "Composer 2.5",
+    "assignment": "required"
+  },
+  "trigger": {
+    "type": "schedule",
+    "cron": "0 7 * * *",
+    "timezone": "UTC",
+    "description": "Daily at 07:00 UTC so the briefing precedes London morning capture review"
+  },
+  "repository": {
+    "scope": "single",
+    "repo": "Al2800/FPL",
+    "branch": "main"
+  },
+  "tools": {
+    "web_search": true,
+    "computer_use": true,
+    "pull_request_creation": true,
+    "memories": true,
+    "send_to_slack": false,
+    "mcp": []
+  },
+  "prompt": {
+    "path": "prompts/daily-strategy-research/v1.md",
+    "version": "v1"
+  },
+  "nested_prompts": [
+    {
+      "role": "official_discovery_lane",
+      "path": "prompts/daily-news-research/v1.md"
+    }
+  ],
+  "inputs": {
+    "catalogue_path": "control/sources/club-news-catalogue.yaml",
+    "discovery_config_path": "config/data_sources/2026-27-news-discovery.json",
+    "rules_path": "control/rules/2026-27.yaml",
+    "initial_squad_policy_path": "control/policies/initial-squad-2026-27.json",
+    "loop_doc_path": "docs/evaluation/2026-27-daily-agent-strategy-loop.md"
+  },
+  "outputs": {
+    "strategy_briefing_glob": "reports/strategy-research/*.md",
+    "search_results_glob": "data/live-shadow/news-discovery/*/search-results.json",
+    "discovery_glob": "data/live-shadow/news-discovery/*/news-discovery.json",
+    "commit_briefing": true,
+    "commit_raw_discovery": false,
+    "open_draft_pr_for_briefing": true
+  },
+  "governance": {
+    "community_content_lane": "strategy_intelligence_only",
+    "official_lane": "discovery_lead_only",
+    "claim_policy": "manual_linked_derived_claim_only",
+    "raw_snippet_policy": "never_admit_or_retain",
+    "html_scrape_collector": "disabled",
+    "phase": "0_1_advisory",
+    "does_not_replace": [
+      "six_gw_live_faithful_horizon",
+      "initial_squad_checkpoint_optimiser",
+      "owner_approval_gate"
+    ]
+  },
+  "activation": {
+    "cursor_ui": "https://cursor.com/automations",
+    "steps": [
+      "Create Scheduled automation with cron 0 7 * * * (UTC)",
+      "Set model to Composer 2.5",
+      "Attach repository Al2800/FPL on branch main",
+      "Paste the full text of prompts/daily-strategy-research/v1.md as the automation prompt",
+      "Enable computer use / web browsing; enable PR creation; enable memories",
+      "Disable or do not also run the narrower news-only automation on the same morning",
+      "Save and activate"
+    ]
+  }
+}

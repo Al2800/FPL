@@ -1,16 +1,18 @@
 # 2026/27 daily official news research automation
 
-**Status:** recipe ready — activate in Cursor Automations UI  
+**Status:** nested Lane A under the daily strategy research automation  
+**Prefer:** `config/automations/2026-27-daily-strategy-research.json`  
 **Model:** Composer 2.5 (`composer-2.5`)  
-**Schedule:** daily `0 8 * * *` UTC  
-**Prompt:** `prompts/daily-news-research/v1.md`  
-**Recipe:** `config/automations/2026-27-daily-news-research.json`
+**Prompt (Lane A only):** `prompts/daily-news-research/v1.md`  
+**Strategy driver:** `prompts/daily-strategy-research/v1.md`
 
 ## Purpose
 
-Run a scheduled web-search pass over the governed club-news catalogue so human
-operators receive fresh **discovery leads**. Leads are not claims. Claim
-admission remains manual citation under `official-club-communications`.
+Official catalogue discovery remains the **governed lead** lane. The morning
+driver is now the broader strategy research loop (chips, premiums, DEFCON,
+captains, early Wildcard debate) documented in
+`docs/evaluation/2026-27-daily-agent-strategy-loop.md`. Do not run this
+news-only automation as a second morning job.
 
 ## Why Composer 2.5
 

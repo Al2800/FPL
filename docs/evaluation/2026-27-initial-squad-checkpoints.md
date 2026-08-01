@@ -52,6 +52,15 @@ The engine still receives the official current status and chance-of-playing
 fields. It does not claim this is equivalent to cited club availability,
 minutes, set-piece or rating data.
 
+## Daily rhythm
+
+Before treating a checkpoint as the day's working view, run or read the
+Composer 2.5 strategy research briefing
+(`docs/evaluation/2026-27-daily-agent-strategy-loop.md`). That briefing is
+where chip paths, premium pivots, DEFCON watches and community model splits
+are rebuilt. The checkpoint remains the deterministic legality/scoring spine;
+the briefing does not replace it and cannot clear approval.
+
 ## Run and inspect
 
 From the repository root:

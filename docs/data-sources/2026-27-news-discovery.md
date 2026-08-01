@@ -33,14 +33,17 @@ separate source-rights and evidence-admission gate approves it.
 
 ## Scheduled web search
 
-Daily discovery is intended to run as a Cursor Automation on **Composer 2.5**:
+Daily discovery is **Lane A** inside the Composer 2.5 strategy research
+automation:
 
-- Recipe: `config/automations/2026-27-daily-news-research.json`
-- Prompt: `prompts/daily-news-research/v1.md`
-- Setup: `docs/data-sources/2026-27-daily-news-research-automation.md`
+- Driver recipe: `config/automations/2026-27-daily-strategy-research.json`
+- Driver prompt: `prompts/daily-strategy-research/v1.md`
+- Nested discovery prompt: `prompts/daily-news-research/v1.md`
+- Loop: `docs/evaluation/2026-27-daily-agent-strategy-loop.md`
 
-The automation captures search **metadata only**, runs this script, and writes a
-briefing under `reports/news-discovery/`. It does not admit claims.
+Lane A captures search **metadata only**, runs this script, and feeds official
+leads into the strategy briefing. It does not admit claims. Strategy debate
+from X/blogs stays in Lane B (briefing only).
 
 ## Run
 
