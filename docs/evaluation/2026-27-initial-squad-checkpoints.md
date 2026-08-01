@@ -52,6 +52,15 @@ The engine still receives the official current status and chance-of-playing
 fields. It does not claim this is equivalent to cited club availability,
 minutes, set-piece or rating data.
 
+## Daily rhythm
+
+The Composer 2.5 strategy agent is the **primary advisory decision**
+(`docs/evaluation/2026-27-daily-agent-strategy-loop.md`): recommended 15, chip
+path and captains after web search + packet reasoning. This checkpoint freezes
+the statistical base and publishes deterministic/robust **comparators**; the
+host rescores the strategy agent’s declared 15 against the same packet. The
+agent cannot clear owner approval or write to FPL.
+
 ## Run and inspect
 
 From the repository root:

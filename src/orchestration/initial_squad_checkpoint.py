@@ -54,11 +54,8 @@ DEFAULT_POLICY_PATH = REPO_ROOT / "control" / "policies" / "initial-squad-2026-2
 DEFAULT_PLAYER_PRIOR_PATH = (
     REPO_ROOT
     / "reports"
-    / "benchmarks"
-    / "2025-26"
-    / "gw-38"
-    / "setup"
-    / "shared-locked-player-prior.json"
+    / "forecasting"
+    / "2026-27-shared-player-prior-2025-26.json"
 )
 DEFAULT_LIVE_MODEL_CONFIG_PATH = (
     REPO_ROOT / "control" / "models" / "live-faithful-v1.feature-complete.json"

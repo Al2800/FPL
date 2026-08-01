@@ -13,6 +13,10 @@
 - Source registry (FPL enabled); snapshotter; schemas; WP-05 baselines; optimiser; evidence lifecycle; GDR + replay harness; deferred interface notes
 - Structured replay pilot set: `evals/replay-set/structured-pilot-gameweeks.yaml` → `python3 -m scripts.run_replay_pilot_set`
 - Manual manager-state template: `control/templates/manager-state-entry.json`
+- Benchmark Kernel v1.0 contract audit and residual closure:
+  `docs/evaluation/benchmark-kernel-closure.md`. The contract is accepted;
+  governed historical episode artefacts remain a local prerequisite for the
+  artifact-backed replay suite.
 
 ## What to do next (implementation)
 

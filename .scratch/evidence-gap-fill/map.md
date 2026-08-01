@@ -19,15 +19,28 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
 - Ticket 01 resolved: launch-context cold-start/WC fields now enrich the
   initial-squad packet when admitted; EP horizon still baseline-only.
 - Ticket 02 resolved: `live-faithful-v1.feature-complete` now supplies a
-  hash-bound six-GW horizon; current checkpoint is degraded because the
-  2024/25 prior is the available envelope and optional live evidence is absent.
+  hash-bound six-GW horizon; live default prior is the completed 2025/26
+  envelope; checkpoint remains degraded while optional live evidence is absent.
 - Ticket 03 resolved: set-piece ledger is derived from admitted official
   bootstrap bytes; effect weights remain shadow-only.
+<<<<<<< HEAD
+- Ticket 06 resolved: the registered StatsBomb Open local-transform path is
+  ready but has no verified 2026/27 Premier League envelope; ratings remain
+  degraded and shadow-only with no effect weights.
+=======
+- Ticket 05 resolved: official FPL availability remains automated; W4
+  persistence is a named, default-disabled challenger; club and high-impact
+  role claims remain manual-citation-only until the W12 rights decision.
+>>>>>>> origin/main
 
 ## Fog
 
 - Club-domain rights tranche (W12) still blocks automated club news.
+<<<<<<< HEAD
 - Owner-supplied Odds API credential and a valid 2026/27 market window.
 - A stable-code 2025/26 completed-season player-prior envelope for the next
   successor checkpoint.
+=======
+- When markets open for Odds API T-24h slots.
+>>>>>>> origin/main
 - Whether live-faithful promotion clears owner acceptance with remaining degradations.
