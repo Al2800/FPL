@@ -21,6 +21,7 @@ Follow-up to `2026-08-01-current-info-source-research.md`.
 | W7 availability-flag calibration | `control/models/availability-flags-v1.provisional.json` + report; **provisional / non-PIT** (vaastav limitation) |
 | ClubElo PIT capture | Local `data/live-shadow/clubelo/2026-08-01/…` (gitignored) |
 | Odds slots | **Wiring smoke complete** (free tier); formal GW1 slots still pending window |
+| Understat via understatAPI | Season `2025` capture complete (537 players / 20 teams / 380 matches); `2026` empty until matches |
 
 ## Packet effect (`weekly-2026-08-02`)
 
