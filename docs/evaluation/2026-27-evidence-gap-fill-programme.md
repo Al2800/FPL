@@ -11,8 +11,12 @@
 | Promoted / transfers / WC fatigue | **packet enrichment landed** when `launch_context` admitted | Refresh context after bootstrap hash drift |
 | Six-GW live-faithful packet | **materialised, degraded** (`feature-complete`, official-FDR baseline; default prior **2025/26**) | Odds/ratings/citations + owner acceptance of remaining degradations |
 | Set-piece roles | **bound automatically from official bootstrap**, effect shadow-only | W17 live ablation |
+<<<<<<< HEAD
+| Licensed odds | capture-ready; zero 2026/27 slots | Ticket 04 progressed; live smoke awaits owner key and markets |
+=======
 | Licensed odds | capture_ready, zero 2026/27 slots | Ticket 04 (+ env key) |
 <<<<<<< HEAD
+>>>>>>> origin/main
 | Availability / role | partially_wired | Ticket 05 (citations + W4) |
 | Player ratings | degraded; no verified 2026/27 PL envelope | Ticket 06 resolved; retain byte-identical fallback |
 =======

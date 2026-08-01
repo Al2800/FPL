@@ -13,6 +13,9 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
   a six-GW live-faithful packet, then bind set-pieces from bootstrap.
 - Odds need live slot captures + env credential; ratings stay degraded until
   rights-cleared 2026/27 PL coverage exists.
+- Ticket 04 progressed: the four-slot Odds API path is fixture-verified and
+  registry-enabled; live smoke and W15 remain owner-gated on the credential,
+  market availability and four Gameweeks of captures.
 - Ticket 01 resolved: launch-context cold-start/WC fields now enrich the
   initial-squad packet when admitted; EP horizon still baseline-only.
 - Ticket 02 resolved: `live-faithful-v1.feature-complete` now supplies a
@@ -33,5 +36,11 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
 ## Fog
 
 - Club-domain rights tranche (W12) still blocks automated club news.
+<<<<<<< HEAD
+- Owner-supplied Odds API credential and a valid 2026/27 market window.
+- A stable-code 2025/26 completed-season player-prior envelope for the next
+  successor checkpoint.
+=======
 - When markets open for Odds API T-24h slots.
+>>>>>>> origin/main
 - Whether live-faithful promotion clears owner acceptance with remaining degradations.
