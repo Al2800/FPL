@@ -23,7 +23,10 @@ from src.evidence.model_run_ingest import (  # noqa: E402
     ModelEvidenceRunError,
     discover_latest_availability_ledger,
     ingest_model_evidence_run,
+    render_model_evidence_review,
+    safe_review_stem,
     write_immutable_json,
+    write_immutable_text,
 )
 
 
@@ -65,6 +68,11 @@ def main(argv: list[str] | None = None) -> int:
         type=Path,
         default=REPO_ROOT / "data" / "live-shadow" / "availability" / "model-runs",
     )
+    parser.add_argument(
+        "--review-output",
+        type=Path,
+        help="Committed human-readable review path; defaults to reports/evidence-review/<run>.md",
+    )
     parser.add_argument("--bootstrap", type=Path, default=DEFAULT_BOOTSTRAP_PATH)
     parser.add_argument("--catalogue", type=Path, default=DEFAULT_CATALOGUE_PATH)
     parser.add_argument("--discovery", type=Path, required=True)
@@ -102,8 +110,17 @@ def main(argv: list[str] | None = None) -> int:
             f"availability-ledger-{ledger['content_sha256']}.json"
         )
         audit_path = args.output_root / f"{model_run['run_id']}.audit.json"
+        review_path = args.review_output or (
+            REPO_ROOT
+            / "reports"
+            / "evidence-review"
+            / f"{safe_review_stem(str(model_run['run_id']))}.md"
+        )
         write_immutable_json(ledger_path, ledger)
         write_immutable_json(audit_path, audit)
+        write_immutable_text(
+            review_path, render_model_evidence_review(audit, ledger)
+        )
         print(
             json.dumps(
                 {
@@ -112,6 +129,7 @@ def main(argv: list[str] | None = None) -> int:
                     "ledger_path": str(ledger_path),
                     "ledger_sha256": ledger["content_sha256"],
                     "audit_path": str(audit_path),
+                    "review_path": str(review_path),
                     "accepted_claims": len(audit["accepted_claim_ids"]),
                     "duplicate_claims": len(audit["duplicate_claim_ids"]),
                     "rejected_claims": len(audit["rejected_claims"]),

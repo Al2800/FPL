@@ -61,6 +61,12 @@ This makes Composer/Grok research useful without allowing model prose or
 community citations to become governed evidence. It also gives the owner a
 machine-readable explanation of what the model considered and why.
 
+Each run additionally renders a committed review under
+`reports/evidence-review/`. The review shows catalogue/watchlist coverage,
+accepted, duplicate and rejected candidates, rejection reasons, source hashes,
+ledger hash transition and the rationale trace. The full briefing remains a
+separate model-authored record; the review is deterministic host output.
+
 The deterministic engine first emits its decision boundaries and margins.
 Only active evidence tied to those boundaries is ranked for the agent.
 Confidence-weighted impact, ability to cross a margin, and confidence determine

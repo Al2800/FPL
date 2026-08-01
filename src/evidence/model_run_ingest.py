@@ -20,6 +20,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import re
 from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
@@ -777,6 +778,11 @@ def ingest_model_evidence_run(
             rejected.append(
                 {
                     "candidate_claim_id": candidate_id,
+                    "club_id": str(candidate.get("club_id", "")),
+                    "player_uid": str(candidate.get("player_uid", "")),
+                    "source_url": str(candidate.get("source_url", "")),
+                    "claim_text": str(candidate.get("claim_text", "")),
+                    "why_relevant": str(candidate.get("why_relevant", "")),
                     "reasons": sorted(set(reasons)),
                 }
             )
@@ -786,6 +792,23 @@ def ingest_model_evidence_run(
             item[field] = [
                 claim_id_map.get(str(value), str(value)) for value in item[field]
             ]
+    review_flags: list[str] = []
+    if coverage_gaps:
+        review_flags.append("incomplete_catalogue_coverage")
+    if rejected:
+        review_flags.append("model_candidates_rejected")
+    if not accepted and model_run["claims"]:
+        review_flags.append("no_new_claims_admitted")
+    if trace and not any(
+        item.get("supporting_claim_ids") or item.get("conflicting_claim_ids")
+        for item in trace
+    ):
+        review_flags.append("decision_trace_has_no_claim_links")
+    if model_run["claims"] and not fetched:
+        review_flags.append("no_official_documents_hashed")
+    acceptance_rate = (
+        len(accepted) / len(model_run["claims"]) if model_run["claims"] else 0.0
+    )
     audit = {
         "schema_version": AUDIT_SCHEMA_VERSION,
         "run_id": str(model_run["run_id"]),
@@ -810,6 +833,22 @@ def ingest_model_evidence_run(
             {"source_url": url, "source_hash_sha256": digest}
             for url, digest in sorted(fetched.items())
         ],
+        "signal_checks": {
+            "candidate_count": len(model_run["claims"]),
+            "accepted_count": len(accepted),
+            "duplicate_count": len(duplicate),
+            "rejected_count": len(rejected),
+            "acceptance_rate": round(acceptance_rate, 6),
+            "decision_trace_count": len(trace),
+            "decision_trace_linked_count": sum(
+                bool(
+                    item.get("supporting_claim_ids")
+                    or item.get("conflicting_claim_ids")
+                )
+                for item in trace
+            ),
+            "review_flags": review_flags,
+        },
         "accepted_claim_ids": accepted,
         "candidate_claim_bindings": claim_id_map,
         "duplicate_claim_ids": duplicate,
@@ -869,3 +908,182 @@ def write_immutable_json(path: Path, value: Mapping[str, Any]) -> None:
             raise ModelEvidenceRunError(
                 f"immutable model-run artifact differs: {path}"
             )
+
+
+def render_model_evidence_review(
+    audit: Mapping[str, Any],
+    ledger: Mapping[str, Any],
+) -> str:
+    """Render a human-readable, deterministic review of one model run."""
+
+    def md(value: Any) -> str:
+        return str(value).replace("|", "\\|").replace("\n", " ")
+
+    validate_availability_ledger(ledger)
+    if audit.get("schema_version") != AUDIT_SCHEMA_VERSION:
+        raise ModelEvidenceRunError("unsupported model-evidence audit schema")
+    accepted_ids = {str(value) for value in audit.get("accepted_claim_ids", [])}
+    duplicate_ids = {str(value) for value in audit.get("duplicate_claim_ids", [])}
+    accepted_claims = [
+        row for row in ledger["claims"] if str(row["claim_id"]) in accepted_ids
+    ]
+    status_counts: dict[str, int] = {}
+    for row in accepted_claims:
+        status = str(row["status"])
+        status_counts[status] = status_counts.get(status, 0) + 1
+    candidate_count = (
+        len(accepted_ids)
+        + len(duplicate_ids)
+        + len(audit.get("rejected_claims", []))
+    )
+    coverage = audit.get("coverage", {})
+    searched = int(coverage.get("searched_club_count", 0))
+    catalogue = int(coverage.get("catalogue_club_count", 0))
+    coverage_percent = (100.0 * searched / catalogue) if catalogue else 0.0
+    trace = list(audit.get("decision_trace", []))
+    trace_with_claims = sum(
+        bool(item.get("supporting_claim_ids") or item.get("conflicting_claim_ids"))
+        for item in trace
+        if isinstance(item, Mapping)
+    )
+    lines = [
+        f"# Model evidence run review — {audit.get('run_id', 'unknown')}",
+        "",
+        f"- status: **{audit.get('status', 'unknown')}**",
+        f"- model: {audit.get('model', {}).get('display_name', audit.get('model', {}).get('id', 'unknown'))}",
+        f"- observed_at: {audit.get('observed_at', 'unknown')}",
+        f"- available_at: {audit.get('available_at', 'unknown')}",
+        f"- bound_packet_sha256: {audit.get('bound_packet_sha256') or 'unavailable'}",
+        f"- discovery_sha256: {audit.get('discovery_sha256', 'unknown')}",
+        f"- model_run_sha256: {audit.get('model_run_sha256', 'unknown')}",
+        f"- prior_ledger_sha256: {audit.get('prior_ledger_sha256') or 'none'}",
+        f"- resulting_ledger_sha256: {audit.get('resulting_ledger_sha256', 'unknown')}",
+        "",
+        "## Signal capture checks",
+        "",
+        "| check | result |",
+        "|---|---|",
+        f"| Catalogue coverage | {searched}/{catalogue} clubs ({coverage_percent:.1f}%) |",
+        f"| Coverage gaps | {', '.join(coverage.get('coverage_gaps', [])) or 'none'} |",
+        f"| Watchlist size | {coverage.get('watchlist_player_count', 0)} players |",
+        f"| Candidate claims | {candidate_count} |",
+        f"| Accepted claims | {len(accepted_ids)} |",
+        f"| Acceptance rate | {float(audit.get('signal_checks', {}).get('acceptance_rate', 0.0)):.1%} |",
+        f"| Duplicate claims | {len(duplicate_ids)} |",
+        f"| Rejected claims | {len(audit.get('rejected_claims', []))} |",
+        f"| Ephemeral documents hashed | {len(audit.get('fetched_documents', []))} |",
+        f"| Decision trace | {len(trace)} items; {trace_with_claims} linked to claims |",
+        f"| Accepted statuses | {', '.join(f'{key}={value}' for key, value in sorted(status_counts.items())) or 'none'} |",
+        f"| Review flags | {', '.join(audit.get('signal_checks', {}).get('review_flags', [])) or 'none'} |",
+        "",
+        "## Accepted ledger signal",
+        "",
+    ]
+    if accepted_claims:
+        lines.extend(
+            [
+                "| player | status | confidence | expires | derived claim | source |",
+                "|---|---|---:|---|---|---|",
+            ]
+        )
+        for row in accepted_claims:
+            provenance = row.get("provenance", {})
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        md(row["player_uid"]),
+                        md(row["status"]),
+                        f"{float(row['confidence']):.2f}",
+                        md(row["expires_at"]),
+                        md(provenance.get("derived_claim", "")),
+                        md(provenance.get("urls", [""])[0]),
+                    ]
+                )
+                + " |"
+            )
+    else:
+        lines.append("No claims were admitted.")
+    lines.extend(["", "## Rejected or unresolved signal", ""])
+    rejected = list(audit.get("rejected_claims", []))
+    if rejected:
+        lines.extend(
+            [
+                "| candidate | player | claim | reasons |",
+                "|---|---|---|---|",
+            ]
+        )
+        for row in rejected:
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        md(row.get("candidate_claim_id", "")),
+                        md(row.get("player_uid", "")),
+                        md(row.get("claim_text", "")),
+                        md(", ".join(str(reason) for reason in row.get("reasons", []))),
+                    ]
+                )
+                + " |"
+            )
+    else:
+        lines.append("No candidates were rejected.")
+    lines.extend(["", "## Decision rationale trace", ""])
+    if trace:
+        lines.extend(
+            [
+                "| boundary | decision | rationale | supporting claims | conflicting claims | confidence | falsifiers |",
+                "|---|---|---|---|---|---:|---|",
+            ]
+        )
+        for item in trace:
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        md(item.get("boundary_id", "")),
+                        md(item.get("decision", "")),
+                        md(item.get("rationale", "")),
+                        md(", ".join(str(value) for value in item.get("supporting_claim_ids", []))),
+                        md(", ".join(str(value) for value in item.get("conflicting_claim_ids", []))),
+                        f"{float(item.get('confidence', 0.0)):.2f}",
+                        md("; ".join(str(value) for value in item.get("falsifiers", []))),
+                    ]
+                )
+                + " |"
+            )
+    else:
+        lines.append("No decision trace was emitted.")
+    lines.extend(
+        [
+            "",
+            "## Interpretation",
+            "",
+            "- This is a host audit of model-proposed signal, not an approval or",
+            "  claim that the model's underlying football judgement is correct.",
+            "- Community and unregistered sources remain briefing-only.",
+            "- Raw source bodies are not retained; URLs, derived claims, hashes and",
+            "  rejection reasons are the available review record.",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
+def write_immutable_text(path: Path, text: str) -> None:
+    """Write one human-readable review without overwriting a prior run."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with path.open("x", encoding="utf-8") as handle:
+            handle.write(text)
+    except FileExistsError:
+        if path.read_text(encoding="utf-8") != text:
+            raise ModelEvidenceRunError(
+                f"immutable model-run review differs: {path}"
+            )
+
+
+def safe_review_stem(run_id: str) -> str:
+    """Make a portable report filename from an engine run ID."""
+
+    return re.sub(r"[^A-Za-z0-9._-]+", "-", run_id).strip("-") or "model-run"

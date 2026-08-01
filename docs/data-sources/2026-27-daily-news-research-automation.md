@@ -51,6 +51,7 @@ After activation, store the automation UUID in the recipe's optional
 | Model evidence run | `data/live-shadow/evidence/model-runs/YYYY-MM-DD/model-evidence-run.json` | ignored |
 | Host admission audit | `data/live-shadow/availability/model-runs/<run-id>.audit.json` | ignored |
 | Content-addressed availability ledger | `data/live-shadow/availability/model-runs/availability-ledger-<hash>.json` | ignored |
+| Deterministic evidence review | `reports/evidence-review/<run-id>.md` | committed |
 | Model briefing + decision trace | `reports/news-discovery/YYYY-MM-DD.md` | may open draft PR |
 
 ## Boundaries

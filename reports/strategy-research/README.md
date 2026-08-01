@@ -9,3 +9,6 @@ situational understanding before the deterministic initial-squad checkpoint.
 - Each briefing should expose the model-evidence run/audit hashes and a
   concise rationale trace (choices, opportunity cost, rejected alternatives,
   supporting/conflicting claims, confidence and falsifiers).
+- The paired deterministic review is committed under
+  `reports/evidence-review/`; use it to audit coverage and accepted/rejected
+  signal before relying on the briefing.

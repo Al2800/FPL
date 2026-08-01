@@ -27,6 +27,7 @@ edit the frozen packet.
                recommended 15 + chips + captains + falsifiers
                concise decision rationale trace + host ledger audit
                → reports/strategy-research/YYYY-MM-DD.md
+               → reports/evidence-review/<run-id>.md
 
 Capture     Immutable official snapshot (scheduler / manual)
             → data/snapshots/.../manifest.json

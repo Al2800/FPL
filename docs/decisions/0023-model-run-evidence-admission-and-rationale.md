@@ -31,7 +31,11 @@ Use a two-stage engine-model run:
 4. The host discards fetched page bodies and appends only valid derived claims
    to a content-addressed availability ledger. Rejections, conflicts,
    duplicates and coverage gaps remain in an audit artifact.
-5. Composer is the scheduled production model. Grok or another model may be
+5. The host renders a committed review under `reports/evidence-review/`,
+   while the model-authored briefing remains under
+   `reports/strategy-research/` or `reports/news-discovery/`. Both are retained:
+   the briefing explains the research and the review checks signal capture.
+6. Composer is the scheduled production model. Grok or another model may be
    compared by emitting the same contract; its model ID and prompt hash remain
    bound in the audit.
 
@@ -47,6 +51,8 @@ Positive:
 - coverage is broader than the eventual selected 15;
 - every admitted claim has source, time, identity and model-run lineage;
 - readers can inspect the model's rationale and the host's admission reasons;
+- pre-season review can identify weak coverage or a high rejection rate before
+  the selected 15 is treated as reliable;
 - community research remains useful to the advisory briefing without becoming
   a governed fact.
 

@@ -11,6 +11,7 @@ import pytest
 from src.evidence.model_run_ingest import (
     ModelEvidenceRunError,
     ingest_model_evidence_run,
+    render_model_evidence_review,
 )
 from src.ingestion.news_discovery import artifact_hash
 
@@ -206,6 +207,11 @@ def test_model_run_admits_claim_and_retains_decision_trace(tmp_path: Path) -> No
         b"official page body"
     )
     assert "official page body" not in json.dumps(ledger)
+    review = render_model_evidence_review(audit, ledger)
+    assert "## Signal capture checks" in review
+    assert "## Decision rationale trace" in review
+    assert audit["accepted_claim_ids"][0] in review
+    assert "The official training update" in review
 
 
 def test_model_run_is_idempotent_for_same_source_version(tmp_path: Path) -> None:
