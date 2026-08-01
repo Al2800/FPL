@@ -69,3 +69,8 @@ Recipe: `config/automations/2026-27-daily-strategy-research.json`
 Prompt: `prompts/daily-strategy-research/v1.md`  
 UI: [cursor.com/automations](https://cursor.com/automations) — **Composer 2.5**,
 cron `0 7 * * *` UTC, repo `Al2800/FPL` @ `main`.
+
+**Not yet official.** A Composer 2.5 subagent dry-run against checkpoint
+`weekly-2026-07-31` produced `reports/strategy-research/2026-08-01.md` from
+`prompts/daily-strategy-research/dry-run-2026-08-01.md`. Review that briefing’s
+automation-readiness notes before enabling the daily cron.
