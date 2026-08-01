@@ -11,10 +11,13 @@ Former open Beads were published as local markdown tickets under
 - Ticket 04 resolved: 2026/27 Overall (314) standings capture approved disabled-by-default; collector + tests landed.
 - Ticket 05 resolved: official citation path selected; rehearsal artifact committed; then enabled because the source is registered. Sportradar remains off. Capture is manual citation only.
 - Ticket 06 resolved: initial-squad **policy** ratified; live proposal approval deferred until decision-grade forecast; `ready_for_manual_entry` stays false.
-- Ticket 07 remains the frontier (blocked only by needing 06's recorded outcome — now available).
+- Ticket 07 resolved: the Benchmark Kernel v1.0 contract and freeze/reveal
+  boundary were audited; governed replay artefacts remain an explicit local
+  provisioning requirement.
 
 ## Fog
 
+- No unresolved tickets remain in this migrated Beads feature.
 - When to enable live standings `collection_enabled` for the first post-finalisation Gameweek.
 - When to enable live matchday official citation collection after rehearsal.
 - Decision-grade six-GW forecast packet materialisation before any squad proposal approval.

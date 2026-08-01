@@ -73,13 +73,30 @@ def claim(
     }
 
 
-def append(ledger: dict, row: dict, *, config: dict | None = None) -> dict:
+def append(
+    ledger: dict,
+    row: dict,
+    *,
+    config: dict | None = None,
+    source_registry: dict | None = None,
+) -> dict:
     return append_live_evidence_claim(
         ledger,
         row,
-        source_registry=REGISTRY,
+        source_registry=source_registry or REGISTRY,
         config=config or CONFIG,
     )
+
+
+def _registry_with_club_comms(**overrides: object) -> dict:
+    registry = deepcopy(REGISTRY)
+    source = next(
+        row
+        for row in registry["sources"]
+        if row["source_id"] == "official-club-communications"
+    )
+    source.update(overrides)
+    return registry
 
 
 def test_manual_citation_is_append_only_hashed_and_rights_precise() -> None:
@@ -94,7 +111,7 @@ def test_manual_citation_is_append_only_hashed_and_rights_precise() -> None:
     validate_live_evidence_ledger(updated)
     rights = updated["claims"][0]["source_rights"]
     assert rights["admission_mode"] == "manual_citation"
-    assert rights["rights_precision"] == "manual_citation_rights_pending"
+    assert rights["rights_precision"] == "manual_citation_registered_rights"
     assert rights["raw_content_retained"] is False
 
 
@@ -119,18 +136,19 @@ def test_cross_player_and_equal_time_supersession_fail_closed() -> None:
         append(ledger, equal_time)
 
 def test_unknown_rights_manual_source_refuses_verbatim_and_raw_content() -> None:
+    pending = _registry_with_club_comms(licence_status="unknown", enabled=False)
     ledger = new_live_evidence_ledger(
         season="2026-27", created_at="2026-08-14T07:00:00Z"
     )
     verbatim = claim("b-claim")
     verbatim["claim_precision"] = "verbatim_excerpt"
     with pytest.raises(LiveEvidenceLedgerError, match="derived claim"):
-        append(ledger, verbatim)
+        append(ledger, verbatim, source_registry=pending)
 
     raw = claim("c-claim")
     raw["raw_content"] = "whole article"
     with pytest.raises(LiveEvidenceLedgerError, match="must not retain raw"):
-        append(ledger, raw)
+        append(ledger, raw, source_registry=pending)
 
 
 def test_automated_admission_requires_enabled_resolved_source() -> None:
@@ -140,11 +158,30 @@ def test_automated_admission_requires_enabled_resolved_source() -> None:
         for row in configured["sources"]
         if row["source_id"] == "official-club-communications"
     )["admission_mode"] = "automated_snapshot"
+    disabled = _registry_with_club_comms(
+        enabled=False,
+        collection_method="api",
+        licence_status="restricted",
+    )
     ledger = new_live_evidence_ledger(
         season="2026-27", created_at="2026-08-14T07:00:00Z"
     )
     with pytest.raises(LiveEvidenceLedgerError, match="enabled source"):
-        append(ledger, claim("d-claim"), config=configured)
+        append(ledger, claim("d-claim"), config=configured, source_registry=disabled)
+
+
+def test_automated_admission_refuses_manual_citation_collection_method() -> None:
+    configured = deepcopy(CONFIG)
+    next(
+        row
+        for row in configured["sources"]
+        if row["source_id"] == "official-club-communications"
+    )["admission_mode"] = "automated_snapshot"
+    ledger = new_live_evidence_ledger(
+        season="2026-27", created_at="2026-08-14T07:00:00Z"
+    )
+    with pytest.raises(LiveEvidenceLedgerError, match="automated collection method"):
+        append(ledger, claim("d-manual-method"), config=configured)
 
 
 def test_projection_exposes_future_expired_superseded_conflict_and_quarantine() -> None:

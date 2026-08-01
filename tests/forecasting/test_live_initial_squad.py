@@ -149,6 +149,7 @@ def test_live_faithful_horizon_materialises_vectors_and_lineage() -> None:
     assert result["model_config_id"] == "live-faithful-v1.feature-complete"
     assert result["status"] == "degraded"
     assert "official_fdr_team_prior_baseline" in result["limitations"]
+    assert "historical_player_prior_2024_25" in result["limitations"]
     assert len(result["gameweek_forecast_hashes"]) == 2
     for vector in result["player_vectors"].values():
         assert len(vector["expected_points"]) == 2

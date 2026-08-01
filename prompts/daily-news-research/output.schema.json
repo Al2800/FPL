@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prompts/daily-news-research/output.schema.json",
+  "title": "Daily news research search-results capture",
+  "description": "Externally captured search metadata for scripts/discover_evidence_news.py. Snippets and bodies must not appear.",
+  "type": "object",
+  "minProperties": 1,
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "title", "published_at", "rank"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 12,
+          "pattern": "^https://"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "published_at": {
+          "type": "string",
+          "minLength": 20,
+          "description": "ISO-8601 timestamp with timezone"
+        },
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

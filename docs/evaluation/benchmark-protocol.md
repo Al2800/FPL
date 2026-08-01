@@ -1,6 +1,7 @@
 # Benchmark kernel protocol
 
-**Status:** Proposed for the 2026/27 benchmark programme
+**Status:** Accepted contract for the 2026/27 benchmark programme; execution
+remains gated on governed episode artefacts and the live advisory prerequisites
 **Contract version:** 1.0
 **Decision:** ADR-0017
 
