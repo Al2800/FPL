@@ -58,7 +58,7 @@ def test_plan_runs_only_rights_resolved_automated_source_and_exposes_manual_path
     assert plan["content_sha256"] == artifact_hash(plan)
 
 
-def test_disabled_automated_source_is_refused_before_adapter_call() -> None:
+def test_manual_citation_source_refuses_forced_automation_before_adapter_call() -> None:
     config = deepcopy(CONFIG)
     family = next(
         row
@@ -101,7 +101,7 @@ def test_disabled_automated_source_is_refused_before_adapter_call() -> None:
         if row["family_id"] == "official_club_news"
     )
     assert refused["status"] == "blocked"
-    assert "registry_disabled" in refused["reasons"]
+    assert "collection_method_not_automated" in refused["reasons"]
 
 
 def test_funnel_degrades_on_missing_manual_coverage_without_blocking_control() -> None:

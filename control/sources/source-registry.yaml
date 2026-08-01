@@ -2,7 +2,7 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.2"
+registry_version: "0.6.3"
 updated_at: "2026-07-31"
 
 sources:
@@ -95,20 +95,32 @@ sources:
     source_type: html
     authority: canonical
     terms_url: per_club
-    licence_status: unknown
+    licence_status: restricted
     allowed_use: private_analysis_citation_only
     authentication: none
-    collection_method: manual
+    collection_method: manual_citation
     expected_cadence: daily_in_season
     max_staleness: "24h"
     failure_policy: degrade
-    retention_policy: metadata_and_citations_only_until_reviewed
+    retention_policy: metadata_and_citations_only_private_per_ADR-0002
     attribution: "Named club"
-    enabled: false
+    enabled: true
     review_date: "2026-09-01"
+    activation_approval:
+      terms: approved_citation_capture_only
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-07-31"
+      scope: manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape
     notes: >
-      Unstructured injury/return/tactical comments. Bulk collection disabled.
-      Alternative: manual linked evidence entries in the evidence pipeline (WP-08).
+      Unstructured injury/return/tactical comments via immutable citation
+      capture. Owner decision 2026-07-31: official club public pages selected
+      and enabled for private analysis citation only because the source is
+      registered with confirmed restricted citation rights. Collection is
+      manual citation only — automated HTML scrape, bulk article retention and
+      claim extraction stay out of scope. Alternative if a citation is missing:
+      retain an explicit evidence gap and leave the shared structured forecast
+      unchanged.
 
   - source_id: official-competition-schedules
     owner: Premier League / FA / UEFA / FIFA
