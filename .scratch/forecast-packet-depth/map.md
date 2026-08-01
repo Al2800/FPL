@@ -11,6 +11,11 @@ continue analysis before implementation bursts.
 - Team + fixture **do** already affect EP through live-faithful team multipliers
   (Understat attack/defence + ClubElo). Player-level Understat is the missing
   layer, not the existence of fixture adjustment.
+- Ticket 01 resolved: player Understat event rates are joined with quarantine
+  and overlaid into the live-faithful prior; production `event_model_weight`
+  stays 0.0 (challenger config can raise it). Cutoff-safe Odds API h2h
+  snapshots feed the team prior when the slot window matches the decision
+  cutoff; otherwise odds degrade cleanly.
 - The Odds API key is for **match markets** (h2h/totals) into the team prior /
   licensed-odds family — not a substitute for player Understat xG/xA.
 - In-packet opponent / home-away / FDR / multiplier audit trail is **required**

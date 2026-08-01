@@ -2,7 +2,7 @@
 
 **Blocked by:** None
 
-**Status:** open
+**Status:** resolved
 
 **Type:** task
 
@@ -70,16 +70,16 @@ On `weekly-2026-08-02`:
 
 ### Acceptance criteria
 
-- [ ] Documented join report: matched / quarantined / promoted-fallback counts
+- [x] Documented join report: matched / quarantined / promoted-fallback counts
       for the 2025 Understat player capture vs current bootstrap.
-- [ ] Live-faithful path can consume player Understat rates with
+- [x] Live-faithful path can consume player Understat rates with
       `event_model_weight=0` still byte-stable vs control when weight stays 0.
-- [ ] Challenger config path can raise weight without editing prompts or
+- [x] Challenger config path can raise weight without editing prompts or
       hard-coding rules.
-- [ ] When a cutoff-safe odds snapshot is admitted, team prior limitation
+- [x] When a cutoff-safe odds snapshot is admitted, team prior limitation
       `team_prior_odds_absent` clears; missing odds still degrade cleanly.
-- [ ] No API key in git, logs, manifests or packet lineage URLs.
-- [ ] Focused tests cover identity quarantine, weight=0 invariance, and odds
+- [x] No API key in git, logs, manifests or packet lineage URLs.
+- [x] Focused tests cover identity quarantine, weight=0 invariance, and odds
       degradation.
 
 ### Out of scope
@@ -89,8 +89,47 @@ On `weekly-2026-08-02`:
 - Set-piece effect promotion (ticket 04).
 - Changing WC fatigue weight (ticket 05).
 
+## Answer
+
+Implemented and wired into the live initial-squad horizon path.
+
+### Player Understat
+
+- New `src/forecasting/understat_player_context.py`:
+  - identity-safe join with quarantine for ambiguous names;
+  - cross-club unique full-name remap for transfers (e.g. Rogers);
+  - event-rate overlay updates only `expected_goals_per_90` /
+    `expected_assists_per_90` (not points/start_p).
+- Horizon builder enriches the player prior before `build_live_faithful_forecast`.
+- Limitations: `understat_player_event_rates_{applied|partial|absent}`.
+- Compact join report:
+  `reports/forecasting/understat-player-join-2025-to-2026-27.json`
+  (381 unique FPL matches, 6 quarantined, 143 unmatched; regenerable via
+  `scripts/report_understat_player_join.py`).
+- Production control remains `event_model_weight=0.0`;
+  `control/models/live-faithful-v2.events.json` remains the challenger at 0.25.
+
+### Odds → team prior
+
+- New `src/forecasting/live_odds_team_prior.py` projects The Odds API captures
+  into fixture-keyed `registered_predeadline` 1X2 snapshots.
+- Admission requires observation before the packet decision cutoff **and** a
+  valid slot window for that cutoff (diagnostic early wiring captures correctly
+  degrade for the GW1 deadline).
+- `build_understat_attack_defence_team_prior` now accepts `odds_snapshots` and
+  uses `decision_cutoff` as team-prior as_of so T-24h odds can enter near
+  deadline even when bootstrap `observed_at` is earlier.
+- Checkpoint discovers local odds under `data/live-shadow/odds/`.
+
+### Tests
+
+Focused suites covering join/quarantine, weight=0 EP invariance, odds
+accept/degrade, and existing Understat team-prior contracts: green.
+
 ## Comments
 
 - 2026-08-01: live Odds API smoke from this environment returned 10 EPL events
   commencing 2026-08-21 … 2026-08-24 (quota remaining observed). Formal slot
   capture still follows `.scratch/evidence-gap-fill/issues/04-odds-slot-capture-runbook.md`.
+- 2026-08-01: ticket implemented; production EP unchanged at weight 0 until an
+  owner-approved challenger promotion.

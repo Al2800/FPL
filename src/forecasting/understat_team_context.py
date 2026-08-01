@@ -352,10 +352,11 @@ def build_understat_attack_defence_team_prior(
     promoted_team_names: Iterable[str] = (),
     clubelo_ratings_by_fpl_name: Mapping[str, float] | None = None,
     clubelo_body_sha256: str | None = None,
+    odds_snapshots: Mapping[int, Mapping[str, Any]] | None = None,
     params: AttackDefenceParameters | None = None,
     elo_params: EloParameters | None = None,
 ) -> dict[str, Any]:
-    """Build a separate attack/defence team prior from Understat (+ optional ClubElo)."""
+    """Build a separate attack/defence team prior from Understat (+ optional ClubElo/odds)."""
 
     identities = fpl_team_identities(bootstrap)
     name_by_club = {row["club_id"]: row["team_name"] for row in identities}
@@ -387,13 +388,15 @@ def build_understat_attack_defence_team_prior(
     try:
         prior = build_attack_defence_prior(
             season=season,
-            cutoff=observed_at,
+            # Decision cutoff governs odds eligibility so a T-24h snapshot can
+            # enter a packet whose official bootstrap observation is earlier.
+            cutoff=decision_cutoff,
             team_identities=identities,
             fixtures=specs,
             observations=observations,
             promoted_teams=set(promoted_team_names),
             elo_expected_scores=elo_scores,
-            odds_snapshots=None,
+            odds_snapshots=odds_snapshots,
             params=params or AttackDefenceParameters(),
             lineage={
                 "source_id": "understat",
@@ -406,6 +409,9 @@ def build_understat_attack_defence_team_prior(
                 "decision_cutoff": decision_cutoff,
                 "clubelo_body_sha256": clubelo_body_sha256,
                 "clubelo_missing_teams": elo_missing,
+                "odds_fixture_count": (
+                    len(odds_snapshots) if odds_snapshots is not None else 0
+                ),
                 "outcome_data_used": False,
                 "prior_season_xg_only": True,
             },

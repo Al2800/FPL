@@ -31,6 +31,10 @@ from src.forecasting.live_initial_squad import (
 from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.team_attack_defence import AttackDefenceParameters
 from src.forecasting.team_prior import EloParameters
+from src.forecasting.live_odds_team_prior import (
+    discover_latest_odds_capture,
+    odds_snapshots_from_capture,
+)
 from src.forecasting.understat_team_context import (
     UnderstatTeamContextError,
     discover_latest_clubelo_csv,
@@ -73,6 +77,10 @@ DEFAULT_TEAM_CONTEXT_MODEL_PATH = (
 )
 DEFAULT_UNDERSTAT_ROOT = REPO_ROOT / "data" / "live-shadow" / "understat"
 DEFAULT_CLUBELO_ROOT = REPO_ROOT / "data" / "live-shadow" / "clubelo"
+DEFAULT_ODDS_ROOT = REPO_ROOT / "data" / "live-shadow" / "odds"
+DEFAULT_ODDS_PROVIDER_CONFIG_PATH = (
+    REPO_ROOT / "config" / "data_sources" / "2026-27-live-odds-provider.json"
+)
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _POSITIONS = {1: "GKP", 2: "DEF", 3: "MID", 4: "FWD"}
 _BASELINE_MODEL = "official-ep-next-flat-horizon-baseline-v1"
@@ -523,14 +531,19 @@ def _promoted_team_names_from_bootstrap(
 def _load_optional_team_context_inputs(
     *,
     bootstrap: Mapping[str, Any],
+    fixtures: Sequence[Mapping[str, Any]] | None = None,
+    decision_cutoff: str | None = None,
     understat_capture_path: Path | None = None,
     clubelo_csv_path: Path | None = None,
+    odds_capture_path: Path | None = None,
     understat_root: Path = DEFAULT_UNDERSTAT_ROOT,
     clubelo_root: Path = DEFAULT_CLUBELO_ROOT,
+    odds_root: Path = DEFAULT_ODDS_ROOT,
+    odds_provider_config_path: Path = DEFAULT_ODDS_PROVIDER_CONFIG_PATH,
     team_context_model_path: Path = DEFAULT_TEAM_CONTEXT_MODEL_PATH,
     launch_context_path: Path | None = None,
 ) -> dict[str, Any]:
-    """Resolve private local Understat / ClubElo captures for team-prior wiring."""
+    """Resolve private local Understat / ClubElo / Odds captures for team priors."""
 
     capture_path = understat_capture_path
     if capture_path is None:
@@ -538,6 +551,9 @@ def _load_optional_team_context_inputs(
     clubelo_path = clubelo_csv_path
     if clubelo_path is None:
         clubelo_path = discover_latest_clubelo_csv(clubelo_root)
+    odds_path = odds_capture_path
+    if odds_path is None:
+        odds_path = discover_latest_odds_capture(odds_root)
 
     understat_capture: dict[str, Any] | None = None
     understat_path_text: str | None = None
@@ -596,12 +612,50 @@ def _load_optional_team_context_inputs(
                     fixture_scale=float(elo_raw.get("fixture_scale", 0.5)),
                 )
 
+    odds_snapshots: dict[int, dict[str, Any]] = {}
+    odds_summary: dict[str, Any] = {"status": "absent", "reason": "odds_absent"}
+    odds_path_text: str | None = None
+    if (
+        odds_path is not None
+        and odds_path.is_file()
+        and fixtures is not None
+        and decision_cutoff
+    ):
+        try:
+            odds_capture = _read_json_object(odds_path, "odds capture")
+            slots_config = None
+            if odds_provider_config_path.is_file():
+                provider_config = _read_json_object(
+                    odds_provider_config_path, "odds provider config"
+                )
+                raw_slots = provider_config.get("slots")
+                if isinstance(raw_slots, Mapping):
+                    slots_config = dict(raw_slots)
+            odds_snapshots, odds_summary = odds_snapshots_from_capture(
+                odds_capture,
+                fixtures=list(fixtures),
+                bootstrap=bootstrap,
+                decision_cutoff=str(decision_cutoff),
+                slots_config=slots_config,
+            )
+            odds_path_text = str(odds_path.resolve())
+        except (OSError, ValueError, KeyError, TypeError):
+            odds_snapshots = {}
+            odds_summary = {
+                "status": "absent",
+                "reason": "odds_capture_unreadable",
+            }
+            odds_path_text = None
+
     return {
         "understat_capture": understat_capture,
         "understat_path": understat_path_text,
         "clubelo_ratings_by_fpl_name": clubelo_ratings,
         "clubelo_body_sha256": clubelo_hash,
         "clubelo_path": clubelo_path_text,
+        "odds_snapshots": odds_snapshots,
+        "odds_summary": odds_summary,
+        "odds_path": odds_path_text,
         "attack_defence_params": attack_params,
         "elo_params": elo_params,
         "promoted_team_names": _promoted_team_names_from_bootstrap(
@@ -751,6 +805,8 @@ def build_initial_squad_packet(
     team_context = (
         _load_optional_team_context_inputs(
             bootstrap=bootstrap,
+            fixtures=list(verified["fixtures"]),
+            decision_cutoff=str(verified["deadline"]),
             understat_capture_path=understat_capture_path,
             clubelo_csv_path=clubelo_csv_path,
             launch_context_path=(
@@ -764,6 +820,9 @@ def build_initial_squad_packet(
             "clubelo_ratings_by_fpl_name": None,
             "clubelo_body_sha256": None,
             "clubelo_path": None,
+            "odds_snapshots": {},
+            "odds_summary": {"status": "absent", "reason": "odds_absent"},
+            "odds_path": None,
             "attack_defence_params": None,
             "elo_params": None,
             "promoted_team_names": [],
@@ -798,6 +857,8 @@ def build_initial_squad_packet(
             understat_capture=team_context["understat_capture"],
             clubelo_ratings_by_fpl_name=team_context["clubelo_ratings_by_fpl_name"],
             clubelo_body_sha256=team_context["clubelo_body_sha256"],
+            odds_snapshots=team_context.get("odds_snapshots") or None,
+            odds_summary=team_context.get("odds_summary"),
             promoted_team_names=list(team_context["promoted_team_names"]),
             attack_defence_params=team_context["attack_defence_params"],
             elo_params=team_context["elo_params"],
@@ -835,6 +896,7 @@ def build_initial_squad_packet(
         lineage["understat_capture_path"] = team_context.get("understat_path")
         lineage["clubelo_capture_path"] = team_context.get("clubelo_path")
         lineage["clubelo_body_sha256"] = team_context.get("clubelo_body_sha256")
+        lineage["odds_capture_path"] = team_context.get("odds_path")
         lineage["promoted_team_names"] = list(team_context.get("promoted_team_names") or [])
         forecast_quality = {
             "status": "live_faithful_degraded",

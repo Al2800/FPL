@@ -272,3 +272,109 @@ def test_initial_squad_packet_uses_live_faithful_vectors_when_available() -> Non
         len(player["expected_points"]) == 6
         for player in result["packet"]["players"]
     )
+
+
+def test_understat_player_rates_do_not_move_ep_when_event_weight_zero() -> None:
+    prior = _player_prior()
+    prior["players"] = [
+        {
+            "fpl_code": 1002,
+            "position": "MID",
+            "points_per_90": 5.0,
+            "start_probability": 0.85,
+            "minutes_per_start": 80.0,
+            "expected_goals_per_90": 0.1,
+            "expected_assists_per_90": 0.1,
+            "clean_sheets_per_90": 0.05,
+            "saves_per_90": 0.0,
+            "bonus_per_90": 0.2,
+            "yellow_cards_per_90": 0.1,
+            "red_cards_per_90": 0.0,
+            "sample_minutes": 900,
+            "sample_fixtures": 10,
+        }
+    ]
+    prior["content_sha256"] = artifact_hash(prior)
+    match = {
+        "id": "1",
+        "isResult": True,
+        "datetime": "2025-08-15 15:00:00",
+        "h": {"id": "1", "title": "Arsenal"},
+        "a": {"id": "2", "title": "Chelsea"},
+        "xG": {"h": "1.5", "a": "1.0"},
+    }
+    base_capture = {
+        "schema_version": "understat-epl-capture-v1",
+        "source_id": "understat",
+        "season": "2025",
+        "client": "test",
+        "matches": [match],
+        "players": [],
+    }
+    enriched_capture = {
+        **base_capture,
+        "players": [
+            {
+                "id": "9",
+                "player_name": "Midfielder Player",
+                "team_title": "Chelsea",
+                "time": "900",
+                "xG": "20.0",
+                "xA": "15.0",
+            }
+        ],
+    }
+    bootstrap = _bootstrap()
+    bootstrap["teams"] = [
+        {"id": 1, "name": "Arsenal"},
+        {"id": 2, "name": "Chelsea"},
+    ]
+    bootstrap["elements"][1]["first_name"] = "Midfielder"
+    bootstrap["elements"][1]["second_name"] = "Player"
+    bootstrap["elements"][0]["first_name"] = "Keeper"
+    bootstrap["elements"][0]["second_name"] = "One"
+
+    control = build_live_faithful_initial_squad_horizon(
+        bootstrap=bootstrap,
+        fixtures=_fixtures(),
+        official_bootstrap_sha256="a" * 64,
+        official_fixtures_sha256="b" * 64,
+        observed_at="2026-07-31T08:00:00Z",
+        decision_cutoff="2026-08-21T17:30:00Z",
+        horizon_gameweeks=[1, 2],
+        player_prior=prior,
+        model_config=MODEL,
+        understat_capture=base_capture,
+    )
+    treated = build_live_faithful_initial_squad_horizon(
+        bootstrap=bootstrap,
+        fixtures=_fixtures(),
+        official_bootstrap_sha256="a" * 64,
+        official_fixtures_sha256="b" * 64,
+        observed_at="2026-07-31T08:00:00Z",
+        decision_cutoff="2026-08-21T17:30:00Z",
+        horizon_gameweeks=[1, 2],
+        player_prior=prior,
+        model_config=MODEL,
+        understat_capture=enriched_capture,
+    )
+    assert MODEL["event_model_weight"] == 0.0
+    assert (
+        treated["lineage"]["understat_player_event_rates"]["players_enriched"] >= 1
+    )
+    assert control["lineage"]["team_prior_sha256"] == treated["lineage"][
+        "team_prior_sha256"
+    ]
+    for player_id, vector in control["player_vectors"].items():
+        assert vector["expected_points"] == treated["player_vectors"][player_id][
+            "expected_points"
+        ]
+
+
+def test_challenger_event_weight_can_raise_without_prompt_edits() -> None:
+    challenger = deepcopy(MODEL)
+    challenger["event_model_weight"] = 0.25
+    challenger.pop("content_sha256", None)
+    challenger["content_sha256"] = artifact_hash(challenger)
+    assert challenger["event_model_weight"] == 0.25
+    assert challenger["content_sha256"] != MODEL["content_sha256"]
