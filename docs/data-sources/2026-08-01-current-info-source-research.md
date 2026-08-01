@@ -161,17 +161,17 @@ hallucinated xMins.
 
 ---
 
-## 7. Owner decisions requested
+## 7. Owner decisions
 
-1. Admit `control/identities/world-cup-2026-priors.csv` into the next
-   preseason checkpoint’s WC / launch_context path without enabling
-   `world-cup-2026` automated collection?  
-2. Prioritise odds slot capture this week (key already approved in registry)?  
-3. Approve ClubElo registry upgrade to restricted + attribution and enable
-   bounded PIT download?  
-4. Commission Understat ToS/rights review, or keep gap and lean on official
-   `expected_*` + odds?  
-5. Open W7 calibration ticket now that raw-data prerequisites are in view?
+| # | Decision | Status (2026-08-01) |
+|---|---|---|
+| 1 | Admit WC priors CSV / enable derived path | **Done** — registry + `weekly-2026-08-02` |
+| 2 | Odds slot capture | **Blocked** — `THE_ODDS_API_KEY` not in environment |
+| 3 | ClubElo restricted + attribution + enable | **Done** — PIT capture script ran |
+| 4 | Understat | **Keep gap** — rights unresolved; not enabled |
+| 5 | W7 calibration | **Done provisional** — see enablement log |
+
+See `docs/data-sources/2026-08-01-current-info-enablement.md`.
 
 ---
 

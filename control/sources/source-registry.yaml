@@ -2,8 +2,8 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.3"
-updated_at: "2026-07-31"
+registry_version: "0.6.5"
+updated_at: "2026-08-01"
 
 sources:
   - source_id: fpl-official-endpoints
@@ -360,31 +360,34 @@ sources:
       the shared structured forecast.
 
   - source_id: clubelo
-    owner: ClubElo / Lars Rønn Olsen
+    owner: ClubElo / Lars Schiefler
     source_type: api
     authority: secondary
-    terms_url: "http://clubelo.com/"
-    licence_status: unknown
-    allowed_use: private_analysis_pending_review
+    terms_url: "http://clubelo.com/About"
+    licence_status: restricted
+    allowed_use: private_analysis_with_attribution
     authentication: none
     collection_method: api
     expected_cadence: daily
     max_staleness: "7d"
     failure_policy: degrade
-    retention_policy: local_pending_review
-    attribution: "ClubElo"
-    enabled: false
-    review_date: "2026-09-01"
+    retention_policy: local_gitignored_with_attribution
+    attribution: "ClubElo (clubelo.com) — Lars Schiefler"
+    enabled: true
+    review_date: "2026-10-01"
+    activation_approval:
+      terms: approved_reuse_with_citation
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-01"
+      scope: private_local_point_in_time_elo_capture_no_backfill_no_redistribution
     notes: >
-      Tier 1 team-strength baseline candidate. Ratings are derived from results and
-      omit national cups. Historical rating availability and reuse terms must be
-      verified before use; a current rating must never be backfilled into an older
-      episode. Alternative: odds-implied and simple Elo fitted point-in-time on
-      football-data.co.uk results. Research note 2026-08-01
-      (docs/data-sources/2026-08-01-current-info-source-research.md): ClubElo About
-      page states calculations/rankings may be reused for any further use with
-      citation — owner still must flip licence_status/allowed_use and enable
-      only bounded point-in-time capture (no backfill).
+      Tier 1 team-strength baseline. Owner decision 2026-08-01: About page
+      permits reuse of calculations/rankings for any further use with citation.
+      Capture only point-in-time daily rankings via api.clubelo.com/YYYY-MM-DD;
+      never backfill a current rating into an older episode. National cups omitted
+      by source design. Alternative: odds-implied and simple Elo on
+      football-data.co.uk results.
 
   - source_id: statsbomb-open
     owner: StatsBomb
@@ -485,25 +488,30 @@ sources:
     source_type: file
     authority: secondary
     terms_url: per_source
-    licence_status: unknown
-    allowed_use: private_analysis_one_off_priors
+    licence_status: restricted
+    allowed_use: private_analysis_derived_priors_no_bulk_scrape
     authentication: none
     collection_method: manual
     expected_cadence: one_off
     max_staleness: "n/a"
     failure_policy: require_manual_confirmation
     retention_policy: local_derived_priors_only
-    attribution: "FIFA / named official sources"
-    enabled: false
-    review_date: "2026-08-15"
+    attribution: "FIFA / named official sources (see CSV source column)"
+    enabled: true
+    review_date: "2026-10-01"
+    activation_approval:
+      terms: approved_derived_csv_only
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-01"
+      scope: admit_control_identities_world_cup_2026_priors_csv_no_fifa_html_scrape
     notes: >
       Per-player tournament minutes, elimination dates, return-to-training.
-      Automated bulk collection stays disabled. Assembly method is the staged
-      manual/citation workflow in docs/handover-world-cup-priors.md (Stages 0–5).
-      Preferred inputs: FIFA results for elimination dates; FPL bootstrap for PL
-      join keys; openfootball/worldcup.json only as a cross-check against FIFA.
-      Output: control/identities/world-cup-2026-priors.csv (committed derived table).
-      Interim alternative: binary participant flag + nation elimination date only.
+      Owner decision 2026-08-01: enabled only to admit the committed derived
+      table control/identities/world-cup-2026-priors.csv into launch_context /
+      world_cup_return_fatigue. Automated FIFA/HTML bulk scrape stays out of
+      scope. Assembly remains the staged manual/citation workflow in
+      docs/handover-world-cup-priors.md (Stages 0–5).
 
 
   - source_id: sportradar-soccer

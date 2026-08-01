@@ -1,0 +1,28 @@
+{
+  "content_sha256": "33e6118b86394707402704bc770060233884c1ae2c6fe38e5b8cd13070fa5529",
+  "fallback_policy": {
+    "explicit_chance_percent_over_100": "ignore_use_status",
+    "missing_key": 0.5,
+    "status_a_without_chance_live_default": 1.0
+  },
+  "fit_seasons": [
+    "2022-23",
+    "2023-24"
+  ],
+  "limitation": "vaastav merged_gw has no pre-deadline chance_of_playing fields; calibration joins season players_raw flags to GW outcomes and is therefore provisional / non-point-in-time. Live path should prefer immutable bootstrap snapshots once a T-48h\u2026final chain exists.",
+  "locked_validation_season": "2024-25",
+  "model_id": "availability-flags-v1.provisional",
+  "point_in_time": false,
+  "schema_version": "availability-flags-v1",
+  "start_probability_by_key": {
+    "chance:100": 0.450644,
+    "chance:25": 0.24834,
+    "chance:50": 0.389952,
+    "chance:75": 0.490859,
+    "status:a": 0.37916,
+    "status:d": 0.391611,
+    "status:i": 0.292015,
+    "status:s": 0.5,
+    "status:u": 0.010616
+  }
+}

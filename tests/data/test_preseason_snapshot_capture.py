@@ -850,18 +850,20 @@ def test_timestamp_less_json_optional_is_quarantined(tmp_path: Path) -> None:
 def test_disabled_optional_source_is_never_admitted(tmp_path: Path) -> None:
     """A registered but disabled/unresolved source remains a named gap."""
     registry = load_registry()
-    artifact = tmp_path / "world-cup.json"
+    artifact = tmp_path / "understat.json"
     artifact.write_text(
         json.dumps({"available_at": "2026-07-01T00:00:00Z", "players": []}),
         encoding="utf-8",
     )
 
+    # understat remains disabled (rights unresolved); world-cup-2026 is now enabled
+    # for derived CSV admission and is no longer a valid disabled-source fixture.
     result = _bind_optional_artifact(
-        family_id="world_cup_return_fatigue",
+        family_id="player_ratings",
         path=artifact,
         deadline=DEADLINE,
-        source_id="world-cup-2026",
-        missing_reason="optional_world_cup_priors_not_supplied",
+        source_id="understat",
+        missing_reason="optional_player_ratings_not_supplied",
         checkpoint_dir=tmp_path / "checkpoint",
         sidecar_path=None,
         registry=registry,

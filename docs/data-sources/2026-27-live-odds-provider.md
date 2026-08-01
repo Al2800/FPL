@@ -37,6 +37,10 @@ structured forecast unchanged.
 Never paste the key into chat, a CLI argument, a config file or Git. The
 adapter reads only `THE_ODDS_API_KEY`.
 
+**Status 2026-08-01:** cloud agent environment has no `THE_ODDS_API_KEY`.
+Odds family remains a named gap on `weekly-2026-08-02` until the owner sets
+the key in the capture shell and runs the slot commands below.
+
 For a process-local PowerShell session:
 
 ```powershell
