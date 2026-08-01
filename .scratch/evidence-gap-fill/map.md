@@ -20,9 +20,15 @@ competition. Stay inside Phase 0/1; no rival modelling or account execution.
   envelope; checkpoint remains degraded while optional live evidence is absent.
 - Ticket 03 resolved: set-piece ledger is derived from admitted official
   bootstrap bytes; effect weights remain shadow-only.
+<<<<<<< HEAD
+- Ticket 06 resolved: the registered StatsBomb Open local-transform path is
+  ready but has no verified 2026/27 Premier League envelope; ratings remain
+  degraded and shadow-only with no effect weights.
+=======
 - Ticket 05 resolved: official FPL availability remains automated; W4
   persistence is a named, default-disabled challenger; club and high-impact
   role claims remain manual-citation-only until the W12 rights decision.
+>>>>>>> origin/main
 
 ## Fog
 
