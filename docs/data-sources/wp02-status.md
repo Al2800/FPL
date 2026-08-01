@@ -21,7 +21,7 @@
 |---|---|
 | Official rules/news HTML | Manual citation into `control/rules/` (WP-01) |
 | Authenticated manager state | Manual entry (ADR-0005); public entry endpoints for cross-check later |
-| Club communications | Manual linked evidence (WP-08) |
+| Club communications | Enabled for manual citation only (registry 0.6.3+; no HTML scrape) |
 | Competition schedules | FPL fixtures endpoint + manual revision notes |
 
 ## Out of scope for this pass

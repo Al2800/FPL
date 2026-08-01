@@ -1,7 +1,8 @@
 # Source profile: expected-minutes evidence
 
-- Registries: `official-lineups-minutes`, `official-club-communications` and
-  `official-competition-schedules` (all disabled for automated collection).
+- Registries: `official-lineups-minutes` and `official-club-communications`
+  (enabled for manual citation only; automated collection stays off);
+  `official-competition-schedules` remains disabled for automated collection.
 - Evidence: official line-ups/minutes, injury and press-conference statements,
   training return, cup/Europe/international load, rest/travel, tactical or manager
   changes and role competition.

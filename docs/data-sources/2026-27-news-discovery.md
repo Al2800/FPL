@@ -27,9 +27,23 @@ fetching or admit a claim.
 When an exact club feed or supported API is verified, change only that
 catalogue row to `verified_rss_or_api`, record its endpoint and validation
 evidence, and retain the same timestamp/canonical-URL/immutable-artifact
-rules.  This catalogue does not turn `official-club-communications` in the
-source registry on: automated claim extraction remains disabled until the
-separate source-rights and evidence-admission gate approves it.
+rules.  Registry `official-club-communications` is enabled for manual citation
+only (see `2026-27-club-communications-citation-decision.md`). This catalogue
+still does not automate article fetching or claim extraction.
+
+## Scheduled web search
+
+Daily discovery is **Lane A** inside the Composer 2.5 strategy research
+automation:
+
+- Driver recipe: `config/automations/2026-27-daily-strategy-research.json`
+- Driver prompt: `prompts/daily-strategy-research/v1.md`
+- Nested discovery prompt: `prompts/daily-news-research/v1.md`
+- Loop: `docs/evaluation/2026-27-daily-agent-strategy-loop.md`
+
+Lane A captures search **metadata only**, runs this script, and feeds official
+leads into the strategy briefing. It does not admit claims. Strategy debate
+from X/blogs stays in Lane B (briefing only).
 
 ## Run
 

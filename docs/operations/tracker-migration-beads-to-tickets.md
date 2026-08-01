@@ -19,14 +19,14 @@ Feature directory: `.scratch/outstanding-beads/`
 | 01 | Restore fresh-clone CI artifact boundary | resolved | — | `FPL-cfb` |
 | 02 | Approve or decline a historical overall-rank threshold source | resolved | — | `FPL-761` |
 | 03 | Close historical score-to-overall-rank calibration | resolved | 02 | `FPL-2xu` |
-| 04 | Capture 2026/27 official global standings snapshots | ready-for-human | — (implementation gated by prospective source approval) | `FPL-762` |
-| 05 | Rehearse official lineup capture or approve a low-cost challenger | ready-for-human | — | `FPL-eah` |
-| 06 | Approve the live initial-squad policy | ready-for-human | — | `FPL-bsw.38` |
-| 07 | Close Benchmark Kernel residual | ready-for-agent | 06 | `FPL-bsw` |
+| 04 | Capture 2026/27 official global standings snapshots | resolved | — | `FPL-762` |
+| 05 | Rehearse official lineup capture or approve a low-cost challenger | resolved | — | `FPL-eah` |
+| 06 | Approve the live initial-squad policy | resolved | — | `FPL-bsw.38` |
+| 07 | Close Benchmark Kernel residual | resolved | 06 | `FPL-bsw` |
 
-Frontier (unblocked now): **04, 05, 06**. These begin with owner decisions;
-ticket 04 changes to `ready-for-agent` only after its prospective source gate
-is approved. Tickets 01–03 are resolved.
+All seven migrated tickets are now resolved. The remaining active frontier is
+tracked separately under `.scratch/evidence-gap-fill/`; those tickets do not
+re-open or mutate the archived Beads migration.
 
 ## How to work a ticket
 
