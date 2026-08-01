@@ -37,13 +37,19 @@ continue analysis before implementation bursts.
 
 ## Analysis notes (2026-08-01)
 
-### EP / team+fixture impact — confirmed happening
+### EP / team+fixture impact — confirmed happening (with clipping)
 
 Live-faithful already applies per-fixture team multipliers from Understat
-match xG attack/defence + ClubElo. Player EP varies across GW1–GW6 for most
-of the universe; that variation is fixture-driven. What is missing is
-**player-level** Understat (capture has 537 player rows; production
-`event_model_weight=0.0`) and market odds in the team prior.
+match xG attack/defence + ClubElo. Player EP varies across GW1–GW6 for much
+of the universe; that variation is fixture-driven (Chelsea mean EP moves
+with the Arsenal away week). Missing pieces remain **player-level** Understat
+(capture has 537 player rows; production `event_model_weight=0.0`) and market
+odds in the team prior.
+
+Clipping nuance: Arsenal attack multipliers are **1.45 for all six GW1–GW6
+fixtures**, so Saka EP is flat even though FDR/xG opponents differ. Audit
+trails should expose pre-clip expected xG / Elo, not only the bounded
+multiplier, or agents will conclude fixtures do nothing for elite sides.
 
 ### Player Understat join (naive probe)
 

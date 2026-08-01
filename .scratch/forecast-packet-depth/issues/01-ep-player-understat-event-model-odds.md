@@ -26,6 +26,12 @@ On `weekly-2026-08-02`:
   team attack/defence xG + ClubElo.
 - Example: Rogers EP `[5.43, 5.39, 3.13, 5.43, 5.36, 5.43]` — GW3 dip is fixture
   strength, not noise.
+- **Caveat:** elite attacks can still look flat when
+  `attack_multiplier` hits the configured ceiling (`1.45`). Arsenal’s GW1–GW6
+  attack multipliers are all clipped at 1.45, so Saka’s EP is
+  `[4.89 × 6]` despite FDR swinging 2→4. Fixture impact is real but partially
+  censored by bounds; ticket 02’s audit trail must show raw expected xG /
+  pre-clip signals or agents will misread “no fixture effect.”
 - Production `event_model_weight = 0.0`, so only the rate×minutes×multiplier
   path scores. Event/xG player model exists but is not control.
 - Understat capture already contains **537 player rows** (`xG`, `xA`, `npxG`,
