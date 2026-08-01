@@ -4,6 +4,10 @@
 **Control artifact:** `control/identities/2026-27-launch-context.json`
 **World Cup ledger:** `control/identities/world-cup-2026-priors.csv`
 
+The 27 July artifact remains immutable. A 31 July successor was generated
+locally after the official universe changed; it is not a mutation of the
+reviewed artifact.
+
 ## What this provides
 
 The launch context makes the initial-squad cold start reproducible. It binds an
@@ -137,3 +141,21 @@ Pass the resulting `context_path` and copied World Cup CSV path explicitly to
 `scripts/capture_preseason_snapshot.py`. FPL-756 will admit them only when the
 checkpoint has identical raw bootstrap bytes; a different universe is recorded
 as `official_bootstrap_hash_mismatch` and exposes no context bytes downstream.
+
+## 31 July successor
+
+Using the registered local 2025/26 roster and the official bootstrap captured at
+`2026-07-31T19:22:08Z`, the successor context was built with:
+
+- context SHA-256: `6d9dad02e85b3b3f428638105b28e9b453f60d149955417879a2b4d0c62a2dea`;
+- manifest SHA-256: `ea6324eb0f3249184e69b90c7fc93c909e090755dcbb47346b5ded65d8bde4b0`;
+- current official players: 564; prior roster rows: 841;
+- class counts: 86 promoted, 27 new to FPL, 26 transferred and 425 established;
+- World Cup coverage: 141 current-code matches out of 176 rows, 32 non-current
+  codes and three blank codes;
+- return-to-training dates: zero.
+
+The successor is available under the gitignored content-addressed snapshot
+directory and should be passed explicitly to the next checkpoint capture. Its
+missing return dates remain a named degradation; no neutral dates were
+invented.
