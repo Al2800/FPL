@@ -280,9 +280,11 @@ def build_live_faithful_initial_squad_horizon(
 
     forecasts: list[dict[str, Any]] = []
     vectors: dict[str, dict[str, list[float]]] = {}
+    prior_season = str(player_prior.get("season", "")).strip()
+    prior_season_label = prior_season.replace("-", "_") or "unknown"
     limitations = [
         "official_fdr_team_prior_baseline",
-        "historical_player_prior_2024_25",
+        f"historical_player_prior_{prior_season_label}",
         "uncertainty_proxy_from_start_probability",
         "launch_context_not_applied_inside_forecaster"
         if launch_context_status != "applied"

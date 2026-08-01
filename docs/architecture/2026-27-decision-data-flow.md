@@ -103,7 +103,7 @@ in place.
 
 | Artifact | Built from | Weighting inside the artifact | Path / owner |
 |---|---|---|---|
-| **Player prior** (one completed season) | Vaastav (or locked replay prior) | Single envelope per run — **not** blended 2024/25+2025/26 | Default: locked 2024/25 replay prior; refreshed 2025/26 at `data/snapshots/2026-27/priors/…` |
+| **Player prior** (one completed season) | Vaastav completed 2025/26 | Single envelope per run — **not** blended with older seasons | Default: `reports/forecasting/2026-27-shared-player-prior-2025-26.json` (season `2025-26`) |
 | **Team / FDR prior** | Official fixtures FDR (live initial-squad) | Explicit baseline limitation when Elo/odds absent | Built inside `live_initial_squad` |
 | **Feature state** | Official bootstrap + fixtures + optional odds/ratings | Precedence in `feature-source-precedence.yaml`; missing optional → degrade | Checkpoint-bound |
 | **Six-GW live-faithful horizon** | Prior + feature state + model config | See §6 | `live-faithful-v1.feature-complete` |
@@ -158,9 +158,10 @@ From `live-faithful-v1.feature-complete`:
 | Event decomposition | `event_model_weight = 0.0` | **Off** — retained as rejected ablation |
 | Odds / unstructured | optional | **Absent → degrade**, never fabricate 0.5 / “neutral” |
 
-**Priors:** exactly **one** prior envelope per run. Default is still the locked
-2024/25 replay prior; the 2025/26 file replaces it only when that path is
-selected — they are never averaged together.
+**Priors:** exactly **one** prior envelope per run. The live default is the
+completed **2025/26** envelope. Older replay priors remain available for
+historical ablations only — they are never averaged together with the live
+default.
 
 ### 7.2 Evidence adjustments (LLM path — bounded, not free blend)
 
@@ -219,7 +220,7 @@ system — do not pretend the optimiser “knows” it.
 | Manager state manual | A | Cannot run true owned-squad transfer weeks |
 | WC return dates thin | B | Fatigue flags incomplete |
 | Strategy briefings not yet activated in Cursor UI | D | Human lacks daily chip/DEFCON depth |
-| Default prior still 2024/25 unless path overridden | B | Cold-start uses older season envelope |
+| (resolved) Live default prior is 2025/26 | B | Older 2024/25 replay prior kept for historical ablations only |
 
 ## 10. Design stance (do not erode)
 
@@ -235,8 +236,6 @@ system — do not pretend the optimiser “knows” it.
 1. Activate the Composer daily strategy automation (Plane D) so briefings
    exist every morning.  
 2. Keep official capture on the scheduler cadence (Plane A).  
-3. Wire the **2025/26 prior** as the explicit live default when owner accepts
-   that envelope (still one prior, not a blend).  
-4. Admit only high-impact **official** citations into the ledger (Plane C).  
-5. Run initial-squad checkpoints against each new manifest and diff them —
+3. Admit only high-impact **official** citations into the ledger (Plane C).  
+4. Run initial-squad checkpoints against each new manifest and diff them —
    always from the same frozen packet the agents see.
