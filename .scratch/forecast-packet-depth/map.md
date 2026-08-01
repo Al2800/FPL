@@ -47,10 +47,19 @@ of the universe; that variation is fixture-driven. What is missing is
 
 ### Player Understat join (naive probe)
 
-With team aliases + web_name/full-name overlap: ~326/537 unique matches,
-~4 ambiguous (Murphy/Fletcher collisions), ~207 missing (transfers, dual-club
-rows, name/token mismatches, promoted-only FPL players). Ticket 01 must ship
-a real identity report with quarantine — not this probe.
+With team aliases + web_name/full-name overlap: ~354/537 unique matches,
+~4 ambiguous (Murphy/Fletcher collisions), ~179 missing. Many misses are
+**expected**, not bugs:
+
+- Understat 2025 still includes relegated-club players (West Ham, Burnley,
+  Wolves, etc.) absent from the 2026/27 FPL bootstrap.
+- Club changes break team-scoped joins (e.g. Rogers now Chelsea in bootstrap,
+  still Villa-tagged in the 2025 Understat row until remapped).
+- Some stars are simply not in the current bootstrap universe (e.g. no Salah
+  row in this checkpoint’s elements).
+
+Ticket 01 must ship a real identity report with quarantine and
+cross-club remaps — not this probe.
 
 ### Odds API
 
@@ -68,6 +77,21 @@ surface for reasoning now; scoring effects stay shadow until ablation.
 
 Availability ledger claims exist but do not move start_p. Model-run admission
 can grow press/club clues; host blend is ticket 03.
+
+### Set-piece volume ready for visibility
+
+Admitted roles on this checkpoint: 64 penalty / 60 DFK / 71 corner-or-indirect
+(195 active). Rank-1 pens include Saka, Palmer, Isak, Haaland, Mateta, etc.
+Ticket 04 is visibility-first.
+
+### Suggested implementation order (not started)
+
+1. Ticket 02 — fixture audit trail (unblocks agent/human reasoning immediately)
+2. Ticket 03 — availability → start_p blend (largest decision miss)
+3. Ticket 01 — player Understat + odds team prior (heavier; needs identity work)
+4. Ticket 04 — set-piece surface (quick once audit companion exists)
+5. Ticket 06 — gap panel / family integration glue
+6. Ticket 05 — fatigue weight research (no code raise without answer)
 
 ## Cross-links
 
