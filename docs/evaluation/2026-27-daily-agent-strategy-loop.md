@@ -1,90 +1,71 @@
 # 2026/27 daily agent-driven strategy loop
 
-Architect map of hard stats, ledger join points and weighting:
-`docs/architecture/2026-27-decision-data-flow.md`.
+Architect map: `docs/architecture/2026-27-decision-data-flow.md`.
 
-## Problem
+## Decision stance
 
-Repeating a six-GW optimiser run each day is necessary but not sufficient.
-Strong human FPL process also rebuilds **situational strategy understanding**
-every day: chip paths, premium pivots, captain ladders, DEFCON/cheap-defence
-gambles, fixture turns and early-Wildcard pressure. That understanding today
-mostly lives in fast community posts (X/blogs/model screens), not in our
-structured packet.
+The **Composer 2.5 web-search strategy agent is the primary advisory
+decision**. That is where reasoning and strategising happen (chip paths,
+structure, captains, DEFCON stacks, when to ignore pure EP).
 
-This lab therefore runs a **Composer 2.5 daily strategy research agent** as the
-morning driver, then uses the deterministic checkpoint as the legality and
-scoring spine.
+Hard stats and the six-GW live-faithful packet are the **statistical base** the
+agent must read. Deterministic / robust optimiser arms remain **comparators**
+and legality stress tests. The host **rules-validates and rescores** the
+agent’s declared 15. The owner still approves any real FPL entry.
+
+LLMs never enforce rules, never execute account writes, and never silently
+edit the frozen packet.
 
 ## Daily sequence
 
 ```text
-07:00 UTC  Composer 2.5 strategy research automation
-           ├─ Lane A: official club/PL discovery (metadata only)
-           └─ Lane B: strategy intelligence briefing (chips, premiums,
-              captains, DEFCON, early WC) with citations
+07:00 UTC  Composer 2.5 strategy decision automation
+           ├─ Lane A: official discovery (metadata)
+           ├─ Read latest frozen packet / comparator arms if present
+           ├─ Lane B: web search (strategy debate)
+           └─ PRIMARY ADVISORY DECISION
+               recommended 15 + chips + captains + falsifiers
                → reports/strategy-research/YYYY-MM-DD.md
 
-Morning     Human reads briefing; admits only decision-relevant official
-            citations into the evidence protocol when justified
-
 Capture     Immutable official snapshot (scheduler / manual)
-            → data/snapshots/2026-27/preseason/<checkpoint>/
+            → data/snapshots/.../manifest.json
 
 Checkpoint  scripts/run_initial_squad_checkpoint.py
-            → six-GW live-faithful packet + deterministic/robust arms
-            → diff vs previous checkpoint
+            → freeze six-GW packet + deterministic/robust comparators
 
-Review      Human compares optimiser proposal with the day's strategy
-            briefing (and any human/reference arm). Approval stays blocked
-            until degradations are accepted and owner signs a named proposal.
+Handoff     Host validates/rescores the strategy agent’s declared 15
+            against that frozen packet (human_reference / external proposal
+            shape). Challenger may stress the rationale.
+            Owner approval still required for manual entry.
 ```
 
-## What the agent owns vs what code owns
+When the checkpoint does not yet exist that morning, the agent still decides
+from the best available packet/bootstrap and marks `bound_packet_sha256:
+unavailable` with lower confidence. Re-bind after the checkpoint lands.
+
+## What each layer owns
 
 | Concern | Owner |
 |---|---|
-| Chip-path hypotheses, community model splits, named watchlists | Daily strategy agent (Lane B) |
-| Official injury/team-news lead discovery | Daily strategy agent (Lane A) → human citation |
-| Six-GW EP / start / uncertainty vectors | `live-faithful` + prior (deterministic) |
-| Legal 15, XI, captain, bench, objective | Initial-squad optimiser (deterministic) |
-| Rules validity | Rules validator (deterministic) |
-| Approval / manual entry | Owner only |
-
-LLMs propose understanding and optional external arms. They never clear the
-approval gate.
-
-## Relationship to the X-post depth target
-
-The briefing template in `prompts/daily-strategy-research/v1.md` is deliberately
-shaped like strong preseason strategy notes:
-
-1. chip and transfer path hypotheses + falsifiers;
-2. premium / template pivots and model disagreement;
-3. captain ladder;
-4. DEFCON / cheap defence watch under manager uncertainty;
-5. bench depth and FT-rolling fragility;
-6. official leads worth citing;
-7. watchlist for the next deterministic run.
-
-Community numbers (EV gaps, ownership claims) must be **attributed or marked
-unknown**. Inventing Review/Solio-style deltas is prohibited.
+| Prices, priors, six-GW EP/start/uncertainty | Statistical base (deterministic) |
+| Official injury/team-news leads | Lane A → human citation into ledger |
+| Chip path, squad thesis, named 15, captain | **Strategy agent (final advisory)** |
+| Legal validation + objective rescoring | Deterministic host |
+| Comparator EP-max / robust beams | Deterministic / robust arms |
+| FPL site entry | Owner only |
 
 ## Governance wall
 
-- Lane B content is **not** registered evidence. It must not enter the live
-  evidence ledger or silently adjust the forecast packet.
-- Lane A can become a manual derived claim only through the existing citation
-  protocol under admitted sources.
-- Unregistered analyst/blog/X accounts remain barred from automated admission
-  (`unregistered_analyst_or_blog_policy` in the evidence config).
+- Community/X content informs the strategy decision with citations; it is not
+  auto-admitted to the evidence ledger.
+- Official citations still use the ledger protocol when they must become
+  structured claims.
+- `ready_for_manual_entry` stays false until owner sign-off on a named,
+  host-validated proposal hash.
 
 ## Activate
 
 Recipe: `config/automations/2026-27-daily-strategy-research.json`  
 Prompt: `prompts/daily-strategy-research/v1.md`  
-UI: [cursor.com/automations](https://cursor.com/automations) — model
-**Composer 2.5**, cron `0 7 * * *` UTC, repo `Al2800/FPL` @ `main`.
-
-The narrower news-only recipe remains as the nested Lane A procedure; do not
-run both automations as duplicate morning jobs.
+UI: [cursor.com/automations](https://cursor.com/automations) — **Composer 2.5**,
+cron `0 7 * * *` UTC, repo `Al2800/FPL` @ `main`.

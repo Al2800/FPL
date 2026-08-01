@@ -26,20 +26,24 @@ def test_strategy_recipe_assigns_composer_25_as_morning_driver() -> None:
     assert RECIPE["model"]["id"] == "composer-2.5"
     assert RECIPE["trigger"]["cron"] == "0 7 * * *"
     assert RECIPE["tools"]["web_search"] is True
-    assert RECIPE["governance"]["community_content_lane"] == (
-        "strategy_intelligence_only"
+    assert RECIPE["governance"]["role"] == "primary_advisory_decision_arm"
+    assert RECIPE["governance"]["deterministic_arms_role"] == (
+        "comparators_and_legality_stress_tests"
     )
-    assert "six_gw_live_faithful_horizon" in RECIPE["governance"]["does_not_replace"]
+    assert "host_rules_validation_and_rescoring" in RECIPE["governance"][
+        "does_not_replace"
+    ]
 
 
-def test_strategy_prompt_targets_chip_defcon_and_governance_wall() -> None:
+def test_strategy_prompt_is_primary_decision_arm() -> None:
     lowered = PROMPT.lower()
     assert "composer 2.5" in lowered
     assert "web search" in lowered
+    assert "primary advisory" in lowered
+    assert "recommended 15" in lowered
     assert "chip" in lowered
     assert "defcon" in lowered
-    assert "haaland" in lowered or "premium" in lowered
-    assert "lane b" in lowered
+    assert "comparator" in lowered
     assert "never" in lowered
     assert (ROOT / RECIPE["prompt"]["path"]).is_file()
     assert (ROOT / RECIPE["inputs"]["loop_doc_path"]).is_file()

@@ -23,55 +23,50 @@
 ┌──────────────────────────────────────────────────────────────────────────┐
 │ PLANE 0 — GOVERNANCE                                                     │
 │ source-registry.yaml · rules YAML · evidence / capture configs           │
-│ (nothing collects or admits without this)                                │
 └──────────────────────────────────────────────────────────────────────────┘
-                 │ enables / blocks
+                 │
                  ▼
 ┌────────────────────────────┐    ┌────────────────────────────────────────┐
 │ PLANE A — HARD STATS       │    │ PLANE C — UNSTRUCTURED / CITATION      │
-│ Official FPL API           │    │ Club / PL / lineups (manual citation)  │
-│ Vaastav history            │    │ Official FPL news (manual citation)    │
-│ football-data.co.uk        │    │                                        │
-│ Odds API (slots)           │    │ PLANE D — WEB STRATEGY SEARCH          │
-│ StatsBomb Open (local)     │    │ Composer daily research (X/blogs/etc.) │
-│ Launch context / WC priors │    │ → briefing ONLY unless promoted        │
+│ Official FPL, Vaastav,     │    │ Official club / lineups / news         │
+│ football-data, odds, …     │    │ → live evidence ledger (registered)    │
 └─────────────┬──────────────┘    └───────────────────┬────────────────────┘
-              │                                         │
-              ▼                                         ▼
-┌────────────────────────────┐    ┌────────────────────────────────────────┐
-│ PLANE B — STAT BASE        │    │ LIVE EVIDENCE LEDGER                   │
-│ Player prior (one season)  │    │ append-only claims + rights snapshot   │
-│ Team/FDR prior             │    │ (official / registered citations only) │
-│ Feature state              │    └───────────────────┬────────────────────┘
+              ▼                                       │
+┌────────────────────────────┐                        │
+│ PLANE B — STAT BASE        │                        │
+│ 2025/26 player prior       │                        │
 │ Six-GW live-faithful       │                        │
-│   forecast packet          │                        ▼
-│ Initial-squad / solver     │    ┌────────────────────────────────────────┐
-│   input (frozen)           │───▶│ CANDIDATE-BOUNDARY RETRIEVAL PACKET    │
-└────────────────────────────┘    │ small, budgeted claims for LLM arms    │
-                                  └───────────────────┬────────────────────┘
-                                                      │
-              ┌───────────────────────────────────────┼──────────────────┐
-              ▼                                       ▼                  ▼
-     Deterministic / robust                  Evidence-agent arm    Challenger
-     optimiser (no LLM)                      proposes bounded      accept/reject
-                                             EP / minutes deltas
-                                                      │
-                                                      ▼
-                                  ┌────────────────────────────────────────┐
-                                  │ HOST VALIDATION + SCORED PROPOSAL      │
-                                  │ rules · hashes · approval gate         │
-                                  │ (LLMs never enforce or execute)        │
-                                  └────────────────────────────────────────┘
+│ Frozen packet (read-only   │◄── retrieval packet ───┘
+│  for all arms)             │
+└─────────────┬──────────────┘
+              │
+              ├──────────────────────────────┐
+              ▼                              ▼
+┌──────────────────────────┐   ┌───────────────────────────────────────────┐
+│ COMPARATOR ARMS          │   │ PLANE D — STRATEGY DECISION AGENT         │
+│ deterministic / robust   │   │ Composer 2.5 + web search                 │
+│ EP beams (not final)     │   │ PRIMARY ADVISORY DECISION                 │
+└──────────────────────────┘   │ recommended 15 · chips · captains         │
+              │                │ reasons · falsifiers · citations          │
+              │                └─────────────────────┬─────────────────────┘
+              │                                      │ declared 15
+              ▼                                      ▼
+              ┌──────────────────────────────────────────────────────────┐
+              │ HOST: rules validate + rescore against frozen packet     │
+              │ Challenger may stress-test rationale                     │
+              │ Owner approval still required for FPL entry              │
+              │ (LLMs never enforce or execute)                          │
+              └──────────────────────────────────────────────────────────┘
 ```
 
-**Same place rule:** anything that can change a squad must either
+**Same place rule**
 
-- already sit inside the **frozen forecast / solver packet** (Plane B), or  
-- enter as a **ledger claim** → **retrieval packet** → **bounded adjustment**  
-  that the host reapplies onto that same packet.
+- **Numbers the agent reasons over** live in the frozen Plane B packet (plus
+  any host-applied ledger adjustments).  
+- **The advisory choice of 15 / chips / captains** is produced by Plane D.  
+- **Legality and objective scores** are always recomputed by the host on that
+  same packet — the agent does not privately “win” by inventing totals.
 
-Strategy briefings (Plane D) are *inputs to human attention*, not a second
-scoring path.
 
 ## 3. Plane A — hard stats inventory
 
@@ -109,9 +104,9 @@ in place.
 | **Six-GW live-faithful horizon** | Prior + feature state + model config | See §6 | `live-faithful-v1.feature-complete` |
 | **Frozen solver / initial-squad packet** | Horizon vectors + launch-context flags + rules hash | Discount factors 1.0…0.59 over 6 GWs; shrinkage weights in policy | `build_initial_squad_packet` |
 
-**LLM contract for Plane B:** the evidence-agent and challenger receive the
-**same** frozen packet hash as the deterministic arm. They may propose
-adjustments or a full 15; the host rescoring path is identical.
+**LLM contract for Plane B:** every arm — including the strategy decision
+agent — binds to the **same** frozen packet hash. Deterministic/robust beams
+are comparators. The strategy agent’s declared 15 is rescored on that packet.
 
 ## 5. Plane C — unstructured / citation agents
 
@@ -120,7 +115,7 @@ adjustments or a full 15; the host rescoring path is identical.
 | Official club communications | `official-club-communications` | Manual citation (HTML scrape off) | Live evidence ledger if admitted | Only via claim → retrieval → adjustment |
 | Official lineups / minutes | `official-lineups-minutes` | Manual citation (enabled citation path) | Ledger | Same |
 | Official rules/news HTML | `fpl-official-rules-news` | Manual | Rules YAML / citations | Rules path, not EP blend |
-| Unregistered X / blogs / “Review vs Solio” takes | **not registered** | Strategy agent search only | Strategy briefing | **No** — unless a future registry entry + owner approval exists |
+| Unregistered X / blogs / “Review vs Solio” takes | **not registered** | Strategy agent web search | Informs Plane D decision (cited) | Via strategy agent’s declared 15 (host-rescored); not via silent EP blend |
 
 Admission rules (`2026-27-evidence.json`):
 
@@ -129,18 +124,20 @@ Admission rules (`2026-27-evidence.json`):
 - append-only, content-addressed ledger;  
 - claim confidence floor **0.55** (config); adjustment policy **0.60** (ADR-0013).
 
-## 6. Plane D — web strategy search (Composer 2.5)
+## 6. Plane D — web strategy decision agent (Composer 2.5)
 
 Prompt: `prompts/daily-strategy-research/v1.md`  
 Recipe: `config/automations/2026-27-daily-strategy-research.json`
 
+**Role:** primary advisory decision arm (reason + strategise + recommend).
+
 | Lane | Output | Join rule |
 |---|---|---|
 | A — official discovery | Metadata leads + discovery JSON (gitignored) | Human may create **Plane C** citations |
-| B — strategy intelligence | `reports/strategy-research/YYYY-MM-DD.md` | **Does not** enter ledger or prior weights |
+| B — strategy decision | `reports/strategy-research/YYYY-MM-DD.md` with recommended 15, chips, captains | Declared 15 handed to host for rules validation + rescoring on frozen packet |
 
-This is how chip paths, DEFCON shortlists and model-disagreement narratives
-are rebuilt daily without contaminating the statistical base.
+Community debate does not rewrite prior rates. It informs the agent’s choice
+of structure; the host still scores that choice on Plane B.
 
 ## 7. Weighting — what mixes, what must not
 
@@ -163,34 +160,31 @@ completed **2025/26** envelope. Older replay priors remain available for
 historical ablations only — they are never averaged together with the live
 default.
 
-### 7.2 Evidence adjustments (LLM path — bounded, not free blend)
+### 7.2 Evidence adjustments (optional numeric fork)
 
-From ADR-0013 / `evidence-adjustments.yaml`:
+From ADR-0013 / `evidence-adjustments.yaml` — still available when a claim
+should move a **rate** inside the packet before arms run:
 
 - min adjustment confidence **0.60**;  
 - start-probability delta cap **±0.25**;  
 - citation + expiry + signal required;  
-- challenger must accept; host validates;  
-- applied only onto a **copy** of the frozen solver input (fork), never by
-  silently editing Plane B hashes.
+- challenger + host validation on a packet fork.
 
-This is the only sanctioned way unstructured/web-promoted evidence changes
-numbers the optimiser sees.
+### 7.3 Strategy decision weight (final advisory choice)
 
-### 7.3 Strategy briefing (explicit zero forecast weight)
-
-Lane B community content has **weight 0** in EP, starts, and prior math.
-It influences the human (and optionally which boundaries to inspect). To
-affect the squad it must be promoted:
+The strategy agent does **not** blend community EV into `points_per_90`.
+Its weight is applied at the **selection layer**:
 
 ```text
-briefing watchlist
-  → (optional) official URL citation in ledger
-  → retrieval packet
-  → evidence-agent bounded delta
-  → challenger + host
-  → rescored proposal
+frozen packet (Plane B) + web reasoning (Plane D)
+  → strategy agent declares 15 / chips / captains
+  → host rules-validates + rescores on the same packet
+  → deterministic/robust arms kept as published comparators
+  → owner approval for any FPL entry
 ```
+
+So community/strategy signal is decisive for *which legal squad we prefer*,
+while hard-stat weights remain decisive for *how that squad is scored*.
 
 ## 8. Collection checklist (same place)
 
@@ -199,12 +193,12 @@ briefing watchlist
 | 1. Official hard stats | Immutable preseason/live snapshot manifest | Scheduler / capture scripts |
 | 2. Historical rebuild | Local prior envelope (one season) | `build_live_player_prior` / locked replay prior |
 | 3. Optional odds/ratings | Slot artifacts referenced by checkpoint family state | Odds/ratings adapters |
-| 4. Daily strategy + discovery | Briefing + gitignored discovery JSON | Composer automation |
-| 5. Promote official leads | Live evidence ledger claims | Human / citation protocol |
-| 6. Freeze packet | Feature state + six-GW horizon + solver input | Checkpoint runner |
-| 7. Retrieve for LLMs | Candidate-boundary packet from **that** freeze | Retrieval layer |
-| 8. Propose / challenge | Adjustments bound to packet hash | Evidence agent + challenger |
-| 9. Score & gate | Recommendation + approval blockers | Deterministic host |
+| 4. Freeze packet | Feature state + six-GW horizon + solver input | Checkpoint runner |
+| 5. Daily strategy decision | Recommended 15 + chips (+ discovery JSON gitignored) | Composer automation (Plane D) |
+| 6. Promote official leads | Live evidence ledger claims | Human / citation protocol |
+| 7. Host validate / rescore | Strategy 15 on frozen packet; publish comparators | Deterministic host |
+| 8. Challenge (optional) | Stress-test rationale / adjustments | Challenger |
+| 9. Owner gate | Approval approval / manual entry | Owner |
 
 If a datum cannot be pointed to a row in this table, it is not yet in the
 system — do not pretend the optimiser “knows” it.
@@ -219,23 +213,24 @@ system — do not pretend the optimiser “knows” it.
 | Club/press citations not yet admitted for candidates | C | Minutes/availability stay official-status only |
 | Manager state manual | A | Cannot run true owned-squad transfer weeks |
 | WC return dates thin | B | Fatigue flags incomplete |
-| Strategy briefings not yet activated in Cursor UI | D | Human lacks daily chip/DEFCON depth |
+| Strategy decision automation not yet activated in Cursor UI | D | No primary advisory 15/chip decision each morning |
 | (resolved) Live default prior is 2025/26 | B | Older 2024/25 replay prior kept for historical ablations only |
 
 ## 10. Design stance (do not erode)
 
-1. **Registry gates collection.** Web search does not bypass it.  
+1. **Registry gates collection.** Web search does not invent registry rights.  
 2. **One statistical base per checkpoint** (content-addressed).  
-3. **LLMs propose; code validates and scores.**  
-4. **Degrade visibly** rather than invent neutral odds/ratings/xMins.  
-5. **Strategy intelligence and evidence claims are different products** that
-   meet only through the ledger → retrieval → adjustment funnel.
+3. **Strategy agent is the final advisory chooser; host validates and scores.**  
+4. **Deterministic beams are comparators**, not the preferred decision.  
+5. **LLMs never enforce rules or execute FPL actions.**  
+6. **Degrade visibly** rather than invent neutral odds/ratings/xMins.  
+7. **Ledger claims** remain the path for structured evidence rates; community
+   text informs Plane D selection with citations.
 
 ## 11. Immediate wiring priorities
 
-1. Activate the Composer daily strategy automation (Plane D) so briefings
-   exist every morning.  
-2. Keep official capture on the scheduler cadence (Plane A).  
-3. Admit only high-impact **official** citations into the ledger (Plane C).  
-4. Run initial-squad checkpoints against each new manifest and diff them —
-   always from the same frozen packet the agents see.
+1. Activate the Composer strategy **decision** automation (Plane D).  
+2. Keep official capture + 2025/26 prior packet builds on cadence (A/B).  
+3. After each checkpoint, rescore the strategy agent’s declared 15 on that
+   packet and publish diffs vs deterministic/robust comparators.  
+4. Admit only high-impact official citations into the ledger (Plane C).

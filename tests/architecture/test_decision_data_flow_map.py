@@ -20,7 +20,8 @@ def test_data_flow_map_covers_planes_join_and_weighting() -> None:
     assert "same place" in lowered
     assert "live evidence ledger" in lowered
     assert "prior_equivalent_minutes" in DOC or "1350" in DOC
-    assert "weight 0" in lowered or "zero forecast weight" in lowered
+    assert "primary advisory" in lowered
+    assert "comparator" in lowered
     assert "fpl-official-endpoints" in DOC
     assert "the-odds-api" in DOC
     assert "vaastav-fpl" in DOC

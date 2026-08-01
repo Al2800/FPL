@@ -54,12 +54,12 @@ minutes, set-piece or rating data.
 
 ## Daily rhythm
 
-Before treating a checkpoint as the day's working view, run or read the
-Composer 2.5 strategy research briefing
-(`docs/evaluation/2026-27-daily-agent-strategy-loop.md`). That briefing is
-where chip paths, premium pivots, DEFCON watches and community model splits
-are rebuilt. The checkpoint remains the deterministic legality/scoring spine;
-the briefing does not replace it and cannot clear approval.
+The Composer 2.5 strategy agent is the **primary advisory decision**
+(`docs/evaluation/2026-27-daily-agent-strategy-loop.md`): recommended 15, chip
+path and captains after web search + packet reasoning. This checkpoint freezes
+the statistical base and publishes deterministic/robust **comparators**; the
+host rescores the strategy agent’s declared 15 against the same packet. The
+agent cannot clear owner approval or write to FPL.
 
 ## Run and inspect
 

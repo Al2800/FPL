@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "automation_id": "fpl-daily-strategy-research",
-  "name": "FPL daily strategy research",
-  "description": "Composer 2.5 scheduled web-search loop: official discovery plus strategy-depth briefing (chips, premiums, DEFCON, captains, early WC).",
+  "name": "FPL daily strategy decision",
+  "description": "Composer 2.5 primary advisory decision arm: web-search reasoning over the statistical base to recommend 15, chips and captains; host still validates and scores.",
   "status": "recipe_ready_activate_in_cursor_ui",
   "supersedes": "fpl-daily-official-news-research",
   "model": {
@@ -55,15 +55,17 @@
     "open_draft_pr_for_briefing": true
   },
   "governance": {
-    "community_content_lane": "strategy_intelligence_only",
+    "role": "primary_advisory_decision_arm",
+    "community_content_lane": "informs_strategy_decision_with_citations",
     "official_lane": "discovery_lead_only",
     "claim_policy": "manual_linked_derived_claim_only",
     "raw_snippet_policy": "never_admit_or_retain",
     "html_scrape_collector": "disabled",
     "phase": "0_1_advisory",
+    "deterministic_arms_role": "comparators_and_legality_stress_tests",
     "does_not_replace": [
-      "six_gw_live_faithful_horizon",
-      "initial_squad_checkpoint_optimiser",
+      "six_gw_live_faithful_horizon_statistical_base",
+      "host_rules_validation_and_rescoring",
       "owner_approval_gate"
     ]
   },

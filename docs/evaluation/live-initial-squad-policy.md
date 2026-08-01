@@ -19,6 +19,11 @@ deterministic arm uses the point forecast; the robust arm applies the
 preregistered uncertainty penalty. Both include the same structured context,
 captaincy, bench/autosub and transfer-optionality terms.
 
+The **strategy decision agent** (Composer web-search loop) is the preferred
+primary advisory arm: it submits a complete 15-player proposal plus chip path
+after reasoning over the frozen packet and current web debate. See
+`docs/evaluation/2026-27-daily-agent-strategy-loop.md`.
+
 The evidence-agent and challenger arms may either:
 
 1. submit bounded per-player expected-points adjustments with evidence IDs,
@@ -31,9 +36,8 @@ completion metadata to the base packet hash. Every proposed squad is rescored
 and rules-validated by deterministic code. An invalid or incomplete arm remains
 visible as rejected or not run; it cannot silently become the robust arm.
 
-This design permits a more capable model to add value through better use of
-unstructured information while preventing it from seeing different structured
-engine outputs or enforcing FPL rules.
+Deterministic and robust beams remain published comparators. They are not the
+default final advisory choice when a valid strategy-agent proposal exists.
 
 ## Objective
 
