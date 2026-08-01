@@ -31,6 +31,20 @@ rules.  This catalogue does not turn `official-club-communications` in the
 source registry on: automated claim extraction remains disabled until the
 separate source-rights and evidence-admission gate approves it.
 
+## Scheduled web search
+
+Daily discovery is **Lane A** inside the Composer 2.5 strategy research
+automation:
+
+- Driver recipe: `config/automations/2026-27-daily-strategy-research.json`
+- Driver prompt: `prompts/daily-strategy-research/v1.md`
+- Nested discovery prompt: `prompts/daily-news-research/v1.md`
+- Loop: `docs/evaluation/2026-27-daily-agent-strategy-loop.md`
+
+Lane A captures search **metadata only**, runs this script, and feeds official
+leads into the strategy briefing. It does not admit claims. Strategy debate
+from X/blogs stays in Lane B (briefing only).
+
 ## Run
 
 ```powershell
