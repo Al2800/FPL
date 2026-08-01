@@ -17,7 +17,7 @@ Follow-up to `2026-08-01-current-info-source-research.md`.
 |---|---|
 | Promote launch context bound to weekly bootstrap `e3b41b91…` | `control/identities/2026-27-launch-context.json` updated |
 | Admit WC priors + launch_context | Checkpoint `weekly-2026-08-02` — both **admitted** |
-| Availability citation ledger | 4 doubtful claims (Rogers, Guéhi, Senesi, Anderson); Haaland omitted on purpose |
+| Availability citation ledger | 4 initial doubtful claims (Rogers, Guéhi, Senesi, Anderson); hands-off model-run expansion now specified; Haaland omitted on purpose |
 | W7 availability-flag calibration | `control/models/availability-flags-v1.provisional.json` + report; **provisional / non-PIT** (vaastav limitation) |
 | ClubElo PIT capture | Local `data/live-shadow/clubelo/2026-08-01/…` (gitignored) |
 | Odds slots | **Wiring smoke complete** (free tier); formal GW1 slots still pending window |
@@ -62,6 +62,17 @@ Effects:
 - ClubElo supplies per-fixture expected-result scores when the ENG Level-1 CSV is present.
 - Player-level Understat xG/xA still does **not** move EP while `event_model_weight=0.0`.
 - Captures remain gitignored; only hashes / limitation tags enter the packet.
+
+## Hands-off evidence model run (2026-08-01 follow-up)
+
+Composer's scheduled run now emits a broad, structured
+`model-evidence-run-v1` across every catalogue club and a watchlist wider than
+the eventual 15. `scripts/ingest_model_evidence_run.py` performs the append:
+the host validates official domains, exact player IDs, timestamps, confidence,
+rights and ephemeral source hashes, then writes an audit with accepted and
+rejected candidates plus the concise decision trace. No owner-side ledger
+editing is required. Grok can use the same contract for a comparable model
+run; community links remain briefing-only.
 
 ## Owner follow-ups
 

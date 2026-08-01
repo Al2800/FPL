@@ -184,6 +184,28 @@ def test_automated_admission_refuses_manual_citation_collection_method() -> None
         append(ledger, claim("d-manual-method"), config=configured)
 
 
+def test_model_assisted_ephemeral_citation_has_explicit_rights_precision() -> None:
+    configured = deepcopy(CONFIG)
+    next(
+        row
+        for row in configured["sources"]
+        if row["source_id"] == "official-club-communications"
+    )["admission_mode"] = "model_assisted_citation"
+    ledger = new_live_evidence_ledger(
+        season="2026-27", created_at="2026-08-14T07:00:00Z"
+    )
+
+    updated = append(
+        ledger,
+        claim("model-claim"),
+        config=configured,
+    )
+    rights = updated["claims"][0]["source_rights"]
+    assert rights["admission_mode"] == "model_assisted_citation"
+    assert rights["rights_precision"] == "model_assisted_ephemeral_derived_claim"
+    assert rights["raw_content_retained"] is False
+
+
 def test_projection_exposes_future_expired_superseded_conflict_and_quarantine() -> None:
     ledger = new_live_evidence_ledger(
         season="2026-27", created_at="2026-08-14T07:00:00Z"

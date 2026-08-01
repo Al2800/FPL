@@ -34,6 +34,10 @@ from Git. Version the prompt here, then:
 6. Enable computer use / browsing, memories, and draft PR creation
 7. Save and activate
 
+The model run is self-contained after activation: it writes candidates, runs
+the host admission script and records the audit. No owner-side ledger editing
+step is part of the operating loop.
+
 After activation, store the automation UUID in the recipe's optional
 `cursor_automation_uuid` field via a follow-up commit if useful for audits.
 
@@ -44,11 +48,17 @@ After activation, store the automation UUID in the recipe's optional
 | Search metadata | `data/live-shadow/news-discovery/YYYY-MM-DD/search-results.json` | ignored |
 | Discovery ledger | `data/live-shadow/news-discovery/YYYY-MM-DD/news-discovery.json` | ignored |
 | Cited originals packet | `data/live-shadow/news-discovery/YYYY-MM-DD/cited-originals.json` | ignored |
-| Human briefing | `reports/news-discovery/YYYY-MM-DD.md` | may open draft PR |
+| Model evidence run | `data/live-shadow/evidence/model-runs/YYYY-MM-DD/model-evidence-run.json` | ignored |
+| Host admission audit | `data/live-shadow/availability/model-runs/<run-id>.audit.json` | ignored |
+| Content-addressed availability ledger | `data/live-shadow/availability/model-runs/availability-ledger-<hash>.json` | ignored |
+| Model briefing + decision trace | `reports/news-discovery/YYYY-MM-DD.md` | may open draft PR |
 
 ## Boundaries
 
-- Registry source stays citation-only; no HTML scrape collector
+- Registry source stays citation-only; model path is one-URL ephemeral hashing,
+  not a bulk HTML scrape collector
 - Snippets and article bodies are discarded
 - Empty successful search ≠ availability evidence
+- The host, not the model, appends claims; rejected candidates and coverage
+  gaps are retained in the audit
 - No odds fabrication, no Sportradar, no unregistered analyst blogs

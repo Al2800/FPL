@@ -20,11 +20,12 @@ edit the frozen packet.
 
 ```text
 07:00 UTC  Composer 2.5 strategy decision automation
-           ├─ Lane A: official discovery (metadata)
+           ├─ Lane A: official discovery + model evidence candidates
            ├─ Read latest frozen packet / comparator arms if present
            ├─ Lane B: web search (strategy debate)
            └─ PRIMARY ADVISORY DECISION
                recommended 15 + chips + captains + falsifiers
+               concise decision rationale trace + host ledger audit
                → reports/strategy-research/YYYY-MM-DD.md
 
 Capture     Immutable official snapshot (scheduler / manual)
@@ -48,7 +49,7 @@ unavailable` with lower confidence. Re-bind after the checkpoint lands.
 | Concern | Owner |
 |---|---|
 | Prices, priors, six-GW EP/start/uncertainty | Statistical base (deterministic) |
-| Official injury/team-news leads | Lane A → human citation into ledger |
+| Official injury/team-news leads | Lane A → model candidate → host validation → ledger |
 | Chip path, squad thesis, named 15, captain | **Strategy agent (final advisory)** |
 | Legal validation + objective rescoring | Deterministic host |
 | Comparator EP-max / robust beams | Deterministic / robust arms |
@@ -58,8 +59,10 @@ unavailable` with lower confidence. Re-bind after the checkpoint lands.
 
 - Community/X content informs the strategy decision with citations; it is not
   auto-admitted to the evidence ledger.
-- Official citations still use the ledger protocol when they must become
-  structured claims.
+- Registered official URLs may be visited ephemerally by the model run, but
+  only the host admission script can append a structured claim.
+- Model traces and host audit hashes remain visible in the committed briefing;
+  raw pages are discarded.
 - `ready_for_manual_entry` stays false until owner sign-off on a named,
   host-validated proposal hash.
 

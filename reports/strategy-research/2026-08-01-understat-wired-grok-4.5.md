@@ -112,3 +112,10 @@ Pre-wiring robust example (contrast only): Raya, Donnarumma, Mitchell, Tarkowski
 - Account writes: false
 - Owner approval still required before any FPL entry
 - LLM proposes only; approval gate uncleared; rules remain data in `control/rules/`
+
+## Run lineage note
+
+This Grok dry-run predates `model-evidence-run-v1`. Its web citations and
+decision rationale are briefing-only; they were not retroactively admitted to
+the governed ledger. Future Composer/Grok runs use the structured candidate
+contract and deterministic host admission described in ADR-0023.

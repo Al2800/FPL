@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "sources": [
+    {
+      "source_id": "official-club-communications",
+      "admitted": true,
+      "admission_mode": "model_assisted_citation",
+      "raw_content_retained": false
+    },
+    {
+      "source_id": "official-lineups-minutes",
+      "admitted": true,
+      "admission_mode": "model_assisted_citation",
+      "raw_content_retained": false
+    }
+  ],
+  "thresholds": {
+    "minimum_claim_confidence": 0.55
+  },
+  "model_run": {
+    "accepted_model_ids": [
+      "composer-2.5",
+      "cursor-grok-4.5-high"
+    ],
+    "minimum_watchlist_players": 40,
+    "fetch_timeout_seconds": 20,
+    "max_source_bytes": 5000000,
+    "max_claims_per_run": 120,
+    "max_decision_trace_items": 40
+  },
+  "write_policy": "append_only_content_addressed_no_overwrite",
+  "raw_content_policy": "ephemeral_fetch_hash_then_discard",
+  "unregistered_source_policy": "reject",
+  "community_source_policy": "briefing_only_never_admit"
+}

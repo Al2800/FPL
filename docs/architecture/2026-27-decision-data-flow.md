@@ -112,8 +112,8 @@ are comparators. The strategy agent’s declared 15 is rescored on that packet.
 
 | Channel | Registry | How collected | Lands in | May move the squad? |
 |---|---|---|---|---|
-| Official club communications | `official-club-communications` | Manual citation (HTML scrape off) | Live evidence ledger if admitted | Only via claim → retrieval → adjustment |
-| Official lineups / minutes | `official-lineups-minutes` | Manual citation (enabled citation path) | Ledger | Same |
+| Official club communications | `official-club-communications` | Model-assisted one-URL citation or manual fallback; no bulk scrape | Live evidence ledger if host-admitted | Only via claim → retrieval → adjustment |
+| Official lineups / minutes | `official-lineups-minutes` | Model-assisted one-URL citation or manual fallback | Ledger | Same |
 | Official rules/news HTML | `fpl-official-rules-news` | Manual | Rules YAML / citations | Rules path, not EP blend |
 | Unregistered X / blogs / “Review vs Solio” takes | **not registered** | Strategy agent web search | Informs Plane D decision (cited) | Via strategy agent’s declared 15 (host-rescored); not via silent EP blend |
 
@@ -134,7 +134,7 @@ Recipe: `config/automations/2026-27-daily-strategy-research.json`
 | Lane | Output | Join rule |
 |---|---|---|
 | A — official discovery | Metadata leads + discovery JSON (gitignored) | Human may create **Plane C** citations |
-| B — strategy decision | `reports/strategy-research/YYYY-MM-DD.md` with recommended 15, chips, captains | Declared 15 handed to host for rules validation + rescoring on frozen packet |
+| B — strategy decision | `reports/strategy-research/YYYY-MM-DD.md` with recommended 15, chips, captains and rationale trace | Model candidates go to host ledger admission; declared 15 goes to rules validation + rescoring on frozen packet |
 
 Community debate does not rewrite prior rates. It informs the agent’s choice
 of structure; the host still scores that choice on Plane B.
