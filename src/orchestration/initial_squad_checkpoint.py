@@ -29,6 +29,14 @@ from src.forecasting.live_initial_squad import (
     build_live_faithful_initial_squad_horizon,
 )
 from src.forecasting.live_faithful import artifact_hash
+from src.forecasting.team_attack_defence import AttackDefenceParameters
+from src.forecasting.team_prior import EloParameters
+from src.forecasting.understat_team_context import (
+    UnderstatTeamContextError,
+    discover_latest_clubelo_csv,
+    discover_latest_understat_capture,
+    load_clubelo_ratings_csv,
+)
 from src.optimisation.initial_squad import (
     InitialSquadError,
     initial_squad_hash,
@@ -60,6 +68,11 @@ DEFAULT_PLAYER_PRIOR_PATH = (
 DEFAULT_LIVE_MODEL_CONFIG_PATH = (
     REPO_ROOT / "control" / "models" / "live-faithful-v1.feature-complete.json"
 )
+DEFAULT_TEAM_CONTEXT_MODEL_PATH = (
+    REPO_ROOT / "control" / "models" / "live-faithful-v2.team-context.json"
+)
+DEFAULT_UNDERSTAT_ROOT = REPO_ROOT / "data" / "live-shadow" / "understat"
+DEFAULT_CLUBELO_ROOT = REPO_ROOT / "data" / "live-shadow" / "clubelo"
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _POSITIONS = {1: "GKP", 2: "DEF", 3: "MID", 4: "FWD"}
 _BASELINE_MODEL = "official-ep-next-flat-horizon-baseline-v1"
@@ -481,6 +494,122 @@ def _apply_launch_context_to_players(
     }
 
 
+def _promoted_team_names_from_bootstrap(
+    bootstrap: Mapping[str, Any],
+    *,
+    launch_context_path: Path | None = None,
+) -> list[str]:
+    """Resolve promoted club names for cold-start attack/defence priors."""
+
+    if launch_context_path is not None and launch_context_path.is_file():
+        context = _read_json_object(launch_context_path, "launch context")
+        rows = context.get("promoted_teams")
+        if isinstance(rows, list):
+            names = [
+                str(row["name"])
+                for row in rows
+                if isinstance(row, Mapping) and row.get("name")
+            ]
+            if names:
+                return names
+    # Fallback: clubs present in bootstrap with no Understat prior-season map
+    # are handled by the caller via empty observations + promoted list only.
+    teams = bootstrap.get("teams")
+    if not isinstance(teams, list):
+        return []
+    return []
+
+
+def _load_optional_team_context_inputs(
+    *,
+    bootstrap: Mapping[str, Any],
+    understat_capture_path: Path | None = None,
+    clubelo_csv_path: Path | None = None,
+    understat_root: Path = DEFAULT_UNDERSTAT_ROOT,
+    clubelo_root: Path = DEFAULT_CLUBELO_ROOT,
+    team_context_model_path: Path = DEFAULT_TEAM_CONTEXT_MODEL_PATH,
+    launch_context_path: Path | None = None,
+) -> dict[str, Any]:
+    """Resolve private local Understat / ClubElo captures for team-prior wiring."""
+
+    capture_path = understat_capture_path
+    if capture_path is None:
+        capture_path = discover_latest_understat_capture(understat_root)
+    clubelo_path = clubelo_csv_path
+    if clubelo_path is None:
+        clubelo_path = discover_latest_clubelo_csv(clubelo_root)
+
+    understat_capture: dict[str, Any] | None = None
+    understat_path_text: str | None = None
+    if capture_path is not None and capture_path.is_file():
+        understat_capture = _read_json_object(capture_path, "understat league capture")
+        understat_path_text = str(capture_path.resolve())
+
+    clubelo_ratings: dict[str, float] | None = None
+    clubelo_hash: str | None = None
+    clubelo_path_text: str | None = None
+    if clubelo_path is not None and clubelo_path.is_file():
+        try:
+            clubelo_ratings, clubelo_hash = load_clubelo_ratings_csv(clubelo_path)
+            clubelo_path_text = str(clubelo_path.resolve())
+        except (UnderstatTeamContextError, OSError):
+            clubelo_ratings = None
+            clubelo_hash = None
+            clubelo_path_text = None
+
+    attack_params: AttackDefenceParameters | None = None
+    elo_params: EloParameters | None = None
+    if team_context_model_path.is_file():
+        model = _read_json_object(team_context_model_path, "team-context model")
+        raw_params = model.get("parameters")
+        if isinstance(raw_params, Mapping):
+            attack_params = AttackDefenceParameters(
+                league_xg_per_team=float(raw_params.get("league_xg_per_team", 1.35)),
+                prior_matches=float(raw_params.get("prior_matches", 6.0)),
+                home_xg_multiplier=float(raw_params.get("home_xg_multiplier", 1.08)),
+                promoted_attack_multiplier=float(
+                    raw_params.get("promoted_attack_multiplier", 0.85)
+                ),
+                promoted_defence_vulnerability=float(
+                    raw_params.get("promoted_defence_vulnerability", 1.15)
+                ),
+                elo_weight=float(raw_params.get("elo_weight", 0.15)),
+                odds_weight=float(raw_params.get("odds_weight", 0.10)),
+                multiplier_min=float(raw_params.get("multiplier_min", 0.65)),
+                multiplier_max=float(raw_params.get("multiplier_max", 1.45)),
+            )
+        feature_complete = DEFAULT_LIVE_MODEL_CONFIG_PATH
+        if feature_complete.is_file():
+            fc = _read_json_object(feature_complete, "live-faithful model config")
+            elo_raw = (
+                fc.get("calibration", {}).get("elo_parameters")
+                if isinstance(fc.get("calibration"), Mapping)
+                else None
+            )
+            if isinstance(elo_raw, Mapping):
+                elo_params = EloParameters(
+                    k=float(elo_raw["k"]),
+                    home_advantage=float(elo_raw["home_advantage"]),
+                    draw_factor=float(elo_raw["draw_factor"]),
+                    promoted_rating=float(elo_raw["promoted_rating"]),
+                    season_regression=float(elo_raw["season_regression"]),
+                    fixture_scale=float(elo_raw.get("fixture_scale", 0.5)),
+                )
+
+    return {
+        "understat_capture": understat_capture,
+        "understat_path": understat_path_text,
+        "clubelo_ratings_by_fpl_name": clubelo_ratings,
+        "clubelo_body_sha256": clubelo_hash,
+        "clubelo_path": clubelo_path_text,
+        "attack_defence_params": attack_params,
+        "elo_params": elo_params,
+        "promoted_team_names": _promoted_team_names_from_bootstrap(
+            bootstrap, launch_context_path=launch_context_path
+        ),
+    }
+
+
 def build_initial_squad_packet(
     verified: Mapping[str, Any],
     *,
@@ -489,6 +618,9 @@ def build_initial_squad_packet(
     rules_hash: str,
     player_prior_path: Path = DEFAULT_PLAYER_PRIOR_PATH,
     model_config_path: Path = DEFAULT_LIVE_MODEL_CONFIG_PATH,
+    understat_capture_path: Path | None = None,
+    clubelo_csv_path: Path | None = None,
+    enable_understat_team_prior: bool = True,
 ) -> dict[str, Any]:
     """Build a hash-bound initial-squad packet from verified bytes.
 
@@ -496,6 +628,9 @@ def build_initial_squad_packet(
     and model artifacts.  If those required inputs are unavailable or invalid,
     the explicit flat ``ep_next`` ablation remains available for operational
     rehearsal; it is never silently labelled decision-grade.
+
+    When a private Understat capture is present under ``data/live-shadow``,
+    the horizon prefers the separate attack/defence team prior over official FDR.
     """
 
     manifest = deepcopy(dict(verified["manifest"]))
@@ -612,6 +747,28 @@ def build_initial_squad_packet(
 
     live_horizon: dict[str, Any] | None = None
     live_horizon_error: str | None = None
+    launch_context_path = verified.get("bound_paths", {}).get("launch_context")
+    team_context = (
+        _load_optional_team_context_inputs(
+            bootstrap=bootstrap,
+            understat_capture_path=understat_capture_path,
+            clubelo_csv_path=clubelo_csv_path,
+            launch_context_path=(
+                Path(launch_context_path) if launch_context_path is not None else None
+            ),
+        )
+        if enable_understat_team_prior
+        else {
+            "understat_capture": None,
+            "understat_path": None,
+            "clubelo_ratings_by_fpl_name": None,
+            "clubelo_body_sha256": None,
+            "clubelo_path": None,
+            "attack_defence_params": None,
+            "elo_params": None,
+            "promoted_team_names": [],
+        }
+    )
     try:
         if not player_prior_path.is_file():
             raise LiveInitialSquadForecastError(
@@ -638,6 +795,12 @@ def build_initial_squad_packet(
             player_prior=player_prior,
             model_config=model_config,
             launch_context_status=str(launch_enrichment["status"]),
+            understat_capture=team_context["understat_capture"],
+            clubelo_ratings_by_fpl_name=team_context["clubelo_ratings_by_fpl_name"],
+            clubelo_body_sha256=team_context["clubelo_body_sha256"],
+            promoted_team_names=list(team_context["promoted_team_names"]),
+            attack_defence_params=team_context["attack_defence_params"],
+            elo_params=team_context["elo_params"],
         )
         vectors = live_horizon["player_vectors"]
         for row in players:
@@ -668,6 +831,11 @@ def build_initial_squad_packet(
     if live_horizon is not None:
         forecast_model_version = str(live_horizon["model_config_id"])
         projection_strategy = forecast_model_version
+        lineage = deepcopy(dict(live_horizon["lineage"]))
+        lineage["understat_capture_path"] = team_context.get("understat_path")
+        lineage["clubelo_capture_path"] = team_context.get("clubelo_path")
+        lineage["clubelo_body_sha256"] = team_context.get("clubelo_body_sha256")
+        lineage["promoted_team_names"] = list(team_context.get("promoted_team_names") or [])
         forecast_quality = {
             "status": "live_faithful_degraded",
             "strategy": forecast_model_version,
@@ -677,7 +845,7 @@ def build_initial_squad_packet(
                 "evidence gaps remain explicitly degraded."
             ),
             "limitations": list(live_horizon["limitations"]),
-            "lineage": deepcopy(dict(live_horizon["lineage"])),
+            "lineage": lineage,
             "gameweek_forecast_hashes": deepcopy(
                 list(live_horizon["gameweek_forecast_hashes"])
             ),

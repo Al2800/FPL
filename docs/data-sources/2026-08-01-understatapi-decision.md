@@ -25,9 +25,11 @@ Attribution: Understat + understatAPI
 - Season `2026` may be empty until 2026/27 matches are played; use `2025` for
   completed 2025/26 rates.
 
-## Wiring next
+## Wiring status
 
-1. Bounded captures of season `2025` (prior rates) and later `2026` in-season.
-2. Optional challenger: feed team/player xG into live-faithful event / team
-   context arms (`event_model_weight` currently 0.0).
-3. Keep official FPL `expected_*` and odds as baselines/comparators.
+1. Bounded capture of season `2025` complete (local gitignored); `2026` empty until matches.
+2. **Team prior wired** into `build_live_faithful_initial_squad_horizon` via
+   `src/forecasting/understat_team_context.py` (match xG → separate attack/defence
+   multipliers; FDR fallback if join fails). ClubElo expected-result scores optional.
+3. Player-level xG/xA still deferred while `event_model_weight=0.0`.
+4. Keep official FPL `expected_*` and odds as baselines/comparators.

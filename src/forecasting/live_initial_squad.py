@@ -18,6 +18,12 @@ from src.forecasting.live_faithful import (
     artifact_hash,
     build_live_faithful_forecast,
 )
+from src.forecasting.team_attack_defence import AttackDefenceParameters
+from src.forecasting.team_prior import EloParameters
+from src.forecasting.understat_team_context import (
+    UnderstatTeamContextError,
+    build_understat_attack_defence_team_prior,
+)
 from src.orchestration.historical_feature_state import feature_state_hash
 
 
@@ -228,6 +234,12 @@ def build_live_faithful_initial_squad_horizon(
     player_prior: Mapping[str, Any],
     model_config: Mapping[str, Any],
     launch_context_status: str = "unavailable",
+    understat_capture: Mapping[str, Any] | None = None,
+    clubelo_ratings_by_fpl_name: Mapping[str, float] | None = None,
+    clubelo_body_sha256: str | None = None,
+    promoted_team_names: Sequence[str] = (),
+    attack_defence_params: AttackDefenceParameters | None = None,
+    elo_params: EloParameters | None = None,
 ) -> dict[str, Any]:
     """Materialise one deterministic live-faithful result per Gameweek."""
 
@@ -261,13 +273,40 @@ def build_live_faithful_initial_squad_horizon(
             by_gameweek[event].append(raw)
 
     bounds = model_config.get("fixture_multiplier_bounds", [0.7, 1.3])
-    team_prior = build_official_fdr_team_prior(
-        fixtures=[row for rows in by_gameweek.values() for row in rows],
-        observed_at=observed_text,
-        source_sha256=official_fixtures_sha256,
-        season=str(bootstrap.get("season", "2026-27")),
-        multiplier_bounds=bounds,
-    )
+    horizon_fixtures = [row for rows in by_gameweek.values() for row in rows]
+    season = str(bootstrap.get("season", "2026-27"))
+    team_prior_source = "official_fdr"
+    understat_fallback_reason: str | None = None
+    team_prior: dict[str, Any] | None = None
+    if understat_capture is not None:
+        try:
+            team_prior = build_understat_attack_defence_team_prior(
+                bootstrap=bootstrap,
+                fixtures=horizon_fixtures,
+                understat_capture=understat_capture,
+                observed_at=observed_text,
+                decision_cutoff=cutoff_text,
+                season=season,
+                promoted_team_names=promoted_team_names,
+                clubelo_ratings_by_fpl_name=clubelo_ratings_by_fpl_name,
+                clubelo_body_sha256=clubelo_body_sha256,
+                params=attack_defence_params,
+                elo_params=elo_params,
+            )
+            team_prior_source = "understat_attack_defence"
+        except UnderstatTeamContextError as exc:
+            # Keep the horizon available: FDR remains the explicit baseline when
+            # a private capture cannot be joined to the current bootstrap.
+            understat_fallback_reason = str(exc)
+            team_prior = None
+    if team_prior is None:
+        team_prior = build_official_fdr_team_prior(
+            fixtures=horizon_fixtures,
+            observed_at=observed_text,
+            source_sha256=official_fixtures_sha256,
+            season=season,
+            multiplier_bounds=bounds,
+        )
     identity_map = {
         "schema_version": "live-initial-squad-identity-v1",
         "players": [
@@ -282,14 +321,31 @@ def build_live_faithful_initial_squad_horizon(
     vectors: dict[str, dict[str, list[float]]] = {}
     prior_season = str(player_prior.get("season", "")).strip()
     prior_season_label = prior_season.replace("-", "_") or "unknown"
+    team_prior_limitation = (
+        "understat_attack_defence_team_prior"
+        if team_prior_source == "understat_attack_defence"
+        else "official_fdr_team_prior_baseline"
+    )
     limitations = [
-        "official_fdr_team_prior_baseline",
+        team_prior_limitation,
         f"historical_player_prior_{prior_season_label}",
         "uncertainty_proxy_from_start_probability",
         "launch_context_not_applied_inside_forecaster"
         if launch_context_status != "applied"
         else "launch_context_flags_applied_after_forecast",
     ]
+    if team_prior_source == "understat_attack_defence":
+        limitations.append("prior_season_understat_xg_matches_only")
+        if clubelo_ratings_by_fpl_name is None:
+            limitations.append("clubelo_expected_scores_absent")
+        else:
+            limitations.append("clubelo_expected_scores_applied")
+        if team_prior.get("fallback_teams"):
+            limitations.append("promoted_team_cold_start_priors")
+        for reason in team_prior.get("degraded_reasons", []):
+            limitations.append(f"team_prior_{reason}")
+    elif understat_fallback_reason is not None:
+        limitations.append("understat_team_prior_unavailable_fallback_fdr")
     for gameweek in gameweeks:
         components_by_player: dict[str, list[dict[str, Any]]] = {}
         for fixture in by_gameweek[gameweek]:
@@ -408,6 +464,8 @@ def build_live_faithful_initial_squad_horizon(
             "identity_map_sha256": identity_hash,
             "player_prior_sha256": str(player_prior["content_sha256"]),
             "team_prior_sha256": str(team_prior["content_sha256"]),
+            "team_prior_source": team_prior_source,
+            "team_prior_model": deepcopy(dict(team_prior.get("model", {}))),
             "model_sha256": str(model_config["content_sha256"]),
         },
         "player_vectors": vectors,

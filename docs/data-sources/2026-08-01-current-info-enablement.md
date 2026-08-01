@@ -42,11 +42,32 @@ Follow-up to `2026-08-01-current-info-source-research.md`.
 - Formal GW1 slots (`T-24h` / `T-8h` / `T-2h` / `final`) open only inside the
   configured lead-time windows before that deadline (~20 Aug onward for T-24h).
 
+## Team-prior wiring (2026-08-01 follow-up)
+
+Understat match xG (prior season `2025`) and optional ClubElo rankings now feed
+the live initial-squad horizon when private captures exist under
+`data/live-shadow/`:
+
+| Piece | Path |
+|---|---|
+| Adapter | `src/forecasting/understat_team_context.py` |
+| Horizon hook | `build_live_faithful_initial_squad_horizon` (Understat prior; FDR fallback) |
+| Packet discovery | `build_initial_squad_packet` auto-loads latest Understat + ClubElo captures |
+| Parameters | `control/models/live-faithful-v2.team-context.json` (+ Elo conversion from feature-complete) |
+
+Effects:
+
+- Team prior limitation becomes `understat_attack_defence_team_prior` (not FDR).
+- Promoted clubs (Coventry / Hull / Ipswich) use explicit cold-start priors.
+- ClubElo supplies per-fixture expected-result scores when the ENG Level-1 CSV is present.
+- Player-level Understat xG/xA still does **not** move EP while `event_model_weight=0.0`.
+- Captures remain gitignored; only hashes / limitation tags enter the packet.
+
 ## Owner follow-ups
 
 1. Keep `THE_ODDS_API_KEY` in the capture environment (free tier). Re-run
    `scripts/capture_live_odds.py` for real GW1 slots when windows open.
 2. Decide when provisional W7 table may replace live hard-override (needs PIT bootstrap archive).
-3. Optional: ClubElo → team-prior challenger wiring (capture exists; forecaster integration separate).
-4. Understat: use `scripts/capture_understat_epl.py` (season `2025` now;
-   `2026` when matches exist); optional event-model wiring is separate.
+3. Optional: raise `event_model_weight` / wire player Understat rates as a challenger.
+4. Understat: keep using `scripts/capture_understat_epl.py` (season `2025` now;
+   `2026` when matches exist).

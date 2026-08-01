@@ -1,6 +1,6 @@
 # Daily FPL strategy decision — 2026-08-01
 
-- observed_at: 2026-08-01T13:53:00Z
+- observed_at: 2026-08-02T10:00:00Z (checkpoint freeze); briefing written 2026-08-01 after Understat/ClubElo wiring
 - model: Grok 4.5
 - role: primary_advisory_decision_arm
 - prompt: prompts/daily-strategy-research/v1.md
