@@ -380,7 +380,11 @@ sources:
       omit national cups. Historical rating availability and reuse terms must be
       verified before use; a current rating must never be backfilled into an older
       episode. Alternative: odds-implied and simple Elo fitted point-in-time on
-      football-data.co.uk results.
+      football-data.co.uk results. Research note 2026-08-01
+      (docs/data-sources/2026-08-01-current-info-source-research.md): ClubElo About
+      page states calculations/rankings may be reused for any further use with
+      citation — owner still must flip licence_status/allowed_use and enable
+      only bounded point-in-time capture (no backfill).
 
   - source_id: statsbomb-open
     owner: StatsBomb
