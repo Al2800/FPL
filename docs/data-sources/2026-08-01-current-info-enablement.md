@@ -20,7 +20,7 @@ Follow-up to `2026-08-01-current-info-source-research.md`.
 | Availability citation ledger | 4 doubtful claims (Rogers, Guéhi, Senesi, Anderson); Haaland omitted on purpose |
 | W7 availability-flag calibration | `control/models/availability-flags-v1.provisional.json` + report; **provisional / non-PIT** (vaastav limitation) |
 | ClubElo PIT capture | Local `data/live-shadow/clubelo/2026-08-01/…` (gitignored) |
-| Odds slots | **Not captured** — env missing `THE_ODDS_API_KEY` |
+| Odds slots | **Wiring smoke complete** (free tier); formal GW1 slots still pending window |
 
 ## Packet effect (`weekly-2026-08-02`)
 
@@ -29,9 +29,22 @@ Follow-up to `2026-08-01-current-info-source-research.md`.
 - EP vectors unchanged by design (`launch_context_flags_applied_after_forecast`); fatigue enters optimiser objective weights
 - Remaining gaps: licensed_odds, player_ratings, promoted_team_priors, transfers_and_signings
 
+## Odds free-tier wiring (2026-08-01)
+
+- Key supplied for session use only via `THE_ODDS_API_KEY` (never committed).
+- Free-tier smoke: `/v4/sports` OK; remaining credits **500 → 498** after one
+  governed `h2h+totals` capture (2 credits).
+- Diagnostic artifact (gitignored):  
+  `data/live-shadow/odds/captures/diagnostic-2026-08-01-wiring-t24h.json`  
+  Uses a **synthetic** ~24h cutoff to satisfy the T-24h window — **not** GW1
+  market evidence for deadline `2026-08-21T17:30:00Z`.
+- Formal GW1 slots (`T-24h` / `T-8h` / `T-2h` / `final`) open only inside the
+  configured lead-time windows before that deadline (~20 Aug onward for T-24h).
+
 ## Owner follow-ups
 
-1. Set `THE_ODDS_API_KEY` in the capture environment and run `scripts/capture_live_odds.py` for GW1 slots.
+1. Keep `THE_ODDS_API_KEY` in the capture environment (free tier). Re-run
+   `scripts/capture_live_odds.py` for real GW1 slots when windows open.
 2. Decide when provisional W7 table may replace live hard-override (needs PIT bootstrap archive).
 3. Optional: ClubElo → team-prior challenger wiring (capture exists; forecaster integration separate).
 4. Understat rights review remains open before any fetch.

@@ -37,9 +37,11 @@ structured forecast unchanged.
 Never paste the key into chat, a CLI argument, a config file or Git. The
 adapter reads only `THE_ODDS_API_KEY`.
 
-**Status 2026-08-01:** cloud agent environment has no `THE_ODDS_API_KEY`.
-Odds family remains a named gap on `weekly-2026-08-02` until the owner sets
-the key in the capture shell and runs the slot commands below.
+**Status 2026-08-01:** free-tier key verified in-session via env var
+(`THE_ODDS_API_KEY` only — never commit). Wiring smoke capture written under
+`data/live-shadow/odds/captures/diagnostic-2026-08-01-wiring-t24h.json`
+(synthetic cutoff). Formal GW1 deadline slots still require the lead-time
+windows below relative to `2026-08-21T17:30:00Z`.
 
 For a process-local PowerShell session:
 
