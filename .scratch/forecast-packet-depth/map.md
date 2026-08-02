@@ -107,9 +107,28 @@ Ticket 04 is visibility-first.
 5. Ticket 06 — resolved (gap panel)
 6. Ticket 05 — resolved (keep fatigue weight 0.25)
 
-Next frontier after rebuild: real T-24h odds slot (~20 Aug), optional
-horizon-aware fatigue vector without raising weight, event-weight challenger
-promotion only after calibration.
+### Rebuild proof (2026-08-02)
+
+Sealed `reports/live/.../weekly-2026-08-02/` is immutable (pre-ticket lineage).
+Packet-depth rebuild for the same manifest materialised companions at:
+
+`reports/live/2026-27/initial-squad/weekly-2026-08-02-packet-depth/`
+(gitignored; recreate via `scripts/run_initial_squad_checkpoint.py` with a
+distinct `--output-root` or by replacing that parallel directory).
+
+Observed on rebuild:
+- `fixture-audit.json` — 509 players, schema `initial-squad-fixture-audit-v1`
+- `availability-blend.json` — status `applied`; 4 doubtful claims (Guehi,
+  Rogers, Anderson, Senesi) depress start_p / EP across GW1–6
+- `gap-panel.json` — odds/ratings/promoted/transfers still unavailable;
+  availability blended; set-pieces surfaced shadow-only
+- Set-piece roles attached (e.g. Saka pens rank 1; `effect_weights: null`)
+
+Next weekly capture can seal companions on the canonical checkpoint id.
+
+Next frontier: real T-24h odds slot (~20 Aug), optional horizon-aware fatigue
+vector without raising weight, event-weight challenger promotion only after
+calibration.
 
 ## Cross-links
 
