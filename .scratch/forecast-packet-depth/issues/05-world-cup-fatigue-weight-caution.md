@@ -2,7 +2,7 @@
 
 **Blocked by:** None
 
-**Status:** open
+**Status:** resolved
 
 **Type:** research
 
@@ -44,13 +44,38 @@ raise shrinkage or push fatigue into EP without evidence.
 
 ### Acceptance criteria
 
-- [ ] Short written recommendation in `## Answer`: keep / lower / raise weight,
+- [x] Short written recommendation in `## Answer`: keep / lower / raise weight,
       with rationale.
-- [ ] If recommending horizon-aware fade only, specify vector shape and that
+- [x] If recommending horizon-aware fade only, specify vector shape and that
       total early-GW penalty must not increase without calibration.
-- [ ] No production weight increase in this ticket unless a cited sensitivity
+- [x] No production weight increase in this ticket unless a cited sensitivity
       result supports it.
-- [ ] Cross-link any follow-on implementation ticket.
+- [x] Cross-link any follow-on implementation ticket.
+
+## Answer
+
+**Keep `world_cup_fatigue_weight = 0.25`. Do not raise it. Prefer under-use.**
+
+Rationale:
+
+1. Fatigue is a coarse tier flag, not minutes evidence. Raising shrinkage risks
+   systematically under-weighting elite WC participants (Haaland at 1.0) while
+   EP still looks full-strength — agents already need ticket 02 explainability
+   more than a stronger hammer.
+2. Keep fatigue **optimiser-only** for now. Pushing it into expected minutes/EP
+   without a calibrated minutes model would double-count once availability
+   blend (ticket 03) and real team news arrive.
+3. **Recommended follow-on (no weight increase):** expose a 6-length fatigue
+   vector using the existing launch-context fade
+   `[1.0, 1.0, 0.5, 0.5, 0.25, 0.0]` so GW1–2 retain today’s effective
+   penalty and later GWs fade. Early-GW total penalty must not exceed today’s
+   scalar×0.25 product without a sensitivity run.
+4. Justify any future change with a named sensitivity: rebuild the same
+   checkpoint at weights `{0.0, 0.15, 0.25, 0.35}` and compare XV/chip path
+   churn plus post-GW1–3 actual minutes for extreme/high tiers. Lowering is
+   allowed if churn is dominated by fatigue flags rather than fixtures/odds.
+
+No production policy edit in this ticket.
 
 ## Comments
 

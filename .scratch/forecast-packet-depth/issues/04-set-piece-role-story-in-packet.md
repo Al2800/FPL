@@ -2,7 +2,7 @@
 
 **Blocked by:** None
 
-**Status:** open
+**Status:** resolved
 
 **Type:** task
 
@@ -41,14 +41,24 @@ gated.
 
 ### Acceptance criteria
 
-- [ ] Packet/audit lists set-piece roles for players present in the admitted
+- [x] Packet/audit lists set-piece roles for players present in the admitted
       ledger.
-- [ ] Lineage records ledger sha and `effect_weights` status.
-- [ ] Default numerical EP path unchanged while weights remain null.
-- [ ] Tests cover admission present / absent / malformed degrade.
+- [x] Lineage records ledger sha and `effect_weights` status.
+- [x] Default numerical EP path unchanged while weights remain null.
+- [x] Tests cover admission present / absent / malformed degrade.
 
 ### Notes
 
 Enabling pure visibility is unblocked. Enabling scoring effects remains
 blocked-on-data by W17-style ablation unless the owner explicitly accepts a
 provisional challenger weight.
+
+## Answer
+
+`attach_set_piece_roles` surfaces admitted active roles on player rows as
+`set_piece_roles` with `effect_weights: null` and shadow promotion status.
+
+- EP vectors unchanged (tested).
+- Lineage records ledger sha / effect_weights / promotion_status.
+- Strategy prompt notes roles are shadow-only until ablation.
+

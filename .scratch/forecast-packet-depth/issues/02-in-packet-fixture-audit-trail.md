@@ -2,7 +2,7 @@
 
 **Blocked by:** None
 
-**Status:** open
+**Status:** resolved
 
 **Type:** task
 
@@ -52,16 +52,31 @@ Constraints:
 
 ### Acceptance criteria
 
-- [ ] Schema + docs for the audit surface (British English).
-- [ ] Checkpoint rebuild emits audit for GW1–GW6 eligible players.
-- [ ] Haaland/Rogers-style examples show opponent + multipliers aligning with
+- [x] Schema + docs for the audit surface (British English).
+- [x] Checkpoint rebuild emits audit for GW1–GW6 eligible players.
+- [x] Haaland/Rogers-style examples show opponent + multipliers aligning with
       EP variation.
-- [ ] Strategy research prompt / packet builder can attach a bounded view of
+- [x] Strategy research prompt / packet builder can attach a bounded view of
       this audit without dumping the full 509×6 table into the LLM context
       (shortlist or top-N by EP).
-- [ ] Tests: hash stability; blank/double markers; cutoff-safe fields only.
+- [x] Tests: hash stability; blank/double markers; cutoff-safe fields only.
 
 ### Out of scope
 
 - Changing how multipliers are calculated (ticket 01).
 - Availability-driven minutes (ticket 03).
+
+## Answer
+
+Implemented a hash-bound `fixture-audit.json` companion from the live-faithful
+horizon (`src/forecasting/initial_squad_context.py` + horizon wiring).
+
+- Per player-week: opponent, H/A, kickoff, FDR, attack/defence/team multipliers,
+  pre-clip expected xG, Elo/odds scores when present, minutes and component EP.
+- Blank/double markers included.
+- Checkpoint writes `fixture-audit.json`; `feature_state.fixture_audit_sha256`
+  and lineage bind it without bloating the optimiser packet schema.
+- Strategy prompt updated to read a shortlist view, not the full 509×6 table.
+- Docs: `docs/architecture/initial-squad-fixture-audit.md`.
+- Tests cover hash stability, opponent/FDR fields, blank/double markers.
+

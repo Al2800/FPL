@@ -2,7 +2,7 @@
 
 **Blocked by:** None
 
-**Status:** open
+**Status:** resolved
 
 **Type:** task
 
@@ -57,16 +57,33 @@ match ratings), with deterministic host application.
 
 ### Acceptance criteria
 
-- [ ] Hash-bound handoff: ledger → relevant-evidence packet → start_p vectors.
-- [ ] Doubtful example players on a rebuilt checkpoint show depressed GW1
+- [x] Hash-bound handoff: ledger → relevant-evidence packet → start_p vectors.
+- [x] Doubtful example players on a rebuilt checkpoint show depressed GW1
       start_p relative to unadjusted prior, with claim ids in lineage/audit.
-- [ ] Unaffected players remain byte-stable.
-- [ ] GW variation possible when claims have different horizons/expiries.
-- [ ] Tests for expiry, identity mismatch fail-closed, and disabled-challenger
+- [x] Unaffected players remain byte-stable.
+- [x] GW variation possible when claims have different horizons/expiries.
+- [x] Tests for expiry, identity mismatch fail-closed, and disabled-challenger
       baseline invariance.
-- [ ] No LLM-applied numerical minutes without host validation.
+- [x] No LLM-applied numerical minutes without host validation.
 
 ### Out of scope
 
 - Enabling automated club HTML scrape (still rights-gated).
 - Promoting ratings effects before a 2026/27 envelope exists.
+
+## Answer
+
+Host blend `blend_availability_into_horizon_players` projects the admitted
+availability ledger at packet `observed_at` and adjusts GW start_p / EP /
+uncertainty.
+
+- Doubtful: −0.25 start_p cap (v2 policy number); EP scaled by probability ratio.
+- Unavailable: zero projection for affected GWs.
+- Trusted for checkpoint-admitted ledgers (even without source_hashes).
+- Mid-horizon expiry cuts later GWs when expires_at falls between kickoffs;
+  preseason claims that expire before every kickoff still apply while live in
+  the information set.
+- Clears `unstructured_evidence_absent` when any claim is applied; writes
+  `availability-blend.json`.
+- Unaffected players remain byte-stable (tested).
+

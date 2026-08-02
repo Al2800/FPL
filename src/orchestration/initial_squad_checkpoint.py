@@ -31,6 +31,11 @@ from src.forecasting.live_initial_squad import (
 from src.forecasting.live_faithful import artifact_hash
 from src.forecasting.team_attack_defence import AttackDefenceParameters
 from src.forecasting.team_prior import EloParameters
+from src.forecasting.initial_squad_context import (
+    attach_set_piece_roles,
+    blend_availability_into_horizon_players,
+    build_gap_panel,
+)
 from src.forecasting.live_odds_team_prior import (
     discover_latest_odds_capture,
     odds_snapshots_from_capture,
@@ -889,6 +894,52 @@ def build_initial_squad_packet(
         live_horizon_error = str(exc)
         live_horizon = None
 
+    availability_blend: dict[str, Any] | None = None
+    set_piece_summary: dict[str, Any] | None = None
+    fixture_audit: dict[str, Any] | None = None
+    gap_panel: dict[str, Any] | None = None
+
+    # Availability blend (ticket 03): host-only numerical minutes adjustment.
+    availability_ledger = None
+    availability_state = family_states.get("availability_role_evidence")
+    availability_path = verified.get("bound_paths", {}).get(
+        "availability_role_evidence"
+    )
+    if (
+        isinstance(availability_state, Mapping)
+        and availability_state.get("state") == "admitted"
+        and availability_path is not None
+    ):
+        try:
+            availability_ledger = _read_json_object(
+                Path(availability_path), "availability role evidence"
+            )
+        except (OSError, InitialSquadCheckpointError, ValueError):
+            availability_ledger = None
+    players, availability_blend = blend_availability_into_horizon_players(
+        players,
+        ledger=availability_ledger,
+        season=str(manifest["season"]),
+        as_of=str(verified["observed_at"]),
+        fixtures=list(verified["fixtures"]),
+        horizon_gameweeks=list(range(1, horizon_size + 1)),
+        trust_admitted_ledger=True,
+    )
+
+    # Set-piece role surface (ticket 04): visibility only, no EP effects.
+    set_pieces_artifact = None
+    set_pieces_path = verified.get("bound_paths", {}).get("set_pieces")
+    if set_pieces_path is not None:
+        try:
+            set_pieces_artifact = _read_json_object(
+                Path(set_pieces_path), "set pieces artifact"
+            )
+        except (OSError, InitialSquadCheckpointError, ValueError):
+            set_pieces_artifact = None
+    players, set_piece_summary = attach_set_piece_roles(
+        players, set_pieces_artifact=set_pieces_artifact
+    )
+
     if live_horizon is not None:
         forecast_model_version = str(live_horizon["model_config_id"])
         projection_strategy = forecast_model_version
@@ -898,6 +949,53 @@ def build_initial_squad_packet(
         lineage["clubelo_body_sha256"] = team_context.get("clubelo_body_sha256")
         lineage["odds_capture_path"] = team_context.get("odds_path")
         lineage["promoted_team_names"] = list(team_context.get("promoted_team_names") or [])
+        limitations = list(live_horizon["limitations"])
+        if availability_blend and availability_blend.get("status") == "applied":
+            limitations = [
+                value
+                for value in limitations
+                if value != "unstructured_evidence_absent"
+            ]
+            limitations.append("availability_evidence_blended_into_start_probability")
+        else:
+            if "unstructured_evidence_absent" not in limitations:
+                limitations.append("unstructured_evidence_absent")
+            if availability_blend and availability_blend.get("skipped"):
+                limitations.append("availability_evidence_present_but_not_applied")
+        # Sync fixture audit EP/start_p after availability blend.
+        fixture_audit = deepcopy(dict(live_horizon.get("fixture_audit") or {}))
+        if fixture_audit:
+            by_id = {str(row["player_id"]): row for row in players}
+            for player_id, audit_row in fixture_audit.get("players", {}).items():
+                packet_row = by_id.get(str(player_id))
+                if packet_row is None:
+                    continue
+                for index, week in enumerate(audit_row.get("gameweeks", [])):
+                    if index < len(packet_row["expected_points"]):
+                        week["expected_points"] = float(
+                            packet_row["expected_points"][index]
+                        )
+                        week["start_probability"] = float(
+                            packet_row["start_probability"][index]
+                        )
+            fixture_audit.pop("content_sha256", None)
+            fixture_audit["content_sha256"] = artifact_hash(fixture_audit)
+            lineage["fixture_audit_sha256"] = fixture_audit["content_sha256"]
+        if set_piece_summary:
+            lineage["set_piece_surface"] = {
+                "status": set_piece_summary.get("status"),
+                "players_tagged": set_piece_summary.get("players_tagged"),
+                "effect_weights": set_piece_summary.get("effect_weights"),
+                "promotion_status": set_piece_summary.get("promotion_status"),
+                "ledger_sha256": set_piece_summary.get("ledger_sha256"),
+            }
+        if availability_blend:
+            lineage["availability_blend"] = {
+                "status": availability_blend.get("status"),
+                "applied_count": len(availability_blend.get("applied") or []),
+                "skipped_count": len(availability_blend.get("skipped") or []),
+                "content_sha256": availability_blend.get("content_sha256"),
+            }
         forecast_quality = {
             "status": "live_faithful_degraded",
             "strategy": forecast_model_version,
@@ -906,7 +1004,7 @@ def build_initial_squad_packet(
                 "hash-bound official checkpoint and historical prior; optional "
                 "evidence gaps remain explicitly degraded."
             ),
-            "limitations": list(live_horizon["limitations"]),
+            "limitations": sorted(set(limitations)),
             "lineage": lineage,
             "gameweek_forecast_hashes": deepcopy(
                 list(live_horizon["gameweek_forecast_hashes"])
@@ -926,6 +1024,17 @@ def build_initial_squad_packet(
             "live_faithful_fallback_reason": live_horizon_error,
             "manual_entry_eligible": False,
         }
+
+    gap_panel = build_gap_panel(
+        source_families=family_states,
+        forecast_limitations=list(forecast_quality.get("limitations") or []),
+        availability_blend=availability_blend,
+        odds_summary=team_context.get("odds_summary"),
+        set_piece_summary=set_piece_summary,
+        fixture_audit_sha256=(
+            fixture_audit.get("content_sha256") if fixture_audit else None
+        ),
+    )
 
     feature_state = {
         "schema_version": "1.0",
@@ -947,6 +1056,13 @@ def build_initial_squad_packet(
             "players_enriched": launch_enrichment["players_enriched"],
             "class_counts": launch_enrichment.get("class_counts", {}),
         },
+        "fixture_audit_sha256": (
+            fixture_audit.get("content_sha256") if fixture_audit else None
+        ),
+        "gap_panel_sha256": gap_panel.get("content_sha256"),
+        "availability_blend_sha256": (
+            availability_blend.get("content_sha256") if availability_blend else None
+        ),
         "live_faithful_horizon": (
             {
                 "status": "materialised",
@@ -996,6 +1112,10 @@ def build_initial_squad_packet(
         "forecast_quality": deepcopy(packet["forecast_quality"]),
         "launch_context_enrichment": launch_enrichment,
         "live_faithful_horizon": deepcopy(live_horizon),
+        "fixture_audit": fixture_audit,
+        "gap_panel": gap_panel,
+        "availability_blend": availability_blend,
+        "set_piece_summary": set_piece_summary,
         "fixture_count": len(verified["fixtures"]),
     }
 
@@ -1367,6 +1487,13 @@ def run_initial_squad_checkpoint(
         "fallbacks": packet_data["fallbacks"],
         "forecast_quality": packet_data["forecast_quality"],
         "fixture_count": packet_data["fixture_count"],
+        "gap_panel": packet_data.get("gap_panel"),
+        "fixture_audit_sha256": (
+            (packet_data.get("fixture_audit") or {}).get("content_sha256")
+        ),
+        "availability_blend_sha256": (
+            (packet_data.get("availability_blend") or {}).get("content_sha256")
+        ),
     }
     input_payload["content_sha256"] = artifact_hash(input_payload)
     recommendation = {
@@ -1453,6 +1580,19 @@ def run_initial_squad_checkpoint(
         try:
             _write_immutable_json(report_dir / "input-packet.json", input_payload)
             _write_immutable_json(report_dir / "recommendation.json", recommendation)
+            if packet_data.get("fixture_audit") is not None:
+                _write_immutable_json(
+                    report_dir / "fixture-audit.json", packet_data["fixture_audit"]
+                )
+            if packet_data.get("gap_panel") is not None:
+                _write_immutable_json(
+                    report_dir / "gap-panel.json", packet_data["gap_panel"]
+                )
+            if packet_data.get("availability_blend") is not None:
+                _write_immutable_json(
+                    report_dir / "availability-blend.json",
+                    packet_data["availability_blend"],
+                )
             _write_immutable_json(report_dir / "diff.json", diff)
             _write_immutable_text(report_dir / "diff.md", diff_markdown)
             _write_immutable_json(report_dir / "checkpoint.json", checkpoint)

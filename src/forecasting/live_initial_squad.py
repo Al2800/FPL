@@ -20,6 +20,7 @@ from src.forecasting.live_faithful import (
 )
 from src.forecasting.team_attack_defence import AttackDefenceParameters
 from src.forecasting.team_prior import EloParameters
+from src.forecasting.initial_squad_context import build_fixture_audit
 from src.forecasting.understat_player_context import (
     UnderstatPlayerContextError,
     build_understat_player_join,
@@ -511,6 +512,35 @@ def build_live_faithful_initial_squad_horizon(
             )
 
     model_name = "live-faithful-v1.feature-complete"
+    audit_players = []
+    for raw in raw_elements:
+        if not isinstance(raw, Mapping) or str(raw.get("status", "")) != "a":
+            continue
+        player_id = str(int(raw["id"]))
+        vector = vectors.get(player_id)
+        if vector is None:
+            continue
+        audit_players.append(
+            {
+                "player_id": player_id,
+                "web_name": str(raw.get("web_name", "")),
+                "position": POSITIONS[int(raw["element_type"])],
+                "club_id": str(int(raw["team"])),
+                "expected_points": list(vector["expected_points"]),
+                "start_probability": list(vector["start_probability"]),
+            }
+        )
+    fixture_audit = build_fixture_audit(
+        season=season,
+        decision_cutoff=cutoff_text,
+        captured_at=observed_text,
+        horizon_gameweeks=gameweeks,
+        bootstrap=bootstrap,
+        fixtures=raw_fixtures,
+        players=audit_players,
+        forecasts=forecasts,
+        team_prior=team_prior,
+    )
     result: dict[str, Any] = {
         "schema_version": "live-initial-squad-horizon-v1",
         "season": "2026-27",
@@ -532,8 +562,10 @@ def build_live_faithful_initial_squad_horizon(
             "understat_player_event_rates": deepcopy(player_understat_summary),
             "odds_team_prior": deepcopy(dict(odds_summary or {"status": "absent"})),
             "event_model_weight": float(model_config.get("event_model_weight", 0) or 0),
+            "fixture_audit_sha256": fixture_audit["content_sha256"],
         },
         "player_vectors": vectors,
+        "fixture_audit": fixture_audit,
         "gameweek_forecast_hashes": [
             {
                 "gameweek": item["gameweek"],

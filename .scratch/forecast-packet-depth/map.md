@@ -16,6 +16,9 @@ continue analysis before implementation bursts.
   stays 0.0 (challenger config can raise it). Cutoff-safe Odds API h2h
   snapshots feed the team prior when the slot window matches the decision
   cutoff; otherwise odds degrade cleanly.
+- Tickets 02–06 resolved: fixture-audit companion; availability→start_p host
+  blend; set-piece role surface (shadow effects); gap panel for strategy;
+  fatigue weight kept at 0.25 with optional horizon-fade follow-on only.
 - The Odds API key is for **match markets** (h2h/totals) into the team prior /
   licensed-odds family — not a substitute for player Understat xG/xA.
 - In-packet opponent / home-away / FDR / multiplier audit trail is **required**
@@ -95,14 +98,18 @@ Admitted roles on this checkpoint: 64 penalty / 60 DFK / 71 corner-or-indirect
 (195 active). Rank-1 pens include Saka, Palmer, Isak, Haaland, Mateta, etc.
 Ticket 04 is visibility-first.
 
-### Suggested implementation order (not started)
+### Suggested implementation order
 
-1. Ticket 02 — fixture audit trail (unblocks agent/human reasoning immediately)
-2. Ticket 03 — availability → start_p blend (largest decision miss)
-3. Ticket 01 — player Understat + odds team prior (heavier; needs identity work)
-4. Ticket 04 — set-piece surface (quick once audit companion exists)
-5. Ticket 06 — gap panel / family integration glue
-6. Ticket 05 — fatigue weight research (no code raise without answer)
+1. Ticket 01 — resolved
+2. Ticket 02 — resolved (fixture audit companion)
+3. Ticket 03 — resolved (availability → start_p blend)
+4. Ticket 04 — resolved (set-piece surface)
+5. Ticket 06 — resolved (gap panel)
+6. Ticket 05 — resolved (keep fatigue weight 0.25)
+
+Next frontier after rebuild: real T-24h odds slot (~20 Aug), optional
+horizon-aware fatigue vector without raising weight, event-weight challenger
+promotion only after calibration.
 
 ## Cross-links
 

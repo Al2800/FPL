@@ -2,7 +2,7 @@
 
 **Blocked by:** None
 
-**Status:** open
+**Status:** resolved
 
 **Type:** task
 
@@ -41,13 +41,13 @@ present or explicitly reasoned-over as a gap.
 
 ### Acceptance criteria
 
-- [ ] Gap panel present on rebuilt checkpoint artefacts consumed by strategy.
-- [ ] Odds→team-prior path implemented or explicitly blocked on “no admitted
+- [x] Gap panel present on rebuilt checkpoint artefacts consumed by strategy.
+- [x] Odds→team-prior path implemented or explicitly blocked on “no admitted
       snapshot yet” with runbook pointer.
-- [ ] Ratings/transfers residual gaps documented in packet limitations, not
+- [x] Ratings/transfers residual gaps documented in packet limitations, not
       only in narrative docs.
-- [ ] Cross-links to tickets 01–05; no duplicate collectors.
-- [ ] Tests for degrade-clean behaviour when each optional family is absent.
+- [x] Cross-links to tickets 01–05; no duplicate collectors.
+- [x] Tests for degrade-clean behaviour when each optional family is absent.
 
 ### Notes
 
@@ -55,3 +55,14 @@ Related resolved/human-gated work lives under
 `.scratch/evidence-gap-fill/issues/04` (odds runbook), `05` (availability),
 `06` (ratings discipline). This ticket is the **packet integration** umbrella,
 not a reopening of rights decisions.
+
+## Answer
+
+`build_gap_panel` emits a single `gap-panel.json` / input-packet `gap_panel`
+covering odds, ratings, transfers, promoted priors, availability blend, set
+pieces, launch context and forecast limitations.
+
+- Odds integration status points at the slot runbook when absent.
+- Ratings explicitly degraded with no-scrape note.
+- Strategy prompt requires reading the gap panel before recommending.
+
