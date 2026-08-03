@@ -20,7 +20,17 @@
 
 ## What to do next (implementation)
 
-1. **Day-one live capture** — keep `scripts.run_snapshot` on a schedule; treat 403/empty bodies as retained evidence; promote schema notes when bootstrap is stable.
+**Full operationalisation plan (3 Aug 2026 review):**
+`.scratch/operationalisation/spec.md` with tickets 01–20 under
+`.scratch/operationalisation/issues/`. The current Phase 0/1 implementation
+queue is tickets 01 → 02 → 03; start at ticket 01. Later-phase tickets are
+deliberately marked `needs-triage` or `needs-info` until their activation gates
+are met.
+
+1. **Day-one live capture** — keep `scripts.run_snapshot` on a schedule; treat
+   403/empty bodies as retained evidence; promote schema notes when bootstrap
+   is stable. This is an ongoing owner operation; ticket 04 covers later Phase
+   2 portability and alerting, not the initial capture itself.
 2. **Wire manager state** — fill the template each GW; convert to optimiser `SolverInput` + GDR (small adapter script).
 3. **Attach post-GW outcomes** — `replay_gameweek(..., attach_outcome_points=...)` or equivalent on live GDRs.
 4. Keep evidence agents proposal-only and inside the attested
