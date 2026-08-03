@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prompts/daily-news-research/output-broad.schema.json",
+  "title": "Broad daily news candidate capture",
+  "description": "Untrusted search candidates retained for later signal review; this is not a claim ledger.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "title", "rank", "published_at", "publication_time_status", "source_class", "query", "observed_at"],
+      "properties": {
+        "url": {"type": ["string", "null"]},
+        "title": {"type": "string"},
+        "rank": {"type": "integer", "minimum": 1},
+        "snippet": {"type": ["string", "null"], "maxLength": 1000},
+        "published_at": {"type": ["string", "null"]},
+        "publication_time_status": {"enum": ["known", "unknown", "ambiguous"]},
+        "source_class": {"enum": ["official_candidate", "external_candidate", "feed_candidate"]},
+        "query": {"type": "string"},
+        "observed_at": {"type": "string"}
+      }
+    }
+  }
+}
