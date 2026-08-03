@@ -20,6 +20,11 @@
 
 ## What to do next (implementation)
 
+**Full operationalisation plan (3 Aug 2026 review):**
+`.scratch/operationalisation/spec.md` with tickets 01–14 under
+`.scratch/operationalisation/issues/`. Items 1–3 below correspond to
+tickets 01–03 there; start at ticket 01.
+
 1. **Day-one live capture** — keep `scripts.run_snapshot` on a schedule; treat 403/empty bodies as retained evidence; promote schema notes when bootstrap is stable.
 2. **Wire manager state** — fill the template each GW; convert to optimiser `SolverInput` + GDR (small adapter script).
 3. **Attach post-GW outcomes** — `replay_gameweek(..., attach_outcome_points=...)` or equivalent on live GDRs.
