@@ -1,23 +1,41 @@
-# 13 — Expected-minutes evidence sources: licensing and benchmarking
+# 13 — Owner decision: external expected-minutes sources
 
 Status: ready-for-human
 Type: task
-Track: E (minutes evidence)
+Track: Owner/source gate
 
 ## Context
 
-Expected minutes is the acknowledged weakest point (plan §7.1). The strongest external evidence — predicted line-ups (Fantasy Football Scout, Rotowire) and confirmed line-up feeds (Sofascore, Fotmob) — is registered but disabled pending terms review, as are Understat/FBref (xG/xA, defensive actions relevant to defensive-contribution scoring) and ClubElo (promoted-team priors).
+Expected minutes is the acknowledged weakest point (plan §7.1). The official
+team-sheet citation path is already registered, enabled and rehearsed for
+manual use (`official-lineups-minutes`; decision dated 31 July 2026). It is not
+an automated predicted-line-up feed.
 
-## Human part (gates the rest)
+Fantasy Football Scout, Rotowire, Sofascore and Fotmob are candidates named in
+the plan but do **not** have individual registry entries. Understat/FBref and
+ClubElo remain disabled. No collector may be implemented until a named source
+has a confirmed registry entry.
 
-Review terms for one predicted-line-up source and one confirmed-line-up feed (plus optionally Understat/FBref/ClubElo); record `licence_status`, `allowed_use` and collection method in `control/sources/source-registry.yaml`. Ground rule 2: no collection without registration.
+## Decision required from the owner
 
-## Agent part (after enablement)
-
-- Implement the collector(s) per the acquisition contract, capturing pre-deadline with full point-in-time timestamps.
-- Benchmark each start-probability source against the naive "started last Gameweek" baseline (WP-05 requirement) and against the official `chance_of_playing` flags before it feeds live decisions.
-- Feed accepted sources into the minutes model as governed evidence, not silent overrides.
+1. Decide whether the manual official citation path is sufficient for the first
+   live season.
+2. If not, select a **named** predicted-line-up or confirmed-line-up challenger
+   for terms, cost and retention review.
+3. Add or update its exact registry entry with `licence_status`, `allowed_use`,
+   collection method, retention, attribution and owner approval. A prohibited
+   or unresolved source stays disabled.
+4. Separately decide whether Understat/FBref or ClubElo warrants review; these
+   are not implicitly approved by selecting a line-up source.
 
 ## Done when
 
-- At least one line-up source is enabled with documented terms, its marginal accuracy over the naive baseline is measured and reported, and the minutes model consumes it through the evidence-adjustment policy.
+- The owner records either “official manual path only” or a named external
+  source trial with a complete registry decision.
+- Ticket 19 is updated to identify only the approved source, collection method,
+  admission thresholds and fallback before implementation starts.
+
+## Boundaries
+
+This ticket makes the source decision only. Collection and benchmarking are
+separate in ticket 19.

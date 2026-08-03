@@ -1,8 +1,12 @@
 # 05 — Monte Carlo simulation layer
 
-Status: ready-for-agent
+Status: needs-triage
 Type: task
-Track: B (distributional forecasting)
+Track: Phase 2 (distributional forecasting)
+Blocked by: 02
+
+Activation gate: Monte Carlo projections are a Phase 2 deliverable (plan §18).
+Do not implement until Phase 2 is explicitly authorised.
 
 ## Context
 
@@ -22,3 +26,6 @@ Plan §11.3 component 4 calls for distributions, but no simulation exists anywhe
 ## Boundaries
 
 Keep it deterministic-given-seed and cheap enough for replay volumes (§17.6). No ML fitting required in this ticket — composition of existing calibrated pieces is the deliverable.
+
+Improving the underlying fitted forecast components is a separate concern
+(ticket 17); simulation must not disguise weak or uncalibrated marginals.

@@ -1,8 +1,12 @@
 # 12 — Consolidate the lab: orchestration split and fork-runner unification
 
-Status: ready-for-agent
+Status: needs-triage
 Type: task
-Track: E (structure and surfaces)
+Track: Structural proposal
+
+Activation gate: first demonstrate the navigation/coupling problem with an
+import graph and duplicate-runner inventory, then accept an ADR. Do not move
+packages before that decision.
 
 ## Context
 
@@ -10,10 +14,19 @@ Track: E (structure and surfaces)
 
 ## Scope
 
-- Split `src/orchestration/` into a live pipeline package (episode building, manager state, capture scheduling, live shadow, the ticket-02 orchestrator) and an experiments package (replay harness, forks, counterfactuals, historical builders), preserving import compatibility or updating all call sites and tests.
-- Replace the per-GW fork scripts with one parameterised runner (`scripts/run_agent_fork.py --gws 30-38 ...`), keeping old outputs untouched.
-- Update `docs/handover-brief.md` and the tests' import paths; CI stays green.
+- Inventory imports, entry points and duplicate per-GW runner logic; record the
+  measurable maintenance problem and the smallest viable change.
+- Draft an ADR comparing: no package move plus navigation documentation;
+  compatibility wrappers; and a live/experiments package split.
+- If the ADR is accepted, replace the per-GW fork scripts with one
+  parameterised runner (`scripts/run_agent_fork.py --gws 30-38 ...`) and apply
+  only the package changes selected by the ADR.
 
 ## Done when
 
-- The live path is followable module-by-module; the GW-range fork runner reproduces one previously generated fork output byte-identically (or with explained diffs); all tests pass.
+- An import/entry-point inventory and accepted ADR define the exact migration.
+- The parameterised runner reproduces every existing committed fork fixture
+  byte-identically; any intentional schema change requires a separately
+  versioned migration rather than an unexplained output diff.
+- Repository architecture tests and the portable CI suite pass, and the
+  handover brief links the canonical live entry point.

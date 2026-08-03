@@ -1,8 +1,12 @@
 # 04 — Capture hardening and freshness alerting
 
-Status: ready-for-agent
+Status: needs-triage
 Type: task
-Track: A (close the live loop)
+Track: Phase 2 (operational hardening)
+Blocked by: 02
+
+Activation gate: Phase 2 is explicitly authorised after the Phase 0/1 live
+advisory loop has produced a reproducible GDR. Do not implement in Phase 0/1.
 
 ## Context
 
@@ -16,4 +20,10 @@ Capture scheduling is a single Windows machine via `scripts/install_deadline_cap
 
 ## Done when
 
-- A simulated missed T-2h capture produces an alert and a GDR flagged degraded rather than a silent stale recommendation.
+- The portable scheduler installs, runs the dispatcher against an offline
+  fixture, records its operational state and can be uninstalled without
+  deleting captured evidence.
+- A simulated missed T-2h capture produces an alert and a GDR flagged degraded
+  rather than a silent stale recommendation.
+- Tests cover missed, stale, duplicate and recovered checkpoints without
+  performing network access.

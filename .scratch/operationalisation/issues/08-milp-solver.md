@@ -1,25 +1,36 @@
-# 08 — MILP optimiser (Wildcard/Free Hit rebuild, true multi-week)
+# 08 — Owner decision: optimiser and planning-horizon upgrade
 
-Status: ready-for-agent
+Status: ready-for-human
 Type: task
-Track: C (real solver)
+Track: Owner/ADR gate
 
 ## Context
 
 `src/optimisation/solver.py` is an enumerative same-position search — explicitly "not globally optimal" (`docs/optimisation/wp07-status.md`) — and full-squad Wildcard/Free Hit rebuild is stubbed (hit accounting only). The two highest-leverage decisions of a season cannot currently be optimised. WP-07 anticipated assessing `open-fpl-solver` adaptation versus internal build (ADR-0011, Proposed).
 
-## Scope
+ADR-0011 currently chooses the transparent internal enumerator and explicitly
+requires a superseding ADR before introducing PuLP, OR-Tools or
+`open-fpl-solver`. ADR-0012 is amended by ADR-0020; it does not authorise a
+3–6 GW live horizon.
 
-- A MILP formulation (PuLP + CBC/HiGHS, or adapt `open-fpl-solver`) covering all §12.1 hard constraints: squad/positions/club limit, budget with actual selling prices, XI/formation, captain/vice, ordered bench, free-transfer balance and hits, chip interactions, blanks/doubles.
-- Full-squad rebuild for Wildcard and Free Hit candidates.
-- Multi-week variant over the 3–6 GW horizon with discounting, replacing (or cross-checking) the beam search in `multiweek.py`.
-- Keep it deterministic and auditable: saved solver input reproduces output exactly (WP-07 done-criterion); validate every emitted plan through `src/scoring/validator.py`.
-- Cross-check against the enumerative solver on golden cases — the old solver becomes a regression oracle.
+## Decision required from the owner
+
+1. Keep the internal enumerator and add bounded full-squad rebuild search, or
+   authorise a MILP dependency (internal formulation versus a governed
+   `open-fpl-solver` adaptation).
+2. Keep single-GW live optimisation with the ADR-0020 option-value bridge, or
+   authorise a specific multi-week horizon and discount policy once cutoff-safe
+   forecasts exist.
+3. Accept a superseding ADR recording solver dependency, determinism,
+   maintenance, licensing, performance and fallback trade-offs.
 
 ## Done when
 
-- MILP plans satisfy all golden-case constraints, match or beat enumerative EV on every fixture case, WC/FH rebuild produces valid full squads, and an ADR records the solver decision (supersedes/ratifies ADR-0011).
+- The owner accepts a superseding ADR for ADR-0011 and, if the horizon changes,
+  a further amendment to ADR-0012/0020.
+- Ticket 18 is updated with the selected solver, horizon, dependency version,
+  fallback and objective before it may become `ready-for-agent`.
 
 ## Boundaries
 
-Rules stay in YAML — constraint constants must be read from `control/rules/2026-27.yaml`, never hard-coded in the formulation.
+Do not implement a new solver or live horizon under this ticket.

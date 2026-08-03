@@ -1,9 +1,12 @@
 # 14 — Static dashboard and notification surface
 
-Status: ready-for-agent
+Status: needs-triage
 Type: task
-Track: E (structure and surfaces)
-Blocked by: 02
+Track: Phase 2 (reporting surface)
+Blocked by: 02, 04
+
+Activation gate: the static report is a Phase 2 deliverable. Do not implement
+until the Phase 0/1 live GDR is stable and Phase 2 is authorised.
 
 ## Context
 
@@ -17,7 +20,13 @@ Phase 2 deliverables include a "dashboard or static report view"; today the clos
 
 ## Done when
 
-- After `run_gameweek`, one command (or the orchestrator itself) emits the HTML view, and the owner can approve from the rendered record plus the signed journal entry (Phase-1 approval interface, plan §18).
+- A fixture GDR renders to deterministic HTML with no network calls.
+- The rendered page exposes the proposal ID, cutoff, rules/model versions,
+  validation, freshness/degraded state and approval-journal reference.
+- The season index links every available live GDR and its attached outcome;
+  missing optional ticket-05/07 outputs render as explicitly unavailable.
+- Accessibility checks cover headings, table labels and colour-independent
+  status indicators.
 
 ## Boundaries
 

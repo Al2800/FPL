@@ -1,8 +1,13 @@
 # 07 — Price-change model from transfer and ownership snapshots
 
-Status: ready-for-agent
+Status: needs-triage
 Type: task
-Track: B (free data)
+Track: Phase 5 (price intelligence)
+
+Activation gate: plan Phase 5 must be explicitly authorised and enough
+cutoff-safe 2026/27 daily snapshots and observed price changes must exist to
+support a time-based train/evaluation split. Until then, continue snapshotting
+the inputs only.
 
 ## Context
 
@@ -16,7 +21,11 @@ Track: B (free data)
 
 ## Done when
 
-- Nightly predictions are produced from existing snapshots with documented accuracy, and the GDR shows price-risk annotations on transfer plans.
+- A preregistered minimum sample and evaluation split are recorded before model
+  fitting.
+- Nightly predictions are produced from existing snapshots with documented
+  precision, recall and calibration, and the GDR shows price-risk annotations
+  on transfer plans.
 
 ## Boundaries
 

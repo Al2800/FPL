@@ -1,9 +1,13 @@
 # 11 — Scheduled evidence/challenger runs in the deadline cycle
 
-Status: ready-for-agent
+Status: needs-triage
 Type: task
-Track: D (automate the AI overlay)
+Track: Phase 2/3 (automate the AI overlay)
 Blocked by: 02, 10
+
+Activation gate: the owner must authorise both an API-backed arm in ticket 10
+and Phase 2/3 scheduled agent operation. Until then, preserve the accepted
+subscription-hosted manual arm from ADR-0021.
 
 ## Context
 

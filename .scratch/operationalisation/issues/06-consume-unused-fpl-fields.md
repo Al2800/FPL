@@ -1,20 +1,39 @@
-# 06 — Promote captured-but-unused FPL fields into models
+# 06 — Benchmark underused official FPL forecast fields
 
-Status: ready-for-agent
+Status: needs-triage
 Type: task
-Track: B (free data)
+Track: Phase 2 (official-data baselines)
+Blocked by: 02
 
 ## Context
 
-Tier 1 fields are snapshotted but never consumed: ICT components appear only in historical lag sums; the set-piece ledger (`src/ingestion/set_piece_roles.py`) has `effect_weights: None` (shadow-only); official `ep_next`/FDR were never benchmarked as WP-05 requires; `selected_by_percent` is episode metadata only.
+Official Tier 1 data is already captured but incompletely benchmarked:
+`ep_next`, FDR and bootstrap team-strength ratings are available before a
+deadline; `element-summary` contains current and past-season histories. WP-05
+requires official `ep_next` and FDR to be measured against the established
+baselines once enough cutoff-safe snapshots exist.
 
 ## Scope
 
-- **Set pieces:** define governed `effect_weights` (penalty/direct free kick/corner shares of goal and assist rates) and wire them into `live_faithful` event rates; promote from `shadow_only` behind an explicit policy flag.
-- **ICT:** evaluate influence/creativity/threat as features in the player-event baseline under time-based evaluation; adopt only if they beat the existing baseline, and record the result either way (plan §11.2 — a null result is a result).
-- **Benchmark `ep_next`/FDR:** complete the deferred WP-05 residual — benchmark official `ep_next` and FDR against the odds-implied and naive baselines on pre-deadline snapshots; document under `docs/data-sources/wp05/`.
-- **Ownership:** surface `selected_by_percent` in the GDR (captaincy-risk framing) without building Phase-5 effective-ownership strategy.
+- Benchmark official `ep_next` and FDR against the odds-implied and naive
+  baselines on pre-deadline snapshots.
+- Separately benchmark the bootstrap home/away attack and defence strength
+  ratings against the existing team-strength model.
+- Assess whether `element-summary` histories add cutoff-safe prior information
+  beyond the governed vaastav warehouse; document duplication, leakage and
+  retention implications before adoption.
+- Record each field's marginal value under time-based evaluation. A null result
+  is retained (plan §11.2), not converted into a feature.
 
 ## Done when
 
-- Each field has either a consuming feature with measured marginal value or a documented negative result; set-piece weights are active (or explicitly rejected) with tests.
+- `ep_next`, FDR, official team-strength ratings and `element-summary` histories
+  each have a reproducible benchmark or a documented reason the available
+  sample is not yet sufficient.
+- Only fields that improve the preregistered baseline are promoted, with source
+  references and transformation versions retained.
+
+## Boundaries
+
+This ticket does not cover ICT (ticket 16), set pieces (ticket 15), ownership
+(ticket 20) or price changes (ticket 07).
