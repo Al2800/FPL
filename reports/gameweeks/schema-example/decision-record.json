@@ -1,0 +1,137 @@
+{
+  "record_id": "gdr_skeleton_gw3",
+  "gameweek": 2,
+  "season": "2025-26",
+  "fixture_id": "skeleton-gw3-synthetic-2024-25",
+  "decision_cutoff": "2024-08-30T10:00:00Z",
+  "deadline": "2024-08-30T11:00:00Z",
+  "ruleset_id": "2025-26-v1.0",
+  "data_quality": "Synthetic fixture; structured-data replay",
+  "degraded": false,
+  "manager_state": {
+    "bank": 0.5,
+    "free_transfers": 1,
+    "chips_available": ["wildcard_fh", "free_hit_fh", "triple_captain_fh", "bench_boost_fh"],
+    "squad_player_ids": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+  },
+  "projections_summary": {
+    "n_players": 15,
+    "model_versions": ["naive_expected_points_v0"],
+    "principal_uncertainty": "Crude expected-minutes"
+  },
+  "candidate_plans": [
+    {"strategy": "no_transfer", "objective": 54.0, "hit_cost": 0, "transfers": []},
+    {"strategy": "highest_ev", "objective": 60.4, "hit_cost": 0, "transfers": [{"player_out_id": "12", "player_in_id": "16"}]}
+  ],
+  "validated_plan": {
+    "schema_version": "1.0",
+    "plan_id": "validated-plan:benchmark-v0:2025-26:gw02:manager-neutral:forecast_optimizer",
+    "episode_id": "benchmark-v0:2025-26:gw02:manager-neutral",
+    "policy_arm": "forecast_optimizer",
+    "season": "2025-26",
+    "gameweek": 2,
+    "previous_state_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "ruleset": {
+      "ruleset_id": "2025-26-v1.0",
+      "content_sha256": "376e6a7982b54bce8562a73cfd749f30c2d869c50bfa036a531b96c90bb5a809"
+    },
+    "transfers": [{
+      "player_out_id": "3",
+      "player_in_id": "16",
+      "position": "DEF",
+      "selling_price": 4.5,
+      "purchase_price": 4.8
+    }],
+    "squad_after": [
+      {"player_id": "1", "position": "GKP", "club_id": "1"},
+      {"player_id": "10", "position": "MID", "club_id": "10"},
+      {"player_id": "11", "position": "MID", "club_id": "11"},
+      {"player_id": "12", "position": "MID", "club_id": "12"},
+      {"player_id": "13", "position": "FWD", "club_id": "13"},
+      {"player_id": "14", "position": "FWD", "club_id": "14"},
+      {"player_id": "15", "position": "FWD", "club_id": "15"},
+      {"player_id": "16", "position": "DEF", "club_id": "16"},
+      {"player_id": "2", "position": "GKP", "club_id": "2"},
+      {"player_id": "4", "position": "DEF", "club_id": "4"},
+      {"player_id": "5", "position": "DEF", "club_id": "5"},
+      {"player_id": "6", "position": "DEF", "club_id": "6"},
+      {"player_id": "7", "position": "DEF", "club_id": "7"},
+      {"player_id": "8", "position": "MID", "club_id": "8"},
+      {"player_id": "9", "position": "MID", "club_id": "9"}
+    ],
+    "lineup": {
+      "formation": {"DEF": 3, "MID": 4, "FWD": 3},
+      "starting_xi_ids": ["1", "4", "5", "16", "8", "9", "10", "11", "13", "14", "15"],
+      "bench_ids": ["2", "6", "7", "12"],
+      "captain_id": "8",
+      "vice_captain_id": "9"
+    },
+    "active_chip": null,
+    "finance": {
+      "bank_before": 0.5,
+      "bank_after": 0.2,
+      "free_transfers_before": 1,
+      "transfer_count": 1,
+      "hit_cost": 0
+    },
+    "validation": {
+      "status": "passed",
+      "checks": [
+        "predecessor_and_rules_bound",
+        "transfer_finance_recomputed",
+        "squad_legal",
+        "lineup_legal_and_ordered",
+        "chip_legal"
+      ],
+      "content_sha256": "0055b02d3912964aff6e3f8b7f8b183435f4fab21ffcc320e25ecac861e2d68b"
+    },
+    "frozen_at": "2025-08-22T17:00:00Z",
+    "content_sha256": "1e5a0c7d180805d9e0c5b2c7eebdde9663e69ecc7ddc52bdb91c6aaae0616e03"
+  },
+  "recommendation": {
+    "strategy": "highest_ev",
+    "objective": 60.4,
+    "captain_name": "MidStar",
+    "vice_captain_name": "MidB",
+    "validated_plan_sha256": "1e5a0c7d180805d9e0c5b2c7eebdde9663e69ecc7ddc52bdb91c6aaae0616e03"
+  },
+  "baseline_comparison": {
+    "do_nothing_objective": 54.0,
+    "recommended_objective": 60.4,
+    "expected_advantage": 6.4,
+    "notes": "Recommended vs no-transfer plan on recorded objectives"
+  },
+  "alternatives": {
+    "conservative": {"strategy": "no_transfer", "objective": 54.0},
+    "aggressive": {"strategy": "hit", "objective": 58.0}
+  },
+  "evidence": {
+    "supporting_claim_ids": [],
+    "conflicting_claim_ids": [],
+    "conflict_ids": [],
+    "proposed_adjustment_ids": []
+  },
+  "validation": {
+    "squad": {"ok": true},
+    "lineup": {"ok": true}
+  },
+  "approval": {
+    "status": "pending",
+    "notes": "Awaiting human"
+  },
+  "execution": {
+    "mode": "manual",
+    "notes": "Advisory Phase 1"
+  },
+  "outcome": null,
+  "retrospective": null,
+  "confidence": "Low — synthetic",
+  "principal_uncertainty": "Crude projections",
+  "observed_at": "2026-07-21T12:00:00Z",
+  "available_at": "2026-07-21T12:00:00Z",
+  "provenance": {
+    "source_ids": ["synthetic-fixture"],
+    "transformation_version": "0.1.0",
+    "ruleset_id": "2026-27-v0.1"
+  }
+}

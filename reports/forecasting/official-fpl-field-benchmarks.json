@@ -1,0 +1,49 @@
+{
+  "benchmark_version": "1.0",
+  "content_sha256": "c1594a2926041ae22df63a0a82d0eace413e559f7c03d5c1ceabb67c0daea7b9",
+  "fields": {
+    "bootstrap_team_strength": {
+      "mae": null,
+      "n": 0,
+      "promoted": false,
+      "reason": "Need at least 38 cutoff-safe player-Gameweek pairs with realised points; found 0. Pre-deadline snapshots observed: 23.",
+      "status": "insufficient_sample"
+    },
+    "element_summary": {
+      "adopt": false,
+      "duplication_note": "No element-summary artifacts are present in the evaluation corpus. The governed vaastav merged_gw warehouse already supplies past-season player-match histories for priors.",
+      "leakage_note": "element-summary history rows can include the current Gameweek once fixtures start; any adoption must filter strictly by kickoff/available_at <= decision cutoff. Without a cutoff-labelled corpus this leakage risk cannot be measured.",
+      "n_files": 0,
+      "recommendation": "Do not adopt. Re-run after a cutoff-safe element-summary corpus exists and a paired ablation vs vaastav priors is positive.",
+      "retention_note": "Official element-summary payloads are restricted Tier-0 snapshots (ADR-0001/0002): private local retention only, no redistribution. Expanding capture without a proven prior gain increases retention surface for no decision benefit.",
+      "status": "no_corpus"
+    },
+    "ep_next": {
+      "mae": null,
+      "n": 0,
+      "promoted": false,
+      "reason": "Need at least 38 cutoff-safe player-Gameweek pairs with realised points; found 0. Pre-deadline snapshots observed: 23.",
+      "status": "insufficient_sample"
+    },
+    "fdr": {
+      "mae": null,
+      "n": 0,
+      "promoted": false,
+      "reason": "Need at least 38 cutoff-safe player-Gameweek pairs with realised points; found 0. Pre-deadline snapshots observed: 23.",
+      "status": "insufficient_sample"
+    }
+  },
+  "minimum_paired_outcomes": 38,
+  "n_paired_outcomes": 0,
+  "n_predeadline_snapshots": 23,
+  "notes": "Live 2026/27 has preseason/pre-deadline captures but no finished Gameweek outcomes yet; metrics stay insufficient until paired.",
+  "observed_at": "2026-08-04T13:10:36Z",
+  "promotion": {
+    "improved_vs_naive": [],
+    "policy": "Null or positive results are recorded; promotion into the live forecast requires an explicit owner gate and retained source/transform versions (plan \u00a711.2).",
+    "promoted_fields": []
+  },
+  "report_id": "official-fpl-field-benchmarks",
+  "status": "insufficient_sample",
+  "wp05_alignment": "docs/data-sources/wp05-status.md deferred official ep_next/FDR until a pre-deadline snapshot corpus with outcomes exists."
+}

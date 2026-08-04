@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Live Gameweek Decision Records</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f7f4ef;
+      --line: #cfc7bb;
+      --muted: #5c564c;
+      --panel: #fffdf8;
+    }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #ebe4d8 0%, var(--paper) 28%, #f3efe7 100%);
+      line-height: 1.45;
+    }
+    header, main, footer {
+      width: min(920px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+    header { padding: 2.5rem 0 1rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; color: var(--muted); }
+    h1, h2 { font-weight: 600; line-height: 1.15; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0.4rem 0 0.8rem; }
+    h2 { font-size: 1.25rem; margin-top: 0; }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 1rem 1.1rem 1.15rem;
+      margin: 0 0 1rem;
+    }
+    dl { display: grid; grid-template-columns: 12rem 1fr; gap: 0.35rem 1rem; margin: 0; }
+    dt { color: var(--muted); }
+    dd { margin: 0; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.45rem 0.35rem; vertical-align: top; }
+    caption { caption-side: top; text-align: left; color: var(--muted); margin-bottom: 0.4rem; }
+    .status-text { font-weight: 700; }
+    .status-text[data-status="DEGRADED"]::before { content: "[DEGRADED] "; }
+    .status-text[data-status="OK"]::before { content: "[OK] "; }
+    code, pre { font-family: "Cascadia Code", "Consolas", monospace; font-size: 0.85rem; overflow-wrap: anywhere; }
+    footer { color: var(--muted); padding: 1rem 0 2.5rem; font-size: 0.9rem; }
+    a { color: var(--ink); }
+  </style>
+</head>
+<body>
+<header><p class="eyebrow">FPL Decision Laboratory</p><h1>Live Gameweek Decision Records</h1><p>Static index over local <code>reports/gameweeks/</code>. No execution controls.</p></header><main><section aria-labelledby="index-heading"><h2 id="index-heading">Records</h2><table><caption>Available live Gameweek Decision Records</caption><thead><tr><th scope="col">Season</th><th scope="col">GW</th><th scope="col">Record</th><th scope="col">Health</th><th scope="col">Outcome</th><th scope="col">Retrospective</th></tr></thead><tbody><tr><td>2024-25</td><td>3</td><td><a href="skeleton-gw3/decision-record.html">unavailable</a></td><td><span class="status-text" data-status="OK">OK</span></td><td>not attached</td><td>not attached</td></tr>
+<tr><td>2025-26</td><td>2</td><td><a href="schema-example/decision-record.html">gdr_skeleton_gw3</a></td><td><span class="status-text" data-status="OK">OK</span></td><td>not attached</td><td>not attached</td></tr></tbody></table></section></main>
+</body>
+</html>

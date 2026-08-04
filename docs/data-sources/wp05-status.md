@@ -13,7 +13,9 @@
 - [x] Walk-forward fixture adjustment using prior rounds only
 - [x] Odds-implied 1X2 baseline (closing/unspecified label)
 - [x] Time-based eval harness + JSON report (`docs/data-sources/wp05/`)
-- [ ] Official `ep_next` / FDR vs odds — deferred to pre-deadline snapshot corpus
+- [x] Official `ep_next` / FDR vs odds — ticket 06 harness landed; live paired
+  outcomes still insufficient until finished 2026/27 Gameweeks exist
+  (`reports/forecasting/official-fpl-field-benchmarks.md`)
 - [x] World Cup priors CSV available for GW1–5 multipliers (`control/identities/world-cup-2026-priors.csv`)
 
 ## Verdict

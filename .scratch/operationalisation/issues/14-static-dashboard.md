@@ -1,12 +1,11 @@
 # 14 — Static dashboard and notification surface
 
-Status: needs-triage
+Status: resolved
 Type: task
 Track: Phase 2 (reporting surface)
 Blocked by: 02, 04
 
-Activation gate: the static report is a Phase 2 deliverable. Do not implement
-until the Phase 0/1 live GDR is stable and Phase 2 is authorised.
+Activation gate: Phase 2 authorised by owner on 4 August 2026 (tickets 06, 14).
 
 ## Context
 
@@ -31,3 +30,16 @@ Phase 2 deliverables include a "dashboard or static report view"; today the clos
 ## Boundaries
 
 No hosted/cloud dashboard (Phase 9); no execution buttons — approval remains a journal entry, execution remains manual.
+
+## Answer
+
+Implemented:
+
+- `src/reporting/gdr_html.py` — deterministic self-contained HTML; season index
+  scanner; colour-independent `[OK]`/`[DEGRADED]` status text; MC/price-risk
+  sections explicitly unavailable when absent; no execution controls
+- `scripts/render_gdr_report.py` — render one GDR or `--season-index`
+- `scripts/send_deadline_reminder.py` — optional reminder via ticket-04 notifier
+- Example render: `reports/gameweeks/schema-example/` + `reports/gameweeks/index.html`
+
+Tests: `tests/reporting/test_gdr_html.py`.

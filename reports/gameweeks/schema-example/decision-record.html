@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>GDR gdr_skeleton_gw3</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --paper: #f7f4ef;
+      --line: #cfc7bb;
+      --muted: #5c564c;
+      --panel: #fffdf8;
+    }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #ebe4d8 0%, var(--paper) 28%, #f3efe7 100%);
+      line-height: 1.45;
+    }
+    header, main, footer {
+      width: min(920px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+    header { padding: 2.5rem 0 1rem; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; color: var(--muted); }
+    h1, h2 { font-weight: 600; line-height: 1.15; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0.4rem 0 0.8rem; }
+    h2 { font-size: 1.25rem; margin-top: 0; }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 1rem 1.1rem 1.15rem;
+      margin: 0 0 1rem;
+    }
+    dl { display: grid; grid-template-columns: 12rem 1fr; gap: 0.35rem 1rem; margin: 0; }
+    dt { color: var(--muted); }
+    dd { margin: 0; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 0.45rem 0.35rem; vertical-align: top; }
+    caption { caption-side: top; text-align: left; color: var(--muted); margin-bottom: 0.4rem; }
+    .status-text { font-weight: 700; }
+    .status-text[data-status="DEGRADED"]::before { content: "[DEGRADED] "; }
+    .status-text[data-status="OK"]::before { content: "[OK] "; }
+    code, pre { font-family: "Cascadia Code", "Consolas", monospace; font-size: 0.85rem; overflow-wrap: anywhere; }
+    footer { color: var(--muted); padding: 1rem 0 2.5rem; font-size: 0.9rem; }
+    a { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">FPL Decision Laboratory · advisory only</p>
+  <h1>Gameweek Decision Record</h1>
+  <p class="lede">Proposal <code>gdr_skeleton_gw3</code>
+  · season 2025-26
+  · GW 2</p>
+  <p><span class="status-text" data-status="OK">OK — Synthetic fixture; structured-data replay</span></p>
+</header>
+<main>
+  <section aria-labelledby="meta-heading">
+    <h2 id="meta-heading">Cutoff, rules and provenance</h2>
+    <dl>
+      <dt>Decision cutoff</dt><dd>2024-08-30T10:00:00Z</dd>
+      <dt>Deadline</dt><dd>2024-08-30T11:00:00Z</dd>
+      <dt>Ruleset</dt><dd>2025-26-v1.0</dd>
+      <dt>Model versions</dt><dd>naive_expected_points_v0</dd>
+      <dt>Provenance</dt><dd>{&quot;ruleset_id&quot;: &quot;2026-27-v0.1&quot;, &quot;source_ids&quot;: [&quot;synthetic-fixture&quot;], &quot;transformation_version&quot;: &quot;0.1.0&quot;}</dd>
+      <dt>Approval journal</dt><dd>pending — Awaiting human</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="health-heading">
+    <h2 id="health-heading">Freshness and degraded state</h2>
+    <p>Health: <span class="status-text" data-status="OK">OK — Synthetic fixture; structured-data replay</span></p>
+    <p>Degraded reasons: none</p>
+    <p>Capture freshness: unavailable
+    · missed jobs: unavailable
+    · stale sources: unavailable</p>
+  </section>
+
+  <section aria-labelledby="rec-heading">
+    <h2 id="rec-heading">Recommendation</h2>
+    <dl>
+      <dt>Strategy</dt><dd>highest_ev</dd>
+      <dt>Objective</dt><dd>60.4</dd>
+      <dt>Captain</dt><dd>MidStar</dd>
+      <dt>Vice-captain</dt><dd>MidB</dd>
+      <dt>Validated plan hash</dt><dd><code>1e5a0c7d180805d9e0c5b2c7eebdde9663e69ecc7ddc52bdb91c6aaae0616e03</code></dd>
+      <dt>Formation / XI</dt><dd>{&#x27;DEF&#x27;: 3, &#x27;MID&#x27;: 4, &#x27;FWD&#x27;: 3} · starters 1, 4, 5, 16, 8, 9, 10, 11, 13, 14, 15</dd>
+    </dl>
+    <p>Baseline: do-nothing 54.0
+    → recommended 60.4
+    (advantage 6.4)</p>
+  </section>
+
+  <section aria-labelledby="plans-heading">
+    <h2 id="plans-heading">Candidate plans</h2>
+    <table>
+      <caption>Candidate plan objectives and optional Monte Carlo distributions</caption>
+      <thead><tr>
+        <th scope="col">Strategy</th>
+        <th scope="col">Objective</th>
+        <th scope="col">Hit cost</th>
+        <th scope="col">Points distribution</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>no_transfer</td><td>54.0</td><td>0</td><td>unavailable (ticket 05 not attached)</td></tr><tr><td>highest_ev</td><td>60.4</td><td>0</td><td>unavailable (ticket 05 not attached)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section aria-labelledby="mc-heading">
+    <h2 id="mc-heading">Monte Carlo summary</h2>
+    <p>Monte Carlo distributions unavailable (ticket 05).</p>
+  </section>
+
+  <section aria-labelledby="price-heading">
+    <h2 id="price-heading">Price risk</h2>
+    <p>Price-risk annotations unavailable (ticket 07).</p>
+  </section>
+
+  <section aria-labelledby="evidence-heading">
+    <h2 id="evidence-heading">Evidence</h2>
+    <p>Evidence citations unavailable on this record.</p>
+  </section>
+
+  <section aria-labelledby="validation-heading">
+    <h2 id="validation-heading">Validation</h2>
+    <p>squad=OK; lineup=OK</p>
+  </section>
+
+  <section aria-labelledby="outcome-heading">
+    <h2 id="outcome-heading">Outcome and retrospective</h2>
+    <p>Outcome: not attached</p>
+    <p>Retrospective: not attached</p>
+  </section>
+</main>
+<footer>
+  <p>Advisory only. No account writes. Approval remains a journal entry; execution remains manual.</p>
+</footer>
+
+</body>
+</html>
