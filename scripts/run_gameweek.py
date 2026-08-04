@@ -66,6 +66,18 @@ def main(argv: list[str] | None = None) -> int:
         help="Capture-summary JSON candidate (repeatable); latest pre-deadline wins",
     )
     parser.add_argument("--evidence", type=Path, default=None)
+    parser.add_argument(
+        "--freshness-report",
+        type=Path,
+        default=None,
+        help="Freshness monitor JSON from check_capture_freshness.py",
+    )
+    parser.add_argument(
+        "--monte-carlo",
+        type=Path,
+        default=None,
+        help="Monte Carlo input JSON (fixtures, players, n_paths, seed)",
+    )
     parser.add_argument("--bootstrap", type=Path, default=None)
     parser.add_argument("--rules", type=Path, default=DEFAULT_RULES_PATH)
     parser.add_argument("--out-dir", type=Path, default=None)
@@ -116,12 +128,16 @@ def main(argv: list[str] | None = None) -> int:
 
         snapshots = load_snapshot_candidates(args.snapshot) if args.snapshot else None
         evidence = _load_json(args.evidence) if args.evidence else None
+        freshness = _load_json(args.freshness_report) if args.freshness_report else None
+        monte_carlo = _load_json(args.monte_carlo) if args.monte_carlo else None
         result = run_gameweek(
             manager_state=manager_state,
             forecast=forecast,
             live_faithful_inputs=live_inputs,
             snapshot_candidates=snapshots,
             evidence=evidence,
+            freshness_report=freshness,
+            monte_carlo=monte_carlo,
             rules_path=args.rules,
             out_dir=args.out_dir,
             active_chip=args.active_chip,

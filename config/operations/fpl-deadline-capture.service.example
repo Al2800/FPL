@@ -1,0 +1,14 @@
+[Unit]
+Description=FPL Deadline-Aware Capture dispatcher (oneshot)
+Documentation=file://docs/plan.md
+After=default.target
+
+[Service]
+Type=oneshot
+# Operators replace these paths at install time via install_deadline_capture_scheduler.sh.
+# ExecStart=/path/to/repo/scripts/run_deadline_capture_task.sh
+WorkingDirectory=%h
+# No secrets: Odds API key remains in the user environment only.
+
+[Install]
+WantedBy=default.target

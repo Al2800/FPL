@@ -1,12 +1,11 @@
 # 05 — Monte Carlo simulation layer
 
-Status: needs-triage
+Status: resolved
 Type: task
 Track: Phase 2 (distributional forecasting)
 Blocked by: 02
 
-Activation gate: Monte Carlo projections are a Phase 2 deliverable (plan §18).
-Do not implement until Phase 2 is explicitly authorised.
+Activation gate: Phase 2 authorised by owner on 4 August 2026 (tickets 04–05).
 
 ## Context
 
@@ -29,3 +28,20 @@ Keep it deterministic-given-seed and cheap enough for replay volumes (§17.6). N
 
 Improving the underlying fitted forecast components is a separate concern
 (ticket 17); simulation must not disguise weak or uncalibrated marginals.
+
+## Answer
+
+Implemented:
+
+- `src/forecasting/monte_carlo.py` — appearance × per-90 rates on shared
+  Poisson scorelines; scoring exclusively via `score_match_stats`; seed-stable
+  P10/P50/P90; plan distributions with captain multiplier
+- `run_gameweek(..., monte_carlo=...)` / `--monte-carlo` attaches distributions
+  to GDR `projections_summary` and `candidate_plans[].points_distribution`
+- Adapter plans now expose `starting_xi` / `captain_id` for simulation attach
+- Calibration smoke under `reports/forecasting/monte-carlo-calibration.{json,md}`
+- Schema: `control/schemas/decisions/simulation_runs.json` gains `seed` +
+  player percentiles
+
+Tests: `tests/forecasting/test_monte_carlo.py` and the Monte Carlo integration
+case in `tests/integration/test_run_gameweek.py`.

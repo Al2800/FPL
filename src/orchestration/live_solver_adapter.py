@@ -237,12 +237,24 @@ def build_live_decision_record(
     for name, plan in (solver_output.get("plans") or {}).items():
         if not plan:
             continue
+        lineup = plan.get("lineup") if isinstance(plan.get("lineup"), Mapping) else {}
+        starting = lineup.get("starting_xi_ids") or lineup.get("starting_xi") or []
+        starting_ids = [
+            str(player["player_id"] if isinstance(player, Mapping) else player)
+            for player in starting
+        ]
         plans_summary.append(
             {
                 "strategy": plan.get("strategy", name),
                 "objective": plan["objective"],
                 "hit_cost": plan.get("hit_cost", 0),
                 "transfers": plan.get("transfers") or [],
+                "starting_xi": starting_ids,
+                "captain_id": (
+                    None
+                    if lineup.get("captain_id") is None
+                    else str(lineup.get("captain_id"))
+                ),
             }
         )
     names = {

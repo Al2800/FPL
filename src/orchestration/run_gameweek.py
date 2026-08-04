@@ -16,14 +16,20 @@ from src.forecasting.live_faithful import (
     LiveFaithfulForecastError,
     build_live_faithful_forecast,
 )
+from src.forecasting.monte_carlo import (
+    MonteCarloError,
+    attach_monte_carlo_to_decision_record,
+    simulate_gameweek,
+)
 from src.optimisation.io import fingerprint
+from src.orchestration.freshness_monitor import apply_freshness_to_decision_record
 from src.orchestration.live_solver_adapter import (
     LiveSolverAdapterError,
     adapt_solve_and_record,
 )
 from src.quality.point_in_time import assert_no_lookahead, filter_by_deadline
 from src.reporting.decision_record import write_decision_record
-from src.scoring.rules_loader import DEFAULT_RULES_PATH
+from src.scoring.rules_loader import DEFAULT_RULES_PATH, load_rules
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -140,13 +146,19 @@ def run_gameweek(
     live_faithful_inputs: Mapping[str, Mapping[str, Any]] | None = None,
     snapshot_candidates: Sequence[Mapping[str, Any]] | None = None,
     evidence: Mapping[str, Any] | None = None,
+    freshness_report: Mapping[str, Any] | None = None,
+    monte_carlo: Mapping[str, Any] | None = None,
     rules_path: Path | None = None,
     out_dir: Path | None = None,
     active_chip: str | None = None,
     max_transfers: int = 3,
     validate_record: bool = True,
 ) -> dict[str, Any]:
-    """Run the deterministic advisory Gameweek chain and write the GDR."""
+    """Run the deterministic advisory Gameweek chain and write the GDR.
+
+    ``monte_carlo`` may supply ``fixtures``, ``players``, ``n_paths`` and
+    ``seed`` for distributional projections (ticket 05).
+    """
 
     state = dict(manager_state)
     for field in ("season", "gameweek", "deadline", "available_at"):
@@ -226,6 +238,44 @@ def run_gameweek(
         "snapshot_path": None if selected_snapshot is None else selected_snapshot.get("path"),
         "point_in_time_ok": True,
     }
+    if freshness_report is not None:
+        record = apply_freshness_to_decision_record(record, freshness_report)
+        degraded_reasons = list(record.get("degraded_reasons") or [])
+        degraded = bool(record.get("degraded"))
+
+    simulation: dict[str, Any] | None = None
+    if monte_carlo is not None:
+        try:
+            from src.forecasting.appearance_distribution import AppearanceDistribution
+            from src.forecasting.monte_carlo import (
+                FixtureSimulationInput,
+                PlayerSimulationInput,
+            )
+
+            fixtures = [
+                FixtureSimulationInput(**dict(row))
+                for row in monte_carlo["fixtures"]
+            ]
+            players = []
+            for row in monte_carlo["players"]:
+                payload = dict(row)
+                appearance = payload.pop("appearance")
+                if isinstance(appearance, Mapping):
+                    appearance = AppearanceDistribution.from_mapping(appearance)
+                players.append(
+                    PlayerSimulationInput(appearance=appearance, **payload)
+                )
+            simulation = simulate_gameweek(
+                fixtures=fixtures,
+                players=players,
+                n_paths=int(monte_carlo.get("n_paths", 500)),
+                seed=int(monte_carlo.get("seed", 0)),
+                rules=load_rules(rules),
+            )
+            record = attach_monte_carlo_to_decision_record(record, simulation)
+        except (MonteCarloError, KeyError, TypeError, ValueError) as exc:
+            raise RunGameweekError(f"monte_carlo inputs invalid: {exc}") from exc
+
     if selected_snapshot is not None:
         record.setdefault("pipeline", {})
         if isinstance(record["pipeline"], dict):
@@ -274,5 +324,6 @@ def run_gameweek(
         "solver_output": bundle["solver_output"],
         "forecast_market": market,
         "live_faithful_forecast": forecast_view,
+        "monte_carlo": simulation,
     }
     return result

@@ -7,6 +7,7 @@
   "required": [
     "run_id",
     "n_paths",
+    "seed",
     "forecast_run_id",
     "observed_at",
     "available_at",
@@ -17,10 +18,34 @@
       "type": "string"
     },
     "n_paths": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "seed": {
       "type": "integer"
     },
     "forecast_run_id": {
       "type": "string"
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "scoring": { "type": "string" }
+      }
+    },
+    "players": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["p10", "p50", "p90", "mean"],
+        "properties": {
+          "p10": { "type": "number" },
+          "p50": { "type": "number" },
+          "p90": { "type": "number" },
+          "mean": { "type": "number" }
+        }
+      }
     },
     "published_at": {
       "$ref": "../_defs.json#/$defs/iso_datetime"
@@ -39,6 +64,10 @@
     },
     "provenance": {
       "$ref": "../_defs.json#/$defs/provenance"
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
     }
   }
 }

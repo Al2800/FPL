@@ -164,3 +164,113 @@ def test_run_gameweek_requires_forecast_or_live_faithful_inputs() -> None:
     state, _forecast = _manager_state_and_forecast()
     with pytest.raises(RunGameweekError, match="forecast or live_faithful"):
         run_gameweek(manager_state=state, rules_path=RULES_PATH, validate_record=False)
+
+
+def test_run_gameweek_missed_capture_freshness_flags_gdr(tmp_path: Path) -> None:
+    from src.orchestration.freshness_monitor import evaluate_capture_freshness
+
+    state, forecast = _manager_state_and_forecast()
+    policy = json.loads(
+        (REPO / "config" / "data_sources" / "2026-27-capture-scheduler.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    freshness = evaluate_capture_freshness(
+        policy=policy,
+        bootstrap={
+            "events": [
+                {"id": 1, "deadline_time": "2026-08-21T17:30:00Z"},
+            ]
+        },
+        scheduler_state={"terminal_job_ids": []},
+        now="2026-08-21T16:01:00Z",
+    )
+    result = run_gameweek(
+        manager_state=state,
+        forecast=forecast,
+        evidence={"status": "ok"},
+        freshness_report=freshness,
+        rules_path=RULES_PATH,
+        out_dir=tmp_path / "fresh",
+        validate_record=True,
+    )
+    assert result["degraded"] is True
+    assert any(r.startswith("capture_missed:T-2h") for r in result["degraded_reasons"])
+    assert result["record"]["freshness"]["capture"]["status"] == "degraded"
+
+
+def test_run_gameweek_monte_carlo_attaches_distributions(tmp_path: Path) -> None:
+    state, forecast = _manager_state_and_forecast()
+    # Minimal one-player fixture covering the recommended XI captain when possible.
+    squad_ids = {str(row["player_id"]) for row in state["squad"]}
+    player = next(p for p in forecast["players"] if str(p["player_id"]) in squad_ids)
+    monte_carlo = {
+        "n_paths": 40,
+        "seed": 99,
+        "fixtures": [
+            {
+                "fixture_id": "fx-lab",
+                "home_club_id": player["club_id"],
+                "away_club_id": "opp",
+                "expected_home_xg": 1.2,
+                "expected_away_xg": 1.0,
+            }
+        ],
+        "players": [
+            {
+                "player_id": str(p["player_id"]),
+                "position": p["position"],
+                "club_id": p["club_id"],
+                "fixture_id": "fx-lab",
+                "appearance": {"zero": 0.1, "under_60": 0.2, "60_plus": 0.7},
+                "goals_per_90": 0.2,
+                "assists_per_90": 0.15,
+            }
+            for p in forecast["players"]
+            if str(p["player_id"]) in squad_ids and p["club_id"] == player["club_id"]
+        ],
+    }
+    # Ensure every squad player has a sim row (away side if needed).
+    covered = {row["player_id"] for row in monte_carlo["players"]}
+    for p in forecast["players"]:
+        pid = str(p["player_id"])
+        if pid not in squad_ids or pid in covered:
+            continue
+        monte_carlo["fixtures"].append(
+            {
+                "fixture_id": f"fx-{pid}",
+                "home_club_id": p["club_id"],
+                "away_club_id": "opp",
+                "expected_home_xg": 1.1,
+                "expected_away_xg": 0.9,
+            }
+        )
+        monte_carlo["players"].append(
+            {
+                "player_id": pid,
+                "position": p["position"],
+                "club_id": p["club_id"],
+                "fixture_id": f"fx-{pid}",
+                "appearance": {"zero": 0.1, "under_60": 0.2, "60_plus": 0.7},
+                "goals_per_90": 0.15,
+                "assists_per_90": 0.1,
+            }
+        )
+
+    result = run_gameweek(
+        manager_state=state,
+        forecast=forecast,
+        evidence={"status": "ok"},
+        monte_carlo=monte_carlo,
+        rules_path=RULES_PATH,
+        out_dir=tmp_path / "mc",
+        validate_record=True,
+    )
+    summary = result["record"]["projections_summary"]
+    assert summary["p10"] <= summary["p50"] <= summary["p90"]
+    assert summary["simulation"]["seed"] == 99
+    with_dist = [
+        plan for plan in result["record"]["candidate_plans"] if "points_distribution" in plan
+    ]
+    assert with_dist
+    assert with_dist[0]["points_distribution"]["p10"] <= with_dist[0]["points_distribution"]["p90"]

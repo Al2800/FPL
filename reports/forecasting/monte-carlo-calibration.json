@@ -1,0 +1,43 @@
+{
+  "calibration": {
+    "bias_actual_minus_predicted": 0.8087500000000001,
+    "correlation": null,
+    "mean_absolute_error": 0.8087500000000001,
+    "n": 16,
+    "reliability": [
+      {
+        "bin": 0,
+        "mean_actual": 2.80875,
+        "mean_predicted": 2.0,
+        "n": 16
+      }
+    ],
+    "root_mean_square_error": 0.8346350250259092
+  },
+  "content_sha256": "819acd0ea5ec920d630f19345ae5a9a74e6fbf81e06c1f87b1969bde40de7140",
+  "notes": "Offline ticket-05 calibration smoke against a seed-fixed Monte Carlo sample. This documents the simulation envelope and evaluation seam; it is not a claim that marginal appearance or event rates are production-calibrated (see ticket 17).",
+  "report_id": "monte-carlo-calibration",
+  "simulation": {
+    "content_sha256": "30ad19160e1b46008ec66f56133dba7844a0081b2e2b2f33912083b8e1af30b1",
+    "model": {
+      "scoring": "src.scoring.engine.score_match_stats",
+      "type": "appearance_x_rates_x_shared_poisson_scorelines"
+    },
+    "n_paths": 400,
+    "players": {
+      "def": {
+        "mean": 2.6025,
+        "p10": 0.0,
+        "p50": 2.0,
+        "p90": 6.0
+      },
+      "mid": {
+        "mean": 3.015,
+        "p10": 0.0,
+        "p50": 2.0,
+        "p90": 7.0
+      }
+    },
+    "seed": 20260804
+  }
+}
