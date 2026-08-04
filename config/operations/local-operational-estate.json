@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "active_root": "C:/Users/Alastair/FPL",
+  "legacy_roots": [
+    "C:/Users/Alastair/FPL-pr-review"
+  ],
+  "preseason_manifest_path": "control/manifests/2026-27-preseason.json",
+  "machine_manifest_path": "data/operational-state/machine-manifest.json",
+  "acknowledgements_path": "data/operational-state/acknowledged-unavailable-artifacts.json",
+  "knowledge_runtime_config": "config/data_sources/2026-27-fpl-retrieval.json",
+  "retained_families": [
+    {
+      "id": "preseason-weekly-2026-07-30",
+      "kind": "immutable_checkpoint",
+      "relative_path": "data/snapshots/2026-27/preseason/weekly-2026-07-30"
+    },
+    {
+      "id": "initial-squad-weekly-2026-07-30",
+      "kind": "immutable_report",
+      "relative_path": "reports/live/2026-27/initial-squad/weekly-2026-07-30"
+    }
+  ],
+  "scheduled_tasks": [
+    {
+      "name": "FPL Deadline-Aware Capture",
+      "expected_action_contains": [
+        "C:\\Users\\Alastair\\FPL",
+        "run_deadline_capture_task.ps1"
+      ]
+    },
+    {
+      "name": "FPL ChatGPT Unstructured Capture",
+      "expected_action_contains": [
+        "C:\\Users\\Alastair\\FPL",
+        "run_chatgpt_unstructured_capture"
+      ]
+    },
+    {
+      "name": "FPL ChatGPT Strategy Review",
+      "expected_action_contains": [
+        "C:\\Users\\Alastair\\FPL",
+        "run_chatgpt_strategy_review"
+      ]
+    }
+  ],
+  "secret_presence_checks": [
+    {
+      "id": "the_odds_api_key",
+      "environment_variable": "THE_ODDS_API_KEY",
+      "scope": "user"
+    }
+  ]
+}

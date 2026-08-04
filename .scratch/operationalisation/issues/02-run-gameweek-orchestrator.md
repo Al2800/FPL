@@ -1,6 +1,6 @@
 # 02 — Single `run_gameweek` live orchestrator
 
-Status: ready-for-agent
+Status: resolved
 Type: task
 Track: A (close the live loop)
 Blocked by: 01
@@ -28,3 +28,19 @@ Evidence/challenger stages are optional inputs: if absent or late, fall back to 
 - One command produces a validated, rendered GDR from existing snapshots with no undocumented manual steps.
 - Rerun with identical inputs reproduces the record (success criterion 6, plan §3.2).
 - An integration test covers the chain on fixture data.
+
+## Answer
+
+Implemented:
+
+- `src/orchestration/run_gameweek.py` — deterministic chain:
+  - `select_latest_predeadline_snapshot` (point-in-time filter; late candidates ignored)
+  - optional `build_live_faithful_forecast` composition → adapter market
+  - ticket-01 `adapt_solve_and_record` (optimiser + baseline + GDR)
+  - degraded flags when evidence absent/late or live-faithful degraded
+  - writes `decision-record.json/.txt`, solver I/O and forecast market under the out dir
+- `scripts/run_gameweek.py --gw N` — CLI wrapper (forecast JSON **or** live-faithful inputs)
+
+Integration: `tests/integration/test_run_gameweek.py` — **3 passed**, including
+reproducible fingerprints on identical inputs and schema-valid GDR with
+`degraded=true` when evidence is absent.

@@ -21,11 +21,17 @@
 ## What to do next (implementation)
 
 **Full operationalisation plan (3 Aug 2026 review):**
-`.scratch/operationalisation/spec.md` with tickets 01–20 under
+`.scratch/operationalisation/spec.md` with tickets 00–20 under
 `.scratch/operationalisation/issues/`. The current Phase 0/1 implementation
-queue is tickets 01 → 02 → 03; start at ticket 01. Later-phase tickets are
+queue is tickets 00 → 01 → 02 → 03; start at ticket 00. Later-phase tickets are
 deliberately marked `needs-triage` or `needs-info` until their activation gates
 are met.
+
+0. **Consolidate local operational state** — make `C:\Users\Alastair\FPL` the
+   authoritative execution checkout, copy and hash-verify retained artifacts
+   from legacy worktrees, record missing historical artifacts without
+   backfilling, and audit local scheduled-task actions. Ticket 00 owns this
+   create-only work and forbids deletion or overwrite.
 
 1. **Day-one live capture** — keep `scripts.run_snapshot` on a schedule; treat
    403/empty bodies as retained evidence; promote schema notes when bootstrap

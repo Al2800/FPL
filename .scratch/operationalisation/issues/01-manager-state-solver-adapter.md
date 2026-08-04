@@ -1,8 +1,9 @@
 # 01 — Manager-state → SolverInput + GDR adapter
 
-Status: ready-for-agent
+Status: resolved
 Type: task
 Track: A (close the live loop)
+Blocked by: 00
 
 ## Context
 
@@ -22,3 +23,22 @@ Track: A (close the live loop)
 ## Boundaries
 
 Manual entry remains the mechanism (ADR-0005); do not build authenticated capture.
+
+## Answer
+
+Implemented `src/orchestration/live_solver_adapter.py` with:
+
+- `build_live_solver_input` — normalised manager state + forecast market → `SolverInput`
+  (owned purchase/selling prices, bank, free transfers, chips)
+- `assert_owned_selling_prices` — ruleset-checked selling prices
+- `build_live_decision_record` / `adapt_solve_and_record` — solve then feed
+  `build_decision_record` without manual JSON surgery
+
+CLI: `scripts/build_live_solver_adapter.py` (accepts normalised state, or manual
+entry + `--bootstrap`).
+
+Tests: `tests/orchestration/test_live_solver_adapter.py` — **5 passed**, using
+the GW3 golden optimiser market as the forecast fixture and deriving a
+normalised manager-state squad with ruleset selling prices. Selected plans
+validate `squad_ok` / `lineup_ok` under `control/rules/2026-27.yaml`, and the
+emitted GDR passes schema validation.

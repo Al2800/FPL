@@ -48,9 +48,10 @@ Source state as at 3 August 2026:
 ## The plan
 
 The work is sequenced by activation gate, not just technical desirability.
-Only tickets 01–03 are in the current Phase 0/1 implementation queue.
+Tickets 00–03 are in the current Phase 0/1 implementation queue.
 
-- **Current Phase 0/1 — close the live advisory loop:** tickets 01–03.
+- **Current Phase 0/1 — establish the authoritative local estate, then close
+  the live advisory loop:** tickets 00–03.
 - **Phase 2 activation — operational hardening, distributions and reporting:** tickets 04–06, 09, 11, 14, 17 and 19.
 - **Model feature ablations (activate only with cutoff-safe evaluation data):** tickets 15–16.
 - **Owner/ADR gates:** tickets 08, 10 and 13.
@@ -59,6 +60,10 @@ Only tickets 01–03 are in the current Phase 0/1 implementation queue.
 - **Structural proposal:** ticket 12; an ADR must be accepted before package moves.
 
 Tickets live in `issues/` per the local tracker conventions (`docs/agents/issue-tracker.md`). `Blocked by:` lines encode sequencing; owner-gated tickets carry `Status: ready-for-human`.
+
+Ticket 00 is the first handoff item. It consolidates and verifies the private,
+gitignored point-in-time evidence and Windows scheduler state on the execution
+machine before later tickets bind new live Gameweek records to those artifacts.
 
 `needs-triage` means the capability belongs in the full operationalisation
 roadmap but is **not authorised for implementation in the current phase**.

@@ -2,6 +2,15 @@
 
 The scheduler coordinates only the existing authorised, read-only capture commands. It does not open a browser, authenticate to FPL, submit a team, or make account changes. It runs every fifteen minutes while its registered user is signed in and stores operational state and reports below `data/live-shadow/scheduler/`.
 
+The active execution checkout is `C:\Users\Alastair\FPL`. Before relying on a live checkpoint, audit the local operational estate (evidence roots, committed preseason references, and scheduled-task actions) with:
+
+```powershell
+cd C:\Users\Alastair\FPL
+.\.venv\Scripts\python.exe -m scripts.audit_local_operational_estate
+```
+
+See `docs/operations/local-operational-estate.md` for consolidation, acknowledgements of unavailable historical artifacts, and private archive recovery. Git restores installers and policy only; raw captures, live reports, SQLite stores and Task Scheduler registration remain machine-local.
+
 The dispatcher reads the latest immutable official FPL bootstrap observation to find the event deadline. Its policy is in `config/data_sources/2026-27-capture-scheduler.json`:
 
 - daily official observations at 07:00 and 10:00 Europe/London;
@@ -13,12 +22,12 @@ An absent odds key produces `degraded_missing_secret_no_network`; the official c
 
 ## Install and inspect
 
-This checked-out launch worktree is `C:\Users\Alastair\FPL-pr-review`; its existing virtual environment is in `C:\Users\Alastair\FPL\.venv`. From a normal user PowerShell window, run:
+From a normal user PowerShell window in the active checkout:
 
 ```powershell
-cd C:\Users\Alastair\FPL-pr-review
+cd C:\Users\Alastair\FPL
 powershell -ExecutionPolicy Bypass -File .\scripts\install_deadline_capture_scheduler.ps1 `
-  -RepositoryRoot 'C:\Users\Alastair\FPL-pr-review' `
+  -RepositoryRoot 'C:\Users\Alastair\FPL' `
   -PythonPath 'C:\Users\Alastair\FPL\.venv\Scripts\python.exe'
 
 schtasks /Query /TN 'FPL Deadline-Aware Capture' /FO LIST /V
@@ -39,7 +48,7 @@ Use this offline check at any time:
 Do not paste the key into chat, a Git file, or a command line. This command asks for it with masked input, stores it as a Windows **User** environment variable, and supplies it to the current shell without echoing it:
 
 ```powershell
-cd C:\Users\Alastair\FPL-pr-review
+cd C:\Users\Alastair\FPL
 $secure = Read-Host 'Paste The Odds API key' -AsSecureString
 $pointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
 try {
@@ -69,6 +78,6 @@ Each invocation writes a timestamped report in `data/live-shadow/scheduler/repor
 To remove the task without deleting any captured evidence or state:
 
 ```powershell
-cd C:\Users\Alastair\FPL-pr-review
+cd C:\Users\Alastair\FPL
 powershell -ExecutionPolicy Bypass -File .\scripts\uninstall_deadline_capture_scheduler.ps1
 ```
