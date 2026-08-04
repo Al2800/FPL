@@ -1,6 +1,6 @@
 # 03 — Post-GW outcome attachment and live retrospectives
 
-Status: ready-for-agent
+Status: resolved
 Type: task
 Track: A (close the live loop)
 Blocked by: 02
@@ -17,3 +17,16 @@ Blocked by: 02
 ## Done when
 
 - A completed live GDR gains an outcome and retrospective from recorded data alone, and the paired-metrics utilities in `src/evaluation/` accept live records identically to replayed ones.
+
+## Answer
+
+Implemented:
+
+- `src/orchestration/live_outcome_attachment.py` — event live → hidden outcomes →
+  `score_revealed_outcome`, decision metrics (transfer/captain/bench/hit), and
+  provisional/final revision gates
+- `scripts/attach_live_gameweek_outcome.py` — CLI over recorded live + bootstrap
+
+Tests: `tests/orchestration/test_live_outcome_attachment.py` — **4 passed**,
+including paired-metrics acceptance via `paired_summary` on live realised
+outcomes and refusal to overwrite finals with provisional/conflicting bytes.
