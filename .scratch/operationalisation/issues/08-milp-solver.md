@@ -1,6 +1,6 @@
 # 08 — Owner decision: optimiser and planning-horizon upgrade
 
-Status: ready-for-human
+Status: resolved
 Type: task
 Track: Owner/ADR gate
 
@@ -34,3 +34,16 @@ requires a superseding ADR before introducing PuLP, OR-Tools or
 ## Boundaries
 
 Do not implement a new solver or live horizon under this ticket.
+
+## Answer
+
+Owner decisions 5 August 2026:
+
+1. **Solver:** keep internal enumerator; add bounded Wildcard/Free Hit full-squad
+   rebuild. No MILP / PuLP / OR-Tools / `open-fpl-solver` (ADR-0022).
+2. **Horizon:** destination live horizon **4 Gameweeks**, discount **0.9**
+   (aligns with `transfer-horizon-v1`). Live weekly optimiser stays **single-GW
+   + ADR-0020** until cutoff-safe 4-GW forecasts exist (ADR-0023). Initial-squad
+   GW1–GW6 remains preseason-only (`initial-squad-2026-27.json`).
+3. ADRs accepted: `docs/decisions/0022-*.md`, `docs/decisions/0023-*.md`.
+   Ticket 18 updated accordingly.

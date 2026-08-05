@@ -1,6 +1,6 @@
 # 13 — Owner decision: external expected-minutes sources
 
-Status: ready-for-human
+Status: resolved
 Type: task
 Track: Owner/source gate
 
@@ -39,3 +39,16 @@ has a confirmed registry entry.
 
 This ticket makes the source decision only. Collection and benchmarking are
 separate in ticket 19.
+
+## Answer
+
+Owner decision 5 August 2026 (ADR-0025):
+
+- Keep official citation path.
+- Trial **Rotowire** predicted/confirmed line-ups via **manual citation only**
+  (terms prohibit crawl/spider; no API). Registry: `rotowire-lineups`
+  (`enabled: true`, `licence_status: restricted`, `collection_method:
+  manual_citation`).
+- Understat/FBref and ClubElo remain disabled.
+- Ticket 19 updated for the Rotowire citation trial + consolidator via
+  evidence-adjustment policy.

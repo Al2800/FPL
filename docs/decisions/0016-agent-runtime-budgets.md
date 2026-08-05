@@ -1,6 +1,6 @@
 # ADR-0016: Per-Gameweek agent cost and latency budgets
 
-**Status:** Proposed
+**Status:** Accepted (amended by ADR-0024)
 **Date:** 2026-07-21
 **Decides:** Open Decision 13 (`docs/plan.md` Section 25)
 
@@ -23,7 +23,8 @@ On timeout or budget breach: mark GDR `degraded=true`, attach failure reason, **
 The selected ChatGPT-subscription Codex host does not expose a reliable
 per-run currency meter. Currency is therefore recorded as unavailable, not
 zero; the wall-clock, one-attempt, output and postflight token limits remain
-enforced. A hard monetary cap requires a future API-backed provider decision.
+enforced. ADR-0024 declines an API-backed arm for now; hard monetary caps
+remain unavailable until a future API decision.
 
 ## Consequences
 

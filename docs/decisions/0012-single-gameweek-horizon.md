@@ -1,6 +1,6 @@
 # ADR-0012: Single-Gameweek optimiser horizon for Phase 1
 
-**Status:** Amended by ADR-0020
+**Status:** Amended by ADR-0020 and ADR-0023
 **Date:** 2026-07-21
 **Decides:** Open Decision 14 (`docs/plan.md` Section 25)
 

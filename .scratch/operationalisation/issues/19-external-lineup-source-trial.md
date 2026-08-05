@@ -1,13 +1,26 @@
 # 19 — Implement and benchmark an approved external line-up source
 
-Status: needs-info
+Status: ready-for-agent
 Type: task
 Track: Phase 2 (expected-minutes evidence)
 Blocked by: 13
 
-Missing information: ticket 13 must name and enable a source, define its
-permitted collection method and set trial admission thresholds. If the owner
-selects “official manual path only”, close this ticket without a collector.
+Approved by ticket 13 / ADR-0025 (5 August 2026):
+
+- **Source:** `rotowire-lineups` (RotoWire predicted/confirmed Premier League
+  line-ups)
+- **Collection method:** `manual_citation` only — no crawl, spider, scrape or
+  unofficial API (terms: https://www.rotowire.com/termsandconditions.php)
+- **Adjudication truth:** official team sheets (`official-lineups-minutes`)
+- **Fallback:** byte-identical structured forecast; quarantine disagreements;
+  never average feeds
+- **Admission before live influence:** coverage, identity match, start
+  calibration vs “started last GW” and `chance_of_playing`, confirmed-minutes
+  accuracy vs FPL post-match oracle, latency of citation workflow, failure
+  behaviour — thresholds to be set in the ticket-19 preregistration before the
+  first scored trial window
+- **Consolidator:** merge official citations + Rotowire citations + FPL
+  availability flags only through the governed evidence-adjustment policy
 
 ## Scope after approval
 
@@ -33,5 +46,5 @@ selects “official manual path only”, close this ticket without a collector.
 
 ## Boundaries
 
-No unregistered provider, HTML scraping outside the approved method, API secret
-in Git/model context, or silent forecast override.
+No unregistered provider, HTML scraping, API secret in Git/model context, or
+silent forecast override.

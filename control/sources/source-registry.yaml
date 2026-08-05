@@ -2,8 +2,8 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.3"
-updated_at: "2026-07-31"
+registry_version: "0.6.4"
+updated_at: "2026-08-05"
 
 sources:
   - source_id: fpl-official-endpoints
@@ -173,6 +173,39 @@ sources:
       Collection is manual citation only — automated HTML scrape stays out of
       scope. Alternative if a citation is missing for a fixture: retain an
       explicit evidence gap and leave the shared structured forecast unchanged.
+
+  - source_id: rotowire-lineups
+    owner: Roto Sports, Inc. (RotoWire)
+    source_type: html
+    authority: secondary
+    terms_url: "https://www.rotowire.com/termsandconditions.php"
+    licence_status: restricted
+    allowed_use: private_analysis_citation_snapshots
+    authentication: none
+    collection_method: manual_citation
+    expected_cadence: predeadline_and_matchday
+    max_staleness: "6h"
+    failure_policy: degrade
+    retention_policy: local_indefinite_private_per_ADR-0002
+    attribution: "RotoWire (rotowire.com) — predicted/confirmed line-ups"
+    enabled: true
+    review_date: "2026-09-01"
+    activation_approval:
+      terms: approved_citation_capture_only_no_crawl
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-05"
+      scope: >
+        manual citation of predicted/confirmed Premier League line-ups for
+        private non-commercial expected-minutes trial; no crawl, spider,
+        unofficial API, scrape or redistribution (ADR-0025)
+    notes: >
+      Tier 2 expected-minutes challenger (ADR-0025 / ticket 13). Terms prohibit
+      crawl/spider; collection is manual citation only, parallel to
+      official-lineups-minutes. Live forecast influence requires ticket-19
+      benchmark admission; until then citations may only enter via the governed
+      evidence-adjustment policy. Sofascore/FotMob/FFS are not authorised by
+      this entry. Understat/FBref/ClubElo remain separately disabled.
 
   # --- Tier 2: historical / community (plan Section 6.1) ---
 

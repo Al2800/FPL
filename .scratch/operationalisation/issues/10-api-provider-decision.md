@@ -1,6 +1,6 @@
 # 10 — Owner decision: API-backed model provider arm for scheduled agent runs
 
-Status: ready-for-human
+Status: resolved
 Type: task
 Track: D (automate the AI overlay)
 
@@ -19,3 +19,10 @@ The subscription-hosted Sol arm remains a valid experimental condition either wa
 ## Done when
 
 - An ADR records the decision. If declined, ticket 11 is re-scoped to "scheduled deterministic evidence checkpoint with manual agent hand-off" and this is noted there.
+
+## Answer
+
+Owner decision 5 August 2026: **decline** an API-backed arm. The always-on
+local host schedules the existing ChatGPT-subscription Codex path
+(ADR-0024 amending ADR-0016; ADR-0021 unchanged). Currency remains unavailable.
+Ticket 11 re-scoped to subscription/deterministic scheduling.

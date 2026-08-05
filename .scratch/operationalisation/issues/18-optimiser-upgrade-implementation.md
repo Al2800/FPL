@@ -1,13 +1,23 @@
 # 18 — Implement the owner-selected optimiser upgrade
 
-Status: needs-info
+Status: ready-for-agent
 Type: task
 Track: Solver implementation
 Blocked by: 08
 
-Missing information: the accepted superseding ADR must select the solver,
-dependency/version, live horizon, discount policy and fallback. Update this
-ticket from that decision before changing its status to `ready-for-agent`.
+Selected by ticket 08 / ADR-0022 / ADR-0023 (5 August 2026):
+
+- **Solver:** transparent internal enumerator; add **bounded** Wildcard / Free
+  Hit full-squad rebuild. No MILP dependency.
+- **Dependency / version:** none beyond current Python stack; solver version
+  bump recorded on outputs when rebuild lands.
+- **Live horizon (now):** `horizon_gameweeks=1` with ADR-0020 option-value
+  bridge; fallback = current enumerator without rebuild.
+- **Destination horizon:** 4 Gameweeks, discount 0.9 (`transfer-horizon-v1`
+  alignment) — interface only until cutoff-safe 4-GW forecasts exist; do not
+  invent future player points.
+- **Objective:** highest EV in the declared candidate domain; retain enumerator
+  as regression oracle.
 
 ## Invariant scope
 
@@ -34,5 +44,5 @@ Whatever implementation ticket 08 selects must:
 
 ## Boundaries
 
-Do not infer MILP versus bounded internal search, choose a dependency, or change
-the live horizon inside this ticket; those are ticket-08 owner decisions.
+Do not introduce MILP or change the live default horizon to 4 GW inside this
+ticket until cutoff-safe multi-GW forecasts are wired; expose the interface only.

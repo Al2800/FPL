@@ -5,8 +5,8 @@
 
 ## Checklist
 
-- [x] ADR-0011 — transparent internal optimiser (not `open-fpl-solver` adaptation) — **Proposed**
-- [x] ADR-0012 — single-Gameweek horizon for Phase 1 — **Proposed**
+- [x] ADR-0011 — transparent internal optimiser (not `open-fpl-solver` adaptation) — **Accepted; amended by ADR-0022 (bounded WC/FH rebuild)**
+- [x] ADR-0012 — single-Gameweek horizon for Phase 1 — **Amended by ADR-0020 and ADR-0023 (4-GW destination)**
 - [x] Constraints from `control/rules/` + validator (squad, lineup, hits, chips)
 - [x] Candidate plans: `highest_ev`, `no_transfer`, `bank_transfer`, `no_hit` / `free_transfer`, `hit`
 - [x] Reproducible JSON I/O + fingerprints (`evals/golden-cases/optimiser-gw3-*.json`)
@@ -16,8 +16,8 @@
 - [x] Incoming-player availability is governed by a recorded policy
 - [x] Unsupported horizon, discount, solver-version and chip inputs fail explicitly
 - [x] Results are labelled as highest EV in the declared candidate pool, not globally optimal
-- [ ] Multi-Gameweek / chip-timing value — deferred (ADR-0012)
-- [ ] Full Wildcard / Free Hit squad rebuild search — stubbed via hit accounting only
+- [ ] Multi-Gameweek / chip-timing value — destination 4 GW (ADR-0023); live still single-GW + ADR-0020 until forecasts exist
+- [ ] Full Wildcard / Free Hit squad rebuild search — authorised as bounded internal search (ADR-0022); implement in ticket 18
 
 ## Search-safety boundary
 

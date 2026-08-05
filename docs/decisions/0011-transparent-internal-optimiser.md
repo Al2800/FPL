@@ -1,8 +1,10 @@
 # ADR-0011: Smaller transparent internal optimiser
 
-**Status:** Proposed
+**Status:** Accepted (as amended by ADR-0022)
 **Date:** 2026-07-21
 **Decides:** Open Decision 7 (`docs/plan.md` Section 25)
+**Superseded in part by:** ADR-0022 (2026-08-05) — keeps internal enumerator;
+adds bounded Wildcard/Free Hit rebuild; still rejects MILP/`open-fpl-solver`.
 
 ## Context
 

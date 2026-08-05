@@ -5,25 +5,36 @@ Type: task
 Track: Phase 2/3 (automate the AI overlay)
 Blocked by: 02, 10
 
-Activation gate: the owner must authorise both an API-backed arm in ticket 10
-and Phase 2/3 scheduled agent operation. Until then, preserve the accepted
-subscription-hosted manual arm from ADR-0021.
+Activation gate: Phase 2/3 scheduled agent operation must be explicitly
+authorised. Ticket 10 (5 August 2026) **declined** an API arm (ADR-0024); this
+ticket uses the subscription-hosted Codex path on the always-on local host.
 
 ## Context
 
 Evidence and challenger agents are currently manual: `agent_arm.py` builds hash-bound requests, a human runs the model, and `materialize_*_response.py` scripts validate the output. For a live engine the overlay must run inside the §15.3 schedule (T-48h initial, T-8h availability refresh, T-2h final) with the T-90m deterministic fallback.
 
+Windows Scheduler already runs daily subscription Codex lanes
+(`docs/data-sources/chatgpt-agent-windows-scheduler.md`). Ticket 11 extends that
+pattern to deadline-cycle evidence/challenger stages without introducing API keys.
+
 ## Scope
 
-- Wire the evidence agent (news/`chance_of_playing`/`news_added` deltas, press-conference claims from registered sources) and challenger review into the `run_gameweek` orchestrator as scheduled stages, using the provider arm authorised in ticket 10.
-- Enforce the existing guarantees unchanged: proposal-only adjustments through the governed policy (`control/policies/evidence-adjustments-v2.yaml`), schema validation via `hosted_response.py`-equivalent linting, citations and expiry on every claim, challenger escalation outcomes (§13.4) blocking auto-approval when unresolved.
-- Budgets and timeouts per stage recorded in the GDR (§13.5); overrun degrades to the deterministic plan and marks the record degraded.
-- Record full traces (JSONL by run ID, ADR-0010) so live agent runs are replayable like historical forks.
+- Wire the evidence agent and challenger review into the `run_gameweek`
+  orchestrator as scheduled stages on the **subscription Codex** surface
+  (ADR-0021), not an API provider.
+- Enforce unchanged guarantees: proposal-only adjustments through the governed
+  policy, schema validation, citations/expiry, challenger escalation, T-90m
+  degrade to deterministic plan.
+- Budgets per ADR-0016/0024 (wall-clock; currency unavailable).
+- Record full traces (JSONL by run ID, ADR-0010).
 
 ## Done when
 
-- A live GDR shows agent-proposed, policy-accepted adjustments with citations, produced without human interaction, and a forced-timeout test demonstrates clean degradation to the deterministic plan.
+- A live GDR shows agent-proposed, policy-accepted adjustments with citations,
+  produced without human interaction on the subscription host, and a
+  forced-timeout test demonstrates clean degradation to the deterministic plan.
 
 ## Boundaries
 
-LLMs propose only. No execution authority, no rule enforcement, no secrets in prompts.
+LLMs propose only. No execution authority, no rule enforcement, no secrets in
+prompts, no API keys.
