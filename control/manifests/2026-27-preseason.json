@@ -40,9 +40,28 @@
         "world_cup_return_fatigue"
       ],
       "status": "degraded"
+    },
+    "weekly-2026-08-06": {
+      "checkpoint_id": "weekly-2026-08-06",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-06/manifest.json",
+      "manifest_sha256": "2a40aac227d21316ff3e1420d1bd17522d79d43ccc5e353ca06038b1ef469516",
+      "observed_at": "2026-08-06T06:04:49Z",
+      "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
+      "request_sha256": "bc26af8c411bf5c08917670ec829f9c9ce5eb90ccdd3b383bc2aa42b0d5d85e9",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
     }
   },
-  "content_sha256": "8461d2375541af3e54dd61883ad6b9ea130807d03061db07087d7831ddc54bff",
+  "content_sha256": "8fcf46819ef9edf3ae4b6cd5bc889ec5f5f2888e460844854971c64a93a95e8a",
   "legacy_launch_binding": {
     "bootstrap_sha256": "605dd760aa4a7697f99479c81911fe046c7b252704cfe7622c61fc5fd09399b5",
     "capture_id": "e2499ad7ab46d7147bba829d21eb6a8418b3d5f05fe7ff09708fdb458d802460",
@@ -55,5 +74,5 @@
   "purpose": "Index of admitted 2026/27 preseason checkpoints for FPL-guz and FPL-jm0",
   "schema_version": "1.0",
   "season": "2026-27",
-  "updated_at": "2026-07-31T19:22:08Z"
+  "updated_at": "2026-08-06T06:04:49Z"
 }
