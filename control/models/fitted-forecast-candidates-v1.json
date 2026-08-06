@@ -1,0 +1,87 @@
+{
+  "content_sha256": "7cdbc7ce0af9e991f8ceab2d7d4720e531d81315982be8b5b3daf45b8ce803ae",
+  "created_at": "2026-08-06T00:00:00Z",
+  "fallback_baseline": "live-faithful-v1.feature-complete",
+  "families": [
+    {
+      "baseline_id": "rolling_minutes_start_prob_v1",
+      "candidate_id": "l2_logistic_start_lag_roll3_v1",
+      "family_id": "expected_minutes",
+      "features": [
+        "intercept",
+        "started_lag1",
+        "minutes_roll3_over_90"
+      ],
+      "l2": 1.0,
+      "metrics": [
+        "brier",
+        "log_loss",
+        "ece",
+        "minutes_mae",
+        "minutes_rmse"
+      ],
+      "model": "l2_logistic",
+      "promotion_requires": [
+        "improve_locked_validation_brier",
+        "not_worsen_locked_validation_minutes_mae"
+      ],
+      "target": "started"
+    },
+    {
+      "baseline_id": "walk_forward_elo_v1",
+      "candidate_id": "ridge_elo_home_expected_goals_v1",
+      "family_id": "team_goals",
+      "features": [
+        "intercept",
+        "elo_expected_goals",
+        "is_home"
+      ],
+      "l2": 1.0,
+      "metrics": [
+        "mae",
+        "rmse",
+        "odds_log_loss_where_available"
+      ],
+      "model": "ridge",
+      "promotion_requires": [
+        "improve_locked_validation_mae"
+      ],
+      "target": "goals_scored"
+    },
+    {
+      "baseline_id": "per90_expected_minutes_fixture_v1",
+      "candidate_id": "ridge_goal_rate_minutes_fixture_v1",
+      "family_id": "player_events",
+      "features": [
+        "intercept",
+        "goals_per90_prior",
+        "expected_minutes_over_90",
+        "fixture_multiplier"
+      ],
+      "l2": 1.0,
+      "metrics": [
+        "brier",
+        "log_loss",
+        "ece"
+      ],
+      "model": "l2_logistic",
+      "promotion_requires": [
+        "improve_locked_validation_brier"
+      ],
+      "target": "scored_goal"
+    }
+  ],
+  "fit_seasons": [
+    "2022-23",
+    "2023-24"
+  ],
+  "forbidden_fit_seasons": [
+    "2025-26",
+    "2026-27"
+  ],
+  "locked_validation_season": "2024-25",
+  "notes": "Ticket 17 preregistration. Fit only on fit_seasons. 2025-26 is report-only and cannot promote. Fail closed to fallback_baseline. No new package dependencies.",
+  "oos_report_only_season": "2025-26",
+  "policy_id": "fitted-forecast-candidates-v1",
+  "schema_version": "fitted-forecast-candidates-v1"
+}

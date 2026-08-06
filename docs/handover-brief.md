@@ -17,6 +17,12 @@
   `docs/evaluation/benchmark-kernel-closure.md`. The contract is accepted;
   governed historical episode artefacts remain a local prerequisite for the
   artifact-backed replay suite.
+- **Canonical live advisory entry:** `src.orchestration.run_gameweek.run_gameweek`
+  (`python -m scripts.run_gameweek`). Orchestration inventory and fork-runner
+  dispatcher: `docs/architecture/orchestration-inventory-2026-08-06.md`,
+  `scripts/run_agent_fork.py` (ADR-0026 Accepted — Option A; Option B package
+  split follows via operationalisation ticket 22 once early live Gameweeks are
+  stable).
 
 ## What to do next (implementation)
 
@@ -45,7 +51,7 @@ are met.
 
 ## Owner-only (do not invent)
 
-- Ratify Proposed ADRs 0011–0016  
+- Ratify Proposed ADRs 0011–0016 (ADR-0026 was accepted 6 August 2026)
 - Recruit ~5 cohort managers (ADR-0009)  
 - Open Decision 8 is resolved: `gpt-5.6-sol` via ChatGPT-subscription Codex;
   no API secret is required or permitted for this arm.

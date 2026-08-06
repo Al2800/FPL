@@ -21,11 +21,21 @@ from src.forecasting.monte_carlo import (
     attach_monte_carlo_to_decision_record,
     simulate_gameweek,
 )
+from src.optimisation.chip_distributional_ev import (
+    ChipDistributionalEvError,
+    annotate_chip_candidates_with_distributions,
+    attach_distributional_chip_annotation_to_gdr,
+    plan_samples_from_chip_candidates,
+)
 from src.optimisation.io import fingerprint
 from src.orchestration.freshness_monitor import apply_freshness_to_decision_record
 from src.orchestration.live_solver_adapter import (
     LiveSolverAdapterError,
     adapt_solve_and_record,
+)
+from src.orchestration.scheduled_agent_overlay import (
+    attach_overlay_to_decision_record,
+    build_overlay_evidence_summary,
 )
 from src.quality.point_in_time import assert_no_lookahead, filter_by_deadline
 from src.reporting.decision_record import write_decision_record
@@ -148,6 +158,9 @@ def run_gameweek(
     evidence: Mapping[str, Any] | None = None,
     freshness_report: Mapping[str, Any] | None = None,
     monte_carlo: Mapping[str, Any] | None = None,
+    chip_decision: Mapping[str, Any] | None = None,
+    horizon_comparison: Mapping[str, Any] | None = None,
+    agent_overlay: Mapping[str, Any] | None = None,
     rules_path: Path | None = None,
     out_dir: Path | None = None,
     active_chip: str | None = None,
@@ -158,6 +171,15 @@ def run_gameweek(
 
     ``monte_carlo`` may supply ``fixtures``, ``players``, ``n_paths`` and
     ``seed`` for distributional projections (ticket 05).
+
+    ``chip_decision`` is an optional sealed weekly chip-policy decision. When
+    supplied with ``monte_carlo``, ticket 09 attaches pathwise chip-now versus
+    later distributional justification to the GDR without changing live
+    selection.
+
+    ``agent_overlay`` is an optional scheduled evidence/challenger result
+    (ticket 11). When supplied, citations and degrade reasons are attached; the
+    deterministic optimiser path remains authoritative on timeout/T-90m.
     """
 
     state = dict(manager_state)
@@ -205,6 +227,9 @@ def run_gameweek(
             )
     else:
         raise RunGameweekError("Provide forecast or live_faithful_inputs")
+
+    if evidence is None and agent_overlay is not None:
+        evidence = build_overlay_evidence_summary(agent_overlay)
 
     if evidence is None:
         degraded_reasons.append("evidence_absent_fallback_deterministic")
@@ -275,6 +300,42 @@ def run_gameweek(
             record = attach_monte_carlo_to_decision_record(record, simulation)
         except (MonteCarloError, KeyError, TypeError, ValueError) as exc:
             raise RunGameweekError(f"monte_carlo inputs invalid: {exc}") from exc
+
+    if chip_decision is not None:
+        if simulation is None:
+            raise RunGameweekError(
+                "chip_decision distributional annotation requires monte_carlo"
+            )
+        try:
+            selection = chip_decision.get("selection")
+            if not isinstance(selection, Mapping):
+                raise ChipDistributionalEvError("chip_decision lacks selection")
+            samples = plan_samples_from_chip_candidates(
+                list(selection.get("candidates") or []),
+                player_path_points=simulation.get("player_path_points") or {},
+            )
+            annotated = annotate_chip_candidates_with_distributions(
+                selection,
+                plan_samples_by_candidate=samples,
+            )
+            record = attach_distributional_chip_annotation_to_gdr(
+                record,
+                chip_selection=annotated,
+                horizon_comparison=horizon_comparison,
+            )
+            pipeline = dict(record.get("pipeline") or {})
+            components = list(pipeline.get("components") or [])
+            if "optimisation.chip_distributional_ev" not in components:
+                components.append("optimisation.chip_distributional_ev")
+            pipeline["components"] = components
+            record["pipeline"] = pipeline
+        except ChipDistributionalEvError as exc:
+            raise RunGameweekError(
+                f"chip distributional EV inputs invalid: {exc}"
+            ) from exc
+
+    if agent_overlay is not None:
+        record = attach_overlay_to_decision_record(record, agent_overlay)
 
     if selected_snapshot is not None:
         record.setdefault("pipeline", {})

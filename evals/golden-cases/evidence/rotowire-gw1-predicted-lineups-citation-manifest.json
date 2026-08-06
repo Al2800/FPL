@@ -1,0 +1,19 @@
+{
+  "schema_version": "rotowire-lineups-citation-manifest-v1",
+  "season": "2026-27",
+  "source_id": "rotowire-lineups",
+  "packs": [
+    {
+      "pack_id": "2026-08-05-gw1-predicted-lineups",
+      "local_path": "data/live-shadow/lineups/rotowire/2026-08-05-gw1-predicted-lineups-citation.json",
+      "citation_url": "https://www.rotowire.com/soccer/lineups.php",
+      "window_label": "Premier League predicted lineups 21-24 Aug 2026 (GW1)",
+      "gameweek": 1,
+      "observed_at": "2026-08-05T11:55:00+01:00",
+      "fixture_count": 10,
+      "content_sha256": "a930e3c0c1bbf21e8cb4a8aa7eed839c673b839d4de60f6ba9602a4f94edf774",
+      "identity_mapping_status": "names_only_pending_fpl_aliases",
+      "notes": "Hash-only manifest. Full XI rows stay in gitignored live-shadow."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "baseline": {
+    "horizon_gameweeks": 1,
+    "label": "single_gw_adr0020_selected",
+    "metrics": {
+      "immediate_net_points": 35.59,
+      "selected_candidate_id": "transfer_count:3"
+    },
+    "policy": "ADR-0020 expected_hit_avoidance bridge"
+  },
+  "content_sha256": "ac756f9a065111fb14781863b69082daef7c088c680b4fac66ff9b1373702e68",
+  "destination": {
+    "discount_factor": 0.9,
+    "horizon_gameweeks": 4,
+    "label": "four_gw_destination_selected",
+    "live_active": false,
+    "metrics": {
+      "horizon_gameweeks": [
+        34,
+        35,
+        36,
+        37
+      ],
+      "horizon_net_value": 135.894121,
+      "horizon_weekly_net_values": [
+        35.59,
+        40.3936,
+        40.4851,
+        42.7393
+      ],
+      "selected_candidate_id": "transfer_count:3"
+    },
+    "policy": "ADR-0023 / transfer-horizon-v1 alignment"
+  },
+  "notes": "Ticket 09 horizon ratification surface. Destination metrics must come from cutoff-safe multi-GW forecasts; do not invent future player points in the live path.",
+  "paired_delta": {
+    "horizon_minus_immediate_net_points": 100.304121
+  },
+  "schema_version": "chip-horizon-policy-comparison-v1",
+  "source_refs": {
+    "content_sha256": "b56e8d89d33b8468775e40f821a95cd2301fb1c4321a881978818c8eb94ecb47",
+    "gameweek": 34,
+    "horizon_sha256": "e3abe6d5be5c330a8c0ea1b2504197733459940bb8ce84e553c35b874292fcbb",
+    "report_id": "transfer-hit-counterfactual:2025-26:gw34",
+    "season": "2025-26"
+  }
+}

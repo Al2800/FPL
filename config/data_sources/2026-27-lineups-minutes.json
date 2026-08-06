@@ -31,6 +31,22 @@
       "approval_scope": "manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape"
     },
     {
+      "provider_id": "rotowire-lineups",
+      "role": "predicted_confirmed_lineup_challenger",
+      "status": "citation_capture_enabled_trial_pending_admission",
+      "capture_method": "manual_citation",
+      "credential_environment": null,
+      "registry_source_id": "rotowire-lineups",
+      "required_trial": "ticket_19_start_and_minutes_benchmark",
+      "registry_enabled": true,
+      "rights_approved": true,
+      "owner_approved": true,
+      "owner_approved_at": "2026-08-05T00:00:00Z",
+      "approval_scope": "manual_citation_only_no_crawl_no_scrape_no_redistribution_ADR-0025",
+      "citation_url": "https://www.rotowire.com/soccer/lineups.php",
+      "first_sealed_pack": "data/live-shadow/lineups/rotowire/2026-08-05-gw1-predicted-lineups-citation.json"
+    },
+    {
       "provider_id": "sportradar",
       "role": "automated_challenger_trial",
       "status": "candidate_access_gated",

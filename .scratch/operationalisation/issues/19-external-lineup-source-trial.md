@@ -1,6 +1,6 @@
 # 19 — Implement and benchmark an approved external line-up source
 
-Status: ready-for-agent
+Status: ready-for-human
 Type: task
 Track: Phase 2 (expected-minutes evidence)
 Blocked by: 13
@@ -48,3 +48,18 @@ Approved by ticket 13 / ADR-0025 (5 August 2026):
 
 No unregistered provider, HTML scraping, API secret in Git/model context, or
 silent forecast override.
+
+## Progress (5 August 2026)
+
+Citation capture, DuckDB load, consolidator and admission gate landed:
+
+- Manual citation pack + warehouse load for GW1 predicted lineups
+- `src/evidence/lineup_consolidator.py` — official > Rotowire > FPL availability;
+  quarantine disagreements; never average; shadow-only unless admitted
+- Preregistration policy `control/policies/rotowire-lineups-trial-v1.json`
+- `scripts/evaluate_rotowire_lineups_trial.py` fail-closed admission evaluator
+
+**Not yet done for full Done-when:** scored start/minutes calibration over
+`min_scored_fixtures` / `min_matchdays`. Live influence stays off until that
+trial sample exists and passes the gate.
+

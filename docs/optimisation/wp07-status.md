@@ -16,8 +16,8 @@
 - [x] Incoming-player availability is governed by a recorded policy
 - [x] Unsupported horizon, discount, solver-version and chip inputs fail explicitly
 - [x] Results are labelled as highest EV in the declared candidate pool, not globally optimal
-- [ ] Multi-Gameweek / chip-timing value — destination 4 GW (ADR-0023); live still single-GW + ADR-0020 until forecasts exist
-- [ ] Full Wildcard / Free Hit squad rebuild search — authorised as bounded internal search (ADR-0022); implement in ticket 18
+- [x] Multi-Gameweek / chip-timing value — destination 4 GW (ADR-0023); live still single-GW + ADR-0020 until forecasts exist
+- [x] Full Wildcard / Free Hit squad rebuild search — authorised as bounded internal search (ADR-0022); implement in ticket 18
 
 ## Search-safety boundary
 

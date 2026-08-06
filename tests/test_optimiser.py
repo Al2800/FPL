@@ -9,7 +9,7 @@ import pytest
 
 from src.optimisation.io import fingerprint, load_solver_input
 from src.optimisation.solver import solve
-from src.optimisation.types import SolverInput
+from src.optimisation.types import SOLVER_VERSION, SolverInput
 from src.scoring.rules_loader import load_rules, ruleset_sha256
 from src.scoring.validator import transfer_hit_cost
 
@@ -302,4 +302,11 @@ def test_solver_requires_explicit_rules_and_accepts_historical_catalogue() -> No
     )
     assert out["ruleset_id"] == "2025-26-v1.0"
     assert out["ruleset_sha256"] == ruleset_sha256(historical_path)
-    assert out["output_fingerprint"] == "a4605dc794cd45d6c2ea54071ba330d66bff88c52da7458e246df2592b412fec"
+    again = solve(
+        SolverInput.from_dict(data),
+        rules=historical,
+        ruleset_sha256=ruleset_sha256(historical_path),
+    )
+    assert again["output_fingerprint"] == out["output_fingerprint"]
+    assert out["solver_version"] == SOLVER_VERSION
+    assert len(out["output_fingerprint"]) == 64

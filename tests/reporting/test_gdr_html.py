@@ -36,6 +36,8 @@ def test_render_gdr_html_is_deterministic_and_offline(example_record: dict) -> N
     assert "Approval journal" in first
     assert "Monte Carlo distributions unavailable" in first
     assert "Price-risk annotations unavailable" in first
+    assert "Distributional chip EV unavailable" in first
+    assert "Horizon policy comparison unavailable" in first
     assert "button" not in first.lower()
     assert 'lang="en-GB"' in first
 

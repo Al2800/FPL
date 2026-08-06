@@ -1,6 +1,6 @@
 # 18 — Implement the owner-selected optimiser upgrade
 
-Status: ready-for-agent
+Status: resolved
 Type: task
 Track: Solver implementation
 Blocked by: 08
@@ -46,3 +46,18 @@ Whatever implementation ticket 08 selects must:
 
 Do not introduce MILP or change the live default horizon to 4 GW inside this
 ticket until cutoff-safe multi-GW forecasts are wired; expose the interface only.
+
+## Answer
+
+Implemented 5 August 2026 (ADR-0022 / ADR-0023):
+
+- Solver version bumped to `wp07-wc-fh-rebuild-v0.3`.
+- Bounded Wildcard / Free Hit full-squad rebuild via `src/optimisation/rebuild.py`,
+  wired into `solve()` when `active_chip` is WC/FH. Hit cost remains 0; existing
+  enumerator stays the regression path and deadline/budget fallback.
+- Destination horizon interface recorded on every output
+  (`destination_horizon_gameweeks=4`, `discount_factor=0.9`, `live_active=false`).
+  Live `horizon_gameweeks` remains 1 (no invented multi-GW points).
+- Golden input/output regenerated; rebuild-focused tests in
+  `tests/optimisation/test_rebuild.py`.
+

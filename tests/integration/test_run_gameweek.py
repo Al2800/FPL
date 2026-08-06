@@ -274,3 +274,124 @@ def test_run_gameweek_monte_carlo_attaches_distributions(tmp_path: Path) -> None
     ]
     assert with_dist
     assert with_dist[0]["points_distribution"]["p10"] <= with_dist[0]["points_distribution"]["p90"]
+
+
+def test_run_gameweek_attaches_distributional_chip_ev(tmp_path: Path) -> None:
+    state, forecast = _manager_state_and_forecast()
+    squad_ids = [str(row["player_id"]) for row in state["squad"]]
+    xi = squad_ids[:11]
+    captain = xi[0]
+    monte_carlo = {
+        "n_paths": 20,
+        "seed": 7,
+        "fixtures": [],
+        "players": [],
+    }
+    for pid in squad_ids:
+        player = next(p for p in forecast["players"] if str(p["player_id"]) == pid)
+        monte_carlo["fixtures"].append(
+            {
+                "fixture_id": f"fx-{pid}",
+                "home_club_id": player["club_id"],
+                "away_club_id": "opp",
+                "expected_home_xg": 1.0,
+                "expected_away_xg": 0.9,
+            }
+        )
+        monte_carlo["players"].append(
+            {
+                "player_id": pid,
+                "position": player["position"],
+                "club_id": player["club_id"],
+                "fixture_id": f"fx-{pid}",
+                "appearance": {"zero": 0.1, "under_60": 0.2, "60_plus": 0.7},
+                "goals_per_90": 0.2,
+                "assists_per_90": 0.1,
+            }
+        )
+    chip_decision = {
+        "content_sha256": "a" * 64,
+        "selected_candidate_id": "bench_boost_fh",
+        "selected_active_chip": "bench_boost_fh",
+        "selection": {
+            "no_chip_control_id": "no_chip_0_transfers",
+            "selected_candidate_id": "bench_boost_fh",
+            "selected_active_chip": "bench_boost_fh",
+            "candidates": [
+                {
+                    "candidate_id": "no_chip_0_transfers",
+                    "active_chip": None,
+                    "candidate": {
+                        "hit_cost": 0,
+                        "lineup": {
+                            "starting_xi_ids": xi,
+                            "captain_id": captain,
+                        },
+                    },
+                },
+                {
+                    "candidate_id": "bench_boost_fh",
+                    "active_chip": "bench_boost_fh",
+                    "candidate": {
+                        "hit_cost": 0,
+                        "lineup": {
+                            "starting_xi_ids": xi,
+                            "captain_id": captain,
+                        },
+                    },
+                },
+            ],
+        },
+    }
+    horizon = {
+        "content_sha256": "b" * 64,
+        "destination": {"live_active": False, "horizon_gameweeks": 4},
+    }
+    result = run_gameweek(
+        manager_state=state,
+        forecast=forecast,
+        evidence={"status": "ok"},
+        monte_carlo=monte_carlo,
+        chip_decision=chip_decision,
+        horizon_comparison=horizon,
+        rules_path=RULES_PATH,
+        out_dir=tmp_path / "chip-ev",
+        validate_record=False,
+    )
+    assert "chip_distributional_ev" in result["record"]
+    assert result["record"]["chip_distributional_ev"]["selected_active_chip"] == (
+        "bench_boost_fh"
+    )
+    assert result["record"]["chip_horizon_policy_comparison"]["content_sha256"] == (
+        "b" * 64
+    )
+
+
+def test_run_gameweek_agent_overlay_timeout_marks_degraded(tmp_path: Path) -> None:
+    state, forecast = _manager_state_and_forecast()
+    overlay = {
+        "schema_version": "scheduled-agent-overlay-result-v1",
+        "status": "timeout",
+        "checkpoint": "T-2h",
+        "run_ids": ["agent-timeout"],
+        "trace_paths": ["reports/traces/agent-timeout.jsonl"],
+        "degraded_reasons": ["evidence_timeout"],
+        "accepted_adjustment_ids": [],
+        "accepted_adjustments": [],
+        "supporting_claim_ids": [],
+        "conflicting_claim_ids": [],
+        "conflict_ids": [],
+        "proposed_adjustment_ids": [],
+        "content_sha256": "c" * 64,
+    }
+    result = run_gameweek(
+        manager_state=state,
+        forecast=forecast,
+        agent_overlay=overlay,
+        rules_path=RULES_PATH,
+        out_dir=tmp_path / "overlay",
+        validate_record=False,
+    )
+    assert result["record"]["degraded"] is True
+    assert "evidence_late" in result["record"]["degraded_reasons"]
+    assert result["record"]["agent_overlay"]["status"] == "timeout"

@@ -175,6 +175,10 @@ def render_gdr_html(record: Mapping[str, Any]) -> str:
     )
     price_risk = record.get("price_risk")
     has_price = price_risk is not None
+    chip_ev = record.get("chip_distributional_ev")
+    has_chip_ev = isinstance(chip_ev, Mapping)
+    horizon = record.get("chip_horizon_policy_comparison")
+    has_horizon = isinstance(horizon, Mapping)
 
     plan_rows = []
     for plan in _list_or_empty(record.get("candidate_plans")):
@@ -225,6 +229,33 @@ def render_gdr_html(record: Mapping[str, Any]) -> str:
         f"<pre>{escape(json.dumps(price_risk, indent=2, sort_keys=True))}</pre>"
         if has_price
         else "<p>Price-risk annotations unavailable (ticket 07).</p>"
+    )
+    if has_chip_ev:
+        justification = _mapping(chip_ev.get("justification"))
+        selected_vs = justification.get("selected_vs_later")
+        if isinstance(selected_vs, Mapping):
+            chip_ev_block = (
+                "<p>"
+                f"Selected {escape(_text(chip_ev.get('selected_active_chip'), default='no chip'))} "
+                f"({escape(_text(chip_ev.get('selected_candidate_id')))}) "
+                f"beats later control with probability "
+                f"{escape(_text(selected_vs.get('prob_candidate_beats_alternative')))} "
+                f"(mean Δ {escape(_text(selected_vs.get('mean_delta')))})."
+                "</p>"
+            )
+        else:
+            chip_ev_block = (
+                "<p>Distributional chip annotation present; selected candidate is "
+                "the later-control reference.</p>"
+            )
+    else:
+        chip_ev_block = (
+            "<p>Distributional chip EV unavailable (ticket 09 not attached).</p>"
+        )
+    horizon_block = (
+        f"<pre>{escape(json.dumps(horizon, indent=2, sort_keys=True))}</pre>"
+        if has_horizon
+        else "<p>Horizon policy comparison unavailable (ticket 09).</p>"
     )
 
     squad_ok = _mapping(validation.get("squad")).get("ok")
@@ -304,6 +335,16 @@ def render_gdr_html(record: Mapping[str, Any]) -> str:
   <section aria-labelledby="price-heading">
     <h2 id="price-heading">Price risk</h2>
     {price_block}
+  </section>
+
+  <section aria-labelledby="chip-ev-heading">
+    <h2 id="chip-ev-heading">Distributional chip EV</h2>
+    {chip_ev_block}
+  </section>
+
+  <section aria-labelledby="horizon-heading">
+    <h2 id="horizon-heading">Horizon policy comparison</h2>
+    {horizon_block}
   </section>
 
   <section aria-labelledby="evidence-heading">

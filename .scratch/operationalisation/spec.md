@@ -58,6 +58,12 @@ Tickets 00–03 are in the current Phase 0/1 implementation queue.
 - **Implementations blocked by owner gates:** tickets 18–19.
 - **Phase 5 activation — price and competitive intelligence:** tickets 07 and 20.
 - **Structural proposal:** ticket 12; an ADR must be accepted before package moves.
+- **Future review (not authorised):** ticket 21 — graded AI-overlay improvement
+  loop (env/eval → optional post-training); owner-gated; amends ADR-0021/0024
+  only if a provider is later chosen.
+- **Structural follow-on:** ticket 22 — Option B package split (ADR-0026
+  destination); blocked by 12; execute after early live Gameweeks are stable,
+  never in a deadline week.
 
 Tickets live in `issues/` per the local tracker conventions (`docs/agents/issue-tracker.md`). `Blocked by:` lines encode sequencing; owner-gated tickets carry `Status: ready-for-human`.
 

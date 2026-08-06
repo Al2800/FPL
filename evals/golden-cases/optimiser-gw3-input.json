@@ -4,38 +4,240 @@
   "ruleset_id": "2026-27-v1.0",
   "bank": 0.5,
   "free_transfers": 1,
-  "squad_player_ids": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"],
+  "squad_player_ids": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15"
+  ],
   "active_chip": null,
-  "chips_available": ["wildcard_fh", "free_hit_fh", "triple_captain_fh", "bench_boost_fh"],
+  "chips_available": [
+    "wildcard_fh",
+    "free_hit_fh",
+    "triple_captain_fh",
+    "bench_boost_fh"
+  ],
   "horizon_gameweeks": 1,
-  "discount_factors": [1.0],
+  "discount_factors": [
+    1.0
+  ],
   "max_transfers": 2,
   "sell_pool_per_pos": 4,
   "buy_pool_per_pos": 6,
   "allow_hits": true,
   "ruleset_mismatch_policy": "fail_closed",
   "availability_policy": "available_only",
-  "solver_version": "wp07-safe-pool-v0.2",
+  "solver_version": "wp07-wc-fh-rebuild-v0.3",
   "players": [
-    {"player_id": "1", "web_name": "KeeperA", "position": "GKP", "club_id": "1", "now_cost": 4.5, "purchase_price": 4.5, "expected_points": 3.2, "status": "a"},
-    {"player_id": "2", "web_name": "KeeperB", "position": "GKP", "club_id": "2", "now_cost": 4.0, "purchase_price": 4.0, "expected_points": 2.1, "status": "a"},
-    {"player_id": "3", "web_name": "DefA", "position": "DEF", "club_id": "1", "now_cost": 5.5, "purchase_price": 5.5, "expected_points": 4.1, "status": "a"},
-    {"player_id": "4", "web_name": "DefB", "position": "DEF", "club_id": "3", "now_cost": 5.0, "purchase_price": 5.0, "expected_points": 3.5, "status": "a"},
-    {"player_id": "5", "web_name": "DefC", "position": "DEF", "club_id": "4", "now_cost": 4.5, "purchase_price": 4.5, "expected_points": 2.8, "status": "a"},
-    {"player_id": "6", "web_name": "DefD", "position": "DEF", "club_id": "5", "now_cost": 4.5, "purchase_price": 4.5, "expected_points": 3.0, "status": "a"},
-    {"player_id": "7", "web_name": "DefE", "position": "DEF", "club_id": "2", "now_cost": 6.0, "purchase_price": 6.0, "expected_points": 4.5, "status": "a"},
-    {"player_id": "8", "web_name": "MidA", "position": "MID", "club_id": "3", "now_cost": 7.5, "purchase_price": 7.5, "expected_points": 5.5, "status": "a"},
-    {"player_id": "9", "web_name": "MidB", "position": "MID", "club_id": "6", "now_cost": 8.0, "purchase_price": 8.0, "expected_points": 6.2, "status": "a"},
-    {"player_id": "10", "web_name": "MidC", "position": "MID", "club_id": "4", "now_cost": 6.5, "purchase_price": 6.5, "expected_points": 4.0, "status": "a"},
-    {"player_id": "11", "web_name": "MidD", "position": "MID", "club_id": "7", "now_cost": 5.5, "purchase_price": 5.5, "expected_points": 3.6, "status": "a"},
-    {"player_id": "12", "web_name": "MidE", "position": "MID", "club_id": "8", "now_cost": 5.0, "purchase_price": 5.0, "expected_points": 1.0, "status": "d"},
-    {"player_id": "13", "web_name": "FwdA", "position": "FWD", "club_id": "5", "now_cost": 7.0, "purchase_price": 7.0, "expected_points": 5.0, "status": "a"},
-    {"player_id": "14", "web_name": "FwdB", "position": "FWD", "club_id": "6", "now_cost": 7.5, "purchase_price": 7.5, "expected_points": 5.8, "status": "a"},
-    {"player_id": "15", "web_name": "FwdC", "position": "FWD", "club_id": "9", "now_cost": 6.0, "purchase_price": 6.0, "expected_points": 3.3, "status": "a"},
-    {"player_id": "16", "web_name": "MidStar", "position": "MID", "club_id": "10", "now_cost": 5.0, "expected_points": 7.5, "status": "a"},
-    {"player_id": "17", "web_name": "DefStar", "position": "DEF", "club_id": "11", "now_cost": 4.5, "expected_points": 5.5, "status": "a"},
-    {"player_id": "18", "web_name": "FwdStar", "position": "FWD", "club_id": "12", "now_cost": 6.0, "expected_points": 6.5, "status": "a"},
-    {"player_id": "19", "web_name": "MidMeh", "position": "MID", "club_id": "13", "now_cost": 4.5, "expected_points": 2.0, "status": "a"},
-    {"player_id": "20", "web_name": "KeeperC", "position": "GKP", "club_id": "14", "now_cost": 4.5, "expected_points": 4.0, "status": "a"}
-  ]
+    {
+      "player_id": "1",
+      "web_name": "KeeperA",
+      "position": "GKP",
+      "club_id": "1",
+      "now_cost": 4.5,
+      "purchase_price": 4.5,
+      "expected_points": 3.2,
+      "status": "a"
+    },
+    {
+      "player_id": "2",
+      "web_name": "KeeperB",
+      "position": "GKP",
+      "club_id": "2",
+      "now_cost": 4.0,
+      "purchase_price": 4.0,
+      "expected_points": 2.1,
+      "status": "a"
+    },
+    {
+      "player_id": "3",
+      "web_name": "DefA",
+      "position": "DEF",
+      "club_id": "1",
+      "now_cost": 5.5,
+      "purchase_price": 5.5,
+      "expected_points": 4.1,
+      "status": "a"
+    },
+    {
+      "player_id": "4",
+      "web_name": "DefB",
+      "position": "DEF",
+      "club_id": "3",
+      "now_cost": 5.0,
+      "purchase_price": 5.0,
+      "expected_points": 3.5,
+      "status": "a"
+    },
+    {
+      "player_id": "5",
+      "web_name": "DefC",
+      "position": "DEF",
+      "club_id": "4",
+      "now_cost": 4.5,
+      "purchase_price": 4.5,
+      "expected_points": 2.8,
+      "status": "a"
+    },
+    {
+      "player_id": "6",
+      "web_name": "DefD",
+      "position": "DEF",
+      "club_id": "5",
+      "now_cost": 4.5,
+      "purchase_price": 4.5,
+      "expected_points": 3.0,
+      "status": "a"
+    },
+    {
+      "player_id": "7",
+      "web_name": "DefE",
+      "position": "DEF",
+      "club_id": "2",
+      "now_cost": 6.0,
+      "purchase_price": 6.0,
+      "expected_points": 4.5,
+      "status": "a"
+    },
+    {
+      "player_id": "8",
+      "web_name": "MidA",
+      "position": "MID",
+      "club_id": "3",
+      "now_cost": 7.5,
+      "purchase_price": 7.5,
+      "expected_points": 5.5,
+      "status": "a"
+    },
+    {
+      "player_id": "9",
+      "web_name": "MidB",
+      "position": "MID",
+      "club_id": "6",
+      "now_cost": 8.0,
+      "purchase_price": 8.0,
+      "expected_points": 6.2,
+      "status": "a"
+    },
+    {
+      "player_id": "10",
+      "web_name": "MidC",
+      "position": "MID",
+      "club_id": "4",
+      "now_cost": 6.5,
+      "purchase_price": 6.5,
+      "expected_points": 4.0,
+      "status": "a"
+    },
+    {
+      "player_id": "11",
+      "web_name": "MidD",
+      "position": "MID",
+      "club_id": "7",
+      "now_cost": 5.5,
+      "purchase_price": 5.5,
+      "expected_points": 3.6,
+      "status": "a"
+    },
+    {
+      "player_id": "12",
+      "web_name": "MidE",
+      "position": "MID",
+      "club_id": "8",
+      "now_cost": 5.0,
+      "purchase_price": 5.0,
+      "expected_points": 1.0,
+      "status": "d"
+    },
+    {
+      "player_id": "13",
+      "web_name": "FwdA",
+      "position": "FWD",
+      "club_id": "5",
+      "now_cost": 7.0,
+      "purchase_price": 7.0,
+      "expected_points": 5.0,
+      "status": "a"
+    },
+    {
+      "player_id": "14",
+      "web_name": "FwdB",
+      "position": "FWD",
+      "club_id": "6",
+      "now_cost": 7.5,
+      "purchase_price": 7.5,
+      "expected_points": 5.8,
+      "status": "a"
+    },
+    {
+      "player_id": "15",
+      "web_name": "FwdC",
+      "position": "FWD",
+      "club_id": "9",
+      "now_cost": 6.0,
+      "purchase_price": 6.0,
+      "expected_points": 3.3,
+      "status": "a"
+    },
+    {
+      "player_id": "16",
+      "web_name": "MidStar",
+      "position": "MID",
+      "club_id": "10",
+      "now_cost": 5.0,
+      "expected_points": 7.5,
+      "status": "a"
+    },
+    {
+      "player_id": "17",
+      "web_name": "DefStar",
+      "position": "DEF",
+      "club_id": "11",
+      "now_cost": 4.5,
+      "expected_points": 5.5,
+      "status": "a"
+    },
+    {
+      "player_id": "18",
+      "web_name": "FwdStar",
+      "position": "FWD",
+      "club_id": "12",
+      "now_cost": 6.0,
+      "expected_points": 6.5,
+      "status": "a"
+    },
+    {
+      "player_id": "19",
+      "web_name": "MidMeh",
+      "position": "MID",
+      "club_id": "13",
+      "now_cost": 4.5,
+      "expected_points": 2.0,
+      "status": "a"
+    },
+    {
+      "player_id": "20",
+      "web_name": "KeeperC",
+      "position": "GKP",
+      "club_id": "14",
+      "now_cost": 4.5,
+      "expected_points": 4.0,
+      "status": "a"
+    }
+  ],
+  "destination_horizon_gameweeks": 4,
+  "destination_discount_factor": 0.9,
+  "rebuild_beam_width": 8,
+  "rebuild_max_expanded_nodes": 250
 }

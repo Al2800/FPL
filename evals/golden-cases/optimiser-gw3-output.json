@@ -2399,10 +2399,17 @@
       }
     }
   ],
+  "destination_horizon": {
+    "discount_factor": 0.9,
+    "horizon_gameweeks": 4,
+    "live_active": false,
+    "note": "ADR-0023 destination; live objective remains single-GW until cutoff-safe multi-GW forecasts exist",
+    "policy_alignment": "transfer-horizon-v1"
+  },
   "horizon_gameweeks": 1,
-  "input_fingerprint": "3bba759374c668c920eb2a5331ca69fffde2949c71f04660a2b704f780c8a157",
+  "input_fingerprint": "08d2aaba252e44a32037d1266aece412cc3a29c7b6c36609fcba45e8ea22fad6",
   "n_candidates": 123,
-  "output_fingerprint": "a4605dc794cd45d6c2ea54071ba330d66bff88c52da7458e246df2592b412fec",
+  "output_fingerprint": "f2ca88c46045f45187345c7514b54193bc726b600606b670849dcf8cbc8cb461",
   "plans": {
     "bank_transfer": {
       "bank_after": 0.5,
@@ -2444,6 +2451,7 @@
         "squad_ok": true
       }
     },
+    "free_hit_rebuild": null,
     "free_transfer": {
       "bank_after": 0.5,
       "hit_cost": 0,
@@ -2668,7 +2676,8 @@
         "lineup_ok": true,
         "squad_ok": true
       }
-    }
+    },
+    "wildcard_rebuild": null
   },
   "ruleset_id": "2026-27-v1.0",
   "ruleset_note": null,
@@ -2678,12 +2687,30 @@
     "availability_policy": "available_only",
     "buy_pool_per_pos": 6,
     "candidate_generation": "lazy",
+    "contingency_evaluation_cache_entries": 0,
+    "contingency_lineup_cache_entries": 0,
     "full_rebuild_search": false,
     "global_optimality_guaranteed": false,
+    "incomplete_transfer_width": null,
     "max_transfers": 2,
     "optimality": "highest_ev_in_declared_candidate_pool",
+    "rebuild_beam_width": 8,
+    "rebuild_candidate_limit_per_position": 6,
+    "rebuild_candidates": 0,
+    "rebuild_degraded_reason": null,
+    "rebuild_fallback_used": false,
+    "rebuild_kind": null,
+    "rebuild_max_expanded_nodes": 250,
     "retained_ranked_candidates": 50,
     "ruleset_mismatch_policy": "fail_closed",
+    "search_candidate_budget": null,
+    "search_deadline_ms": null,
+    "search_degraded": false,
+    "search_degraded_reason": null,
+    "searched_transfer_widths": [
+      1,
+      2
+    ],
     "sell_pool_per_pos": 4,
     "wildcard_free_hit_hit_accounting": true
   },
@@ -2733,5 +2760,5 @@
       "squad_ok": true
     }
   },
-  "solver_version": "wp07-safe-pool-v0.2"
+  "solver_version": "wp07-wc-fh-rebuild-v0.3"
 }

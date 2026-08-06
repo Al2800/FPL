@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "rotowire-lineups-trial-v1",
+  "source_id": "rotowire-lineups",
+  "adjudication_truth": "official-team-sheets",
+  "collection_method": "manual_citation",
+  "live_influence_default": false,
+  "disagreement_policy": "quarantine_and_adjudicate_against_official_team_sheet",
+  "never_average_feeds": true,
+  "byte_identical_baseline_on_failure": true,
+  "identity_mapping": {
+    "require_explicit_player_alias": true,
+    "require_fixture_alias": true,
+    "names_only_status": "quarantine_pending_alias"
+  },
+  "admission_thresholds": {
+    "min_fixture_coverage": 0.8,
+    "min_identity_match_rate": 0.9,
+    "min_start_calibration_brier_improvement_vs_chance_of_playing": 0.0,
+    "min_start_calibration_brier_improvement_vs_started_last_gw": 0.0,
+    "max_confirmed_minutes_mae": 12.0,
+    "max_citation_latency_hours": 6.0,
+    "min_scored_fixtures": 10,
+    "min_matchdays": 3
+  },
+  "notes": "Ticket 19 preregistration. Thresholds are owner-approved gates before any live forecast influence. Until scored, consolidator may only emit shadow adjustments."
+}

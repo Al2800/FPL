@@ -15,6 +15,7 @@ from src.optimisation.squad_contingency import (
     SquadContingencyError,
     choose_contingency_lineup,
 )
+from src.optimisation.rebuild import _chip_kind, enumerate_bounded_rebuild_squads
 from src.optimisation.transfers import (
     apply_transfers,
     enumerate_transfer_sets,
@@ -245,8 +246,23 @@ def solve(
         raise ValueError("future_transfer_discount must be between 0 and 1")
     if solver_input.horizon_gameweeks != 1 or solver_input.discount_factors != [1.0]:
         raise ValueError(
-            "This solver supports only horizon_gameweeks=1 with discount_factors=[1.0]"
+            "This solver supports only horizon_gameweeks=1 with discount_factors=[1.0]; "
+            "destination_horizon_gameweeks records the ADR-0023 target until multi-GW "
+            "forecasts exist"
         )
+    if solver_input.destination_horizon_gameweeks < 1:
+        raise ValueError("destination_horizon_gameweeks must be positive")
+    if not 0.0 <= solver_input.destination_discount_factor <= 1.0:
+        raise ValueError("destination_discount_factor must be between 0 and 1")
+    if solver_input.rebuild_beam_width < 1:
+        raise ValueError("rebuild_beam_width must be positive")
+    if solver_input.rebuild_max_expanded_nodes < 1:
+        raise ValueError("rebuild_max_expanded_nodes must be positive")
+    if (
+        solver_input.rebuild_candidate_limit_per_position is not None
+        and solver_input.rebuild_candidate_limit_per_position < 1
+    ):
+        raise ValueError("rebuild_candidate_limit_per_position must be positive")
     if not 0 <= solver_input.max_transfers <= 3:
         raise ValueError("max_transfers must be between 0 and 3 for this solver")
     if solver_input.sell_pool_per_pos < 1 or solver_input.buy_pool_per_pos < 1:
@@ -528,6 +544,71 @@ def solve(
         else:
             break
 
+    rebuild_kind = _chip_kind(solver_input.active_chip)
+    rebuild_candidates = 0
+    rebuild_fallback_used = False
+    rebuild_degraded_reason: str | None = None
+    if rebuild_kind is not None and not search_degraded:
+        rebuild_limit = (
+            solver_input.rebuild_candidate_limit_per_position
+            if solver_input.rebuild_candidate_limit_per_position is not None
+            else solver_input.buy_pool_per_pos
+        )
+        try:
+            for applied in enumerate_bounded_rebuild_squads(
+                owned,
+                market,
+                bank=solver_input.bank,
+                position_counts=position_counts,
+                max_per_club=max_per_club,
+                candidate_limit_per_position=rebuild_limit,
+                beam_width=solver_input.rebuild_beam_width,
+                max_expanded_nodes=solver_input.rebuild_max_expanded_nodes,
+                availability_policy=solver_input.availability_policy,
+                rules=rules_dict,
+            ):
+                if (
+                    solver_input.search_candidate_budget is not None
+                    and candidate_count >= solver_input.search_candidate_budget
+                ):
+                    search_degraded = True
+                    search_degraded_reason = "candidate_budget"
+                    rebuild_degraded_reason = "candidate_budget"
+                    break
+                if deadline_exceeded():
+                    search_degraded = True
+                    search_degraded_reason = "operational_deadline"
+                    rebuild_degraded_reason = "operational_deadline"
+                    break
+                strategy = f"{rebuild_kind}_rebuild"
+                plan = _evaluate_squad(
+                    [dict(r) for r in applied["squad"]],
+                    transfers=applied["transfers"],
+                    hit_cost=0,
+                    bank=applied["bank"],
+                    strategy=strategy,
+                    active_chip=solver_input.active_chip,
+                    formations=formations,
+                    position_counts=position_counts,
+                    max_per_club=max_per_club,
+                    chip_ok=chip_validation.ok,
+                    squad_contingency_policy=solver_input.squad_contingency_policy,
+                    appearance_calibration=solver_input.appearance_calibration,
+                    formation_constraints=formation_constraints,
+                    contingency_lineup_cache=contingency_lineup_cache,
+                    contingency_evaluation_cache=contingency_evaluation_cache,
+                )
+                if plan is not None:
+                    rebuild_candidates += 1
+                    consider(plan)
+        except ValueError as exc:
+            rebuild_fallback_used = True
+            rebuild_degraded_reason = str(exc)
+        if rebuild_candidates == 0:
+            rebuild_fallback_used = True
+            if rebuild_degraded_reason is None:
+                rebuild_degraded_reason = "no_feasible_rebuild_in_bounds"
+
     if search_degraded_reason == "operational_deadline":
         if baseline_state is None:
             raise RuntimeError("deadline fallback baseline was not captured")
@@ -540,6 +621,7 @@ def solve(
             contingency_evaluation_cache,
         ) = deepcopy(baseline_state)
         searched_transfer_widths = []
+        rebuild_fallback_used = True
 
     top_candidates = [entry[2] for entry in top_ranked]
     selected = top_candidates[0] if top_candidates else None
@@ -559,6 +641,16 @@ def solve(
         "ruleset_id": rules_dict["meta"]["ruleset_id"],
         "ruleset_sha256": ruleset_sha256,
         "horizon_gameweeks": solver_input.horizon_gameweeks,
+        "destination_horizon": {
+            "horizon_gameweeks": solver_input.destination_horizon_gameweeks,
+            "discount_factor": solver_input.destination_discount_factor,
+            "live_active": False,
+            "policy_alignment": "transfer-horizon-v1",
+            "note": (
+                "ADR-0023 destination; live objective remains single-GW until "
+                "cutoff-safe multi-GW forecasts exist"
+            ),
+        },
         "input_fingerprint": fingerprint(solver_input.as_dict()),
         "ruleset_note": ruleset_note,
         "n_candidates": candidate_count,
@@ -573,7 +665,18 @@ def solve(
             "availability_policy": solver_input.availability_policy,
             "candidate_generation": "lazy",
             "retained_ranked_candidates": len(top_candidates),
-            "full_rebuild_search": False,
+            "full_rebuild_search": rebuild_kind is not None,
+            "rebuild_kind": rebuild_kind,
+            "rebuild_candidates": rebuild_candidates,
+            "rebuild_fallback_used": rebuild_fallback_used,
+            "rebuild_degraded_reason": rebuild_degraded_reason,
+            "rebuild_beam_width": solver_input.rebuild_beam_width,
+            "rebuild_max_expanded_nodes": solver_input.rebuild_max_expanded_nodes,
+            "rebuild_candidate_limit_per_position": (
+                solver_input.rebuild_candidate_limit_per_position
+                if solver_input.rebuild_candidate_limit_per_position is not None
+                else solver_input.buy_pool_per_pos
+            ),
             "wildcard_free_hit_hit_accounting": True,
             "searched_transfer_widths": searched_transfer_widths,
             "search_degraded": search_degraded,
@@ -594,6 +697,8 @@ def solve(
             or by_strategy.get("no_transfer"),
             "free_transfer": by_strategy.get("free_transfer"),
             "hit": by_strategy.get("hit"),
+            "wildcard_rebuild": by_strategy.get("wildcard_rebuild"),
+            "free_hit_rebuild": by_strategy.get("free_hit_rebuild"),
         },
         "all_candidates": top_candidates,
     }

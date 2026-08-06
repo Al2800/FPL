@@ -2,7 +2,7 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.4"
+registry_version: "0.6.5"
 updated_at: "2026-08-05"
 
 sources:
@@ -206,6 +206,37 @@ sources:
       benchmark admission; until then citations may only enter via the governed
       evidence-adjustment policy. Sofascore/FotMob/FFS are not authorised by
       this entry. Understat/FBref/ClubElo remain separately disabled.
+
+  - source_id: rotowire-fpl-editorial
+    owner: Roto Sports, Inc. (RotoWire)
+    source_type: html
+    authority: secondary
+    terms_url: "https://www.rotowire.com/termsandconditions.php"
+    licence_status: restricted
+    allowed_use: private_analysis_citation_snapshots
+    authentication: none
+    collection_method: manual_citation
+    expected_cadence: preseason_and_predeadline
+    max_staleness: "168h"
+    failure_policy: degrade
+    retention_policy: local_indefinite_private_per_ADR-0002
+    attribution: "RotoWire (rotowire.com) — FPL editorial rankings / fixture priors"
+    enabled: true
+    review_date: "2026-09-01"
+    activation_approval:
+      terms: approved_citation_capture_only_no_crawl
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-05"
+      scope: >
+        manual citation of owner-pasted RotoWire FPL editorial rankings and
+        short-horizon fixture priors for private non-commercial analysis;
+        no crawl, spider, unofficial API, scrape or redistribution
+    notes: >
+      Editorial prior only (short-horizon rankings, fixture-run commentary).
+      Not expected-minutes evidence and not the StatsBomb player-ratings family.
+      Must not drive live optimiser selection without a later owner promotion
+      decision. Parallel discipline to rotowire-lineups: paste/transcribe only.
 
   # --- Tier 2: historical / community (plan Section 6.1) ---
 

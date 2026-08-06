@@ -1,12 +1,15 @@
 # 12 — Consolidate the lab: orchestration split and fork-runner unification
 
-Status: needs-triage
+Status: resolved
 Type: task
 Track: Structural proposal
 
 Activation gate: first demonstrate the navigation/coupling problem with an
 import graph and duplicate-runner inventory, then accept an ADR. Do not move
 packages before that decision.
+
+Owner authorised implementation on 6 August 2026 (inventory + ADR draft;
+package moves only after ADR acceptance).
 
 ## Context
 
@@ -30,3 +33,23 @@ packages before that decision.
   versioned migration rather than an unexplained output diff.
 - Repository architecture tests and the portable CI suite pass, and the
   handover brief links the canonical live entry point.
+
+## Answer
+
+Owner accepted **ADR-0026** on 6 August 2026: Option A now, Option B as the
+recorded destination via ticket 22.
+
+Shipped under Option A (no package move):
+
+- Inventory: `docs/architecture/orchestration-inventory-2026-08-06.md`
+  (36 orchestration modules; 6 duplicate fork runners; 90 scripts)
+- Accepted ADR: `docs/decisions/0026-orchestration-layout-and-agent-fork-runner.md`
+- Dispatcher: `scripts/run_agent_fork.py --gws 30-38 -- --mode prepare …`
+  (delegates to existing range runners; committed fixtures stay byte-identical)
+- Handover brief links `src.orchestration.run_gameweek` as the canonical live
+  entry; live automation must never invoke the fork-runner scripts
+- Import audit (zero live→replay imports) recorded in the ADR; it de-risks and
+  pre-plans the Option B move list
+
+Follow-on: ticket 22 executes the Option B package split once early 2026/27
+live Gameweeks are stable (never in a deadline week).

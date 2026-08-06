@@ -6,7 +6,7 @@ from dataclasses import asdict, dataclass, field
 from typing import Any
 
 
-SOLVER_VERSION = "wp07-safe-pool-v0.2"
+SOLVER_VERSION = "wp07-wc-fh-rebuild-v0.3"
 
 
 @dataclass(frozen=True)
@@ -61,6 +61,13 @@ class SolverInput:
     search_deadline_ms: int | None = None
     ruleset_mismatch_policy: str = "fail_closed"
     availability_policy: str = "available_only"
+    # ADR-0023 destination horizon — recorded on outputs; live solve still GW=1.
+    destination_horizon_gameweeks: int = 4
+    destination_discount_factor: float = 0.9
+    # ADR-0022 bounded WC/FH rebuild controls
+    rebuild_candidate_limit_per_position: int | None = None
+    rebuild_beam_width: int = 8
+    rebuild_max_expanded_nodes: int = 250
     solver_version: str = SOLVER_VERSION
 
     def as_dict(self) -> dict[str, Any]:
@@ -82,8 +89,16 @@ class SolverInput:
             "allow_hits": self.allow_hits,
             "ruleset_mismatch_policy": self.ruleset_mismatch_policy,
             "availability_policy": self.availability_policy,
+            "destination_horizon_gameweeks": self.destination_horizon_gameweeks,
+            "destination_discount_factor": self.destination_discount_factor,
+            "rebuild_beam_width": self.rebuild_beam_width,
+            "rebuild_max_expanded_nodes": self.rebuild_max_expanded_nodes,
             "solver_version": self.solver_version,
         }
+        if self.rebuild_candidate_limit_per_position is not None:
+            value["rebuild_candidate_limit_per_position"] = (
+                self.rebuild_candidate_limit_per_position
+            )
         if self.transfer_value_policy != "none":
             value.update(
                 {
@@ -152,5 +167,20 @@ class SolverInput:
             ),
             ruleset_mismatch_policy=str(data.get("ruleset_mismatch_policy", "fail_closed")),
             availability_policy=str(data.get("availability_policy", "available_only")),
+            destination_horizon_gameweeks=int(
+                data.get("destination_horizon_gameweeks", 4)
+            ),
+            destination_discount_factor=float(
+                data.get("destination_discount_factor", 0.9)
+            ),
+            rebuild_candidate_limit_per_position=(
+                int(data["rebuild_candidate_limit_per_position"])
+                if data.get("rebuild_candidate_limit_per_position") is not None
+                else None
+            ),
+            rebuild_beam_width=int(data.get("rebuild_beam_width", 8)),
+            rebuild_max_expanded_nodes=int(
+                data.get("rebuild_max_expanded_nodes", 250)
+            ),
             solver_version=str(data.get("solver_version", SOLVER_VERSION)),
         )

@@ -1,0 +1,36 @@
+{
+  "policy_version": "scheduled-agent-overlay-v1",
+  "provider": "openai-chatgpt-subscription",
+  "api_surface": "codex_subscription_subagent",
+  "model_id": "gpt-5.6-sol",
+  "t90m_offset_minutes": 90,
+  "account_writes": false,
+  "network_access": false,
+  "stages": [
+    {
+      "checkpoint": "T-48h",
+      "offset_minutes": 2880,
+      "window_minutes": 60,
+      "arms": ["evidence_agent"],
+      "evidence_budget_ms": 480000,
+      "challenger_budget_ms": 300000
+    },
+    {
+      "checkpoint": "T-8h",
+      "offset_minutes": 480,
+      "window_minutes": 45,
+      "arms": ["evidence_agent"],
+      "evidence_budget_ms": 480000,
+      "challenger_budget_ms": 300000
+    },
+    {
+      "checkpoint": "T-2h",
+      "offset_minutes": 120,
+      "window_minutes": 30,
+      "arms": ["evidence_agent", "evidence_challenger"],
+      "evidence_budget_ms": 480000,
+      "challenger_budget_ms": 300000
+    }
+  ],
+  "notes": "Wall-clock budgets per ADR-0016; currency unavailable per ADR-0024. Past T-90m the overlay must not invoke the host."
+}

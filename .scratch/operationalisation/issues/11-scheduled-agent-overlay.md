@@ -1,6 +1,6 @@
 # 11 — Scheduled evidence/challenger runs in the deadline cycle
 
-Status: needs-triage
+Status: resolved
 Type: task
 Track: Phase 2/3 (automate the AI overlay)
 Blocked by: 02, 10
@@ -8,6 +8,8 @@ Blocked by: 02, 10
 Activation gate: Phase 2/3 scheduled agent operation must be explicitly
 authorised. Ticket 10 (5 August 2026) **declined** an API arm (ADR-0024); this
 ticket uses the subscription-hosted Codex path on the always-on local host.
+
+Owner authorised implementation on 6 August 2026.
 
 ## Context
 
@@ -38,3 +40,24 @@ pattern to deadline-cycle evidence/challenger stages without introducing API key
 
 LLMs propose only. No execution authority, no rule enforcement, no secrets in
 prompts, no API keys.
+
+## Answer
+
+Implemented the deadline-cycle overlay on the subscription sol path without API
+keys:
+
+- `control/policies/scheduled-agent-overlay-v1.json` — T-48h / T-8h / T-2h stages
+  with ADR-0016 budgets and a hard T-90m cutoff
+- `src/orchestration/scheduled_agent_overlay.py` — stage planner, forced-timeout
+  host envelope, arm runner, GDR attach
+- `src/orchestration/agent_trace.py` — ADR-0010 JSONL traces under
+  `reports/traces/{run_id}.jsonl`
+- `run_gameweek(..., agent_overlay=...)` attaches citations / degrade reasons;
+  deterministic optimiser remains authoritative on timeout or T-90m
+- `scripts/run_scheduled_agent_overlay.py` +
+  `docs/data-sources/scheduled-agent-overlay.md` for unattended materialise /
+  forced-timeout offline path
+
+Tests: `tests/orchestration/test_scheduled_agent_overlay.py` (forced timeout →
+deterministic fallback + JSONL) and
+`tests/integration/test_run_gameweek.py::test_run_gameweek_agent_overlay_timeout_marks_degraded`.

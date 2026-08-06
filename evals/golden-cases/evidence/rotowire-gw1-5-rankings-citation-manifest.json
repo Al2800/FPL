@@ -1,0 +1,21 @@
+{
+  "schema_version": "rotowire-editorial-citation-manifest-v1",
+  "season": "2026-27",
+  "source_id": "rotowire-fpl-editorial",
+  "packs": [
+    {
+      "pack_id": "2026-08-05-gw1-5-rankings",
+      "local_path": "data/live-shadow/rotowire/rankings/2026-08-05-gw1-5-rankings-citation.json",
+      "citation_title": "FPL Gameweeks 1-5 Rankings: Best Players to Start the 2026/27 Season",
+      "author": "Adam Zdroik",
+      "published_at": "2026-08-05T00:00:00+01:00",
+      "observed_at": "2026-08-05T11:45:00+01:00",
+      "horizon_gameweeks": [1, 2, 3, 4, 5],
+      "player_count": 100,
+      "content_sha256": "cbc82c8d6b4a0fb323ef327c84f33d22b5046142daf14c5f1315b4c7417cec8a",
+      "canonical_url_status": "pending_owner_url",
+      "influence_policy": "editorial_prior_only_no_live_optimiser_selection",
+      "notes": "Hash-only manifest. Full ranking rows stay in gitignored live-shadow."
+    }
+  ]
+}
