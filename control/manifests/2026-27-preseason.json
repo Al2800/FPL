@@ -59,6 +59,120 @@
         "world_cup_return_fatigue"
       ],
       "status": "degraded"
+    },
+    "weekly-2026-08-02": {
+      "checkpoint_id": "weekly-2026-08-02",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-02/manifest.json",
+      "manifest_sha256": "813052d16b96774a596300ace7e0c6d03ceb417e2e1343b30d2a9e45bab0396c",
+      "observed_at": "2026-08-02T20:20:54Z",
+      "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
+      "request_sha256": "36dc1fa4fc8eed95811c45e5de4542da5fb57166efa35e5a3deba444af48f41c",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
+    },
+    "weekly-2026-08-03": {
+      "checkpoint_id": "weekly-2026-08-03",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-03/manifest.json",
+      "manifest_sha256": "0fe962dd9111882b2487b3be1c870a82a73d17a4747cef045f20b3fa7a169634",
+      "observed_at": "2026-08-03T06:04:45Z",
+      "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
+      "request_sha256": "b72c16db129f879d53e60b53602020341c583771c6f45cb67492c5257d62659f",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
+    },
+    "weekly-2026-08-04": {
+      "checkpoint_id": "weekly-2026-08-04",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-04/manifest.json",
+      "manifest_sha256": "9cfcf54ce0578830ce3751c0a730aae063e4ec35129694a05dafc4aa6384cfdb",
+      "observed_at": "2026-08-04T06:04:36Z",
+      "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
+      "request_sha256": "879df89583176d8f04fbfafa6684ef4e7b73e6c3db28e69b83becfd26ff142c9",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
+    },
+    "weekly-2026-08-06": {
+      "checkpoint_id": "weekly-2026-08-06",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-06/manifest.json",
+      "manifest_sha256": "2a40aac227d21316ff3e1420d1bd17522d79d43ccc5e353ca06038b1ef469516",
+      "observed_at": "2026-08-06T06:04:49Z",
+      "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
+      "request_sha256": "bc26af8c411bf5c08917670ec829f9c9ce5eb90ccdd3b383bc2aa42b0d5d85e9",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
+    },
+    "weekly-2026-08-08": {
+      "checkpoint_id": "weekly-2026-08-08",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-08/manifest.json",
+      "manifest_sha256": "5ea88d8552f46783489a10aeb15661e72872c178ab79bfc4097880cc4d7fcd57",
+      "observed_at": "2026-08-08T08:31:50Z",
+      "predecessor_checkpoint_hash": "eca9b64aa0c57be08480b0183fd00ca1738e0ed7e59fedcc2bd71d35443ddb30",
+      "request_sha256": "b4c96d14a0e72505b73749198643b19abbf117c7628c800e07a3ebc1c89d5629",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
+    },
+    "weekly-2026-08-09": {
+      "checkpoint_id": "weekly-2026-08-09",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-09/manifest.json",
+      "manifest_sha256": "b300b4d544e3021662f3fc18baf569ff709ed9a1a13ce53914732a282af12c3e",
+      "observed_at": "2026-08-09T06:02:41Z",
+      "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
+      "request_sha256": "26aa5c937180bfc27f6cbb292aa18863f86885cbcad64364e4e45a52a75527c6",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
     }
   },
   "content_sha256": "1fdbc89a7c093ed141f86c875db94f1a5521645de13574eb781528725a5379c7",
