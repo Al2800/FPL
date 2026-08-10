@@ -14,8 +14,10 @@ These sources are registered but **not enabled**. Profiles are from documentatio
 
 ## Understat
 - Potential: xG / xA.
-- No supported public API; terms unresolved → disabled.
-- Alternative: score from shots unavailable; use goals/assists rates and odds.
+- **Updated 2026-08-01:** enabled for private local EPL capture via
+  [understatAPI](https://github.com/collinb9/understatAPI). See
+  `docs/data-sources/2026-08-01-understatapi-decision.md`.
+- Alternative baselines: official FPL `expected_*`, prior rates, odds.
 
 ## FBref
 - Potential: per-match defensive actions for DC modelling enrichment.

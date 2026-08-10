@@ -2,8 +2,8 @@
 # No collector may be enabled without a complete entry and resolved licence_status.
 # ADR-0001 / ADR-0002: private non-commercial analysis; local retention; no redistribution.
 
-registry_version: "0.6.5"
-updated_at: "2026-08-05"
+registry_version: "0.6.6"
+updated_at: "2026-08-10"
 
 sources:
   - source_id: fpl-official-endpoints
@@ -112,15 +112,22 @@ sources:
       owner: Alastair
       reviewed_at: "2026-07-31"
       scope: manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape
+    model_run:
+      enabled: true
+      method: ephemeral_browser_citation
+      raw_content_retained: false
+      scope: model_derived_claims_from_registered_official_urls_only
     notes: >
       Unstructured injury/return/tactical comments via immutable citation
       capture. Owner decision 2026-07-31: official club public pages selected
       and enabled for private analysis citation only because the source is
-      registered with confirmed restricted citation rights. Collection is
-      manual citation only — automated HTML scrape, bulk article retention and
-      claim extraction stay out of scope. Alternative if a citation is missing:
-      retain an explicit evidence gap and leave the shared structured forecast
-      unchanged.
+      registered with confirmed restricted citation rights. The separate
+      model_run path is owner-requested hands-off operation: the engine may
+      visit one cited official URL at a time, hash the response in memory and
+      discard the body; it may not bulk scrape, retain article text, or admit
+      community sources. The deterministic host still validates every derived
+      claim before append. Alternative if a citation is missing: retain an
+      explicit evidence gap and leave the shared structured forecast unchanged.
 
   - source_id: official-competition-schedules
     owner: Premier League / FA / UEFA / FIFA
@@ -164,15 +171,21 @@ sources:
       owner: Alastair
       reviewed_at: "2026-07-31"
       scope: manual_citation_capture_no_paid_provider_no_redistribution_no_html_scrape
+    model_run:
+      enabled: true
+      method: ephemeral_browser_citation
+      raw_content_retained: false
+      scope: model_derived_lineup_claims_from_registered_official_urls_only
     notes: >
       Tier 2 expected-minutes evidence: official starting line-ups and
       substitutions via immutable citation capture. Owner decision 2026-07-31
       (ticket 05, follow-up enablement): official citation path selected and
       enabled because the source is registered with confirmed restricted
-      citation rights. Sportradar and other paid challengers remain off.
-      Collection is manual citation only — automated HTML scrape stays out of
-      scope. Alternative if a citation is missing for a fixture: retain an
-      explicit evidence gap and leave the shared structured forecast unchanged.
+      citation rights. The model_run path is limited to one official URL at a
+      time, hashes the response in memory, and discards the body. Sportradar
+      and other paid challengers remain off. Alternative if a citation is
+      missing for a fixture: retain an explicit evidence gap and leave the
+      shared structured forecast unchanged.
 
   - source_id: rotowire-lineups
     owner: Roto Sports, Inc. (RotoWire)
@@ -424,26 +437,33 @@ sources:
       the shared structured forecast.
 
   - source_id: clubelo
-    owner: ClubElo / Lars Rønn Olsen
+    owner: ClubElo / Lars Schiefler
     source_type: api
     authority: secondary
-    terms_url: "http://clubelo.com/"
-    licence_status: unknown
-    allowed_use: private_analysis_pending_review
+    terms_url: "http://clubelo.com/About"
+    licence_status: restricted
+    allowed_use: private_analysis_with_attribution
     authentication: none
     collection_method: api
     expected_cadence: daily
     max_staleness: "7d"
     failure_policy: degrade
-    retention_policy: local_pending_review
-    attribution: "ClubElo"
-    enabled: false
-    review_date: "2026-09-01"
+    retention_policy: local_gitignored_with_attribution
+    attribution: "ClubElo (clubelo.com) — Lars Schiefler"
+    enabled: true
+    review_date: "2026-10-01"
+    activation_approval:
+      terms: approved_reuse_with_citation
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-01"
+      scope: private_local_point_in_time_elo_capture_no_backfill_no_redistribution
     notes: >
-      Tier 1 team-strength baseline candidate. Ratings are derived from results and
-      omit national cups. Historical rating availability and reuse terms must be
-      verified before use; a current rating must never be backfilled into an older
-      episode. Alternative: odds-implied and simple Elo fitted point-in-time on
+      Tier 1 team-strength baseline. Owner decision 2026-08-01: About page
+      permits reuse of calculations/rankings for any further use with citation.
+      Capture only point-in-time daily rankings via api.clubelo.com/YYYY-MM-DD;
+      never backfill a current rating into an older episode. National cups omitted
+      by source design. Alternative: odds-implied and simple Elo on
       football-data.co.uk results.
 
   - source_id: statsbomb-open
@@ -501,23 +521,34 @@ sources:
 
   - source_id: understat
     owner: Understat
-    source_type: html
+    source_type: api_client
     authority: secondary
     terms_url: "https://understat.com/"
-    licence_status: unknown
-    allowed_use: unresolved
+    licence_status: restricted
+    allowed_use: private_analysis_local_retention_no_redistribution
     authentication: none
-    collection_method: permitted_fetch
-    expected_cadence: daily
-    max_staleness: "24h"
-    failure_policy: stop
-    retention_policy: none_until_reviewed
-    attribution: "Understat"
-    enabled: false
-    review_date: "2026-09-01"
+    collection_method: understatapi_client
+    expected_cadence: daily_in_season_postmatch
+    max_staleness: "48h"
+    failure_policy: degrade
+    retention_policy: local_gitignored_private_no_redistribution
+    attribution: "Understat (understat.com); client: collinb9/understatAPI (MIT)"
+    enabled: true
+    review_date: "2026-10-01"
+    activation_approval:
+      terms: approved_private_local_via_understatapi_residual_site_risk_accepted
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-01"
+      scope: private_local_EPL_xg_xa_via_understatAPI_no_redistribution_no_bulk_mirror
     notes: >
-      No supported public API; collection and reuse terms unresolved.
-      Alternative: official FPL stats and football-data match results. Gap accepted.
+      Owner decision 2026-08-01: collect via https://github.com/collinb9/understatAPI
+      (MIT client; author not affiliated with Understat). Understat publishes no
+      official API or licence grant and robots.txt disallows crawling — residual
+      site-terms risk accepted for private local analysis only. Data is post-match
+      xG/xA (not live minutes/news). Prefer bounded EPL league/team/match pulls;
+      raw payloads stay gitignored; never redistribute. Alternative if disabled:
+      official FPL expected_* fields, 2025/26 prior rates, and odds.
 
   - source_id: fbref
     owner: Sports Reference / StatsBomb-derived via FBref
@@ -545,25 +576,30 @@ sources:
     source_type: file
     authority: secondary
     terms_url: per_source
-    licence_status: unknown
-    allowed_use: private_analysis_one_off_priors
+    licence_status: restricted
+    allowed_use: private_analysis_derived_priors_no_bulk_scrape
     authentication: none
     collection_method: manual
     expected_cadence: one_off
     max_staleness: "n/a"
     failure_policy: require_manual_confirmation
     retention_policy: local_derived_priors_only
-    attribution: "FIFA / named official sources"
-    enabled: false
-    review_date: "2026-08-15"
+    attribution: "FIFA / named official sources (see CSV source column)"
+    enabled: true
+    review_date: "2026-10-01"
+    activation_approval:
+      terms: approved_derived_csv_only
+      cost: approved_zero
+      owner: Alastair
+      reviewed_at: "2026-08-01"
+      scope: admit_control_identities_world_cup_2026_priors_csv_no_fifa_html_scrape
     notes: >
       Per-player tournament minutes, elimination dates, return-to-training.
-      Automated bulk collection stays disabled. Assembly method is the staged
-      manual/citation workflow in docs/handover-world-cup-priors.md (Stages 0–5).
-      Preferred inputs: FIFA results for elimination dates; FPL bootstrap for PL
-      join keys; openfootball/worldcup.json only as a cross-check against FIFA.
-      Output: control/identities/world-cup-2026-priors.csv (committed derived table).
-      Interim alternative: binary participant flag + nation elimination date only.
+      Owner decision 2026-08-01: enabled only to admit the committed derived
+      table control/identities/world-cup-2026-priors.csv into launch_context /
+      world_cup_return_fatigue. Automated FIFA/HTML bulk scrape stays out of
+      scope. Assembly remains the staged manual/citation workflow in
+      docs/handover-world-cup-priors.md (Stages 0–5).
 
 
   - source_id: sportradar-soccer

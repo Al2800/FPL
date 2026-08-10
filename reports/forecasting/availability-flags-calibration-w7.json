@@ -1,0 +1,136 @@
+{
+  "content_sha256": "58c67911dd8fc7ce8fbf3a23d44534b4698d5a39d6add23cb7cf6fca2d04b373",
+  "fit_seasons": [
+    "2022-23",
+    "2023-24"
+  ],
+  "fit_summary": [
+    {
+      "chance_bucket": 100,
+      "key": "chance:100",
+      "n": 23604,
+      "start_rate": 0.450644,
+      "starts": 10637,
+      "status": null,
+      "wilson_high": 0.456999,
+      "wilson_low": 0.444305
+    },
+    {
+      "chance_bucket": 25,
+      "key": "chance:25",
+      "n": 753,
+      "start_rate": 0.24834,
+      "starts": 187,
+      "status": null,
+      "wilson_high": 0.280425,
+      "wilson_low": 0.21881
+    },
+    {
+      "chance_bucket": 50,
+      "key": "chance:50",
+      "n": 418,
+      "start_rate": 0.389952,
+      "starts": 163,
+      "status": null,
+      "wilson_high": 0.43751,
+      "wilson_low": 0.344399
+    },
+    {
+      "chance_bucket": 75,
+      "key": "chance:75",
+      "n": 1094,
+      "start_rate": 0.490859,
+      "starts": 537,
+      "status": null,
+      "wilson_high": 0.520463,
+      "wilson_low": 0.461319
+    },
+    {
+      "chance_bucket": null,
+      "key": "status:a",
+      "n": 34041,
+      "start_rate": 0.37916,
+      "starts": 12907,
+      "status": "a",
+      "wilson_high": 0.384328,
+      "wilson_low": 0.37402
+    },
+    {
+      "chance_bucket": null,
+      "key": "status:d",
+      "n": 2265,
+      "start_rate": 0.391611,
+      "starts": 887,
+      "status": "d",
+      "wilson_high": 0.411881,
+      "wilson_low": 0.371709
+    },
+    {
+      "chance_bucket": null,
+      "key": "status:i",
+      "n": 5736,
+      "start_rate": 0.292015,
+      "starts": 1675,
+      "status": "i",
+      "wilson_high": 0.303918,
+      "wilson_low": 0.280391
+    },
+    {
+      "chance_bucket": null,
+      "key": "status:s",
+      "n": 152,
+      "start_rate": 0.5,
+      "starts": 76,
+      "status": "s",
+      "wilson_high": 0.578503,
+      "wilson_low": 0.421497
+    },
+    {
+      "chance_bucket": null,
+      "key": "status:u",
+      "n": 14036,
+      "start_rate": 0.010616,
+      "starts": 149,
+      "status": "u",
+      "wilson_high": 0.01245,
+      "wilson_low": 0.009049
+    }
+  ],
+  "holdout_unused": "2025-26",
+  "limitation": "vaastav merged_gw has no pre-deadline chance_of_playing fields; calibration joins season players_raw flags to GW outcomes and is therefore provisional / non-point-in-time. Live path should prefer immutable bootstrap snapshots once a T-48h\u2026final chain exists.",
+  "locked_validation": {
+    "base_rate": 0.283282,
+    "brier_calibrated": 0.180642,
+    "brier_improvement_vs_naive": 0.285954,
+    "brier_naive_hard_override": 0.466596,
+    "n": 27605
+  },
+  "locked_validation_season": "2024-25",
+  "model_content_sha256": "33e6118b86394707402704bc770060233884c1ae2c6fe38e5b8cd13070fa5529",
+  "recommendation": "Publish table for research consumers; do not silently replace the live hard-override path until PIT bootstrap archives exist.",
+  "schema_version": "availability-flags-calibration-v1",
+  "season_inputs": [
+    {
+      "limitation": "vaastav gw CSVs lack chance_of_playing; flags come from season players_raw export timing, not immutable pre-deadline snapshots",
+      "merged_gw_sha256": "b78a6d0456141f9033c32fc4122931baae780ac4a4938683451b1fce7a4fdd15",
+      "players_raw_sha256": "a874c12817bbf4d454e60a5765629742b528d4ad0c2f39f56e4fc89640605f7f",
+      "rows": 26505,
+      "season": "2022-23"
+    },
+    {
+      "limitation": "vaastav gw CSVs lack chance_of_playing; flags come from season players_raw export timing, not immutable pre-deadline snapshots",
+      "merged_gw_sha256": "e9c09c8856f1c86b4f920f46ddd5033af83409439dfda53be925df2a3e7c8a9e",
+      "players_raw_sha256": "43d8cf5efb3d901f2499558c40b392b7f0ee22afe28030f36266ad29024c63d9",
+      "rows": 29725,
+      "season": "2023-24"
+    },
+    {
+      "limitation": "vaastav gw CSVs lack chance_of_playing; flags come from season players_raw export timing, not immutable pre-deadline snapshots",
+      "merged_gw_sha256": "5bbbcba6353b4c72ad273adcc8e3aa451946a826564679788f45b1cb3325b84e",
+      "players_raw_sha256": "75686051b265cbe7755ac71213ecaad21b26ee1cc46a8bafbba19c39ce894b05",
+      "rows": 27605,
+      "season": "2024-25"
+    }
+  ],
+  "work_item": "W7"
+}

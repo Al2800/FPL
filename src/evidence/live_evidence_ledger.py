@@ -133,6 +133,24 @@ def _rights_snapshot(
             if licence == "unknown"
             else "manual_citation_registered_rights"
         )
+    elif mode == "model_assisted_citation":
+        model_run = registry.get("model_run")
+        if (
+            not registry.get("enabled")
+            or not isinstance(model_run, Mapping)
+            or model_run.get("enabled") is not True
+            or model_run.get("raw_content_retained") is not False
+            or str(registry.get("collection_method", "")) != "manual_citation"
+        ):
+            raise LiveEvidenceLedgerError(
+                "Model-assisted evidence requires the registered ephemeral "
+                "citation path"
+            )
+        if claim_precision == "verbatim_excerpt":
+            raise LiveEvidenceLedgerError(
+                "Model-assisted evidence must be a derived claim, not a verbatim excerpt"
+            )
+        precision = "model_assisted_ephemeral_derived_claim"
     else:
         raise LiveEvidenceLedgerError(f"Unsupported admission mode: {mode}")
     return {

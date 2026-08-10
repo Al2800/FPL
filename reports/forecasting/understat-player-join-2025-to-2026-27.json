@@ -1,0 +1,91 @@
+{
+  "bootstrap_path": "data/snapshots/2026-27/preseason/weekly-2026-08-02/raw/20260802T100000Z/bootstrap-static.json",
+  "bootstrap_player_count": 564,
+  "capture_path": "data/live-shadow/understat/EPL/2025/20260801T134132Z/understat-league.json",
+  "capture_season": "2025",
+  "content_sha256": "9d12c11e8a133d1d657b96515dce51000bd68eaf4ae653a1019689eee249aa93",
+  "counts": {
+    "matched_rows": 388,
+    "matched_unique_fpl_codes": 381,
+    "promoted_or_absent_understat_club": 74,
+    "quarantined_ambiguous": 6,
+    "unmatched": 143
+  },
+  "full_report_note": "rates_by_fpl_code omitted from the compact report; regenerate with build_understat_player_join for the full mapping.",
+  "quarantined": [
+    {
+      "candidate_fpl_codes": [
+        75115,
+        110690,
+        153682
+      ],
+      "match_basis": "global_unique_name",
+      "player_name": "Callum Wilson",
+      "reason": "ambiguous_name_match",
+      "team_title": "West Ham",
+      "understat_player_id": "468"
+    },
+    {
+      "candidate_fpl_codes": [
+        114243,
+        545477
+      ],
+      "match_basis": "team_scoped_name",
+      "player_name": "Jacob Murphy",
+      "reason": "ambiguous_name_match",
+      "team_title": "Newcastle United",
+      "understat_player_id": "6063"
+    },
+    {
+      "candidate_fpl_codes": [
+        141746,
+        551226
+      ],
+      "match_basis": "global_unique_name",
+      "player_name": "Mateus Fernandes",
+      "reason": "ambiguous_name_match",
+      "team_title": "West Ham",
+      "understat_player_id": "12948"
+    },
+    {
+      "candidate_fpl_codes": [
+        114243,
+        545477
+      ],
+      "match_basis": "team_scoped_name",
+      "player_name": "Alex Murphy",
+      "reason": "ambiguous_name_match",
+      "team_title": "Newcastle United",
+      "understat_player_id": "12199"
+    },
+    {
+      "candidate_fpl_codes": [
+        519913,
+        547037
+      ],
+      "match_basis": "team_scoped_name",
+      "player_name": "Jack Fletcher",
+      "reason": "ambiguous_name_match",
+      "team_title": "Manchester United",
+      "understat_player_id": "13150"
+    },
+    {
+      "candidate_fpl_codes": [
+        519913,
+        547037
+      ],
+      "match_basis": "team_scoped_name",
+      "player_name": "Tyler Fletcher",
+      "reason": "ambiguous_name_match",
+      "team_title": "Manchester United",
+      "understat_player_id": "14272"
+    }
+  ],
+  "schema_version": "understat-player-join-v1",
+  "source_id": "understat",
+  "understat_player_count": 537,
+  "unmatched_reason_counts": {
+    "name_not_matched": 69,
+    "not_in_current_bootstrap_universe": 74
+  }
+}

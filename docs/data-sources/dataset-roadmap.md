@@ -48,6 +48,10 @@ it is not reconstructed from hindsight. The canonical interface and manual path
 are first-class platform components; automated collection remains disabled until
 each publisher's terms and method are approved.
 
+See also the 2026-08-01 current-info source research note for the minutes / xG /
+odds / WC-prior wiring map:
+`docs/data-sources/2026-08-01-current-info-source-research.md`.
+
 ## Tier 3 — event-data ablation
 
 StatsBomb open data provides the event-stream integration and feature-engineering

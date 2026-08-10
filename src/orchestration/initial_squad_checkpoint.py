@@ -29,6 +29,23 @@ from src.forecasting.live_initial_squad import (
     build_live_faithful_initial_squad_horizon,
 )
 from src.forecasting.live_faithful import artifact_hash
+from src.forecasting.team_attack_defence import AttackDefenceParameters
+from src.forecasting.team_prior import EloParameters
+from src.forecasting.initial_squad_context import (
+    attach_set_piece_roles,
+    blend_availability_into_horizon_players,
+    build_gap_panel,
+)
+from src.forecasting.live_odds_team_prior import (
+    discover_latest_odds_capture,
+    odds_snapshots_from_capture,
+)
+from src.forecasting.understat_team_context import (
+    UnderstatTeamContextError,
+    discover_latest_clubelo_csv,
+    discover_latest_understat_capture,
+    load_clubelo_ratings_csv,
+)
 from src.optimisation.initial_squad import (
     InitialSquadError,
     initial_squad_hash,
@@ -59,6 +76,15 @@ DEFAULT_PLAYER_PRIOR_PATH = (
 )
 DEFAULT_LIVE_MODEL_CONFIG_PATH = (
     REPO_ROOT / "control" / "models" / "live-faithful-v1.feature-complete.json"
+)
+DEFAULT_TEAM_CONTEXT_MODEL_PATH = (
+    REPO_ROOT / "control" / "models" / "live-faithful-v2.team-context.json"
+)
+DEFAULT_UNDERSTAT_ROOT = REPO_ROOT / "data" / "live-shadow" / "understat"
+DEFAULT_CLUBELO_ROOT = REPO_ROOT / "data" / "live-shadow" / "clubelo"
+DEFAULT_ODDS_ROOT = REPO_ROOT / "data" / "live-shadow" / "odds"
+DEFAULT_ODDS_PROVIDER_CONFIG_PATH = (
+    REPO_ROOT / "config" / "data_sources" / "2026-27-live-odds-provider.json"
 )
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _POSITIONS = {1: "GKP", 2: "DEF", 3: "MID", 4: "FWD"}
@@ -481,6 +507,168 @@ def _apply_launch_context_to_players(
     }
 
 
+def _promoted_team_names_from_bootstrap(
+    bootstrap: Mapping[str, Any],
+    *,
+    launch_context_path: Path | None = None,
+) -> list[str]:
+    """Resolve promoted club names for cold-start attack/defence priors."""
+
+    if launch_context_path is not None and launch_context_path.is_file():
+        context = _read_json_object(launch_context_path, "launch context")
+        rows = context.get("promoted_teams")
+        if isinstance(rows, list):
+            names = [
+                str(row["name"])
+                for row in rows
+                if isinstance(row, Mapping) and row.get("name")
+            ]
+            if names:
+                return names
+    # Fallback: clubs present in bootstrap with no Understat prior-season map
+    # are handled by the caller via empty observations + promoted list only.
+    teams = bootstrap.get("teams")
+    if not isinstance(teams, list):
+        return []
+    return []
+
+
+def _load_optional_team_context_inputs(
+    *,
+    bootstrap: Mapping[str, Any],
+    fixtures: Sequence[Mapping[str, Any]] | None = None,
+    decision_cutoff: str | None = None,
+    understat_capture_path: Path | None = None,
+    clubelo_csv_path: Path | None = None,
+    odds_capture_path: Path | None = None,
+    understat_root: Path = DEFAULT_UNDERSTAT_ROOT,
+    clubelo_root: Path = DEFAULT_CLUBELO_ROOT,
+    odds_root: Path = DEFAULT_ODDS_ROOT,
+    odds_provider_config_path: Path = DEFAULT_ODDS_PROVIDER_CONFIG_PATH,
+    team_context_model_path: Path = DEFAULT_TEAM_CONTEXT_MODEL_PATH,
+    launch_context_path: Path | None = None,
+) -> dict[str, Any]:
+    """Resolve private local Understat / ClubElo / Odds captures for team priors."""
+
+    capture_path = understat_capture_path
+    if capture_path is None:
+        capture_path = discover_latest_understat_capture(understat_root)
+    clubelo_path = clubelo_csv_path
+    if clubelo_path is None:
+        clubelo_path = discover_latest_clubelo_csv(clubelo_root)
+    odds_path = odds_capture_path
+    if odds_path is None:
+        odds_path = discover_latest_odds_capture(odds_root)
+
+    understat_capture: dict[str, Any] | None = None
+    understat_path_text: str | None = None
+    if capture_path is not None and capture_path.is_file():
+        understat_capture = _read_json_object(capture_path, "understat league capture")
+        understat_path_text = str(capture_path.resolve())
+
+    clubelo_ratings: dict[str, float] | None = None
+    clubelo_hash: str | None = None
+    clubelo_path_text: str | None = None
+    if clubelo_path is not None and clubelo_path.is_file():
+        try:
+            clubelo_ratings, clubelo_hash = load_clubelo_ratings_csv(clubelo_path)
+            clubelo_path_text = str(clubelo_path.resolve())
+        except (UnderstatTeamContextError, OSError):
+            clubelo_ratings = None
+            clubelo_hash = None
+            clubelo_path_text = None
+
+    attack_params: AttackDefenceParameters | None = None
+    elo_params: EloParameters | None = None
+    if team_context_model_path.is_file():
+        model = _read_json_object(team_context_model_path, "team-context model")
+        raw_params = model.get("parameters")
+        if isinstance(raw_params, Mapping):
+            attack_params = AttackDefenceParameters(
+                league_xg_per_team=float(raw_params.get("league_xg_per_team", 1.35)),
+                prior_matches=float(raw_params.get("prior_matches", 6.0)),
+                home_xg_multiplier=float(raw_params.get("home_xg_multiplier", 1.08)),
+                promoted_attack_multiplier=float(
+                    raw_params.get("promoted_attack_multiplier", 0.85)
+                ),
+                promoted_defence_vulnerability=float(
+                    raw_params.get("promoted_defence_vulnerability", 1.15)
+                ),
+                elo_weight=float(raw_params.get("elo_weight", 0.15)),
+                odds_weight=float(raw_params.get("odds_weight", 0.10)),
+                multiplier_min=float(raw_params.get("multiplier_min", 0.65)),
+                multiplier_max=float(raw_params.get("multiplier_max", 1.45)),
+            )
+        feature_complete = DEFAULT_LIVE_MODEL_CONFIG_PATH
+        if feature_complete.is_file():
+            fc = _read_json_object(feature_complete, "live-faithful model config")
+            elo_raw = (
+                fc.get("calibration", {}).get("elo_parameters")
+                if isinstance(fc.get("calibration"), Mapping)
+                else None
+            )
+            if isinstance(elo_raw, Mapping):
+                elo_params = EloParameters(
+                    k=float(elo_raw["k"]),
+                    home_advantage=float(elo_raw["home_advantage"]),
+                    draw_factor=float(elo_raw["draw_factor"]),
+                    promoted_rating=float(elo_raw["promoted_rating"]),
+                    season_regression=float(elo_raw["season_regression"]),
+                    fixture_scale=float(elo_raw.get("fixture_scale", 0.5)),
+                )
+
+    odds_snapshots: dict[int, dict[str, Any]] = {}
+    odds_summary: dict[str, Any] = {"status": "absent", "reason": "odds_absent"}
+    odds_path_text: str | None = None
+    if (
+        odds_path is not None
+        and odds_path.is_file()
+        and fixtures is not None
+        and decision_cutoff
+    ):
+        try:
+            odds_capture = _read_json_object(odds_path, "odds capture")
+            slots_config = None
+            if odds_provider_config_path.is_file():
+                provider_config = _read_json_object(
+                    odds_provider_config_path, "odds provider config"
+                )
+                raw_slots = provider_config.get("slots")
+                if isinstance(raw_slots, Mapping):
+                    slots_config = dict(raw_slots)
+            odds_snapshots, odds_summary = odds_snapshots_from_capture(
+                odds_capture,
+                fixtures=list(fixtures),
+                bootstrap=bootstrap,
+                decision_cutoff=str(decision_cutoff),
+                slots_config=slots_config,
+            )
+            odds_path_text = str(odds_path.resolve())
+        except (OSError, ValueError, KeyError, TypeError):
+            odds_snapshots = {}
+            odds_summary = {
+                "status": "absent",
+                "reason": "odds_capture_unreadable",
+            }
+            odds_path_text = None
+
+    return {
+        "understat_capture": understat_capture,
+        "understat_path": understat_path_text,
+        "clubelo_ratings_by_fpl_name": clubelo_ratings,
+        "clubelo_body_sha256": clubelo_hash,
+        "clubelo_path": clubelo_path_text,
+        "odds_snapshots": odds_snapshots,
+        "odds_summary": odds_summary,
+        "odds_path": odds_path_text,
+        "attack_defence_params": attack_params,
+        "elo_params": elo_params,
+        "promoted_team_names": _promoted_team_names_from_bootstrap(
+            bootstrap, launch_context_path=launch_context_path
+        ),
+    }
+
+
 def build_initial_squad_packet(
     verified: Mapping[str, Any],
     *,
@@ -489,6 +677,9 @@ def build_initial_squad_packet(
     rules_hash: str,
     player_prior_path: Path = DEFAULT_PLAYER_PRIOR_PATH,
     model_config_path: Path = DEFAULT_LIVE_MODEL_CONFIG_PATH,
+    understat_capture_path: Path | None = None,
+    clubelo_csv_path: Path | None = None,
+    enable_understat_team_prior: bool = True,
 ) -> dict[str, Any]:
     """Build a hash-bound initial-squad packet from verified bytes.
 
@@ -496,6 +687,9 @@ def build_initial_squad_packet(
     and model artifacts.  If those required inputs are unavailable or invalid,
     the explicit flat ``ep_next`` ablation remains available for operational
     rehearsal; it is never silently labelled decision-grade.
+
+    When a private Understat capture is present under ``data/live-shadow``,
+    the horizon prefers the separate attack/defence team prior over official FDR.
     """
 
     manifest = deepcopy(dict(verified["manifest"]))
@@ -612,6 +806,33 @@ def build_initial_squad_packet(
 
     live_horizon: dict[str, Any] | None = None
     live_horizon_error: str | None = None
+    launch_context_path = verified.get("bound_paths", {}).get("launch_context")
+    team_context = (
+        _load_optional_team_context_inputs(
+            bootstrap=bootstrap,
+            fixtures=list(verified["fixtures"]),
+            decision_cutoff=str(verified["deadline"]),
+            understat_capture_path=understat_capture_path,
+            clubelo_csv_path=clubelo_csv_path,
+            launch_context_path=(
+                Path(launch_context_path) if launch_context_path is not None else None
+            ),
+        )
+        if enable_understat_team_prior
+        else {
+            "understat_capture": None,
+            "understat_path": None,
+            "clubelo_ratings_by_fpl_name": None,
+            "clubelo_body_sha256": None,
+            "clubelo_path": None,
+            "odds_snapshots": {},
+            "odds_summary": {"status": "absent", "reason": "odds_absent"},
+            "odds_path": None,
+            "attack_defence_params": None,
+            "elo_params": None,
+            "promoted_team_names": [],
+        }
+    )
     try:
         if not player_prior_path.is_file():
             raise LiveInitialSquadForecastError(
@@ -638,6 +859,14 @@ def build_initial_squad_packet(
             player_prior=player_prior,
             model_config=model_config,
             launch_context_status=str(launch_enrichment["status"]),
+            understat_capture=team_context["understat_capture"],
+            clubelo_ratings_by_fpl_name=team_context["clubelo_ratings_by_fpl_name"],
+            clubelo_body_sha256=team_context["clubelo_body_sha256"],
+            odds_snapshots=team_context.get("odds_snapshots") or None,
+            odds_summary=team_context.get("odds_summary"),
+            promoted_team_names=list(team_context["promoted_team_names"]),
+            attack_defence_params=team_context["attack_defence_params"],
+            elo_params=team_context["elo_params"],
         )
         vectors = live_horizon["player_vectors"]
         for row in players:
@@ -665,9 +894,108 @@ def build_initial_squad_packet(
         live_horizon_error = str(exc)
         live_horizon = None
 
+    availability_blend: dict[str, Any] | None = None
+    set_piece_summary: dict[str, Any] | None = None
+    fixture_audit: dict[str, Any] | None = None
+    gap_panel: dict[str, Any] | None = None
+
+    # Availability blend (ticket 03): host-only numerical minutes adjustment.
+    availability_ledger = None
+    availability_state = family_states.get("availability_role_evidence")
+    availability_path = verified.get("bound_paths", {}).get(
+        "availability_role_evidence"
+    )
+    if (
+        isinstance(availability_state, Mapping)
+        and availability_state.get("state") == "admitted"
+        and availability_path is not None
+    ):
+        try:
+            availability_ledger = _read_json_object(
+                Path(availability_path), "availability role evidence"
+            )
+        except (OSError, InitialSquadCheckpointError, ValueError):
+            availability_ledger = None
+    players, availability_blend = blend_availability_into_horizon_players(
+        players,
+        ledger=availability_ledger,
+        season=str(manifest["season"]),
+        as_of=str(verified["observed_at"]),
+        fixtures=list(verified["fixtures"]),
+        horizon_gameweeks=list(range(1, horizon_size + 1)),
+        trust_admitted_ledger=True,
+    )
+
+    # Set-piece role surface (ticket 04): visibility only, no EP effects.
+    set_pieces_artifact = None
+    set_pieces_path = verified.get("bound_paths", {}).get("set_pieces")
+    if set_pieces_path is not None:
+        try:
+            set_pieces_artifact = _read_json_object(
+                Path(set_pieces_path), "set pieces artifact"
+            )
+        except (OSError, InitialSquadCheckpointError, ValueError):
+            set_pieces_artifact = None
+    players, set_piece_summary = attach_set_piece_roles(
+        players, set_pieces_artifact=set_pieces_artifact
+    )
+
     if live_horizon is not None:
         forecast_model_version = str(live_horizon["model_config_id"])
         projection_strategy = forecast_model_version
+        lineage = deepcopy(dict(live_horizon["lineage"]))
+        lineage["understat_capture_path"] = team_context.get("understat_path")
+        lineage["clubelo_capture_path"] = team_context.get("clubelo_path")
+        lineage["clubelo_body_sha256"] = team_context.get("clubelo_body_sha256")
+        lineage["odds_capture_path"] = team_context.get("odds_path")
+        lineage["promoted_team_names"] = list(team_context.get("promoted_team_names") or [])
+        limitations = list(live_horizon["limitations"])
+        if availability_blend and availability_blend.get("status") == "applied":
+            limitations = [
+                value
+                for value in limitations
+                if value != "unstructured_evidence_absent"
+            ]
+            limitations.append("availability_evidence_blended_into_start_probability")
+        else:
+            if "unstructured_evidence_absent" not in limitations:
+                limitations.append("unstructured_evidence_absent")
+            if availability_blend and availability_blend.get("skipped"):
+                limitations.append("availability_evidence_present_but_not_applied")
+        # Sync fixture audit EP/start_p after availability blend.
+        fixture_audit = deepcopy(dict(live_horizon.get("fixture_audit") or {}))
+        if fixture_audit:
+            by_id = {str(row["player_id"]): row for row in players}
+            for player_id, audit_row in fixture_audit.get("players", {}).items():
+                packet_row = by_id.get(str(player_id))
+                if packet_row is None:
+                    continue
+                for index, week in enumerate(audit_row.get("gameweeks", [])):
+                    if index < len(packet_row["expected_points"]):
+                        week["expected_points"] = float(
+                            packet_row["expected_points"][index]
+                        )
+                        week["start_probability"] = float(
+                            packet_row["start_probability"][index]
+                        )
+            fixture_audit.pop("content_sha256", None)
+            fixture_audit["content_sha256"] = artifact_hash(fixture_audit)
+            lineage["fixture_audit_sha256"] = fixture_audit["content_sha256"]
+        if set_piece_summary:
+            lineage["set_piece_surface"] = {
+                "status": set_piece_summary.get("status"),
+                "players_tagged": set_piece_summary.get("players_tagged"),
+                "effect_weights": set_piece_summary.get("effect_weights"),
+                "promotion_status": set_piece_summary.get("promotion_status"),
+                "ledger_sha256": set_piece_summary.get("ledger_sha256"),
+            }
+        if availability_blend:
+            lineage["availability_blend"] = {
+                "status": availability_blend.get("status"),
+                "applied_count": len(availability_blend.get("applied") or []),
+                "skipped_count": len(availability_blend.get("skipped") or []),
+                "content_sha256": availability_blend.get("content_sha256"),
+            }
         forecast_quality = {
             "status": "live_faithful_degraded",
             "strategy": forecast_model_version,
@@ -676,8 +1004,8 @@ def build_initial_squad_packet(
                 "hash-bound official checkpoint and historical prior; optional "
                 "evidence gaps remain explicitly degraded."
             ),
-            "limitations": list(live_horizon["limitations"]),
-            "lineage": deepcopy(dict(live_horizon["lineage"])),
+            "limitations": sorted(set(limitations)),
+            "lineage": lineage,
             "gameweek_forecast_hashes": deepcopy(
                 list(live_horizon["gameweek_forecast_hashes"])
             ),
@@ -696,6 +1024,17 @@ def build_initial_squad_packet(
             "live_faithful_fallback_reason": live_horizon_error,
             "manual_entry_eligible": False,
         }
+
+    gap_panel = build_gap_panel(
+        source_families=family_states,
+        forecast_limitations=list(forecast_quality.get("limitations") or []),
+        availability_blend=availability_blend,
+        odds_summary=team_context.get("odds_summary"),
+        set_piece_summary=set_piece_summary,
+        fixture_audit_sha256=(
+            fixture_audit.get("content_sha256") if fixture_audit else None
+        ),
+    )
 
     feature_state = {
         "schema_version": "1.0",
@@ -717,6 +1056,13 @@ def build_initial_squad_packet(
             "players_enriched": launch_enrichment["players_enriched"],
             "class_counts": launch_enrichment.get("class_counts", {}),
         },
+        "fixture_audit_sha256": (
+            fixture_audit.get("content_sha256") if fixture_audit else None
+        ),
+        "gap_panel_sha256": gap_panel.get("content_sha256"),
+        "availability_blend_sha256": (
+            availability_blend.get("content_sha256") if availability_blend else None
+        ),
         "live_faithful_horizon": (
             {
                 "status": "materialised",
@@ -766,6 +1112,10 @@ def build_initial_squad_packet(
         "forecast_quality": deepcopy(packet["forecast_quality"]),
         "launch_context_enrichment": launch_enrichment,
         "live_faithful_horizon": deepcopy(live_horizon),
+        "fixture_audit": fixture_audit,
+        "gap_panel": gap_panel,
+        "availability_blend": availability_blend,
+        "set_piece_summary": set_piece_summary,
         "fixture_count": len(verified["fixtures"]),
     }
 
@@ -1137,6 +1487,13 @@ def run_initial_squad_checkpoint(
         "fallbacks": packet_data["fallbacks"],
         "forecast_quality": packet_data["forecast_quality"],
         "fixture_count": packet_data["fixture_count"],
+        "gap_panel": packet_data.get("gap_panel"),
+        "fixture_audit_sha256": (
+            (packet_data.get("fixture_audit") or {}).get("content_sha256")
+        ),
+        "availability_blend_sha256": (
+            (packet_data.get("availability_blend") or {}).get("content_sha256")
+        ),
     }
     input_payload["content_sha256"] = artifact_hash(input_payload)
     recommendation = {
@@ -1223,6 +1580,19 @@ def run_initial_squad_checkpoint(
         try:
             _write_immutable_json(report_dir / "input-packet.json", input_payload)
             _write_immutable_json(report_dir / "recommendation.json", recommendation)
+            if packet_data.get("fixture_audit") is not None:
+                _write_immutable_json(
+                    report_dir / "fixture-audit.json", packet_data["fixture_audit"]
+                )
+            if packet_data.get("gap_panel") is not None:
+                _write_immutable_json(
+                    report_dir / "gap-panel.json", packet_data["gap_panel"]
+                )
+            if packet_data.get("availability_blend") is not None:
+                _write_immutable_json(
+                    report_dir / "availability-blend.json",
+                    packet_data["availability_blend"],
+                )
             _write_immutable_json(report_dir / "diff.json", diff)
             _write_immutable_text(report_dir / "diff.md", diff_markdown)
             _write_immutable_json(report_dir / "checkpoint.json", checkpoint)

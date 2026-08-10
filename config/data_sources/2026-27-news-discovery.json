@@ -8,7 +8,7 @@
   "maximum_leads_per_source": 12,
   "search_result_policy": "discovery_lead_only_follow_official_original",
   "raw_snippet_policy": "never_admit_or_retain",
-  "claim_policy": "manual_linked_derived_claim_only",
+  "claim_policy": "model_derived_candidate_host_validated_claim",
   "deduplication": "canonical_official_url",
   "syndication_policy": "reject_non_official_domain",
   "missing_coverage_policy": "degrade_unknown_not_available"
