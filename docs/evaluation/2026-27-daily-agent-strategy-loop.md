@@ -69,3 +69,12 @@ Recipe: `config/automations/2026-27-daily-strategy-research.json`
 Prompt: `prompts/daily-strategy-research/v1.md`  
 UI: [cursor.com/automations](https://cursor.com/automations) — **Composer 2.5**,
 cron `0 7 * * *` UTC, repo `Al2800/FPL` @ `main`.
+
+**Not yet official.** Dry-runs against checkpoint `weekly-2026-07-31`:
+
+- Composer 2.5 → `reports/strategy-research/2026-08-01.md`
+- Grok 4.5 → `reports/strategy-research/2026-08-01-grok-4.5.md`
+
+Evidence stance: ADR-0022 (no invented start probs; hard team-news gather;
+structure guided, content agnostic). Review automation-readiness notes before
+enabling the daily cron.
