@@ -1,0 +1,34 @@
+{
+  "arm_id": "forecast_optimizer_plus_set_piece_role",
+  "candidate_policy_live_active": false,
+  "content_sha256": "1c1f890e2bc1691080e12a87d775ee7ed66d079a33f3cd311486af8217ed232d",
+  "corpus": {
+    "finalised_outcome_count": 0,
+    "gaps": [
+      "insufficient_cutoff_safe_set_piece_ledgers",
+      "insufficient_finalised_outcome_artifacts",
+      "no_immutable_historical_set_piece_pit_snapshots"
+    ],
+    "min_paired_gameweeks": 3,
+    "notes": "Vaastav end-of-season role columns are not cutoff-safe. Live 2026/27 promotion requires immutable pre-deadline ledgers plus finalised outcomes across the preregistered folds.",
+    "pit_ledger_count": 0,
+    "ready_for_promotion_folds": false,
+    "schema_version": "set-piece-ablation-corpus-v1"
+  },
+  "decision": "remain_shadow_only",
+  "example_adjustment_count": 0,
+  "family": "set_piece_role",
+  "historical_finding": "no_isolated_point_in_time_set_piece_role_ablation",
+  "live_effect_weights": null,
+  "notes": "Ticket 15 records versioned candidate weights and a fail-closed decision. Live feature payloads keep effect_weights=null until an owner-reviewed promotion against cutoff-safe paired rows.",
+  "policy_content_sha256": "164407eb530c251fce7a7f48e934c5116a19cd66efe7c237d9a76f270504c833",
+  "policy_id": "set-piece-effect-weights-v1",
+  "promotion_eligible": false,
+  "reason": "no_complete_point_in_time_ablation_rows",
+  "report_id": "feature-ablation:set_piece_role",
+  "schema_version": "set-piece-ablation-decision-v1",
+  "source_ids": [
+    "fpl-official-endpoints"
+  ],
+  "transformation_version": "set-piece-effect-weights-v1"
+}

@@ -1,0 +1,1005 @@
+{
+  "account_writes": false,
+  "baselines": {
+    "deterministic_names": [
+      "Raya",
+      "Rice",
+      "João Pedro",
+      "Pickford",
+      "Tarkowski",
+      "Beto",
+      "Wilson",
+      "Virgil",
+      "Guéhi",
+      "Semenyo",
+      "B.Fernandes",
+      "Obi",
+      "Anderson",
+      "Senesi",
+      "Mukiele"
+    ],
+    "deterministic_objective": 259.191879,
+    "deterministic_proposal_sha256": "4100ee7598146a7c6471f27672f74aeb5c0b67549748e2c438c6deba08aca95e",
+    "robust_names": [
+      "Raya",
+      "Verbruggen",
+      "Rice",
+      "João Pedro",
+      "Tarkowski",
+      "Beto",
+      "Virgil",
+      "Guéhi",
+      "Semenyo",
+      "Rogers",
+      "B.Fernandes",
+      "Obi",
+      "Anderson",
+      "Senesi",
+      "Mukiele"
+    ],
+    "robust_objective": 257.441115,
+    "robust_proposal_sha256": "83f0bfc5bd945eda5888d9a7aba606e643d371ec7d5e5f3897052dcae80faa75"
+  },
+  "best_haaland_bruno": {
+    "added_fillers": [
+      "Hughes",
+      "Reed",
+      "Aznou"
+    ],
+    "bank": 0.5,
+    "bench": [
+      "Verbruggen",
+      "Hughes",
+      "Reed",
+      "Obi"
+    ],
+    "captain": "B.Fernandes",
+    "delta_vs_robust": -21.375276,
+    "dropped": [
+      "João Pedro",
+      "Semenyo",
+      "Rogers",
+      "Mukiele"
+    ],
+    "human_reference_objective": 241.272039,
+    "names": [
+      "Raya",
+      "Verbruggen",
+      "Rice",
+      "Hughes",
+      "Tarkowski",
+      "Aznou",
+      "Beto",
+      "Reed",
+      "Virgil",
+      "Guéhi",
+      "Haaland",
+      "B.Fernandes",
+      "Obi",
+      "Anderson",
+      "Senesi"
+    ],
+    "note": "Bounded script miss; manually confirmed legal Haaland+Bruno via 4-drop from robust (budget requires stripping mid-price pieces).",
+    "objective_robust": 236.065839,
+    "proposal_sha256_human_reference": "b892eb83b58846fd5dad5e58811246feefda447b6e382c0896436f0bb337199e",
+    "proposal_sha256_robust_mode": "b85e2c00ac91bf336110b1a4417e40146f732eb9fcf4a727e318d1d9840b1ced",
+    "squad_player_ids": [
+      "1",
+      "109",
+      "13",
+      "212",
+      "229",
+      "235",
+      "248",
+      "270",
+      "356",
+      "388",
+      "411",
+      "426",
+      "441",
+      "481",
+      "498"
+    ],
+    "starting_xi": [
+      "Raya",
+      "Guéhi",
+      "Virgil",
+      "Senesi",
+      "Tarkowski",
+      "Aznou",
+      "B.Fernandes",
+      "Rice",
+      "Anderson",
+      "Haaland",
+      "Beto"
+    ],
+    "vice": "Haaland"
+  },
+  "best_haaland_in": {
+    "added_fillers": [
+      "Szoboszlai",
+      "Groß"
+    ],
+    "bank": 0.0,
+    "bench": [
+      "Verbruggen",
+      "Groß",
+      "Beto",
+      "Obi"
+    ],
+    "captain": "Haaland",
+    "delta_vs_deterministic": -5.296736,
+    "delta_vs_robust": -7.028574,
+    "dropped": [
+      "João Pedro",
+      "Semenyo",
+      "B.Fernandes"
+    ],
+    "formation": {
+      "DEF": 5,
+      "FWD": 1,
+      "MID": 4
+    },
+    "names": [
+      "Raya",
+      "Verbruggen",
+      "Groß",
+      "Rice",
+      "Tarkowski",
+      "Beto",
+      "Virgil",
+      "Szoboszlai",
+      "Guéhi",
+      "Rogers",
+      "Haaland",
+      "Obi",
+      "Anderson",
+      "Senesi",
+      "Mukiele"
+    ],
+    "objective_deterministic": 253.895143,
+    "objective_robust": 250.412541,
+    "proposal_sha256_deterministic_mode": "19a9e911772f5c66a391b5925ebcbedecebb2b9c173a078c6b4d89038ae79201",
+    "proposal_sha256_robust_mode": "8ab39bf2a230861854757d9eb55d8588761724221b5e7d753ef43c3ceb4bb616",
+    "squad_player_ids": [
+      "1",
+      "109",
+      "124",
+      "13",
+      "229",
+      "248",
+      "356",
+      "368",
+      "388",
+      "40",
+      "411",
+      "441",
+      "481",
+      "498",
+      "533"
+    ],
+    "starting_xi": [
+      "Raya",
+      "Mukiele",
+      "Guéhi",
+      "Virgil",
+      "Senesi",
+      "Tarkowski",
+      "Rice",
+      "Rogers",
+      "Anderson",
+      "Szoboszlai",
+      "Haaland"
+    ],
+    "vice": "Rice"
+  },
+  "bound_packet_sha256": "d430ba7670a7a98bea636ea6830d2ec3197e565415905e1fea8ab912b2cff422",
+  "checkpoint_id": "weekly-2026-08-08",
+  "haaland_now_cost": 15.5,
+  "haaland_player_id": "411",
+  "host_human_reference_score": {
+    "bank": 0.0,
+    "captain": "Haaland",
+    "objective": 253.895143,
+    "proposal_sha256": "19a9e911772f5c66a391b5925ebcbedecebb2b9c173a078c6b4d89038ae79201",
+    "validation_ok": true,
+    "vice": "Rice"
+  },
+  "report_id": "strategy-haaland-in-comparison-2026-08-08",
+  "schema_version": "1.0",
+  "search": {
+    "drop_ns": [
+      2,
+      3,
+      4
+    ],
+    "haaland_bruno_tried": 1,
+    "pool_caps_per_position": 12,
+    "scorer_errors_or_rejects": 46,
+    "tried_legal_candidates": 251
+  },
+  "top_haaland_in": [
+    {
+      "added_fillers": [
+        "Szoboszlai",
+        "Groß"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Groß",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.296736,
+      "delta_vs_robust": -7.028574,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Groß",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Virgil",
+        "Szoboszlai",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.895143,
+      "objective_robust": 250.412541,
+      "proposal_sha256_deterministic_mode": "19a9e911772f5c66a391b5925ebcbedecebb2b9c173a078c6b4d89038ae79201",
+      "proposal_sha256_robust_mode": "8ab39bf2a230861854757d9eb55d8588761724221b5e7d753ef43c3ceb4bb616",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "124",
+        "13",
+        "229",
+        "248",
+        "356",
+        "368",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "Szoboszlai",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Groß",
+        "Szoboszlai"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Groß",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.296736,
+      "delta_vs_robust": -7.028574,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Groß",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Virgil",
+        "Szoboszlai",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.895143,
+      "objective_robust": 250.412541,
+      "proposal_sha256_deterministic_mode": "19a9e911772f5c66a391b5925ebcbedecebb2b9c173a078c6b4d89038ae79201",
+      "proposal_sha256_robust_mode": "8ab39bf2a230861854757d9eb55d8588761724221b5e7d753ef43c3ceb4bb616",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "124",
+        "13",
+        "229",
+        "248",
+        "356",
+        "368",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "Szoboszlai",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Wilson",
+        "Gravenberch"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Gravenberch",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.4588,
+      "delta_vs_robust": -7.31225,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Wilson",
+        "Virgil",
+        "Gravenberch",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.733079,
+      "objective_robust": 250.128865,
+      "proposal_sha256_deterministic_mode": "2d63a99368ab7844af945a567722f09d6b5efbbde913653c9e70c1d99a0604fa",
+      "proposal_sha256_robust_mode": "d9801b49033cbc7a7d845446a0d2f8ca66bb774f10168c0550df6f755aacaab8",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "13",
+        "229",
+        "248",
+        "260",
+        "356",
+        "371",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "Wilson",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Gravenberch",
+        "Wilson"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Gravenberch",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.4588,
+      "delta_vs_robust": -7.31225,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Wilson",
+        "Virgil",
+        "Gravenberch",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.733079,
+      "objective_robust": 250.128865,
+      "proposal_sha256_deterministic_mode": "2d63a99368ab7844af945a567722f09d6b5efbbde913653c9e70c1d99a0604fa",
+      "proposal_sha256_robust_mode": "d9801b49033cbc7a7d845446a0d2f8ca66bb774f10168c0550df6f755aacaab8",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "13",
+        "229",
+        "248",
+        "260",
+        "356",
+        "371",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "Wilson",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Wilson",
+        "E.Le Fée"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Wilson",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.691867,
+      "delta_vs_robust": -7.545295,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Wilson",
+        "Virgil",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele",
+        "E.Le Fée"
+      ],
+      "objective_deterministic": 253.500012,
+      "objective_robust": 249.89582,
+      "proposal_sha256_deterministic_mode": "2df5e2ff84a718a8b92bb5fa1c715f07fd7f65beb83341e6b1a09bbf5b226c7f",
+      "proposal_sha256_robust_mode": "50595bedd6130925ae4a47c10c5f59fde4f43011bb90d27fb43ce70a7615b100",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "13",
+        "229",
+        "248",
+        "260",
+        "356",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533",
+        "542"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "E.Le Fée",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "E.Le Fée",
+        "Wilson"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Wilson",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.691867,
+      "delta_vs_robust": -7.545295,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Wilson",
+        "Virgil",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele",
+        "E.Le Fée"
+      ],
+      "objective_deterministic": 253.500012,
+      "objective_robust": 249.89582,
+      "proposal_sha256_deterministic_mode": "2df5e2ff84a718a8b92bb5fa1c715f07fd7f65beb83341e6b1a09bbf5b226c7f",
+      "proposal_sha256_robust_mode": "50595bedd6130925ae4a47c10c5f59fde4f43011bb90d27fb43ce70a7615b100",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "13",
+        "229",
+        "248",
+        "260",
+        "356",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533",
+        "542"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "E.Le Fée",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Mitchell",
+        "Groß"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Mitchell",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.8617,
+      "delta_vs_robust": -7.570406,
+      "dropped": [
+        "João Pedro",
+        "Guéhi",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 4,
+        "FWD": 1,
+        "MID": 5
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Groß",
+        "Rice",
+        "Mitchell",
+        "Tarkowski",
+        "Beto",
+        "Virgil",
+        "Semenyo",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.330179,
+      "objective_robust": 249.870709,
+      "proposal_sha256_deterministic_mode": "66e3b517815fe4c77f40e292f53aaf01b9778a7974a548ddfcdbeb34466dac7e",
+      "proposal_sha256_robust_mode": "917047129985b9cec67c6888767d72396b998d585badc034481ad00368231189",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "124",
+        "13",
+        "204",
+        "229",
+        "248",
+        "356",
+        "397",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Semenyo",
+        "Rogers",
+        "Anderson",
+        "Groß",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Wilson",
+        "Groß"
+      ],
+      "bank": 0.5,
+      "bench": [
+        "Verbruggen",
+        "Groß",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.728356,
+      "delta_vs_robust": -7.610996,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Groß",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Wilson",
+        "Virgil",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.463523,
+      "objective_robust": 249.830119,
+      "proposal_sha256_deterministic_mode": "8e9f875244f7d983287ff8983c5aef7275a6c9e5e9efae419a303bed1f4f6e65",
+      "proposal_sha256_robust_mode": "b7b5e4c2abd2787c4d2e110e54c58cfd4a120c886fbbf0063e3054cdfcd888b7",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "124",
+        "13",
+        "229",
+        "248",
+        "260",
+        "356",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "Wilson",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Groß",
+        "Wilson"
+      ],
+      "bank": 0.5,
+      "bench": [
+        "Verbruggen",
+        "Groß",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -5.728356,
+      "delta_vs_robust": -7.610996,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Groß",
+        "Rice",
+        "Tarkowski",
+        "Beto",
+        "Wilson",
+        "Virgil",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.463523,
+      "objective_robust": 249.830119,
+      "proposal_sha256_deterministic_mode": "8e9f875244f7d983287ff8983c5aef7275a6c9e5e9efae419a303bed1f4f6e65",
+      "proposal_sha256_robust_mode": "b7b5e4c2abd2787c4d2e110e54c58cfd4a120c886fbbf0063e3054cdfcd888b7",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "124",
+        "13",
+        "229",
+        "248",
+        "260",
+        "356",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "Wilson",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    },
+    {
+      "added_fillers": [
+        "Enzo",
+        "Groß"
+      ],
+      "bank": 0.0,
+      "bench": [
+        "Verbruggen",
+        "Groß",
+        "Beto",
+        "Obi"
+      ],
+      "captain": "Haaland",
+      "delta_vs_deterministic": -6.079961,
+      "delta_vs_robust": -7.819768,
+      "dropped": [
+        "João Pedro",
+        "Semenyo",
+        "B.Fernandes"
+      ],
+      "formation": {
+        "DEF": 5,
+        "FWD": 1,
+        "MID": 4
+      },
+      "names": [
+        "Raya",
+        "Verbruggen",
+        "Groß",
+        "Rice",
+        "Enzo",
+        "Tarkowski",
+        "Beto",
+        "Virgil",
+        "Guéhi",
+        "Rogers",
+        "Haaland",
+        "Obi",
+        "Anderson",
+        "Senesi",
+        "Mukiele"
+      ],
+      "objective_deterministic": 253.111918,
+      "objective_robust": 249.621347,
+      "proposal_sha256_deterministic_mode": "082884824a1b0f9128dcb2edc1e7a1fca0cdf09a29b52d29221aa57a8293813c",
+      "proposal_sha256_robust_mode": "fcb026d2a3dbefdc8f24c5e5843ac4a7a0e327ec8f2c5bc3382d20b6c278e1cb",
+      "squad_player_ids": [
+        "1",
+        "109",
+        "124",
+        "13",
+        "155",
+        "229",
+        "248",
+        "356",
+        "388",
+        "40",
+        "411",
+        "441",
+        "481",
+        "498",
+        "533"
+      ],
+      "starting_xi": [
+        "Raya",
+        "Mukiele",
+        "Guéhi",
+        "Virgil",
+        "Senesi",
+        "Tarkowski",
+        "Rice",
+        "Rogers",
+        "Anderson",
+        "Enzo",
+        "Haaland"
+      ],
+      "vice": "Rice"
+    }
+  ],
+  "verdict": "haaland_in_does_not_beat_robust",
+  "verdict_haaland_bruno": "haaland_bruno_does_not_beat_robust"
+}

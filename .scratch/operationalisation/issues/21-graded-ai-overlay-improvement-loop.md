@@ -1,14 +1,14 @@
 # 21 — Graded AI-overlay improvement loop (review)
 
-Status: needs-triage
+Status: resolved
 Type: research
 Track: Future (agent overlay post-training / eval industrialisation)
 Blocked by: 11, 10
 
-Activation gate: owner review only until authorised. Do not introduce cloud
-training providers, API keys, or RL that can enforce transfers/chips. Any
-provider (including Prime Intellect Lab / Verifiers-style environments) needs a
-fresh ADR amending ADR-0021/0024.
+Activation gate: owner authorised the written review on 6 August 2026. Do not
+introduce cloud training providers, API keys, or RL that can enforce
+transfers/chips. Any provider (including Prime Intellect Lab / Verifiers-style
+environments) needs a fresh ADR amending ADR-0021/0024.
 
 ## Context
 
@@ -53,3 +53,22 @@ session. Do not scrape or invent FPL outcomes for rewards.
 Owner (6 August 2026) asked to park a future ticket to review “owning a graded
 improvement loop on the AI overlay” after discussing Prime Intellect as possible
 alpha for the agent overlay layer.
+
+## Answer
+
+**Defer** hosted training / provider binding (including Prime Intellect). Fit is
+real for a proposal-only Verifiers-style env over existing sealed rewards, but
+early live 2026/27 GDRs and a local graded suite should come first.
+
+Full review: `docs/reviews/2026-08-graded-ai-overlay-improvement-loop.md`
+
+Summary:
+
+- Inventory covers golden agent/evidence cases, schema validators, agent_arm
+  gates, fork runners, JSONL traces, and T-90m / forced-timeout GDR degrade.
+- Candidate env: dataset = hash-bound requests; harness = agent_arm / scheduled
+  overlay; rubric = schema, citations, fail categories, optional post-freeze
+  sealed deltas — never live enforcement.
+- Prefer local offline graded eval (no new deps) when re-opened; Verifiers
+  package and hosted LoRA need owner install / ADR-0021+0024 amendments.
+- No `run_gameweek` or deterministic-core changes from this ticket.

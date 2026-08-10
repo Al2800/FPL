@@ -1,0 +1,73 @@
+{
+  "schema_version": "news-capture-triage-v1",
+  "policy_id": "news-capture-triage-v1",
+  "shortlist_limit": 24,
+  "prefer_source_classes": [
+    "official_candidate",
+    "feed_candidate"
+  ],
+  "allow_external_for_challenge_only": true,
+  "max_external_on_shortlist": 4,
+  "priority_clubs": [
+    "manchester-city",
+    "manchester-united",
+    "arsenal",
+    "liverpool",
+    "chelsea",
+    "premier-league"
+  ],
+  "watch_terms": [
+    "haaland",
+    "fernandes",
+    "bruno",
+    "saka",
+    "gabriel",
+    "injury",
+    "injured",
+    "fitness",
+    "training",
+    "team news",
+    "press conference",
+    "presser",
+    "minutes",
+    "available",
+    "return",
+    "doubt",
+    "suspended",
+    "line-up",
+    "lineup",
+    "starting"
+  ],
+  "topic_tags": {
+    "haaland_minutes": ["haaland"],
+    "bruno_minutes": ["bruno", "fernandes"],
+    "arsenal_attack": ["saka", "gabriel", "arteta"],
+    "availability_general": ["injury", "injured", "fitness", "doubt", "suspended"],
+    "team_news": ["team news", "press conference", "presser", "line-up", "lineup", "starting", "training"]
+  },
+  "stale_markers": {
+    "year_penalty": 45,
+    "grace_years": 0,
+    "scan_fields": ["title", "url", "canonical_url"],
+    "historical_manager_terms": [
+      "erik ten hag",
+      "ten hag",
+      "tuchel",
+      "frank lampard",
+      "jose mourinho",
+      "mourinho",
+      "antonio conte",
+      "nuno espirito santo",
+      "graham potter",
+      "guardiola",
+      "pep guardiola",
+      "klopp",
+      "jurgen klopp",
+      "calum mcfarlane"
+    ],
+    "historical_manager_penalty": 25
+  },
+  "claim_policy": "manual_linked_derived_claim_only",
+  "raw_snippet_policy": "triage_scoring_only_never_admit",
+  "notes": "Triage ranks capture candidates for verification. It never admits ledger claims. Verification must supply ISO published_at before discovery admission. Year stamps older than observed_at year (title/URL) and historical-manager markers are demoted, not deleted."
+}

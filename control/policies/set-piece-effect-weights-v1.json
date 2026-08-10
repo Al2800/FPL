@@ -1,0 +1,35 @@
+{
+  "content_sha256": "164407eb530c251fce7a7f48e934c5116a19cd66efe7c237d9a76f270504c833",
+  "effective_from": null,
+  "effective_until": null,
+  "live_active": false,
+  "missing_input": "degrade_to_shared_baseline",
+  "notes": "Candidate additive expected-goals bumps by role and rank. Not embedded FPL scoring. Live effect_weights remain null until a promotion decision records otherwise.",
+  "policy_id": "set-piece-effect-weights-v1",
+  "rank_cap": 3,
+  "requires_confidence_min": 0.5,
+  "schema_version": "set-piece-effect-weights-v1",
+  "source_ids": [
+    "fpl-official-endpoints"
+  ],
+  "status": "candidate_for_ablation_only",
+  "transformation_version": "set-piece-effect-weights-v1",
+  "unit": "expected_goals_addend_per_gameweek",
+  "weights": {
+    "corner_or_indirect_free_kick": {
+      "1": 0.03,
+      "2": 0.012,
+      "3": 0.004
+    },
+    "direct_free_kick": {
+      "1": 0.04,
+      "2": 0.015,
+      "3": 0.005
+    },
+    "penalty": {
+      "1": 0.18,
+      "2": 0.06,
+      "3": 0.02
+    }
+  }
+}
