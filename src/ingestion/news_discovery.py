@@ -202,7 +202,7 @@ def execute_news_discovery_plan(plan: Mapping[str, Any], *, search_results: Mapp
         "observed_at": observed_text, "status": status, "plan_sha256": str(plan["content_sha256"]),
         "raw_search_context_retained": False, "leads": sorted(deduped.values(), key=lambda lead: (lead["club_id"], lead["rank"], lead["source_url"])),
         "coverage": coverage, "quality": {"gaps": sorted(gaps), "rejected": sorted(rejected, key=lambda row: (row["club_id"], row["reason"]))},
-        "claim_policy": "manual_linked_derived_claim_only", "account_writes": False,
+        "claim_policy": "model_derived_candidate_host_validated_claim", "account_writes": False,
     })
 
 
@@ -215,7 +215,7 @@ def build_cited_original_packet(discovery: Mapping[str, Any], *, document_ids: S
     if wanted is not None and {str(row.get("document_id")) for row in rows} != wanted:
         raise NewsDiscoveryError("Selected document ID is absent from discovery")
     safe_fields = ("document_id", "club_id", "source_url", "published_at", "observed_at", "discovery_method", "query", "rank", "title")
-    return _seal({"schema_version": "1.0", "packet_id": f"cited-originals:{discovery['discovery_id']}", "discovery_sha256": str(discovery["content_sha256"]), "documents": [{field: row[field] for field in safe_fields} for row in rows], "raw_search_context_retained": False, "claim_policy": "manual_linked_derived_claim_only"})
+    return _seal({"schema_version": "1.0", "packet_id": f"cited-originals:{discovery['discovery_id']}", "discovery_sha256": str(discovery["content_sha256"]), "documents": [{field: row[field] for field in safe_fields} for row in rows], "raw_search_context_retained": False, "claim_policy": "model_derived_candidate_host_validated_claim"})
 
 
 def write_immutable_json(path: str | Path, value: Mapping[str, Any]) -> str:

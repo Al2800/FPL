@@ -173,6 +173,24 @@
         "world_cup_return_fatigue"
       ],
       "status": "degraded"
+    },
+    "weekly-2026-08-01": {
+      "checkpoint_id": "weekly-2026-08-01",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-01/manifest.json",
+      "manifest_sha256": "8a4efcf2569690fb141c3703883d1fc82e63f178790d18f4138cf5e40c8cfc63",
+      "observed_at": "2026-08-01T10:48:00Z",
+      "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
+      "request_sha256": "dc07ab22753f6fd80d05f195623eac0a17fc95de5371457b184020c7fbb4522a",
+      "source_gaps": [
+        "availability_role_evidence",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
     }
   },
   "content_sha256": "1fdbc89a7c093ed141f86c875db94f1a5521645de13574eb781528725a5379c7",

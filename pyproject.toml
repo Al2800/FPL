@@ -15,6 +15,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+understat = ["understatapi>=0.7.1"]
 
 [project.scripts]
 fpl-snapshot = "src.ingestion.snapshot_fpl:main"

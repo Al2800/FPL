@@ -18,6 +18,18 @@ from src.forecasting.live_faithful import (
     artifact_hash,
     build_live_faithful_forecast,
 )
+from src.forecasting.team_attack_defence import AttackDefenceParameters
+from src.forecasting.team_prior import EloParameters
+from src.forecasting.initial_squad_context import build_fixture_audit
+from src.forecasting.understat_player_context import (
+    UnderstatPlayerContextError,
+    build_understat_player_join,
+    enrich_player_prior_with_understat_event_rates,
+)
+from src.forecasting.understat_team_context import (
+    UnderstatTeamContextError,
+    build_understat_attack_defence_team_prior,
+)
 from src.orchestration.historical_feature_state import feature_state_hash
 
 
@@ -216,6 +228,22 @@ def _feature_player(
     }
 
 
+def _merge_horizon_limitations(
+    limitations: Sequence[str],
+    forecasts: Sequence[Mapping[str, Any]],
+    odds_snapshots: Mapping[int, Mapping[str, Any]] | None,
+) -> list[str]:
+    merged = set(limitations)
+    for item in forecasts:
+        forecast = item.get("forecast")
+        if isinstance(forecast, Mapping):
+            merged.update(str(value) for value in forecast.get("limitations", []))
+    if odds_snapshots:
+        merged.discard("timestamped_odds_absent")
+        merged.add("timestamped_odds_applied_to_team_prior")
+    return sorted(merged)
+
+
 def build_live_faithful_initial_squad_horizon(
     *,
     bootstrap: Mapping[str, Any],
@@ -228,6 +256,14 @@ def build_live_faithful_initial_squad_horizon(
     player_prior: Mapping[str, Any],
     model_config: Mapping[str, Any],
     launch_context_status: str = "unavailable",
+    understat_capture: Mapping[str, Any] | None = None,
+    clubelo_ratings_by_fpl_name: Mapping[str, float] | None = None,
+    clubelo_body_sha256: str | None = None,
+    odds_snapshots: Mapping[int, Mapping[str, Any]] | None = None,
+    odds_summary: Mapping[str, Any] | None = None,
+    promoted_team_names: Sequence[str] = (),
+    attack_defence_params: AttackDefenceParameters | None = None,
+    elo_params: EloParameters | None = None,
 ) -> dict[str, Any]:
     """Materialise one deterministic live-faithful result per Gameweek."""
 
@@ -261,13 +297,70 @@ def build_live_faithful_initial_squad_horizon(
             by_gameweek[event].append(raw)
 
     bounds = model_config.get("fixture_multiplier_bounds", [0.7, 1.3])
-    team_prior = build_official_fdr_team_prior(
-        fixtures=[row for rows in by_gameweek.values() for row in rows],
-        observed_at=observed_text,
-        source_sha256=official_fixtures_sha256,
-        season=str(bootstrap.get("season", "2026-27")),
-        multiplier_bounds=bounds,
-    )
+    horizon_fixtures = [row for rows in by_gameweek.values() for row in rows]
+    season = str(bootstrap.get("season", "2026-27"))
+
+    player_understat_summary: dict[str, Any] = {
+        "status": "absent",
+        "players_enriched": 0,
+    }
+    effective_player_prior = deepcopy(dict(player_prior))
+    if understat_capture is not None:
+        try:
+            join_report = build_understat_player_join(
+                bootstrap=bootstrap,
+                understat_capture=understat_capture,
+            )
+            effective_player_prior, player_understat_summary = (
+                enrich_player_prior_with_understat_event_rates(
+                    effective_player_prior,
+                    join_report=join_report,
+                )
+            )
+            player_understat_summary = {
+                **player_understat_summary,
+                "join_counts": deepcopy(dict(join_report.get("counts", {}))),
+            }
+        except UnderstatPlayerContextError as exc:
+            player_understat_summary = {
+                "status": "absent",
+                "players_enriched": 0,
+                "reason": str(exc),
+            }
+
+    team_prior_source = "official_fdr"
+    understat_fallback_reason: str | None = None
+    team_prior: dict[str, Any] | None = None
+    if understat_capture is not None:
+        try:
+            team_prior = build_understat_attack_defence_team_prior(
+                bootstrap=bootstrap,
+                fixtures=horizon_fixtures,
+                understat_capture=understat_capture,
+                observed_at=observed_text,
+                decision_cutoff=cutoff_text,
+                season=season,
+                promoted_team_names=promoted_team_names,
+                clubelo_ratings_by_fpl_name=clubelo_ratings_by_fpl_name,
+                clubelo_body_sha256=clubelo_body_sha256,
+                odds_snapshots=odds_snapshots,
+                params=attack_defence_params,
+                elo_params=elo_params,
+            )
+            team_prior_source = "understat_attack_defence"
+        except UnderstatTeamContextError as exc:
+            # Keep the horizon available: FDR remains the explicit baseline when
+            # a private capture cannot be joined to the current bootstrap.
+            understat_fallback_reason = str(exc)
+            team_prior = None
+    if team_prior is None:
+        team_prior = build_official_fdr_team_prior(
+            fixtures=horizon_fixtures,
+            observed_at=observed_text,
+            source_sha256=official_fixtures_sha256,
+            season=season,
+            multiplier_bounds=bounds,
+        )
     identity_map = {
         "schema_version": "live-initial-squad-identity-v1",
         "players": [
@@ -280,16 +373,49 @@ def build_live_faithful_initial_squad_horizon(
 
     forecasts: list[dict[str, Any]] = []
     vectors: dict[str, dict[str, list[float]]] = {}
-    prior_season = str(player_prior.get("season", "")).strip()
+    prior_season = str(effective_player_prior.get("season", "")).strip()
     prior_season_label = prior_season.replace("-", "_") or "unknown"
+    team_prior_limitation = (
+        "understat_attack_defence_team_prior"
+        if team_prior_source == "understat_attack_defence"
+        else "official_fdr_team_prior_baseline"
+    )
     limitations = [
-        "official_fdr_team_prior_baseline",
+        team_prior_limitation,
         f"historical_player_prior_{prior_season_label}",
         "uncertainty_proxy_from_start_probability",
         "launch_context_not_applied_inside_forecaster"
         if launch_context_status != "applied"
         else "launch_context_flags_applied_after_forecast",
     ]
+    player_rate_status = str(player_understat_summary.get("status", "absent"))
+    if player_rate_status == "applied":
+        limitations.append("understat_player_event_rates_applied")
+    elif player_rate_status == "partial":
+        limitations.append("understat_player_event_rates_partial")
+    else:
+        limitations.append("understat_player_event_rates_absent")
+    if team_prior_source == "understat_attack_defence":
+        limitations.append("prior_season_understat_xg_matches_only")
+        if clubelo_ratings_by_fpl_name is None:
+            limitations.append("clubelo_expected_scores_absent")
+        else:
+            limitations.append("clubelo_expected_scores_applied")
+        if team_prior.get("fallback_teams"):
+            limitations.append("promoted_team_cold_start_priors")
+        for reason in team_prior.get("degraded_reasons", []):
+            limitations.append(f"team_prior_{reason}")
+        if odds_snapshots:
+            limitations.append("timestamped_odds_applied_to_team_prior")
+        elif odds_summary and odds_summary.get("reason"):
+            limitations.append(f"timestamped_odds_{odds_summary['reason']}")
+        else:
+            limitations.append("timestamped_odds_absent")
+    elif understat_fallback_reason is not None:
+        limitations.append("understat_team_prior_unavailable_fallback_fdr")
+        limitations.append("timestamped_odds_absent")
+    else:
+        limitations.append("timestamped_odds_absent")
     for gameweek in gameweeks:
         components_by_player: dict[str, list[dict[str, Any]]] = {}
         for fixture in by_gameweek[gameweek]:
@@ -338,7 +464,8 @@ def build_live_faithful_initial_squad_horizon(
                 "official_bootstrap_sha256": official_bootstrap_sha256,
                 "official_fixtures_sha256": official_fixtures_sha256,
                 "identity_map_sha256": identity_hash,
-                "player_prior_sha256": str(player_prior["content_sha256"]),
+                "player_prior_sha256": str(effective_player_prior["content_sha256"]),
+                "base_player_prior_sha256": str(player_prior["content_sha256"]),
                 "team_prior_sha256": str(team_prior["content_sha256"]),
                 "model_sha256": str(model_config["content_sha256"]),
             },
@@ -348,7 +475,7 @@ def build_live_faithful_initial_squad_horizon(
             forecast = build_live_faithful_forecast(
                 feature_state=feature_state,
                 identity_map=identity_map,
-                player_prior=player_prior,
+                player_prior=effective_player_prior,
                 team_prior=team_prior,
                 model_config=model_config,
             )
@@ -385,6 +512,35 @@ def build_live_faithful_initial_squad_horizon(
             )
 
     model_name = "live-faithful-v1.feature-complete"
+    audit_players = []
+    for raw in raw_elements:
+        if not isinstance(raw, Mapping) or str(raw.get("status", "")) != "a":
+            continue
+        player_id = str(int(raw["id"]))
+        vector = vectors.get(player_id)
+        if vector is None:
+            continue
+        audit_players.append(
+            {
+                "player_id": player_id,
+                "web_name": str(raw.get("web_name", "")),
+                "position": POSITIONS[int(raw["element_type"])],
+                "club_id": str(int(raw["team"])),
+                "expected_points": list(vector["expected_points"]),
+                "start_probability": list(vector["start_probability"]),
+            }
+        )
+    fixture_audit = build_fixture_audit(
+        season=season,
+        decision_cutoff=cutoff_text,
+        captured_at=observed_text,
+        horizon_gameweeks=gameweeks,
+        bootstrap=bootstrap,
+        fixtures=raw_fixtures,
+        players=audit_players,
+        forecasts=forecasts,
+        team_prior=team_prior,
+    )
     result: dict[str, Any] = {
         "schema_version": "live-initial-squad-horizon-v1",
         "season": "2026-27",
@@ -392,25 +548,24 @@ def build_live_faithful_initial_squad_horizon(
         "model_config_id": model_name,
         "model_version": str(model_config["model_version"]),
         "status": "degraded",
-        "limitations": sorted(
-            set(
-                limitations
-                + [
-                    limitation
-                    for item in forecasts
-                    for limitation in item["forecast"].get("limitations", [])
-                ]
-            )
-        ),
+        "limitations": sorted(_merge_horizon_limitations(limitations, forecasts, odds_snapshots)),
         "lineage": {
             "official_bootstrap_sha256": official_bootstrap_sha256,
             "official_fixtures_sha256": official_fixtures_sha256,
             "identity_map_sha256": identity_hash,
-            "player_prior_sha256": str(player_prior["content_sha256"]),
+            "player_prior_sha256": str(effective_player_prior["content_sha256"]),
+            "base_player_prior_sha256": str(player_prior["content_sha256"]),
             "team_prior_sha256": str(team_prior["content_sha256"]),
+            "team_prior_source": team_prior_source,
+            "team_prior_model": deepcopy(dict(team_prior.get("model", {}))),
             "model_sha256": str(model_config["content_sha256"]),
+            "understat_player_event_rates": deepcopy(player_understat_summary),
+            "odds_team_prior": deepcopy(dict(odds_summary or {"status": "absent"})),
+            "event_model_weight": float(model_config.get("event_model_weight", 0) or 0),
+            "fixture_audit_sha256": fixture_audit["content_sha256"],
         },
         "player_vectors": vectors,
+        "fixture_audit": fixture_audit,
         "gameweek_forecast_hashes": [
             {
                 "gameweek": item["gameweek"],

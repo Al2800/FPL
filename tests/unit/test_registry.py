@@ -13,7 +13,6 @@ TIER1_SOURCE_IDS = [
 
 BENCHMARK_CANDIDATE_IDS = [
     "betfair-historical",
-    "clubelo",
     "commercial-epl-event-data",
     "football-data-org",
     "sportradar-soccer",
@@ -34,6 +33,7 @@ def test_only_assessment_sources_enabled():
     enabled = sorted(s["source_id"] for s in registry["sources"] if s["enabled"])
     assert enabled == sorted(
         [
+            "clubelo",
             "fpl-official-endpoints",
             "football-data-co-uk",
             "official-club-communications",
@@ -42,7 +42,9 @@ def test_only_assessment_sources_enabled():
             "rotowire-lineups",
             "statsbomb-open",
             "the-odds-api",
+            "understat",
             "vaastav-fpl",
+            "world-cup-2026",
         ]
     )
 
@@ -92,6 +94,14 @@ def test_official_club_communications_enabled_for_manual_citation_only():
     assert assert_collectable("official-club-communications")["source_id"] == (
         "official-club-communications"
     )
+
+
+def test_official_citation_sources_have_hands_off_model_run_path():
+    for source_id in ("official-club-communications", "official-lineups-minutes"):
+        source = get_source(source_id)
+        assert source["model_run"]["enabled"] is True
+        assert source["model_run"]["raw_content_retained"] is False
+        assert source["model_run"]["method"] == "ephemeral_browser_citation"
 
 
 def test_benchmark_candidates_are_complete_and_disabled():

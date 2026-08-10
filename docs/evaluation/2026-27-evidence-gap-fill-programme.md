@@ -13,7 +13,7 @@
 | Six-GW live-faithful packet | **materialised, degraded** (`feature-complete`, official-FDR baseline) with a local 2025/26 prior envelope | Validate the successor packet; no owner approval yet |
 | Set-piece roles | **auto-derived on the next capture**; current 31 July checkpoint predates the binding | W17 live ablation; keep effect weights shadow-only |
 | Licensed odds | capture-ready; zero 2026/27 slots | Live smoke awaits owner key and markets |
-| Availability / role | **55 official FPL claims captured**; club/role evidence remains manual citation | Maintain ledger cadence; admit only decision-relevant citations |
+| Availability / role | **55 official FPL claims captured**; model-run host admission now expands registered club/role evidence automatically | Maintain broad model-run coverage; inspect accepted/rejected audit |
 | Player ratings | degraded; no verified 2026/27 PL envelope | Keep shadow-only until a governed envelope exists |
 =======
 | Promoted / transfers / WC fatigue | **packet enrichment landed** when `launch_context` admitted | Refresh context after bootstrap hash drift |
@@ -35,7 +35,8 @@
 
 ## Constraints
 
-- No Sportradar; official lineups remain manual citation.
+- No Sportradar; official lineups use the bounded model-assisted citation path
+  or manual fallback, never bulk scraping.
 - No club scrape until W12 rights.
 - No fabricated odds/ratings/ranks.
 - `ready_for_manual_entry` stays false until a decision-grade packet is owner-approved.

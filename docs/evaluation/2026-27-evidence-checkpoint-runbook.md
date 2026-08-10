@@ -18,10 +18,11 @@ from running.
 - The latest ledger artifact, except for the first checkpoint.
 - A captured official `bootstrap-static` document containing the gameweek
   deadline for any pre-deadline run.
-- Optional manual observation and claim JSON files. Each manual observation
-  needs `document_id`, an HTTP(S) `source_url`, `source_hash_sha256`, and
-  `observed_at`. Each manual claim must repeat the exact document, URL, and hash
-  tuple of an observation in the same source family.
+- The latest content-addressed availability ledger. It may be advanced by the
+  scheduled model-evidence host gate; no owner action is required. Each model
+  candidate is checked against a registered HTTPS source, exact identity,
+  publication/observation/availability timestamps and an ephemeral source
+  hash before append.
 - For odds checkpoints, `THE_ODDS_API_KEY` must be present in the environment
   inherited by the process. Never put the key in an argument, JSON file, log,
   or repository `.env`.
@@ -45,6 +46,12 @@ The Odds API is currently a shadow-only supplemental input at T-24h, T-8h,
 T-2h, and final. Its capture and acquisition-manifest hashes are bound into the
 checkpoint, but it does not manufacture an evidence claim or directly alter a
 decision.
+
+The model-evidence run is broader than the eventual selected 15. It searches
+every catalogue club and maintains a watchlist of comparator candidates,
+strategy alternatives, high expected-point players and official FPL-flagged
+players. The host audit records accepted claims, rejected candidates, coverage
+gaps and a concise decision trace.
 
 ## Example
 

@@ -34,8 +34,9 @@ or schedule a source family but cannot enable it.
 - Official FPL endpoint snapshots are automated because their registry entry
   is enabled and rights-resolved for private local analysis.
 - Official FPL news, club communications, press conferences, training reports
-  and official lineup/minutes evidence use linked derived claims while their
-  registry entries remain manual or disabled.
+  and official lineup/minutes evidence use linked derived claims. The scheduled
+  model-run path may visit registered official URLs ephemerally, hash and
+  discard each response, then submit candidates to the host gate.
 - An automated adapter for a disabled, unknown-rights or unregistered source
   is refused before its callback or network boundary runs.
 - Specifically approved analyst material remains blocked until each exact
@@ -46,6 +47,13 @@ or schedule a source family but cannot enable it.
 The configured checkpoints are daily preseason, T-48h, T-24h, T-8h, T-2h,
 final pre-deadline and post-match. A coverage report evaluates only the source
 families required at that checkpoint.
+
+The model-run scope is intentionally broader than the selected 15: every
+catalogue club is searched and the watchlist includes the comparator universe,
+strategy alternatives, top packet candidates and official FPL-flagged players.
+Only claims tied to exact current identities and official domains can be
+admitted; the attention packet later narrows active evidence to decision
+boundaries.
 
 ## Deterministic attention set
 
@@ -131,6 +139,11 @@ not plan authority. Host-owned deterministic reduction deduplicates claim IDs,
 preserves disagreements and sends a bounded combined proposal to the
 challenger. The frozen no-evidence candidate remains unchanged beside the
 evidence arm.
+
+The model-run evidence output also carries a concise decision trace. This is
+an auditable rationale record — decisions, alternatives, opportunity-cost
+notes, claim IDs, confidence and falsifiers — rather than a request to retain
+private chain-of-thought.
 
 Model capability may be benchmarked later by allowing a stronger model to
 process more *registered and point-in-time* evidence, but that is a distinct

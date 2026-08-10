@@ -225,7 +225,7 @@ def test_committed_context_is_self_hashed_and_non_empty() -> None:
     assert len(context["promoted_teams"]) == 3
     assert context["new_player_codes"]
     assert context["transferred_player_codes"]
-    assert sum(context["classification_policy"]["expected_class_counts"].values()) == 558
+    assert sum(context["classification_policy"]["expected_class_counts"].values()) == 564
 
 
 def test_hash_tamper_is_rejected(tmp_path: Path) -> None:
