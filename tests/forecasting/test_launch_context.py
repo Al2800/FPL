@@ -225,7 +225,12 @@ def test_committed_context_is_self_hashed_and_non_empty() -> None:
     assert len(context["promoted_teams"]) == 3
     assert context["new_player_codes"]
     assert context["transferred_player_codes"]
-    assert sum(context["classification_policy"]["expected_class_counts"].values()) == 564
+    # The committed context is rebuilt whenever the bootstrap universe grows,
+    # so assert self-consistency with its own recorded universe rather than a
+    # hard-pinned player count.
+    assert sum(context["classification_policy"]["expected_class_counts"].values()) == int(
+        context["universe_delta"]["current_player_count"]
+    )
 
 
 def test_hash_tamper_is_rejected(tmp_path: Path) -> None:

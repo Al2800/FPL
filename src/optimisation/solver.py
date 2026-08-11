@@ -665,7 +665,11 @@ def solve(
             "availability_policy": solver_input.availability_policy,
             "candidate_generation": "lazy",
             "retained_ranked_candidates": len(top_candidates),
-            "full_rebuild_search": rebuild_kind is not None,
+            # ADR-0022: the WC/FH rebuild is a bounded beam search over declared
+            # pools, never an exhaustive full-squad rebuild, so this stays False
+            # to avoid overstating rebuild capability. Bounded-rebuild activity
+            # is reported via rebuild_kind / rebuild_candidates below.
+            "full_rebuild_search": False,
             "rebuild_kind": rebuild_kind,
             "rebuild_candidates": rebuild_candidates,
             "rebuild_fallback_used": rebuild_fallback_used,

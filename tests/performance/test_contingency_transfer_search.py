@@ -120,9 +120,13 @@ def test_one_transfer_contingency_is_deterministic_and_fingerprint_stable() -> N
     assert first["selected"]["objective"] == second["selected"]["objective"]
     assert first["selected"]["lineup"] == second["selected"]["lineup"]
     assert first["search_scope"]["search_degraded"] is False
+    # Re-pinned after commit 0f2c67b (WC/FH rebuild, ADR-0023 destination
+    # horizon) deliberately changed the fingerprinted payload: SOLVER_VERSION
+    # bumped to wp07-wc-fh-rebuild-v0.3 and plans gained wildcard_rebuild /
+    # free_hit_rebuild entries.
     assert (
         first["output_fingerprint"]
-        == "692ffa8cbc8ff6837ef0e40518a9ec20d1d55e060723c395484914406b4fad66"
+        == "27988c398d608017c92f8ffa71d0cb9a9f014e3e1aac67aa696f39dc55af1a27"
     )
 
 
@@ -171,9 +175,12 @@ def test_policy_off_scale_fingerprints_remain_unchanged() -> None:
 
     from scripts.profile_optimiser_scale import scale_input
 
+    # Re-pinned after commit 0f2c67b deliberately changed the fingerprinted
+    # payload (SOLVER_VERSION bump to wp07-wc-fh-rebuild-v0.3; plans gained
+    # wildcard_rebuild / free_hit_rebuild entries).
     for width, expected_fp in (
-        (1, "1dd1334ef56a0b95dae89f8cc914fb7a568abd55b4f53236c2b45ff7ddcab90f"),
-        (2, "57608507a606870a5e5b9b8b48879496f4fc4351df696688b214f847377d4cd5"),
+        (1, "512178c2019ab7d9344d065cff2f9b3db62184ff67cc91cd494f7565011cec53"),
+        (2, "2a97ee7c04f3efb819886ffd003a7f0404ae2cef4fec044b6df77d156fe3a493"),
     ):
         result = solve(scale_input(width), rules=RULES, ruleset_sha256=RULES_HASH)
         assert result["output_fingerprint"] == expected_fp

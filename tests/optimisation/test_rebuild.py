@@ -44,7 +44,9 @@ def test_wildcard_rebuild_emits_hitless_candidates() -> None:
     data["rebuild_max_expanded_nodes"] = 400
     data["rebuild_candidate_limit_per_position"] = 6
     out = _solve(data)
-    assert out["search_scope"]["full_rebuild_search"] is True
+    # Bounded rebuild ran (rebuild_kind set) but must not claim an exhaustive
+    # full-squad rebuild search (ADR-0022).
+    assert out["search_scope"]["full_rebuild_search"] is False
     assert out["search_scope"]["rebuild_kind"] == "wildcard"
     rebuild = out["plans"]["wildcard_rebuild"]
     assert rebuild is not None
