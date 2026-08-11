@@ -42,6 +42,7 @@
   "inputs": {
     "decision_packet_summary_glob": "reports/strategy-research/packets/*.json",
     "availability_ledger_root": "reports/evidence-review/ledgers",
+    "news_triage_shortlist_glob": "reports/news-triage/*.json",
     "catalogue_path": "control/sources/club-news-catalogue.yaml",
     "discovery_config_path": "config/data_sources/2026-27-news-discovery.json",
     "rules_path": "control/rules/2026-27.yaml",
@@ -59,7 +60,9 @@
     "model_evidence_audit_glob": "reports/evidence-review/ledgers/*.audit.json",
     "availability_ledger_glob": "reports/evidence-review/ledgers/availability-ledger-*.json",
     "evidence_review_glob": "reports/evidence-review/*.md",
+    "news_verification_glob": "reports/news-triage/*-verified.json",
     "commit_briefing": true,
+    "commit_news_verification": true,
     "commit_evidence_review": true,
     "commit_availability_ledger_and_audit": true,
     "commit_raw_discovery": false,

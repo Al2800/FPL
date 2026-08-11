@@ -64,6 +64,42 @@ if ($LASTEXITCODE -ne 0) {
     }
 }
 
+# --- News triage: shortlist the newest news capture for Lane A verification ---
+# The committed shortlist must land on origin/main before the 07:00 UTC cloud
+# strategy run so its Lane A can verify leads and admit ledger claims.
+$newsRoot = Join-Path $root 'data\live-shadow\news-discovery'
+$latestCapture = $null
+if (Test-Path -LiteralPath $newsRoot) {
+    $latestCapture = Get-ChildItem -LiteralPath $newsRoot -Directory |
+        Sort-Object Name | Select-Object -Last 1
+}
+if ($null -eq $latestCapture) {
+    $jobs += @{ source = 'news_triage'; status = 'skipped'; detail = 'no_news_capture' }
+} else {
+    $captureFile = Join-Path $latestCapture.FullName 'news-capture.json'
+    $triageOut = Join-Path $root "reports\news-triage\$($latestCapture.Name).json"
+    if (-not (Test-Path -LiteralPath $captureFile)) {
+        $jobs += @{ source = 'news_triage'; status = 'skipped'; detail = 'capture_missing_news_capture_json' }
+    } elseif (Test-Path -LiteralPath $triageOut) {
+        $jobs += @{ source = 'news_triage'; status = 'skipped'; detail = 'already_triaged' }
+    } else {
+        & $PythonPath (Join-Path $root 'scripts\run_news_capture_triage.py') --capture $captureFile --out $triageOut 2>&1 | Out-Null
+        if ($LASTEXITCODE -eq 0) {
+            # Publish the shortlist for the cloud Lane A run; scoped add only.
+            Push-Location $root
+            git pull --ff-only origin main 2>&1 | Out-Null
+            git add "reports/news-triage/$($latestCapture.Name).json" "reports/news-triage/$($latestCapture.Name)-impact.json" "reports/news-triage/$($latestCapture.Name).md" 2>&1 | Out-Null
+            git commit -m "Publish news triage shortlist $($latestCapture.Name) for Lane A verification." 2>&1 | Out-Null
+            git push origin HEAD:main 2>&1 | Out-Null
+            $pushOk = ($LASTEXITCODE -eq 0)
+            Pop-Location
+            $jobs += @{ source = 'news_triage'; status = $(if ($pushOk) { 'complete' } else { 'degraded' }); detail = $(if ($pushOk) { 'triaged_and_published' } else { 'triaged_push_failed' }) }
+        } else {
+            $jobs += @{ source = 'news_triage'; status = 'degraded'; detail = "triage_exit_$LASTEXITCODE" }
+        }
+    }
+}
+
 $report = @{
     schema_version = '1.0'
     task = 'supplementary_source_capture'
