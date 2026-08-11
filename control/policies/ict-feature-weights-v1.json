@@ -1,0 +1,61 @@
+{
+  "candidate_arms": [
+    "influence_only",
+    "creativity_only",
+    "threat_only",
+    "ict_index_only",
+    "joint_components"
+  ],
+  "components": [
+    "influence",
+    "creativity",
+    "threat",
+    "ict_index"
+  ],
+  "content_sha256": "a525de3d390f28fc9f27906c156fae00521a6212bbd3a0485dc65bbea11ed67d",
+  "effective_from": null,
+  "effective_until": null,
+  "evaluation_metrics": [
+    "mae_total_points",
+    "spearman_rank_by_position",
+    "start_brier_if_available"
+  ],
+  "joint_blend": {
+    "creativity": 0.25,
+    "ict_index": 0.25,
+    "influence": 0.25,
+    "threat": 0.25
+  },
+  "lag_window_gameweeks": 3,
+  "live_active": false,
+  "missing_input": "degrade_to_shared_baseline",
+  "normalisation": "sum_over_lag_window_then_zscore_within_position",
+  "notes": "Candidate ICT lag coefficients for historical ablation only. Not part of the frozen four optional_family_arms preregistration (odds, team_strength, set_piece_role, player_ratings). Live projections stay ICT-free until owner promotion.",
+  "policy_id": "ict-feature-weights-v1",
+  "promotion_thresholds": {
+    "max_mae_regression_vs_baseline": 0.0,
+    "min_paired_gameweeks": 3,
+    "min_spearman_lift_vs_baseline": 0.0
+  },
+  "schema_version": "ict-feature-weights-v1",
+  "source_ids": [
+    "fpl-official-endpoints"
+  ],
+  "status": "candidate_for_ablation_only",
+  "transformation_version": "ict-feature-weights-v1",
+  "unit": "expected_points_addend_per_gameweek",
+  "weights": {
+    "creativity": {
+      "expected_points_addend_per_std": 0.03
+    },
+    "ict_index": {
+      "expected_points_addend_per_std": 0.06
+    },
+    "influence": {
+      "expected_points_addend_per_std": 0.04
+    },
+    "threat": {
+      "expected_points_addend_per_std": 0.05
+    }
+  }
+}
