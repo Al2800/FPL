@@ -1,0 +1,84 @@
+{
+  "approval_gate": {
+    "mode": "owner_approval_required",
+    "requires_active_ruleset": true,
+    "requires_completed_arms": [
+      "deterministic",
+      "robust"
+    ],
+    "requires_proposal_hash_binding": true
+  },
+  "arms": {
+    "challenger": {
+      "kind": "external_adjustment_or_proposal",
+      "uncertainty_penalty": 0.35
+    },
+    "deterministic": {
+      "kind": "optimiser",
+      "uncertainty_penalty": 0.0
+    },
+    "evidence_agent": {
+      "kind": "external_adjustment_or_proposal",
+      "uncertainty_penalty": 0.2
+    },
+    "human_reference": {
+      "kind": "declared_proposal",
+      "uncertainty_penalty": 0.0
+    },
+    "robust": {
+      "kind": "optimiser",
+      "uncertainty_penalty": 0.35
+    }
+  },
+  "discount_factors": [
+    1.0,
+    0.9,
+    0.81,
+    0.729,
+    0.6561,
+    0.59049
+  ],
+  "external_adjustments": {
+    "maximum_absolute_points_delta_per_gameweek": 2.0,
+    "requires_available_at": true,
+    "requires_evidence_ids": true
+  },
+  "horizon_gameweeks": 6,
+  "mode": "advisory_only_no_fpl_execution",
+  "objective": {
+    "autosub_weight": 0.35,
+    "bench_weight": 0.12,
+    "early_wildcard_risk_weight": 0.3,
+    "new_signing_shrinkage": 0.08,
+    "promoted_team_shrinkage": 0.1,
+    "transfer_optionality_weight": 0.4,
+    "world_cup_fatigue_weight": 0.0
+  },
+  "policy_id": "initial-squad-2026-27-wcf0-trial",
+  "policy_version": "1.0-trial",
+  "prohibitions": [
+    "must_not_submit_actions_to_fpl",
+    "must_not_use_post_cutoff_information",
+    "must_not_allow_model_output_to_enforce_rules",
+    "must_not_treat_historical_replay_as_production_evidence"
+  ],
+  "schema_version": "1.0",
+  "search": {
+    "beam_width": 4000,
+    "candidate_limit_per_position": 32,
+    "cheapest_per_position": 8,
+    "retained_squads": 6
+  },
+  "sensitivity": {
+    "uncertainty_penalty_multipliers": [
+      0.5,
+      1.0,
+      1.5
+    ]
+  },
+  "shared_input_contract": {
+    "all_arms_receive_same_base_packet_sha256": true,
+    "external_adjustments_are_bounded_and_cited": true,
+    "forecast_packet_is_frozen_before_agent_calls": true
+  }
+}
