@@ -27,3 +27,4 @@ Decisions with trade-offs are recorded here (see `AGENTS.md`). Statuses: **Propo
 | [0021](0021-sol-subscription-evidence-agent.md) | GPT-5.6 Sol subscription-hosted evidence arm (Open Decision 8) | Accepted |
 | [0022](0022-strategy-prompt-evidence-stance.md) | Strategy-prompt stance on start probs, team news, guidance | Proposed |
 | [0023](0023-model-run-evidence-admission-and-rationale.md) | Engine-model evidence admission with visible rationale trace | Accepted |
+| [0027](0027-committed-derived-decision-artefacts.md) | Committed derived decision artefacts (packet summary, ledger chain) | Accepted |

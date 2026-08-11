@@ -40,6 +40,8 @@
     }
   ],
   "inputs": {
+    "decision_packet_summary_glob": "reports/strategy-research/packets/*.json",
+    "availability_ledger_root": "reports/evidence-review/ledgers",
     "catalogue_path": "control/sources/club-news-catalogue.yaml",
     "discovery_config_path": "config/data_sources/2026-27-news-discovery.json",
     "rules_path": "control/rules/2026-27.yaml",
@@ -54,11 +56,12 @@
     "search_results_glob": "data/live-shadow/news-discovery/*/search-results.json",
     "discovery_glob": "data/live-shadow/news-discovery/*/news-discovery.json",
     "model_evidence_run_glob": "data/live-shadow/evidence/model-runs/*/model-evidence-run.json",
-    "model_evidence_audit_glob": "data/live-shadow/availability/model-runs/*.audit.json",
-    "availability_ledger_glob": "data/live-shadow/availability/model-runs/availability-ledger-*.json",
+    "model_evidence_audit_glob": "reports/evidence-review/ledgers/*.audit.json",
+    "availability_ledger_glob": "reports/evidence-review/ledgers/availability-ledger-*.json",
     "evidence_review_glob": "reports/evidence-review/*.md",
     "commit_briefing": true,
     "commit_evidence_review": true,
+    "commit_availability_ledger_and_audit": true,
     "commit_raw_discovery": false,
     "commit_model_evidence_run": false,
     "commit_ledger_captures": false,
