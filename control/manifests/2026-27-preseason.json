@@ -41,17 +41,16 @@
       ],
       "status": "degraded"
     },
-    "weekly-2026-08-10": {
-      "checkpoint_id": "weekly-2026-08-10",
+    "weekly-2026-08-01": {
+      "checkpoint_id": "weekly-2026-08-01",
       "deadline": "2026-08-21T17:30:00Z",
-      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-10/manifest.json",
-      "manifest_sha256": "3d013d7b40eaec1e4962c419134491eb805d5d2864a6a96888dfa180a89eccbc",
-      "observed_at": "2026-08-10T06:03:37Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-01/manifest.json",
+      "manifest_sha256": "8a4efcf2569690fb141c3703883d1fc82e63f178790d18f4138cf5e40c8cfc63",
+      "observed_at": "2026-08-01T10:48:00Z",
       "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
-      "request_sha256": "d40ec2b671060085470239cc74f547e98215563dd1950edf15fafc221ef7eb0f",
+      "request_sha256": "dc07ab22753f6fd80d05f195623eac0a17fc95de5371457b184020c7fbb4522a",
       "source_gaps": [
         "availability_role_evidence",
-        "launch_context",
         "licensed_odds",
         "player_ratings",
         "promoted_team_priors",
@@ -174,16 +173,36 @@
       ],
       "status": "degraded"
     },
-    "weekly-2026-08-01": {
-      "checkpoint_id": "weekly-2026-08-01",
+    "weekly-2026-08-10": {
+      "checkpoint_id": "weekly-2026-08-10",
       "deadline": "2026-08-21T17:30:00Z",
-      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-01/manifest.json",
-      "manifest_sha256": "8a4efcf2569690fb141c3703883d1fc82e63f178790d18f4138cf5e40c8cfc63",
-      "observed_at": "2026-08-01T10:48:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-10/manifest.json",
+      "manifest_sha256": "3d013d7b40eaec1e4962c419134491eb805d5d2864a6a96888dfa180a89eccbc",
+      "observed_at": "2026-08-10T06:03:37Z",
       "predecessor_checkpoint_hash": "5ad6773222113a185ca8a8c3c1a29014a8792019012d1915631c914162f636e7",
-      "request_sha256": "dc07ab22753f6fd80d05f195623eac0a17fc95de5371457b184020c7fbb4522a",
+      "request_sha256": "d40ec2b671060085470239cc74f547e98215563dd1950edf15fafc221ef7eb0f",
       "source_gaps": [
         "availability_role_evidence",
+        "launch_context",
+        "licensed_odds",
+        "player_ratings",
+        "promoted_team_priors",
+        "transfers_and_signings",
+        "world_cup_return_fatigue"
+      ],
+      "status": "degraded"
+    },
+    "weekly-2026-08-11": {
+      "checkpoint_id": "weekly-2026-08-11",
+      "deadline": "2026-08-21T17:30:00Z",
+      "manifest_path": "data/snapshots/2026-27/preseason/weekly-2026-08-11/manifest.json",
+      "manifest_sha256": "001aca07d7871789aded22785308e5de7251992b062b198ebe20a9a07132a9cf",
+      "observed_at": "2026-08-11T06:04:13Z",
+      "predecessor_checkpoint_hash": "3d013d7b40eaec1e4962c419134491eb805d5d2864a6a96888dfa180a89eccbc",
+      "request_sha256": "6b052561f5d14ed27d5fb0c2e0437cf87650477754d20e9095ca056fe019e99f",
+      "source_gaps": [
+        "availability_role_evidence",
+        "launch_context",
         "licensed_odds",
         "player_ratings",
         "promoted_team_priors",
@@ -193,7 +212,7 @@
       "status": "degraded"
     }
   },
-  "content_sha256": "1fdbc89a7c093ed141f86c875db94f1a5521645de13574eb781528725a5379c7",
+  "content_sha256": "3daf024a034d191a87893fe9a8ad7cf6a8b3fb8c587f5c9d03b25126a18b52b0",
   "legacy_launch_binding": {
     "bootstrap_sha256": "605dd760aa4a7697f99479c81911fe046c7b252704cfe7622c61fc5fd09399b5",
     "capture_id": "e2499ad7ab46d7147bba829d21eb6a8418b3d5f05fe7ff09708fdb458d802460",
@@ -206,5 +225,5 @@
   "purpose": "Index of admitted 2026/27 preseason checkpoints for FPL-guz and FPL-jm0",
   "schema_version": "1.0",
   "season": "2026-27",
-  "updated_at": "2026-08-10T06:03:37Z"
+  "updated_at": "2026-08-11T06:04:13Z"
 }
