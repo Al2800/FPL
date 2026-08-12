@@ -6,9 +6,10 @@ claims and never retains snippets on sealed triage outputs.
 
 from __future__ import annotations
 
+from calendar import monthrange
 from collections import Counter
 from copy import deepcopy
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 import re
 from typing import Any, Mapping, Sequence
@@ -16,6 +17,29 @@ from typing import Any, Mapping, Sequence
 from src.ingestion.news_discovery import NewsDiscoveryError, artifact_hash
 
 _YEAR_RE = re.compile(r"(?:19|20)\d{2}")
+_URL_DATE_RE = re.compile(
+    r"/((?:19|20)\d{2})/(\d{1,2}|[a-z]+)(?:/(\d{1,2}))?(?=/|$)"
+)
+_MONTH_NAMES = {
+    name: index
+    for index, name in enumerate(
+        (
+            "january",
+            "february",
+            "march",
+            "april",
+            "may",
+            "june",
+            "july",
+            "august",
+            "september",
+            "october",
+            "november",
+            "december",
+        ),
+        start=1,
+    )
+}
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -100,6 +124,72 @@ def _stale_year_hits(
 def _historical_manager_hits(text: str, terms: Sequence[str]) -> list[str]:
     blob = text.casefold()
     return sorted({term for term in terms if term.casefold() in blob})
+
+
+def _parse_observed_date(observed_at: str | None) -> date | None:
+    if not observed_at or not isinstance(observed_at, str):
+        return None
+    try:
+        return datetime.fromisoformat(observed_at.replace("Z", "+00:00")).date()
+    except ValueError:
+        return None
+
+
+def derive_published_on(candidate: Mapping[str, Any]) -> tuple[date | None, str | None]:
+    """Best-effort publication date: capture metadata first, URL path second.
+
+    Month-only URL dates resolve to the last day of that month so freshness
+    exclusion stays conservative (a candidate is only excluded when the whole
+    month is outside the window).
+    """
+
+    published = candidate.get("published_at")
+    if published:
+        try:
+            parsed = datetime.fromisoformat(str(published).replace("Z", "+00:00"))
+            return parsed.date(), "published_at"
+        except ValueError:
+            pass
+    for field in ("canonical_url", "url"):
+        url = str(candidate.get(field) or "").casefold()
+        match = _URL_DATE_RE.search(url)
+        if not match:
+            continue
+        year = int(match.group(1))
+        month_raw = match.group(2)
+        month = (
+            int(month_raw)
+            if month_raw.isdigit()
+            else _MONTH_NAMES.get(month_raw)
+        )
+        if not month or not 1 <= month <= 12:
+            continue
+        day_raw = match.group(3)
+        if day_raw and 1 <= int(day_raw) <= monthrange(year, month)[1]:
+            return date(year, month, int(day_raw)), "url_path"
+        return date(year, month, monthrange(year, month)[1]), "url_path_month"
+    return None, None
+
+
+def _section_exclusion_marker(
+    candidate: Mapping[str, Any],
+    freshness_policy: Mapping[str, Any],
+) -> str | None:
+    url_blob = " ".join(
+        str(candidate.get(field) or "")
+        for field in ("canonical_url", "url")
+    ).casefold()
+    for marker in freshness_policy.get("url_section_exclusions") or []:
+        if str(marker).casefold() in url_blob:
+            return str(marker)
+    title = str(candidate.get("title") or "").casefold()
+    for marker in freshness_policy.get("title_section_exclusions") or []:
+        pattern = (
+            r"(?<![a-z0-9])" + re.escape(str(marker).casefold()) + r"(?![a-z0-9])"
+        )
+        if re.search(pattern, title):
+            return str(marker)
+    return None
 
 
 def score_candidate(
@@ -218,11 +308,59 @@ def triage_news_capture(
         raise NewsTriageError("capture candidates must be a list")
 
     observed_at = str(capture.get("observed_at") or "")
+    mapped = [row for row in candidates if isinstance(row, Mapping)]
     scored = [
         score_candidate(row, loaded, observed_at=observed_at)
-        for row in candidates
-        if isinstance(row, Mapping)
+        for row in mapped
     ]
+
+    all_scored = scored
+    freshness_policy = loaded.get("freshness")
+    excluded: list[dict[str, Any]] = []
+    if isinstance(freshness_policy, Mapping):
+        observed_date = _parse_observed_date(observed_at)
+        max_age_days = int(freshness_policy.get("max_age_days") or 14)
+        exclude_known = bool(
+            freshness_policy.get("exclude_known_dates_older_than_max_age", True)
+        )
+        exclude_stale_years = bool(
+            freshness_policy.get("exclude_stale_year_stamps", True)
+        )
+        kept: list[dict[str, Any]] = []
+        for candidate, row in zip(mapped, scored):
+            published_on, derived_from = derive_published_on(candidate)
+            row["derived_published_on"] = (
+                published_on.isoformat() if published_on else None
+            )
+            row["derived_published_from"] = derived_from
+            if published_on and observed_date:
+                age_days = (observed_date - published_on).days
+                row["freshness_status"] = (
+                    "fresh" if age_days <= max_age_days else "stale"
+                )
+            else:
+                row["freshness_status"] = "unknown"
+
+            reason: str | None = None
+            section_marker = _section_exclusion_marker(candidate, freshness_policy)
+            if section_marker:
+                reason = f"excluded_section:{section_marker}"
+            elif exclude_known and row["freshness_status"] == "stale":
+                reason = f"stale_beyond_{max_age_days}_days"
+            elif exclude_stale_years and row.get("stale_year_hits"):
+                reason = "stale_year_stamp"
+            if reason:
+                excluded.append(
+                    {
+                        "candidate_id": row["candidate_id"],
+                        "url": row["url"],
+                        "reason": reason,
+                    }
+                )
+            else:
+                kept.append(row)
+        scored = kept
+
     scored.sort(
         key=lambda row: (
             -int(row["triage_score"]),
@@ -252,9 +390,12 @@ def triage_news_capture(
     )
     demoted = sum(
         1
-        for row in scored
+        for row in all_scored
         if "stale_year_stamp" in (row.get("reasons") or [])
         or "historical_manager_marker" in (row.get("reasons") or [])
+    )
+    fresh_known = sum(
+        1 for row in shortlist if row.get("freshness_status") == "fresh"
     )
     return _seal(
         {
@@ -263,17 +404,43 @@ def triage_news_capture(
             "capture_id": capture.get("capture_id"),
             "capture_sha256": capture.get("content_sha256"),
             "observed_at": capture.get("observed_at"),
-            "candidate_count": len(scored),
+            "candidate_count": len(mapped),
             "shortlist_count": len(shortlist),
             "demoted_candidate_count": demoted,
+            "excluded_candidate_count": len(excluded),
+            "freshness_excluded_count": sum(
+                1
+                for row in excluded
+                if str(row["reason"]).startswith("stale")
+            ),
+            "section_excluded_count": sum(
+                1
+                for row in excluded
+                if str(row["reason"]).startswith("excluded_section")
+            ),
+            "excluded_candidates": excluded,
+            "shortlist_freshness": {
+                "fresh_known": fresh_known,
+                "unknown": sum(
+                    1
+                    for row in shortlist
+                    if row.get("freshness_status", "unknown") == "unknown"
+                ),
+                "freshness_rate": (
+                    round(fresh_known / len(shortlist), 4) if shortlist else 0.0
+                ),
+            },
             "shortlist": shortlist,
             "topic_counts": dict(sorted(topic_counts.items())),
             "claim_policy": loaded.get("claim_policy"),
             "notes": (
                 "Shortlist only. Verification must confirm page identity and "
                 "ISO published_at before discovery admission. Snippets used for "
-                "scoring are not retained on this artifact. Stale year/manager "
-                "markers demote rank; they do not delete candidates."
+                "scoring are not retained on this artifact. Candidates with a "
+                "derivable date outside the freshness window, prior-year "
+                "stamps, or excluded sections are hard-excluded when the "
+                "policy freshness block is present; undatable candidates are "
+                "kept for verification."
             ),
             "account_writes": False,
         }

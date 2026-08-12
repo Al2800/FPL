@@ -1,7 +1,37 @@
 {
   "schema_version": "news-capture-triage-v1",
-  "policy_id": "news-capture-triage-v1",
+  "policy_id": "news-capture-triage-v1.1",
   "shortlist_limit": 24,
+  "freshness": {
+    "max_age_days": 14,
+    "exclude_known_dates_older_than_max_age": true,
+    "exclude_stale_year_stamps": true,
+    "url_section_exclusions": [
+      "/women",
+      "womens-football",
+      "/wsl",
+      "/academy",
+      "/u21",
+      "/u18",
+      "under-21",
+      "under-18",
+      "/classic",
+      "/history",
+      "on-this-day",
+      "throwback"
+    ],
+    "title_section_exclusions": [
+      "women",
+      "wsl",
+      "academy",
+      "u21",
+      "u18",
+      "on this day",
+      "classic match",
+      "throwback",
+      "flashback"
+    ]
+  },
   "prefer_source_classes": [
     "official_candidate",
     "feed_candidate"
@@ -69,5 +99,5 @@
   },
   "claim_policy": "manual_linked_derived_claim_only",
   "raw_snippet_policy": "triage_scoring_only_never_admit",
-  "notes": "Triage ranks capture candidates for verification. It never admits ledger claims. Verification must supply ISO published_at before discovery admission. Year stamps older than observed_at year (title/URL) and historical-manager markers are demoted, not deleted."
+  "notes": "Triage ranks capture candidates for verification. It never admits ledger claims. Verification must supply ISO published_at before discovery admission. v1.1: candidates with a derivable publication date older than max_age_days, prior-year stamps in title/URL, or excluded non-first-team sections are hard-excluded from the shortlist (recorded with reasons); undatable candidates are kept and historical-manager markers still demote rank."
 }

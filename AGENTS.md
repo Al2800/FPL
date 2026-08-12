@@ -41,3 +41,10 @@ Installed engineering skills live in `.agents/skills/` (from [mattpocock/skills 
 - British English in documentation, matching the plan.
 - Every derived record retains source references and the transformation, rules, model and prompt versions used (plan §9.5).
 - Decisions with trade-offs get an architecture decision record in `docs/decisions/`.
+- **End-to-end test on pipeline change.** Any change to the daily
+  research/evidence pipeline (capture, triage, verification, discovery
+  admission, model-run ingest, or their prompts/policies) requires a one-off
+  end-to-end run against real captured data before the next scheduled
+  automation. Test artefacts go to an isolated area (e.g.
+  `data/live-shadow/test-runs/`) with a separate ledger root — never the
+  committed ledger chain under `reports/evidence-review/ledgers/`.

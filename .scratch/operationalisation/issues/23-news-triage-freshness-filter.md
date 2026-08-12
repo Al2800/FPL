@@ -2,7 +2,7 @@
 
 **Blocked by:** None
 
-**Status:** needs-triage
+**Status:** resolved
 
 **Type:** bug
 
@@ -41,3 +41,31 @@ A rerun of triage against the 2026-08-11 capture yields a shortlist in
 which stale prior-season articles are excluded (not just demoted), and
 the triage JSON records how many candidates were excluded on freshness
 grounds.
+
+## Answer
+
+**Implemented in `src/ingestion/news_triage.py` + policy v1.1
+(2026-08-12).**
+
+- Publication date derived per candidate from `published_at` or URL-path
+  dates (`/YYYY/MM/DD/`, `/YYYY/monthname/DD/`; month-only dates resolve
+  to month end so exclusion stays conservative).
+- Hard exclusions when the policy `freshness` block is present: derivable
+  date older than `max_age_days` (14), prior-year stamps in title/URL,
+  and non-first-team sections (women/WSL/academy/U21/classic) by URL
+  marker or word-bounded title marker. Undatable candidates are kept —
+  living pages (e.g. injury lists) carry no date and verification remains
+  their arbiter.
+- Triage output now records `excluded_candidate_count`,
+  `freshness_excluded_count`, `section_excluded_count`, per-candidate
+  exclusion reasons, and a `shortlist_freshness` rate for automation to
+  flag stale days.
+- Acceptance runs: 2026-08-11 capture — 160/398 excluded (121 stale-dated,
+  28 prior-year, 11 section). 2026-08-12 capture — 27/47 excluded,
+  shortlist 24 → 20 with all three verifiable leads retained.
+- Isolated end-to-end test (per the new AGENTS.md convention): filtered
+  shortlist → verification gate (3 verified) → discovery (3 admitted) →
+  host ingest with a test ledger root seeded from the genesis ledger —
+  4/4 claims accepted, chain intact.
+- Tests: `tests/ingestion/test_news_triage.py` (exclusion matrix,
+  policy-absent back-compat).
