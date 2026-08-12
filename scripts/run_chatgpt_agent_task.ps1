@@ -31,7 +31,7 @@ $summaryPath = Join-Path $logRoot "$runId.summary.json"
 $allowedOutputs = if ($TaskId -eq 'unstructured-capture') {
     'data/live-shadow/news-discovery/** and reports/news-discovery/**'
 } elseif ($TaskId -eq 'strategy-review') {
-    'reports/strategy-research/**'
+    'reports/strategy-research/**, reports/news-triage/** (verification outputs), reports/evidence-review/** (evidence reviews, ledgers, audits) and data/live-shadow/evidence/model-runs/**'
 } else {
     throw "Unknown task output policy: $TaskId"
 }
