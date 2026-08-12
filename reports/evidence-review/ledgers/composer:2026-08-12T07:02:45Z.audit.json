@@ -1,0 +1,108 @@
+{
+  "accepted_claim_ids": [
+    "model:51c65ddda6caf7177764238b35a06f27b8aeb13e9ea570f48522de236c8da69e",
+    "model:786a3b0b388b2405d28d93b7ebe061912bb6d9b6ab4ae68cc77c05663296439f"
+  ],
+  "available_at": "2026-08-12T07:02:45Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-08-12-arsenal-saliba-unavailable-arteta-dortmund-pc": "model:51c65ddda6caf7177764238b35a06f27b8aeb13e9ea570f48522de236c8da69e",
+    "2026-08-12-arsenal-timber-unavailable-arteta-dortmund-pc": "model:786a3b0b388b2405d28d93b7ebe061912bb6d9b6ab4ae68cc77c05663296439f"
+  },
+  "content_sha256": "4e79f78f6853111c3007722a001d4f4cea5e71a018a54accade3381679a9975f",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 123
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "emit Semenyo minutes_role from bot-challenged City body",
+        "emit Szoboszlai available claim from Monaco XI alone",
+        "emit zero claims despite Arteta CB statements"
+      ],
+      "boundary_id": "lane-a:claim-emission",
+      "confidence": 0.78,
+      "conflicting_claim_ids": [],
+      "decision": "emit Saliba and Timber unavailable candidates from Arteta Dortmund PC; withhold City/Semenyo and Fulham kit/cup pages",
+      "falsifiers": [
+        "Arteta Community Shield PC with Saliba/Timber return dates",
+        "fetchable City PC naming Haaland/Semenyo GW1 roles"
+      ],
+      "rationale": "Arsenal PC is fetchable with precise return-window statements for watchlist CB UIDs. City Atletico/Semenyo pages remain bot-challenged on ephemeral fetch so no Semenyo minutes_role candidate. Fulham Aug 10 pages are cup/kit/media. Liverpool Monaco lineup confirms Szoboszlai minutes colour but not a new availability state change vs bootstrap status=a.",
+      "supporting_claim_ids": [
+        "model:51c65ddda6caf7177764238b35a06f27b8aeb13e9ea570f48522de236c8da69e",
+        "model:786a3b0b388b2405d28d93b7ebe061912bb6d9b6ab4ae68cc77c05663296439f"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "verify July triage URLs as current-season availability claims",
+        "treat empty clubs as available"
+      ],
+      "boundary_id": "lane-a:discovery-coverage",
+      "confidence": 0.74,
+      "conflicting_claim_ids": [],
+      "decision": "mark discovery complete with Arsenal+Liverpool+Fulham+City leads inside 72h",
+      "falsifiers": [
+        "missed dated official injury bulletin within 72h on another club domain"
+      ],
+      "rationale": "All 21 catalogue clubs searched. 9 leads retained after age/domain filters. Triage shortlist 2026-08-12T050001Z was entirely rejected (July/stale or undated/unverifiable).",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "force-admit undated Man Utd PSG team-news URLs"
+      ],
+      "boundary_id": "lane-a:triage-seed",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "reject all 24 triage shortlist candidates",
+      "falsifiers": [
+        "shortlist item with recoverable ISO published_at inside 72h and precise watchlist claim"
+      ],
+      "rationale": "Morning capture shortlist is July-dated or missing published_at; none passed page-identity + inside-72h verification for precise availability statements today.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "734523f848c3d5707d40c925cc7e1954aee1e5d51d44cea69a4602fa466babd2",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "d5d446f6e9b7fc043d18f6a291d6ae1af7b0db035548f49ba0c47464e223defe",
+      "source_url": "https://www.arsenal.com/news/every-word-of-mikels-post-dortmund-press-conference-a7NvX2S1ME7k"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "ddca54fd54098d19a198b824b0b83c9e1041d469a4ae037ca78cc727fd32d1fb",
+  "observed_at": "2026-08-12T07:02:45Z",
+  "prior_ledger_sha256": null,
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "31a62d37c7784957f15030ab61a196a9eac0af59b35e949a9a016da98572a856",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "31a62d37c7784957f15030ab61a196a9eac0af59b35e949a9a016da98572a856",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "51bbced9b1883db36567b142889142930f4a34adf81d7ece05e7d436933bec91",
+  "run_id": "composer:2026-08-12T07:02:45Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 2,
+    "candidate_count": 2,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}

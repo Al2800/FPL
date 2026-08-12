@@ -1,0 +1,69 @@
+{
+  "claims": [
+    {
+      "available_at": "2026-08-12T07:02:45Z",
+      "claim_id": "model:51c65ddda6caf7177764238b35a06f27b8aeb13e9ea570f48522de236c8da69e",
+      "confidence": 0.86,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T07:02:45Z",
+      "player_uid": "player:2026-27:6",
+      "provenance": {
+        "derived_claim": "Arteta (9 Aug post-Dortmund PC): William Saliba is in rest mode for two weeks after an aggravated injury and will take some time to heal; no precise return date.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer:2026-08-12T07:02:45Z",
+        "model_run_sha256": "ddca54fd54098d19a198b824b0b83c9e1041d469a4ae037ca78cc727fd32d1fb",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "d5d446f6e9b7fc043d18f6a291d6ae1af7b0db035548f49ba0c47464e223defe",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Every word of Mikel's post-Dortmund press conference",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/every-word-of-mikels-post-dortmund-press-conference-a7NvX2S1ME7k"
+        ],
+        "why_relevant": "Confirms Saliba remains unavailable for Community Shield / early GW window; keeps Gabriel as the Arsenal DEF spine in advisory drafts."
+      },
+      "published_at": "2026-08-09T16:23:40.281Z",
+      "status": "unavailable"
+    },
+    {
+      "available_at": "2026-08-12T07:02:45Z",
+      "claim_id": "model:786a3b0b388b2405d28d93b7ebe061912bb6d9b6ab4ae68cc77c05663296439f",
+      "confidence": 0.84,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T07:02:45Z",
+      "player_uid": "player:2026-27:5",
+      "provenance": {
+        "derived_claim": "Arteta (9 Aug post-Dortmund PC): Jurrien Timber is progressing and on the pitch doing a lot of work, but remains weeks away from a return; no precise timeline.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer:2026-08-12T07:02:45Z",
+        "model_run_sha256": "ddca54fd54098d19a198b824b0b83c9e1041d469a4ae037ca78cc727fd32d1fb",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "d5d446f6e9b7fc043d18f6a291d6ae1af7b0db035548f49ba0c47464e223defe",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Every word of Mikel's post-Dortmund press conference",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/every-word-of-mikels-post-dortmund-press-conference-a7NvX2S1ME7k"
+        ],
+        "why_relevant": "Keeps Timber out of early GW shortlists; reinforces Gabriel / non-Timber Arsenal DEF selection until a later PC updates return timing."
+      },
+      "published_at": "2026-08-09T16:23:40.281Z",
+      "status": "unavailable"
+    }
+  ],
+  "content_sha256": "51bbced9b1883db36567b142889142930f4a34adf81d7ece05e7d436933bec91",
+  "created_at": "2026-08-12T07:02:45Z",
+  "ledger_id": "availability-ledger:2026-27",
+  "schema_version": "1.0",
+  "season": "2026-27"
+}

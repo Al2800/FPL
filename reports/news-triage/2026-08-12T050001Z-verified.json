@@ -1,0 +1,914 @@
+{
+  "account_writes": false,
+  "capture_id": "news-capture:2026-27:2026-08-12T05:00:01.613973Z",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "6bb93757b1e8be46a6015943d3d9bc036d652e149430e492f74f457bf5e4bf8b",
+  "notes": "Verified rows have ISO published_at and may be converted into discovery search_results. They are still not ledger claims.",
+  "observed_at": "2026-08-12T05:00:01.613973Z",
+  "rejected": [
+    {
+      "candidate_id": "c691c412078bc145d2976dcc54652396855bed4536be70ab4026032a6206a84d",
+      "notes": "stale vs 72h gate (published_at 2026-07-16T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "dc62180c042619846f60ced0eb9f55cd26202dc8bec219654d54f088a4634c67",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "2fe0af9158019d8b86f811a3329fd3625b97beb228a43dad0d786ff9536bb706",
+      "notes": "stale vs 72h gate (published_at 2026-07-16T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "2fb82941180b781e46c165e359b449a262c4086889e247de1b0059bd4945155f",
+      "notes": "stale vs 72h gate (published_at 2026-07-18T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "b091b6c4396eae44a85820f02ee2b282a2590c8e211bcc8f46e25b9ebd33b970",
+      "notes": "stale vs 72h gate (published_at 2026-07-21T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "ecd982d3f0e7c87a03cc2c48744f6297dfd0acea278fce6cbfb64b27813364d9",
+      "notes": "stale vs 72h gate (published_at 2026-07-15T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "e48eaa95a16a81f7a97d8e08c2898d5aee8814e057337682179a36d3e9c5be49",
+      "notes": "stale vs 72h gate (published_at 2026-07-16T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "99180ab76c883c00679fa320fdad2c84677f6028610177d5d80e86c5bbc349ef",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "6bb05c5723404fc9240bd8c3d512b9240b70798785105d534663e635e57fbfde",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "425c5879eeb187e5e46f90ef9ac5765862abc1874bb0fd2ad7711af1bda78c8d",
+      "notes": "stale vs 72h gate (published_at 2026-07-18T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "2013680aa702a0dba985d63c51ff36c1379be3fb384d1a6983ef5fe68e8c1c69",
+      "notes": "stale vs 72h gate (published_at 2026-07-18T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "7849e0409cc4621ccc5dc7245f3f8adf7974775b4bb1ebb9ab9450d0d666a0d8",
+      "notes": "stale vs 72h gate (published_at 2026-07-14T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "3759ad675a2f8e0ea813ca18039fb4006e3eeededda6eef9a407bd5520141766",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "21d39edceb86b737651b1e02c9af6cbbf93a2dd7fe01fd611090eb7831776f94",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "8379b81b2920cf083ebb8f50ffa62d279294a1cd586ed63f2e483c4b36915e95",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "3ce042e227264191dc8d45f06535949c9a0b95d93f2ba7470a71c0fc0a42d059",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "da5fe928f8c2941eadc5d026f98e8be0e84e3423ccf167ac8b4222bf8f53f9a9",
+      "notes": "stale vs 72h gate (published_at 2026-07-25T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "eabe0a0e4e0c15c6df97951b25a178ca1a60847d590c8d5e1dd549fed828315d",
+      "notes": "stale vs 72h gate (published_at 2026-07-06T18:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "5de770f6e9d3ccac00ca4d8dd643f97d8052a77bdba9bb34cda5f85ce0080947",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "bac04930505798599a30e016b149eb2a24ab3eb8385a323c798d0140851b8bfa",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "71dfa25f25e793ada75fe4df74ab06c111d056f8cced01134b7280f8003cae3b",
+      "notes": "stale vs 72h gate (published_at 2026-07-15T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "d2e3dd913ffe28c7d63c22fac5b5d4da4481e9dd8c7d2ecdcbed858df92edd6b",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "e1440b570680f6d545a4fcc3ac5e46fd5eda5b6293011d4ff3d743a343a9008f",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "75b24c1fff01db7a8768315d195f74f01c8a459faa7a4b6dfe3365ceb18eab4c",
+      "notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "reason": "verification_rejected"
+    }
+  ],
+  "schema_version": "news-capture-verification-result-v1",
+  "shortlist": [
+    {
+      "candidate_id": "c691c412078bc145d2976dcc54652396855bed4536be70ab4026032a6206a84d",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-16T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "When do Premier League clubs return for 2026/27 pre-season?",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 93,
+      "url": "https://www.premierleague.com/en/news/4678380/premier-league-clubs-return-for-pre-season-key-dates-friendlies-and-training-updates",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-16T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "dc62180c042619846f60ced0eb9f55cd26202dc8bec219654d54f088a4634c67",
+      "club_id": "manchester-united",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform bruno_minutes, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fernandes",
+        "bruno",
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "New pics: Back on the pitch",
+      "topic_hits": [
+        "bruno_minutes",
+        "team_news"
+      ],
+      "triage_score": 88,
+      "url": "https://www.manutd.com/en/news/gallery-article-for-manchester-united-training-in-ireland-ahead-of-leeds-united-game",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "2fe0af9158019d8b86f811a3329fd3625b97beb228a43dad0d786ff9536bb706",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "press conference"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-16T00:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "WATCH GLASNER'S FIRST PRESS CONFERENCE ON FOREST TV",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 87,
+      "url": "https://www.premierleague.com/en/news/4679753/watch-glasners-first-press-conference-on-forest-tv",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-16T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "2fb82941180b781e46c165e359b449a262c4086889e247de1b0059bd4945155f",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "team news"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-18T00:00:00Z",
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "TEAM NEWS | GLASNER'S FIRST XI CONFIRMED",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 86,
+      "url": "https://www.premierleague.com/en/news/4680049/team-news-glasners-first-xi-confirmed",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-18T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "b091b6c4396eae44a85820f02ee2b282a2590c8e211bcc8f46e25b9ebd33b970",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-21T00:00:00Z",
+      "rank": 4,
+      "reasons": [
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "LFC fitness update: Bajcetic, Bradley, Ekitike, Endo and Leoni",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 85,
+      "url": "https://www.liverpoolfc.com/news/lfc-fitness-update-bajcetic-bradley-ekitike-endo-and-leoni?amp=1",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-21T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "ecd982d3f0e7c87a03cc2c48744f6297dfd0acea278fce6cbfb64b27813364d9",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-15T00:00:00Z",
+      "rank": 4,
+      "reasons": [
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Reds on the ball in training",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 85,
+      "url": "https://www.premierleague.com/en/news/4679597/reds-on-the-ball-in-training",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-15T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "e48eaa95a16a81f7a97d8e08c2898d5aee8814e057337682179a36d3e9c5be49",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-16T00:00:00Z",
+      "rank": 5,
+      "reasons": [
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Wrapped: Everton's pre-season",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 85,
+      "url": "https://www.premierleague.com/en/news/4679795/wrapped-evertons-pre-season-",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-16T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "99180ab76c883c00679fa320fdad2c84677f6028610177d5d80e86c5bbc349ef",
+      "club_id": "chelsea",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness",
+        "return"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Blues get to work under Xabi Alonso",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 78,
+      "url": "https://www.chelseafc.com/en/news/article/gallery-blues-get-to-work-under-xabi-alonso",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "6bb05c5723404fc9240bd8c3d512b9240b70798785105d534663e635e57fbfde",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Alexis Mac Allister back at Liverpool to begin pre-season work",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 76,
+      "url": "https://www.liverpoolfc.com/news/alexis-mac-allister-back-liverpool-begin-pre-season-work",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "425c5879eeb187e5e46f90ef9ac5765862abc1874bb0fd2ad7711af1bda78c8d",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-18T00:00:00Z",
+      "rank": 7,
+      "reasons": [
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Everton Squad Update For Pre-Season Opener",
+      "topic_hits": [],
+      "triage_score": 75,
+      "url": "https://www.premierleague.com/en/news/4680048/everton-squad-update-for-pre-season-opener",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-18T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "2013680aa702a0dba985d63c51ff36c1379be3fb384d1a6983ef5fe68e8c1c69",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-18T00:00:00Z",
+      "rank": 6,
+      "reasons": [
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Blues bag four in pre-season opener at Dundee",
+      "topic_hits": [],
+      "triage_score": 75,
+      "url": "https://www.premierleague.com/en/news/4680055/blues-bag-four-in-pre-season-opener-at-dundee",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-18T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "7849e0409cc4621ccc5dc7245f3f8adf7974775b4bb1ebb9ab9450d0d666a0d8",
+      "club_id": "leeds",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness",
+        "return"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-14T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Ethan Ampadu: I think we've got to try and enjoy it and have fun whilst doing it",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 73,
+      "url": "https://www.leedsunited.com/en/news/ethan-ampadu-i-think-weve-got-to-try-and-enjoy-it-and-have-fun-whilst-doing-it",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-14T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "3759ad675a2f8e0ea813ca18039fb4006e3eeededda6eef9a407bd5520141766",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Liverpool's injury list, suspensions and availability",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 73,
+      "url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "21d39edceb86b737651b1e02c9af6cbbf93a2dd7fe01fd611090eb7831776f94",
+      "club_id": "manchester-city",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Inside City 526 | South Korea pre-season special",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.mancity.com/citytv/mens/inside-city-episode-526-63922042",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "8379b81b2920cf083ebb8f50ffa62d279294a1cd586ed63f2e483c4b36915e95",
+      "club_id": "chelsea",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Today on tour: Gearing up for Western Sydney Wanderers",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.chelseafc.com/en/news/article/today-on-tour-gearing-up-for-western-sydney-wanderers",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "3ce042e227264191dc8d45f06535949c9a0b95d93f2ba7470a71c0fc0a42d059",
+      "club_id": "manchester-united",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training boost in Ireland",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.manutd.com/en/news/training-boost-in-ireland-lammens-cunha-back",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "da5fe928f8c2941eadc5d026f98e8be0e84e3423ccf167ac8b4222bf8f53f9a9",
+      "club_id": "tottenham",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "team news"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-25T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Team news | Roberto’s latest on Deki, Kudus and Vicario from New Zealand",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 68,
+      "url": "https://www.tottenhamhotspur.com/news/1079669/team-news-robertos-latest-on-deki-kudus-and-vicario-from-new-zealand",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-25T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "eabe0a0e4e0c15c6df97951b25a178ca1a60847d590c8d5e1dd549fed828315d",
+      "club_id": "brighton",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-06T18:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Albion's men's team to head to France for pre-season training camp",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 67,
+      "url": "https://www.brightonandhovealbion.com/media-article/mft-news-pre-season-trip-details-confirmed-july-2026",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-06T18:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "5de770f6e9d3ccac00ca4d8dd643f97d8052a77bdba9bb34cda5f85ce0080947",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "minutes"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "This is the best I've ever felt physically - I've just got to keep working hard",
+      "topic_hits": [],
+      "triage_score": 67,
+      "url": "https://www.liverpoolfc.com/news/best-ive-ever-felt-physically-ive-just-got-keep-working-hard",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "bac04930505798599a30e016b149eb2a24ab3eb8385a323c798d0140851b8bfa",
+      "club_id": "brentford",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness",
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Keane Lewis-Potter: Brentford's new signings have settled in really well",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 63,
+      "url": "https://www.brentfordfc.com/en/news/article/interviews-keane-lewis-potter-pre-season-2026",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "71dfa25f25e793ada75fe4df74ab06c111d056f8cced01134b7280f8003cae3b",
+      "club_id": "fulham",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "return"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "published_at": "2026-07-15T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "First day back",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.fulhamfc.com/news/2026/july/15/first-day-back/",
+      "verification_notes": "stale vs 72h gate (published_at 2026-07-15T00:00:00Z; cutoff 2026-08-09T07:02:45+00:00)",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "d2e3dd913ffe28c7d63c22fac5b5d4da4481e9dd8c7d2ecdcbed858df92edd6b",
+      "club_id": "manchester-city",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "City 3-1 Atletico Madrid: 8-minute highlights – Asia Tour 2026",
+      "topic_hits": [],
+      "triage_score": 62,
+      "url": "https://www.mancity.com/citytv/mens/manchester-city-atletico-madrid-asia-tour-eight-minute-highlights-63921890",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "e1440b570680f6d545a4fcc3ac5e46fd5eda5b6293011d4ff3d743a343a9008f",
+      "club_id": "manchester-city",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Maresca: Anderson is well-rounded on and off the pitch",
+      "topic_hits": [],
+      "triage_score": 61,
+      "url": "https://www.mancity.com/citytv/mens/enzo-maresca-asia-tour-video-interview-63921962",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    },
+    {
+      "candidate_id": "75b24c1fff01db7a8768315d195f74f01c8a459faa7a4b6dfe3365ceb18eab4c",
+      "club_id": "manchester-united",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Holland: Pre-season going to plan",
+      "topic_hits": [],
+      "triage_score": 61,
+      "url": "https://www.manutd.com/en/news/holland-pre-season-going-to-plan",
+      "verification_notes": "missing published_at on triage row; Man Utd/Chelsea/City URLs bot-challenged or undated — reject rather than invent timestamp",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-12T07:02:45Z",
+      "verified_by": "composer-2.5-daily-strategy-2026-08-12"
+    }
+  ],
+  "triage_sha256": "8c729efec41137d03a1c0fb25ae893dbb39d3ad651cfe58209329eb73e13b1c4",
+  "verified_ready_for_discovery": []
+}
