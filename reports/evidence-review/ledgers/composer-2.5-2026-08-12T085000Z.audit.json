@@ -1,0 +1,119 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-08-12T08:55:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "1c430a7b030de789533a3b87cbe5bafc1186d3fa044fd1d0f311f821a8c726f2",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 43
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "verify July Glasner/Everton/Spurs pages as GW1-fresh",
+        "treat training galleries as Bruno/Shaw availability claims",
+        "admit CityTV pages blocked by 403"
+      ],
+      "boundary_id": "lane-a:2026-08-12:shortlist-admission",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "verify 3 current official pages; reject 21 stale/404/403/non-claim rows",
+      "falsifiers": [
+        "LFC injury list retracted or materially changed before GW1 deadline",
+        "Mac Allister limited in official Newcastle XI team news"
+      ],
+      "rationale": "Fetched all 24 triage URLs once. Three pages published on/after 2026-08-05 state concrete availability/minutes claims (LFC injury list 2026-08-11, Mac Allister return 2026-08-10, Koumas minutes 2026-08-11). July syndicated pages, 404 Everton wrap, Man City 403s, and gallery-only items rejected.",
+      "supporting_claim_ids": [
+        "2026-08-12-mac-allister-preseason-return",
+        "2026-08-12-gomez-muscle-injury",
+        "2026-08-12-bradley-knee-unavailable",
+        "2026-08-12-bajcetic-training-available"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "de35dbc83d0ba8b4a0fafb4f87d6e719dd65fa6b4eda96a04a18ce8edbaeb274",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "e31461f9616b43ea5451894f5a3501016bc89e069af63e7eb1b3e0228b8634cb",
+  "observed_at": "2026-08-12T08:50:00Z",
+  "prior_ledger_sha256": "96533cd117ff54b1f4a08c76f3baeb23f73f9cc2b4e30140c9a97509feb06b3b",
+  "prompt": {
+    "path": "prompts/daily-strategy-research/v1.md",
+    "sha256": "5d6b96a181bd9f93ce2ec739478d7abf8f34662d79acffb87ef1164043a4ea99",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "5d6b96a181bd9f93ce2ec739478d7abf8f34662d79acffb87ef1164043a4ea99",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "2026-08-12-mac-allister-preseason-return",
+      "claim_text": "Alexis Mac Allister returned to the AXA Training Centre on 2026-08-10 to begin pre-season work after his World Cup break.",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:372",
+      "reasons": [
+        "player_not_in_declared_watchlist"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/alexis-mac-allister-back-liverpool-begin-pre-season-work",
+      "why_relevant": "Mac Allister is a Liverpool comparator-adjacent premium mid; confirmed return to training supports availability for GW1 selection debate."
+    },
+    {
+      "candidate_claim_id": "2026-08-12-bajcetic-training-available",
+      "claim_text": "Stefan Bajcetic is training basically fully with the first team per Iraola (updated 2026-08-11 injury list page).",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:376",
+      "reasons": [
+        "player_not_in_declared_watchlist"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "why_relevant": "Bajcetic availability informs Liverpool squad depth context."
+    },
+    {
+      "candidate_claim_id": "2026-08-12-bradley-knee-unavailable",
+      "claim_text": "Conor Bradley remains sidelined after January knee surgery; Iraola states he is still months away from return.",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:360",
+      "reasons": [
+        "player_not_in_declared_watchlist"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "why_relevant": "Confirms Bradley unavailable for early 2026-27 GW1 window."
+    },
+    {
+      "candidate_claim_id": "2026-08-12-gomez-muscle-injury",
+      "claim_text": "Joe Gomez has a muscle injury from the Sunderland friendly; Iraola expects weeks out and likely unavailable for GW1 kickoff.",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:359",
+      "reasons": [
+        "player_not_in_declared_watchlist"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "why_relevant": "Gomez minutes affect Liverpool defensive cover context for Virgil/Szoboszlai comparator debate."
+    }
+  ],
+  "resulting_ledger_sha256": "96533cd117ff54b1f4a08c76f3baeb23f73f9cc2b4e30140c9a97509feb06b3b",
+  "run_id": "composer-2.5:2026-08-12T085000Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 4,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 4,
+    "review_flags": [
+      "model_candidates_rejected",
+      "no_new_claims_admitted",
+      "no_official_documents_hashed"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}

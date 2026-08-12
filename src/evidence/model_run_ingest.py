@@ -546,6 +546,7 @@ def _new_claim(
         if condition:
             claim["recovery"] = {
                 "condition": str(condition),
+                "condition_met": True,
                 "observed_at": str(model_run["available_at"]),
             }
     return claim

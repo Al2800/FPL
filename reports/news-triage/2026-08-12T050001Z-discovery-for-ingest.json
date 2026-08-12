@@ -1,0 +1,158 @@
+{
+  "account_writes": false,
+  "claim_policy": "model_derived_candidate_host_validated_claim",
+  "content_sha256": "de35dbc83d0ba8b4a0fafb4f87d6e719dd65fa6b4eda96a04a18ce8edbaeb274",
+  "coverage": [
+    {
+      "club_id": "arsenal",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "aston-villa",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "bournemouth",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "brentford",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "brighton",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "chelsea",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "coventry",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "crystal-palace",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "everton",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "fulham",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "hull",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "ipswich",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "leeds",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "liverpool",
+      "result_count": 3,
+      "status": "searched"
+    },
+    {
+      "club_id": "manchester-city",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "manchester-united",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "newcastle",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "nottingham-forest",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "premier-league",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "sunderland",
+      "result_count": 0,
+      "status": "searched"
+    },
+    {
+      "club_id": "tottenham",
+      "result_count": 0,
+      "status": "searched"
+    }
+  ],
+  "discovery_id": "news-discovery:2026-27:2026-08-12T05:00:01.613973Z",
+  "leads": [
+    {
+      "club_id": "liverpool",
+      "discovery_method": "official_domain_search_fallback",
+      "document_id": "c032883ee48ec7ba8d38d7bb1b30f8937df38b0d7c149ba4c16c3c0169a0599b",
+      "observed_at": "2026-08-12T05:00:01.613973Z",
+      "published_at": "2026-08-11T15:56:00Z",
+      "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+      "rank": 1,
+      "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "title": "Liverpool's injury list, suspensions and availability"
+    },
+    {
+      "club_id": "liverpool",
+      "discovery_method": "official_domain_search_fallback",
+      "document_id": "e72f06f948b271b4ee62cb1960af3260b0a2420dd9ed43ada668e54385b850a7",
+      "observed_at": "2026-08-12T05:00:01.613973Z",
+      "published_at": "2026-08-11T10:23:00Z",
+      "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+      "rank": 2,
+      "source_url": "https://www.liverpoolfc.com/news/best-ive-ever-felt-physically-ive-just-got-keep-working-hard",
+      "title": "This is the best I've ever felt physically - I've just got to keep working hard"
+    },
+    {
+      "club_id": "liverpool",
+      "discovery_method": "official_domain_search_fallback",
+      "document_id": "8fa5821c551fc5b7cff487e8416adba591edd0ca4442d62436aaf1053f8eeb0b",
+      "observed_at": "2026-08-12T05:00:01.613973Z",
+      "published_at": "2026-08-10T11:15:00Z",
+      "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+      "rank": 3,
+      "source_url": "https://www.liverpoolfc.com/news/alexis-mac-allister-back-liverpool-begin-pre-season-work",
+      "title": "Alexis Mac Allister back at Liverpool to begin pre-season work"
+    }
+  ],
+  "observed_at": "2026-08-12T05:00:01.613973Z",
+  "plan_sha256": "4f44b14b3257fa2e528afae37657e6fc685931d09b70657cb1481fcffdb602c2",
+  "quality": {
+    "gaps": [],
+    "rejected": []
+  },
+  "raw_search_context_retained": false,
+  "schema_version": "1.0",
+  "season": "2026-27",
+  "status": "complete"
+}

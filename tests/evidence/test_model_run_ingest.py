@@ -294,6 +294,55 @@ def test_incomplete_broad_coverage_is_degraded_but_valid_claims_survive(
     assert len(audit["accepted_claim_ids"]) == 1
 
 
+def test_available_claim_with_recovery_condition_is_admitted(
+    tmp_path: Path,
+) -> None:
+    run = _run(tmp_path)
+    run["claims"][0]["status"] = "available"
+    run["claims"][0]["recovery_condition"] = "returned_to_training"
+    ledger, audit = ingest_model_evidence_run(
+        run,
+        None,
+        source_registry=_registry(),
+        policy=_policy(),
+        catalogue=_catalogue(),
+        bootstrap=_bootstrap(),
+        discovery=_discovery(_catalogue()),
+        fetcher=lambda _: _digest(b"official page body"),
+        repo_root=tmp_path,
+    )
+
+    assert len(audit["accepted_claim_ids"]) == 1
+    assert ledger["claims"][0]["recovery"] == {
+        "condition": "returned_to_training",
+        "condition_met": True,
+        "observed_at": run["available_at"],
+    }
+
+
+def test_available_claim_without_recovery_condition_is_rejected(
+    tmp_path: Path,
+) -> None:
+    run = _run(tmp_path)
+    run["claims"][0]["status"] = "available"
+    ledger, audit = ingest_model_evidence_run(
+        run,
+        None,
+        source_registry=_registry(),
+        policy=_policy(),
+        catalogue=_catalogue(),
+        bootstrap=_bootstrap(),
+        discovery=_discovery(_catalogue()),
+        fetcher=lambda _: _digest(b"official page body"),
+        repo_root=tmp_path,
+    )
+
+    assert ledger["claims"] == []
+    assert audit["rejected_claims"][0]["reasons"] == [
+        "available_claim_missing_recovery_condition"
+    ]
+
+
 def test_watchlist_is_broad_and_exact(tmp_path: Path) -> None:
     run = _run(tmp_path)
     run["scope"]["watchlist_player_uids"] = ["player:2026-27:999"]

@@ -1,0 +1,1041 @@
+{
+  "account_writes": false,
+  "capture_id": "news-capture:2026-27:2026-08-11T05:00:01Z",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "922105e53091d3eded6e2239eefb931ad94d8ce9a3ff824ac560e301e52ca736",
+  "notes": "Verified rows have ISO published_at and may be converted into discovery search_results. They are still not ledger claims.",
+  "observed_at": "2026-08-11T05:00:01Z",
+  "rejected": [
+    {
+      "candidate_id": "0f29a008748a5de094e4481d2d8c1e00d15018bda3088533f186047782365905",
+      "notes": "Prior-season title race / Erik ten Hag context; not 2026-27 Aug pre-season window.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "a558e175b9c5c8340ede8e145e7d5f6f7387557559193aa961b10529796223a2",
+      "notes": "Historical Partey/Leicester and World Cup-era Jesus update; not Aug 2026-27.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "bfcf81e9c16095e034f49e3a39648754ff26bd9f194353948ea0be655a20d2e6",
+      "notes": "FA Cup / Amorim Sporting-era Man Utd presser; mid-season prior campaign.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "490507fd2378f44b00a3771f8fc55404e3b6912a952d1a2b738e665344a713fb",
+      "notes": "Published 23 May 2026; final day of 2025-26, outside Aug 2026 pre-season window.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "71047a8fac6bc8c1ec6b3e6489931dc1aa01fb6f07d9eccf098a24ea3a3552fc",
+      "notes": "Title marks Tottenham v Man Utd 16 Feb; page body empty/bot-stripped; prior season.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "c2de3df162badfdd331e3c70999fc5ba002aa7e222b61d9781fae281301d39fe",
+      "notes": "Champions League Atalanta mid-season team news (Delap/Palmer); not Aug 2026-27.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "8c9e7989886362a24542880d73e0741546e44829e8edec038d2fb04823e9f856",
+      "notes": "FA Cup quarter-final Mateta update (March window); prior season competition.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "b606ed1c3fa67781333712dcb5aef20b142cce03c873ff664e823d25723392dc",
+      "notes": "Published 10 Feb 2026; mid-season Sunderland fixture, outside Aug 2026 window.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "90e9e59ca75ff2d6cebf5ba55732cb5e2189de33d35eaafdf2caad37e1881f59",
+      "notes": "Emery AZ Alkmaar presser dated Nov 2023 fixture context; stale.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "5470735d1c58fd5e6a9102b782409a2d58e072169a25f36b8ad8523ae5e325ee",
+      "notes": "Gabriel/Calafiori pre-Fulham mid-season injury update; not 2026-27 pre-season.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "75af3d1749cae16ceaf93d7b61d4f173eb98f20c0430f353a32c7414770ca14f",
+      "notes": "Graham Potter / AC Milan / Kante era Chelsea news; historical.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "695bbcd9507e9e9dc4282e20ad338c37776cf0772966f66cbb47818e392855ae",
+      "notes": "Published 20 Dec 2024; Bradley/Konate update from 2024-25.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "ec456948b53e5215ea4e03f8fc0ed5c95db07e767a6fa03dc338d600941cfc3b",
+      "notes": "Ipswich Town v Manchester United prior-season fixture; body not usable.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "9d8ad4484058435d1419cf9ab842fb370681bb6457be32e8a7b3f907bdaa26cb",
+      "notes": "Klopp-era April 2024 injury boost (Alexander-Arnold/Alisson/Jota); stale.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "7959da2850bb29e69d96e050dca559bc29c862c10986d067d8ec73860c336689",
+      "notes": "Published 8 May 2026; late 2025-26 Chelsea prep, outside Aug 2026 window.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "a1f506e23a87d0068dc756eda2b8b37df28b0bd628a36e22ad4815cf85349a43",
+      "notes": "Matchweek 12 round-up with Cooper/Lopetegui/Postecoglou etc.; mid prior season.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "34da28a1a3cb1a1637d0bdbf9920b65f547244a6d532291d0311fdba8199ce6b",
+      "notes": "Thomas Tuchel / Malmo live-training promo; no concrete 2026-27 availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "fef9e50586bf5502ea4a1798fe3b7256bfe188bc8ca38684b8bd4ac579418440",
+      "notes": "Dated 08 May 26; end of 2025-26 Spurs trip fitness update.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "2ae47f29af40e5ccf6ff70f6957a29d5dab218fac41b53ef38d6d1b3d806a92e",
+      "notes": "Historical Koscielny Achilles retrospective with Unai Emery; not current team news.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "49e609c7203e6e958ea0d8a14df40d0e546bc8c06c6eadcb297f0bb495b3ec8e",
+      "notes": "Chelsea Women WSL team news (Bompastor/Bronze); not men's 2026-27 FPL window.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "a98b715b8e9d88862207a65cf96dd386fd1d35e105604cd37ef0b5f9bd76a3d3",
+      "notes": "This week preview with Klopp/De Zerbi/DGW28; prior-season European round.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "42d7f52e462b6ab40b500359079a977097ea03f5d69e49ca03178f0a1f4e98e9",
+      "notes": "This week preview with FA Cup QFs Man Utd v Liverpool; prior-season March window.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "1ae80a57785188a530d1ea5a92eaf9d84e3b1221e9edd146c8ec54663d1a18fe",
+      "notes": "URL path dated 2026/april/10; page returns 404 / unavailable.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "5f3abb3851e8966436d5b8e3baa2979f26a6bda49c4256c39faff1fc5cd256d0",
+      "notes": "Brentford v Palace 17-05-2026 final-home-game preview; end of 2025-26.",
+      "reason": "verification_rejected"
+    }
+  ],
+  "schema_version": "news-capture-verification-result-v1",
+  "shortlist": [
+    {
+      "candidate_id": "0f29a008748a5de094e4481d2d8c1e00d15018bda3088533f186047782365905",
+      "club_id": "arsenal",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform arsenal_attack, availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "saka",
+        "injury",
+        "training",
+        "press conference",
+        "presser",
+        "doubt"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Every word from Mikel Arteta's pre-Man Utd presser | Press conference | News | Arsenal.com",
+      "topic_hits": [
+        "arsenal_attack",
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 101,
+      "url": "https://www.arsenal.com/news/every-word-mikel-artetas-pre-man-utd-presser",
+      "verification_notes": "Prior-season title race / Erik ten Hag context; not 2026-27 Aug pre-season window.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "a558e175b9c5c8340ede8e145e7d5f6f7387557559193aa961b10529796223a2",
+      "club_id": "arsenal",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform arsenal_attack, availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "gabriel",
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "available"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 5,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Arteta hopes Partey can play a part at Leicester | News | Arsenal.com",
+      "topic_hits": [
+        "arsenal_attack",
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 100,
+      "url": "https://www.arsenal.com/news/arteta-hopes-partey-can-play-part-leicester",
+      "verification_notes": "Historical Partey/Leicester and World Cup-era Jesus update; not Aug 2026-27.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "bfcf81e9c16095e034f49e3a39648754ff26bd9f194353948ea0be655a20d2e6",
+      "club_id": "arsenal",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform arsenal_attack, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "saka",
+        "gabriel",
+        "training",
+        "team news",
+        "press conference",
+        "presser",
+        "available"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Every word from Mikel's pre-Man Utd presser | Press conference | News | Arsenal.com",
+      "topic_hits": [
+        "arsenal_attack",
+        "team_news"
+      ],
+      "triage_score": 98,
+      "url": "https://www.arsenal.com/news/every-word-mikels-pre-man-utd-presser-2",
+      "verification_notes": "FA Cup / Amorim Sporting-era Man Utd presser; mid-season prior campaign.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "490507fd2378f44b00a3771f8fc55404e3b6912a952d1a2b738e665344a713fb",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "available"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Liverpool v Brentford: Team news - Liverpool FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 97,
+      "url": "https://www.liverpoolfc.com/news/liverpool-v-brentford-team-news-1?amp=1",
+      "verification_notes": "Published 23 May 2026; final day of 2025-26, outside Aug 2026 pre-season window.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "71047a8fac6bc8c1ec6b3e6489931dc1aa01fb6f07d9eccf098a24ea3a3552fc",
+      "club_id": "manchester-united",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "doubt"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Ruben Amorim gives team news ahead of Tottenham v Man Utd | 16 Feb | Manchester United",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 97,
+      "url": "https://www.manutd.com/en/news/detail/ruben-amorim-reveals-team-news-for-tottenham-v-man-utd-16-feb",
+      "verification_notes": "Title marks Tottenham v Man Utd 16 Feb; page body empty/bot-stripped; prior season.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "c2de3df162badfdd331e3c70999fc5ba002aa7e222b61d9781fae281301d39fe",
+      "club_id": "chelsea",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Enzo Maresca delivers Chelsea team news ahead of Atalanta | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 96,
+      "url": "https://www.chelseafc.com/en/news/article/enzo-maresca-delivers-chelsea-team-news-ahead-of-atalanta",
+      "verification_notes": "Champions League Atalanta mid-season team news (Delap/Palmer); not Aug 2026-27.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "8c9e7989886362a24542880d73e0741546e44829e8edec038d2fb04823e9f856",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "press conference",
+        "minutes",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Glasner: Mateta ready to play in FA Cup quarter-final",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 96,
+      "url": "https://www.premierleague.com/en/news/4272918",
+      "verification_notes": "FA Cup quarter-final Mateta update (March window); prior season competition.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "b606ed1c3fa67781333712dcb5aef20b142cce03c873ff664e823d25723392dc",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Sunderland v Liverpool: Team news - Liverpool FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 95,
+      "url": "https://www.liverpoolfc.com/news/sunderland-v-liverpool-team-news",
+      "verification_notes": "Published 10 Feb 2026; mid-season Sunderland fixture, outside Aug 2026 window.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "90e9e59ca75ff2d6cebf5ba55732cb5e2189de33d35eaafdf2caad37e1881f59",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "team news",
+        "press conference",
+        "presser",
+        "minutes",
+        "available"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "The Presser: Emery analyses AZ Alkmaar",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 92,
+      "url": "https://www.premierleague.com/en/news/3773641",
+      "verification_notes": "Emery AZ Alkmaar presser dated Nov 2023 fixture context; stale.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "5470735d1c58fd5e6a9102b782409a2d58e072169a25f36b8ad8523ae5e325ee",
+      "club_id": "arsenal",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform arsenal_attack, availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "gabriel",
+        "injury",
+        "press conference"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Injury updates on Gabriel and Calafiori pre-Fulham | Press conference | News | Arsenal.com",
+      "topic_hits": [
+        "arsenal_attack",
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 90,
+      "url": "https://www.arsenal.com/news/injury-updates-gabriel-and-calafiori-pre-fulham",
+      "verification_notes": "Gabriel/Calafiori pre-Fulham mid-season injury update; not 2026-27 pre-season.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "75af3d1749cae16ceaf93d7b61d4f173eb98f20c0430f353a32c7414770ca14f",
+      "club_id": "chelsea",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "press conference",
+        "doubt"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Chelsea vs AC Milan press conference: Potter issues injury update and comments on Kante | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 90,
+      "url": "https://www.chelseafc.com/en/news/article/chelsea-vs-team-press-conference-chelsea-news-injury-updates-suspensions",
+      "verification_notes": "Graham Potter / AC Milan / Kante era Chelsea news; historical.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "695bbcd9507e9e9dc4282e20ad338c37776cf0772966f66cbb47818e392855ae",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "press conference",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 5,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Injury news: Updates on Conor Bradley and Ibrahima Konate from Arne Slot - Liverpool FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 90,
+      "url": "https://www.liverpoolfc.com/news/injury-news-updates-conor-bradley-and-ibrahima-konate-arne-slot/",
+      "verification_notes": "Published 20 Dec 2024; Bradley/Konate update from 2024-25.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "ec456948b53e5215ea4e03f8fc0ed5c95db07e767a6fa03dc338d600941cfc3b",
+      "club_id": "manchester-united",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness",
+        "training",
+        "team news",
+        "press conference"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Ruben Amorim provides team news update | Ipswich Town v Manchester United | Manchester United",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 90,
+      "url": "https://www.manutd.com/en/news/detail/ruben-amorim-provides-team-news-for-ipswich-town-v-manchester-united",
+      "verification_notes": "Ipswich Town v Manchester United prior-season fixture; body not usable.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "9d8ad4484058435d1419cf9ab842fb370681bb6457be32e8a7b3f907bdaa26cb",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "press conference",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Liverpool get injury boost with three key players returning",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 90,
+      "url": "https://www.premierleague.com/en/news/3961543",
+      "verification_notes": "Klopp-era April 2024 injury boost (Alexander-Arnold/Alisson/Jota); stale.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "7959da2850bb29e69d96e050dca559bc29c862c10986d067d8ec73860c336689",
+      "club_id": "liverpool",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "press conference"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Injury update: Alisson, Isak, Mamardashvili, Salah and more - Liverpool FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 88,
+      "url": "https://www.liverpoolfc.com/news/injury-update-alisson-isak-mamardashvili-salah-and-more/",
+      "verification_notes": "Published 8 May 2026; late 2025-26 Chelsea prep, outside Aug 2026 window.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "a1f506e23a87d0068dc756eda2b8b37df28b0bd628a36e22ad4815cf85349a43",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "team news",
+        "press conference",
+        "available",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "All the key quotes from EVERY manager's press conference",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 88,
+      "url": "https://www.premierleague.com/en/news/4172044/all-the-key-lines-from-the-managers-press-conferences",
+      "verification_notes": "Matchweek 12 round-up with Cooper/Lopetegui/Postecoglou etc.; mid prior season.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "34da28a1a3cb1a1637d0bdbf9920b65f547244a6d532291d0311fdba8199ce6b",
+      "club_id": "chelsea",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "available",
+        "starting"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Watch Chelsea training live! | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 83,
+      "url": "https://www.chelseafc.com/en/news/article/watch-chelsea-training-live-",
+      "verification_notes": "Thomas Tuchel / Malmo live-training promo; no concrete 2026-27 availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "fef9e50586bf5502ea4a1798fe3b7256bfe188bc8ca38684b8bd4ac579418440",
+      "club_id": "leeds",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform arsenal_attack, availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "gabriel",
+        "injury",
+        "fitness",
+        "training",
+        "press conference"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Edmund Riemer provides fitness update ahead of Spurs clash - Leeds United",
+      "topic_hits": [
+        "arsenal_attack",
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 82,
+      "url": "https://www.leedsunited.com/en/news/edmund-riemer-provides-fitness-update-ahead-of-spurs-clash",
+      "verification_notes": "Dated 08 May 26; end of 2025-26 Spurs trip fitness update.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "2ae47f29af40e5ccf6ff70f6957a29d5dab218fac41b53ef38d6d1b3d806a92e",
+      "club_id": "arsenal",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "press conference"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 7,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "One year on… Koscielny on a transformative injury | Press conference | News | Arsenal.com",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 80,
+      "url": "https://www.arsenal.com/news/one-year-koscielny-transformative-injury",
+      "verification_notes": "Historical Koscielny Achilles retrospective with Unai Emery; not current team news.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "49e609c7203e6e958ea0d8a14df40d0e546bc8c06c6eadcb297f0bb495b3ec8e",
+      "club_id": "chelsea",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "team news",
+        "press conference"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 6,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Sonia Bompastor delivers Chelsea team news ahead of trip to Tottenham | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 80,
+      "url": "https://www.chelseafc.com/en/news/article/sonia-bompastor-delivers-chelsea-team-news-ahead-of-trip-to-tottenham",
+      "verification_notes": "Chelsea Women WSL team news (Bompastor/Bronze); not men's 2026-27 FPL window.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "a98b715b8e9d88862207a65cf96dd386fd1d35e105604cd37ef0b5f9bd76a3d3",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "team news",
+        "press conference",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 6,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "This week in the Premier League",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 80,
+      "url": "https://www.premierleague.com/en/news/3920807",
+      "verification_notes": "This week preview with Klopp/De Zerbi/DGW28; prior-season European round.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "42d7f52e462b6ab40b500359079a977097ea03f5d69e49ca03178f0a1f4e98e9",
+      "club_id": "premier-league",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform arsenal_attack, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "team news",
+        "press conference"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 7,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "This week in the Premier League",
+      "topic_hits": [
+        "arsenal_attack",
+        "team_news"
+      ],
+      "triage_score": 80,
+      "url": "https://www.premierleague.com/news/3930260",
+      "verification_notes": "This week preview with FA Cup QFs Man Utd v Liverpool; prior-season March window.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "1ae80a57785188a530d1ea5a92eaf9d84e3b1221e9edd146c8ec54663d1a18fe",
+      "club_id": "aston-villa",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "return",
+        "starting"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Team news ahead of City Ground visit | Aston Villa",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 78,
+      "url": "https://www.avfc.co.uk/news/2026/april/10/prematch-team-news-ahead-of-city-ground-trip/",
+      "verification_notes": "URL path dated 2026/april/10; page returns 404 / unavailable.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    },
+    {
+      "candidate_id": "5f3abb3851e8966436d5b8e3baa2979f26a6bda49c4256c39faff1fc5cd256d0",
+      "club_id": "brentford",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "minutes"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Brentford v Crystal Palace - Match Preview, Kick-off time & more | Brentford FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 78,
+      "url": "https://www.brentfordfc.com/en/news/article/match-previews-brentford-v-crystal-palace-premier-league-17-05-2026",
+      "verification_notes": "Brentford v Palace 17-05-2026 final-home-game preview; end of 2025-26.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-11T16:30:54Z",
+      "verified_by": "cursor-grok-4.5-high (ad-hoc owner-requested run 2026-08-11)"
+    }
+  ],
+  "triage_sha256": "7ea6adda935d68f94d08e33a13997055a6bc07ac2cf883dce64484f19bc51fb3",
+  "verified_ready_for_discovery": []
+}

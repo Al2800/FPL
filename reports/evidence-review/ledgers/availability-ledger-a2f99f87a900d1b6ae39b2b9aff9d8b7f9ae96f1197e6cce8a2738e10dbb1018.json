@@ -1,0 +1,69 @@
+{
+  "claims": [
+    {
+      "available_at": "2026-08-12T08:57:00Z",
+      "claim_id": "model:7f522e49d3720ff9ddf2604fa45132f10a8a150b2e590289a85193652eac1aee",
+      "confidence": 0.9,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T08:52:00Z",
+      "player_uid": "player:2026-27:360",
+      "provenance": {
+        "derived_claim": "Conor Bradley remains sidelined after January knee surgery; Iraola states he is still months away from return.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T085200Z",
+        "model_run_sha256": "4d54086056e596f27c744f261c49a81794be9408bbad7d3dd91583a29786b414",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Confirms Bradley unavailable for early 2026-27 GW1 window."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "status": "unavailable"
+    },
+    {
+      "available_at": "2026-08-12T08:57:00Z",
+      "claim_id": "model:adf0c834562562558fc3ae01923da455de1698e947d0baf0ce842008fda1f273",
+      "confidence": 0.82,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T08:52:00Z",
+      "player_uid": "player:2026-27:359",
+      "provenance": {
+        "derived_claim": "Joe Gomez has a muscle injury from the Sunderland friendly; Iraola expects weeks out and likely unavailable for GW1 kickoff.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T085200Z",
+        "model_run_sha256": "4d54086056e596f27c744f261c49a81794be9408bbad7d3dd91583a29786b414",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Gomez minutes affect Liverpool defensive cover context for Virgil/Szoboszlai comparator debate."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "status": "doubtful"
+    }
+  ],
+  "content_sha256": "a2f99f87a900d1b6ae39b2b9aff9d8b7f9ae96f1197e6cce8a2738e10dbb1018",
+  "created_at": "2026-08-11T16:35:00Z",
+  "ledger_id": "availability-ledger:2026-27",
+  "schema_version": "1.0",
+  "season": "2026-27"
+}

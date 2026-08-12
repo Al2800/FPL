@@ -1,0 +1,132 @@
+{
+  "accepted_claim_ids": [
+    "model:7f522e49d3720ff9ddf2604fa45132f10a8a150b2e590289a85193652eac1aee",
+    "model:adf0c834562562558fc3ae01923da455de1698e947d0baf0ce842008fda1f273"
+  ],
+  "available_at": "2026-08-12T08:57:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-08-12-bajcetic-training-available": "model:823e4c7debb4b1709a3ce3de7e2f3fe542afdff0cb92a7ac2f0e4c476cf08ef0",
+    "2026-08-12-bradley-knee-unavailable": "model:7f522e49d3720ff9ddf2604fa45132f10a8a150b2e590289a85193652eac1aee",
+    "2026-08-12-gomez-muscle-injury": "model:adf0c834562562558fc3ae01923da455de1698e947d0baf0ce842008fda1f273",
+    "2026-08-12-mac-allister-preseason-return": "model:91e96947152f590c24589e46475f89e25591ede0fcd619dd34ff4b5863acc414"
+  },
+  "content_sha256": "975ef0346865f8221b8188ed0b081746ce6ed8b52729dac2d160172cd0ef96a8",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 51
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "verify July Glasner/Everton/Spurs pages as GW1-fresh",
+        "treat training galleries as Bruno/Shaw availability claims",
+        "admit CityTV pages blocked by 403"
+      ],
+      "boundary_id": "lane-a:2026-08-12:shortlist-admission",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "verify 3 current official pages; reject 21 stale/404/403/non-claim rows",
+      "falsifiers": [
+        "LFC injury list retracted or materially changed before GW1 deadline",
+        "Mac Allister limited in official Newcastle XI team news"
+      ],
+      "rationale": "Fetched all 24 triage URLs once. Three pages published on/after 2026-08-05 state concrete availability/minutes claims (LFC injury list 2026-08-11, Mac Allister return 2026-08-10, Koumas minutes 2026-08-11). July syndicated pages, 404 Everton wrap, Man City 403s, and gallery-only items rejected.",
+      "supporting_claim_ids": [
+        "model:91e96947152f590c24589e46475f89e25591ede0fcd619dd34ff4b5863acc414",
+        "model:adf0c834562562558fc3ae01923da455de1698e947d0baf0ce842008fda1f273",
+        "model:7f522e49d3720ff9ddf2604fa45132f10a8a150b2e590289a85193652eac1aee",
+        "model:823e4c7debb4b1709a3ce3de7e2f3fe542afdff0cb92a7ac2f0e4c476cf08ef0"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "drop verified claims to match narrow arm union",
+        "claim Ekitike without bootstrap identity match"
+      ],
+      "boundary_id": "lane-a:2026-08-12:watchlist-correction",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "extend watchlist to include verified Lane A named players; resubmit run r2",
+      "falsifiers": [
+        "bootstrap player identity mismatch for any extended uid"
+      ],
+      "rationale": "First ingest rejected all 4 candidates with player_not_in_declared_watchlist because the 43-player arm union omitted Mac Allister, Gomez, Bradley and Bajcetic named in verified LFC pages. Extended watchlist adds those uids plus Leoni, Jones and Koumas from the same verified sources; Ekitike has no bootstrap uid.",
+      "supporting_claim_ids": [
+        "model:91e96947152f590c24589e46475f89e25591ede0fcd619dd34ff4b5863acc414",
+        "model:adf0c834562562558fc3ae01923da455de1698e947d0baf0ce842008fda1f273",
+        "model:7f522e49d3720ff9ddf2604fa45132f10a8a150b2e590289a85193652eac1aee",
+        "model:823e4c7debb4b1709a3ce3de7e2f3fe542afdff0cb92a7ac2f0e4c476cf08ef0"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "de35dbc83d0ba8b4a0fafb4f87d6e719dd65fa6b4eda96a04a18ce8edbaeb274",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "b63fce84c23c82abeba67817afaf4c3f6817e7394c4b39beff0c0a54e1310098",
+      "source_url": "https://www.liverpoolfc.com/news/alexis-mac-allister-back-liverpool-begin-pre-season-work"
+    },
+    {
+      "source_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+      "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "4d54086056e596f27c744f261c49a81794be9408bbad7d3dd91583a29786b414",
+  "observed_at": "2026-08-12T08:52:00Z",
+  "prior_ledger_sha256": "96533cd117ff54b1f4a08c76f3baeb23f73f9cc2b4e30140c9a97509feb06b3b",
+  "prompt": {
+    "path": "prompts/daily-strategy-research/v1.md",
+    "sha256": "e08e44ee06fb7e22b83d2ea5f88686622411a9d1c0e234f0a7abff938203fb79",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "e08e44ee06fb7e22b83d2ea5f88686622411a9d1c0e234f0a7abff938203fb79",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "2026-08-12-mac-allister-preseason-return",
+      "claim_text": "Alexis Mac Allister returned to the AXA Training Centre on 2026-08-10 to begin pre-season work after his World Cup break.",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:372",
+      "reasons": [
+        "recovery condition must be explicitly met"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/alexis-mac-allister-back-liverpool-begin-pre-season-work",
+      "why_relevant": "Mac Allister is a Liverpool comparator-adjacent premium mid; confirmed return to training supports availability for GW1 selection debate."
+    },
+    {
+      "candidate_claim_id": "2026-08-12-bajcetic-training-available",
+      "claim_text": "Stefan Bajcetic is training basically fully with the first team per Iraola (updated 2026-08-11 injury list page).",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:376",
+      "reasons": [
+        "recovery condition must be explicitly met"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "why_relevant": "Bajcetic availability informs Liverpool squad depth context."
+    }
+  ],
+  "resulting_ledger_sha256": "a2f99f87a900d1b6ae39b2b9aff9d8b7f9ae96f1197e6cce8a2738e10dbb1018",
+  "run_id": "composer-2.5:2026-08-12T085200Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.5,
+    "accepted_count": 2,
+    "candidate_count": 4,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 2,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}

@@ -109,7 +109,9 @@ def main(argv: list[str] | None = None) -> int:
         ledger_path = args.output_root / (
             f"availability-ledger-{ledger['content_sha256']}.json"
         )
-        audit_path = args.output_root / f"{model_run['run_id']}.audit.json"
+        audit_path = args.output_root / (
+            f"{safe_review_stem(str(model_run['run_id']))}.audit.json"
+        )
         review_path = args.review_output or (
             REPO_ROOT
             / "reports"

@@ -1,0 +1,66 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-08-11T16:35:00Z",
+  "bound_packet_sha256": "c37b904feea84c45ce2564b32f08aa6c9b0b5642d1dee298a0b00e067defc389",
+  "candidate_claim_bindings": {},
+  "content_sha256": "4f67e5bbfd3a2de81b70999352845b0102ce1ae0d4aa5ffab083aeb4b1400932",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 47
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "admit May-2026 final-day Liverpool/Brentford/Leeds pages as GW1 evidence",
+        "treat unverified shortlist snippets as ledger claims",
+        "fabricate published_at within the Aug 2026 window"
+      ],
+      "boundary_id": "lane-a:2026-08-11:shortlist-admission",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "emit zero claim candidates; admit empty discovery",
+      "falsifiers": [
+        "an official club page dated >=2026-08-04 with a concrete availability/minutes statement for a watchlist player"
+      ],
+      "rationale": "Fetched all 24 official-domain triage shortlist URLs. Every page was prior-season (2023-25 FA Cup/Europa/league run-ins), end of 2025-26 (May 2026 finals), women/WSL, historical retrospective, 404, or empty body. None published on/after 2026-08-04 about 2026-27 pre-season/GW1 availability. Host discovery therefore admitted 0 leads; inventing claims would violate point-in-time discipline.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "35ccd93dadf0e29342e45b547dae17f022a68cd47a940c7a4ced6a554f99c08f",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Cursor Grok 4.5 High",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "c2346ba73d079c7b4d5b32cf7a20939dd83e41859edec67228409c13147e329f",
+  "observed_at": "2026-08-11T16:30:54Z",
+  "prior_ledger_sha256": null,
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "29093aa80e4e00ccb151412d222806bb5bb0a6771869de15dd0df1ffaccd8d87",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "29093aa80e4e00ccb151412d222806bb5bb0a6771869de15dd0df1ffaccd8d87",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "96533cd117ff54b1f4a08c76f3baeb23f73f9cc2b4e30140c9a97509feb06b3b",
+  "run_id": "cursor-grok-4.5-high:2026-08-11T163054Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
