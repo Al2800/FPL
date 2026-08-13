@@ -1,0 +1,60 @@
+{
+  "verifications": [
+    {
+      "candidate_id": "f015e5c49b2702fa1a846f3a498507fdbc48258285e4e7935e13ba895f58782a",
+      "status": "needs_human",
+      "verified_by": "composer-2.5 (ephemeral official-page check; no ledger admission)",
+      "verified_at": "2026-08-13T07:00:02.0937846Z",
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "notes": "Chelsea official 2026/27 training-gallery page identifies Joao Pedro as involved in the first Cobham session. It does not establish GW1 availability, a starting role or a precise ISO publication time; retain as corroboration only.",
+      "matched_players": ["Joao Pedro"]
+    },
+    {
+      "candidate_id": "091581cb5698aba5e24c43b1747e5911106b32e6ac6b15d618989c7dc3670c4f",
+      "status": "needs_human",
+      "verified_by": "composer-2.5 (ephemeral official-page check; no ledger admission)",
+      "verified_at": "2026-08-13T07:00:02.0937846Z",
+      "page_identity_ok": true,
+      "publication_time_status": "ambiguous",
+      "notes": "Liverpool official availability page is current-season and states that it was published two days earlier and last updated on 11 August. The capture has no ISO published_at, and the page does not make a specific GW1 claim for the recommended 15; human timestamp linkage is required before any admission.",
+      "matched_players": ["Bajcetic", "Bradley", "Ekitike", "Leoni", "Gomez", "Jacquet", "Jones"]
+    },
+    {
+      "candidate_id": "6ebecb8cf755117e8b9b1e2a31a2e11cadfb131f9a236a00d7f2c76ed3ef3f72",
+      "status": "rejected",
+      "verified_by": "composer-2.5 (ephemeral official-page check; no ledger admission)",
+      "verified_at": "2026-08-13T07:00:02.0937846Z",
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "notes": "Manchester United URL resolves to a generic United-back-for-pre-season page with no named player availability or minutes statement. It cannot support a Bruno, Shaw or Mbeumo adjustment."
+    },
+    {
+      "candidate_id": "f65bde44bfc7359ff174f8176ea60fa1f1cf838b7eaa600a4562fa1838986800",
+      "status": "rejected",
+      "verified_by": "composer-2.5 (ephemeral official-page check; no ledger admission)",
+      "verified_at": "2026-08-13T07:00:02.0937846Z",
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "notes": "The exact Manchester City candidate URL could not be safely resolved by the page check; nearby City search results do not establish the identity or a Haaland/Semenyo minutes claim."
+    },
+    {
+      "candidate_id": "fcb6d49f2adae97da08169b2a7d2da581f3307abd978589d72bfa3c7de65739b",
+      "status": "rejected",
+      "verified_by": "composer-2.5 (ephemeral official-page check; no ledger admission)",
+      "verified_at": "2026-08-13T07:00:02.0937846Z",
+      "page_identity_ok": false,
+      "publication_time_status": "known",
+      "notes": "The capture has a dated Leeds pre-season preview, but the exact candidate URL was not resolved by the page check and no current player-specific availability or starting claim was verified."
+    },
+    {
+      "candidate_id": "d8b92c3375b01dc18986c4ecb06d84c46a70f06500d042d5596c3e2a69373406",
+      "status": "rejected",
+      "verified_by": "composer-2.5 (ephemeral official-page check; no ledger admission)",
+      "verified_at": "2026-08-13T07:00:02.0937846Z",
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "notes": "The Newcastle confirmed-line-up candidate could not be resolved to the exact captured page; the pre-season match context would not by itself establish a GW1 FPL role."
+    }
+  ]
+}
