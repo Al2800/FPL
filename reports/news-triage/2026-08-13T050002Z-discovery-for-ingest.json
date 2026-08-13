@@ -1,0 +1,209 @@
+{
+  "account_writes": false,
+  "admitted_lead_count": 7,
+  "content_sha256": "a3d81d9ae0797bf6850cb48e333bec299fbd30564b9d621c1014e72e722b5db7",
+  "discovery": {
+    "account_writes": false,
+    "claim_policy": "model_derived_candidate_host_validated_claim",
+    "content_sha256": "c170769c160a7cf19f00029bc998d362a87f416a247ea0a9d7c519109763b28b",
+    "coverage": [
+      {
+        "club_id": "arsenal",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "aston-villa",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "bournemouth",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brentford",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brighton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "chelsea",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "coventry",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "crystal-palace",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "everton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "fulham",
+        "result_count": 3,
+        "status": "searched"
+      },
+      {
+        "club_id": "hull",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "ipswich",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "leeds",
+        "result_count": 1,
+        "status": "searched"
+      },
+      {
+        "club_id": "liverpool",
+        "result_count": 2,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-city",
+        "result_count": 1,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-united",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "newcastle",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "nottingham-forest",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "premier-league",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "sunderland",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "tottenham",
+        "result_count": 0,
+        "status": "searched"
+      }
+    ],
+    "discovery_id": "news-discovery:2026-27:2026-08-13T05:00:02.219173Z",
+    "leads": [
+      {
+        "club_id": "fulham",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "59c0b492771385e5ccdaf67d092b998dae99aec2c9126e30d2b16b925da8ce9a",
+        "observed_at": "2026-08-13T05:00:02.219173Z",
+        "published_at": "2026-08-12T00:00:00Z",
+        "query": "site:fulhamfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 1,
+        "source_url": "https://www.fulhamfc.com/news/2026/august/12/malaga-highlights/",
+        "title": "Malaga Highlights"
+      },
+      {
+        "club_id": "fulham",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "e0ff6d2a1b6a967b9ea52e28fa24ea2d381c9a1bdb6686bb36f4e918975bf762",
+        "observed_at": "2026-08-13T05:00:02.219173Z",
+        "published_at": "2026-08-12T00:00:00Z",
+        "query": "site:fulhamfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 2,
+        "source_url": "https://www.fulhamfc.com/news/2026/august/12/malaga-2-2-fulham/",
+        "title": "Málaga 2-2 Fulham"
+      },
+      {
+        "club_id": "fulham",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "cb9ef54623661d7d310dc09e08cae577ef9a721e82e5310ce8b86d81a67bde9a",
+        "observed_at": "2026-08-13T05:00:02.219173Z",
+        "published_at": "2026-08-12T00:00:00Z",
+        "query": "site:fulhamfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 3,
+        "source_url": "https://www.fulhamfc.com/news/2026/august/12/ful-access--shea-signs/",
+        "title": "FUL ACCESS: Shea Signs"
+      },
+      {
+        "club_id": "leeds",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "6765581b7d0595510f7d3999b8c3a461e6ce5515696419cea51eb98fecd77148",
+        "observed_at": "2026-08-13T05:00:02.219173Z",
+        "published_at": "2026-08-11T00:00:00Z",
+        "query": "site:leedsunited.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 1,
+        "source_url": "https://www.leedsunited.com/en/news/pre-season-preview-manchester-united-vs-leeds-united",
+        "title": "Pre-Season Preview: Manchester United vs Leeds United"
+      },
+      {
+        "club_id": "liverpool",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "43b83e1cbcce062dd99674c7275547599ab2e33231cd8503d7f204f416131f44",
+        "observed_at": "2026-08-13T05:00:02.219173Z",
+        "published_at": "2026-08-12T17:30:00Z",
+        "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 1,
+        "source_url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+        "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session"
+      },
+      {
+        "club_id": "liverpool",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "0166d10099322891e330f73fa05fac1e80812e4a4dd08b9eb24e1cbccd2afd96",
+        "observed_at": "2026-08-13T05:00:02.219173Z",
+        "published_at": "2026-08-11T00:00:00Z",
+        "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 3,
+        "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+        "title": "Liverpool's injury list, suspensions and availability"
+      },
+      {
+        "club_id": "manchester-city",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "666b547dda84ba7eac598eb2d1dbce0c3bcede758819dc2a86581a00787becc9",
+        "observed_at": "2026-08-13T05:00:02.219173Z",
+        "published_at": "2026-08-12T00:00:00Z",
+        "query": "site:mancity.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 2,
+        "source_url": "https://www.mancity.com/news/mens/man-city-training-arrival-gallery-12-august-63922145",
+        "title": "Gallery: The boys are back in Manchester! Picture Special"
+      }
+    ],
+    "observed_at": "2026-08-13T05:00:02.219173Z",
+    "plan_sha256": "88fb8110a127999fbcbaab45534a6a6c5e63465377735dea259d263af7c24a1a",
+    "quality": {
+      "gaps": [],
+      "rejected": []
+    },
+    "raw_search_context_retained": false,
+    "schema_version": "1.0",
+    "season": "2026-27",
+    "status": "complete"
+  },
+  "schema_version": "news-verified-discovery-bridge-v1",
+  "verification_sha256": "04dc1b6f1dc15524dafd3c550282ff813361fda0a0f3a6fd085e1bdf3f98493d"
+}

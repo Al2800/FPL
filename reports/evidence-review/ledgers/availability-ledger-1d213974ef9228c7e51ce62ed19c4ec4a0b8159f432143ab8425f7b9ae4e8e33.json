@@ -1,0 +1,274 @@
+{
+  "claims": [
+    {
+      "available_at": "2026-08-12T08:57:00Z",
+      "claim_id": "model:7f522e49d3720ff9ddf2604fa45132f10a8a150b2e590289a85193652eac1aee",
+      "confidence": 0.9,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T08:52:00Z",
+      "player_uid": "player:2026-27:360",
+      "provenance": {
+        "derived_claim": "Conor Bradley remains sidelined after January knee surgery; Iraola states he is still months away from return.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T085200Z",
+        "model_run_sha256": "4d54086056e596f27c744f261c49a81794be9408bbad7d3dd91583a29786b414",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Confirms Bradley unavailable for early 2026-27 GW1 window."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "status": "unavailable"
+    },
+    {
+      "available_at": "2026-08-12T08:57:00Z",
+      "claim_id": "model:adf0c834562562558fc3ae01923da455de1698e947d0baf0ce842008fda1f273",
+      "confidence": 0.82,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T08:52:00Z",
+      "player_uid": "player:2026-27:359",
+      "provenance": {
+        "derived_claim": "Joe Gomez has a muscle injury from the Sunderland friendly; Iraola expects weeks out and likely unavailable for GW1 kickoff.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T085200Z",
+        "model_run_sha256": "4d54086056e596f27c744f261c49a81794be9408bbad7d3dd91583a29786b414",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Gomez minutes affect Liverpool defensive cover context for Virgil/Szoboszlai comparator debate."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "status": "doubtful"
+    },
+    {
+      "available_at": "2026-08-12T10:05:00Z",
+      "claim_id": "model:f2ef60114b985aa769b23c64322e24f73930aff1b964b141530f9d8619be34f6",
+      "confidence": 0.78,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T10:00:00Z",
+      "player_uid": "player:2026-27:372",
+      "provenance": {
+        "derived_claim": "Alexis Mac Allister was back at the AXA Training Centre on 2026-08-10 to begin pre-season work after his World Cup break; the official page does not confirm match or GW1 availability.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T100000Z",
+        "model_run_sha256": "12cd1dcf3cb5393def7873e5a72982d8a6e9a29b9cd10cb5a19dadf8614c4696",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "b63fce84c23c82abeba67817afaf4c3f6817e7394c4b39beff0c0a54e1310098",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Alexis Mac Allister back at Liverpool to begin pre-season work",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/alexis-mac-allister-back-liverpool-begin-pre-season-work"
+        ],
+        "why_relevant": "Mac Allister is comparator-adjacent; pre-season return supports monitoring but not a declared-fit ledger recovery."
+      },
+      "published_at": "2026-08-10T11:15:00Z",
+      "status": "doubtful"
+    },
+    {
+      "available_at": "2026-08-12T10:05:00Z",
+      "claim_id": "model:823e4c7debb4b1709a3ce3de7e2f3fe542afdff0cb92a7ac2f0e4c476cf08ef0",
+      "confidence": 0.85,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T10:00:00Z",
+      "player_uid": "player:2026-27:376",
+      "provenance": {
+        "derived_claim": "Stefan Bajcetic is training basically fully with the first team per Iraola (LFC injury update published 2026-08-11).",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T100000Z",
+        "model_run_sha256": "12cd1dcf3cb5393def7873e5a72982d8a6e9a29b9cd10cb5a19dadf8614c4696",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Bajcetic availability informs Liverpool squad depth context."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-12T10:05:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-13T07:20:00Z",
+      "claim_id": "model:7667709feb3b1f33a19cc58b80edfcf6a72efb924f0ea3f81ca9528b33edb7b3",
+      "confidence": 0.72,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-13T07:01:07Z",
+      "player_uid": "player:2026-27:387",
+      "provenance": {
+        "derived_claim": "Official Man City gallery dated 12 August shows Nico O'Reilly among players returning to the CFA after the Asia tour / World Cup break; page frames preparations for Community Shield vs Arsenal on 16 August.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5-2026-08-13T072000Z",
+        "model_run_sha256": "52197076c6583d65347f45d6c6df50846fcf5f3e4499a008dbbe87966a9e17b2",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "d9000c5e5ce5c9e026f27f2085c89393fa2afbfeef5380703b4bf6e7b18a15f7",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Gallery: The boys are back in Manchester! Picture Special",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.mancity.com/news/mens/man-city-training-arrival-gallery-12-august-63922145"
+        ],
+        "why_relevant": "Supports O'Reilly availability signal as a City satellite challenger; not a GW1 starting confirmation."
+      },
+      "published_at": "2026-08-12T00:00:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-13T07:20:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-13T07:20:00Z",
+      "claim_id": "model:1e1973e2ba8ac1fa55cf4d08def41b813b8cedfa35d4225e495fa78411955bff",
+      "confidence": 0.76,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-13T07:01:07Z",
+      "player_uid": "player:2026-27:579",
+      "provenance": {
+        "derived_claim": "Official LFC (2026-08-12): New loan signing Ronald Araujo joined teammates and was involved in Liverpool Wednesday training session after arriving Monday.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5-2026-08-13T072000Z",
+        "model_run_sha256": "52197076c6583d65347f45d6c6df50846fcf5f3e4499a008dbbe87966a9e17b2",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "ff4127f4b98a204b1b96c69647b77a30e28cfe5324b630bd1ecf9dc8685106f3",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session"
+        ],
+        "why_relevant": "Confirms Araujo has started club training; integration/minutes still uncertain for GW1."
+      },
+      "published_at": "2026-08-12T17:30:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-13T07:20:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-13T07:20:00Z",
+      "claim_id": "model:8a69219d70fb1f6ff590e101dfcceafe47de0157eea1ecae09ba019ab898bf88",
+      "confidence": 0.78,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-13T07:01:07Z",
+      "player_uid": "player:2026-27:373",
+      "provenance": {
+        "derived_claim": "Official LFC (2026-08-12): Curtis Jones, who missed the AS Monaco friendly with hip issues noted on the injury list, took part in Wednesday training.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5-2026-08-13T072000Z",
+        "model_run_sha256": "52197076c6583d65347f45d6c6df50846fcf5f3e4499a008dbbe87966a9e17b2",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "ff4127f4b98a204b1b96c69647b77a30e28cfe5324b630bd1ecf9dc8685106f3",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session"
+        ],
+        "why_relevant": "Improves Jones minutes outlook after recent hip caution; watchlist-only, not in advisory 15."
+      },
+      "published_at": "2026-08-12T17:30:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-13T07:20:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-13T07:20:00Z",
+      "claim_id": "model:72b97938e68c0ec9cced64e0708710a3297701204ed23a6d01c7ca5ebc0e2fa8",
+      "confidence": 0.78,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-13T07:01:07Z",
+      "player_uid": "player:2026-27:362",
+      "provenance": {
+        "derived_claim": "Official LFC (2026-08-12): Jeremy Jacquet, who missed the AS Monaco friendly, took part in Wednesday first-team training session.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5-2026-08-13T072000Z",
+        "model_run_sha256": "52197076c6583d65347f45d6c6df50846fcf5f3e4499a008dbbe87966a9e17b2",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "ff4127f4b98a204b1b96c69647b77a30e28cfe5324b630bd1ecf9dc8685106f3",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session"
+        ],
+        "why_relevant": "Clears a recent pre-season absence signal for Jacquet ahead of GW1 monitoring; not a selected comparator starter."
+      },
+      "published_at": "2026-08-12T17:30:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-13T07:20:00Z"
+      },
+      "status": "available"
+    }
+  ],
+  "content_sha256": "1d213974ef9228c7e51ce62ed19c4ec4a0b8159f432143ab8425f7b9ae4e8e33",
+  "created_at": "2026-08-11T16:35:00Z",
+  "ledger_id": "availability-ledger:2026-27",
+  "schema_version": "1.0",
+  "season": "2026-27"
+}
