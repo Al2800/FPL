@@ -1,0 +1,713 @@
+{
+  "account_writes": false,
+  "candidate_count": 30,
+  "capture_id": "news-capture:2026-27:2026-08-13T05:00:02.219173Z",
+  "capture_sha256": "85a9dd7554ba7182d062c2940809e915b5c471b5543d309a4e57020c8cc1faa4",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "05fa756b006e78c449127e1cd337814a4afd72e991d857bb6714265c50866dda",
+  "demoted_candidate_count": 0,
+  "excluded_candidate_count": 8,
+  "excluded_candidates": [
+    {
+      "candidate_id": "722d00e6b44b4d9a8c2843ece2120e32ac20de261a48c2370870faec699e68f1",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.cpfc.co.uk/news/announcement/palace-u21s-first-three-202627-pre-season-matches-confirmed/"
+    },
+    {
+      "candidate_id": "b6bfc0824e819287e860e10c571a5103217b27407d66e73d61800e60a676cd61",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4680048/everton-squad-update-for-pre-season-opener"
+    },
+    {
+      "candidate_id": "804c3e449fd43aa8f8fa56f79e377926a15f8676e825fada65b1f88ac6431eba",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.liverpoolfc.com/news/lfc-fitness-update-bajcetic-bradley-ekitike-endo-and-leoni?amp=1"
+    },
+    {
+      "candidate_id": "326efb6823a9e607327577ed01c169df3b9f18ea9760629add81eaa0194deddd",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4679597/reds-on-the-ball-in-training"
+    },
+    {
+      "candidate_id": "2ac7bb11fa90a837d7f2c40987052ad6f08a7a5c00fcdb2e9fdc96be5ad133cd",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4678380/premier-league-clubs-return-for-pre-season-key-dates-friendlies-and-training-updates"
+    },
+    {
+      "candidate_id": "2ba758a50e4837ea9bc4df05da1a9ebd63035f03135d185158e5c4ab2d132194",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4680048/everton-squad-update-for-pre-season-opener"
+    },
+    {
+      "candidate_id": "23f1cad5cd441dec3b6ed10bee8d0c601278faa7b8a9cbcc88cf53a800b962dd",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4679597/reds-on-the-ball-in-training"
+    },
+    {
+      "candidate_id": "20a63010a40ff3dffa5d9723867c5e49b5bc9ab9eb8e1d6d6c8bf646c609083d",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.tottenhamhotspur.com/news/1080390/spurs-vs-sydney-fc-how-to-watch-team-news-kit-colours-key-information"
+    }
+  ],
+  "freshness_excluded_count": 8,
+  "notes": "Shortlist only. Verification must confirm page identity and ISO published_at before discovery admission. Snippets used for scoring are not retained on this artifact. Candidates with a derivable date outside the freshness window, prior-year stamps, or excluded sections are hard-excluded when the policy freshness block is present; undatable candidates are kept for verification.",
+  "observed_at": "2026-08-13T05:00:02.219173Z",
+  "policy_id": "news-capture-triage-v1.1",
+  "schema_version": "news-capture-triage-result-v1",
+  "section_excluded_count": 0,
+  "shortlist": [
+    {
+      "candidate_id": "f65bde44bfc7359ff174f8176ea60fa1f1cf838b7eaa600a4562fa1838986800",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: The boys are back in Manchester! Picture Special",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 77,
+      "url": "https://www.mancity.com/news/mens/man-city-training-arrival-gallery-12-august-63922145",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "f015e5c49b2702fa1a846f3a498507fdbc48258285e4e7935e13ba895f58782a",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_watch_terms": [
+        "fitness",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Blues get to work under Xabi Alonso",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 76,
+      "url": "https://www.chelseafc.com/en/news/article/gallery-blues-get-to-work-under-xabi-alonso",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "6ebecb8cf755117e8b9b1e2a31a2e11cadfb131f9a236a00d7f2c76ed3ef3f72",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "United back in pre-season training",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 76,
+      "url": "https://www.manutd.com/en/news/united-back-in-pre-season-training",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "091581cb5698aba5e24c43b1747e5911106b32e6ac6b15d618989c7dc3670c4f",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_watch_terms": [
+        "injury",
+        "fitness"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Liverpool's injury list, suspensions and availability",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 76,
+      "url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "322a20842ac6480fdcaaca69b6e1f556452e226b1c2cb478937bff31097f7e26",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training gallery: Building momentum",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.chelseafc.com/en/news/article/training-gallery-building-momentum",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "91136de23c186c56efce90def5d09dd07da543201014d6e854a628f50347f024",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "3b63d847474569ed85c75868d4e19bf85648414c31d99525a39b93a82edf1310",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training Gallery: Alonso settles in at Cobham",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.chelseafc.com/en/news/article/training-gallery-alonso-settles-in-at-cobham",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "d48e39ce709e0b36f06f194ac72b13b8d86e7d14c64e78c9c59d108364bee897",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Training photos: Araujo and Mac Allister involved in Liverpool's work on Wednesday",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.liverpoolfc.com/news/training-photos-araujo-and-mac-allister-involved-liverpools-work-wednesday",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "7e86ab1cc7abed3ad0e99f15092d17d1adf14eb63bd9ae419e0270255195ff59",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [
+        "available"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Carrick hopes trio will be available for Milan",
+      "topic_hits": [],
+      "triage_score": 68,
+      "url": "https://www.manutd.com/en/news/michael-carrick-hopes-trio-can-make-milan",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "86aeeb47e455a0c9dbbb5ce770440e004f327859e65bb473fca3436ed2b7b3d0",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Rulli: City are Back event will be ‘very special moment’",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.mancity.com/news/mens/geronimo-rulli-city-are-back-63922158",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "4443e9a127f46178f0f8251e9d16dbf5c5ab1a3854a001c4cee200f66678cd76",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Carrick names side to face Leeds",
+      "topic_hits": [],
+      "triage_score": 62,
+      "url": "https://www.manutd.com/en/news/michael-carrick-names-side-to-face-leeds-at-croke-park",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "91ad9ad521141a3dc8b1dbad9ba6ada8675d794ff640050b79439b2fe1bcf72d",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Squad numbers confirmed for Anderson, Guéhi, Donnarumma and Rulli",
+      "topic_hits": [],
+      "triage_score": 61,
+      "url": "https://www.mancity.com/news/mens/new-squad-numbers-202627-63922128",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "fcb6d49f2adae97da08169b2a7d2da581f3307abd978589d72bfa3c7de65739b",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-11",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "known",
+      "published_at": "2026-08-11T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pre-Season Preview: Manchester United vs Leeds United",
+      "topic_hits": [],
+      "triage_score": 58,
+      "url": "https://www.leedsunited.com/en/news/pre-season-preview-manchester-united-vs-leeds-united",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "32a2f611eca14a49f8cea26370d724ae8aadc20c9b8ca43f4097d7ec18094aff",
+      "club_id": "fulham",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-12",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Malaga Highlights",
+      "topic_hits": [],
+      "triage_score": 58,
+      "url": "https://www.fulhamfc.com/news/2026/august/12/malaga-highlights/",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "e4adaab7e0b4662ae26bb382029ba28d407e1b27ea67b2ef149291361494a82b",
+      "club_id": "ipswich",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-08",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "known",
+      "published_at": "2026-08-08T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "TOWN SIGN SAŠA LUKIC",
+      "topic_hits": [],
+      "triage_score": 58,
+      "url": "https://www.itfc.co.uk/news/2026/august/08/town-sign-sasa-lukic/",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "334bde5f93795e9379c25d282dfd7570340b946e1c6dcfe94369e38cf1b84aca",
+      "club_id": "fulham",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-12",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T00:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Málaga 2-2 Fulham",
+      "topic_hits": [],
+      "triage_score": 57,
+      "url": "https://www.fulhamfc.com/news/2026/august/12/malaga-2-2-fulham/",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "d8b92c3375b01dc18986c4ecb06d84c46a70f06500d042d5596c3e2a69373406",
+      "club_id": "newcastle",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "line-up",
+        "starting"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Confirmed line-up: Joelinton skippers Magpies at Murrayfield",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 57,
+      "url": "https://www.newcastleunited.com/en/news/everton-friendly-team-news-26-27",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "d7a0696e2d4eada6979ccafc91cc75d297c179710fcf9724203563abcb831683",
+      "club_id": "fulham",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-12",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T00:00:00Z",
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "FUL ACCESS: Shea Signs",
+      "topic_hits": [],
+      "triage_score": 56,
+      "url": "https://www.fulhamfc.com/news/2026/august/12/ful-access--shea-signs/",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "10e49b706dce11810b1a9ee9904d0a6727eec147ca2b8d578f691eea9deb64da",
+      "club_id": "newcastle",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training",
+        "press conference"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Matthias Jaissle's first press conference as Newcastle United head coach",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 56,
+      "url": "https://www.newcastleunited.com/en/news/matthias-jaissles-first-press-conference-as-newcastle-united-head-coach",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "9f80c6033aecfbfe971f2fedd4d68af542c2b6797552ad95f59aee9f1bcf8d8a",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_watch_terms": [
+        "fitness"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Keane Lewis-Potter: Brentford’s new signings have settled in really well",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 53,
+      "url": "https://www.brentfordfc.com/en/news/article/interviews-keane-lewis-potter-pre-season-2026",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "51b3165e50e513e2b0858e0e003c2124b37add7919e45c82a9e11b4e3d54a58e",
+      "club_id": "newcastle",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "line-up"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Newcastle United 1 Everton 3",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 53,
+      "url": "https://www.newcastleunited.com/en/news/everton-friendly-report-26-27",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "7f6e0f689f86029ee64ce4745f7c1a53ba50c53cad9c6b16876113c3df43bf7f",
+      "club_id": "brighton",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Travel information: Albion face Bologna on Saturday",
+      "topic_hits": [],
+      "triage_score": 43,
+      "url": "https://www.brightonandhovealbion.com/all-latest-news",
+      "verification_status": "pending"
+    }
+  ],
+  "shortlist_count": 22,
+  "shortlist_freshness": {
+    "fresh_known": 5,
+    "freshness_rate": 0.2273,
+    "unknown": 17
+  },
+  "topic_counts": {
+    "availability_general": 3,
+    "team_news": 9
+  }
+}
