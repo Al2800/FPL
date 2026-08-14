@@ -1,0 +1,154 @@
+{
+  "account_writes": false,
+  "admitted_lead_count": 2,
+  "content_sha256": "fd533d09994df90b593ded5e69ea96425928e834d15c26019146f22602b82be0",
+  "discovery": {
+    "account_writes": false,
+    "claim_policy": "model_derived_candidate_host_validated_claim",
+    "content_sha256": "0375c98d4ba061d2a5616c1e9c6d59b2168ca848dadd685115ab05f5a593dc1d",
+    "coverage": [
+      {
+        "club_id": "arsenal",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "aston-villa",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "bournemouth",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brentford",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brighton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "chelsea",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "coventry",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "crystal-palace",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "everton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "fulham",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "hull",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "ipswich",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "leeds",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "liverpool",
+        "result_count": 2,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-city",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-united",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "newcastle",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "nottingham-forest",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "premier-league",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "sunderland",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "tottenham",
+        "result_count": 0,
+        "status": "searched"
+      }
+    ],
+    "discovery_id": "news-discovery:2026-27:2026-08-14T05:00:02.289740Z",
+    "leads": [
+      {
+        "club_id": "liverpool",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "8b5c5ef8e889a595473ba63e25e3020c30d2b750946ba61529c5acaf9bd06773",
+        "observed_at": "2026-08-14T05:00:02.289740Z",
+        "published_at": "2026-08-12T12:00:00Z",
+        "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 1,
+        "source_url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+        "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session"
+      },
+      {
+        "club_id": "liverpool",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "3e0d72b49e874e10d2b9382ce23788dfd5f2a6ba638dd8a0fbe6b75b27c0b981",
+        "observed_at": "2026-08-14T05:00:02.289740Z",
+        "published_at": "2026-08-12T12:00:00Z",
+        "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 2,
+        "source_url": "https://www.liverpoolfc.com/news/training-photos-araujo-and-mac-allister-involved-liverpools-work-wednesday",
+        "title": "Training photos: Araujo and Mac Allister involved in Liverpool's work on Wednesday"
+      }
+    ],
+    "observed_at": "2026-08-14T05:00:02.289740Z",
+    "plan_sha256": "fba3698e95b469ecf0203c5ca9f3da0fa93175321386e1daab7c15afa0c46c3e",
+    "quality": {
+      "gaps": [],
+      "rejected": []
+    },
+    "raw_search_context_retained": false,
+    "schema_version": "1.0",
+    "season": "2026-27",
+    "status": "complete"
+  },
+  "schema_version": "news-verified-discovery-bridge-v1",
+  "verification_sha256": "75080f440c01d8eb59f042428ecadef3c28db0a710d865e5c5aceb3ce00370da"
+}

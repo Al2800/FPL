@@ -1,0 +1,130 @@
+{
+  "accepted_claim_ids": [
+    "model:fc4cd637aa206d3a6b5a717b3d8c27c2573f0c339bfe9f6e8b8b6b34e617ef97",
+    "model:758d1b62c06246e89399aeb49b78d085bd21f17d13cf8d0ceea928fea483ef85",
+    "model:d42676d1c23b60d8e8e3542e4f0d403304199a0304381c3bc25e9295bd50b08b",
+    "model:85ebf1b5ee799cf68eb86d9543c6e325d2f53c6376f3e907b3aecacf8d16645e",
+    "model:31ff0f9841269d1bb260b455bfba96615c994bd34a55078cc02ee3ccb9c465bc"
+  ],
+  "available_at": "2026-08-14T07:20:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-08-14-city-oreilly-wc-return": "model:fc4cd637aa206d3a6b5a717b3d8c27c2573f0c339bfe9f6e8b8b6b34e617ef97",
+    "2026-08-14-liverpool-araujo-training": "model:758d1b62c06246e89399aeb49b78d085bd21f17d13cf8d0ceea928fea483ef85",
+    "2026-08-14-liverpool-jacquet-training": "model:d42676d1c23b60d8e8e3542e4f0d403304199a0304381c3bc25e9295bd50b08b",
+    "2026-08-14-liverpool-jones-training": "model:85ebf1b5ee799cf68eb86d9543c6e325d2f53c6376f3e907b3aecacf8d16645e",
+    "2026-08-14-liverpool-mac-allister-training": "model:31ff0f9841269d1bb260b455bfba96615c994bd34a55078cc02ee3ccb9c465bc"
+  },
+  "content_sha256": "69fcc52f9cc97d4c668c8c82a20bff4b362f6c4f46d761e4962b9d8818437814",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 51
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Skip triage verification and emit claims from titles alone",
+        "Mark undated City/Chelsea galleries as verified without ISO published_at"
+      ],
+      "boundary_id": "lane-a:2026-08-14:triage-verification",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Verify all 24 triage shortlist URLs; admit 2 LFC training pages; reject 19; needs_human 3",
+      "falsifiers": [
+        "LFC retracts Wednesday training involvement before GW1; relative published_at mapping from '2 days ago' proves wrong"
+      ],
+      "rationale": "72h gate at observed_at excludes Aug 11 LFC injury list and Aug 8 Ipswich signing from discovery admission. Only pages with recovered ISO times and concrete named training involvement were verified.",
+      "supporting_claim_ids": [
+        "model:758d1b62c06246e89399aeb49b78d085bd21f17d13cf8d0ceea928fea483ef85",
+        "model:d42676d1c23b60d8e8e3542e4f0d403304199a0304381c3bc25e9295bd50b08b",
+        "model:85ebf1b5ee799cf68eb86d9543c6e325d2f53c6376f3e907b3aecacf8d16645e",
+        "model:31ff0f9841269d1bb260b455bfba96615c994bd34a55078cc02ee3ccb9c465bc"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Emit Mac Allister as available with returned_to_training",
+        "Skip Jacquet/Jones because they are outside comparator arms"
+      ],
+      "boundary_id": "lane-a:2026-08-14:liverpool-training",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit available+returned_to_training for Araujo/Jacquet/Jones; keep Mac Allister doubtful",
+      "falsifiers": [
+        "Official LFC team news omits them from Como/GW1 squads; Mac Allister named as starter"
+      ],
+      "rationale": "Inside Training and gallery confirm session involvement. Mac Allister still lacks match-fitness declaration, so available would overclaim (prior host rejections).",
+      "supporting_claim_ids": [
+        "model:758d1b62c06246e89399aeb49b78d085bd21f17d13cf8d0ceea928fea483ef85",
+        "model:d42676d1c23b60d8e8e3542e4f0d403304199a0304381c3bc25e9295bd50b08b",
+        "model:85ebf1b5ee799cf68eb86d9543c6e325d2f53c6376f3e907b3aecacf8d16645e",
+        "model:31ff0f9841269d1bb260b455bfba96615c994bd34a55078cc02ee3ccb9c465bc"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Ignore City CFA arrival gallery because it was not on the morning triage shortlist",
+        "Claim O'Reilly GW1 starter from return caption alone"
+      ],
+      "boundary_id": "lane-a:2026-08-14:city-return",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Admit O'Reilly returned_to_training from dated City CFA arrival gallery",
+      "falsifiers": [
+        "Official City XI excludes O'Reilly through GW1; page caption misidentified"
+      ],
+      "rationale": "Caption explicitly states O'Reilly returns from World Cup; Community Shield is 16 Aug so GW1 minutes still open.",
+      "supporting_claim_ids": [
+        "model:fc4cd637aa206d3a6b5a717b3d8c27c2573f0c339bfe9f6e8b8b6b34e617ef97"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "b2e390446006a53841189b12657089632e4c8a8f8d3edfab9b8dde30f5f3b76e",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "db5c21604179005eef9be6b06d839a032e406e8a7fce6513ab6dcafa4d2dfd51",
+      "source_url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session"
+    },
+    {
+      "source_hash_sha256": "57f5abd40b3433d1255b53fe07776abdb4810e95fa55497f990ab1d1aeca9cdc",
+      "source_url": "https://www.liverpoolfc.com/news/training-photos-araujo-and-mac-allister-involved-liverpools-work-wednesday"
+    },
+    {
+      "source_hash_sha256": "28479dc90ca0cb0f75a24a8a07896c91784efb7caf30d2a18cc30802225ade2a",
+      "source_url": "https://www.mancity.com/news/mens/man-city-training-arrival-gallery-12-august-63922145"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "ea866e71ef212ff467545c0fdc8c8aa71f4e9ff48ce9ccf4bdcf4047d3772b33",
+  "observed_at": "2026-08-14T07:13:18Z",
+  "prior_ledger_sha256": "b00a36064f251c83f6fa48a43ad6f13852a32d4c96018c3b8aa1f9b87d3ae949",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "62f5d4daebdb973e61ec4ab16630a73e85d5dbedfb81024f537d88da0bd3a790",
+  "run_id": "cursor-grok-4.5-high:2026-08-14T071318Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 3,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}

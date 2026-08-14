@@ -1,0 +1,254 @@
+{
+  "verifications": [
+    {
+      "candidate_id": "d7c558f003cdbd9d7a4152399c7f270ce9d9ce6a34712f5cfa9722ba767939fa",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Official LFC injury/availability page published 2026-08-11T00:00:00Z. At observed_at 2026-08-14T07:13:18Z this is outside the 72h discovery gate (cutoff ~2026-08-11T07:13:18Z). Page still useful as research context (Gomez muscle injury; Bradley/Ekitike/Leoni long-term; Bajcetic Aug 1 training-full quote) but must not be admitted via discovery today.",
+      "matched_players": [
+        "Bajcetic",
+        "Bradley",
+        "Ekitike",
+        "Leoni",
+        "Gomez",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "published_at": "2026-08-11T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "c9e781e136b905d6e50e1fab6712a358898876556bbac0ec4f86a951e33a54d9",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Manchester City City-Are-Back training gallery; no precise ISO publication time recovered and no named GW1 availability/minutes claim suitable for ledger admission.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "3a1d88822505e50d69dc71b1903016af86d0a7540290906885e4b9541e25d727",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Chelsea training gallery without recovered ISO published_at and without a precise availability claim beyond general pre-season work.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "4d3f716ff37864e0e38d63945f212f6791c741c4bde1df14c645cfb4bd9c8097",
+      "status": "verified",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Official LFC Inside Training: Araujo, Mac Allister, Jacquet and Jones took part in Wednesday session; Jacquet/Jones had missed Monaco. Relative 'Published 2 days ago' at fetch maps to 2026-08-12.",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "published_at": "2026-08-12T12:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "12165e6564969106012a3d330e64324a8bc9259491af8615dc2b6dfaefd4b2ed",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "City Are Back fan/reaction item; no player-specific availability or minutes claim; no ISO published_at.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "e33bd91cd308428c3aad108849bf3896f686e2170818f1bdd31289e7743ee880",
+      "status": "needs_human",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Premier League club-by-club injury hub is current-season but has no stable ISO published_at and aggregates many clubs; human timestamp linkage required before any claim admission.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "94f4b83ef2d9bb3c21b1b6f7b5133a06f40ddad01fc87025d256bdf8c2940bac",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Chelsea Cobham training gallery; no ISO published_at; no precise GW1 minutes claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "4324970efe70cbc4887b939bf0405a892ac84ba421deb191e238a5360a44cc3e",
+      "status": "verified",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Official LFC training gallery: Mac Allister (post-WC return) and new signing Araujo involved on Wednesday at AXA. Relative 'Published 2 days ago' maps to 2026-08-12.",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister"
+      ],
+      "published_at": "2026-08-12T12:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "0f4edc67db600963fbfbeea980e6be7ff7e49b21cd6ef94656a0f4fc5174ab3f",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "United page about hoped availability for Milan friendly; no ISO published_at recovered and no concrete GW1 availability statement for Bruno/Shaw.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "5f1330e5c0833c73323c631e3b3948cfa89be952ab5dc4ccbecc86bcfc9f0179",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "City Are Back fan gallery; no player availability claim; no ISO published_at.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "7367c7ff93aac1c5787c8b073118c13dff62e2da69e42387d96948b30c3517fd",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Brentford interview on new signings settling; no ISO published_at and no Thiago/selected-player availability claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "37d156bfa5e42a26195451a2bdf7d062473b654fc43ab709d87901dd64d51617",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Leeds pre-season report vs Man Utd; match narrative only, no Wilson/Calvert-Lewin GW1 availability claim.",
+      "published_at": "2026-08-12T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "46e85c6f2ff1e8b44ffe522450976ec0b290121b4f6691abc07b4581e70066dd",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Leeds Through-the-Lens photo package; no player availability claim.",
+      "published_at": "2026-08-13T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "9add7177f8fb5ca2771667b12981bf635f55666bd2659d973ce8e94bbc11995d",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Daniel Farke post-match quotes; no GW1 availability claim.",
+      "published_at": "2026-08-12T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "cbfedbec77553a51ccda1ca971a83a60f605a3fef81873bc5e2790812b369d41",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Anton Stach post-match quotes; no GW1 availability claim.",
+      "published_at": "2026-08-12T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "6051c961542ba6e181c41d4eed42be9085f82fc669c101230d5057f62de2d66f",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Leeds Soldier Field photo gallery published 2026-08-03; outside 72h discovery gate and no current availability claim.",
+      "published_at": "2026-08-03T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "27b6fd8abb8838ec9b7c5f420469c97bc373ef63bd1fd34affde193e85becbc0",
+      "status": "needs_human",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": false,
+      "notes": "United 'Carrick names side to face Leeds' URL resolved but ephemeral fetch did not expose a usable named XI body (likely soft-block). Human re-check required before any lineup claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "7c5c84c6681ba08fc3c75c667e696860c5e33e47f50c277e65340122e209cdd6",
+      "status": "needs_human",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Chelsea official gallery states Joao Pedro was involved in the first Cobham session under Alonso. No ISO published_at on page; retain as corroboration only, not ledger-ready.",
+      "matched_players": [
+        "Joao Pedro"
+      ],
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "eed22754b66b3c2aa3211fc22ad23809485f3431b1b8876840f55beea24a433e",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "United friendly result page; no ISO published_at recovered and no GW1 availability claim for Bruno/Shaw.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "7d281a60164e85b8ad99ca091661f5fb113eac532720d4c5cdaf26d36250a31c",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Fulham Malaga access feature; dated but no selected-15 availability claim.",
+      "published_at": "2026-08-13T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "9b3473be99362aa437cc1effdde2629b326d667284aa81dd121256a0eaf69d27",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Fulham Malaga highlights; dated match content only.",
+      "published_at": "2026-08-12T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "36692196c4b775af4fc3421901afc031e8814fb7489702e7a7265a6a02026bae",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Fulham-hosted FPL Scout feature on new boys; not a club availability claim for ledger.",
+      "published_at": "2026-08-13T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "4d341c396c4804ead778bab6fb629fa1f54c6e9ed0a0ce4a8e7c79658e9625a7",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Ipswich signing announcement published 2026-08-08; outside 72h discovery gate. Signing context only.",
+      "published_at": "2026-08-08T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "f8dc6fff2b4624673914856e85df6d8c054ca078a38dcf0932db0b3d91747c7f",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "page_identity_ok": true,
+      "notes": "Confirmed line-up page is on newcastleunited.com while catalogue official_domain is nufc.co.uk; discovery gate rejects domain mismatch. No ISO published_at.",
+      "publication_time_status": "unknown"
+    }
+  ]
+}
