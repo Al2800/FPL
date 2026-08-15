@@ -1,0 +1,733 @@
+{
+  "account_writes": false,
+  "candidate_count": 35,
+  "capture_id": "news-capture:2026-27:2026-08-15T05:00:01.877455Z",
+  "capture_sha256": "ca5aceed242897cb58c6d545a7cdd0a5d88ad482bd198341796a525706962341",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "465eb2ca18b45a672273f33554cfe609a6e08f97901a996e7fdcd6bf4acdb145",
+  "demoted_candidate_count": 1,
+  "excluded_candidate_count": 14,
+  "excluded_candidates": [
+    {
+      "candidate_id": "6cb26062776443fde4afe62f219a6fc9b89b1e351f185f82c27f2e133a745147",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4679316/villans-return-for-pre-season"
+    },
+    {
+      "candidate_id": "1162054d47a80426f6d8a0a25aa362b279f6d7d7650675e27edf64812abaa0c9",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.brightonandhovealbion.com/media-article/mft-news-pre-season-trip-details-confirmed-july-2026"
+    },
+    {
+      "candidate_id": "044b89d5ed898929d2484e22781f1d161a50ac1689267d28c5cbec3449d0fca2",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.chelseafc.com/en/news/article/watch-chelsea-train-live-in-sydney"
+    },
+    {
+      "candidate_id": "0826f3d65e2b186f6cbd078e02080cb4bf61990660ccf1574be8a7fdb9b21e0f",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fulhamfc.com/news/2026/july/24/pre-season-update/"
+    },
+    {
+      "candidate_id": "9d5d2669eb27d86c1218eb963c5890b1b74fb3da4da6bf54bb96b394e4c21c4a",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fulhamfc.com/news/2026/july/15/first-day-back/"
+    },
+    {
+      "candidate_id": "73ee7ee393857b2b44edafd9ec25889f935610020a3ac71678c556773bf0c3fe",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.itfc.co.uk/news/2026/june/16/pre-season-schedule-confirmed/"
+    },
+    {
+      "candidate_id": "1eba9ce189d83eb77798b84344dc1cdf50476950909d16e91511fc1ef02b9d7b",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.leedsunited.com/en/news/ticket-update-on-rb-leipzig-and-fc-augsburg-friendly-matches"
+    },
+    {
+      "candidate_id": "556064a7f58c4bf8c77c7570a5ae19d8363c46c45ceb8fd936dc02dfa37101b5",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.liverpoolfc.com/news/liverpool-play-extra-friendly-como-1907-behind-closed-doors"
+    },
+    {
+      "candidate_id": "758eacc633f0b8e60dacabed55c24339aad3ff0012388b4a99bf5758a1ffa9b3",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.newcastleunited.com/en/news/in-pictures-newcastle-united-stars-return-for-26-27-pre-season"
+    },
+    {
+      "candidate_id": "bf386343eb7ca94a89be2af885f708cc4bfee0783d624e1a256e70d4951b1232",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4679267/the-reds-are-back"
+    },
+    {
+      "candidate_id": "7abfdcf4cb9a3a98f5667a3e107b0e4c9e5a02cda18c87a411b538ca9b066867",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4678380/premier-league-clubs-return-for-pre-season-key-dates-friendlies-and-training-updates"
+    },
+    {
+      "candidate_id": "9cdb90fc3ac13d437f4ea367415d9e5551c313f906970361fe43d4ed5eed6e96",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4679613"
+    },
+    {
+      "candidate_id": "095bf711cb5712f2c2f57608483f8578a620db56c4eec01431a8383f9b904c2f",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4606700/premier-league-clubs-2026-pre-season-fixtures-and-results"
+    },
+    {
+      "candidate_id": "82bf6e0851f11da88c592fd4d4940d03bffb27561c4750eda2640310be7286cf",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.safc.com/news/2026/july/15/watch-sunderland-s-2026-27-pre-season-campaign-live/"
+    }
+  ],
+  "freshness_excluded_count": 14,
+  "notes": "Shortlist only. Verification must confirm page identity and ISO published_at before discovery admission. Snippets used for scoring are not retained on this artifact. Candidates with a derivable date outside the freshness window, prior-year stamps, or excluded sections are hard-excluded when the policy freshness block is present; undatable candidates are kept for verification.",
+  "observed_at": "2026-08-15T05:00:01.877455Z",
+  "policy_id": "news-capture-triage-v1.1",
+  "schema_version": "news-capture-triage-result-v1",
+  "section_excluded_count": 0,
+  "shortlist": [
+    {
+      "candidate_id": "f7297282cc54acb2ec44e9cb38ee74898a40422c599316456dfda13b3452bb49",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform bruno_minutes, team_news",
+      "matched_watch_terms": [
+        "fernandes",
+        "bruno",
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Manchester United homepage",
+      "topic_hits": [
+        "bruno_minutes",
+        "team_news"
+      ],
+      "triage_score": 88,
+      "url": "https://www.manutd.com/en",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "2dc9b48b6a170efc05d587adde57e6e528c5b1ad5c60a88a68e874f5e3b5be7a",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, haaland_minutes",
+      "matched_watch_terms": [
+        "haaland",
+        "fitness"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Maresca fitness update on McAidoo, Haaland and Rodri",
+      "topic_hits": [
+        "availability_general",
+        "haaland_minutes"
+      ],
+      "triage_score": 82,
+      "url": "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "65e757ff914787c70810d9a76ea99ee1530fdae19a74119b83f3d1da5d22bec4",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training: Blues begin preseason week two!",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.mancity.com/news/mens/man-city-mens-training-gallery-27-july-63920753",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "e45adf817ccb809bc7fed7abb8b7f3fcef1d7ee31bfa6a17110cd09d699645f3",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "3867843ef9396810c6fb92293d503474c3a253ad40622754926af97275ae17a3",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Blues get to work under Xabi Alonso",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 71,
+      "url": "https://www.chelseafc.com/en/news/article/gallery-blues-get-to-work-under-xabi-alonso",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "5a779ff3dbffd06e8f8b39a9939552ad425ba9a5e83da9131e2f8ec253aacbe5",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Liverpool's injury list, suspensions and availability",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 71,
+      "url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "598642953d9e102fe36cbf6684863c62e4207ae8f4d7db82011b063199b53dfb",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Arriving for pre-season training!",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 70,
+      "url": "https://www.chelseafc.com/en/news/article/gallery-arriving-for-pre-season-training",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "b4fc155041cd253b62b04de8cc23c00f6d692dc499da9c33edb943554c463ec0",
+      "club_id": "premier-league",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Premier League Latest Injury News – Club by Club Updates",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 70,
+      "url": "https://www.premierleague.com/en/latest-player-injuries",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "88ec2f482e45a40b3a0cddedf105b1d4f8de4cb353c4de19b909f1c2da9ff7cb",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pre Season Pay Per View",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://help.arsenal.com/support/solutions/articles/101000591127-pre-season-pay-per-view",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "81e4ffc0249959d5bc856dc0eacdfaab8cbe5aa06300a749cd8e507f8eb8d59a",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Confirmed Chelsea squad for 2026 pre-season tour",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.chelseafc.com/en/news/article/confirmed-chelsea-travelling-squad-for-2026-pre-season-tour",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "4e03cb183a873228020ed65a394b1513ae67dd82c10d02896fc5956e4c44b032",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-03",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [
+        "minutes"
+      ],
+      "publication_time_status": "known",
+      "published_at": "2026-08-03T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "20 photos from Soldier Field",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.leedsunited.com/en/news/20-photos-from-soldier-field-as-leeds-defeat-liverpool-4-2",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "572e8c6b13dd9ed1009304d5dcd674bd607d0edfde81041075675d1ae37bfcd3",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "FA Community Shield",
+      "topic_hits": [],
+      "triage_score": 62,
+      "url": "https://help.arsenal.com/support/solutions/101000258386",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "d3e49304e7d2c6a595a189429c3ce187942539e90c38a393463197390d120cee",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "City Are Back: Foden can't wait for new season",
+      "topic_hits": [],
+      "triage_score": 60,
+      "url": "https://www.mancity.com/news/mens/city-are-back-phil-foden-written-63890030",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "f6647963e939d0f367c1ba06334567e7a895df9735eb715681c8cb7cc184c472",
+      "club_id": "tottenham",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "team news",
+        "minutes"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Spurs v Hoffenheim: team news",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 58,
+      "url": "https://www.tottenhamhotspur.com/news/1085394/spurs-vs-hoffenheim-how-to-watch-team-news-kit-colours-key-information",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "10894ecc3cbd8ff1ed8928bc4f49514e33a294a8e807c96874f0bc4f92eed7f8",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Brentford announce pre-season friendlies against Frankfurt and Rennes",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 53,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-brentford-stade-rennais-eintracht-frankfurt-pre-season-friendlies",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "1981935c6387c51cbc9c89d50f9ff073ebac51d68cf62cdff3d19f0af78f1c4a",
+      "club_id": "newcastle",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "lineup"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Men. | NUFC",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 53,
+      "url": "https://www.newcastleunited.com/en/news/listing/mens-news",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "693d2c98645f3e06a315b32b0dbbf7ef334f3c1ab1b29c61d2a5658220ea5202",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Injury update: Thiago and Nunes to feature in behind-closed-doors friendly",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 52,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-igor-thiago-gustavo-nunes-injury-update",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "2dbe042da9c1c5caceccf8187417e3272589d47ca79132172234569dbe013e25",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [
+        "guardiola"
+      ],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "historical_manager_marker",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pep gives Foden and Rodri injury update",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 46,
+      "url": "https://www.mancity.com/news/mens/pep-guardiola-palermo-preview-written-63890284",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "7abc97e27d1d145739e3e838f694d0f8d146e45ecbcefe21f43022d7682ac54c",
+      "club_id": "everton",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Home - Everton Football Club",
+      "topic_hits": [],
+      "triage_score": 43,
+      "url": "https://www.evertonfc.com/home/?page_id=2978",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "e63c790aedaf8c72b8a3e7aac68ef6104a454fa94413ba499c1ac6b20029a9d0",
+      "club_id": "leeds",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "lineup"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "external_challenge_only",
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "external_candidate",
+      "stale_year_hits": [],
+      "title": "FPL Predicted Lineups",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 16,
+      "url": "https://fpl.team/lineups/",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "44edeadbfd8a9e5411570cd8c3e1347bb8be00f0eb79cece22f9bb7da44a4ae4",
+      "club_id": "crystal-palace",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_watch_terms": [],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "external_challenge_only",
+        "high_search_rank",
+        "needs_publication_time_verification"
+      ],
+      "source_class": "external_candidate",
+      "stale_year_hits": [],
+      "title": "Are Crystal Palace making a huge mistake this summer?",
+      "topic_hits": [],
+      "triage_score": 8,
+      "url": "https://www.fourfourtwo.com/team/are-crystal-palace-making-a-huge-mistake-this-summer",
+      "verification_status": "pending"
+    }
+  ],
+  "shortlist_count": 21,
+  "shortlist_freshness": {
+    "fresh_known": 1,
+    "freshness_rate": 0.0476,
+    "unknown": 20
+  },
+  "topic_counts": {
+    "availability_general": 5,
+    "bruno_minutes": 1,
+    "haaland_minutes": 1,
+    "team_news": 9
+  }
+}
