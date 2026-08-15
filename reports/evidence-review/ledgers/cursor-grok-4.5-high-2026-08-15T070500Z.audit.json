@@ -1,0 +1,125 @@
+{
+  "accepted_claim_ids": [
+    "model:30b694ebb53a4ed137bffa1c3b6fef907a501ac8833514d0f40dcb8d69f9f4b7",
+    "model:fc4ea2c8d58b509e58a3bcb4fd4a0f09495be28b84df9a3ebc29b60b648dd4a5",
+    "model:56b5b5afe3d843b0c1554ff7ec767ca5a07fc1885eb8c9920e2270a1db9298c5",
+    "model:19281e81946f91c0bb958e19259bd02e190deb3c52b299fb6d98ae6a6fbbbb99",
+    "model:474ef8cc29440b06e7f0b8d069dd3f0f1bbb24dcec899e51491b0ac270d41560",
+    "model:3ead968c873bcf7c742a4d61d365d89e2deb952d8a35bb6c912c430adb8d0a52"
+  ],
+  "available_at": "2026-08-15T07:10:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-08-15-arsenal-saka-available-cs": "model:19281e81946f91c0bb958e19259bd02e190deb3c52b299fb6d98ae6a6fbbbb99",
+    "2026-08-15-arsenal-saliba-unavailable": "model:474ef8cc29440b06e7f0b8d069dd3f0f1bbb24dcec899e51491b0ac270d41560",
+    "2026-08-15-arsenal-timber-unavailable": "model:3ead968c873bcf7c742a4d61d365d89e2deb952d8a35bb6c912c430adb8d0a52",
+    "2026-08-15-city-haaland-declared-fit": "model:30b694ebb53a4ed137bffa1c3b6fef907a501ac8833514d0f40dcb8d69f9f4b7",
+    "2026-08-15-city-rodri-rehab": "model:fc4ea2c8d58b509e58a3bcb4fd4a0f09495be28b84df9a3ebc29b60b648dd4a5",
+    "2026-08-15-spurs-porro-late-return": "model:56b5b5afe3d843b0c1554ff7ec767ca5a07fc1885eb8c9920e2270a1db9298c5"
+  },
+  "content_sha256": "0ed276d51b5e82d8b4e76dfb94307db8d9aea3f4bb5a440938752f44c1646f80",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 124
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Ignore undated City training galleries",
+        "Treat heel note as unavailable without manager clearance"
+      ],
+      "boundary_id": "haaland-availability",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit available/declared_fit claim for Haaland from Maresca CS presser page",
+      "falsifiers": [
+        "Official City XI omits Haaland for GW1",
+        "Post-CS update reopens heel issue"
+      ],
+      "rationale": "Dated official City page within 72h states Haaland is okay for the start of the season despite sitting out some training; material to premium override and captaincy.",
+      "supporting_claim_ids": [
+        "model:30b694ebb53a4ed137bffa1c3b6fef907a501ac8833514d0f40dcb8d69f9f4b7"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Treat Timber as doubtful-only without unavailable status"
+      ],
+      "boundary_id": "arsenal-defensive-absences",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Emit unavailable claims for Saliba and Timber from Arteta CS update",
+      "falsifiers": [
+        "Official Arsenal update accelerates Timber/Saliba return before GW1"
+      ],
+      "rationale": "Dated official Arsenal fitness update confirms both remain out of the Community Shield window; matches bootstrap injury flags.",
+      "supporting_claim_ids": [
+        "model:474ef8cc29440b06e7f0b8d069dd3f0f1bbb24dcec899e51491b0ac270d41560",
+        "model:3ead968c873bcf7c742a4d61d365d89e2deb952d8a35bb6c912c430adb8d0a52"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Admit undated Chelsea Jo\u00e3o Pedro gallery",
+        "Admit legacy Brentford Thiago injury-update URL"
+      ],
+      "boundary_id": "non-claims",
+      "confidence": 0.75,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit Jo\u00e3o Pedro/Thiago/Bruno claims from undated or legacy pages",
+      "falsifiers": [
+        "Fresh dated Chelsea/United/Brentford pages with precise minutes statements"
+      ],
+      "rationale": "Chelsea galleries lack ISO times; Brentford Thiago URL looks like legacy copy; United homepage has no concrete statement.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "8b903a694effee90319690d0248d75308187728f0851e1beca07b8da0ae8aa9e",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "59919a573fa36c948c71a2b399724e06432a76aeeddf2baca72b9f864f1c5e6e",
+      "source_url": "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+    },
+    {
+      "source_hash_sha256": "c94894d8211334175ea6f784800c70254a544d07aa97242a3eadf410b421a9fc",
+      "source_url": "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297"
+    },
+    {
+      "source_hash_sha256": "03457c25546f367462d35547fe9b1990327b5f07d8d566b69270020c4d778c6d",
+      "source_url": "https://www.tottenhamhotspur.com/news/1085394/spurs-vs-hoffenheim-how-to-watch-team-news-kit-colours-key-information"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "2c0a8abde972edb7aefd881b1ed13713b92e5db1be8256cbbf94e83427a29974",
+  "observed_at": "2026-08-15T07:05:00Z",
+  "prior_ledger_sha256": "62f5d4daebdb973e61ec4ab16630a73e85d5dbedfb81024f537d88da0bd3a790",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "f2397d8fd295e2f630a2a9337d77abf2c8ca63f0d9fd14d501c4eddf60a4f777",
+  "run_id": "cursor-grok-4.5-high:2026-08-15T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}

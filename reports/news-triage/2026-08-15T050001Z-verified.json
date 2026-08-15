@@ -1,0 +1,985 @@
+{
+  "account_writes": false,
+  "capture_id": "news-capture:2026-27:2026-08-15T05:00:01.877455Z",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "1609806533d07af37d099822ee93258c33a5d8e57bd972d23838a51c754d4a3b",
+  "notes": "Verified rows have ISO published_at and may be converted into discovery search_results. They are still not ledger claims.",
+  "observed_at": "2026-08-15T05:00:01.877455Z",
+  "rejected": [
+    {
+      "candidate_id": "f7297282cc54acb2ec44e9cb38ee74898a40422c599316456dfda13b3452bb49",
+      "notes": "Manchester United homepage only; Cloudflare/soft content; no concrete Bruno/Shaw GW1 availability statement.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "65e757ff914787c70810d9a76ea99ee1530fdae19a74119b83f3d1da5d22bec4",
+      "notes": "July 27 City training gallery; outside freshness window / not a current minutes claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "3867843ef9396810c6fb92293d503474c3a253ad40622754926af97275ae17a3",
+      "notes": "Chelsea Cobham training gallery; no recoverable ISO published_at; João Pedro named in session historically but no fresh GW1 claim today.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "5a779ff3dbffd06e8f8b39a9939552ad425ba9a5e83da9131e2f8ec253aacbe5",
+      "notes": "Official LFC injury/availability page published 2026-08-11T00:00:00Z is outside the 72h discovery gate at observed_at 2026-08-15T07:05:00Z (cutoff 2026-08-12T07:05:00Z). Research context only (Gomez/Bradley/Bajcetic).",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "598642953d9e102fe36cbf6684863c62e4207ae8f4d7db82011b063199b53dfb",
+      "notes": "Chelsea arriving gallery; no ISO published_at; no precise availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "b4fc155041cd253b62b04de8cc23c00f6d692dc499da9c33edb943554c463ec0",
+      "notes": "Premier League club-by-club injury hub has no stable ISO published_at; aggregate page needs human timestamp linkage.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "88ec2f482e45a40b3a0cddedf105b1d4f8de4cb353c4de19b909f1c2da9ff7cb",
+      "notes": "Arsenal help/PPV article; not availability/minutes evidence.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "81e4ffc0249959d5bc856dc0eacdfaab8cbe5aa06300a749cd8e507f8eb8d59a",
+      "notes": "Chelsea tour squad list is pre-tour context, not a current GW1 availability claim; no ISO published_at recovered.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "4e03cb183a873228020ed65a394b1513ae67dd82c10d02896fc5956e4c44b032",
+      "notes": "Leeds photo package dated 2026-08-03; outside 72h gate and no player availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "572e8c6b13dd9ed1009304d5dcd674bd607d0edfde81041075675d1ae37bfcd3",
+      "notes": "Arsenal help Community Shield hub; not a player availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "d3e49304e7d2c6a595a189429c3ce187942539e90c38a393463197390d120cee",
+      "notes": "City Are Back Foden feature; no precise current availability claim; no usable ISO for 72h admission today.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "10894ecc3cbd8ff1ed8928bc4f49514e33a294a8e807c96874f0bc4f92eed7f8",
+      "notes": "Brentford friendlies announcement; scheduling only, no availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "1981935c6387c51cbc9c89d50f9ff073ebac51d68cf62cdff3d19f0af78f1c4a",
+      "notes": "Newcastle news listing on newcastleunited.com; catalogue domain is nufc.co.uk — domain mismatch / no specific dated claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "693d2c98645f3e06a315b32b0dbbf7ef334f3c1ab1b29c61d2a5658220ea5202",
+      "notes": "Brentford Thiago/Nunes injury-update URL resurfaces legacy preseason copy (competitive-debut framing / Wissa-era context) without recoverable current ISO published_at; do not treat as 2026/27 GW1 evidence.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "2dbe042da9c1c5caceccf8187417e3272589d47ca79132172234569dbe013e25",
+      "notes": "Legacy Pep/Palermo injury-update URL; stale manager context and not a current Maresca-era claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "7abc97e27d1d145739e3e838f694d0f8d146e45ecbcefe21f43022d7682ac54c",
+      "notes": "Everton homepage; no player-specific availability statement.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "e63c790aedaf8c72b8a3e7aac68ef6104a454fa94413ba499c1ac6b20029a9d0",
+      "notes": "External predicted-lineups site; unregistered community source — briefing-only, never admit.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "44edeadbfd8a9e5411570cd8c3e1347bb8be00f0eb79cece22f9bb7da44a4ae4",
+      "notes": "External FourFourTwo article; unregistered — reject for ledger.",
+      "reason": "verification_rejected"
+    }
+  ],
+  "schema_version": "news-capture-verification-result-v1",
+  "shortlist": [
+    {
+      "candidate_id": "f7297282cc54acb2ec44e9cb38ee74898a40422c599316456dfda13b3452bb49",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform bruno_minutes, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fernandes",
+        "bruno",
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Manchester United homepage",
+      "topic_hits": [
+        "bruno_minutes",
+        "team_news"
+      ],
+      "triage_score": 88,
+      "url": "https://www.manutd.com/en",
+      "verification_notes": "Manchester United homepage only; Cloudflare/soft content; no concrete Bruno/Shaw GW1 availability statement.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "2dc9b48b6a170efc05d587adde57e6e528c5b1ad5c60a88a68e874f5e3b5be7a",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, haaland_minutes",
+      "matched_players": [
+        "Haaland",
+        "Rodri"
+      ],
+      "matched_watch_terms": [
+        "haaland",
+        "fitness"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-14T12:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Maresca fitness update on McAidoo, Haaland and Rodri",
+      "topic_hits": [
+        "availability_general",
+        "haaland_minutes"
+      ],
+      "triage_score": 82,
+      "url": "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297",
+      "verification_notes": "Official Man City Maresca Community Shield fitness update (datePublished 2026-08-14). Haaland sat out some training with minor heel issues but Maresca says he is okay / fine for the start of the season; Rodri in rehab post minor back surgery.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "65e757ff914787c70810d9a76ea99ee1530fdae19a74119b83f3d1da5d22bec4",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training: Blues begin preseason week two!",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.mancity.com/news/mens/man-city-mens-training-gallery-27-july-63920753",
+      "verification_notes": "July 27 City training gallery; outside freshness window / not a current minutes claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "e45adf817ccb809bc7fed7abb8b7f3fcef1d7ee31bfa6a17110cd09d699645f3",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T17:30:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+      "verification_notes": "Official LFC Inside Training: Araujo, Mac Allister, Jacquet and Jones took part in Wednesday session. datePublished 2026-08-12T17:30:00Z. Already represented on tip ledger; re-verify for freshness only.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "3867843ef9396810c6fb92293d503474c3a253ad40622754926af97275ae17a3",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "João Pedro"
+      ],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Blues get to work under Xabi Alonso",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 71,
+      "url": "https://www.chelseafc.com/en/news/article/gallery-blues-get-to-work-under-xabi-alonso",
+      "verification_notes": "Chelsea Cobham training gallery; no recoverable ISO published_at; João Pedro named in session historically but no fresh GW1 claim today.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "5a779ff3dbffd06e8f8b39a9939552ad425ba9a5e83da9131e2f8ec253aacbe5",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [
+        "Bajcetic",
+        "Bradley",
+        "Gomez",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Liverpool's injury list, suspensions and availability",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 71,
+      "url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "verification_notes": "Official LFC injury/availability page published 2026-08-11T00:00:00Z is outside the 72h discovery gate at observed_at 2026-08-15T07:05:00Z (cutoff 2026-08-12T07:05:00Z). Research context only (Gomez/Bradley/Bajcetic).",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "598642953d9e102fe36cbf6684863c62e4207ae8f4d7db82011b063199b53dfb",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Arriving for pre-season training!",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 70,
+      "url": "https://www.chelseafc.com/en/news/article/gallery-arriving-for-pre-season-training",
+      "verification_notes": "Chelsea arriving gallery; no ISO published_at; no precise availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "b4fc155041cd253b62b04de8cc23c00f6d692dc499da9c33edb943554c463ec0",
+      "club_id": "premier-league",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Premier League Latest Injury News – Club by Club Updates",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 70,
+      "url": "https://www.premierleague.com/en/latest-player-injuries",
+      "verification_notes": "Premier League club-by-club injury hub has no stable ISO published_at; aggregate page needs human timestamp linkage.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "88ec2f482e45a40b3a0cddedf105b1d4f8de4cb353c4de19b909f1c2da9ff7cb",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pre Season Pay Per View",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://help.arsenal.com/support/solutions/articles/101000591127-pre-season-pay-per-view",
+      "verification_notes": "Arsenal help/PPV article; not availability/minutes evidence.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "81e4ffc0249959d5bc856dc0eacdfaab8cbe5aa06300a749cd8e507f8eb8d59a",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Confirmed Chelsea squad for 2026 pre-season tour",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.chelseafc.com/en/news/article/confirmed-chelsea-travelling-squad-for-2026-pre-season-tour",
+      "verification_notes": "Chelsea tour squad list is pre-tour context, not a current GW1 availability claim; no ISO published_at recovered.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "4e03cb183a873228020ed65a394b1513ae67dd82c10d02896fc5956e4c44b032",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-03",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "minutes"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-03T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "20 photos from Soldier Field",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.leedsunited.com/en/news/20-photos-from-soldier-field-as-leeds-defeat-liverpool-4-2",
+      "verification_notes": "Leeds photo package dated 2026-08-03; outside 72h gate and no player availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "572e8c6b13dd9ed1009304d5dcd674bd607d0edfde81041075675d1ae37bfcd3",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "FA Community Shield",
+      "topic_hits": [],
+      "triage_score": 62,
+      "url": "https://help.arsenal.com/support/solutions/101000258386",
+      "verification_notes": "Arsenal help Community Shield hub; not a player availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "d3e49304e7d2c6a595a189429c3ce187942539e90c38a393463197390d120cee",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "City Are Back: Foden can't wait for new season",
+      "topic_hits": [],
+      "triage_score": 60,
+      "url": "https://www.mancity.com/news/mens/city-are-back-phil-foden-written-63890030",
+      "verification_notes": "City Are Back Foden feature; no precise current availability claim; no usable ISO for 72h admission today.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "f6647963e939d0f367c1ba06334567e7a895df9735eb715681c8cb7cc184c472",
+      "club_id": "tottenham",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Pedro Porro"
+      ],
+      "matched_watch_terms": [
+        "team news",
+        "minutes"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-14T12:22:26Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Spurs v Hoffenheim: team news",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 58,
+      "url": "https://www.tottenhamhotspur.com/news/1085394/spurs-vs-hoffenheim-how-to-watch-team-news-kit-colours-key-information",
+      "verification_notes": "Official Spurs Hoffenheim team-news page datePublished 2026-08-14T12:22:26Z. De Zerbi expected to divide minutes; Pedro Porro unlikely for either friendly after late WC return. No Kinsky/Dubravka hierarchy statement.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "10894ecc3cbd8ff1ed8928bc4f49514e33a294a8e807c96874f0bc4f92eed7f8",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Brentford announce pre-season friendlies against Frankfurt and Rennes",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 53,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-brentford-stade-rennais-eintracht-frankfurt-pre-season-friendlies",
+      "verification_notes": "Brentford friendlies announcement; scheduling only, no availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "1981935c6387c51cbc9c89d50f9ff073ebac51d68cf62cdff3d19f0af78f1c4a",
+      "club_id": "newcastle",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "lineup"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Men. | NUFC",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 53,
+      "url": "https://www.newcastleunited.com/en/news/listing/mens-news",
+      "verification_notes": "Newcastle news listing on newcastleunited.com; catalogue domain is nufc.co.uk — domain mismatch / no specific dated claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "693d2c98645f3e06a315b32b0dbbf7ef334f3c1ab1b29c61d2a5658220ea5202",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [
+        "Thiago"
+      ],
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Injury update: Thiago and Nunes to feature in behind-closed-doors friendly",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 52,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-igor-thiago-gustavo-nunes-injury-update",
+      "verification_notes": "Brentford Thiago/Nunes injury-update URL resurfaces legacy preseason copy (competitive-debut framing / Wissa-era context) without recoverable current ISO published_at; do not treat as 2026/27 GW1 evidence.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "2dbe042da9c1c5caceccf8187417e3272589d47ca79132172234569dbe013e25",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [
+        "guardiola"
+      ],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "historical_manager_marker",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pep gives Foden and Rodri injury update",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 46,
+      "url": "https://www.mancity.com/news/mens/pep-guardiola-palermo-preview-written-63890284",
+      "verification_notes": "Legacy Pep/Palermo injury-update URL; stale manager context and not a current Maresca-era claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "7abc97e27d1d145739e3e838f694d0f8d146e45ecbcefe21f43022d7682ac54c",
+      "club_id": "everton",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Home - Everton Football Club",
+      "topic_hits": [],
+      "triage_score": 43,
+      "url": "https://www.evertonfc.com/home/?page_id=2978",
+      "verification_notes": "Everton homepage; no player-specific availability statement.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "e63c790aedaf8c72b8a3e7aac68ef6104a454fa94413ba499c1ac6b20029a9d0",
+      "club_id": "leeds",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "lineup"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "external_challenge_only",
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "external_candidate",
+      "stale_year_hits": [],
+      "title": "FPL Predicted Lineups",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 16,
+      "url": "https://fpl.team/lineups/",
+      "verification_notes": "External predicted-lineups site; unregistered community source — briefing-only, never admit.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "44edeadbfd8a9e5411570cd8c3e1347bb8be00f0eb79cece22f9bb7da44a4ae4",
+      "club_id": "crystal-palace",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "external_challenge_only",
+        "high_search_rank",
+        "needs_publication_time_verification"
+      ],
+      "source_class": "external_candidate",
+      "stale_year_hits": [],
+      "title": "Are Crystal Palace making a huge mistake this summer?",
+      "topic_hits": [],
+      "triage_score": 8,
+      "url": "https://www.fourfourtwo.com/team/are-crystal-palace-making-a-huge-mistake-this-summer",
+      "verification_notes": "External FourFourTwo article; unregistered — reject for ledger.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    }
+  ],
+  "triage_sha256": "465eb2ca18b45a672273f33554cfe609a6e08f97901a996e7fdcd6bf4acdb145",
+  "verified_ready_for_discovery": [
+    {
+      "candidate_id": "2dc9b48b6a170efc05d587adde57e6e528c5b1ad5c60a88a68e874f5e3b5be7a",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, haaland_minutes",
+      "matched_players": [
+        "Haaland",
+        "Rodri"
+      ],
+      "matched_watch_terms": [
+        "haaland",
+        "fitness"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-14T12:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Maresca fitness update on McAidoo, Haaland and Rodri",
+      "topic_hits": [
+        "availability_general",
+        "haaland_minutes"
+      ],
+      "triage_score": 82,
+      "url": "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297",
+      "verification_notes": "Official Man City Maresca Community Shield fitness update (datePublished 2026-08-14). Haaland sat out some training with minor heel issues but Maresca says he is okay / fine for the start of the season; Rodri in rehab post minor back surgery.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "e45adf817ccb809bc7fed7abb8b7f3fcef1d7ee31bfa6a17110cd09d699645f3",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T17:30:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+      "verification_notes": "Official LFC Inside Training: Araujo, Mac Allister, Jacquet and Jones took part in Wednesday session. datePublished 2026-08-12T17:30:00Z. Already represented on tip ledger; re-verify for freshness only.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    },
+    {
+      "candidate_id": "f6647963e939d0f367c1ba06334567e7a895df9735eb715681c8cb7cc184c472",
+      "club_id": "tottenham",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Pedro Porro"
+      ],
+      "matched_watch_terms": [
+        "team news",
+        "minutes"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-14T12:22:26Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Spurs v Hoffenheim: team news",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 58,
+      "url": "https://www.tottenhamhotspur.com/news/1085394/spurs-vs-hoffenheim-how-to-watch-team-news-kit-colours-key-information",
+      "verification_notes": "Official Spurs Hoffenheim team-news page datePublished 2026-08-14T12:22:26Z. De Zerbi expected to divide minutes; Pedro Porro unlikely for either friendly after late WC return. No Kinsky/Dubravka hierarchy statement.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)"
+    }
+  ]
+}

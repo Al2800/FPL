@@ -1,0 +1,165 @@
+{
+  "account_writes": false,
+  "admitted_lead_count": 3,
+  "content_sha256": "4600a77fa23108f85b0a62829757f0e39b427e1cef73a3b51012037913298d9d",
+  "discovery": {
+    "account_writes": false,
+    "claim_policy": "model_derived_candidate_host_validated_claim",
+    "content_sha256": "82a593e0ab5175389c9c14032eee12c44a45dff3360246ba370c43883ae84471",
+    "coverage": [
+      {
+        "club_id": "arsenal",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "aston-villa",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "bournemouth",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brentford",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brighton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "chelsea",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "coventry",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "crystal-palace",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "everton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "fulham",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "hull",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "ipswich",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "leeds",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "liverpool",
+        "result_count": 1,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-city",
+        "result_count": 1,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-united",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "newcastle",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "nottingham-forest",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "premier-league",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "sunderland",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "tottenham",
+        "result_count": 1,
+        "status": "searched"
+      }
+    ],
+    "discovery_id": "news-discovery:2026-27:2026-08-15T05:00:01.877455Z",
+    "leads": [
+      {
+        "club_id": "liverpool",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "43b83e1cbcce062dd99674c7275547599ab2e33231cd8503d7f204f416131f44",
+        "observed_at": "2026-08-15T05:00:01.877455Z",
+        "published_at": "2026-08-12T17:30:00Z",
+        "query": "site:liverpoolfc.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 2,
+        "source_url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+        "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session"
+      },
+      {
+        "club_id": "manchester-city",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "2d10b236c44f5612488b755584342d7080f92f9b9bddecd52dda10db6014070d",
+        "observed_at": "2026-08-15T05:00:01.877455Z",
+        "published_at": "2026-08-14T12:00:00Z",
+        "query": "site:mancity.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 2,
+        "source_url": "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297",
+        "title": "Maresca fitness update on McAidoo, Haaland and Rodri"
+      },
+      {
+        "club_id": "tottenham",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "7da460b38c8be7ae335292f9dd11f459a466eb9390b088ca9c8979c2cec3a27d",
+        "observed_at": "2026-08-15T05:00:01.877455Z",
+        "published_at": "2026-08-14T12:22:26Z",
+        "query": "site:tottenhamhotspur.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 1,
+        "source_url": "https://www.tottenhamhotspur.com/news/1085394/spurs-vs-hoffenheim-how-to-watch-team-news-kit-colours-key-information",
+        "title": "Spurs v Hoffenheim: team news"
+      }
+    ],
+    "observed_at": "2026-08-15T05:00:01.877455Z",
+    "plan_sha256": "c77971e5eb0643a7b03879d9e82049b681990e8d55dadabc0f53df0b7f6e9c26",
+    "quality": {
+      "gaps": [],
+      "rejected": []
+    },
+    "raw_search_context_retained": false,
+    "schema_version": "1.0",
+    "season": "2026-27",
+    "status": "complete"
+  },
+  "schema_version": "news-verified-discovery-bridge-v1",
+  "verification_sha256": "1609806533d07af37d099822ee93258c33a5d8e57bd972d23838a51c754d4a3b"
+}

@@ -1,0 +1,224 @@
+{
+  "verifications": [
+    {
+      "candidate_id": "2dc9b48b6a170efc05d587adde57e6e528c5b1ad5c60a88a68e874f5e3b5be7a",
+      "status": "verified",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Official Man City Maresca Community Shield fitness update (datePublished 2026-08-14). Haaland sat out some training with minor heel issues but Maresca says he is okay / fine for the start of the season; Rodri in rehab post minor back surgery.",
+      "published_at": "2026-08-14T12:00:00Z",
+      "publication_time_status": "known",
+      "matched_players": [
+        "Haaland",
+        "Rodri"
+      ]
+    },
+    {
+      "candidate_id": "f7297282cc54acb2ec44e9cb38ee74898a40422c599316456dfda13b3452bb49",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Manchester United homepage only; Cloudflare/soft content; no concrete Bruno/Shaw GW1 availability statement.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "65e757ff914787c70810d9a76ea99ee1530fdae19a74119b83f3d1da5d22bec4",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "July 27 City training gallery; outside freshness window / not a current minutes claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "e45adf817ccb809bc7fed7abb8b7f3fcef1d7ee31bfa6a17110cd09d699645f3",
+      "status": "verified",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Official LFC Inside Training: Araujo, Mac Allister, Jacquet and Jones took part in Wednesday session. datePublished 2026-08-12T17:30:00Z. Already represented on tip ledger; re-verify for freshness only.",
+      "published_at": "2026-08-12T17:30:00Z",
+      "publication_time_status": "known",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister",
+        "Jacquet",
+        "C.Jones"
+      ]
+    },
+    {
+      "candidate_id": "3867843ef9396810c6fb92293d503474c3a253ad40622754926af97275ae17a3",
+      "status": "needs_human",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Chelsea Cobham training gallery; no recoverable ISO published_at; João Pedro named in session historically but no fresh GW1 claim today.",
+      "publication_time_status": "unknown",
+      "matched_players": [
+        "João Pedro"
+      ]
+    },
+    {
+      "candidate_id": "5a779ff3dbffd06e8f8b39a9939552ad425ba9a5e83da9131e2f8ec253aacbe5",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Official LFC injury/availability page published 2026-08-11T00:00:00Z is outside the 72h discovery gate at observed_at 2026-08-15T07:05:00Z (cutoff 2026-08-12T07:05:00Z). Research context only (Gomez/Bradley/Bajcetic).",
+      "published_at": "2026-08-11T00:00:00Z",
+      "publication_time_status": "known",
+      "matched_players": [
+        "Bajcetic",
+        "Bradley",
+        "Gomez",
+        "Jacquet",
+        "C.Jones"
+      ]
+    },
+    {
+      "candidate_id": "598642953d9e102fe36cbf6684863c62e4207ae8f4d7db82011b063199b53dfb",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Chelsea arriving gallery; no ISO published_at; no precise availability claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "b4fc155041cd253b62b04de8cc23c00f6d692dc499da9c33edb943554c463ec0",
+      "status": "needs_human",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Premier League club-by-club injury hub has no stable ISO published_at; aggregate page needs human timestamp linkage.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "88ec2f482e45a40b3a0cddedf105b1d4f8de4cb353c4de19b909f1c2da9ff7cb",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Arsenal help/PPV article; not availability/minutes evidence.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "81e4ffc0249959d5bc856dc0eacdfaab8cbe5aa06300a749cd8e507f8eb8d59a",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Chelsea tour squad list is pre-tour context, not a current GW1 availability claim; no ISO published_at recovered.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "4e03cb183a873228020ed65a394b1513ae67dd82c10d02896fc5956e4c44b032",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Leeds photo package dated 2026-08-03; outside 72h gate and no player availability claim.",
+      "published_at": "2026-08-03T00:00:00Z",
+      "publication_time_status": "known"
+    },
+    {
+      "candidate_id": "572e8c6b13dd9ed1009304d5dcd674bd607d0edfde81041075675d1ae37bfcd3",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Arsenal help Community Shield hub; not a player availability claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "d3e49304e7d2c6a595a189429c3ce187942539e90c38a393463197390d120cee",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "City Are Back Foden feature; no precise current availability claim; no usable ISO for 72h admission today.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "f6647963e939d0f367c1ba06334567e7a895df9735eb715681c8cb7cc184c472",
+      "status": "verified",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Official Spurs Hoffenheim team-news page datePublished 2026-08-14T12:22:26Z. De Zerbi expected to divide minutes; Pedro Porro unlikely for either friendly after late WC return. No Kinsky/Dubravka hierarchy statement.",
+      "published_at": "2026-08-14T12:22:26Z",
+      "publication_time_status": "known",
+      "matched_players": [
+        "Pedro Porro"
+      ]
+    },
+    {
+      "candidate_id": "10894ecc3cbd8ff1ed8928bc4f49514e33a294a8e807c96874f0bc4f92eed7f8",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Brentford friendlies announcement; scheduling only, no availability claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "1981935c6387c51cbc9c89d50f9ff073ebac51d68cf62cdff3d19f0af78f1c4a",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Newcastle news listing on newcastleunited.com; catalogue domain is nufc.co.uk — domain mismatch / no specific dated claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "693d2c98645f3e06a315b32b0dbbf7ef334f3c1ab1b29c61d2a5658220ea5202",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Brentford Thiago/Nunes injury-update URL resurfaces legacy preseason copy (competitive-debut framing / Wissa-era context) without recoverable current ISO published_at; do not treat as 2026/27 GW1 evidence.",
+      "publication_time_status": "unknown",
+      "matched_players": [
+        "Thiago"
+      ]
+    },
+    {
+      "candidate_id": "2dbe042da9c1c5caceccf8187417e3272589d47ca79132172234569dbe013e25",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Legacy Pep/Palermo injury-update URL; stale manager context and not a current Maresca-era claim.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "7abc97e27d1d145739e3e838f694d0f8d146e45ecbcefe21f43022d7682ac54c",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "Everton homepage; no player-specific availability statement.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "e63c790aedaf8c72b8a3e7aac68ef6104a454fa94413ba499c1ac6b20029a9d0",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "External predicted-lineups site; unregistered community source — briefing-only, never admit.",
+      "publication_time_status": "unknown"
+    },
+    {
+      "candidate_id": "44edeadbfd8a9e5411570cd8c3e1347bb8be00f0eb79cece22f9bb7da44a4ae4",
+      "status": "rejected",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-15)",
+      "verified_at": "2026-08-15T07:05:00Z",
+      "page_identity_ok": true,
+      "notes": "External FourFourTwo article; unregistered — reject for ledger.",
+      "publication_time_status": "unknown"
+    }
+  ]
+}
