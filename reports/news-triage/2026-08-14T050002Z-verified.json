@@ -1,0 +1,1033 @@
+{
+  "account_writes": false,
+  "capture_id": "news-capture:2026-27:2026-08-14T05:00:02.289740Z",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "75080f440c01d8eb59f042428ecadef3c28db0a710d865e5c5aceb3ce00370da",
+  "notes": "Verified rows have ISO published_at and may be converted into discovery search_results. They are still not ledger claims.",
+  "observed_at": "2026-08-14T05:00:02.289740Z",
+  "rejected": [
+    {
+      "candidate_id": "d7c558f003cdbd9d7a4152399c7f270ce9d9ce6a34712f5cfa9722ba767939fa",
+      "notes": "Official LFC injury/availability page published 2026-08-11T00:00:00Z. At observed_at 2026-08-14T07:13:18Z this is outside the 72h discovery gate (cutoff ~2026-08-11T07:13:18Z). Page still useful as research context (Gomez muscle injury; Bradley/Ekitike/Leoni long-term; Bajcetic Aug 1 training-full quote) but must not be admitted via discovery today.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "c9e781e136b905d6e50e1fab6712a358898876556bbac0ec4f86a951e33a54d9",
+      "notes": "Manchester City City-Are-Back training gallery; no precise ISO publication time recovered and no named GW1 availability/minutes claim suitable for ledger admission.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "3a1d88822505e50d69dc71b1903016af86d0a7540290906885e4b9541e25d727",
+      "notes": "Chelsea training gallery without recovered ISO published_at and without a precise availability claim beyond general pre-season work.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "12165e6564969106012a3d330e64324a8bc9259491af8615dc2b6dfaefd4b2ed",
+      "notes": "City Are Back fan/reaction item; no player-specific availability or minutes claim; no ISO published_at.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "e33bd91cd308428c3aad108849bf3896f686e2170818f1bdd31289e7743ee880",
+      "notes": "Premier League club-by-club injury hub is current-season but has no stable ISO published_at and aggregates many clubs; human timestamp linkage required before any claim admission.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "94f4b83ef2d9bb3c21b1b6f7b5133a06f40ddad01fc87025d256bdf8c2940bac",
+      "notes": "Chelsea Cobham training gallery; no ISO published_at; no precise GW1 minutes claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "0f4edc67db600963fbfbeea980e6be7ff7e49b21cd6ef94656a0f4fc5174ab3f",
+      "notes": "United page about hoped availability for Milan friendly; no ISO published_at recovered and no concrete GW1 availability statement for Bruno/Shaw.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "5f1330e5c0833c73323c631e3b3948cfa89be952ab5dc4ccbecc86bcfc9f0179",
+      "notes": "City Are Back fan gallery; no player availability claim; no ISO published_at.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "7367c7ff93aac1c5787c8b073118c13dff62e2da69e42387d96948b30c3517fd",
+      "notes": "Brentford interview on new signings settling; no ISO published_at and no Thiago/selected-player availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "37d156bfa5e42a26195451a2bdf7d062473b654fc43ab709d87901dd64d51617",
+      "notes": "Leeds pre-season report vs Man Utd; match narrative only, no Wilson/Calvert-Lewin GW1 availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "46e85c6f2ff1e8b44ffe522450976ec0b290121b4f6691abc07b4581e70066dd",
+      "notes": "Leeds Through-the-Lens photo package; no player availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "9add7177f8fb5ca2771667b12981bf635f55666bd2659d973ce8e94bbc11995d",
+      "notes": "Daniel Farke post-match quotes; no GW1 availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "cbfedbec77553a51ccda1ca971a83a60f605a3fef81873bc5e2790812b369d41",
+      "notes": "Anton Stach post-match quotes; no GW1 availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "6051c961542ba6e181c41d4eed42be9085f82fc669c101230d5057f62de2d66f",
+      "notes": "Leeds Soldier Field photo gallery published 2026-08-03; outside 72h discovery gate and no current availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "27b6fd8abb8838ec9b7c5f420469c97bc373ef63bd1fd34affde193e85becbc0",
+      "notes": "United 'Carrick names side to face Leeds' URL resolved but ephemeral fetch did not expose a usable named XI body (likely soft-block). Human re-check required before any lineup claim.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "7c5c84c6681ba08fc3c75c667e696860c5e33e47f50c277e65340122e209cdd6",
+      "notes": "Chelsea official gallery states Joao Pedro was involved in the first Cobham session under Alonso. No ISO published_at on page; retain as corroboration only, not ledger-ready.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "eed22754b66b3c2aa3211fc22ad23809485f3431b1b8876840f55beea24a433e",
+      "notes": "United friendly result page; no ISO published_at recovered and no GW1 availability claim for Bruno/Shaw.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "7d281a60164e85b8ad99ca091661f5fb113eac532720d4c5cdaf26d36250a31c",
+      "notes": "Fulham Malaga access feature; dated but no selected-15 availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "9b3473be99362aa437cc1effdde2629b326d667284aa81dd121256a0eaf69d27",
+      "notes": "Fulham Malaga highlights; dated match content only.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "36692196c4b775af4fc3421901afc031e8814fb7489702e7a7265a6a02026bae",
+      "notes": "Fulham-hosted FPL Scout feature on new boys; not a club availability claim for ledger.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "4d341c396c4804ead778bab6fb629fa1f54c6e9ed0a0ce4a8e7c79658e9625a7",
+      "notes": "Ipswich signing announcement published 2026-08-08; outside 72h discovery gate. Signing context only.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "f8dc6fff2b4624673914856e85df6d8c054ca078a38dcf0932db0b3d91747c7f",
+      "notes": "Confirmed line-up page is on newcastleunited.com while catalogue official_domain is nufc.co.uk; discovery gate rejects domain mismatch. No ISO published_at.",
+      "reason": "verification_rejected"
+    }
+  ],
+  "schema_version": "news-capture-verification-result-v1",
+  "shortlist": [
+    {
+      "candidate_id": "d7c558f003cdbd9d7a4152399c7f270ce9d9ce6a34712f5cfa9722ba767939fa",
+      "club_id": "liverpool",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-11",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [
+        "Bajcetic",
+        "Bradley",
+        "Ekitike",
+        "Leoni",
+        "Gomez",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-11T00:00:00Z",
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Liverpool's injury list, suspensions and availability",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 86,
+      "url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability",
+      "verification_notes": "Official LFC injury/availability page published 2026-08-11T00:00:00Z. At observed_at 2026-08-14T07:13:18Z this is outside the 72h discovery gate (cutoff ~2026-08-11T07:13:18Z). Page still useful as research context (Gomez muscle injury; Bradley/Ekitike/Leoni long-term; Bajcetic Aug 1 training-full quote) but must not be admitted via discovery today.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "c9e781e136b905d6e50e1fab6712a358898876556bbac0ec4f86a951e33a54d9",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: The best pics from our City Are Back training event",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 77,
+      "url": "https://www.mancity.com/news/mens/city-are-back-training-gallery-63922221",
+      "verification_notes": "Manchester City City-Are-Back training gallery; no precise ISO publication time recovered and no named GW1 availability/minutes claim suitable for ledger admission.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "3a1d88822505e50d69dc71b1903016af86d0a7540290906885e4b9541e25d727",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training gallery: Building momentum",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.chelseafc.com/en/news/article/training-gallery-building-momentum",
+      "verification_notes": "Chelsea training gallery without recovered ISO published_at and without a precise availability claim beyond general pre-season work.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "4d3f716ff37864e0e38d63945f212f6791c741c4bde1df14c645cfb4bd9c8097",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T12:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+      "verification_notes": "Official LFC Inside Training: Araujo, Mac Allister, Jacquet and Jones took part in Wednesday session; Jacquet/Jones had missed Monaco. Relative 'Published 2 days ago' at fetch maps to 2026-08-12.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "12165e6564969106012a3d330e64324a8bc9259491af8615dc2b6dfaefd4b2ed",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Rulli: City are Back Event a 'really nice start'",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.mancity.com/news/mens/geronimo-rulli-city-are-back-reaction-man-city-63922238",
+      "verification_notes": "City Are Back fan/reaction item; no player-specific availability or minutes claim; no ISO published_at.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "e33bd91cd308428c3aad108849bf3896f686e2170818f1bdd31289e7743ee880",
+      "club_id": "premier-league",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Premier League Latest Injury News – Club by Club Updates",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 73,
+      "url": "https://www.premierleague.com/en/latest-player-injuries",
+      "verification_notes": "Premier League club-by-club injury hub is current-season but has no stable ISO published_at and aggregates many clubs; human timestamp linkage required before any claim admission.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "94f4b83ef2d9bb3c21b1b6f7b5133a06f40ddad01fc87025d256bdf8c2940bac",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training Gallery: Alonso settles in at Cobham",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.chelseafc.com/en/news/article/training-gallery-alonso-settles-in-at-cobham",
+      "verification_notes": "Chelsea Cobham training gallery; no ISO published_at; no precise GW1 minutes claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "4324970efe70cbc4887b939bf0405a892ac84ba421deb191e238a5360a44cc3e",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister"
+      ],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T12:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training photos: Araujo and Mac Allister involved in Liverpool's work on Wednesday",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.liverpoolfc.com/news/training-photos-araujo-and-mac-allister-involved-liverpools-work-wednesday",
+      "verification_notes": "Official LFC training gallery: Mac Allister (post-WC return) and new signing Araujo involved on Wednesday at AXA. Relative 'Published 2 days ago' maps to 2026-08-12.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "0f4edc67db600963fbfbeea980e6be7ff7e49b21cd6ef94656a0f4fc5174ab3f",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "available"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Carrick hopes trio will be available for Milan",
+      "topic_hits": [],
+      "triage_score": 68,
+      "url": "https://www.manutd.com/en/news/michael-carrick-hopes-trio-can-make-milan",
+      "verification_notes": "United page about hoped availability for Milan friendly; no ISO published_at recovered and no concrete GW1 availability statement for Bruno/Shaw.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "5f1330e5c0833c73323c631e3b3948cfa89be952ab5dc4ccbecc86bcfc9f0179",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "City Are Back: Maresca meets the fans",
+      "topic_hits": [],
+      "triage_score": 66,
+      "url": "https://www.mancity.com/news/mens/city-are-back-fan-gallery-63922222",
+      "verification_notes": "City Are Back fan gallery; no player availability claim; no ISO published_at.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "7367c7ff93aac1c5787c8b073118c13dff62e2da69e42387d96948b30c3517fd",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness",
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Keane Lewis-Potter: Brentford’s new signings have settled in really well",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 63,
+      "url": "https://www.brentfordfc.com/en/news/article/interviews-keane-lewis-potter-pre-season-2026",
+      "verification_notes": "Brentford interview on new signings settling; no ISO published_at and no Thiago/selected-player availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "37d156bfa5e42a26195451a2bdf7d062473b654fc43ab709d87901dd64d51617",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-12",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "minutes"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pre-Season Report: Manchester United 1-1 Leeds United",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.leedsunited.com/en/news/pre-season-report-manchester-united-1-1-leeds-united",
+      "verification_notes": "Leeds pre-season report vs Man Utd; match narrative only, no Wilson/Calvert-Lewin GW1 availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "46e85c6f2ff1e8b44ffe522450976ec0b290121b4f6691abc07b4581e70066dd",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-13",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "minutes"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-13T00:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Through the Lens: Leeds United v Man Utd at Croke Park",
+      "topic_hits": [],
+      "triage_score": 62,
+      "url": "https://www.leedsunited.com/en/news/through-the-lens-leeds-united-v-man-utd-at-croke-park",
+      "verification_notes": "Leeds Through-the-Lens photo package; no player availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "27b6fd8abb8838ec9b7c5f420469c97bc373ef63bd1fd34affde193e85becbc0",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Carrick names side to face Leeds",
+      "topic_hits": [],
+      "triage_score": 62,
+      "url": "https://www.manutd.com/en/news/michael-carrick-names-side-to-face-leeds-at-croke-park",
+      "verification_notes": "United 'Carrick names side to face Leeds' URL resolved but ephemeral fetch did not expose a usable named XI body (likely soft-block). Human re-check required before any lineup claim.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "7c5c84c6681ba08fc3c75c667e696860c5e33e47f50c277e65340122e209cdd6",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [
+        "Joao Pedro"
+      ],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Blues get to work under Xabi Alonso",
+      "topic_hits": [],
+      "triage_score": 61,
+      "url": "https://www.chelseafc.com/en/news/article/gallery-blues-get-to-work-under-xabi-alonso",
+      "verification_notes": "Chelsea official gallery states Joao Pedro was involved in the first Cobham session under Alonso. No ISO published_at on page; retain as corroboration only, not ledger-ready.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "eed22754b66b3c2aa3211fc22ad23809485f3431b1b8876840f55beea24a433e",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "United 1 Leeds 1 (United win 5-4 on pens)",
+      "topic_hits": [],
+      "triage_score": 61,
+      "url": "https://www.manutd.com/en/news/united-1-leeds-1-manchester-united-win-5-4-on-pens",
+      "verification_notes": "United friendly result page; no ISO published_at recovered and no GW1 availability claim for Bruno/Shaw.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "7d281a60164e85b8ad99ca091661f5fb113eac532720d4c5cdaf26d36250a31c",
+      "club_id": "fulham",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-13",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-13T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "FUL ACCESS: Matchday in Malaga",
+      "topic_hits": [],
+      "triage_score": 58,
+      "url": "https://www.fulhamfc.com/news/2026/august/13/ful-access-malaga/",
+      "verification_notes": "Fulham Malaga access feature; dated but no selected-15 availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "4d341c396c4804ead778bab6fb629fa1f54c6e9ed0a0ce4a8e7c79658e9625a7",
+      "club_id": "ipswich",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-08",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-08T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "TOWN SIGN SAŠA LUKIC",
+      "topic_hits": [],
+      "triage_score": 58,
+      "url": "https://www.itfc.co.uk/news/2026/august/08/town-sign-sasa-lukic/",
+      "verification_notes": "Ipswich signing announcement published 2026-08-08; outside 72h discovery gate. Signing context only.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "9b3473be99362aa437cc1effdde2629b326d667284aa81dd121256a0eaf69d27",
+      "club_id": "fulham",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-12",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T00:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Malaga Highlights",
+      "topic_hits": [],
+      "triage_score": 57,
+      "url": "https://www.fulhamfc.com/news/2026/august/12/malaga-highlights/",
+      "verification_notes": "Fulham Malaga highlights; dated match content only.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "9add7177f8fb5ca2771667b12981bf635f55666bd2659d973ce8e94bbc11995d",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-12",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T00:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Daniel Farke: Overall a good game",
+      "topic_hits": [],
+      "triage_score": 57,
+      "url": "https://www.leedsunited.com/en/news/daniel-farke-overall-a-good-game",
+      "verification_notes": "Daniel Farke post-match quotes; no GW1 availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "36692196c4b775af4fc3421901afc031e8814fb7489702e7a7265a6a02026bae",
+      "club_id": "fulham",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-13",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-13T00:00:00Z",
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "FPL Scout: The case for Fulham's new boys",
+      "topic_hits": [],
+      "triage_score": 56,
+      "url": "https://www.fulhamfc.com/news/2026/august/13/fpl-scout-the-case-for-fulhams-new-boys/",
+      "verification_notes": "Fulham-hosted FPL Scout feature on new boys; not a club availability claim for ledger.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "cbfedbec77553a51ccda1ca971a83a60f605a3fef81873bc5e2790812b369d41",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-12",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T00:00:00Z",
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Anton Stach: I think it was a good game",
+      "topic_hits": [],
+      "triage_score": 56,
+      "url": "https://www.leedsunited.com/en/news/anton-stach-i-think-it-was-a-good-game",
+      "verification_notes": "Anton Stach post-match quotes; no GW1 availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "6051c961542ba6e181c41d4eed42be9085f82fc669c101230d5057f62de2d66f",
+      "club_id": "leeds",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-03",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-03T00:00:00Z",
+      "rank": 4,
+      "reasons": [
+        "preferred_source_class",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "20 photos from Soldier Field as Leeds defeat Liverpool 4-2",
+      "topic_hits": [],
+      "triage_score": 55,
+      "url": "https://www.leedsunited.com/en/news/20-photos-from-soldier-field-as-leeds-defeat-liverpool-4-2",
+      "verification_notes": "Leeds Soldier Field photo gallery published 2026-08-03; outside 72h discovery gate and no current availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "f8dc6fff2b4624673914856e85df6d8c054ca078a38dcf0932db0b3d91747c7f",
+      "club_id": "newcastle",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "line-up"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Confirmed line-up: Joelinton skippers Magpies at Murrayfield",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 52,
+      "url": "https://www.newcastleunited.com/en/news/everton-friendly-team-news-26-27",
+      "verification_notes": "Confirmed line-up page is on newcastleunited.com while catalogue official_domain is nufc.co.uk; discovery gate rejects domain mismatch. No ISO published_at.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    }
+  ],
+  "triage_sha256": "2788418e340a261f38d4d02762384a530bc16bb0e74aac8f8998ba5fe0f430eb",
+  "verified_ready_for_discovery": [
+    {
+      "candidate_id": "4d3f716ff37864e0e38d63945f212f6791c741c4bde1df14c645cfb4bd9c8097",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister",
+        "Jacquet",
+        "C.Jones"
+      ],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T12:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 73,
+      "url": "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session",
+      "verification_notes": "Official LFC Inside Training: Araujo, Mac Allister, Jacquet and Jones took part in Wednesday session; Jacquet/Jones had missed Monaco. Relative 'Published 2 days ago' at fetch maps to 2026-08-12.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    },
+    {
+      "candidate_id": "4324970efe70cbc4887b939bf0405a892ac84ba421deb191e238a5360a44cc3e",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "Araujo",
+        "Mac Allister"
+      ],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-12T12:00:00Z",
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Training photos: Araujo and Mac Allister involved in Liverpool's work on Wednesday",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.liverpoolfc.com/news/training-photos-araujo-and-mac-allister-involved-liverpools-work-wednesday",
+      "verification_notes": "Official LFC training gallery: Mac Allister (post-WC return) and new signing Araujo involved on Wednesday at AXA. Relative 'Published 2 days ago' maps to 2026-08-12.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-14T07:13:18Z",
+      "verified_by": "cursor-grok-4.5-high (ephemeral official-page check; Lane A 2026-08-14)"
+    }
+  ]
+}
