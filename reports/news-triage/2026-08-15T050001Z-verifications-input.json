@@ -1,0 +1,178 @@
+{
+  "verifications": [
+    {
+      "candidate_id": "f7297282cc54acb2ec44e9cb38ee74898a40422c599316456dfda13b3452bb49",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "matched_players": ["player:2026-27:426"],
+      "notes": "Official Manchester United landing page supports a current Bruno Fernandes presence/travel signal, but the page has no precise ISO publication time or minutes/line-up claim. Research signal only; human confirmation required."
+    },
+    {
+      "candidate_id": "2dc9b48b6a170efc05d587adde57e6e528c5b1ad5c60a88a68e874f5e3b5be7a",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": false,
+      "matched_players": ["player:2026-27:411"],
+      "notes": "Official City candidate is relevant to Haaland/Rodri fitness, but the bounded fetch did not establish a timestamped human-linked original. Do not change the squad or ledger from the candidate alone."
+    },
+    {
+      "candidate_id": "65e757ff914787c70810d9a76ea99ee1530fdae19a74119b83f3d1da5d22bec4",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Official City training gallery is generic and undated in the capture; it supplies no player-specific availability or minutes claim."
+    },
+    {
+      "candidate_id": "e45adf817ccb809bc7fed7abb8b7f3fcef1d7ee31bfa6a17110cd09d699645f3",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Official Liverpool training video is generic and undated in the capture; it does not establish a decision-grade availability or minutes claim."
+    },
+    {
+      "candidate_id": "3867843ef9396810c6fb92293d503474c3a253ad40622754926af97275ae17a3",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "matched_players": ["player:2026-27:165"],
+      "notes": "Official Chelsea gallery shows Joao Pedro training involvement, but the capture page has no unambiguous ISO publication time or GW1 minutes/line-up claim. Human confirmation is required before any player update."
+    },
+    {
+      "candidate_id": "5a779ff3dbffd06e8f8b39a9939552ad425ba9a5e83da9131e2f8ec253aacbe5",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": false,
+      "notes": "Liverpool injury-list index is relevant in principle, but the bounded capture does not provide a timestamped, player-specific extract that can be admitted."
+    },
+    {
+      "candidate_id": "598642953d9e102fe36cbf6684863c62e4207ae8f4d7db82011b063199b53dfb",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Official Chelsea arrival gallery is generic and age-gated/undated in the capture; it does not establish current minutes or availability."
+    },
+    {
+      "candidate_id": "b4fc155041cd253b62b04de8cc23c00f6d692dc499da9c33edb943554c463ec0",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Premier League injury index is a generic feed without an item-level timestamped player claim in the capture; no ledger admission."
+    },
+    {
+      "candidate_id": "88ec2f482e45a40b3a0cddedf105b1d4f8de4cb353c4de19b909f1c2da9ff7cb",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Arsenal pay-per-view information is not a player availability or minutes signal for this strategy review."
+    },
+    {
+      "candidate_id": "81e4ffc0249959d5bc856dc0eacdfaab8cbe5aa06300a749cd8e507f8eb8d59a",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Official Chelsea tour-squad page is age-gated to the pre-season tour and does not provide a current GW1 minutes or line-up claim."
+    },
+    {
+      "candidate_id": "4e03cb183a873228020ed65a394b1513ae67dd82c10d02896fc5956e4c44b032",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "matched_players": ["player:2026-27:260", "player:2026-27:346"],
+      "notes": "Official Leeds gallery has a known 2026-08-03 publication date and is relevant to Wilson/Calvert-Lewin match context, but it does not prove GW1 minutes or a confirmed XI. Human confirmation required."
+    },
+    {
+      "candidate_id": "572e8c6b13dd9ed1009304d5dcd674bd607d0edfde81041075675d1ae37bfcd3",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Arsenal Community Shield information is not a player availability or minutes claim for the recommended squad."
+    },
+    {
+      "candidate_id": "d3e49304e7d2c6a595a189429c3ce187942539e90c38a393463197390d120cee",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Official City Foden feature is generic/undated in the capture and does not establish a current player-specific GW1 decision claim."
+    },
+    {
+      "candidate_id": "f6647963e939d0f367c1ba06334567e7a895df9735eb715681c8cb7cc184c472",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": false,
+      "matched_players": ["player:2026-27:497", "player:2026-27:496"],
+      "notes": "Official Spurs team-news candidate could affect the Dubravka/Kinsky goalkeeper decision, but the capture has no unambiguous timestamp or confirmed starter. Human confirmation required."
+    },
+    {
+      "candidate_id": "10894ecc3cbd8ff1ed8928bc4f49514e33a294a8e807c96874f0bc4f92eed7f8",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Official Brentford fixture announcement is fixture context, not a current Thiago availability or competitive-minutes claim."
+    },
+    {
+      "candidate_id": "1981935c6387c51cbc9c89d50f9ff073ebac51d68cf62cdff3d19f0af78f1c4a",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Newcastle news index is generic and has no timestamped player-specific claim in the capture."
+    },
+    {
+      "candidate_id": "693d2c98645f3e06a315b32b0dbbf7ef334f3c1ab1b29c61d2a5658220ea5202",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "matched_players": ["player:2026-27:106"],
+      "notes": "Official Brentford candidate reports Thiago training and an in-house game, but the capture has no unambiguous ISO publication time and does not prove GW1 competitive readiness. Human confirmation required."
+    },
+    {
+      "candidate_id": "2dbe042da9c1c5caceccf8187417e3272589d47ca79132172234569dbe013e25",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "City candidate is an older/undated manager update and was demoted as a historical archive signal; it cannot support a current minutes claim."
+    },
+    {
+      "candidate_id": "7abc97e27d1d145739e3e838f694d0f8d146e45ecbcefe21f43022d7682ac54c",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "Everton news index is generic and has no timestamped player-specific claim in the capture."
+    },
+    {
+      "candidate_id": "e63c790aedaf8c72b8a3e7aac68ef6104a454fa94413ba499c1ac6b20029a9d0",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "External predicted-lineup page is retained as corroboration/challenge only; unknown capture time and non-official source mean no ledger admission."
+    },
+    {
+      "candidate_id": "44edeadbfd8a9e5411570cd8c3e1347bb8be00f0eb79cece22f9bb7da44a4ae4",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-15T07:00:01.7904682Z",
+      "page_identity_ok": true,
+      "notes": "External Crystal Palace analysis is retained as a challenge only; it is not a timestamped human-linked official original and does not support ledger admission."
+    }
+  ]
+}
