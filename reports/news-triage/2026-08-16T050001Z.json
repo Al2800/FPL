@@ -1,0 +1,1013 @@
+{
+  "account_writes": false,
+  "candidate_count": 98,
+  "capture_id": "news-capture:2026-27:2026-08-16T05:00:01.857674Z",
+  "capture_sha256": "d2c4464ed951f59b183d330a12911a152203674b24fc785110e6ab8e1b42d1bd",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "42de7f3f9d0a2483f2838daf1e080f1f42f4bcb8292535d9a5c1938ce3797ecd",
+  "demoted_candidate_count": 2,
+  "excluded_candidate_count": 30,
+  "excluded_candidates": [
+    {
+      "candidate_id": "cf78961e5eed0023b219891dca13a004c22ff3a2a13effb08ffdba11dffc765d",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.arsenal.com/news/boys-are-back-training"
+    },
+    {
+      "candidate_id": "4b8ed9e168f0ba57de4a1bffd1ad954c8e9bffb739237377ec22cd09b3b9104f",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.arsenal.com/news/mariona-codina-and-fox-return-training"
+    },
+    {
+      "candidate_id": "99bd1b999da523efbb8e62cc8b5bd559839161ed3b69f1c98fd7b1deb3a25d3e",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.arsenal.com/news/picture-special-boys-return-training"
+    },
+    {
+      "candidate_id": "225ec85092f5a9006493412a356569e6e9b0194b3c70b5e7a94d62e714627400",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/04/10/fpl-gameweek-32-team-news-fridays-live-injury-updates-2"
+    },
+    {
+      "candidate_id": "c76b0fcac28757d98ef0c58b0d59a0bfd3a3127a1d5ce7379a1f7b23e9cbf556",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.avfc.co.uk/news/2026/may/19/uel-prematch-team-news-for-europa-league-final/"
+    },
+    {
+      "candidate_id": "1e887706b49d582320b6ef4bbda77a1c517d0d6cdd66ff90285ef27e3f3e326c",
+      "reason": "excluded_section:wsl",
+      "url": "https://www.brightonandhovealbion.com/media-article/wft-preview-albion-arsenal-wsl"
+    },
+    {
+      "candidate_id": "6e26171cad1835db9f1aeb16d2bb793f894c404b1be887b67370966d0d7fa812",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/05/01/fpl-gameweek-35-team-news-fridays-live-injury-updates-3"
+    },
+    {
+      "candidate_id": "e4af6cb020b139851a8607bc0ec876394711b7d7ceeef2dd773b344ae290df33",
+      "reason": "excluded_section:wsl",
+      "url": "https://www.brightonandhovealbion.com/media-article/albion-host-liverpool-in-wsl-action-on-sunday"
+    },
+    {
+      "candidate_id": "a26881de26f6b0308f088586aba0133ba3e42a222d5a85813753dafac45d61ba",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.chelseafc.com/en/news/article/mcfarlane-a-disappointing-end-to-the-season"
+    },
+    {
+      "candidate_id": "bdd1525f5931f62ba4f61b5a518cf9558fa575f0d7cd5a9e51dd95c90ccfe8b6",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.chelseafc.com/en/news/article/wrexham-vs-chelsea-all-you-need-to-know"
+    },
+    {
+      "candidate_id": "b91543c38f32cbb276be6b22daa347c15c088fcd7cc0fa66de68939f540961da",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/04/24/fpl-gameweek-34-team-news-fridays-live-injury-updates-3?hc_page=-1"
+    },
+    {
+      "candidate_id": "775c8d1e9c2cdf2b6c509a32389b7189dd625e090dc8d974ea799744da530f69",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fulhamfc.com/news/2026/january/23/team-news-lukic-set-for-spell-out/"
+    },
+    {
+      "candidate_id": "925ce002eac5ddebff3f0f3a18d5f6d5f0cd2c7a1aabf7a6a69122ba18a77fdb",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/04/30/fpl-gameweek-35-team-news-thursdays-live-injury-updates"
+    },
+    {
+      "candidate_id": "349ffb86071574c062b0cc8a822786881cf0a76ced6161a88bafb2bb51a682a4",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.wearehullcity.co.uk/news/2026/january/30/match-preview-blackburn-rovers-a/"
+    },
+    {
+      "candidate_id": "135a27d43c969ae6c2912e3de244a356038bdc5f06bf787726948df3137098b9",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/04/29/fpl-gameweek-35-team-news-wednesdays-live-injury-updates"
+    },
+    {
+      "candidate_id": "648fe794ca6359a2e9dd25a8a194e38ff7614b70035a031c9f166e926d416840",
+      "reason": "stale_beyond_14_days",
+      "url": "https://lfcbeta.liverpoolfc.com/ja/news/liverpool-v-crystal-palace-community-shield-team-news"
+    },
+    {
+      "candidate_id": "98d7aea5e567f8bf00f82ab0d94f87de0ab7862e8ce09ca9c5ffefc945e75b6b",
+      "reason": "stale_beyond_14_days",
+      "url": "https://lfcbeta.liverpoolfc.com/es/noticias/lfc-injury-update-jeremie-frimpong-out-conor-bradley-back-training"
+    },
+    {
+      "candidate_id": "c2e00840d9290229e469431c2988f877ef4ee96f72f9cc88fe5de16aeae39faa",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/05/08/fpl-gameweek-36-team-news-fridays-live-injury-updates-3"
+    },
+    {
+      "candidate_id": "2ab442bd373f30c8498e6b6437efba18f73704dfad18c79f2d7701dfa0cf3ba9",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/05/22/fpl-gameweek-38-team-news-fridays-live-injury-updates-2"
+    },
+    {
+      "candidate_id": "b6809c2a2b9b341732f4ca4a5af43137aee355b36516b56e24e593f71f7fcf4c",
+      "reason": "excluded_section:women",
+      "url": "https://www.manutd.com/en/news/detail/match-preview-for-man-utd-women-v-west-ham-sunday-7-december"
+    },
+    {
+      "candidate_id": "17d647d59aead483dfbccc122737d629199adb7698370d912a5bedde3f506f61",
+      "reason": "stale_year_stamp",
+      "url": "https://www.manutd.com/en?tid=1731106220159"
+    },
+    {
+      "candidate_id": "04e1178d9bdce09b767ef9cbe67bf3e610a57c8587d9eed388b3a6b649133590",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.manutd.com/en?tid=1774076786874"
+    },
+    {
+      "candidate_id": "9bb32f02c9988948b15d64b12bb070d7a9d1c750aff45b1768680bd764bd72f4",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4606700/"
+    },
+    {
+      "candidate_id": "503c7b5f769b8fcef5f6b2853ca92f2097af24e4d83b6985b11f2cb93bfbebe4",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4606700/premier-league-clubs-2026-pre-season-fixtures-and-results"
+    },
+    {
+      "candidate_id": "a462bba60716a58a71defc99ddcaa28c52064503424e0fa8645a92981a76b4af",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.premierleague.com/en/news/4678380/premier-league-clubs-return-for-pre-season-key-dates-friendlies-and-training-updates"
+    },
+    {
+      "candidate_id": "a3a0ec668bc28545c8f3ba2029bf586ee6655547d57d922dfaa7c2436fb737a6",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/04/23/fpl-gameweek-34-team-news-thursdays-live-injury-updates-2"
+    },
+    {
+      "candidate_id": "8ea646f61b053acecdf062608df6bae526a92c471febb77d7b6a37e2b6e42a6f",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.safc.com/news/2026/april/10/how-to-watch-le-bris--pre-tottenham-hotspur-press-conference---/"
+    },
+    {
+      "candidate_id": "0e99b60883707a755b5343a04ca29d5d764ec96caddef03dc41e34297c8f0ff4",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.tottenhamhotspur.com/news/1009010/team-news-martin-ho-on-grants-potential-return-hamano-back-for-villa-trip"
+    },
+    {
+      "candidate_id": "f0c1cf3d57d2d1afc18ac43a1347c3e7aaf0dabebb858009595845dca9a04aba",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.tottenhamhotspur.com/news/1000805/team-news-radu-very-close-ben-and-kota-back-in-training"
+    },
+    {
+      "candidate_id": "98ba9be5a70e3466f211b038361d6a05e8d9f2509112edba67c2130e4a340541",
+      "reason": "stale_beyond_14_days",
+      "url": "https://www.fantasyfootballscout.co.uk/2026/05/18/fpl-gameweek-37-team-news-mondays-live-injury-updates"
+    }
+  ],
+  "freshness_excluded_count": 27,
+  "notes": "Shortlist only. Verification must confirm page identity and ISO published_at before discovery admission. Snippets used for scoring are not retained on this artifact. Candidates with a derivable date outside the freshness window, prior-year stamps, or excluded sections are hard-excluded when the policy freshness block is present; undatable candidates are kept for verification.",
+  "observed_at": "2026-08-16T05:00:01.857674Z",
+  "policy_id": "news-capture-triage-v1.1",
+  "schema_version": "news-capture-triage-result-v1",
+  "section_excluded_count": 3,
+  "shortlist": [
+    {
+      "candidate_id": "03ec8f9fda07446d07a08c7d135c658691b1d942afad47574f6318c3788da005",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, bruno_minutes, team_news",
+      "matched_watch_terms": [
+        "fernandes",
+        "bruno",
+        "injury",
+        "fitness",
+        "team news",
+        "minutes",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Team news for Brighton tie | Manchester United",
+      "topic_hits": [
+        "availability_general",
+        "bruno_minutes",
+        "team_news"
+      ],
+      "triage_score": 101,
+      "url": "https://www.manutd.com/zh/news/team-news-for-man-utd-v-brighton-fa-cup-third-round-2026",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "4d8241f2750c21863ab4a9c0562a3c0013962ea9976c81094c935715d1896e56",
+      "club_id": "premier-league",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "available"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Sheff Utd v Newcastle: All you need to know",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 96,
+      "url": "https://www.premierleague.com/en/news/3694297",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "6b032e02b1232fce197e21a8085e69aa4b78ffd52e54c391012c8a923e16389a",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, haaland_minutes, team_news",
+      "matched_watch_terms": [
+        "haaland",
+        "injury",
+        "training",
+        "team news"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Man City Men's Team News - Manchester City F.C.",
+      "topic_hits": [
+        "availability_general",
+        "haaland_minutes",
+        "team_news"
+      ],
+      "triage_score": 96,
+      "url": "https://www.mancity.com/news/mens/?page=1&utm_source%3Didown.heliohost.org%26utm_keyword%3DInstagram%2Bvideo%2Bdownload%26page%3D1287=",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "5e0ef444771af06f2433c721c1783db208d439c3d3f807b276b1ae7f984f0124",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "available",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 5,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Manchester United v Liverpool: Team news - Liverpool FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 95,
+      "url": "https://www.liverpoolfc.com/news/manchester-united-v-liverpool-team-news",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "31771a5adc7274449b86dbf24138f82fe3707fac4749c67b29c6749d2c0125b6",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, haaland_minutes, team_news",
+      "matched_watch_terms": [
+        "haaland",
+        "injury",
+        "training",
+        "team news"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 8,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Man City Men's Team News - Manchester City F.C.",
+      "topic_hits": [
+        "availability_general",
+        "haaland_minutes",
+        "team_news"
+      ],
+      "triage_score": 95,
+      "url": "https://live.mancity.com/news/mens?page=39",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "538836698f294732610705a8daade3540c66aa554adfcecdef245296cc9910c5",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "training",
+        "team news",
+        "press conference",
+        "suspended"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Man City vs Chelsea: All you need to know | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 92,
+      "url": "https://www.chelseafc.com/en/news/article/man-city-vs-chelsea-all-you-need-to-know-25-26",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "98d5071ce3701edab274f10e491fa4cc22b7e5d8e06bc420a5d1b292d4def534",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "fitness",
+        "team news",
+        "press conference"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Rosenior delivers the latest Chelsea team news ahead of Paris Saint-Germain | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 91,
+      "url": "https://www.chelseafc.com/en/news/article/rosenior-delivers-the-latest-chelsea-team-news-ahead-of-psg",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "32befdd8492a2c8a966efd5b05aa4bd3f317075963752894fd2305bd6791a37f",
+      "club_id": "premier-league",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training",
+        "team news",
+        "press conference",
+        "available",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 6,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "GW27 team news: Swift return for Arnautovic?",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 90,
+      "url": "https://www.premierleague.com/en/news/618871",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "50237dc2df06e74e7ab4749ee928588191a2f55ff539ec7e4c7684763478a7d9",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "LFC injury update: Jeremie Frimpong out, Conor Bradley back in training - Liverpool FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 83,
+      "url": "https://www.liverpoolfc.com/news/lfc-injury-update-jeremie-frimpong-out-conor-bradley-back-training",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "336f720072e8ce7033e7aa629af9306287e498af96cb8d0b6b48283df98fd1e2",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training",
+        "team news",
+        "press conference"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Chelsea vs Leeds: All you need to know | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 80,
+      "url": "https://www.chelseafc.com/en/news/article/chelsea-vs-leeds-all-you-need-to-know",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "012cb1943737342e6cdc7058ea845d7da7b055c9fcc4e62cd6c907250ff1613b",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "team news"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 6,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Arne Slot on Alexander Isak injury and Liverpool team news at Aston Villa - Liverpool FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 80,
+      "url": "https://www.liverpoolfc.com/news/arne-slot-alexander-isak-injury-and-liverpool-team-news-aston-villa",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "22d8bec2a069fde13ab326a0f629e8dae7238b5a24eb6f85546b85d3293a2937",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "fitness",
+        "training",
+        "team news",
+        "minutes",
+        "available"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Fulham v Brentford team news update: Ajer, Henderson, Pinnock and Thiago | Brentford FC | Brentford FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 78,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-fulham-v-brentford-premier-league-team-news-ajer-henderson-pinnock-thiago",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "6ccf868fb7dd8b7efab3ccdd04608e8629339ecbcbc06c292db93895ff8c15d2",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "press conference",
+        "available",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Brentford team news and injury update ahead of Premier League clash with Aston Villa | Brentford FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 78,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-news-injury-update-brentford-v-aston-villa-premier-league-keith-andrews",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "9ac5a1cd7c6dcc41cf8432d7c428213551e966f67bff67773bc747133e99d1c8",
+      "club_id": "leeds",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "fitness",
+        "training",
+        "team news",
+        "press conference"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Daniel Farke: We know that they are in pretty impressive form - Leeds United",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 78,
+      "url": "https://www.leedsunited.com/en/news/daniel-farke-we-know-that-they-are-in-pretty-impressive-form",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "952a0fdb9bc19064681ceb2116a621a0bdca4a6f11492a94aefcb0d98035d379",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "minutes",
+        "return"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Match Preview: Chelsea vs Brentford | Brentford FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 75,
+      "url": "https://www.brentfordfc.com/en/news/article/match-preview-chelsea-vs-brentford-632121",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "b4f245dfb0249ac3797e60b2726f04e4a69188831840c9cd7e6e3e0e78628be8",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training",
+        "team news"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Ruben Amorim explains secret behind Joshua Zirkzee turnaround | Manchester United",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 75,
+      "url": "https://www.manutd.com/en/news/detail/every-word-ruben-amorim-press-conference-newcastle-away",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "71a22bddfce72956c6d7bed1fcfd14fb38bb44be222c5a8aa4031f73e4fb7b64",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform haaland_minutes",
+      "matched_watch_terms": [
+        "haaland"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Man City Official Latest News - Manchester City F.C.",
+      "topic_hits": [
+        "haaland_minutes"
+      ],
+      "triage_score": 73,
+      "url": "https://www.mancity.com/news?tag=MANCHESTER+CITY",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "4d1b4d28fff0e7c6d120f85e4ef2147a2b6f2f0487a76718103df98a9adfeddc",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Watch every Liverpool pre-season game live on All Red Video - Liverpool FC",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.liverpoolfc.com/news/watch-every-liverpool-pre-season-game-live-all-red-video?amp=1",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "f9e50f0377e063e99073382d49c68ab6b457e7eac871e322e25e07bfc92134c4",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "training",
+        "team news",
+        "doubt"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Match Preview: Brentford v QPR | Brentford FC",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 71,
+      "url": "https://www.brentfordfc.com/en/news/article/match-preview-brentford-v-qpr_371690",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "859b73f198797a51edc4143fd8be36427071aec75e450739d2084bbf36c6177d",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Confirmed Chelsea squad for 2026 pre-season tour | News | Official Site | Chelsea Football Club",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 71,
+      "url": "https://www.chelseafc.com/en/news/article/confirmed-chelsea-travelling-squad-for-2026-pre-season-tour",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "b33d0b83dead08c82f07797a4fc2f03390ed568d275aae8a4d6d5cfed0559dca",
+      "club_id": "crystal-palace",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_watch_terms": [
+        "injury",
+        "available",
+        "return",
+        "lineup"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Report: Ten-man Palace slip to narrow defeat at Villa - News - Crystal Palace F.C.",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 71,
+      "url": "https://www.cpfc.co.uk/news/match-reports/live-blog-aston-villa-crystal-palace-premier-league/",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "a3925188cb16bdb0ec49bd9598df8d5945b0d50a57c043d31910aeba03451ea0",
+      "club_id": "liverpool",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "press conference"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Andy Robertson: We want the feeling of lifting trophies again - pre-season is vital - Liverpool FC",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 71,
+      "url": "https://www.liverpoolfc.com/news/andy-robertson-we-want-feeling-lifting-trophies-again-pre-season-vital?amp=1",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "07c7ee201844fb0401925bd9ee5be80388ef6e36cefe1623934f35e19ed4f789",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 13,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "41 photos from pre-Shakhtar training | Gallery | News | Arsenal.com",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 70,
+      "url": "https://www.arsenal.com/news/41-photos-pre-shakhtar-training",
+      "verification_status": "pending"
+    },
+    {
+      "candidate_id": "db7cfcb185df6edeb145ba06978d34afdd62eabb40518b99011360d119534911",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_watch_terms": [
+        "training"
+      ],
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 12,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Gallery: Warm weather training in Dubai | Gallery | News | Arsenal.com",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 70,
+      "url": "https://www.arsenal.com/news/gallery-warm-weather-training-dubai",
+      "verification_status": "pending"
+    }
+  ],
+  "shortlist_count": 24,
+  "shortlist_freshness": {
+    "fresh_known": 0,
+    "freshness_rate": 0.0,
+    "unknown": 24
+  },
+  "topic_counts": {
+    "availability_general": 15,
+    "bruno_minutes": 1,
+    "haaland_minutes": 3,
+    "team_news": 23
+  }
+}
