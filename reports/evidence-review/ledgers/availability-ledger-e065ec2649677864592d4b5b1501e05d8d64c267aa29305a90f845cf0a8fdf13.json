@@ -1,0 +1,707 @@
+{
+  "claims": [
+    {
+      "available_at": "2026-08-12T08:57:00Z",
+      "claim_id": "model:7f522e49d3720ff9ddf2604fa45132f10a8a150b2e590289a85193652eac1aee",
+      "confidence": 0.9,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T08:52:00Z",
+      "player_uid": "player:2026-27:360",
+      "provenance": {
+        "derived_claim": "Conor Bradley remains sidelined after January knee surgery; Iraola states he is still months away from return.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T085200Z",
+        "model_run_sha256": "4d54086056e596f27c744f261c49a81794be9408bbad7d3dd91583a29786b414",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Confirms Bradley unavailable for early 2026-27 GW1 window."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "status": "unavailable"
+    },
+    {
+      "available_at": "2026-08-12T08:57:00Z",
+      "claim_id": "model:adf0c834562562558fc3ae01923da455de1698e947d0baf0ce842008fda1f273",
+      "confidence": 0.82,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T08:52:00Z",
+      "player_uid": "player:2026-27:359",
+      "provenance": {
+        "derived_claim": "Joe Gomez has a muscle injury from the Sunderland friendly; Iraola expects weeks out and likely unavailable for GW1 kickoff.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T085200Z",
+        "model_run_sha256": "4d54086056e596f27c744f261c49a81794be9408bbad7d3dd91583a29786b414",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Gomez minutes affect Liverpool defensive cover context for Virgil/Szoboszlai comparator debate."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "status": "doubtful"
+    },
+    {
+      "available_at": "2026-08-12T10:05:00Z",
+      "claim_id": "model:f2ef60114b985aa769b23c64322e24f73930aff1b964b141530f9d8619be34f6",
+      "confidence": 0.78,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T10:00:00Z",
+      "player_uid": "player:2026-27:372",
+      "provenance": {
+        "derived_claim": "Alexis Mac Allister was back at the AXA Training Centre on 2026-08-10 to begin pre-season work after his World Cup break; the official page does not confirm match or GW1 availability.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T100000Z",
+        "model_run_sha256": "12cd1dcf3cb5393def7873e5a72982d8a6e9a29b9cd10cb5a19dadf8614c4696",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "b63fce84c23c82abeba67817afaf4c3f6817e7394c4b39beff0c0a54e1310098",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Alexis Mac Allister back at Liverpool to begin pre-season work",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/alexis-mac-allister-back-liverpool-begin-pre-season-work"
+        ],
+        "why_relevant": "Mac Allister is comparator-adjacent; pre-season return supports monitoring but not a declared-fit ledger recovery."
+      },
+      "published_at": "2026-08-10T11:15:00Z",
+      "status": "doubtful"
+    },
+    {
+      "available_at": "2026-08-12T10:05:00Z",
+      "claim_id": "model:823e4c7debb4b1709a3ce3de7e2f3fe542afdff0cb92a7ac2f0e4c476cf08ef0",
+      "confidence": 0.85,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-12T10:00:00Z",
+      "player_uid": "player:2026-27:376",
+      "provenance": {
+        "derived_claim": "Stefan Bajcetic is training basically fully with the first team per Iraola (LFC injury update published 2026-08-11).",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-12T100000Z",
+        "model_run_sha256": "12cd1dcf3cb5393def7873e5a72982d8a6e9a29b9cd10cb5a19dadf8614c4696",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "5b71fa5d8bd86b45c664a35ad470b6dbc15e3c4fd6be9d4380522e58fe7bd5e9",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Liverpool's injury list, suspensions and availability",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+        ],
+        "why_relevant": "Bajcetic availability informs Liverpool squad depth context."
+      },
+      "published_at": "2026-08-11T15:56:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-12T10:05:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-14T07:20:00Z",
+      "claim_id": "model:fc4cd637aa206d3a6b5a717b3d8c27c2573f0c339bfe9f6e8b8b6b34e617ef97",
+      "confidence": 0.84,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-14T07:13:18Z",
+      "player_uid": "player:2026-27:387",
+      "provenance": {
+        "derived_claim": "Official City training-arrival gallery caption states O'Reilly returns from his first World Cup as players returned to the CFA after Asia Tour 2026 ahead of the Community Shield.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-14T071318Z",
+        "model_run_sha256": "ea866e71ef212ff467545c0fdc8c8aa71f4e9ff48ce9ccf4bdcf4047d3772b33",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "28479dc90ca0cb0f75a24a8a07896c91784efb7caf30d2a18cc30802225ade2a",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Gallery: The boys are back in Manchester!",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.mancity.com/news/mens/man-city-training-arrival-gallery-12-august-63922145"
+        ],
+        "why_relevant": "Confirms O'Reilly is back with the squad post-World Cup; minutes for Community Shield and GW1 remain uncertain."
+      },
+      "published_at": "2026-08-12T00:00:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-14T07:20:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-14T07:20:00Z",
+      "claim_id": "model:758d1b62c06246e89399aeb49b78d085bd21f17d13cf8d0ceea928fea483ef85",
+      "confidence": 0.82,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-14T07:13:18Z",
+      "player_uid": "player:2026-27:579",
+      "provenance": {
+        "derived_claim": "New signing Ronald Araujo joined teammates in Liverpool's Wednesday AXA session and is shown training in the official Inside Training video.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-14T071318Z",
+        "model_run_sha256": "ea866e71ef212ff467545c0fdc8c8aa71f4e9ff48ce9ccf4bdcf4047d3772b33",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "db5c21604179005eef9be6b06d839a032e406e8a7fce6513ab6dcafa4d2dfd51",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session"
+        ],
+        "why_relevant": "Confirms early involvement for a new defender who may affect Liverpool minutes hierarchies before GW1."
+      },
+      "published_at": "2026-08-12T12:00:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-14T07:20:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-14T07:20:00Z",
+      "claim_id": "model:d42676d1c23b60d8e8e3542e4f0d403304199a0304381c3bc25e9295bd50b08b",
+      "confidence": 0.8,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-14T07:13:18Z",
+      "player_uid": "player:2026-27:362",
+      "provenance": {
+        "derived_claim": "Jeremy Jacquet, who missed the AS Monaco friendly, took part in Liverpool's Wednesday intense training session per official Inside Training.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-14T071318Z",
+        "model_run_sha256": "ea866e71ef212ff467545c0fdc8c8aa71f4e9ff48ce9ccf4bdcf4047d3772b33",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "db5c21604179005eef9be6b06d839a032e406e8a7fce6513ab6dcafa4d2dfd51",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session"
+        ],
+        "why_relevant": "Updates Jacquet from recent omission toward training availability ahead of GW1."
+      },
+      "published_at": "2026-08-12T12:00:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-14T07:20:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-14T07:20:00Z",
+      "claim_id": "model:85ebf1b5ee799cf68eb86d9543c6e325d2f53c6376f3e907b3aecacf8d16645e",
+      "confidence": 0.8,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-14T07:13:18Z",
+      "player_uid": "player:2026-27:373",
+      "provenance": {
+        "derived_claim": "Curtis Jones, who missed the AS Monaco friendly after hip issues in training, took part in Liverpool's Wednesday intense session per official Inside Training.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-14T071318Z",
+        "model_run_sha256": "ea866e71ef212ff467545c0fdc8c8aa71f4e9ff48ce9ccf4bdcf4047d3772b33",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "db5c21604179005eef9be6b06d839a032e406e8a7fce6513ab6dcafa4d2dfd51",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Free Inside Training video: Araujo, Mac Allister, Jacquet and Jones take part in intense session",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/free-inside-training-video-araujo-mac-allister-jacquet-and-jones-take-part-intense-session"
+        ],
+        "why_relevant": "Supports recovery from the recent hip scare for a Liverpool midfielder on the broad watchlist."
+      },
+      "published_at": "2026-08-12T12:00:00Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-14T07:20:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-14T07:20:00Z",
+      "claim_id": "model:31ff0f9841269d1bb260b455bfba96615c994bd34a55078cc02ee3ccb9c465bc",
+      "confidence": 0.78,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-14T07:13:18Z",
+      "player_uid": "player:2026-27:372",
+      "provenance": {
+        "derived_claim": "Alexis Mac Allister, back from his post-World Cup break, was involved in Liverpool's Wednesday work at the AXA Training Centre per official gallery. Page does not declare match fitness for GW1.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-14T071318Z",
+        "model_run_sha256": "ea866e71ef212ff467545c0fdc8c8aa71f4e9ff48ce9ccf4bdcf4047d3772b33",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "57f5abd40b3433d1255b53fe07776abdb4810e95fa55497f990ab1d1aeca9cdc",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Training photos: Araujo and Mac Allister involved in Liverpool's work on Wednesday",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.liverpoolfc.com/news/training-photos-araujo-and-mac-allister-involved-liverpools-work-wednesday"
+        ],
+        "why_relevant": "Reinforces ongoing training involvement while match availability remains unconfirmed; keep as doubtful rather than available."
+      },
+      "published_at": "2026-08-12T12:00:00Z",
+      "status": "doubtful",
+      "supersedes_claim_ids": [
+        "model:f2ef60114b985aa769b23c64322e24f73930aff1b964b141530f9d8619be34f6"
+      ]
+    },
+    {
+      "available_at": "2026-08-15T07:10:00Z",
+      "claim_id": "model:30b694ebb53a4ed137bffa1c3b6fef907a501ac8833514d0f40dcb8d69f9f4b7",
+      "confidence": 0.82,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-15T07:05:00Z",
+      "player_uid": "player:2026-27:411",
+      "provenance": {
+        "derived_claim": "Enzo Maresca said Erling Haaland sat out some training with minor heel issues but is okay and fine for the start of the season ahead of the Community Shield.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-15T070500Z",
+        "model_run_sha256": "2c0a8abde972edb7aefd881b1ed13713b92e5db1be8256cbbf94e83427a29974",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "c94894d8211334175ea6f784800c70254a544d07aa97242a3eadf410b421a9fc",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Maresca fitness update on McAidoo, Haaland and Rodri",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297"
+        ],
+        "why_relevant": "Directly affects Haaland premium inclusion and GW1 captaincy minutes confidence before Community Shield on 16 Aug."
+      },
+      "published_at": "2026-08-14T12:00:00Z",
+      "recovery": {
+        "condition": "declared_fit",
+        "condition_met": true,
+        "observed_at": "2026-08-15T07:10:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-15T07:10:00Z",
+      "claim_id": "model:fc4ea2c8d58b509e58a3bcb4fd4a0f09495be28b84df9a3ebc29b60b648dd4a5",
+      "confidence": 0.88,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-15T07:05:00Z",
+      "player_uid": "player:2026-27:402",
+      "provenance": {
+        "derived_claim": "Maresca confirmed Rodri is back at the CFA after successful minor back surgery following the World Cup and is now in rehab, not yet training with the group.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-15T070500Z",
+        "model_run_sha256": "2c0a8abde972edb7aefd881b1ed13713b92e5db1be8256cbbf94e83427a29974",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "c94894d8211334175ea6f784800c70254a544d07aa97242a3eadf410b421a9fc",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Maresca fitness update on McAidoo, Haaland and Rodri",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297"
+        ],
+        "why_relevant": "Rules out Rodri minutes for early Gameweeks; City midfield rotation context only."
+      },
+      "published_at": "2026-08-14T12:00:00Z",
+      "status": "unavailable"
+    },
+    {
+      "available_at": "2026-08-15T07:10:00Z",
+      "claim_id": "model:56b5b5afe3d843b0c1554ff7ec767ca5a07fc1885eb8c9920e2270a1db9298c5",
+      "confidence": 0.7,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-15T07:05:00Z",
+      "player_uid": "player:2026-27:499",
+      "provenance": {
+        "derived_claim": "Official Spurs team-news page states Pedro Porro is unlikely to be involved in either Hoffenheim friendly having only just returned after the World Cup.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-15T070500Z",
+        "model_run_sha256": "2c0a8abde972edb7aefd881b1ed13713b92e5db1be8256cbbf94e83427a29974",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "03457c25546f367462d35547fe9b1990327b5f07d8d566b69270020c4d778c6d",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Spurs v Hoffenheim: team news",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.tottenhamhotspur.com/news/1085394/spurs-vs-hoffenheim-how-to-watch-team-news-kit-colours-key-information"
+        ],
+        "why_relevant": "Flags late WC return / managed early minutes risk for a high-ownership Spurs defender; not a GW1 exclusion by itself."
+      },
+      "published_at": "2026-08-14T12:22:26Z",
+      "status": "doubtful"
+    },
+    {
+      "available_at": "2026-08-15T07:10:00Z",
+      "claim_id": "model:19281e81946f91c0bb958e19259bd02e190deb3c52b299fb6d98ae6a6fbbbb99",
+      "confidence": 0.72,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-15T07:05:00Z",
+      "player_uid": "player:2026-27:12",
+      "provenance": {
+        "derived_claim": "Arteta said Bukayo Saka has returned to training and could be involved against Manchester City in the Community Shield, hoping to be ready for the start of the new season.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-15T070500Z",
+        "model_run_sha256": "2c0a8abde972edb7aefd881b1ed13713b92e5db1be8256cbbf94e83427a29974",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "59919a573fa36c948c71a2b399724e06432a76aeeddf2baca72b9f864f1c5e6e",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Arteta's update on Rice, Saka, Saliba and Timber",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+        ],
+        "why_relevant": "Supports Saka availability heading into the season opener after post-tournament return."
+      },
+      "published_at": "2026-08-14T13:53:17Z",
+      "recovery": {
+        "condition": "returned_to_training",
+        "condition_met": true,
+        "observed_at": "2026-08-15T07:10:00Z"
+      },
+      "status": "available"
+    },
+    {
+      "available_at": "2026-08-15T07:10:00Z",
+      "claim_id": "model:474ef8cc29440b06e7f0b8d069dd3f0f1bbb24dcec899e51491b0ac270d41560",
+      "confidence": 0.9,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-15T07:05:00Z",
+      "player_uid": "player:2026-27:6",
+      "provenance": {
+        "derived_claim": "Mikel Arteta said William Saliba remains a long-term injury absentee and will not be involved for the Community Shield; no return date given.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-15T070500Z",
+        "model_run_sha256": "2c0a8abde972edb7aefd881b1ed13713b92e5db1be8256cbbf94e83427a29974",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "59919a573fa36c948c71a2b399724e06432a76aeeddf2baca72b9f864f1c5e6e",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Arteta's update on Rice, Saka, Saliba and Timber",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+        ],
+        "why_relevant": "Confirms Saliba unavailable for early defensive coverage; aligns with official FPL injury flag."
+      },
+      "published_at": "2026-08-14T13:53:17Z",
+      "status": "unavailable"
+    },
+    {
+      "available_at": "2026-08-15T07:10:00Z",
+      "claim_id": "model:3ead968c873bcf7c742a4d61d365d89e2deb952d8a35bb6c912c430adb8d0a52",
+      "confidence": 0.88,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-15T07:05:00Z",
+      "player_uid": "player:2026-27:5",
+      "provenance": {
+        "derived_claim": "Arteta said Jurrien Timber is progressing on the pitch but still has a few weeks to go and will not be ready for the Community Shield; group training hoped next week or so.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "cursor-grok-4.5-high",
+        "model_run_id": "cursor-grok-4.5-high:2026-08-15T070500Z",
+        "model_run_sha256": "2c0a8abde972edb7aefd881b1ed13713b92e5db1be8256cbbf94e83427a29974",
+        "prompt_path": "prompts/daily-news-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "59919a573fa36c948c71a2b399724e06432a76aeeddf2baca72b9f864f1c5e6e",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Arteta's update on Rice, Saka, Saliba and Timber",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+        ],
+        "why_relevant": "Confirms Timber unavailable for GW1 window; aligns with official FPL injury flag."
+      },
+      "published_at": "2026-08-14T13:53:17Z",
+      "status": "unavailable"
+    },
+    {
+      "available_at": "2026-08-16T07:02:18Z",
+      "claim_id": "model:a71c07f2c81411e3bb056080b2a20fe12947ff193dbd1cab8a3e5c25ea62ebee",
+      "confidence": 0.86,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-16T07:02:18Z",
+      "player_uid": "player:2026-27:411",
+      "provenance": {
+        "derived_claim": "Enzo Maresca says Erling Haaland is okay for the start of the season after sitting out part of open training with minor heel issues; date-only page datePublished 2026-08-14 normalised to midnight UTC.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-16T070218Z",
+        "model_run_sha256": "c20539eafb2a447d858c07400308135c5ef27e30abf3df46d6e9dfa98221d39a",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "899958d574be096c9db6ad3806954eae6d3cfeba1fa6b12beb9cc469966343df",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Maresca fitness update on McAidoo, Haaland and Rodri",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297"
+        ],
+        "why_relevant": "Haaland is the advisory premium forward; official declared fitness reduces (but does not eliminate) minutes risk ahead of GW1."
+      },
+      "published_at": "2026-08-14T00:00:00Z",
+      "recovery": {
+        "condition": "declared_fit",
+        "condition_met": true,
+        "observed_at": "2026-08-16T07:02:18Z"
+      },
+      "status": "available",
+      "supersedes_claim_ids": [
+        "model:30b694ebb53a4ed137bffa1c3b6fef907a501ac8833514d0f40dcb8d69f9f4b7"
+      ]
+    },
+    {
+      "available_at": "2026-08-16T07:02:18Z",
+      "claim_id": "model:1d38b5faeaa337f73627a7c54bd33b7d41b162b91b5f0b60c427178b86ad2e91",
+      "confidence": 0.9,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-16T07:02:18Z",
+      "player_uid": "player:2026-27:402",
+      "provenance": {
+        "derived_claim": "Maresca confirms Rodri (FPL web_name Rodrigo) is in rehabilitation after minor back surgery and is not yet ready to start training sessions with the first team.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-16T070218Z",
+        "model_run_sha256": "c20539eafb2a447d858c07400308135c5ef27e30abf3df46d6e9dfa98221d39a",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "899958d574be096c9db6ad3806954eae6d3cfeba1fa6b12beb9cc469966343df",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Maresca fitness update on McAidoo, Haaland and Rodri",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297"
+        ],
+        "why_relevant": "Rodri/Rodrigo remains unavailable; informs City midfield/DEFCON context and rules out early ownership."
+      },
+      "published_at": "2026-08-14T00:00:00Z",
+      "status": "unavailable",
+      "supersedes_claim_ids": [
+        "model:fc4ea2c8d58b509e58a3bcb4fd4a0f09495be28b84df9a3ebc29b60b648dd4a5"
+      ]
+    },
+    {
+      "available_at": "2026-08-16T07:02:18Z",
+      "claim_id": "model:31defbad402ac306e374f2a05066300d082417cfe254d4bd14e5479f57ebc511",
+      "confidence": 0.84,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-16T07:02:18Z",
+      "player_uid": "player:2026-27:12",
+      "provenance": {
+        "derived_claim": "Arteta says Bukayo Saka will be available after returning to training this week and could be involved versus Manchester City if in the expected condition.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-16T070218Z",
+        "model_run_sha256": "c20539eafb2a447d858c07400308135c5ef27e30abf3df46d6e9dfa98221d39a",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "2a521957f4316874441dd103229dd276da15ad849dd6a5121a52c2dd93b34026",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Arteta's update on Rice, Saka, Saliba and Timber",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+        ],
+        "why_relevant": "Saka availability informs premium midfield alternatives versus the current Bruno/Semenyo structure."
+      },
+      "published_at": "2026-08-14T13:53:17.562Z",
+      "recovery": {
+        "condition": "declared_fit",
+        "condition_met": true,
+        "observed_at": "2026-08-16T07:02:18Z"
+      },
+      "status": "available",
+      "supersedes_claim_ids": [
+        "model:19281e81946f91c0bb958e19259bd02e190deb3c52b299fb6d98ae6a6fbbbb99"
+      ]
+    },
+    {
+      "available_at": "2026-08-16T07:02:18Z",
+      "claim_id": "model:b59d3f4aa519fb47b73fbac907578f083f34fb6d88e68700b047b8f6d9cd1e48",
+      "confidence": 0.92,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-16T07:02:18Z",
+      "player_uid": "player:2026-27:6",
+      "provenance": {
+        "derived_claim": "Mikel Arteta states William Saliba will miss the Community Shield and describes his back issue as a more long-term injury.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-16T070218Z",
+        "model_run_sha256": "c20539eafb2a447d858c07400308135c5ef27e30abf3df46d6e9dfa98221d39a",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "2a521957f4316874441dd103229dd276da15ad849dd6a5121a52c2dd93b34026",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Arteta's update on Rice, Saka, Saliba and Timber",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+        ],
+        "why_relevant": "Confirms Saliba is not an early Arsenal defensive asset; supports avoiding him in the initial 15."
+      },
+      "published_at": "2026-08-14T13:53:17.562Z",
+      "status": "unavailable",
+      "supersedes_claim_ids": [
+        "model:474ef8cc29440b06e7f0b8d069dd3f0f1bbb24dcec899e51491b0ac270d41560"
+      ]
+    },
+    {
+      "available_at": "2026-08-16T07:02:18Z",
+      "claim_id": "model:ee6a4965b605f82d8908e0f3d40c8c854face408041eaf05e3ef99315fc14dab",
+      "confidence": 0.9,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-16T07:02:18Z",
+      "player_uid": "player:2026-27:5",
+      "provenance": {
+        "derived_claim": "Arteta says Jurrien Timber is progressing but still a few weeks away and will miss the Community Shield.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-16T070218Z",
+        "model_run_sha256": "c20539eafb2a447d858c07400308135c5ef27e30abf3df46d6e9dfa98221d39a",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "2a521957f4316874441dd103229dd276da15ad849dd6a5121a52c2dd93b34026",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Arteta's update on Rice, Saka, Saliba and Timber",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+        ],
+        "why_relevant": "Timber unavailable for early Gameweeks; reinforces avoiding injured Arsenal defenders."
+      },
+      "published_at": "2026-08-14T13:53:17.562Z",
+      "status": "unavailable",
+      "supersedes_claim_ids": [
+        "model:3ead968c873bcf7c742a4d61d365d89e2deb952d8a35bb6c912c430adb8d0a52"
+      ]
+    },
+    {
+      "available_at": "2026-08-16T07:02:18Z",
+      "claim_id": "model:b4427b5ec0bc8ed87d23460a81db7a935e18c1431a49501bb6d626f67bfadf3e",
+      "confidence": 0.88,
+      "expires_at": "2026-08-21T17:30:00Z",
+      "observed_at": "2026-08-16T07:02:18Z",
+      "player_uid": "player:2026-27:165",
+      "provenance": {
+        "derived_claim": "Official Chelsea match reaction states Joao Pedro scored twice in the 3-1 final pre-season friendly win over Real Sociedad on 15 August 2026.",
+        "hash_basis": "ephemeral_fetched_source_body_discarded_after_hash",
+        "identity_resolution": "exact",
+        "model_id": "composer-2.5",
+        "model_run_id": "composer-2.5:2026-08-16T070218Z",
+        "model_run_sha256": "c20539eafb2a447d858c07400308135c5ef27e30abf3df46d6e9dfa98221d39a",
+        "prompt_path": "prompts/daily-strategy-research/v1.md",
+        "prompt_version": "v1",
+        "source_document_hash_sha256": "b20b2e65ffa0b266a7270892db6179dda941475b8f638376aef40634af0337ee",
+        "source_ids": [
+          "official-club-communications"
+        ],
+        "source_title": "Xabi Alonso on a productive final friendly and emotional Stamford Bridge reception",
+        "transformation_version": "model-evidence-ingest-v1",
+        "urls": [
+          "https://www.chelseafc.com/en/news/article/xabi-alonso-on-a-productive-final-friendly-and-emotional-stamford-bridge"
+        ],
+        "why_relevant": "Supports retaining Joao Pedro in the advisory XI as a playing forward with recent match minutes and output."
+      },
+      "published_at": "2026-08-15T16:10:00Z",
+      "recovery": {
+        "condition": "started_match",
+        "condition_met": true,
+        "observed_at": "2026-08-16T07:02:18Z"
+      },
+      "status": "available"
+    }
+  ],
+  "content_sha256": "e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13",
+  "created_at": "2026-08-11T16:35:00Z",
+  "ledger_id": "availability-ledger:2026-27",
+  "schema_version": "1.0",
+  "season": "2026-27"
+}

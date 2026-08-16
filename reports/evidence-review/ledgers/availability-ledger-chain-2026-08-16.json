@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "chain_id": "availability-ledger-chain:2026-27:2026-08-16",
+  "season": "2026-27",
+  "status": "resolved",
+  "resolved_at": "2026-08-16T08:50:55Z",
+  "canonical_tip_sha256": "e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13",
+  "sequence": [
+    {
+      "ledger_sha256": "b00a36064f251c83f6fa48a43ad6f13852a32d4c96018c3b8aa1f9b87d3ae949",
+      "path": "reports/evidence-review/ledgers/availability-ledger-b00a36064f251c83f6fa48a43ad6f13852a32d4c96018c3b8aa1f9b87d3ae949.json"
+    },
+    {
+      "prior_ledger_sha256": "b00a36064f251c83f6fa48a43ad6f13852a32d4c96018c3b8aa1f9b87d3ae949",
+      "ledger_sha256": "62f5d4daebdb973e61ec4ab16630a73e85d5dbedfb81024f537d88da0bd3a790",
+      "path": "reports/evidence-review/ledgers/availability-ledger-62f5d4daebdb973e61ec4ab16630a73e85d5dbedfb81024f537d88da0bd3a790.json"
+    },
+    {
+      "prior_ledger_sha256": "62f5d4daebdb973e61ec4ab16630a73e85d5dbedfb81024f537d88da0bd3a790",
+      "ledger_sha256": "f2397d8fd295e2f630a2a9337d77abf2c8ca63f0d9fd14d501c4eddf60a4f777",
+      "path": "reports/evidence-review/ledgers/availability-ledger-f2397d8fd295e2f630a2a9337d77abf2c8ca63f0d9fd14d501c4eddf60a4f777.json"
+    },
+    {
+      "prior_ledger_sha256": "f2397d8fd295e2f630a2a9337d77abf2c8ca63f0d9fd14d501c4eddf60a4f777",
+      "ledger_sha256": "e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13",
+      "path": "reports/evidence-review/ledgers/availability-ledger-e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13.json"
+    }
+  ],
+  "superseded_parallel_tips": [
+    {
+      "ledger_sha256": "4df25fc6ce68e4ecfe2ffd8cf32ea5be146991db7f78c9d267d5519a620d987a",
+      "prior_ledger_sha256": "b00a36064f251c83f6fa48a43ad6f13852a32d4c96018c3b8aa1f9b87d3ae949",
+      "path": "reports/evidence-review/ledgers/availability-ledger-4df25fc6ce68e4ecfe2ffd8cf32ea5be146991db7f78c9d267d5519a620d987a.json",
+      "status": "historical_noncanonical",
+      "reason": "The 16 August claims were originally replayed against the stale 12 August tip. The bytes are retained for audit only."
+    }
+  ],
+  "reconciliation": {
+    "run_id": "composer-2.5:2026-08-16T070218Z",
+    "audit_path": "reports/evidence-review/ledgers/composer-2.5-2026-08-16T070218Z.audit.json",
+    "accepted_claim_ids": [
+      "model:a71c07f2c81411e3bb056080b2a20fe12947ff193dbd1cab8a3e5c25ea62ebee",
+      "model:1d38b5faeaa337f73627a7c54bd33b7d41b162b91b5f0b60c427178b86ad2e91",
+      "model:31defbad402ac306e374f2a05066300d082417cfe254d4bd14e5479f57ebc511",
+      "model:b59d3f4aa519fb47b73fbac907578f083f34fb6d88e68700b047b8f6d9cd1e48",
+      "model:ee6a4965b605f82d8908e0f3d40c8c854face408041eaf05e3ef99315fc14dab",
+      "model:b4427b5ec0bc8ed87d23460a81db7a935e18c1431a49501bb6d626f67bfadf3e"
+    ],
+    "appended_claim_count": 6,
+    "supersession_count": 5,
+    "new_player_claim_count": 1,
+    "method": "Replay the unchanged six canonical 16 August claims against the canonical 15 August ledger using repository append, supersession, ordering and content-hash semantics."
+  },
+  "content_sha256": "4c51ae47860a2abae0bd3f85cb4010c54106bde45e66f51ce5c6aa761fc3a788"
+}
