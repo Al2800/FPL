@@ -33,7 +33,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check -e ".[dev]"
 
       - name: Reconcile canonical ledger chain
-        run: python scripts/reconcile_2026_08_16_ledger.py
+        run: python -m scripts.reconcile_2026_08_16_ledger
 
       - name: Validate ledger implementation and regression
         run: |
