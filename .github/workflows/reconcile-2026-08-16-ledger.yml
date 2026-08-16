@@ -1,0 +1,64 @@
+name: Reconcile 2026-08-16 availability ledger
+
+on:
+  push:
+    branches:
+      - agent/reconcile-availability-ledger-2026-08-16
+    paths:
+      - scripts/reconcile_2026_08_16_ledger.py
+      - .github/workflows/reconcile-2026-08-16-ledger.yml
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out complete history
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install project and test dependencies
+        run: python -m pip install --disable-pip-version-check -e ".[dev]"
+
+      - name: Reconcile canonical ledger chain
+        run: python scripts/reconcile_2026_08_16_ledger.py
+
+      - name: Validate ledger implementation and regression
+        run: |
+          python -m pytest -q \
+            tests/evidence/test_availability_ledger.py \
+            tests/evidence/test_model_run_ingest.py \
+            tests/evidence/test_availability_ledger_reconciliation.py
+          git diff --check
+
+      - name: Commit generated reconciliation artefacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            reports/evidence-review/2026-08-16-model-run-reconciled.md \
+            reports/evidence-review/ledgers/availability-ledger-62f5d4daebdb973e61ec4ab16630a73e85d5dbedfb81024f537d88da0bd3a790.json \
+            reports/evidence-review/ledgers/availability-ledger-f2397d8fd295e2f630a2a9337d77abf2c8ca63f0d9fd14d501c4eddf60a4f777.json \
+            reports/evidence-review/ledgers/availability-ledger-4df25fc6ce68e4ecfe2ffd8cf32ea5be146991db7f78c9d267d5519a620d987a.json \
+            reports/evidence-review/ledgers/availability-ledger-e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13.json \
+            reports/evidence-review/ledgers/composer-2.5-2026-08-16T070218Z.audit.json \
+            reports/evidence-review/ledgers/availability-ledger-chain-2026-08-16.json \
+            tests/evidence/test_availability_ledger_reconciliation.py
+          if git diff --cached --quiet; then
+            echo "Reconciliation artefacts are already current."
+            exit 0
+          fi
+          git commit -m "Reconcile 2026-08-16 availability ledger chain"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
