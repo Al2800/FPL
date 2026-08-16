@@ -1,0 +1,127 @@
+{
+  "accepted_claim_ids": [
+    "model:a71c07f2c81411e3bb056080b2a20fe12947ff193dbd1cab8a3e5c25ea62ebee",
+    "model:1d38b5faeaa337f73627a7c54bd33b7d41b162b91b5f0b60c427178b86ad2e91",
+    "model:31defbad402ac306e374f2a05066300d082417cfe254d4bd14e5479f57ebc511",
+    "model:b59d3f4aa519fb47b73fbac907578f083f34fb6d88e68700b047b8f6d9cd1e48",
+    "model:ee6a4965b605f82d8908e0f3d40c8c854face408041eaf05e3ef99315fc14dab",
+    "model:b4427b5ec0bc8ed87d23460a81db7a935e18c1431a49501bb6d626f67bfadf3e"
+  ],
+  "available_at": "2026-08-16T07:02:18Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-08-16-haaland-declared-fit-community-shield": "model:a71c07f2c81411e3bb056080b2a20fe12947ff193dbd1cab8a3e5c25ea62ebee",
+    "2026-08-16-joao-pedro-started-friendly": "model:b4427b5ec0bc8ed87d23460a81db7a935e18c1431a49501bb6d626f67bfadf3e",
+    "2026-08-16-rodri-rehab-unavailable": "model:1d38b5faeaa337f73627a7c54bd33b7d41b162b91b5f0b60c427178b86ad2e91",
+    "2026-08-16-saka-declared-available": "model:31defbad402ac306e374f2a05066300d082417cfe254d4bd14e5479f57ebc511",
+    "2026-08-16-saliba-unavailable-long-term": "model:b59d3f4aa519fb47b73fbac907578f083f34fb6d88e68700b047b8f6d9cd1e48",
+    "2026-08-16-timber-unavailable-weeks": "model:ee6a4965b605f82d8908e0f3d40c8c854face408041eaf05e3ef99315fc14dab"
+  },
+  "content_sha256": "dedec1e57231dd1fd4be74a58bd2b8e668aff52c9b8090b9430e7874a9e5cdb9",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 117
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Treat late return as unavailable",
+        "Wait for Community Shield XI before any claim"
+      ],
+      "boundary_id": "premium:haaland",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Haaland available (declared_fit) from official City Community Shield fitness update",
+      "falsifiers": [
+        "Official City XI or presser limits Haaland minutes severely for GW1",
+        "New injury before GW1 deadline"
+      ],
+      "rationale": "Maresca explicitly says Haaland is okay for the start of the season despite minor heel niggles and a late World Cup return. This supports keeping the Haaland-in advisory structure while still monitoring minutes management.",
+      "supporting_claim_ids": [
+        "model:a71c07f2c81411e3bb056080b2a20fe12947ff193dbd1cab8a3e5c25ea62ebee"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Price-driven Arsenal DEF punt",
+        "Assume Timber returns for GW1"
+      ],
+      "boundary_id": "defence:arsenal",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Saliba and Timber unavailable; do not add Arsenal defenders to the advisory 15",
+      "falsifiers": [
+        "Arteta confirms unexpected early return"
+      ],
+      "rationale": "Arteta confirms both miss Community Shield; Saliba long-term, Timber still weeks away.",
+      "supporting_claim_ids": [
+        "model:b59d3f4aa519fb47b73fbac907578f083f34fb6d88e68700b047b8f6d9cd1e48",
+        "model:ee6a4965b605f82d8908e0f3d40c8c854face408041eaf05e3ef99315fc14dab"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Downgrade Joao Pedro on World Cup absence narrative"
+      ],
+      "boundary_id": "forward:joao-pedro",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Joao Pedro available via started_match after scoring twice in final friendly",
+      "falsifiers": [
+        "Official Chelsea team news excludes him for GW1"
+      ],
+      "rationale": "Official Chelsea reaction names Joao Pedro as a scorer in the 15 August Real Sociedad friendly, strengthening the minutes case for the advisory XI.",
+      "supporting_claim_ids": [
+        "model:b4427b5ec0bc8ed87d23460a81db7a935e18c1431a49501bb6d626f67bfadf3e"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "9ee1f3e4659fa35a4993b121ecaa370d820f0003d8b53e845a642a5c66e4acde",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "2a521957f4316874441dd103229dd276da15ad849dd6a5121a52c2dd93b34026",
+      "source_url": "https://www.arsenal.com/news/artetas-update-on-rice-saka-saliba-and-timber-apAqr8i40BvM"
+    },
+    {
+      "source_hash_sha256": "b20b2e65ffa0b266a7270892db6179dda941475b8f638376aef40634af0337ee",
+      "source_url": "https://www.chelseafc.com/en/news/article/xabi-alonso-on-a-productive-final-friendly-and-emotional-stamford-bridge"
+    },
+    {
+      "source_hash_sha256": "899958d574be096c9db6ad3806954eae6d3cfeba1fa6b12beb9cc469966343df",
+      "source_url": "https://www.mancity.com/news/mens/enzo-maresca-community-shield-squad-news-63922297"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "c20539eafb2a447d858c07400308135c5ef27e30abf3df46d6e9dfa98221d39a",
+  "observed_at": "2026-08-16T07:02:18Z",
+  "prior_ledger_sha256": "b00a36064f251c83f6fa48a43ad6f13852a32d4c96018c3b8aa1f9b87d3ae949",
+  "prompt": {
+    "path": "prompts/daily-strategy-research/v1.md",
+    "sha256": "7093e2055ca08d493040622da0d26124133df8c19c2e6c9e9107847abbb2fea5",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "7093e2055ca08d493040622da0d26124133df8c19c2e6c9e9107847abbb2fea5",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "4df25fc6ce68e4ecfe2ffd8cf32ea5be146991db7f78c9d267d5519a620d987a",
+  "run_id": "composer-2.5:2026-08-16T070218Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 3,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
