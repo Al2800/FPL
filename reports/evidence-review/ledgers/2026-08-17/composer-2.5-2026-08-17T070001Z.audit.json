@@ -1,0 +1,104 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-08-17T07:00:01.5409706Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "b292190ce42ff77cb24e4c3f7e29ec4d7a5f6051856b3d5eb71f51546aa58657",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "host_watchlist_basis": "packet_universe+verified_leads+flags",
+    "host_watchlist_flagged_count": 63,
+    "host_watchlist_packet_universe_count": 577,
+    "host_watchlist_sha256": "260bfe9a74a8c3652825a588a0074f075e9d98ea97e804ed8fba5a93367b9f22",
+    "host_watchlist_verified_lead_count": 0,
+    "searched_club_count": 21,
+    "watchlist_player_count": 577
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Treat the strict lead view as the whole news day",
+        "Promote bounded snippets or generic training pages automatically",
+        "Treat stale or ambiguous-time pages as current GW1 evidence"
+      ],
+      "boundary_id": "lane-a:2026-08-17:broad-capture-signal",
+      "confidence": 0.99,
+      "conflicting_claim_ids": [],
+      "decision": "Retain all 100 capture candidates as research signals and admit no governed player claims",
+      "falsifiers": [
+        "A current official original supplies an exact publication time and precise player availability or lineup claim",
+        "A fresh official source contradicts the broad-capture interpretation"
+      ],
+      "rationale": "Freshness-first capture searched all 21 catalogue buckets and returned 100 candidates: 62 known-time and 38 unknown-time, with 53 official candidates, nine official feeds and 38 external candidates. The strict view has one dated official generic pre-season page and no player claim. The broad capture is therefore not an empty news day, but it does not support ledger admission.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Edit packet start probabilities from snippets",
+        "Admit undated official pages as current availability claims",
+        "Ignore unknown-time candidates because the strict view is sparse"
+      ],
+      "boundary_id": "lane-a:2026-08-17:player-signals",
+      "confidence": 0.94,
+      "conflicting_claim_ids": [],
+      "decision": "Retain Bruno, Haaland, Joao Pedro, Thiago, Leeds forwards and Spurs goalkeeper competition as monitoring signals only",
+      "falsifiers": [
+        "A current official team sheet or press update confirms or rules out a named player",
+        "Human verification supplies a precise timestamp and claim text"
+      ],
+      "rationale": "Clusters were reviewed across Manchester United, Manchester City, Chelsea, Brentford, Leeds and Tottenham. Official pages were preferred, but the decision-changing rows were stale, generic or unknown-time; independent/community predicted lineups are corroboration or challenge only. No new start probability, minutes estimate or availability claim is written to the ledger.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Use only the comparator union and omit availability challengers",
+        "Add capture names without exact bootstrap identity resolution"
+      ],
+      "boundary_id": "lane-a:2026-08-17:watchlist-contract",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Bind the model run to the 51-player comparator-plus-top-expected-points watchlist",
+      "falsifiers": [
+        "Bootstrap identity resolution shows a declared watchlist UID is not current-season exact"
+      ],
+      "rationale": "The watchlist contains exact current-season IDs from the weekly packet deterministic and robust comparator universe plus the local GW1 expected-points shortlist. No unresolved capture candidate is added as a player value or claim, preserving exact identity and point-in-time discipline.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d9f3f3e53787570f7fbd7c37d34780753c1d9a2abcd3bdc41728e58dc4fe4c53",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "2b1f4704df6f4aedfb4615c4a2470341aeaf3580ce41604302ccf4a6c75fc776",
+  "observed_at": "2026-08-17T07:00:01.5409706Z",
+  "prior_ledger_sha256": "e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13",
+  "prompt": {
+    "path": "prompts/daily-strategy-research/v1.md",
+    "sha256": "b222d8dca1962c172a11b9a4834543eb071b0890d99a0e3f1bcd8db1d0df4766",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "b222d8dca1962c172a11b9a4834543eb071b0890d99a0e3f1bcd8db1d0df4766",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13",
+  "run_id": "composer-2.5:2026-08-17T070001Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}

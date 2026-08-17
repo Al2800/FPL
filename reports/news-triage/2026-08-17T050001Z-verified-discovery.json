@@ -1,0 +1,143 @@
+{
+  "account_writes": false,
+  "admitted_lead_count": 1,
+  "content_sha256": "b14c8c0f7cf11ebfa8964183f71f939fbbfbcb7bb8410d46d91571bf19f65197",
+  "discovery": {
+    "account_writes": false,
+    "claim_policy": "model_derived_candidate_host_validated_claim",
+    "content_sha256": "c84b814cb130cd4e174a1dddc76f3848248f8adb867448e529acb4c2b1474f2d",
+    "coverage": [
+      {
+        "club_id": "arsenal",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "aston-villa",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "bournemouth",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brentford",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "brighton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "chelsea",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "coventry",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "crystal-palace",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "everton",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "fulham",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "hull",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "ipswich",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "leeds",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "liverpool",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-city",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "manchester-united",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "newcastle",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "nottingham-forest",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "premier-league",
+        "result_count": 1,
+        "status": "searched"
+      },
+      {
+        "club_id": "sunderland",
+        "result_count": 0,
+        "status": "searched"
+      },
+      {
+        "club_id": "tottenham",
+        "result_count": 0,
+        "status": "searched"
+      }
+    ],
+    "discovery_id": "news-discovery:2026-27:2026-08-17T05:00:01.643542Z",
+    "leads": [
+      {
+        "club_id": "premier-league",
+        "discovery_method": "official_domain_search_fallback",
+        "document_id": "0856a9dfe4710c9ead822d8ac51990946e31bbfddf9170dc86d05643ac930367",
+        "observed_at": "2026-08-17T05:00:01.643542Z",
+        "published_at": "2026-08-16T00:00:00Z",
+        "query": "site:premierleague.com (injury OR training OR fitness OR \"back in training\" OR \"press conference\" OR \"team news\" OR pre-season OR preseason OR tour)",
+        "rank": 1,
+        "source_url": "https://www.premierleague.com/en/news/4606700/premier-league-clubs-2026-pre-season-fixtures-and-results",
+        "title": "Latest news on Premier League clubs' pre-season matches"
+      }
+    ],
+    "observed_at": "2026-08-17T05:00:01.643542Z",
+    "plan_sha256": "4311fc35e61937fe6b461006c987cb056da9ca23f6c1fd824a666245a2abb000",
+    "quality": {
+      "gaps": [],
+      "rejected": []
+    },
+    "raw_search_context_retained": false,
+    "schema_version": "1.0",
+    "season": "2026-27",
+    "status": "complete"
+  },
+  "schema_version": "news-verified-discovery-bridge-v1",
+  "verification_sha256": "4c2d49932aad4161ea55648f6386caf6e563d3612b6f05046bd13837910af833"
+}

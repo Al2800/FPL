@@ -1,0 +1,1025 @@
+{
+  "account_writes": false,
+  "capture_id": "news-capture:2026-27:2026-08-17T05:00:01.643542Z",
+  "claim_policy": "manual_linked_derived_claim_only",
+  "content_sha256": "4c2d49932aad4161ea55648f6386caf6e563d3612b6f05046bd13837910af833",
+  "notes": "Verified rows have ISO published_at and may be converted into discovery search_results. They are still not ledger claims.",
+  "observed_at": "2026-08-17T05:00:01.643542Z",
+  "rejected": [
+    {
+      "candidate_id": "143645a50510ca498abbbbf639da7d0987cb662b70199bd7429eacce1cea1c8c",
+      "notes": "Official Manchester United page resolves to a 22 November 2024 Ipswich fixture archive. It cannot support a current GW1 Bruno or Manchester United availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "ce765f93653d2c9dbbbd6fcc80dfa8cbec5ac401f73ec6bc388b7c2dde6f6779",
+      "notes": "Stable official Manchester United press-conference page, but the capture does not establish an ISO publication time or a current GW1 player-status conclusion. Human timestamp and context check required.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "1317ad0c58243e9284b245790f3330942619dcb3dda6b510c389a6d2cc688e46",
+      "notes": "Official Manchester United training item is relevant to the Amad/Mbeumo cluster, but publication time and current GW1 relevance are unresolved. Human timestamp and current-context confirmation required.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "23f886cf875f90385fb528f67e2cd05cdac750a6f0bec11426fb125e98cbbb2a",
+      "notes": "Generic Manchester United news feed has no item-level identity, timestamp or player-specific current claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "0d2c4fa7b112db0448f2614643a5d40338a8c9dba80d86a12d9f1610d4fc6db2",
+      "notes": "Official Chelsea training-live page is relevant to the Chelsea availability cluster, but its publication time and any GW1 selection implication are not established. Human confirmation required.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "d52e9f73c405d206df4cbabcfa552af4b07b2c5e8e12d4cef554da8294033ba7",
+      "notes": "Official City article is an older historical-manager interview and does not establish current Haaland availability or minutes.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "d7422d6579dd415d4e24c90a915d9de40d6d0b3bc22c09f8b7b65f15772e1211",
+      "notes": "Official City page is dated 4 March 2026 and is stale for the GW1 decision boundary. It cannot update the current Haaland minutes assessment.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "cc0e86381cba692366e0b233c871cb42a79722d6163d12c75d7ac66e20f02961",
+      "notes": "Arsenal pay-per-view page is general pre-season programme context and supplies no current player availability or lineup claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "cdc5c5d5f0879093b9928aa4b809d7ef422b992c68ba1311b9afb6b838e786dd",
+      "notes": "Arsenal-Brentford match-preview archive is not current GW1 evidence for a recommended-player availability or minutes decision.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "ba10169a7ecf7f8c0d1821bf14e566f609490bcbf93e91036f732dd7023157c7",
+      "notes": "Specific official Brentford team-news candidate is relevant to Thiago, but publication time and current GW1 selection relevance are unresolved. Human timestamp and context confirmation required.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "5abdc28442d9a2f4bd1f08a78852650bf2d56be754057a5d7153a7b4a8e5a781",
+      "notes": "Official Chelsea 2026 tour squad page includes the João Pedro cluster, but publication time and any GW1 minutes implication are unresolved. Human confirmation required.",
+      "reason": "verification_needs_human"
+    },
+    {
+      "candidate_id": "ca8e64df6fa71f36f1fda795abe972dd6e85fc99f7c936407df6c6e58b2317be",
+      "notes": "Generic Manchester City team-news feed has no item-level identity, timestamp or precise Haaland minutes claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "297e11fba79b92e423ee619e01ed7a8d54b837f6a25ed7066448139933eac64e",
+      "notes": "Arsenal-Wolves match-preview archive is not current GW1 evidence for a recommended-player availability or minutes decision.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "57be8d5c424dffe6ad2e5599d4798dc959b0e5894763aa3ba7f9b241b74d33b7",
+      "notes": "Official Brentford injury update is an older archive and cannot update current Thiago availability or GW1 minutes.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "3f79f373353b0558a9f9c9129597151bb8599d853a8bee73dc3d1d9e950856f3",
+      "notes": "Official City article about Haaland resuming training in Abu Dhabi is historical and outside the current GW1 decision window.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "1f3a5e06c21358abdd73e98bba27b1b10e853dee04dbd21eb8fe2dba6b0fb143",
+      "notes": "Generic Crystal Palace news feed has no item-level identity, timestamp or current Mitchell availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "db57829aaaeff1f476515cb5dad0ccc95ad07340c57367e99b5943b2612a3339",
+      "notes": "Generic Hull City news feed has no item-level identity, timestamp or current player-specific claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "73873a186cacba41653774bd850fce609cad24960b4972b181b47318fa30cd33",
+      "notes": "Official City Sporting Champions League page is historical and cannot update current Haaland availability or expected minutes.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "74512a9a07b52dbbed39cc1d73a916ffd8e98877fa4b5ce9e2ecb8bbd51a26f7",
+      "notes": "Generic Leeds news feed has no item-level identity, timestamp or current Wilson/Calvert-Lewin availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "b87039f8675921c3f484b4a55a11ac3f0dc157f174aec965583701ddc9e8f853",
+      "notes": "Generic Everton news feed has no item-level identity, timestamp or current player-specific claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "fee6ef614bbd533469d62d9782a2e3db409b8beb9631760dd46ec563ca5b626c",
+      "notes": "Generic Fulham news feed has no item-level identity, timestamp or current player-specific claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "e775e5cf8015c11d76b193d4d91eae433fa232a02a27256f0fb450ce3a84639a",
+      "notes": "Generic Leeds club-news feed has no item-level identity, timestamp or current Wilson/Calvert-Lewin availability claim.",
+      "reason": "verification_rejected"
+    },
+    {
+      "candidate_id": "2a47a78a8db2a11ba9b5415d210f8d621ef99638fd93cd5af3025015d3c2d641",
+      "notes": "Brentford-Crystal Palace match preview is a 17 May 2026 mid-season archive and cannot support current GW1 Thiago availability.",
+      "reason": "verification_rejected"
+    }
+  ],
+  "schema_version": "news-capture-verification-result-v1",
+  "shortlist": [
+    {
+      "candidate_id": "143645a50510ca498abbbbf639da7d0987cb662b70199bd7429eacce1cea1c8c",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness",
+        "training",
+        "team news",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Ruben Amorim provides team news update | Ipswich Town v Manchester United",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 92,
+      "url": "https://www.manutd.com/en/news/detail/ruben-amorim-provides-team-news-for-ipswich-town-v-manchester-united",
+      "verification_notes": "Official Manchester United page resolves to a 22 November 2024 Ipswich fixture archive. It cannot support a current GW1 Bruno or Manchester United availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "ce765f93653d2c9dbbbd6fcc80dfa8cbec5ac401f73ec6bc388b7c2dde6f6779",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform bruno_minutes, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fernandes",
+        "bruno",
+        "press conference"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Every word from part one of Michael Carrick press conference before Man Utd v Brentford",
+      "topic_hits": [
+        "bruno_minutes",
+        "team_news"
+      ],
+      "triage_score": 88,
+      "url": "https://www.manutd.com/en/news/every-word-from-part-one-of-michael-carrick-press-conference-before-man-utd-v-brentford?t=y",
+      "verification_notes": "Stable official Manchester United press-conference page, but the capture does not establish an ISO publication time or a current GW1 player-status conclusion. Human timestamp and context check required.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "c681baacca75b47d48b492dba838b669576922c26990590758c526500f8b1f24",
+      "club_id": "premier-league",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-16",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-16T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Latest news on Premier League clubs' pre-season matches",
+      "topic_hits": [],
+      "triage_score": 78,
+      "url": "https://www.premierleague.com/en/news/4606700/premier-league-clubs-2026-pre-season-fixtures-and-results",
+      "verification_notes": "Official Premier League pre-season results page with a known publication date. It is generic fixture context and contains no player-specific availability, minutes or lineup claim; retain as research context only.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "1317ad0c58243e9284b245790f3330942619dcb3dda6b510c389a6d2cc688e46",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Amad and Mbeumo return to training",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 76,
+      "url": "https://www.manutd.com/en/News/Detail/Amad%20and%20Bryan%20Mbeumo%20return%20to%20training%20after%20AFCON%20exploits",
+      "verification_notes": "Official Manchester United training item is relevant to the Amad/Mbeumo cluster, but publication time and current GW1 relevance are unresolved. Human timestamp and current-context confirmation required.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "23f886cf875f90385fb528f67e2cd05cdac750a6f0bec11426fb125e98cbbb2a",
+      "club_id": "manchester-united",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform bruno_minutes",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "bruno"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Latest News | Manchester United",
+      "topic_hits": [
+        "bruno_minutes"
+      ],
+      "triage_score": 73,
+      "url": "https://www.manutd.com/en/news?lang=en",
+      "verification_notes": "Generic Manchester United news feed has no item-level identity, timestamp or player-specific current claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "0d2c4fa7b112db0448f2614643a5d40338a8c9dba80d86a12d9f1610d4fc6db2",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Watch Chelsea train live in Sydney!",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 72,
+      "url": "https://www.chelseafc.com/en/news/article/watch-chelsea-train-live-in-sydney",
+      "verification_notes": "Official Chelsea training-live page is relevant to the Chelsea availability cluster, but its publication time and any GW1 selection implication are not established. Human confirmation required.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "d52e9f73c405d206df4cbabcfa552af4b07b2c5e8e12d4cef554da8294033ba7",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform haaland_minutes",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "haaland"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Toure: Haaland is up there with Shearer and Henry",
+      "topic_hits": [
+        "haaland_minutes"
+      ],
+      "triage_score": 71,
+      "url": "https://www.mancity.com/news/mens/kolo-toure-crystal-palace-manchester-city-press-conference-part-two-63901220",
+      "verification_notes": "Official City article is an older historical-manager interview and does not establish current Haaland availability or minutes.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "d7422d6579dd415d4e24c90a915d9de40d6d0b3bc22c09f8b7b65f15772e1211",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [
+        "guardiola"
+      ],
+      "impact_hypothesis": "May inform availability_general, haaland_minutes, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "haaland",
+        "fitness",
+        "training"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "historical_manager_marker",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pep provides Haaland and O'Reilly fitness update",
+      "topic_hits": [
+        "availability_general",
+        "haaland_minutes",
+        "team_news"
+      ],
+      "triage_score": 68,
+      "url": "https://www.mancity.com/news/mens/pep-guardiola-manchester-city-v-nottingham-forest-team-news-63908133",
+      "verification_notes": "Official City page is dated 4 March 2026 and is stale for the GW1 decision boundary. It cannot update the current Haaland minutes assessment.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "cc0e86381cba692366e0b233c871cb42a79722d6163d12c75d7ac66e20f02961",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pre Season Pay Per View :",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://help.arsenal.com/support/solutions/articles/101000591127-pre-season-pay-per-view",
+      "verification_notes": "Arsenal pay-per-view page is general pre-season programme context and supplies no current player availability or lineup claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "cdc5c5d5f0879093b9928aa4b809d7ef422b992c68ba1311b9afb6b838e786dd",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Preview: Arsenal v Brentford | Pre-Match Report | News | Arsenal.com",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.arsenal.com/news/preview-arsenal-v-brentford-1",
+      "verification_notes": "Arsenal-Brentford match-preview archive is not current GW1 evidence for a recommended-player availability or minutes decision.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "ba10169a7ecf7f8c0d1821bf14e566f609490bcbf93e91036f732dd7023157c7",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [
+        "player:2026-27:106"
+      ],
+      "matched_watch_terms": [
+        "training",
+        "team news",
+        "available"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Fulham v Brentford team news update: Ajer, Henderson, Pinnock and Thiago",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 63,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-fulham-v-brentford-premier-league-team-news-ajer-henderson-pinnock-thiago",
+      "verification_notes": "Specific official Brentford team-news candidate is relevant to Thiago, but publication time and current GW1 selection relevance are unresolved. Human timestamp and context confirmation required.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "5abdc28442d9a2f4bd1f08a78852650bf2d56be754057a5d7153a7b4a8e5a781",
+      "club_id": "chelsea",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [
+        "player:2026-27:165"
+      ],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Confirmed Chelsea squad for 2026 pre-season tour",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.chelseafc.com/en/news/article/confirmed-chelsea-travelling-squad-for-2026-pre-season-tour",
+      "verification_notes": "Official Chelsea 2026 tour squad page includes the João Pedro cluster, but publication time and any GW1 minutes implication are unresolved. Human confirmation required.",
+      "verification_status": "needs_human",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "ca8e64df6fa71f36f1fda795abe972dd6e85fc99f7c936407df6c6e58b2317be",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Man City Official Latest News",
+      "topic_hits": [],
+      "triage_score": 63,
+      "url": "https://www.mancity.com/news?tag=Team+News",
+      "verification_notes": "Generic Manchester City team-news feed has no item-level identity, timestamp or precise Haaland minutes claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "297e11fba79b92e423ee619e01ed7a8d54b837f6a25ed7066448139933eac64e",
+      "club_id": "arsenal",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Preview: Arsenal v Wolves | Pre-Match Report | News | Arsenal.com",
+      "topic_hits": [],
+      "triage_score": 62,
+      "url": "https://www.arsenal.com/news/preview-arsenal-v-wolves",
+      "verification_notes": "Arsenal-Wolves match-preview archive is not current GW1 evidence for a recommended-player availability or minutes decision.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "57be8d5c424dffe6ad2e5599d4798dc959b0e5894763aa3ba7f9b241b74d33b7",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "injury",
+        "team news"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Brentford team news update: Josh Dasilva, Aaron Hickey, Vitaly Janelt and Caoimhín Kelleher",
+      "topic_hits": [
+        "availability_general",
+        "team_news"
+      ],
+      "triage_score": 62,
+      "url": "https://www.brentfordfc.com/en/news/article/first-team-injury-update-josh-dasilva-aaron-hickey-vitaly-janelt-and-caoimhin-kelleher",
+      "verification_notes": "Official Brentford injury update is an older archive and cannot update current Thiago availability or GW1 minutes.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "3f79f373353b0558a9f9c9129597151bb8599d853a8bee73dc3d1d9e950856f3",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [
+        "guardiola"
+      ],
+      "impact_hypothesis": "May inform haaland_minutes, team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "haaland",
+        "training",
+        "return"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "historical_manager_marker",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Haaland will resume training in Abu Dhabi, says Guardiola",
+      "topic_hits": [
+        "haaland_minutes",
+        "team_news"
+      ],
+      "triage_score": 60,
+      "url": "https://www.mancity.com/news/mens/pep-guardiola-newcastle-united-away-preview-embargo-63840656",
+      "verification_notes": "Official City article about Haaland resuming training in Abu Dhabi is historical and outside the current GW1 decision window.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "1f3a5e06c21358abdd73e98bba27b1b10e853dee04dbd21eb8fe2dba6b0fb143",
+      "club_id": "crystal-palace",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform availability_general",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "fitness",
+        "available"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "homepage - News - Crystal Palace F.C.",
+      "topic_hits": [
+        "availability_general"
+      ],
+      "triage_score": 58,
+      "url": "https://www.cpfc.co.uk/news/homepage/",
+      "verification_notes": "Generic Crystal Palace news feed has no item-level identity, timestamp or current Mitchell availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "db57829aaaeff1f476515cb5dad0ccc95ad07340c57367e99b5943b2612a3339",
+      "club_id": "hull",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "News",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 58,
+      "url": "https://www.wearehullcity.co.uk/news/",
+      "verification_notes": "Generic Hull City news feed has no item-level identity, timestamp or current player-specific claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "74512a9a07b52dbbed39cc1d73a916ffd8e98877fa4b5ce9e2ecb8bbd51a26f7",
+      "club_id": "leeds",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training",
+        "return"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Mens - Leeds United",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 57,
+      "url": "https://www.leedsunited.com/en/news/category/mens?page=0",
+      "verification_notes": "Generic Leeds news feed has no item-level identity, timestamp or current Wilson/Calvert-Lewin availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "73873a186cacba41653774bd850fce609cad24960b4972b181b47318fa30cd33",
+      "club_id": "manchester-city",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [
+        "guardiola"
+      ],
+      "impact_hypothesis": "May inform availability_general, haaland_minutes",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "haaland",
+        "fitness"
+      ],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 2,
+      "reasons": [
+        "high_search_rank",
+        "historical_manager_marker",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "priority_club",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Pep delivers squad update ahead of Sporting clash",
+      "topic_hits": [
+        "availability_general",
+        "haaland_minutes"
+      ],
+      "triage_score": 57,
+      "url": "https://www.mancity.com/news/mens/pep-guardiola-sporting-v-city-champions-league-team-news-63866332",
+      "verification_notes": "Official City Sporting Champions League page is historical and cannot update current Haaland availability or expected minutes.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "b87039f8675921c3f484b4a55a11ac3f0dc157f174aec965583701ddc9e8f853",
+      "club_id": "everton",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform team_news",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "training"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "topic_hit",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "News - Everton Football Club",
+      "topic_hits": [
+        "team_news"
+      ],
+      "triage_score": 53,
+      "url": "https://www.evertonfc.com/news/",
+      "verification_notes": "Generic Everton news feed has no item-level identity, timestamp or current player-specific claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "fee6ef614bbd533469d62d9782a2e3db409b8beb9631760dd46ec563ca5b626c",
+      "club_id": "fulham",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [
+        "minutes"
+      ],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 4,
+      "reasons": [
+        "needs_publication_time_verification",
+        "preferred_source_class",
+        "watch_term_hit"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Fulham FC - News",
+      "topic_hits": [],
+      "triage_score": 45,
+      "url": "https://www.fulhamfc.com/news/",
+      "verification_notes": "Generic Fulham news feed has no item-level identity, timestamp or current player-specific claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "e775e5cf8015c11d76b193d4d91eae433fa232a02a27256f0fb450ce3a84639a",
+      "club_id": "leeds",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": false,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class"
+      ],
+      "source_class": "feed_candidate",
+      "stale_year_hits": [],
+      "title": "Club News - Leeds United",
+      "topic_hits": [],
+      "triage_score": 43,
+      "url": "https://www.leedsunited.com/en/news",
+      "verification_notes": "Generic Leeds club-news feed has no item-level identity, timestamp or current Wilson/Calvert-Lewin availability claim.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    },
+    {
+      "candidate_id": "2a47a78a8db2a11ba9b5415d210f8d621ef99638fd93cd5af3025015d3c2d641",
+      "club_id": "brentford",
+      "derived_published_from": null,
+      "derived_published_on": null,
+      "freshness_status": "unknown",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "unknown",
+      "published_at": null,
+      "rank": 3,
+      "reasons": [
+        "high_search_rank",
+        "needs_publication_time_verification",
+        "preferred_source_class"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Brentford v Crystal Palace - Match Preview, Kick-off time & more",
+      "topic_hits": [],
+      "triage_score": 41,
+      "url": "https://www.brentfordfc.com/en/news/article/match-previews-brentford-v-crystal-palace-premier-league-17-05-2026",
+      "verification_notes": "Brentford-Crystal Palace match preview is a 17 May 2026 mid-season archive and cannot support current GW1 Thiago availability.",
+      "verification_status": "rejected",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    }
+  ],
+  "triage_sha256": "d6519fd023462c25bdf9b326bc69d59253b35f3b9456521afb005aef2faaa5d4",
+  "verified_ready_for_discovery": [
+    {
+      "candidate_id": "c681baacca75b47d48b492dba838b669576922c26990590758c526500f8b1f24",
+      "club_id": "premier-league",
+      "derived_published_from": "published_at",
+      "derived_published_on": "2026-08-16",
+      "freshness_status": "fresh",
+      "historical_manager_hits": [],
+      "impact_hypothesis": "May inform general availability/team-news review",
+      "matched_players": [],
+      "matched_watch_terms": [],
+      "page_identity_ok": true,
+      "publication_time_status": "known",
+      "published_at": "2026-08-16T00:00:00Z",
+      "rank": 1,
+      "reasons": [
+        "high_search_rank",
+        "preferred_source_class",
+        "priority_club",
+        "publication_time_already_known"
+      ],
+      "source_class": "official_candidate",
+      "stale_year_hits": [],
+      "title": "Latest news on Premier League clubs' pre-season matches",
+      "topic_hits": [],
+      "triage_score": 78,
+      "url": "https://www.premierleague.com/en/news/4606700/premier-league-clubs-2026-pre-season-fixtures-and-results",
+      "verification_notes": "Official Premier League pre-season results page with a known publication date. It is generic fixture context and contains no player-specific availability, minutes or lineup claim; retain as research context only.",
+      "verification_status": "verified",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "verified_by": "codex:strategy-review"
+    }
+  ]
+}

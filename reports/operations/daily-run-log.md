@@ -16,3 +16,5 @@ publish (typically at ~08:20 UTC).
 | 2026-08-15T07:00:01Z | strategy-review | 20260815T070001Z | 1 | failed |
 | 2026-08-16T05:00:01Z | unstructured-capture | 20260816T050001Z | 1 | failed |
 | 2026-08-16T07:00:01Z | strategy-review | 20260816T070001Z | 1 | failed |
+| 2026-08-17T05:00:01Z | unstructured-capture | 20260817T050001Z | 1 | failed |
+| 2026-08-17T07:00:01Z | strategy-review | 20260817T070001Z | 1 | failed |

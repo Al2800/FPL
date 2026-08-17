@@ -1,0 +1,199 @@
+{
+  "verifications": [
+    {
+      "candidate_id": "143645a50510ca498abbbbf639da7d0987cb662b70199bd7429eacce1cea1c8c",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official Manchester United page resolves to a 22 November 2024 Ipswich fixture archive. It cannot support a current GW1 Bruno or Manchester United availability claim."
+    },
+    {
+      "candidate_id": "ce765f93653d2c9dbbbd6fcc80dfa8cbec5ac401f73ec6bc388b7c2dde6f6779",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Stable official Manchester United press-conference page, but the capture does not establish an ISO publication time or a current GW1 player-status conclusion. Human timestamp and context check required."
+    },
+    {
+      "candidate_id": "c681baacca75b47d48b492dba838b669576922c26990590758c526500f8b1f24",
+      "status": "verified",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "published_at": "2026-08-16T00:00:00Z",
+      "notes": "Official Premier League pre-season results page with a known publication date. It is generic fixture context and contains no player-specific availability, minutes or lineup claim; retain as research context only."
+    },
+    {
+      "candidate_id": "1317ad0c58243e9284b245790f3330942619dcb3dda6b510c389a6d2cc688e46",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official Manchester United training item is relevant to the Amad/Mbeumo cluster, but publication time and current GW1 relevance are unresolved. Human timestamp and current-context confirmation required."
+    },
+    {
+      "candidate_id": "23f886cf875f90385fb528f67e2cd05cdac750a6f0bec11426fb125e98cbbb2a",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Manchester United news feed has no item-level identity, timestamp or player-specific current claim."
+    },
+    {
+      "candidate_id": "0d2c4fa7b112db0448f2614643a5d40338a8c9dba80d86a12d9f1610d4fc6db2",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official Chelsea training-live page is relevant to the Chelsea availability cluster, but its publication time and any GW1 selection implication are not established. Human confirmation required."
+    },
+    {
+      "candidate_id": "d52e9f73c405d206df4cbabcfa552af4b07b2c5e8e12d4cef554da8294033ba7",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official City article is an older historical-manager interview and does not establish current Haaland availability or minutes."
+    },
+    {
+      "candidate_id": "d7422d6579dd415d4e24c90a915d9de40d6d0b3bc22c09f8b7b65f15772e1211",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official City page is dated 4 March 2026 and is stale for the GW1 decision boundary. It cannot update the current Haaland minutes assessment."
+    },
+    {
+      "candidate_id": "cc0e86381cba692366e0b233c871cb42a79722d6163d12c75d7ac66e20f02961",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Arsenal pay-per-view page is general pre-season programme context and supplies no current player availability or lineup claim."
+    },
+    {
+      "candidate_id": "cdc5c5d5f0879093b9928aa4b809d7ef422b992c68ba1311b9afb6b838e786dd",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Arsenal-Brentford match-preview archive is not current GW1 evidence for a recommended-player availability or minutes decision."
+    },
+    {
+      "candidate_id": "ba10169a7ecf7f8c0d1821bf14e566f609490bcbf93e91036f732dd7023157c7",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "matched_players": ["player:2026-27:106"],
+      "notes": "Specific official Brentford team-news candidate is relevant to Thiago, but publication time and current GW1 selection relevance are unresolved. Human timestamp and context confirmation required."
+    },
+    {
+      "candidate_id": "5abdc28442d9a2f4bd1f08a78852650bf2d56be754057a5d7153a7b4a8e5a781",
+      "status": "needs_human",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "matched_players": ["player:2026-27:165"],
+      "notes": "Official Chelsea 2026 tour squad page includes the João Pedro cluster, but publication time and any GW1 minutes implication are unresolved. Human confirmation required."
+    },
+    {
+      "candidate_id": "ca8e64df6fa71f36f1fda795abe972dd6e85fc99f7c936407df6c6e58b2317be",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Manchester City team-news feed has no item-level identity, timestamp or precise Haaland minutes claim."
+    },
+    {
+      "candidate_id": "297e11fba79b92e423ee619e01ed7a8d54b837f6a25ed7066448139933eac64e",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Arsenal-Wolves match-preview archive is not current GW1 evidence for a recommended-player availability or minutes decision."
+    },
+    {
+      "candidate_id": "57be8d5c424dffe6ad2e5599d4798dc959b0e5894763aa3ba7f9b241b74d33b7",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official Brentford injury update is an older archive and cannot update current Thiago availability or GW1 minutes."
+    },
+    {
+      "candidate_id": "3f79f373353b0558a9f9c9129597151bb8599d853a8bee73dc3d1d9e950856f3",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official City article about Haaland resuming training in Abu Dhabi is historical and outside the current GW1 decision window."
+    },
+    {
+      "candidate_id": "1f3a5e06c21358abdd73e98bba27b1b10e853dee04dbd21eb8fe2dba6b0fb143",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Crystal Palace news feed has no item-level identity, timestamp or current Mitchell availability claim."
+    },
+    {
+      "candidate_id": "db57829aaaeff1f476515cb5dad0ccc95ad07340c57367e99b5943b2612a3339",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Hull City news feed has no item-level identity, timestamp or current player-specific claim."
+    },
+    {
+      "candidate_id": "73873a186cacba41653774bd850fce609cad24960b4972b181b47318fa30cd33",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Official City Sporting Champions League page is historical and cannot update current Haaland availability or expected minutes."
+    },
+    {
+      "candidate_id": "74512a9a07b52dbbed39cc1d73a916ffd8e98877fa4b5ce9e2ecb8bbd51a26f7",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Leeds news feed has no item-level identity, timestamp or current Wilson/Calvert-Lewin availability claim."
+    },
+    {
+      "candidate_id": "b87039f8675921c3f484b4a55a11ac3f0dc157f174aec965583701ddc9e8f853",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Everton news feed has no item-level identity, timestamp or current player-specific claim."
+    },
+    {
+      "candidate_id": "fee6ef614bbd533469d62d9782a2e3db409b8beb9631760dd46ec563ca5b626c",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Fulham news feed has no item-level identity, timestamp or current player-specific claim."
+    },
+    {
+      "candidate_id": "e775e5cf8015c11d76b193d4d91eae433fa232a02a27256f0fb450ce3a84639a",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": false,
+      "notes": "Generic Leeds club-news feed has no item-level identity, timestamp or current Wilson/Calvert-Lewin availability claim."
+    },
+    {
+      "candidate_id": "2a47a78a8db2a11ba9b5415d210f8d621ef99638fd93cd5af3025015d3c2d641",
+      "status": "rejected",
+      "verified_by": "codex:strategy-review",
+      "verified_at": "2026-08-17T07:00:01.5409706Z",
+      "page_identity_ok": true,
+      "notes": "Brentford-Crystal Palace match preview is a 17 May 2026 mid-season archive and cannot support current GW1 Thiago availability."
+    }
+  ]
+}
