@@ -1,0 +1,126 @@
+{
+  "accepted_claim_ids": [
+    "model:b7575b35f699a8327cea062a0e641bd5c26e2e66ccde2fae8eba9936e056e122",
+    "model:494a125e512c5a12ba6039efcc06268c7bd56af661d5e9301e6835546e0a9595",
+    "model:e05783fcbb7d59625c8de23bdb59642bd035469971cf0f6cc331ab6a7ca2744f",
+    "model:9d2a8aae7b9239e1268a072cefe8cfb57029a0459ac8c675668a454c5088afee"
+  ],
+  "available_at": "2026-08-18T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-08-18-haaland-planned-early-sub-wc-returners": "model:9d2a8aae7b9239e1268a072cefe8cfb57029a0459ac8c675668a454c5088afee",
+    "2026-08-18-haaland-started-community-shield": "model:494a125e512c5a12ba6039efcc06268c7bd56af661d5e9301e6835546e0a9595",
+    "2026-08-18-saka-bench-community-shield": "model:b7575b35f699a8327cea062a0e641bd5c26e2e66ccde2fae8eba9936e056e122",
+    "2026-08-18-semenyo-started-community-shield": "model:e05783fcbb7d59625c8de23bdb59642bd035469971cf0f6cc331ab6a7ca2744f"
+  },
+  "content_sha256": "53ddb42dcf60d359bb1ac48c072ce4f2df10ed124aa43ae999433a7997e4636f",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 109
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit the 14 Aug City fitness page despite age gate",
+        "Invent published_at for Leeds Augsburg XI",
+        "Treat PL Scout syndication as a club-domain claim source for Matheus Nunes"
+      ],
+      "boundary_id": "lane-a:2026-08-18:community-shield-capture",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Admit CS match/report leads for City and Arsenal; keep other clubs empty where no timed official lead within 72h.",
+      "falsifiers": [
+        "Host rejects a cited URL domain or publication time",
+        "A fresher official page contradicts the CS XI or minutes plan"
+      ],
+      "rationale": "Observed_at 2026-08-18T07:05:00Z implies a 72h cutoff near 2026-08-15T07:05:00Z. Confirmed ISO times exist for City match report (16:55 UK), Maresca reaction (18:45 UK), Arsenal team news, and Palace Freiburg report. Pre-CS City fitness page is 14 Aug and outside the gate. Leeds Augsburg page lacked machine-readable published_at so it was omitted rather than invented.",
+      "supporting_claim_ids": [
+        "model:494a125e512c5a12ba6039efcc06268c7bd56af661d5e9301e6835546e0a9595",
+        "model:9d2a8aae7b9239e1268a072cefe8cfb57029a0459ac8c675668a454c5088afee",
+        "model:e05783fcbb7d59625c8de23bdb59642bd035469971cf0f6cc331ab6a7ca2744f",
+        "model:b7575b35f699a8327cea062a0e641bd5c26e2e66ccde2fae8eba9936e056e122"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Mark Haaland doubtful solely because of the 53rd-minute substitution",
+        "Skip minutes_role claim and only keep availability"
+      ],
+      "boundary_id": "premium:haaland",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Haaland available via started_match plus minutes_role context that CS early sub was planned.",
+      "falsifiers": [
+        "Official City GW1 team news limits or omits Haaland",
+        "Fresh injury report between CS and GW1"
+      ],
+      "rationale": "Match report proves he started; Maresca confirms the early change was pre-planned after only two/three sessions. This upgrades evidence quality versus declared_fit alone without inventing GW1 xMins.",
+      "supporting_claim_ids": [
+        "model:494a125e512c5a12ba6039efcc06268c7bd56af661d5e9301e6835546e0a9595",
+        "model:9d2a8aae7b9239e1268a072cefe8cfb57029a0459ac8c675668a454c5088afee"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Watchlist limited to the final advisory 15 only"
+      ],
+      "boundary_id": "lane-a:2026-08-18:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist to comparator arm union, advisory 15, CS-named players, and bootstrap injured/doubtful flags.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist. Injured/returning players and CS participants must be included even when absent from the robust no-Haaland arm.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "5825fea1a38ad4a06e8db5c019f30bad9e3bcb48e16589a71a12a89879909806",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "eac0b9eaad50bb482957f9e0e08d6b3dda42d88f902b8fd57a346f9b35b1d261",
+      "source_url": "https://www.arsenal.com/news/team-news-guimaraes-and-tzolis-start-community-shield-aGP3h9S4sdjJ"
+    },
+    {
+      "source_hash_sha256": "7a4eeb9c3566815912d720eb73b0833c5aed6731b5b30a3624564329e931638e",
+      "source_url": "https://www.mancity.com/news/mens/arsenal-manchester-city-community-shield-match-report-63922483"
+    },
+    {
+      "source_hash_sha256": "bd04a92077cdbe736660e218b8e6c50fe629ebf6cdda8c1b1be7c85ce7e22bd6",
+      "source_url": "https://www.mancity.com/news/mens/maresca-community-shield-written-reaction-63922499"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "cf30501e038421744797217b070a62f2cd7ec13eed81b18acc90fcc3f60cd40f",
+  "observed_at": "2026-08-18T07:05:00Z",
+  "prior_ledger_sha256": "e065ec2649677864592d4b5b1501e05d8d64c267aa29305a90f845cf0a8fdf13",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "e271579611d250d6e09bd1ff5f37ff33ce8b59d5ac4faa3eec665436f67be52a",
+  "run_id": "composer-2.5:2026-08-18T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 4,
+    "candidate_count": 4,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
