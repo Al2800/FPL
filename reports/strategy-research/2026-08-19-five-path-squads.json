@@ -2,32 +2,179 @@
   {
     "path_id": "A-tight-ep-robust",
     "title": "Tight expected points (robust optimiser)",
-    "elevation": "uncertainty-penalised six-GW EP; high start_p; no Haaland",
+    "elevation": "uncertainty-penalised six-GW EP on the 19 Aug packet; no Haaland",
     "spent": 100.0,
     "bank": 0.0,
     "captain": "B.Fernandes",
-    "vice": "Semenyo",
-    "chip": "none \u2014 hold; BB later only if bench is playing",
-    "published_objective": 240.724705,
-    "published_proposal_sha256": "eafe0eda68a68456a5ff91fd91548a2f21673bbe52a393da80dd3c99480f7b0d",
+    "vice": "Rice",
+    "chip": "none \u2014 hold; Obi/Beto bench is not a BB1",
+    "published_objective": 255.878647,
+    "published_proposal_sha256": "3a9377765eddb3440cf319cb2dd760dd4d8877065c18edf20babb058cbc204ff",
     "squad_ok": true,
     "lineup_ok": true,
     "squad_errors": [],
     "lineup_errors": [],
     "club_counts": {
-      "ARS": 1,
-      "MCI": 2,
-      "TOT": 1,
+      "ARS": 2,
+      "EVE": 3,
       "CRY": 1,
-      "EVE": 1,
       "LIV": 1,
-      "BOU": 1,
-      "LEE": 1,
+      "MCI": 3,
+      "TOT": 1,
+      "CHE": 2,
+      "MUN": 2
+    },
+    "squad": [
+      {
+        "web_name": "Raya",
+        "position": "GKP",
+        "club": "ARS",
+        "now_cost": 6.0,
+        "player_id": "1"
+      },
+      {
+        "web_name": "Pickford",
+        "position": "GKP",
+        "club": "EVE",
+        "now_cost": 5.5,
+        "player_id": "226"
+      },
+      {
+        "web_name": "Mitchell",
+        "position": "DEF",
+        "club": "CRY",
+        "now_cost": 4.5,
+        "player_id": "204"
+      },
+      {
+        "web_name": "Tarkowski",
+        "position": "DEF",
+        "club": "EVE",
+        "now_cost": 6.0,
+        "player_id": "229"
+      },
+      {
+        "web_name": "Virgil",
+        "position": "DEF",
+        "club": "LIV",
+        "now_cost": 6.5,
+        "player_id": "356"
+      },
+      {
+        "web_name": "Gu\u00e9hi",
+        "position": "DEF",
+        "club": "MCI",
+        "now_cost": 6.0,
+        "player_id": "388"
+      },
+      {
+        "web_name": "Senesi",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 6.0,
+        "player_id": "498"
+      },
+      {
+        "web_name": "Rice",
+        "position": "MID",
+        "club": "ARS",
+        "now_cost": 7.5,
+        "player_id": "13"
+      },
+      {
+        "web_name": "Semenyo",
+        "position": "MID",
+        "club": "MCI",
+        "now_cost": 8.5,
+        "player_id": "397"
+      },
+      {
+        "web_name": "Rogers",
+        "position": "MID",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "40"
+      },
+      {
+        "web_name": "B.Fernandes",
+        "position": "MID",
+        "club": "MUN",
+        "now_cost": 12.0,
+        "player_id": "426"
+      },
+      {
+        "web_name": "Anderson",
+        "position": "MID",
+        "club": "MCI",
+        "now_cost": 6.5,
+        "player_id": "481"
+      },
+      {
+        "web_name": "Jo\u00e3o Pedro",
+        "position": "FWD",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "165"
+      },
+      {
+        "web_name": "Beto",
+        "position": "FWD",
+        "club": "EVE",
+        "now_cost": 5.5,
+        "player_id": "248"
+      },
+      {
+        "web_name": "Obi",
+        "position": "FWD",
+        "club": "MUN",
+        "now_cost": 4.5,
+        "player_id": "441"
+      }
+    ],
+    "xi": [
+      "Raya",
+      "Gu\u00e9hi",
+      "Virgil",
+      "Senesi",
+      "Tarkowski",
+      "B.Fernandes",
+      "Rice",
+      "Semenyo",
+      "Rogers",
+      "Anderson",
+      "Jo\u00e3o Pedro"
+    ],
+    "bench": [
+      "Pickford",
+      "Mitchell",
+      "Beto",
+      "Obi"
+    ]
+  },
+  {
+    "path_id": "B-loose-ep-deterministic",
+    "title": "Loose expected points (deterministic optimiser)",
+    "elevation": "raw point forecast on the 19 Aug packet; still no Haaland; no Nunes",
+    "spent": 100.0,
+    "bank": 0.0,
+    "captain": "B.Fernandes",
+    "vice": "Gibbs-White",
+    "chip": "none \u2014 hold; Nunes is official-status d and out of the packet",
+    "published_objective": 258.963881,
+    "published_proposal_sha256": "e94a9b0e0a257d27300dff7d6ae00a9e0c7a4311625e46684c2434ea889d6085",
+    "squad_ok": true,
+    "lineup_ok": true,
+    "squad_errors": [],
+    "lineup_errors": [],
+    "club_counts": {
+      "ARS": 2,
+      "MCI": 3,
+      "TOT": 2,
+      "EVE": 2,
+      "LIV": 1,
+      "CHE": 2,
       "MUN": 2,
-      "NFO": 1,
-      "SUN": 1,
-      "BRE": 1,
-      "CHE": 1
+      "NFO": 1
     },
     "squad": [
       {
@@ -52,13 +199,6 @@
         "player_id": "112"
       },
       {
-        "web_name": "Mitchell",
-        "position": "DEF",
-        "club": "CRY",
-        "now_cost": 4.5,
-        "player_id": "204"
-      },
-      {
         "web_name": "Tarkowski",
         "position": "DEF",
         "club": "EVE",
@@ -73,180 +213,32 @@
         "player_id": "356"
       },
       {
-        "web_name": "Truffert",
+        "web_name": "Gu\u00e9hi",
         "position": "DEF",
-        "club": "BOU",
-        "now_cost": 5.5,
-        "player_id": "61"
-      },
-      {
-        "web_name": "Wilson",
-        "position": "MID",
-        "club": "LEE",
-        "now_cost": 6.5,
-        "player_id": "260"
-      },
-      {
-        "web_name": "Semenyo",
-        "position": "MID",
         "club": "MCI",
-        "now_cost": 8.5,
-        "player_id": "397"
-      },
-      {
-        "web_name": "B.Fernandes",
-        "position": "MID",
-        "club": "MUN",
-        "now_cost": 12.0,
-        "player_id": "426"
-      },
-      {
-        "web_name": "Gibbs-White",
-        "position": "MID",
-        "club": "NFO",
-        "now_cost": 8.0,
-        "player_id": "480"
-      },
-      {
-        "web_name": "E.Le F\u00e9e",
-        "position": "MID",
-        "club": "SUN",
         "now_cost": 6.0,
-        "player_id": "542"
+        "player_id": "388"
       },
       {
-        "web_name": "Thiago",
-        "position": "FWD",
-        "club": "BRE",
-        "now_cost": 8.0,
-        "player_id": "106"
+        "web_name": "Senesi",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 6.0,
+        "player_id": "498"
       },
       {
-        "web_name": "Jo\u00e3o Pedro",
-        "position": "FWD",
+        "web_name": "Rice",
+        "position": "MID",
+        "club": "ARS",
+        "now_cost": 7.5,
+        "player_id": "13"
+      },
+      {
+        "web_name": "Rogers",
+        "position": "MID",
         "club": "CHE",
         "now_cost": 7.5,
-        "player_id": "165"
-      },
-      {
-        "web_name": "Obi",
-        "position": "FWD",
-        "club": "MUN",
-        "now_cost": 4.5,
-        "player_id": "441"
-      }
-    ],
-    "xi": [
-      "Raya",
-      "Tarkowski",
-      "Virgil",
-      "Van Hecke",
-      "B.Fernandes",
-      "Gibbs-White",
-      "Semenyo",
-      "E.Le F\u00e9e",
-      "Wilson",
-      "Thiago",
-      "Jo\u00e3o Pedro"
-    ],
-    "bench": [
-      "Donnarumma",
-      "Mitchell",
-      "Truffert",
-      "Obi"
-    ]
-  },
-  {
-    "path_id": "B-loose-ep-deterministic",
-    "title": "Loose expected points (deterministic optimiser)",
-    "elevation": "raw point forecast; still no Haaland; City via Semenyo + Nunes",
-    "spent": 100.0,
-    "bank": 0.0,
-    "captain": "B.Fernandes",
-    "vice": "Semenyo",
-    "chip": "none \u2014 hold; Matheus N. is now bootstrap doubtful",
-    "published_objective": 244.244457,
-    "published_proposal_sha256": "56c936de5ccb0d1934c01485dccc92da2ca33bd9cfc5aa7f1c675473327cd4e4",
-    "squad_ok": true,
-    "lineup_ok": true,
-    "squad_errors": [],
-    "lineup_errors": [],
-    "club_counts": {
-      "ARS": 1,
-      "MCI": 3,
-      "CRY": 1,
-      "EVE": 2,
-      "LIV": 1,
-      "BOU": 1,
-      "LEE": 2,
-      "MUN": 1,
-      "NFO": 1,
-      "SUN": 1,
-      "CHE": 1
-    },
-    "squad": [
-      {
-        "web_name": "Raya",
-        "position": "GKP",
-        "club": "ARS",
-        "now_cost": 6.0,
-        "player_id": "1"
-      },
-      {
-        "web_name": "Donnarumma",
-        "position": "GKP",
-        "club": "MCI",
-        "now_cost": 5.5,
-        "player_id": "384"
-      },
-      {
-        "web_name": "Mitchell",
-        "position": "DEF",
-        "club": "CRY",
-        "now_cost": 4.5,
-        "player_id": "204"
-      },
-      {
-        "web_name": "Tarkowski",
-        "position": "DEF",
-        "club": "EVE",
-        "now_cost": 6.0,
-        "player_id": "229"
-      },
-      {
-        "web_name": "Virgil",
-        "position": "DEF",
-        "club": "LIV",
-        "now_cost": 6.5,
-        "player_id": "356"
-      },
-      {
-        "web_name": "Matheus N.",
-        "position": "DEF",
-        "club": "MCI",
-        "now_cost": 6.0,
-        "player_id": "389"
-      },
-      {
-        "web_name": "Truffert",
-        "position": "DEF",
-        "club": "BOU",
-        "now_cost": 5.5,
-        "player_id": "61"
-      },
-      {
-        "web_name": "Wilson",
-        "position": "MID",
-        "club": "LEE",
-        "now_cost": 6.5,
-        "player_id": "260"
-      },
-      {
-        "web_name": "Semenyo",
-        "position": "MID",
-        "club": "MCI",
-        "now_cost": 8.5,
-        "player_id": "397"
+        "player_id": "40"
       },
       {
         "web_name": "B.Fernandes",
@@ -263,11 +255,11 @@
         "player_id": "480"
       },
       {
-        "web_name": "E.Le F\u00e9e",
+        "web_name": "Anderson",
         "position": "MID",
-        "club": "SUN",
-        "now_cost": 6.0,
-        "player_id": "542"
+        "club": "MCI",
+        "now_cost": 6.5,
+        "player_id": "481"
       },
       {
         "web_name": "Jo\u00e3o Pedro",
@@ -284,43 +276,43 @@
         "player_id": "248"
       },
       {
-        "web_name": "Calvert-Lewin",
+        "web_name": "Obi",
         "position": "FWD",
-        "club": "LEE",
-        "now_cost": 6.0,
-        "player_id": "346"
+        "club": "MUN",
+        "now_cost": 4.5,
+        "player_id": "441"
       }
     ],
     "xi": [
       "Raya",
-      "Tarkowski",
+      "Gu\u00e9hi",
       "Virgil",
-      "Matheus N.",
+      "Senesi",
+      "Tarkowski",
       "B.Fernandes",
       "Gibbs-White",
-      "Semenyo",
-      "E.Le F\u00e9e",
-      "Wilson",
-      "Jo\u00e3o Pedro",
-      "Calvert-Lewin"
+      "Rice",
+      "Rogers",
+      "Anderson",
+      "Jo\u00e3o Pedro"
     ],
     "bench": [
       "Donnarumma",
-      "Mitchell",
-      "Truffert",
-      "Beto"
+      "Van Hecke",
+      "Beto",
+      "Obi"
     ]
   },
   {
     "path_id": "C-premium-override-advisory",
     "title": "Premium override (current advisory)",
-    "elevation": "accept ~25 packet-EV haircut to own Haaland + Bruno",
+    "elevation": "accept a ~21 packet-EV haircut vs today's robust A to own Haaland + Bruno",
     "spent": 99.5,
     "bank": 0.5,
     "captain": "B.Fernandes",
     "vice": "Haaland",
     "chip": "none \u2014 BB blocked by Diop/van Ewijk",
-    "published_objective": 215.705381,
+    "published_objective": 234.320568,
     "published_proposal_sha256": null,
     "squad_ok": true,
     "lineup_ok": true,
@@ -476,7 +468,7 @@
     "captain": "B.Fernandes",
     "vice": "Semenyo",
     "chip": "BB1 is discussable only after official Spurs/Leeds/Arsenal XIs",
-    "published_objective": null,
+    "published_objective": 240.284717,
     "published_proposal_sha256": null,
     "squad_ok": true,
     "lineup_ok": true,
@@ -632,7 +624,7 @@
     "captain": "B.Fernandes",
     "vice": "Semenyo",
     "chip": "none \u2014 bench is more playable than C but not a default BB1",
-    "published_objective": null,
+    "published_objective": 247.509262,
     "published_proposal_sha256": null,
     "squad_ok": true,
     "lineup_ok": true,

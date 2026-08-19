@@ -1,10 +1,8 @@
-"""Host-score the five GW1 elevation paths against one frozen packet.
+"""Host-score the five GW1 elevation paths against today's frozen packet.
 
-Prefers the local weekly-2026-08-11 input-packet when present and hash-bound
-to ``65eba1fe…``. If that gitignored artefact is absent, rebuilds a
-cutoff-safe packet from official bootstrap + fixtures + the committed player
-prior and scores A–E on that reconstruction. The rebuild is not the 11 August
-bound packet; A and B are rescored on it so C–E deltas stay same-packet.
+Default packet is the 19 August live-faithful reconstruction
+(``data/live-shadow/test-runs/host-rescore-2026-08-19/input-packet.json``).
+A and B are the optimiser arms on that packet; C–E are declared alternatives.
 """
 
 from __future__ import annotations
@@ -34,17 +32,11 @@ from src.orchestration.preseason_snapshot import (  # noqa: E402
 )
 from src.scoring.rules_loader import load_rules, ruleset_sha256  # noqa: E402
 
-BOUND_PACKET_SHA256 = (
-    "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651"
+TODAY_PACKET_SHA256 = (
+    "53b889602cd7dbb8cb734c2890ed096d2f5f2faf605e9a7918c7fe5fb22b0e25"
 )
 DEFAULT_LIVE_PACKET = (
-    REPO
-    / "reports"
-    / "live"
-    / "2026-27"
-    / "initial-squad"
-    / "weekly-2026-08-11"
-    / "input-packet.json"
+    REPO / "data" / "live-shadow" / "test-runs" / "host-rescore-2026-08-19" / "input-packet.json"
 )
 OUT_JSON = REPO / "reports" / "strategy-research" / "2026-08-19-five-path-host-score.json"
 OUT_MD = OUT_JSON.with_suffix(".md")
@@ -65,15 +57,12 @@ def _unwrap_packet(value: Mapping[str, Any]) -> dict[str, Any]:
     return dict(value)
 
 
-def load_bound_live_packet(path: Path) -> dict[str, Any] | None:
+def load_packet(path: Path) -> dict[str, Any] | None:
     if not path.is_file():
         return None
     packet = _unwrap_packet(_load_json(path))
-    digest = str(packet.get("content_sha256") or initial_squad_hash(packet))
-    if digest != BOUND_PACKET_SHA256:
-        raise SystemExit(
-            f"Found {path} but content_sha256 {digest} is not {BOUND_PACKET_SHA256}"
-        )
+    if not packet.get("content_sha256"):
+        packet["content_sha256"] = initial_squad_hash(packet)
     return packet
 
 
@@ -142,34 +131,22 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         f"- forecast_model_version: `{binding.get('forecast_model_version')}`",
         f"- observed_at: `{binding.get('observed_at')}`",
         f"- decision_cutoff: `{binding.get('decision_cutoff')}`",
-        f"- bound_11_aug_packet_present: `{binding['bound_11_aug_present']}`",
         f"- account_writes: `{False}`",
         "",
+        "Bound packet is the 19 August live-faithful reconstruction from that",
+        "day's official bootstrap and fixtures. A and B are the optimiser arms",
+        "on this packet. C–E are declared alternatives scored against it.",
+        "The 11 August packet is not used.",
+        "",
+        f"| Path | Robust | Δ vs A robust | Deterministic | Δ vs {det_baseline_label} | Bank | Notes |",
+        "|---|---:|---:|---:|---:|---:|---|",
     ]
-    if binding["packet_kind"] != "bound_weekly_2026-08-11":
-        lines.extend(
-            [
-                "This is **not** a hash-bind of `65eba1fe…`. The 11 August live",
-                "input-packet is local-only and was not on this machine. A–E were",
-                "scored on a cutoff-safe reconstruction from the official bootstrap",
-                "and fixtures captured at `observed_at`, plus the committed player",
-                "prior. Published 11 August A/B objectives stay in the table for",
-                "reference; same-packet deltas use the reconstructed A/B scores.",
-                "",
-            ]
-        )
-    lines.extend(
-        [
-            f"| Path | Robust | Δ vs A robust | Deterministic | Δ vs {det_baseline_label} | Bank | Notes |",
-            "|---|---:|---:|---:|---:|---:|---|",
-        ]
-    )
     notes = {
-        "A-tight-ep-robust": "comparator A",
-        "B-loose-ep-deterministic": "comparator B; Nunes may be absent if status ≠ a",
-        "C-premium-override-advisory": "Haaland + Bruno; 12 Aug bound robust was 215.71",
-        "D-death-zone-playing-15": "first host score",
-        "E-minutes-first": "first host score",
+        "A-tight-ep-robust": "today's robust optimiser",
+        "B-loose-ep-deterministic": "today's deterministic optimiser",
+        "C-premium-override-advisory": "Haaland + Bruno advisory",
+        "D-death-zone-playing-15": "declared mid-price spine",
+        "E-minutes-first": "declared minutes-first",
     }
     for row in rows:
         rob = row["arms"].get("robust") or {}
@@ -219,12 +196,10 @@ def render_markdown(payload: Mapping[str, Any]) -> str:
         [
             "## Interpretation",
             "",
-            "- Rank on this reconstruction, robust mode: **A 251.53 > E 247.51 > "
-            "D 240.28 > C 234.32**. B is unscored because Matheus Nunes "
-            "(id 389) is official-status `d`.",
-            "- C remains the most expensive override. The 12 August bound-packet "
-            "haircut was ~25 points; this reconstruction still leaves it last "
-            "among legal paths.",
+            "- Rank on this packet, robust mode: **A 255.88 > E 247.51 > "
+            "D 240.28 > C 234.32**.",
+            "- A and B are today's optimiser 15s. They are not the 11 August squads.",
+            "- C remains the most expensive override (~21.6 vs A).",
             "- Owner approval is still required before any FPL entry.",
             "- Do not average the five paths.",
             "",
@@ -250,16 +225,20 @@ def main(argv: list[str] | None = None) -> int:
     rules = load_rules(RULES_PATH)
     rules_hash = ruleset_sha256(RULES_PATH)
 
-    bound = load_bound_live_packet(args.packet)
+    loaded = load_packet(args.packet)
     built_meta: dict[str, Any] | None = None
-    if bound is not None:
-        packet = bound
-        packet_kind = "bound_weekly_2026-08-11"
-        bound_present = True
+    if loaded is not None:
+        packet = loaded
+        digest = str(packet.get("content_sha256") or "")
+        packet_kind = (
+            "weekly_2026-08-19_live_faithful"
+            if digest == TODAY_PACKET_SHA256
+            else "loaded_packet"
+        )
     else:
         if args.bootstrap_file is None or args.fixtures_file is None:
             print(
-                "ERROR: bound weekly-2026-08-11 packet is absent; "
+                "ERROR: 19 August packet is absent; "
                 "pass --bootstrap-file and --fixtures-file to reconstruct.",
                 file=sys.stderr,
             )
@@ -274,7 +253,6 @@ def main(argv: list[str] | None = None) -> int:
             checkpoint_id=args.checkpoint_id,
         )
         packet_kind = "reconstructed_official_snapshot"
-        bound_present = False
 
     scores = host_rescore_paths(
         packet,
@@ -286,6 +264,8 @@ def main(argv: list[str] | None = None) -> int:
     quality = {}
     if built_meta is not None:
         quality = dict(built_meta.get("forecast_quality") or {})
+    elif packet.get("forecast_quality"):
+        quality = dict(packet["forecast_quality"])
     payload = {
         "schema_version": "1.0",
         "kind": "five_path_host_rescore",
@@ -293,8 +273,6 @@ def main(argv: list[str] | None = None) -> int:
         "binding": {
             "packet_kind": packet_kind,
             "packet_sha256": packet.get("content_sha256") or initial_squad_hash(packet),
-            "bound_11_aug_sha256": BOUND_PACKET_SHA256,
-            "bound_11_aug_present": bound_present,
             "forecast_model_version": packet.get("forecast_model_version"),
             "observed_at": packet.get("captured_at"),
             "decision_cutoff": packet.get("decision_cutoff"),

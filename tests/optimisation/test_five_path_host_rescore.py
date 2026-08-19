@@ -61,6 +61,9 @@ def test_five_path_ids_are_official_and_rules_valid() -> None:
     assert PLAYERS["Calafiori"]["player_id"] == "8"
     assert PLAYERS["Kinsky"]["player_id"] == "496"
     assert PLAYERS["Xhaka"]["player_id"] == "544"
+    assert PLAYERS["Guéhi"]["player_id"] == "388"
+    assert PLAYERS["Rice"]["player_id"] == "13"
+    assert PLAYERS["Pickford"]["player_id"] == "226"
     for path in PATHS:
         checked = validate_path_rules(path, rules=RULES)
         assert checked["squad_ok"] is True
