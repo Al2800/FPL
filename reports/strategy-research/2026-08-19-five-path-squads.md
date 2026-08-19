@@ -140,6 +140,22 @@ Shared across C–E still: **Bruno captain, Gibbs-White, Le Fée, João Pedro**.
 3. **D** is still the mid-price rebuild; it trails A by ~16.
 4. **E** is the smallest declared haircut (−8.37) if you do not want A’s City triple or Rice/Rogers.
 5. Do not average them.
+6. If the rule is **no pounds left in the bank**, spend C/D/E up (see below). A and B already spend £100.0.
+
+## If we spend the leftover ITB
+
+Same packet, same 15 slots, leftover bank forced into same-position upgrades.
+Full write-up: `reports/strategy-research/2026-08-19-five-path-spend-up.md`.
+
+| Path | Bank | Forced spend | Robust after | Δ vs that path |
+|---|---:|---|---:|---:|
+| A | 0.0 | already £100.0 | 255.88 | 0 |
+| B | 0.0 | already £100.0 | 255.63 | 0 |
+| C | 0.5 | Diop → Disasi | 236.52 | +2.20 |
+| D | 2.0 | Kinsky → Raya; Calafiori → Guéhi | 251.74 | **+11.45** |
+| E | 1.0 | Truffert → Senesi; Le Fée → Anderson | 252.46 | +4.95 |
+
+D’s leftover is the only pile large enough to matter — and spending it buys A’s premiums, so it is no longer the death-zone 15. E’s £1.0 is the cleanest declared spend and becomes the closest alternative to A (252.46 vs 255.88). C’s £0.5 cannot fix Haaland’s haircut.
 
 Falsifiers:
 
@@ -149,4 +165,5 @@ Falsifiers:
 
 Validation artefact: `reports/strategy-research/2026-08-19-five-path-squads.json`.  
 Host-score artefact: `reports/strategy-research/2026-08-19-five-path-host-score.md`.  
+Spend-up artefact: `reports/strategy-research/2026-08-19-five-path-spend-up.md`.  
 All five squads and lineups passed `validate_squad` / `validate_lineup` on ruleset `2026-27-v1.0`.
