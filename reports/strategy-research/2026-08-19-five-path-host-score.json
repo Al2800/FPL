@@ -1,0 +1,722 @@
+{
+  "schema_version": "1.0",
+  "kind": "five_path_host_rescore",
+  "account_writes": false,
+  "binding": {
+    "packet_kind": "reconstructed_official_snapshot",
+    "packet_sha256": "53b889602cd7dbb8cb734c2890ed096d2f5f2faf605e9a7918c7fe5fb22b0e25",
+    "bound_11_aug_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+    "bound_11_aug_present": false,
+    "forecast_model_version": "live-faithful-v1.feature-complete",
+    "observed_at": "2026-08-19T13:28:05Z",
+    "decision_cutoff": "2026-08-21T17:30:00Z",
+    "forecast_quality": {
+      "status": "live_faithful_degraded",
+      "strategy": "live-faithful-v1.feature-complete",
+      "reason": "Six-Gameweek live-faithful horizon materialised from the hash-bound official checkpoint and historical prior; optional evidence gaps remain explicitly degraded.",
+      "limitations": [
+        "historical_player_prior_2025_26",
+        "launch_context_not_applied_inside_forecaster",
+        "official_fdr_team_prior_baseline",
+        "timestamped_odds_absent",
+        "uncertainty_proxy_from_start_probability",
+        "understat_player_event_rates_absent",
+        "unstructured_evidence_absent"
+      ],
+      "lineage": {
+        "official_bootstrap_sha256": "4221a6e443f7e2ee9872b60f7fd4847d0cd0d5becbd2a4a487a8f1e2efaae7ec",
+        "official_fixtures_sha256": "18745575078b4bbf1c3a1c85862945e8d5ff15825130c68b4d11124e2c7bbc54",
+        "identity_map_sha256": "d8ba3329f8c00bc48a6147976cc2afb2ad9993b4a9ab8afee8a6e8c5f314471e",
+        "player_prior_sha256": "970686ed95e5d3ec561e9c590c8b81554dfd2ce9d23c0ecb8666d86c83668b94",
+        "base_player_prior_sha256": "970686ed95e5d3ec561e9c590c8b81554dfd2ce9d23c0ecb8666d86c83668b94",
+        "team_prior_sha256": "98f293c5e9a697abf5272d0d7f8e54994c713b7fbc7960ac81b2d05317d8f80a",
+        "team_prior_source": "official_fdr",
+        "team_prior_model": {
+          "type": "official_fdr_baseline",
+          "mapping": "linear_official_fdr_to_declared_multiplier_bounds",
+          "multiplier_bounds": [
+            0.7,
+            1.3
+          ]
+        },
+        "model_sha256": "579865597123d0f6a86156dc4a70c6bab696207b296e8fb2b540d644366e62b2",
+        "understat_player_event_rates": {
+          "status": "absent",
+          "players_enriched": 0
+        },
+        "odds_team_prior": {
+          "status": "absent",
+          "reason": "odds_absent"
+        },
+        "event_model_weight": 0.0,
+        "fixture_audit_sha256": "044b5191643ee8e58879b64ddecb2d834892f7e27ac3de7154861d5483338446",
+        "understat_capture_path": null,
+        "clubelo_capture_path": null,
+        "clubelo_body_sha256": null,
+        "odds_capture_path": null,
+        "promoted_team_names": [],
+        "set_piece_surface": {
+          "status": "applied",
+          "players_tagged": 118,
+          "effect_weights": null,
+          "promotion_status": "shadow_only_pending_point_in_time_ablation",
+          "ledger_sha256": "ef4b9689178f01c804467e497291f4d355614cc5b64581603620bdab9224b851"
+        },
+        "availability_blend": {
+          "status": "absent",
+          "applied_count": 0,
+          "skipped_count": 0,
+          "content_sha256": "03c5e0d5b25d3931cea7fe3cb90ab392d0cf8fb478bc3b6e2a9021214fb69a28"
+        }
+      },
+      "gameweek_forecast_hashes": [
+        {
+          "gameweek": 1,
+          "feature_state_sha256": "83940fd91d6f8f57d0626f042eda8b6e2ae732a0651b5e5ee20646f3cdf5b1a7",
+          "forecast_sha256": "7901ed48ebdfb522722bd8307fbf473c8a8cf1fdff837bbf1c8b3676a1f96228"
+        },
+        {
+          "gameweek": 2,
+          "feature_state_sha256": "5624719898ef52023cafbf0798f75a9d2f28bcf19f7321ee2eef7097f92ae00b",
+          "forecast_sha256": "9c4bcb01ce78fb0a2c23a4224aa66af59512429ef01cd08275f0a9be80d2a9e5"
+        },
+        {
+          "gameweek": 3,
+          "feature_state_sha256": "5b707d92d1f9a932d05e8eb213d21006130585ee24efdd359a1d9c95bd43868b",
+          "forecast_sha256": "bcb2e87b72381a3daa4322c6efb61aaff6eb69d7b8d3ea7d6680341ef0e5ba9a"
+        },
+        {
+          "gameweek": 4,
+          "feature_state_sha256": "8784993d74631fd13fbdefd7da094ffcf52b7673714173771799327f655e5d80",
+          "forecast_sha256": "368d50e2c00e8e3ad64212503c7a950ffc4d5f548bbae425085661508e8be3d0"
+        },
+        {
+          "gameweek": 5,
+          "feature_state_sha256": "2d8c9ce53d39dfdb3c246a2414420962f0392324b72e726d7fdb19e25647d5a4",
+          "forecast_sha256": "e832d4dfc3d98e6e9bff7718985c6e09897601a74935e79ec8d755bcaad2d3b2"
+        },
+        {
+          "gameweek": 6,
+          "feature_state_sha256": "87204d000b873a13bde9f6171192fb83e6f4fa5bd9b61497ad1bd668742c3bb0",
+          "forecast_sha256": "8865422bcd1a501edbdea1e7f8327f627486f82226970e1cb9bd520de2f2f8c8"
+        }
+      ],
+      "manual_entry_eligible": false,
+      "launch_context_enrichment": "unavailable"
+    }
+  },
+  "paths": [
+    {
+      "path_id": "A-tight-ep-robust",
+      "title": "Tight expected points (robust optimiser)",
+      "squad_player_ids": [
+        "1",
+        "384",
+        "112",
+        "204",
+        "229",
+        "356",
+        "61",
+        "260",
+        "397",
+        "426",
+        "480",
+        "542",
+        "106",
+        "165",
+        "441"
+      ],
+      "published_objective": 240.724705,
+      "arms": {
+        "robust": {
+          "ok": true,
+          "objective": 251.531421,
+          "bank": 0.0,
+          "proposal_sha256": "23f0a71dd3dfac8073142143d4419af457d1009ed798e85ca5dba87370b2d0ab",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 251.531421,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 5.11404,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Mitchell",
+            "Truffert",
+            "Obi"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        },
+        "deterministic": {
+          "ok": true,
+          "objective": 254.909773,
+          "bank": 0.0,
+          "proposal_sha256": "52274cb7b0d939980aadbebe048399e68222f094df49765c5bfe9c3ca1e9c8b6",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 254.909773,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Mitchell",
+            "Truffert",
+            "Obi"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        },
+        "human_reference": {
+          "ok": true,
+          "objective": 254.909773,
+          "bank": 0.0,
+          "proposal_sha256": "52274cb7b0d939980aadbebe048399e68222f094df49765c5bfe9c3ca1e9c8b6",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 254.909773,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Mitchell",
+            "Truffert",
+            "Obi"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        }
+      }
+    },
+    {
+      "path_id": "B-loose-ep-deterministic",
+      "title": "Loose expected points (deterministic optimiser)",
+      "squad_player_ids": [
+        "1",
+        "384",
+        "204",
+        "229",
+        "356",
+        "389",
+        "61",
+        "260",
+        "397",
+        "426",
+        "480",
+        "542",
+        "165",
+        "248",
+        "346"
+      ],
+      "published_objective": 244.244457,
+      "arms": {
+        "robust": {
+          "ok": false,
+          "error": "Declared squad references unknown players: 389"
+        },
+        "deterministic": {
+          "ok": false,
+          "error": "Declared squad references unknown players: 389"
+        },
+        "human_reference": {
+          "ok": false,
+          "error": "Declared squad references unknown players: 389"
+        }
+      }
+    },
+    {
+      "path_id": "C-premium-override-advisory",
+      "title": "Premium override (current advisory)",
+      "squad_player_ids": [
+        "109",
+        "497",
+        "112",
+        "204",
+        "423",
+        "259",
+        "175",
+        "426",
+        "480",
+        "542",
+        "260",
+        "544",
+        "411",
+        "165",
+        "106"
+      ],
+      "published_objective": 215.705381,
+      "arms": {
+        "robust": {
+          "ok": true,
+          "objective": 234.320568,
+          "bank": 0.5,
+          "proposal_sha256": "fe34fd45b92dd4e7254f6502d79f4dd1f51f6d2cf2dde17b80c8b9236d21390a",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 234.320568,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 6.592789,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Diop",
+            "van Ewijk"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 4,
+            "FWD": 3
+          },
+          "validation_ok": true
+        },
+        "deterministic": {
+          "ok": true,
+          "objective": 238.606831,
+          "bank": 0.5,
+          "proposal_sha256": "7bd508ee3872b0b3d5fa3fae806d14994830b8c88d9ca15ec0b5d90e3a418e95",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 238.606831,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Diop",
+            "van Ewijk"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 4,
+            "FWD": 3
+          },
+          "validation_ok": true
+        },
+        "human_reference": {
+          "ok": true,
+          "objective": 238.606831,
+          "bank": 0.5,
+          "proposal_sha256": "7bd508ee3872b0b3d5fa3fae806d14994830b8c88d9ca15ec0b5d90e3a418e95",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 238.606831,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Diop",
+            "van Ewijk"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 4,
+            "FWD": 3
+          },
+          "validation_ok": true
+        }
+      }
+    },
+    {
+      "path_id": "D-death-zone-playing-15",
+      "title": "Death-zone spine (mid-price engine + playing bench)",
+      "squad_player_ids": [
+        "109",
+        "496",
+        "112",
+        "423",
+        "229",
+        "61",
+        "8",
+        "426",
+        "397",
+        "480",
+        "542",
+        "260",
+        "165",
+        "106",
+        "346"
+      ],
+      "published_objective": null,
+      "arms": {
+        "robust": {
+          "ok": true,
+          "objective": 240.284717,
+          "bank": 2.0,
+          "proposal_sha256": "4fa6127c8d650df381f16961b3b271957cb4bcaad4282b07b5236c87db40b3ee",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 240.284717,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 5.882688,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Verbruggen",
+            "Tarkowski",
+            "Van Hecke",
+            "Calafiori",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Kinsky",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        },
+        "deterministic": {
+          "ok": true,
+          "objective": 244.282274,
+          "bank": 2.0,
+          "proposal_sha256": "fe043f16c04fc9a0334353e3092cda5845dd787a8086fb05fb98d1a425ade298",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 244.282274,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Verbruggen",
+            "Tarkowski",
+            "Calafiori",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Kinsky",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        },
+        "human_reference": {
+          "ok": true,
+          "objective": 244.282274,
+          "bank": 2.0,
+          "proposal_sha256": "fe043f16c04fc9a0334353e3092cda5845dd787a8086fb05fb98d1a425ade298",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 244.282274,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Verbruggen",
+            "Tarkowski",
+            "Calafiori",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Kinsky",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        }
+      }
+    },
+    {
+      "path_id": "E-minutes-first",
+      "title": "Minutes-first (start-probability over upside)",
+      "squad_player_ids": [
+        "1",
+        "384",
+        "356",
+        "112",
+        "61",
+        "423",
+        "204",
+        "426",
+        "397",
+        "480",
+        "542",
+        "544",
+        "106",
+        "165",
+        "346"
+      ],
+      "published_objective": null,
+      "arms": {
+        "robust": {
+          "ok": true,
+          "objective": 247.509262,
+          "bank": 1.0,
+          "proposal_sha256": "a88a9a1f4c3fdbba116d1d7caa3e229bc1fdea8fbd5b0d0ab77d7875c2c926f3",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 247.509262,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 4.097431,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Van Hecke",
+            "Shaw",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Xhaka",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Mitchell",
+            "Truffert"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        },
+        "deterministic": {
+          "ok": true,
+          "objective": 250.852971,
+          "bank": 1.0,
+          "proposal_sha256": "cfde7c62389a38ea0af0cc9f4f73cef6002b2820292da49cfe54b19c503d4270",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 250.852971,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Van Hecke",
+            "Shaw",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Xhaka",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Mitchell",
+            "Truffert"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        },
+        "human_reference": {
+          "ok": true,
+          "objective": 250.852971,
+          "bank": 1.0,
+          "proposal_sha256": "cfde7c62389a38ea0af0cc9f4f73cef6002b2820292da49cfe54b19c503d4270",
+          "decomposition": {
+            "discounted_lineup_captain_bench_autosub": 250.852971,
+            "context_shrinkage_loss": 0.0,
+            "uncertainty_penalty": 0.0,
+            "transfer_optionality_bonus": 0.0,
+            "early_wildcard_risk_penalty": 0.0
+          },
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Van Hecke",
+            "Shaw",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Xhaka",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Mitchell",
+            "Truffert"
+          ],
+          "formation": {
+            "DEF": 3,
+            "MID": 5,
+            "FWD": 2
+          },
+          "validation_ok": true
+        }
+      }
+    }
+  ]
+}

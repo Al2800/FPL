@@ -6,14 +6,21 @@
 **Account writes:** false. Owner approval still required.
 
 These are five *ways of scoring the same problem*. Paths A and B are the
-frozen optimiser arms (published objectives). Paths C–E are declared
-alternatives, rules-validated in `scripts/score_five_path_initial_squads.py`.
-C–E do not yet have a same-packet host rescore — the full input-packet is
-local-only.
+frozen optimiser arms (11 August published objectives). Paths C–E are declared
+alternatives, rules-validated in `scripts/score_five_path_initial_squads.py`
+and host-rescored on 19 August in
+`scripts/host_rescore_five_path_squads.py`.
 
 Prices are the 11 August packet / current bootstrap figures used in the
 18 August briefing. Community Shield evidence is used as *path colour*, not
 as new expected-points.
+
+The 11 August bound packet (`65eba1fe…`) is local-only and was not on this
+machine. The 19 August host scores below are a **cutoff-safe reconstruction**
+(`53b88960…`, `live-faithful-v1.feature-complete`, official FDR team prior,
+no Understat, no availability blend). Same-packet deltas use reconstructed A,
+not the published 240.72. C’s 12 August bound robust score (215.71) remains
+the only `65eba1fe…` number for that 15.
 
 ---
 
@@ -70,7 +77,7 @@ Bench: Donnarumma, Mitchell, Truffert, Beto.
 
 ### C — Premium override (current advisory)
 
-**Host-rescored 12 Aug: 215.71 robust / 220.01 det** (−25 / −24 vs A/B) · £99.5 · Bruno (C), Haaland (VC)
+**12 Aug bound packet: 215.71 robust / 220.01 det** (−25 / −24 vs A/B). **19 Aug reconstruction: 234.32 robust / 238.61 det** (−17.21 vs reconstructed A) · £99.5 · Bruno (C), Haaland (VC)
 
 | Pos | Players |
 |---|---|
@@ -86,7 +93,7 @@ Bench: Dubravka, Xhaka, Diop, van Ewijk.
 
 ### D — Death-zone spine (playing 15)
 
-**Not yet host-rescored** · £98.0 / £2.0 ITB · Bruno (C), Semenyo (VC)
+**19 Aug reconstruction: 240.28 robust / 244.28 det** (−11.25 vs reconstructed A) · £98.0 / £2.0 ITB · declared Bruno (C), Semenyo (VC); host-optimal C/VC Bruno / Gibbs-White
 
 | Pos | Players |
 |---|---|
@@ -98,11 +105,11 @@ Bench: Dubravka, Xhaka, Diop, van Ewijk.
 XI 3-4-3: Verbruggen; Van Hecke, Tarkowski, Calafiori; Bruno, Semenyo, Gibbs-White, Le Fée, Wilson; João Pedro, Thiago.  
 Bench: Kinsky, Shaw, Truffert, Calvert-Lewin.
 
-**Read:** the mid-price band *is* the team. No Haaland, no £4.0 enablers. Shield-coloured (Calafiori, Semenyo 90, Kinsky as the Spurs No.1 hypothesis). £2.0 left can become Virgil, Raya, or Mbeumo after Thursday pressers. **BB1 is only legal as a conversation if** Kinsky, Calafiori and Calvert-Lewin are confirmed starters — do not pre-commit.
+**Read:** the mid-price band *is* the team. No Haaland, no £4.0 enablers. Shield-coloured (Calafiori, Semenyo 90, Kinsky as the Spurs No.1 hypothesis). £2.0 left can become Virgil, Raya, or Mbeumo after Thursday pressers. Host-optimal GW1 on the reconstruction is **3-5-2 with Calvert-Lewin benched**, so the declared 3-4-3 is not what the scorer starts. **BB1 is only legal as a conversation if** Kinsky, Calafiori and Calvert-Lewin are confirmed starters — do not pre-commit.
 
 ### E — Minutes-first
 
-**Not yet host-rescored** · £99.0 / £1.0 ITB · Bruno (C), Semenyo (VC)
+**19 Aug reconstruction: 247.51 robust / 250.85 det** (−4.02 vs reconstructed A) · £99.0 / £1.0 ITB · declared Bruno (C), Semenyo (VC); host-optimal C/VC Bruno / Gibbs-White
 
 | Pos | Players |
 |---|---|
@@ -114,7 +121,7 @@ Bench: Kinsky, Shaw, Truffert, Calvert-Lewin.
 XI 3-5-2: Raya; Virgil, Van Hecke, Shaw; Bruno, Semenyo, Gibbs-White, Le Fée, Xhaka; Thiago, João Pedro.  
 Bench: Donnarumma, Mitchell, Truffert, Calvert-Lewin.
 
-**Read:** throw away upside that depends on a 0.25–0.73 start. No Haaland rust, no Diop, no van Ewijk, no Obi. Wilson’s role risk is the first thing this path deletes. Closest in spirit to A, but it swaps Tarkowski/Obi for Shaw/Xhaka/DCL and keeps a calmer bench.
+**Read:** throw away upside that depends on a 0.25–0.73 start. No Haaland rust, no Diop, no van Ewijk, no Obi. Wilson’s role risk is the first thing this path deletes. Closest in spirit to A, and on the 19 August reconstruction it is the **closest scored alternative** (−4.02 vs A).
 
 ---
 
@@ -122,7 +129,9 @@ Bench: Donnarumma, Mitchell, Truffert, Calvert-Lewin.
 
 | | A Tight | B Loose | C Premium | D Death-zone | E Minutes |
 |---|---|---|---|---|---|
-| Published 6-GW objective | **240.72** | **244.24** | **215.71** | unknown | unknown |
+| Published 11 Aug objective | **240.72** | **244.24** | **215.71** | — | — |
+| 19 Aug reconstructed robust | **251.53** | unscored (Nunes `d`) | 234.32 | 240.28 | 247.51 |
+| Δ vs reconstructed A | 0 | — | **−17.21** | **−11.25** | **−4.02** |
 | Haaland | no | no | **yes** | no | no |
 | Semenyo | yes | yes | no | yes | yes |
 | Premium GK pair | yes | yes | no | no | yes |
@@ -138,17 +147,18 @@ Shared core across all five: **Bruno captain, Gibbs-White, Le Fée, João Pedro*
 
 ## How to use this before Friday
 
-1. If you want the **lab’s statistical recommendation**, pick **A**. Use B only as a warning that the loose mean still hates Haaland — do not type B in while Nunes is doubtful.
-2. If you want the **current briefing**, you are already on **C**. That is a conscious ~25-point six-GW haircut for Haaland coverage into Bournemouth / Palace / Coventry.
-3. If the last two days of “look at the rest of the 15” pulled you away from City-only thinking, **D** is the rebuild: keep the mid-price spine, add Semenyo and a playing defence, leave Haaland.
-4. If you are losing sleep over Wilson / Diop / Haaland minutes, **E** is the calmer no-Haaland side.
+1. If you want the **lab’s statistical recommendation**, pick **A**. B cannot even be host-scored on the 19 August bootstrap: Matheus Nunes is official-status `d` and is excluded from the packet.
+2. If you want the **current briefing**, you are already on **C**. The 12 August bound haircut was ~25 points; the 19 August reconstruction still leaves C last among scored paths (−17.21 vs A). Rank-protection / FOMO, not EP.
+3. If the last two days of “look at the rest of the 15” pulled you away from City-only thinking, **D** is the rebuild: keep the mid-price spine, add Semenyo and a playing defence, leave Haaland. It still trails A by ~11 reconstructed points.
+4. If you are losing sleep over Wilson / Diop / Haaland minutes, **E** is the calmer no-Haaland side and the smallest scored haircut (−4.02).
 5. Do not average them. Averaging C and A produces an illegal or incoherent 15.
 
 Thursday–Friday falsifiers that flip a path, not a player:
 
-- Official City “Haaland managed again” → leave C, move to A or D.
+- Official City “Haaland managed again” → leave C, move to A or E.
 - Official Spurs Kinsky + Leeds Wilson/DCL + Arsenal Calafiori → D becomes the BB conversation.
 - Official Bruno limit → every path changes captain first; C may lose its reason to exist.
 
 Validation artefact: `reports/strategy-research/2026-08-19-five-path-squads.json`.  
+Host-score artefact: `reports/strategy-research/2026-08-19-five-path-host-score.md`.  
 All five squads and lineups passed `validate_squad` / `validate_lineup` on ruleset `2026-27-v1.0`.
