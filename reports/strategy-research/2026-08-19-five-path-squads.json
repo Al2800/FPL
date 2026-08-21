@@ -1,0 +1,774 @@
+[
+  {
+    "path_id": "A-tight-ep-robust",
+    "title": "Tight expected points (robust optimiser)",
+    "elevation": "uncertainty-penalised six-GW EP on the 19 Aug packet; no Haaland",
+    "spent": 100.0,
+    "bank": 0.0,
+    "captain": "B.Fernandes",
+    "vice": "Rice",
+    "chip": "none \u2014 hold; Obi/Beto bench is not a BB1",
+    "published_objective": 255.878647,
+    "published_proposal_sha256": "3a9377765eddb3440cf319cb2dd760dd4d8877065c18edf20babb058cbc204ff",
+    "squad_ok": true,
+    "lineup_ok": true,
+    "squad_errors": [],
+    "lineup_errors": [],
+    "club_counts": {
+      "ARS": 2,
+      "EVE": 3,
+      "CRY": 1,
+      "LIV": 1,
+      "MCI": 3,
+      "TOT": 1,
+      "CHE": 2,
+      "MUN": 2
+    },
+    "squad": [
+      {
+        "web_name": "Raya",
+        "position": "GKP",
+        "club": "ARS",
+        "now_cost": 6.0,
+        "player_id": "1"
+      },
+      {
+        "web_name": "Pickford",
+        "position": "GKP",
+        "club": "EVE",
+        "now_cost": 5.5,
+        "player_id": "226"
+      },
+      {
+        "web_name": "Mitchell",
+        "position": "DEF",
+        "club": "CRY",
+        "now_cost": 4.5,
+        "player_id": "204"
+      },
+      {
+        "web_name": "Tarkowski",
+        "position": "DEF",
+        "club": "EVE",
+        "now_cost": 6.0,
+        "player_id": "229"
+      },
+      {
+        "web_name": "Virgil",
+        "position": "DEF",
+        "club": "LIV",
+        "now_cost": 6.5,
+        "player_id": "356"
+      },
+      {
+        "web_name": "Gu\u00e9hi",
+        "position": "DEF",
+        "club": "MCI",
+        "now_cost": 6.0,
+        "player_id": "388"
+      },
+      {
+        "web_name": "Senesi",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 6.0,
+        "player_id": "498"
+      },
+      {
+        "web_name": "Rice",
+        "position": "MID",
+        "club": "ARS",
+        "now_cost": 7.5,
+        "player_id": "13"
+      },
+      {
+        "web_name": "Semenyo",
+        "position": "MID",
+        "club": "MCI",
+        "now_cost": 8.5,
+        "player_id": "397"
+      },
+      {
+        "web_name": "Rogers",
+        "position": "MID",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "40"
+      },
+      {
+        "web_name": "B.Fernandes",
+        "position": "MID",
+        "club": "MUN",
+        "now_cost": 12.0,
+        "player_id": "426"
+      },
+      {
+        "web_name": "Anderson",
+        "position": "MID",
+        "club": "MCI",
+        "now_cost": 6.5,
+        "player_id": "481"
+      },
+      {
+        "web_name": "Jo\u00e3o Pedro",
+        "position": "FWD",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "165"
+      },
+      {
+        "web_name": "Beto",
+        "position": "FWD",
+        "club": "EVE",
+        "now_cost": 5.5,
+        "player_id": "248"
+      },
+      {
+        "web_name": "Obi",
+        "position": "FWD",
+        "club": "MUN",
+        "now_cost": 4.5,
+        "player_id": "441"
+      }
+    ],
+    "xi": [
+      "Raya",
+      "Gu\u00e9hi",
+      "Virgil",
+      "Senesi",
+      "Tarkowski",
+      "B.Fernandes",
+      "Rice",
+      "Semenyo",
+      "Rogers",
+      "Anderson",
+      "Jo\u00e3o Pedro"
+    ],
+    "bench": [
+      "Pickford",
+      "Mitchell",
+      "Beto",
+      "Obi"
+    ]
+  },
+  {
+    "path_id": "B-loose-ep-deterministic",
+    "title": "Loose expected points (deterministic optimiser)",
+    "elevation": "raw point forecast on the 19 Aug packet; still no Haaland; no Nunes",
+    "spent": 100.0,
+    "bank": 0.0,
+    "captain": "B.Fernandes",
+    "vice": "Gibbs-White",
+    "chip": "none \u2014 hold; Nunes is official-status d and out of the packet",
+    "published_objective": 258.963881,
+    "published_proposal_sha256": "e94a9b0e0a257d27300dff7d6ae00a9e0c7a4311625e46684c2434ea889d6085",
+    "squad_ok": true,
+    "lineup_ok": true,
+    "squad_errors": [],
+    "lineup_errors": [],
+    "club_counts": {
+      "ARS": 2,
+      "MCI": 3,
+      "TOT": 2,
+      "EVE": 2,
+      "LIV": 1,
+      "CHE": 2,
+      "MUN": 2,
+      "NFO": 1
+    },
+    "squad": [
+      {
+        "web_name": "Raya",
+        "position": "GKP",
+        "club": "ARS",
+        "now_cost": 6.0,
+        "player_id": "1"
+      },
+      {
+        "web_name": "Donnarumma",
+        "position": "GKP",
+        "club": "MCI",
+        "now_cost": 5.5,
+        "player_id": "384"
+      },
+      {
+        "web_name": "Van Hecke",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 5.0,
+        "player_id": "112"
+      },
+      {
+        "web_name": "Tarkowski",
+        "position": "DEF",
+        "club": "EVE",
+        "now_cost": 6.0,
+        "player_id": "229"
+      },
+      {
+        "web_name": "Virgil",
+        "position": "DEF",
+        "club": "LIV",
+        "now_cost": 6.5,
+        "player_id": "356"
+      },
+      {
+        "web_name": "Gu\u00e9hi",
+        "position": "DEF",
+        "club": "MCI",
+        "now_cost": 6.0,
+        "player_id": "388"
+      },
+      {
+        "web_name": "Senesi",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 6.0,
+        "player_id": "498"
+      },
+      {
+        "web_name": "Rice",
+        "position": "MID",
+        "club": "ARS",
+        "now_cost": 7.5,
+        "player_id": "13"
+      },
+      {
+        "web_name": "Rogers",
+        "position": "MID",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "40"
+      },
+      {
+        "web_name": "B.Fernandes",
+        "position": "MID",
+        "club": "MUN",
+        "now_cost": 12.0,
+        "player_id": "426"
+      },
+      {
+        "web_name": "Gibbs-White",
+        "position": "MID",
+        "club": "NFO",
+        "now_cost": 8.0,
+        "player_id": "480"
+      },
+      {
+        "web_name": "Anderson",
+        "position": "MID",
+        "club": "MCI",
+        "now_cost": 6.5,
+        "player_id": "481"
+      },
+      {
+        "web_name": "Jo\u00e3o Pedro",
+        "position": "FWD",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "165"
+      },
+      {
+        "web_name": "Beto",
+        "position": "FWD",
+        "club": "EVE",
+        "now_cost": 5.5,
+        "player_id": "248"
+      },
+      {
+        "web_name": "Obi",
+        "position": "FWD",
+        "club": "MUN",
+        "now_cost": 4.5,
+        "player_id": "441"
+      }
+    ],
+    "xi": [
+      "Raya",
+      "Gu\u00e9hi",
+      "Virgil",
+      "Senesi",
+      "Tarkowski",
+      "B.Fernandes",
+      "Gibbs-White",
+      "Rice",
+      "Rogers",
+      "Anderson",
+      "Jo\u00e3o Pedro"
+    ],
+    "bench": [
+      "Donnarumma",
+      "Van Hecke",
+      "Beto",
+      "Obi"
+    ]
+  },
+  {
+    "path_id": "C-premium-override-advisory",
+    "title": "Premium override (current advisory)",
+    "elevation": "accept a ~21 packet-EV haircut vs today's robust A to own Haaland + Bruno",
+    "spent": 99.5,
+    "bank": 0.5,
+    "captain": "B.Fernandes",
+    "vice": "Haaland",
+    "chip": "none \u2014 BB blocked by Diop/van Ewijk",
+    "published_objective": 234.320568,
+    "published_proposal_sha256": null,
+    "squad_ok": true,
+    "lineup_ok": true,
+    "squad_errors": [],
+    "lineup_errors": [],
+    "club_counts": {
+      "BHA": 1,
+      "TOT": 2,
+      "CRY": 1,
+      "MUN": 2,
+      "IPS": 1,
+      "COV": 1,
+      "NFO": 1,
+      "SUN": 2,
+      "LEE": 1,
+      "MCI": 1,
+      "CHE": 1,
+      "BRE": 1
+    },
+    "squad": [
+      {
+        "web_name": "Verbruggen",
+        "position": "GKP",
+        "club": "BHA",
+        "now_cost": 4.5,
+        "player_id": "109"
+      },
+      {
+        "web_name": "Dubravka",
+        "position": "GKP",
+        "club": "TOT",
+        "now_cost": 4.0,
+        "player_id": "497"
+      },
+      {
+        "web_name": "Van Hecke",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 5.0,
+        "player_id": "112"
+      },
+      {
+        "web_name": "Mitchell",
+        "position": "DEF",
+        "club": "CRY",
+        "now_cost": 4.5,
+        "player_id": "204"
+      },
+      {
+        "web_name": "Shaw",
+        "position": "DEF",
+        "club": "MUN",
+        "now_cost": 4.5,
+        "player_id": "423"
+      },
+      {
+        "web_name": "Diop",
+        "position": "DEF",
+        "club": "IPS",
+        "now_cost": 4.0,
+        "player_id": "259"
+      },
+      {
+        "web_name": "van Ewijk",
+        "position": "DEF",
+        "club": "COV",
+        "now_cost": 4.0,
+        "player_id": "175"
+      },
+      {
+        "web_name": "B.Fernandes",
+        "position": "MID",
+        "club": "MUN",
+        "now_cost": 12.0,
+        "player_id": "426"
+      },
+      {
+        "web_name": "Gibbs-White",
+        "position": "MID",
+        "club": "NFO",
+        "now_cost": 8.0,
+        "player_id": "480"
+      },
+      {
+        "web_name": "E.Le F\u00e9e",
+        "position": "MID",
+        "club": "SUN",
+        "now_cost": 6.0,
+        "player_id": "542"
+      },
+      {
+        "web_name": "Wilson",
+        "position": "MID",
+        "club": "LEE",
+        "now_cost": 6.5,
+        "player_id": "260"
+      },
+      {
+        "web_name": "Xhaka",
+        "position": "MID",
+        "club": "SUN",
+        "now_cost": 5.5,
+        "player_id": "544"
+      },
+      {
+        "web_name": "Haaland",
+        "position": "FWD",
+        "club": "MCI",
+        "now_cost": 15.5,
+        "player_id": "411"
+      },
+      {
+        "web_name": "Jo\u00e3o Pedro",
+        "position": "FWD",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "165"
+      },
+      {
+        "web_name": "Thiago",
+        "position": "FWD",
+        "club": "BRE",
+        "now_cost": 8.0,
+        "player_id": "106"
+      }
+    ],
+    "xi": [
+      "Verbruggen",
+      "Van Hecke",
+      "Mitchell",
+      "Shaw",
+      "B.Fernandes",
+      "Gibbs-White",
+      "E.Le F\u00e9e",
+      "Wilson",
+      "Haaland",
+      "Jo\u00e3o Pedro",
+      "Thiago"
+    ],
+    "bench": [
+      "Dubravka",
+      "Xhaka",
+      "Diop",
+      "van Ewijk"
+    ]
+  },
+  {
+    "path_id": "D-death-zone-playing-15",
+    "title": "Death-zone spine (mid-price engine + playing bench)",
+    "elevation": "lean into \u00a36.5\u20138.5 attackers; no Haaland; no \u00a34.0 lottery",
+    "spent": 98.0,
+    "bank": 2.0,
+    "captain": "B.Fernandes",
+    "vice": "Semenyo",
+    "chip": "BB1 is discussable only after official Spurs/Leeds/Arsenal XIs",
+    "published_objective": 240.284717,
+    "published_proposal_sha256": null,
+    "squad_ok": true,
+    "lineup_ok": true,
+    "squad_errors": [],
+    "lineup_errors": [],
+    "club_counts": {
+      "BHA": 1,
+      "TOT": 2,
+      "MUN": 2,
+      "EVE": 1,
+      "BOU": 1,
+      "ARS": 1,
+      "MCI": 1,
+      "NFO": 1,
+      "SUN": 1,
+      "LEE": 2,
+      "CHE": 1,
+      "BRE": 1
+    },
+    "squad": [
+      {
+        "web_name": "Verbruggen",
+        "position": "GKP",
+        "club": "BHA",
+        "now_cost": 4.5,
+        "player_id": "109"
+      },
+      {
+        "web_name": "Kinsky",
+        "position": "GKP",
+        "club": "TOT",
+        "now_cost": 4.5,
+        "player_id": "496"
+      },
+      {
+        "web_name": "Van Hecke",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 5.0,
+        "player_id": "112"
+      },
+      {
+        "web_name": "Shaw",
+        "position": "DEF",
+        "club": "MUN",
+        "now_cost": 4.5,
+        "player_id": "423"
+      },
+      {
+        "web_name": "Tarkowski",
+        "position": "DEF",
+        "club": "EVE",
+        "now_cost": 6.0,
+        "player_id": "229"
+      },
+      {
+        "web_name": "Truffert",
+        "position": "DEF",
+        "club": "BOU",
+        "now_cost": 5.5,
+        "player_id": "61"
+      },
+      {
+        "web_name": "Calafiori",
+        "position": "DEF",
+        "club": "ARS",
+        "now_cost": 5.5,
+        "player_id": "8"
+      },
+      {
+        "web_name": "B.Fernandes",
+        "position": "MID",
+        "club": "MUN",
+        "now_cost": 12.0,
+        "player_id": "426"
+      },
+      {
+        "web_name": "Semenyo",
+        "position": "MID",
+        "club": "MCI",
+        "now_cost": 8.5,
+        "player_id": "397"
+      },
+      {
+        "web_name": "Gibbs-White",
+        "position": "MID",
+        "club": "NFO",
+        "now_cost": 8.0,
+        "player_id": "480"
+      },
+      {
+        "web_name": "E.Le F\u00e9e",
+        "position": "MID",
+        "club": "SUN",
+        "now_cost": 6.0,
+        "player_id": "542"
+      },
+      {
+        "web_name": "Wilson",
+        "position": "MID",
+        "club": "LEE",
+        "now_cost": 6.5,
+        "player_id": "260"
+      },
+      {
+        "web_name": "Jo\u00e3o Pedro",
+        "position": "FWD",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "165"
+      },
+      {
+        "web_name": "Thiago",
+        "position": "FWD",
+        "club": "BRE",
+        "now_cost": 8.0,
+        "player_id": "106"
+      },
+      {
+        "web_name": "Calvert-Lewin",
+        "position": "FWD",
+        "club": "LEE",
+        "now_cost": 6.0,
+        "player_id": "346"
+      }
+    ],
+    "xi": [
+      "Verbruggen",
+      "Van Hecke",
+      "Tarkowski",
+      "Calafiori",
+      "B.Fernandes",
+      "Semenyo",
+      "Gibbs-White",
+      "E.Le F\u00e9e",
+      "Wilson",
+      "Jo\u00e3o Pedro",
+      "Thiago"
+    ],
+    "bench": [
+      "Kinsky",
+      "Shaw",
+      "Truffert",
+      "Calvert-Lewin"
+    ]
+  },
+  {
+    "path_id": "E-minutes-first",
+    "title": "Minutes-first (start-probability over upside)",
+    "elevation": "maximise likely starters; drop Wilson/Obi/Haaland rust and promoted lottery",
+    "spent": 99.0,
+    "bank": 1.0,
+    "captain": "B.Fernandes",
+    "vice": "Semenyo",
+    "chip": "none \u2014 bench is more playable than C but not a default BB1",
+    "published_objective": 247.509262,
+    "published_proposal_sha256": null,
+    "squad_ok": true,
+    "lineup_ok": true,
+    "squad_errors": [],
+    "lineup_errors": [],
+    "club_counts": {
+      "ARS": 1,
+      "MCI": 2,
+      "LIV": 1,
+      "TOT": 1,
+      "BOU": 1,
+      "MUN": 2,
+      "CRY": 1,
+      "NFO": 1,
+      "SUN": 2,
+      "BRE": 1,
+      "CHE": 1,
+      "LEE": 1
+    },
+    "squad": [
+      {
+        "web_name": "Raya",
+        "position": "GKP",
+        "club": "ARS",
+        "now_cost": 6.0,
+        "player_id": "1"
+      },
+      {
+        "web_name": "Donnarumma",
+        "position": "GKP",
+        "club": "MCI",
+        "now_cost": 5.5,
+        "player_id": "384"
+      },
+      {
+        "web_name": "Virgil",
+        "position": "DEF",
+        "club": "LIV",
+        "now_cost": 6.5,
+        "player_id": "356"
+      },
+      {
+        "web_name": "Van Hecke",
+        "position": "DEF",
+        "club": "TOT",
+        "now_cost": 5.0,
+        "player_id": "112"
+      },
+      {
+        "web_name": "Truffert",
+        "position": "DEF",
+        "club": "BOU",
+        "now_cost": 5.5,
+        "player_id": "61"
+      },
+      {
+        "web_name": "Shaw",
+        "position": "DEF",
+        "club": "MUN",
+        "now_cost": 4.5,
+        "player_id": "423"
+      },
+      {
+        "web_name": "Mitchell",
+        "position": "DEF",
+        "club": "CRY",
+        "now_cost": 4.5,
+        "player_id": "204"
+      },
+      {
+        "web_name": "B.Fernandes",
+        "position": "MID",
+        "club": "MUN",
+        "now_cost": 12.0,
+        "player_id": "426"
+      },
+      {
+        "web_name": "Semenyo",
+        "position": "MID",
+        "club": "MCI",
+        "now_cost": 8.5,
+        "player_id": "397"
+      },
+      {
+        "web_name": "Gibbs-White",
+        "position": "MID",
+        "club": "NFO",
+        "now_cost": 8.0,
+        "player_id": "480"
+      },
+      {
+        "web_name": "E.Le F\u00e9e",
+        "position": "MID",
+        "club": "SUN",
+        "now_cost": 6.0,
+        "player_id": "542"
+      },
+      {
+        "web_name": "Xhaka",
+        "position": "MID",
+        "club": "SUN",
+        "now_cost": 5.5,
+        "player_id": "544"
+      },
+      {
+        "web_name": "Thiago",
+        "position": "FWD",
+        "club": "BRE",
+        "now_cost": 8.0,
+        "player_id": "106"
+      },
+      {
+        "web_name": "Jo\u00e3o Pedro",
+        "position": "FWD",
+        "club": "CHE",
+        "now_cost": 7.5,
+        "player_id": "165"
+      },
+      {
+        "web_name": "Calvert-Lewin",
+        "position": "FWD",
+        "club": "LEE",
+        "now_cost": 6.0,
+        "player_id": "346"
+      }
+    ],
+    "xi": [
+      "Raya",
+      "Virgil",
+      "Van Hecke",
+      "Shaw",
+      "B.Fernandes",
+      "Semenyo",
+      "Gibbs-White",
+      "E.Le F\u00e9e",
+      "Xhaka",
+      "Thiago",
+      "Jo\u00e3o Pedro"
+    ],
+    "bench": [
+      "Donnarumma",
+      "Mitchell",
+      "Truffert",
+      "Calvert-Lewin"
+    ]
+  }
+]
