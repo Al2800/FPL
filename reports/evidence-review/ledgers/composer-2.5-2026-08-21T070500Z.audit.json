@@ -1,0 +1,96 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-08-21T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "f92edbcef5f73ed8446391949b09c15c8d4d9eeb6ea3b7ec69e425aa594793b6",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 169
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Keep Monday Marker as a live lead despite age",
+        "Invent published_at for undated club pages"
+      ],
+      "boundary_id": "lane-a:2026-08-21:72h-gate",
+      "confidence": 0.94,
+      "conflicting_claim_ids": [],
+      "decision": "Retain only the PL injuries index (last updated 20 Aug 16:05Z); mark Monday Marker (17 Aug 08:00Z) and all CS/Como pages stale under the rolled 72h cutoff.",
+      "falsifiers": [
+        "Host age window differs from observed_at \u2212 72h",
+        "Fresher club GW1 presser with machine-readable published_at appears before 17:30Z deadline"
+      ],
+      "rationale": "observed_at 2026-08-21T07:05:00Z implies cutoff 2026-08-18T07:05:00Z. Monday Marker at 08:00Z on 17 Aug is now outside the window. The PL injuries page shows last updated 17:05 BST on 20 Aug (16:05Z), which remains inside the gate.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Admit Kinsky No.1 from undated/403 PL Briefing without host hash",
+        "Re-emit stale CS claims"
+      ],
+      "boundary_id": "lane-a:2026-08-21:claim-emission",
+      "confidence": 0.87,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new claim candidates on deadline morning; tip-ledger CS fingerprints remain the last host-admitted availability signal; PL injuries index stays metadata-only after premierleague.com 403 ephemeral-fetch risk.",
+      "falsifiers": [
+        "Host hashes a PL injuries or Spurs/City presser body with precise player statuses",
+        "Official City GW1 XI or minutes statement lands before deadline"
+      ],
+      "rationale": "No new hashable club original inside 72h states a precise availability/minutes/lineup claim for a watchlist player. De Zerbi/Kinsky No.1 quotes circulate via PL Briefing/Scout and community, but Spurs.com lacks a fresh dated page in-window, and PL.com bodies are not reliably hashable with Lab UA. Tip ledger already holds Haaland/Semenyo/Saka/Doku/Anderson CS claims.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Watchlist limited to the advisory 15 only"
+      ],
+      "boundary_id": "lane-a:2026-08-21:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist of 169 UIDs covering comparator arms, advisory 15, CS-named players, bootstrap flags, and high-ownership names.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist. Deadline-day pressers may name injured or returning players absent from the Haaland-in 15, so the contract stays broad.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "56fc7b0ec2f474da2de182531c55b15b5ee75315b28541ed91766339a9d46b52",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "dd919b0d20103731ec4508741f206319a1cf2e5875e9ee7e80c20cfb8348193f",
+  "observed_at": "2026-08-21T07:05:00Z",
+  "prior_ledger_sha256": "2039d04cd7859a174555bffcb8ee9eb81e7b78a1289db4d55ddf9d80ac50d521",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "2039d04cd7859a174555bffcb8ee9eb81e7b78a1289db4d55ddf9d80ac50d521",
+  "run_id": "composer-2.5:2026-08-21T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
