@@ -1,0 +1,134 @@
+{
+  "accepted_claim_ids": [
+    "model:3a7e206d6bfd1bcd59ef358d985515969da5c8641694a80c066b99aaff969a26",
+    "model:1866deacc6b59ac112889f8fc4cd065655ea08f66bcf8a0f4c9387c465adad6a",
+    "model:22b445f098304c033c984091a6d96a44f69f385fef4e1edbc20f41bca89d270c",
+    "model:68d78f75d6ee8762f5340bd8fc83a18478b36a1ad525738a44fc27137891d298",
+    "model:be30f24e14e8f1a481c1848a11f4c7382f57766842e8caf92bbdefd158d32a05",
+    "model:f1d9fbbb9f72d4f4c5e8d64f604aa0dd7e7e1453101b3580a8d8b33fb4ff56a0",
+    "model:9a5b997d19228c377a91a630c6d6c6c62c6b2aa6a2ae031b455ac97ada4d3019"
+  ],
+  "available_at": "2026-08-23T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:0a4f2711aef9aec56c83a23311bd9fd156b4202d3b10bf97b9578b6dcb01ee82": "model:68d78f75d6ee8762f5340bd8fc83a18478b36a1ad525738a44fc27137891d298",
+    "model:4fb0a1ebafb7b08240ca334dd859c87b4185006239e890d113013b5381f6f1c6": "model:3a7e206d6bfd1bcd59ef358d985515969da5c8641694a80c066b99aaff969a26",
+    "model:72814da4db6b84cd2b24b88bed14c3ae61fbd2ea820d42ff75f2a7db99c33210": "model:be30f24e14e8f1a481c1848a11f4c7382f57766842e8caf92bbdefd158d32a05",
+    "model:7513f11c68a906b611ab5add7b7e4a03e90c817ac9d9814756269a60ae2d0cb3": "model:f1d9fbbb9f72d4f4c5e8d64f604aa0dd7e7e1453101b3580a8d8b33fb4ff56a0",
+    "model:9003cb7a81bb7a2eca240ae5af95ea868b4a057af08a0c39bafbc6f650dcfb9f": "model:22b445f098304c033c984091a6d96a44f69f385fef4e1edbc20f41bca89d270c",
+    "model:e2291a842e1b9af3d27e693975a3161958438743e91918205bc9a636ac8200e1": "model:9a5b997d19228c377a91a630c6d6c6c62c6b2aa6a2ae031b455ac97ada4d3019",
+    "model:eff25e9a405657b297aee1c9e45d659bee39c013ba665de4500e1a80c0207898": "model:1866deacc6b59ac112889f8fc4cd065655ea08f66bcf8a0f4c9387c465adad6a"
+  },
+  "content_sha256": "4628e933453f91634c1216c2595b0f9d91c91bcb5b9d9e309662c12501e45f93",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 179
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit City kick-off TV as a Haaland availability claim",
+        "Invent published_at for Leeds Stach pages lacking machine-readable timestamps"
+      ],
+      "boundary_id": "lane-a:2026-08-23:72h-gate",
+      "confidence": 0.94,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Arsenal/Brentford/Ipswich/Tottenham/Fulham/Liverpool timed leads; exclude City kick-off TV (17 Aug) as stale.",
+      "falsifiers": [
+        "Host age window differs from observed_at-72h",
+        "Fresher official City XI page with ISO timestamp appears before Sunday kick-off"
+      ],
+      "rationale": "observed_at 2026-08-23T07:05:00Z implies cutoff 2026-08-20T07:05:00Z. Arsenal Arteta 20 Aug 14:56Z and later GW1 pages sit inside the window; City TV datePublished 17 Aug does not.",
+      "supporting_claim_ids": [
+        "model:22b445f098304c033c984091a6d96a44f69f385fef4e1edbc20f41bca89d270c",
+        "model:f1d9fbbb9f72d4f4c5e8d64f604aa0dd7e7e1453101b3580a8d8b33fb4ff56a0"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Emit Bruno/Shaw started_match from Sky Sports community reports",
+        "Emit Newcastle Livramento claims from newcastleunited.com domain mismatch"
+      ],
+      "boundary_id": "lane-a:2026-08-23:claim-emission",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Kinsky/Van Hecke/Thiago/Diop/van Ewijk/Saka/Senesi started_match lineup candidates from hashable official pages; skip Man Utd Cloudflare-blocked URLs.",
+      "falsifiers": [
+        "Host rejects Brentford report as insufficient lineup evidence",
+        "Official Spurs page names Dubravka as starter for GW2"
+      ],
+      "rationale": "Brentford and Ipswich pages expose machine-readable times and explicit XIs. Man Utd.com returns 403 to Lab UA so Bruno/Shaw claims cannot be host-hashed today.",
+      "supporting_claim_ids": [
+        "model:22b445f098304c033c984091a6d96a44f69f385fef4e1edbc20f41bca89d270c",
+        "model:f1d9fbbb9f72d4f4c5e8d64f604aa0dd7e7e1453101b3580a8d8b33fb4ff56a0",
+        "model:9a5b997d19228c377a91a630c6d6c6c62c6b2aa6a2ae031b455ac97ada4d3019",
+        "model:68d78f75d6ee8762f5340bd8fc83a18478b36a1ad525738a44fc27137891d298",
+        "model:1866deacc6b59ac112889f8fc4cd065655ea08f66bcf8a0f4c9387c465adad6a",
+        "model:3a7e206d6bfd1bcd59ef358d985515969da5c8641694a80c066b99aaff969a26",
+        "model:be30f24e14e8f1a481c1848a11f4c7382f57766842e8caf92bbdefd158d32a05"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Watchlist limited to the final 15 only"
+      ],
+      "boundary_id": "lane-a:2026-08-23:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist of 179 UIDs covering advisory 15, comparator arms, bootstrap flags, and high-ownership/EP names.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist. Mid-GW1 reports name starters and unused GK substitutes relevant to the Haaland-in / Kinsky structure.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "03ea5a5b52f951bd0d51bc5056375c1807a7420dd187baafa2ce3c35a01deb94",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "80eaa1a883d849343d453748a4df5637a6a12a5a8afcb7abedb99c354d904a23",
+      "source_url": "https://www.arsenal.com/news/team-news-rice-and-saka-start-against-coventry-axwe52Y1x2gA"
+    },
+    {
+      "source_hash_sha256": "9ed93ec31fa5660ca5cf1c9620d98042714bb65ca0f97710a4b9bda9ad8c43f8",
+      "source_url": "https://www.brentfordfc.com/en/news/article/match-reports-brentford-3-tottenham-hotspur-0-premier-league-22-08-2026"
+    },
+    {
+      "source_hash_sha256": "e5b9a634121aae5a8adf104f4637c46e617aa9751469f70881fe6a4b8be044fd",
+      "source_url": "https://www.itfc.co.uk/news/2026/august/22/team-news---sunderland--h-/"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "9ff39b9da37aad09bd61a6c0cc9a608bbe2173c23b28c605a4b98c36db5c8ce8",
+  "observed_at": "2026-08-23T07:05:00Z",
+  "prior_ledger_sha256": "7724cc672dc486810192dd368fa1f0baa162e4d530b9c7b8918672d470a8754a",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "a80c8d12493515aa7bdf03ea1b7666df3a86cbc8bae16eeddf5018fdaf4ccabe",
+  "run_id": "composer-2.5:2026-08-23T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 7,
+    "candidate_count": 7,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
