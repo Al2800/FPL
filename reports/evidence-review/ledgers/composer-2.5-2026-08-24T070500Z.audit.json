@@ -1,0 +1,148 @@
+{
+  "accepted_claim_ids": [
+    "model:cd1df5f338d984131fffdddab4024280b5af5f966ee4ad0360252f6505ceb75c",
+    "model:92d0ff16326f867637a6d98448db8c23204b353c880b756edc5790a5533563fe",
+    "model:f79b4249613556b289cb2131a133bab37ce0d6b64cf827ba718dcd8427192adc",
+    "model:bebdd61b57cf400d9bead3c7b7cc05185f163229eb48cc1f9de9a7833c98d3a5",
+    "model:653e556d3ad2df977268fee8ded766fac2d0fd8bf2481ed090c0370df475c4b9",
+    "model:f75cb21dfd3a5f7e34931e9bc464c978acd05833cfbda85d9eeacfbfc6b4490e",
+    "model:d75cfa8928fd8e6059b13148527e163e6eb1d73a33c5f015c5d8ad9cfc1002ca"
+  ],
+  "available_at": "2026-08-24T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:53438feb127fdf2492009024d3630288b2ae06ffbe065315ea503a3f7239af2d": "model:bebdd61b57cf400d9bead3c7b7cc05185f163229eb48cc1f9de9a7833c98d3a5",
+    "model:72ca3a2b925549ca935aecfcc31ef6d3eb4650a6b5ce12ba7eeebf5cde363147": "model:f79b4249613556b289cb2131a133bab37ce0d6b64cf827ba718dcd8427192adc",
+    "model:87bcf77469eed16168858fe2f90bf9f589b4feb03c0025f0e17f8d9b7d24a4f9": "model:d75cfa8928fd8e6059b13148527e163e6eb1d73a33c5f015c5d8ad9cfc1002ca",
+    "model:945d4e7c1556d628a458d6615624e03a989cf8a6ef784f37c43c5ced2cf08093": "model:cd1df5f338d984131fffdddab4024280b5af5f966ee4ad0360252f6505ceb75c",
+    "model:cb1b3fb54de5a29712e451e8d1fe9e33a5df0689f09234db52c44792886418c0": "model:92d0ff16326f867637a6d98448db8c23204b353c880b756edc5790a5533563fe",
+    "model:d8d2cd8833b5c6122383a125cdc92f78296a7f762da0374ce7fa4aa14e9dde4c": "model:653e556d3ad2df977268fee8ded766fac2d0fd8bf2481ed090c0370df475c4b9",
+    "model:fbbd40b7842a1300765acb58af518434ddccb2180167f07f39e99dec16090fd1": "model:f75cb21dfd3a5f7e34931e9bc464c978acd05833cfbda85d9eeacfbfc6b4490e"
+  },
+  "content_sha256": "5166dbfffeca31681e6c362a2bada8a562560032572abe3c0b5a98497b6b114a",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 179
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit claims from Arsenal Arteta 20 Aug presser (stale under 72h)",
+        "Invent City published_at from date-only JSON-LD without visible clock"
+      ],
+      "boundary_id": "lane-a:2026-08-24:72h-gate",
+      "confidence": 0.93,
+      "conflicting_claim_ids": [],
+      "decision": "Admit City/Brighton/Liverpool/Leeds/Spurs timed leads; treat Arsenal Arteta 20 Aug as stale under observed_at-72h.",
+      "falsifiers": [
+        "Host age window differs from observed_at-72h",
+        "City visible clock rejected as non-ISO by host parser"
+      ],
+      "rationale": "observed_at 2026-08-24T07:05:00Z implies cutoff 2026-08-21T07:05:00Z. City Bournemouth report (23 Aug 15:00Z), Brighton Villa report (23 Aug 14:55Z), Liverpool Newcastle report (23 Aug 17:42Z), Leeds Forest report (22 Aug 17:00Z), and Spurs Porro/VdV team news (21 Aug 14:14Z) sit inside the window.",
+      "supporting_claim_ids": [
+        "model:f75cb21dfd3a5f7e34931e9bc464c978acd05833cfbda85d9eeacfbfc6b4490e",
+        "model:653e556d3ad2df977268fee8ded766fac2d0fd8bf2481ed090c0370df475c4b9",
+        "model:cd1df5f338d984131fffdddab4024280b5af5f966ee4ad0360252f6505ceb75c",
+        "model:92d0ff16326f867637a6d98448db8c23204b353c880b756edc5790a5533563fe",
+        "model:d75cfa8928fd8e6059b13148527e163e6eb1d73a33c5f015c5d8ad9cfc1002ca",
+        "model:f79b4249613556b289cb2131a133bab37ce0d6b64cf827ba718dcd8427192adc",
+        "model:bebdd61b57cf400d9bead3c7b7cc05185f163229eb48cc1f9de9a7833c98d3a5"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Emit Mitchell start from Palace pages without recoverable published_at",
+        "Emit Xhaka haul claim without Sunderland official hashable page",
+        "Re-emit Brentford Kinsky/Thiago claims already on tip ledger"
+      ],
+      "boundary_id": "lane-a:2026-08-24:claim-emission",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Haaland/Semenyo/Isak/Wilson/Verbruggen started_match plus Porro/Van de Ven unavailable candidates; skip Man Utd Cloudflare-blocked body claims and Palace pages lacking machine-readable times.",
+      "falsifiers": [
+        "Host rejects City report as insufficient lineup evidence",
+        "Host cannot hash Brighton/Leeds bodies"
+      ],
+      "rationale": "City report prints CITY XI with Haaland and Semenyo; Liverpool and Leeds reports print starting XIs; Brighton report lists Verbruggen; Spurs official team news rules Porro and Van de Ven out of the Brentford opener. Man Utd.com still returns 403 to Lab UA for Bruno/Shaw hashing.",
+      "supporting_claim_ids": [
+        "model:f75cb21dfd3a5f7e34931e9bc464c978acd05833cfbda85d9eeacfbfc6b4490e",
+        "model:653e556d3ad2df977268fee8ded766fac2d0fd8bf2481ed090c0370df475c4b9",
+        "model:cd1df5f338d984131fffdddab4024280b5af5f966ee4ad0360252f6505ceb75c",
+        "model:92d0ff16326f867637a6d98448db8c23204b353c880b756edc5790a5533563fe",
+        "model:d75cfa8928fd8e6059b13148527e163e6eb1d73a33c5f015c5d8ad9cfc1002ca",
+        "model:f79b4249613556b289cb2131a133bab37ce0d6b64cf827ba718dcd8427192adc",
+        "model:bebdd61b57cf400d9bead3c7b7cc05185f163229eb48cc1f9de9a7833c98d3a5"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Watchlist limited to final 15 only"
+      ],
+      "boundary_id": "lane-a:2026-08-24:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist of 179 UIDs covering advisory 15, comparator arms, bootstrap flags/high ownership, and players named in today\u2019s official leads.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist. Post-Sunday GW1 reports name City/Liverpool/Leeds/Brighton starters and Spurs absences relevant to the Haaland-in / Kinsky structure.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "b94c2f86cccac546e789c952b126f0986418da3894db3adb65ba86e0a3b153bc",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "206cd857f14eac04aa21c0d22601e9ccda6cfe5394727d7c49d023a4040fde34",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/mft-pl-bhaavl-match-report"
+    },
+    {
+      "source_hash_sha256": "1c1a01046f297599366e87af64701371d8ff98d4be1053569de65b6303a2efec",
+      "source_url": "https://www.leedsunited.com/en/news/report-nottingham-forest-0-1-leeds-united"
+    },
+    {
+      "source_hash_sha256": "78f96887727bd221913e0db9c1d9a7e5fa7c40faba5baf1805b300561b388748",
+      "source_url": "https://www.liverpoolfc.com/news/szoboszlai-scores-late-penalty-rescue-point-liverpool-season-opener-newcastle"
+    },
+    {
+      "source_hash_sha256": "647efbc4693ebee7cb86fd34e608e1bcecda262c5ded153f24f9c134f3a8eca6",
+      "source_url": "https://www.mancity.com/news/mens/manchester-city-v-bournemouth-202627-premier-league-match-report-63923083"
+    },
+    {
+      "source_hash_sha256": "30ebdbd72c5e39b2dea0ea9663877d8e89827d0efd1a3ec76d45d5d549c4c451",
+      "source_url": "https://www.tottenhamhotspur.com/news/1086430/team-news-porro-van-de-ven-out-of-opener-at-brentford"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "55710d05925a5b041847e14f5105a9735005ab2c58c86b99f55ea76a51fbe715",
+  "observed_at": "2026-08-24T07:05:00Z",
+  "prior_ledger_sha256": "a80c8d12493515aa7bdf03ea1b7666df3a86cbc8bae16eeddf5018fdaf4ccabe",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "651c8d1e45b4f69da8489e8df79be51b426e9101370b43167bf6d360528a024b",
+  "run_id": "composer-2.5:2026-08-24T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 7,
+    "candidate_count": 7,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
