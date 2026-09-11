@@ -1,0 +1,150 @@
+{
+  "accepted_claim_ids": [
+    "model:57c06868186e6e7a0147a086d014e7c428c07e632f1afc9da3ca1fc6ea25877d",
+    "model:497feb8d1dc7e0a81fde7ed91f69042e9cb750ac084cb3b8881a62fe209df361",
+    "model:d8d13ed536ee91a06ba669ecda087ace3725e1701066b68538014a79901d7a58",
+    "model:5e603fd17098ce22aa71221745f38b47c80d2b31d4e895f1abf5783a25445879",
+    "model:1a3876c788185112c737eb38a4b05fc1385c395b35256ab354b70be4e79268c2"
+  ],
+  "available_at": "2026-09-10T07:20:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate:barcola-atletico-first-start": "model:d8d13ed536ee91a06ba669ecda087ace3725e1701066b68538014a79901d7a58",
+    "candidate:barcola-cramp-not-injured-post-atletico": "model:5e603fd17098ce22aa71221745f38b47c80d2b31d4e895f1abf5783a25445879",
+    "candidate:gakpo-absent-atletico-matchday": "model:57c06868186e6e7a0147a086d014e7c428c07e632f1afc9da3ca1fc6ea25877d",
+    "candidate:gakpo-adductor-doubtful-fulham": "model:1a3876c788185112c737eb38a4b05fc1385c395b35256ab354b70be4e79268c2",
+    "candidate:gakpo-prematch-tnt-adductor-chance-weekend": "model:497feb8d1dc7e0a81fde7ed91f69042e9cb750ac084cb3b8881a62fe209df361"
+  },
+  "content_sha256": "36eb3f012928346262794bb4a7021e642dc2e7529ce21aa5d30267a940ce7c3f",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 334
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "force Wilson+Thiago\u2192Gakpo+Wissa tonight",
+        "chase Barcola as the funded mid instead of Cherki"
+      ],
+      "boundary_id": "gakpo-vs-cherki",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Downgrade Gakpo from primary GW4 unlock to conditional; elevate Cherki+Wissa to primary until Friday fitness confirmation.",
+      "falsifiers": [
+        "Official Friday confirmation Gakpo starts Fulham; Cherki omitted from United matchday squad"
+      ],
+      "rationale": "Official LFC sources show Gakpo missed Atletico with bilateral adductor niggles and Iraola cannot guarantee Fulham availability, triggering yesterday's Gakpo-bench falsifier.",
+      "supporting_claim_ids": [
+        "model:1a3876c788185112c737eb38a4b05fc1385c395b35256ab354b70be4e79268c2",
+        "model:57c06868186e6e7a0147a086d014e7c428c07e632f1afc9da3ca1fc6ea25877d",
+        "model:497feb8d1dc7e0a81fde7ed91f69042e9cb750ac084cb3b8881a62fe209df361"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "replace Gakpo plan with Barcola purchase",
+        "treat early sub as soft-tissue unavailable"
+      ],
+      "boundary_id": "liverpool-attacker-rotation",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Treat Barcola as available after an Atletico start and cramp-only exit; do not buy him for GW4 over Cherki.",
+      "falsifiers": [
+        "Barcola ruled out of Fulham; Gakpo confirmed start and Barcola benched"
+      ],
+      "rationale": "Match report confirms first start to 60'; post-match quotes rule out injury, but minutes are still being managed and Cherki already has a stronger City-start evidence trail for the unlock slot.",
+      "supporting_claim_ids": [
+        "model:d8d13ed536ee91a06ba669ecda087ace3725e1701066b68538014a79901d7a58",
+        "model:5e603fd17098ce22aa71221745f38b47c80d2b31d4e895f1abf5783a25445879"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "WC4 into Palmer/Rogers",
+        "single FT into Gakpo tonight",
+        "FH4 derby dodge"
+      ],
+      "boundary_id": "gw4-transfers",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Keep locked 15 for now; plan Wilson+Thiago\u2192Cherki+Wissa as primary double, with Gakpo+Wissa only if Friday clearance lands.",
+      "falsifiers": [
+        "Haaland or Bruno multi-week absence; Wissa price breaks paired maths"
+      ],
+      "rationale": "Funding spine and Haaland/Bruno/Jo\u00e3o Pedro core remain intact; Gakpo risk is the material overnight change versus the 9 Sep briefing.",
+      "supporting_claim_ids": [
+        "model:1a3876c788185112c737eb38a4b05fc1385c395b35256ab354b70be4e79268c2",
+        "model:57c06868186e6e7a0147a086d014e7c428c07e632f1afc9da3ca1fc6ea25877d"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "WC4",
+        "FH4",
+        "TC Haaland into United",
+        "BB"
+      ],
+      "boundary_id": "chip-gw4",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "No GW4 chip; hold TC/WC/FH/BB powder.",
+      "falsifiers": [
+        "Owner already used WC; blank-heavy DGW appears"
+      ],
+      "rationale": "Gakpo doubt reinforces waiting for Friday news rather than chip usage; derby blank risk alone does not justify FH while core assets play.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "27b450267c6441e6aa6827b8e2c3b4895a6825ae09b279177a4089b2d248d9e7",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "6af6331f24e8fd3d213fa6a9cd609c25692641159928f0b1fdf01e9bb8fe201b",
+      "source_url": "https://www.liverpoolfc.com/news/bradley-barcola-cody-gakpo-and-milos-kerkez-fitness-update"
+    },
+    {
+      "source_hash_sha256": "0f05dd1e7ea577e69bf482eef3ea00ff994f9758fd3624f7b097ec06bb72b371",
+      "source_url": "https://www.liverpoolfc.com/news/cody-gakpo-injury-update"
+    },
+    {
+      "source_hash_sha256": "07104fff10d9e1381015db9359755e92ce2106b2d4c9a98b0f6cb0a2e47f9615",
+      "source_url": "https://www.liverpoolfc.com/news/confirmed-liverpool-line-v-atletico-madrid-2"
+    },
+    {
+      "source_hash_sha256": "6046264e5e6a34cb8ed6f75291785f5bd992762719fe2562c5827b01428bc780",
+      "source_url": "https://www.liverpoolfc.com/news/liverpool-comeback-clinches-champions-league-win-over-atletico-madrid"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "f7a1695b90dec27c2350adfe0e47adb21e3429e21f23673435b7b4050d91cb82",
+  "observed_at": "2026-09-10T07:20:00Z",
+  "prior_ledger_sha256": "3caec8b7ead372d0900c550db1e78678f6633a3c90e68880d0fc4fdcf737b506",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "09c5276197852d9ecd38f87de2d46c8c39dc57aed1c2de688302d28820740788",
+  "run_id": "composer-2.5:2026-09-10T072000Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 3,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
