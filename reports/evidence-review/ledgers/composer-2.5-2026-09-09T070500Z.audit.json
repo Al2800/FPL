@@ -1,0 +1,152 @@
+{
+  "accepted_claim_ids": [
+    "model:7d935e5d9e0e8879e66b026fe7ee8aef284673cf57795613963cf0dc6a17435f",
+    "model:999807c3adaf2365d964e1d17505078d032f9146b1a50f44d25842603bba1f95",
+    "model:9a842fcaab2b1b92d32dc42d118c6ea21ded09090e22365d58c5069027d552d8",
+    "model:2b59decbcc959ad873bdc3ca3c1f0c2b7ddf98915c60a1bef75fd0eecab8ea1a",
+    "model:991f35ae06bed543b6a8e95b8b14cf623ab62336ce047c0e1a9ee4212e595131",
+    "model:829eea3672c69704d6053589a0a05aad44bf534d80fb9a8b74043222ec721474",
+    "model:c5507ededa27a713eb00db13d4eedf6ed1b5e7a8987ee2e45cac519c2c1522a1",
+    "model:d64ff6c19c98aa670cb262bb09a5d77c8a345e368ff4a8a2279060f7adedbabe",
+    "model:1d6c42a8c9829c40f8d31df6ed2357c9c41f668d92db092ca4f0706e9f7f4ee7"
+  ],
+  "available_at": "2026-09-09T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate:barcola-ready-more-minutes": "model:7d935e5d9e0e8879e66b026fe7ee8aef284673cf57795613963cf0dc6a17435f",
+    "candidate:cherki-porto-start-62": "model:2b59decbcc959ad873bdc3ca3c1f0c2b7ddf98915c60a1bef75fd0eecab8ea1a",
+    "candidate:chiesa-unavailable-atletico": "model:999807c3adaf2365d964e1d17505078d032f9146b1a50f44d25842603bba1f95",
+    "candidate:doku-still-out-porto-squad": "model:991f35ae06bed543b6a8e95b8b14cf623ab62336ce047c0e1a9ee4212e595131",
+    "candidate:foden-porto-start": "model:829eea3672c69704d6053589a0a05aad44bf534d80fb9a8b74043222ec721474",
+    "candidate:gomez-nearing-return-training": "model:9a842fcaab2b1b92d32dc42d118c6ea21ded09090e22365d58c5069027d552d8",
+    "candidate:haaland-porto-start-brace": "model:1d6c42a8c9829c40f8d31df6ed2357c9c41f668d92db092ca4f0706e9f7f4ee7",
+    "candidate:oreilly-absent-porto-matchday": "model:c5507ededa27a713eb00db13d4eedf6ed1b5e7a8987ee2e45cac519c2c1522a1",
+    "candidate:semenyo-porto-start": "model:d64ff6c19c98aa670cb262bb09a5d77c8a345e368ff4a8a2279060f7adedbabe"
+  },
+  "content_sha256": "1a9066532cdc540c7e7585984cfea8e7c7ec3b4ed8b4ca4591182a333d866e6c",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 265
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Mark Haaland unavailable/rested after Porto",
+        "Auto-promote Haaland to GW4 (C) solely on brace"
+      ],
+      "boundary_id": "haaland-gw4-availability",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Haaland Porto start + brace; retain Haaland in locked 15 through GW4 derby with VC lean until kickoff news.",
+      "falsifiers": [
+        "Haaland omitted from United XI",
+        "Maresca explicitly rests Haaland for the derby"
+      ],
+      "rationale": "Official match report confirms a full start and brace midweek, upgrading yesterday\u2019s travelling-squad signal and reducing acute left-at-home risk before United (A).",
+      "supporting_claim_ids": [
+        "model:1d6c42a8c9829c40f8d31df6ed2357c9c41f668d92db092ca4f0706e9f7f4ee7"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Flip exclusively to Cherki solely because he started Porto",
+        "Ignore Cherki start and keep travel-only confidence"
+      ],
+      "boundary_id": "cherki-vs-gakpo-unlock",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Cherki Porto start (62\u2019); raise Cherki to co-primary GW4 unlock with Gakpo still preferred on fixture (FUL H vs MUN A).",
+      "falsifiers": [
+        "Gakpo benched vs Atletico and Fulham",
+        "Cherki starts United and Gakpo is rotated"
+      ],
+      "rationale": "Yesterday\u2019s conditional falsifier triggered: Cherki started. Barcola minutes expansion adds mild Gakpo rotation risk, but Fulham (H) still outranks United (A) for a new mid purchase from Wilson funds.",
+      "supporting_claim_ids": [
+        "model:2b59decbcc959ad873bdc3ca3c1f0c2b7ddf98915c60a1bef75fd0eecab8ea1a",
+        "model:7d935e5d9e0e8879e66b026fe7ee8aef284673cf57795613963cf0dc6a17435f"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Buy Doku on expected-back-13-Sep bootstrap text alone"
+      ],
+      "boundary_id": "city-midfield-rotation",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Foden/Semenyo Porto starts and Doku continued absence; do not chase Doku into GW4.",
+      "falsifiers": [
+        "Doku named in United matchday squad and starts"
+      ],
+      "rationale": "Official XI omits Doku from matchday squad while Foden and Semenyo started and were withdrawn mid-game, informing City attacker hierarchy without forcing a locked-15 change.",
+      "supporting_claim_ids": [
+        "model:829eea3672c69704d6053589a0a05aad44bf534d80fb9a8b74043222ec721474",
+        "model:d64ff6c19c98aa670cb262bb09a5d77c8a345e368ff4a8a2279060f7adedbabe",
+        "model:991f35ae06bed543b6a8e95b8b14cf623ab62336ce047c0e1a9ee4212e595131"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Force O'Reilly into GW4 DEF plans"
+      ],
+      "boundary_id": "cheap-def-shortlist",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Keep O'Reilly off cheap DEF shortlist after Porto matchday absence.",
+      "falsifiers": [
+        "O'Reilly starts Manchester derby"
+      ],
+      "rationale": "Not listed in Porto XI/subs; bootstrap still doubtful (75%).",
+      "supporting_claim_ids": [
+        "model:c5507ededa27a713eb00db13d4eedf6ed1b5e7a8987ee2e45cac519c2c1522a1"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "ee5b0073c0b017e9376058dbbfbee12f31983708f6c2fd42336501a0635292b4",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "20d4857445a7a2ce50f3f3ca80e2ed301d87d67ba6e893506360f16071883683",
+      "source_url": "https://www.liverpoolfc.com/news/liverpool-v-atletico-madrid-team-news-0"
+    },
+    {
+      "source_hash_sha256": "e920de4e0dff0d020947da4fe8d7014299f3a0c4b0185af8daa7920cad073c64",
+      "source_url": "https://www.mancity.com/news/mens/fc-porto-v-man-city-ucl-match-report-8-sept-63924488"
+    },
+    {
+      "source_hash_sha256": "17690de12afe13476c334eb5cffd9fba4cc0ab175a99e3635c156674da6f6dac",
+      "source_url": "https://www.mancity.com/news/mens/fc-porto-v-manchester-city-team-news-and-tactics-63924482"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "574a942a7424c4984c5830e58f93b1923eb36626c9f104c4e871158266f28e71",
+  "observed_at": "2026-09-09T07:05:00Z",
+  "prior_ledger_sha256": "04137d303ecd0bb49cb334223f5a3fa43fe42ca7b9d64f08608bb0bf9a6a9c81",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "3caec8b7ead372d0900c550db1e78678f6633a3c90e68880d0fc4fdcf737b506",
+  "run_id": "composer-2.5:2026-09-09T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 9,
+    "candidate_count": 9,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 4,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
