@@ -47,7 +47,7 @@ No fresh, time-stamped official Manchester City, Manchester United, Chelsea or A
 
 **Current action: make no early transfer.** Wait through the remaining cup matches and Friday press conferences. If no adverse news emerges, rolling all likely three free transfers is preferred. Thiago has only five FPL points but strong underlying involvement and reliable minutes, so Thiago to Wissa is a comparison candidate, not an automatic move. Keep Dewsbury-Hall for Ipswich at home.
 
-The main Friday contingency is an injured-defender correction. If Shaw is ruled out, compare Shaw to Bogle and Shaw to Ola Aina using fresh GW5–GW8 minutes and projections, then confirm the authenticated selling price. If Shaw is fit and likely to start, roll.
+The main Friday contingency is an injured-defender correction. If Shaw is ruled out, compare Shaw to Ola Aina and Shaw to Bogle using fresh GW5–GW8 minutes and projections, then confirm the authenticated selling price. Aina has the smoother four-match fixture run; Bogle has the stronger current official short-term estimate but that estimate needs an independent challenge. If Shaw is fit and likely to start, roll.
 
 **Provisional XI:** Verbruggen; Van Hecke, Mitchell, Diop; Bruno Fernandes, Gibbs-White, Dewsbury-Hall, Le Fée; Haaland, João Pedro, Thiago  
 **Bench:** Dubravka; Xhaka, van Ewijk, Shaw  
@@ -56,14 +56,14 @@ The main Friday contingency is an injured-defender correction. If Shaw is ruled 
 
 ### Entry 7337262 — no-Haaland structure
 
-**Current action: make no early transfer.** Wait for official Maatsen news and the remaining cup minutes.
+**Current action: make no early transfer and provisionally roll the likely one free transfer.** Wait for official Shaw and Maatsen news and the remaining cup minutes.
 
-- If Maatsen is ruled out or remains a serious minutes doubt, Maatsen to Bogle is the clean one-free-transfer priority, subject to authenticated sale-price confirmation.
-- If Maatsen is explicitly fit and expected to start, rolling is defensible.
+- If Shaw is fit enough to start, roll even if Maatsen remains out.
+- If Shaw is ruled out and Maatsen also remains unavailable, Maatsen to Castagne is the clean one-free-transfer contingency, subject to authenticated sale-price confirmation. Castagne is £4.5m, currently active and has the stronger four-match fit for this squad than chasing Bogle's short-term points.
 - Do not take a hit solely to remove Obi. He is unavailable but can remain third outfield substitute for one week.
 
-**Provisional XI if Maatsen becomes Bogle:** Raya; Gabriel, Guéhi, Bogle; Rogers, Palmer, Semenyo, Rice, Anderson; João Pedro, Isak  
-**Bench:** Verbruggen; Truffert, Shaw, Obi  
+**Provisional XI:** Raya; Gabriel, Guéhi, Shaw; Rogers, Palmer, Semenyo, Rice, Anderson; João Pedro, Isak  
+**Bench:** Verbruggen; Truffert, Maatsen, Obi  
 **Captain:** João Pedro  
 **Vice-captain:** Palmer
 
