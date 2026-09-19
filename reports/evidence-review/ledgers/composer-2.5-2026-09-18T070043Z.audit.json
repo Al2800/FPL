@@ -1,0 +1,117 @@
+{
+  "accepted_claim_ids": [
+    "model:de1544fc480c429d42f2c022727d77553813ee705b695aba355b03c6191bd47e",
+    "model:ccae82887ead7fa5c44884d826a606dea18352bdbf5c66933195c6913c390666"
+  ],
+  "available_at": "2026-09-18T07:00:43Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-09-18-cherki-named-xi-norwich-team-news": "model:de1544fc480c429d42f2c022727d77553813ee705b695aba355b03c6191bd47e",
+    "2026-09-18-cherki-started-norwich-cup": "model:ccae82887ead7fa5c44884d826a606dea18352bdbf5c66933195c6913c390666"
+  },
+  "content_sha256": "057ec90828ebd03b51ba074d2ed95634fd699eb64c32b3daa5ef1e48cea6ead7",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 91
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Cherki to Gakpo single FT",
+        "Bench Cherki for Xhaka-only midfield"
+      ],
+      "boundary_id": "cherki-hold",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Cherki in the advisory 15 after official City cup start vs Norwich; do not pivot to Gakpo on the single FT.",
+      "falsifiers": [
+        "Cherki omitted vs Sunderland",
+        "Official City rest/limit Cherki for SUN"
+      ],
+      "rationale": "Official City team news and match report show Cherki starting the Carabao Cup despite heavy rotation, confirming minutes availability into Sunderland (H). Cup minutes do not invent PL xMins, but remove the unused-asset fear.",
+      "supporting_claim_ids": [
+        "model:ccae82887ead7fa5c44884d826a606dea18352bdbf5c66933195c6913c390666",
+        "model:de1544fc480c429d42f2c022727d77553813ee705b695aba355b03c6191bd47e"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Captain Gibbs-White",
+        "Captain Bruno",
+        "TC Haaland this week"
+      ],
+      "boundary_id": "haaland-captain",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Retain Haaland as GW5 captain vs Sunderland (H); treat cup rest as positive freshness, not an availability downgrade.",
+      "falsifiers": [
+        "Official City XI omits Haaland vs SUN",
+        "Late illness/flag on Haaland"
+      ],
+      "rationale": "City match report states Haaland was rested for Norwich. No official PL omission. Bootstrap still available with ep_next 8.2. Captaincy stays Haaland over MGW/Bruno.",
+      "supporting_claim_ids": [
+        "model:ccae82887ead7fa5c44884d826a606dea18352bdbf5c66933195c6913c390666"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Force Pedro sale on FT",
+        "Restore Pedro (C)/(VC) without official clearance"
+      ],
+      "boundary_id": "joao-pedro-hold-bench",
+      "confidence": 0.72,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Jo\u00e3o Pedro owned but benched for GW5; no Chelsea official URL in-window to admit a ledger claim.",
+      "falsifiers": [
+        "Chelsea official XI includes Pedro",
+        "Chelsea official rules him out beyond IB"
+      ],
+      "rationale": "Bootstrap still d/75%. Alonso press quotes via unregistered/PL Scout framing leave him as a possibility, but no chelseafc.com timed original cleared host admission today. Prefer hold through IB per official PL Scout keep/sell framing.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "6f7bd58955abea89ce9bb137d6994285e3adfb8e032531baa0b338b0de98659d",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "999e2d0fbbd45d52c426b839ac743cce2f0125bfc72aefb3ce5a069343bb9526",
+      "source_url": "https://www.mancity.com/news/mens/manchester-city-v-norwich-carabao-cup-match-report-63925263"
+    },
+    {
+      "source_hash_sha256": "27d8e05be92509ccc33f0ab8e72849fdfcbcb4f6e1fd925623947949de841b21",
+      "source_url": "https://www.mancity.com/news/mens/manchester-city-v-norwich-team-news-and-tactics-1-63925262"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "bba031495abc42b22f1470230f3f783f228ad41b7311d4953bda95bd4c13ea35",
+  "observed_at": "2026-09-18T07:00:43Z",
+  "prior_ledger_sha256": "380b6a6d92e32ed8466ece5ce50577a1777dc9e72f0d9c25b2cc2902f32fb0f6",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "e91c9859d21b3391c361545dd79a5dc6f29e5f560ca538ab1f96268261cc3947",
+  "run_id": "composer-2.5:2026-09-18T070043Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 2,
+    "candidate_count": 2,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
