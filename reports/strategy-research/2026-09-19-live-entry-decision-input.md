@@ -25,7 +25,7 @@ The material new evidence is:
 - GW5 transfer: Luke Shaw to Timothy Castagne
 - Transfer cost: 0 points
 - Deadline bank: £0.2m
-- Deadline squad value: £99.6m
+- Deadline total value: £99.6m (last authenticated squad value £99.4m plus £0.2m bank)
 - Active chip: none
 - Live GW5 points at observation: 5
 - Live total: 246
@@ -49,7 +49,7 @@ The public transfer endpoint records Castagne in for Shaw at 2026-09-18T16:02:06
 - GW5 transfer: Ian Maatsen to Timothy Castagne
 - Transfer cost: 0 points
 - Deadline bank: £0.0m
-- Deadline squad value: £99.8m
+- Deadline total value: £99.8m (squad value £99.8m plus £0.0m bank)
 - Active chip: none
 - Live GW5 points at observation: 6
 - Live total: 254
