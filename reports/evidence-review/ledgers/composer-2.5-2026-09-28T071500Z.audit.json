@@ -1,0 +1,157 @@
+{
+  "accepted_claim_ids": [
+    "model:25bf651c35e0674dd3c77c4ab650bc1a8d65568fc34425c10a331aa8803ab7d3",
+    "model:e30bb87a7411082d9aa80ba3998703176717c667e52d0ab32fc59e006c2f8f3b"
+  ],
+  "available_at": "2026-09-28T07:15:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-2026-09-28-26": "model:25bf651c35e0674dd3c77c4ab650bc1a8d65568fc34425c10a331aa8803ab7d3",
+    "candidate-2026-09-28-379": "model:e30bb87a7411082d9aa80ba3998703176717c667e52d0ab32fc59e006c2f8f3b"
+  },
+  "content_sha256": "dafc484879af5e8e59b19b3bcc4829246e9b95a0f7bef9927882ee856d960594",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 313
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Mark unavailable for GW6 without club ruling him out of LIV\u2013MCI",
+        "Skip because Isak is not in the advisory 15",
+        "Admit PL.com forward-injury roundup instead of club original"
+      ],
+      "boundary_id": "isak-ib-return",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Propose Isak doubtful from Liverpool official IB return page",
+      "falsifiers": [
+        "Liverpool later declare Isak fully fit for GW6",
+        "Host ephemeral fetch fails domain/hash checks"
+      ],
+      "rationale": "JSON-LD published_at 2026-09-27T09:38:00Z is inside the 72h gate; page explicitly cites minor injury, withdrawal from remaining Sweden fixtures, and club medical assessment before GW6 vs City.",
+      "supporting_claim_ids": [
+        "model:e30bb87a7411082d9aa80ba3998703176717c667e52d0ab32fc59e006c2f8f3b"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Admit 2025-02-13 Havertz surgery page",
+        "Stretch to unavailable",
+        "Rely solely on PL.com four-week rumour"
+      ],
+      "boundary_id": "havertz-nl-early-exit",
+      "confidence": 0.62,
+      "conflicting_claim_ids": [],
+      "decision": "Propose Havertz doubtful from Arsenal IB roundup early substitution note",
+      "falsifiers": [
+        "Arsenal publish clear available/declared_fit update",
+        "Page only aggregates other outlets without club confirmation"
+      ],
+      "rationale": "Arsenal page dated 2026-09-25T07:50:35Z is inside gate and states forced-off after 30 minutes; claim stays doubtful because this page gives no medical diagnosis (old 2025 surgery page discarded).",
+      "supporting_claim_ids": [
+        "model:25bf651c35e0674dd3c77c4ab650bc1a8d65568fc34425c10a331aa8803ab7d3"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Duplicate available claims for the same City page"
+      ],
+      "boundary_id": "city-already-admitted",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Do not re-propose City England/Croatia availability cluster",
+      "falsifiers": [
+        "Fresh City page with new unavailable signals"
+      ],
+      "rationale": "Lead retained in discovery (2026-09-26T20:45:00Z) but tip already carries O'Reilly/Gu\u00e9hi/Anderson/Gvardiol/Kova\u010di\u0107 admits from 27 Sep.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Admit community knee timelines"
+      ],
+      "boundary_id": "pedro-chelsea-gap",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "No Jo\u00e3o Pedro candidate \u2014 Chelsea coverage empty inside gate",
+      "falsifiers": [
+        "chelseafc.com timed Pedro fitness original"
+      ],
+      "rationale": "Search again returned wrong-season Rosenior pages / undated Alonso Brentford piece without recoverable ISO; bootstrap d/75% knee stays briefing-only.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Force unavailable from relative 11h-ago snippets"
+      ],
+      "boundary_id": "porro-outside-gate",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Do not re-propose Porro \u2014 Spurs hamstring page still outside 72h gate",
+      "falsifiers": [
+        "Spurs republish new ISO clearing/worsening hamstring"
+      ],
+      "rationale": "JSON-LD datePublished remains 2026-09-19T15:23:06Z; search relative timestamps ignored.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Invent started_match from headline alone"
+      ],
+      "boundary_id": "ipswich-minutes-insufficient",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Retain Ipswich Mehmeti/N\u00fa\u00f1ez lead as metadata only \u2014 no claim",
+      "falsifiers": [
+        "Clean article body confirms minutes with quotes"
+      ],
+      "rationale": "Page is inside gate by JSON-LD but fetched body lacked usable minutes confirmation beyond the title; do not invent started_match.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "dd04c6d8572b750c2c8a518bad21dd7938e83ddcf3a1a6fa9b492ad4f19161da",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "60303386eb20163d1fcb0aecaee322161f5fb664a1e022c2702e7d0b979d8c93",
+      "source_url": "https://www.arsenal.com/news/tzolis-scores-for-greece-as-odegaard-shines-a20O07e2juvT"
+    },
+    {
+      "source_hash_sha256": "95a24c18eb7f98d665f866471f63b0c521868780f0e8c5a12c495df6e9dd8c7c",
+      "source_url": "https://www.liverpoolfc.com/news/alexander-isak-return-international-duty"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "d08649dbd9719be708e4f468c1dfebe9335af25ccd46c65d9c29bdab73c7b131",
+  "observed_at": "2026-09-28T07:15:00Z",
+  "prior_ledger_sha256": "fdc175a82b61341900081a581a1a0b9962500a836960f459dfc4f38213c97a70",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "303520f85896d2d4d8ceae4ea9bc47b171f3dd55cf915ff01ba47f1f2ee2bdc9",
+  "run_id": "composer-2.5:2026-09-28T071500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 2,
+    "candidate_count": 2,
+    "decision_trace_count": 6,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
