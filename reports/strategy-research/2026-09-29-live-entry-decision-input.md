@@ -1,6 +1,6 @@
 # Live-entry decision input — 2026-09-29
 
-- observed_at: 2026-09-29T07:20:00Z
+- observed_at: 2026-09-29T07:38:55Z
 - next_deadline: 2026-10-10T10:00:00Z (11:00 BST)
 - scope: public entries 8522487 and 7337262
 - governing method: `docs/plan.md`; official FPL entry data is authoritative for squads, completed picks, transfers and scoring; official club and association sources are authoritative for availability evidence
@@ -9,15 +9,13 @@
 
 ## Executive decision
 
-There is a **material market/availability update but no transfer or chip action today**. Liverpool confirmed on 28 September that Cody Gakpo withdrew from Netherlands duty with an ankle injury and will be assessed at the AXA Training Centre before the Premier League restart. Official FPL now flags Gakpo at 75% with an ankle injury. Gakpo is **not owned** by either tracked entry; the claim matters as a do-not-buy signal and as Anfield context beside the already-admitted Isak doubtful tip.
+There is a **material monitoring update but no transfer or chip action today**. Manchester United's official 28 September update says owned midfielder Bruno Fernandes missed Portugal's match against Norway because of a fitness problem. Portugal hope he can return against Denmark on 1 October. Official FPL still lists Bruno as available and unflagged, so this is a workload/fitness monitor rather than a confirmed GW6 absence.
 
-The no-Haaland squad (7337262) still carries five doubtful players — Palmer, Semenyo, Rice, João Pedro and Isak — plus Obi unavailable. If all five miss GW6, the squad has only eight currently available legal starters. That keeps a multi-transfer repair or Wildcard on the table, but the deadline remains eleven days away and none of the five is yet a confirmed GW6 absence on a club medical ruling.
+The Haaland-team captain remains **Haaland**. Until Bruno demonstrates normal involvement, **Mitchell becomes the provisional vice-captain**; restore Bruno as vice-captain after an international appearance without setback or a normal-minutes club clearance.
 
-The Haaland squad (8522487) remains healthier: João Pedro and van Ewijk are the only doubtful owned names on the completed GW5 sheet. Hold Pedro toward CHE–BOU; do not force a same-day FT.
+The no-Haaland squad remains unchanged at five doubtful players plus Obi unavailable. Liverpool's new Gakpo ankle injury is relevant to the Liverpool-Manchester City environment and transfer-candidate pool, but Gakpo is not owned.
 
-Fallback captain for the no-Haaland arm remains **Rogers while Palmer is doubtful**, with Raya as vice. Isak is not a captain candidate unless Liverpool clear him for normal minutes, and even then the City fixture is less attractive than Chelsea’s home match against Bournemouth.
-
-The automated strategy report’s Kinsky/Cherki/Wissa reconstruction remains **not** the owned 15 for these entries.
+The automated strategy report's Kinsky/Cherki/Wissa squad and exact-one-free-transfer assertion remain invalid for entries 8522487 and 7337262.
 
 ## Official entry state
 
@@ -38,57 +36,123 @@ Official transfer history remains:
 - 8522487: Wilson to Dewsbury-Hall in GW4; Shaw to Castagne in GW5.
 - 7337262: Beto to Isak, B.Fernandes to Palmer and Senesi to Maatsen in GW4; Maatsen to Castagne in GW5.
 
-Public endpoints do not expose the current free-transfer balance, pending transfers, purchase prices or selling prices. The manager state therefore remains degraded.
+Public endpoints do not expose the current free-transfer balance, pending transfers, purchase prices or selling prices. Manager state remains degraded.
 
-## Owned availability watch (bootstrap + ledger)
+## Authoritative squads and current prices
 
-### Entry 8522487 (Haaland)
+### Entry 8522487
 
-| player | status | chance | news / ledger | GW6 note |
-|---|---|---:|---|---|
-| Haaland | a | — | — | LIV (A); keep; captaincy optional vs Bruno |
-| B.Fernandes | a | — | Man Utd Dorgu/Fernandes URL 403 today | TOT (H); strong (C) lean |
-| João Pedro | d | 75 | knee; no Chelsea official | hold toward BOU (H) |
-| van Ewijk | d | 75 | hamstring | bench/funding |
-| Castagne / Dewsbury-Hall / Thiago / others | a | — | — | monitor only |
+- GKP: Verbruggen £4.5m; Dubravka £4.0m
+- DEF: Van Hecke £4.9m; Mitchell £4.5m; Castagne £4.5m; Diop £4.0m; van Ewijk £4.0m
+- MID: B.Fernandes £11.9m; Gibbs-White £8.0m; E.Le Fée £5.7m; Dewsbury-Hall £6.6m; Xhaka £5.5m
+- FWD: Thiago £7.8m; Haaland £15.6m; João Pedro £7.7m
 
-### Entry 7337262 (no Haaland)
+### Entry 7337262
 
-| player | status | chance | news / ledger | GW6 note |
+- GKP: Raya £6.1m; Verbruggen £4.5m
+- DEF: Gabriel £8.0m; Guéhi £6.0m; Castagne £4.5m; Truffert £5.4m; Shaw £4.3m
+- MID: Palmer £9.7m; Rogers £7.7m; Semenyo £8.4m; Rice £7.4m; Anderson £6.3m
+- FWD: Isak £9.1m; João Pedro £7.7m; Obi £4.5m
+
+No owned-player price changed since 28 September.
+
+## Availability and source freshness
+
+| player | official state | chance | published / news timestamp | observed_at | change / implication |
 |---|---|---:|---|---|---|
-| Palmer | d | 75 | muscular; no Chelsea official | not (C); Rogers fallback |
-| Semenyo | d | 75 | ankle; no City timed original inside gate | hold/monitor; LIV (A) hard |
-| Rice | d | 75 | unspecified; no Arsenal timed original today | monitor |
-| João Pedro | d | 75 | knee; no Chelsea official | hold toward BOU (H) |
-| Isak | d | 75 | thigh; LFC `model:e30bb87a…` | not (C); City (H) tough |
-| Obi | u | 0 | Willem II loan | dead slot / WC pressure |
-| Rogers | a | — | — | fallback (C) while Palmer flagged |
-| Raya / Gabriel / Guéhi / Anderson / Castagne / Truffert | a | — | — | core available spine |
+| Bruno Fernandes | Man Utd says fitness problem; Portugal hope for 1 Oct return | FPL unflagged | Man Utd 2026-09-28 | 2026-09-29T07:38:55Z | **new owned-player monitor**; remains in XI, provisional VC removed |
+| Isak | thigh injury | 75% | FPL 2026-09-27T10:30:09Z; Liverpool 2026-09-27T09:38:00Z | 2026-09-29T07:38:55Z | unchanged; club assessment pending |
+| Semenyo | ankle injury | 75% | 2026-09-24T12:00:09Z | 2026-09-29T07:38:55Z | unchanged; severity unresolved |
+| Palmer | muscular injury | 75% | 2026-09-21T13:00:09Z | 2026-09-29T07:38:55Z | unchanged; no Chelsea GW6 return timeline |
+| Rice | unspecified injury | 75% | 2026-09-21T13:00:08Z | 2026-09-29T07:38:55Z | unchanged; no Arsenal GW6 return timeline |
+| João Pedro | knee injury | 75% | 2026-09-16T19:00:09Z | 2026-09-29T07:38:55Z | unchanged; stalest material flag |
+| van Ewijk | hamstring injury | 75% | 2026-09-19T16:00:09Z | 2026-09-29T07:38:55Z | unchanged; Haaland-team bench risk |
+| Obi | season loan | 0% | 2026-09-14T16:12:42Z | 2026-09-29T07:38:55Z | unavailable |
+| all other owned players | available | 100% or unflagged | bootstrap current | 2026-09-29T07:38:55Z | no new issue |
 
-Gakpo (`model:8134847f…`) and Havertz (`model:706e27a4…`) are **not owned**; treat as market monitors only.
+Official FPL's mutable GW6 estimates now include Haaland 8.0, Mitchell 7.7, Van Hecke 7.3, Bruno 7.2, Semenyo 6.5, Guéhi/Raya 6.0, Isak 5.8 and Rogers 5.2. These are directional estimates, not medical evidence.
 
-## Chip and transfer lean (live entries)
+The 29 September repository model run admitted two official claims:
 
-- **No chip today.** Deadline 2026-10-10T10:00:00Z.
-- **No forced FT today.** Prefer to wait for remaining IB pressers.
-- Haaland entry: if a single FT is later forced, prefer a low-regret DEF/MID hygiene move over selling Pedro early; do not chase Bogle into ARS (A) or Gakpo while ankle-flagged.
-- No-Haaland entry: WC6 becomes the default if ≥3 of {Palmer, Semenyo, Rice, Pedro, Isak} remain unavailable near deadline; otherwise sequence FTs after clearer club updates. Do not buy Gakpo into this mess.
+- Gakpo doubtful: Liverpool confirms an ankle injury, Netherlands withdrawal and club assessment before GW6.
+- Havertz doubtful reinforcement: Arsenal confirms he was omitted after his earlier 30-minute substitution; no diagnosis supplied.
 
-## Captain lean (live entries)
+Neither is owned. The evidence-ledger tip changed from `303520f8…` to `f6ff62e7…`.
 
-| entry | provisional (C) | provisional (VC) | rationale |
-|---|---|---|---|
-| 8522487 | B.Fernandes | Haaland | Bruno vs TOT (H); Haaland away at Anfield with Isak/Gakpo flags |
-| 7337262 | Rogers | Raya | Palmer doubtful; Isak not a City-home captain chase |
+The repository run could not recover Manchester United's English page, but the official Korean-language page and indexed official result establish the Bruno fitness concern. This derived report records it as accepted official evidence without adding an unverified diagnosis or duration to the governed ledger.
 
-## Falsifiers
+No new official Chelsea, Arsenal, Bournemouth/Ghana or Liverpool assessment resolves Palmer, João Pedro, Rice, Semenyo or Isak.
 
-- Chelsea timed original rules Pedro out beyond GW6 → sell/WC pressure rises on both entries.
-- Liverpool clears Isak (and/or Gakpo) with normal minutes → no-Haaland Isak hold strengthens; Haaland (C) debate reopens slightly.
-- City clears Semenyo and starts him vs LIV while Cherki/other City options blank → Semenyo hold/buy reassess.
-- Man Utd official body confirms Bruno fitness concern → flip Haaland-entry captaincy plan.
-- Three or more no-Haaland doubts become unavailable inside ~72h of deadline → prepare WC6 draft.
+## Community challenge review
 
-## Relationship to automated strategy briefing
+The 28 September X digest was reviewed. It surfaced Gakpo, Isak and Dorgu 75% flags before the club originals, plus a conflicting unsupported claim that “Isak is fine”. Liverpool's official statement and the official FPL flag override that community reassurance.
 
-`reports/strategy-research/2026-09-29.md` is the primary advisory reconstruction (Kinsky/Cherki/Wissa Haaland-in 15). It must **not** be treated as the owned squad for entries 8522487 / 7337262. Use this live-entry note for account-facing holds; use the strategy briefing for Lane A admission hashes and the laboratory’s declared advisory 15.
+Barry price-rise and Wildcard-six discussion do not affect the owned squads today. Community opposition to Haaland captaincy at Liverpool is a challenge input; it does not outweigh Haaland's current 8.0 official estimate and the absence of a fully fit superior captain in the Haaland squad.
+
+Rejected community implications: Isak is already cleared; Bruno is ruled out of GW6; activate Wildcard immediately; buy Gakpo, Havertz or Barry solely from chatter or price movement.
+
+## Provisional GW6 decisions
+
+### Entry 8522487
+
+Verbruggen
+Van Hecke; Mitchell; Castagne
+B.Fernandes; Gibbs-White; E.Le Fée; Dewsbury-Hall; Xhaka
+Thiago; Haaland
+
+- Captain: **Haaland**
+- Provisional vice-captain while Bruno is being monitored: **Mitchell**
+- Restore **Bruno vice-captain** after normal involvement without setback.
+- Bench: Dubravka; 1 Diop; 2 João Pedro; 3 van Ewijk
+- If João Pedro is cleared for normal minutes, start him and bench Xhaka.
+- If Bruno remains unavailable near the deadline, start João Pedro if cleared; otherwise promote Diop and preserve a legal formation.
+- No transfer or chip today.
+
+### Entry 7337262
+
+If all five doubtful players recover:
+
+Raya
+Gabriel; Castagne; Guéhi
+Rogers; Palmer; Semenyo; Rice; Anderson
+João Pedro; Isak
+
+- While Palmer is doubtful: captain **Rogers**, vice-captain **Raya**.
+- If Palmer is cleared for normal minutes: captain **Palmer**, vice-captain **Rogers**.
+- Isak requires a normal-minutes clearance before being trusted in the XI; do not captain him against Manchester City.
+- Bench: Verbruggen; 1 Shaw; 2 Truffert; 3 Obi.
+- Shaw and then Truffert cover the first two outfield absences.
+- If three or more of Palmer, Rice, Semenyo, João Pedro and Isak remain unavailable near the deadline, run the authenticated free-transfer-versus-hits-versus-Wildcard comparison.
+- No transfer or chip today.
+
+## Rolling GW6–GW9 plan
+
+- GW6: preserve information. Monitor Bruno's proposed 1 October return, Liverpool assessments for Isak/Gakpo, remaining international minutes and the final club press conferences.
+- GW7: City host Ipswich, making Haaland the probable captain anchor. The no-Haaland team needs an authenticated route-to-Haaland comparison if it remains structurally weak.
+- GW8: Chelsea host Spurs and United host Bournemouth. Retain Palmer/Bruno flexibility rather than pre-booking sales.
+- GW9: City host Brighton and Chelsea host United. Reassess premium structure with post-break minutes and injury outcomes.
+- Wildcard threshold: at least three structural problems remain, fewer than eleven credible starters can be produced without excessive hits, or the authenticated multiweek Wildcard draft materially dominates a free-transfer repair.
+- No Free Hit, Bench Boost or Triple Captain case currently clears the methodology threshold.
+
+## Manager-state degradation
+
+Before the final GW6 recommendation, manually confirm on both authenticated transfer pages:
+
+1. exact free-transfer count;
+2. current bank and team value;
+3. purchase and selling prices for all candidate movers;
+4. whether any pending transfer exists;
+5. chip availability and intended chip state.
+
+No FPL account action was executed.
+
+## Sources
+
+- Official FPL bootstrap: https://fantasy.premierleague.com/api/bootstrap-static/
+- Official fixtures: https://fantasy.premierleague.com/api/fixtures/
+- Entry summaries: https://fantasy.premierleague.com/api/entry/8522487/ and https://fantasy.premierleague.com/api/entry/7337262/
+- Official histories: https://fantasy.premierleague.com/api/entry/8522487/history/ and https://fantasy.premierleague.com/api/entry/7337262/history/
+- Manchester United fitness update, published 28 September 2026: https://www.manutd.com/ko/news/latest-on-dorgu-and-fernandes-fitness-28-sep-2026
+- Liverpool Gakpo update, published 28 September 2026: https://www.liverpoolfc.com/news/cody-gakpo-withdraws-international-duty
+- Liverpool Isak update, published 27 September 2026: https://www.liverpoolfc.com/news/alexander-isak-return-international-duty
+- Arsenal Havertz reinforcement, published 28 September 2026: https://www.arsenal.com/news/tzolis-and-timber-pick-up-big-victories-alxEV4A7JZ4n
