@@ -1,6 +1,6 @@
 # Live-entry decision input — 2026-09-30
 
-- observed_at: 2026-09-30T07:45:00Z
+- observed_at: 2026-09-30T07:41:44Z
 - next_deadline: 2026-10-10T10:00:00Z (11:00 BST)
 - scope: public entries 8522487 and 7337262
 - governing method: `docs/plan.md`; official FPL entry data is authoritative for squads, completed picks, transfers and scoring; official club and association sources are authoritative for availability evidence
@@ -11,7 +11,7 @@
 
 There is **no transfer or chip action today**. Overnight Lane A admitted five Manchester City IB `available` / `started_match` claims (Haaland Norway start+goal; Donnarumma Italy; Gvardiol and Kovačić Croatia starts; Anderson England start). None change owned XI structure today; Haaland’s tip supports keeping him as **captain** on the Haaland arm.
 
-Bruno Fernandes remains the key owned **monitor**: prior official Man Utd fitness update (28 Sep) said he missed Portugal v Norway and Portugal hoped for a 1 October return. Official FPL still lists Bruno as available (`status=a`) and unflagged, but soft `ep_next` **2.0** is treated as form noise during the IB rather than a medical flag. Keep Bruno in the XI; **Mitchell remains provisional vice-captain** until Bruno demonstrates normal involvement.
+Bruno Fernandes remains the key owned **monitor**: the official Man Utd update of 28 September said he missed Portugal v Norway and Portugal hoped for a 1 October return. Official FPL still lists Bruno as available (`status=a`) and unflagged, but soft `ep_next` **2.0** is treated as form noise during the IB rather than a medical flag. Keep Bruno in the XI; **Mitchell remains provisional vice-captain** until Bruno demonstrates normal involvement. A 30 September media report that Bruno trained fully is not admitted because no current Man Utd or Portugal original was recovered.
 
 The no-Haaland squad remains unchanged at five doubtful players plus Obi unavailable. Retained Gakpo/Isak doubtful tips matter for the LIV–MCI environment and transfer-candidate pool, not for owned XI moves today.
 
@@ -19,12 +19,12 @@ The automated strategy report’s Kinsky/Cherki/Wissa reconstructed 15 and exact
 
 ## Official entry state
 
-GW5 is finished and data checked. Working top-1,000 boundary remains **414** (prior sample; not re-polled this morning).
+GW5 is finished and data checked. The overall page-20 sample was re-polled at 2026-09-30T07:41:44Z; rank 994 remains on **414**, so 414 remains the working top-1,000 boundary.
 
 | entry | arm | GW5 | total | current OR | gap to 414 |
 |---|---|---:|---:|---:|---:|
-| 8522487 | Haaland | 51 | 292 | 5,200,111 | 122 |
-| 7337262 | no Haaland | 43 | 291 | 5,320,595 | 123 |
+| 8522487 | Haaland | 51 | 292 | 5,200,109 | 122 |
+| 7337262 | no Haaland | 43 | 291 | 5,320,593 | 123 |
 
 | entry | last-deadline value | bank | chips used |
 |---|---:|---:|---|
@@ -60,17 +60,17 @@ No owned-player price changed since 29 September.
 
 | player | official state | chance | published / news timestamp | observed_at | change / implication |
 |---|---|---:|---|---|---|
-| Bruno Fernandes | prior Man Utd fitness monitor; FPL unflagged `a` | FPL unflagged | Man Utd 2026-09-28 (EN page still 403 for Lane A) | 2026-09-30T07:45:00Z | unchanged monitor; provisional VC still Mitchell |
-| Haaland | City confirm Norway start+goal | FPL `a` | City 2026-09-27T20:49:04Z; claim `model:2cb641ec…` | 2026-09-30T07:45:00Z | **new ledger available tip**; supports Haaland (C) on this arm |
-| Anderson (owned 7337262) | City confirm England start | FPL `a` | City 2026-09-29T20:51:29Z; claim `model:89750319…` | 2026-09-30T07:45:00Z | owned MID fitness corroboration |
-| Isak | thigh injury | 75% | FPL; Liverpool 2026-09-27T09:38:00Z | 2026-09-30T07:45:00Z | unchanged; club assessment pending |
-| Semenyo | ankle injury | 75% | FPL | 2026-09-30T07:45:00Z | unchanged; severity unresolved |
-| Palmer | muscular injury | 75% | FPL | 2026-09-30T07:45:00Z | unchanged |
-| Rice | unspecified injury | 75% | FPL | 2026-09-30T07:45:00Z | unchanged |
-| João Pedro | knee injury | 75% | FPL | 2026-09-30T07:45:00Z | unchanged; no Chelsea timed original |
-| van Ewijk | hamstring injury | 75% | FPL | 2026-09-30T07:45:00Z | unchanged; Haaland-team bench risk |
-| Obi | season loan | 0% | FPL | 2026-09-30T07:45:00Z | unavailable |
-| all other owned players | available | 100% or unflagged | bootstrap current | 2026-09-30T07:45:00Z | no new issue |
+| Bruno Fernandes | prior Man Utd fitness monitor; FPL unflagged `a` | FPL unflagged | Man Utd 2026-09-28 | 2026-09-30T07:41:44Z | unchanged monitor; provisional VC still Mitchell |
+| Haaland | City confirm Norway start+goal | FPL `a` | City 2026-09-27T20:49:04Z; claim `model:2cb641ec…` | 2026-09-30T07:41:44Z | **new ledger available tip**; supports Haaland (C) on this arm |
+| Anderson (owned 7337262) | City confirm England start | FPL `a` | City 2026-09-29T20:51:29Z; claim `model:89750319…` | 2026-09-30T07:41:44Z | owned MID fitness corroboration |
+| Isak | thigh injury | 75% | FPL 2026-09-27T10:30:09Z; Liverpool 2026-09-27T09:38:00Z | 2026-09-30T07:41:44Z | unchanged; club assessment pending |
+| Semenyo | ankle injury | 75% | FPL 2026-09-24T12:00:09Z | 2026-09-30T07:41:44Z | unchanged; severity unresolved |
+| Palmer | muscular injury | 75% | FPL 2026-09-21T13:00:09Z | 2026-09-30T07:41:44Z | unchanged |
+| Rice | unspecified injury | 75% | FPL 2026-09-21T13:00:08Z | 2026-09-30T07:41:44Z | unchanged |
+| João Pedro | knee injury | 75% | FPL 2026-09-16T19:00:09Z | 2026-09-30T07:41:44Z | unchanged; no Chelsea timed original |
+| van Ewijk | hamstring injury | 75% | FPL 2026-09-19T16:00:09Z | 2026-09-30T07:41:44Z | unchanged; Haaland-team bench risk |
+| Obi | season loan | 0% | FPL 2026-09-14T16:12:42Z | 2026-09-30T07:41:44Z | unavailable |
+| all other owned players | available | 100% or unflagged | bootstrap current | 2026-09-30T07:41:44Z | no new issue |
 
 Official FPL’s mutable GW6 estimates now include Haaland **8.0**, Mitchell **7.7**, Van Hecke **7.3**, Semenyo **6.5**, Guéhi/Raya **6.0**, Isak **5.8**, Rogers **5.3**, Bruno **2.0**. These are directional estimates, not medical evidence.
 
@@ -88,7 +88,7 @@ Ledger tip: `f6ff62e7…` → `fdc0e882…`. Retained prior Gakpo/Havertz/Isak d
 
 The 29 September X digest was reviewed for noise only. Community Haaland-always-captain takes for Anfield are noted; on the Haaland arm, Haaland remains captain because the owned alternative (Bruno) is the fitness monitor. Community Pedro sells and Groß/Schade chase do not force owned moves today.
 
-Rejected community implications: Isak is already cleared; Bruno is ruled out of GW6; activate Wildcard immediately; buy Gakpo or Havertz solely from chatter.
+Rejected community implications: Isak is already cleared; Bruno is ruled out of GW6; Bruno's reported full training is already an official clearance; activate Wildcard immediately; buy Gakpo or Havertz solely from chatter.
 
 ## Provisional GW6 decisions
 
@@ -152,7 +152,7 @@ No FPL account action was executed.
 - Official fixtures: https://fantasy.premierleague.com/api/fixtures/
 - Entry summaries: https://fantasy.premierleague.com/api/entry/8522487/ and https://fantasy.premierleague.com/api/entry/7337262/
 - Official histories: https://fantasy.premierleague.com/api/entry/8522487/history/ and https://fantasy.premierleague.com/api/entry/7337262/history/
-- Manchester United fitness update (prior day; EN fetch still 403 for Lane A): https://www.manutd.com/en/news/latest-on-dorgu-and-fernandes-fitness-28-sep-2026
+- Manchester United fitness update, published 28 September 2026: https://www.manutd.com/en/news/latest-on-dorgu-and-fernandes-fitness-28-sep-2026
 - City Haaland Norway report: https://www.mancity.com/news/mens/norway-portugal-nations-league-match-report-63926139
 - City England/Croatia roundup: https://www.mancity.com/news/mens/marc-guehi-elliot-anderson-england-roundup-63926312
 - City Italy/France roundup: https://www.mancity.com/news/mens/man-city-international-roundup-donnarumma-cherki-63926225
