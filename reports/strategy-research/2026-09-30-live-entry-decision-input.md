@@ -11,7 +11,7 @@
 
 There is **no transfer or chip action today**. Overnight Lane A admitted five Manchester City IB `available` / `started_match` claims (Haaland Norway start+goal; Donnarumma Italy; Gvardiol and Kovačić Croatia starts; Anderson England start). None change owned XI structure today; Haaland’s tip supports keeping him as **captain** on the Haaland arm.
 
-Bruno Fernandes remains the key owned **monitor**: the official Man Utd update of 28 September said he missed Portugal v Norway and Portugal hoped for a 1 October return. Official FPL still lists Bruno as available (`status=a`) and unflagged, but soft `ep_next` **2.0** is treated as form noise during the IB rather than a medical flag. Keep Bruno in the XI; **Mitchell remains provisional vice-captain** until Bruno demonstrates normal involvement. A 30 September media report that Bruno trained fully is not admitted because no current Man Utd or Portugal original was recovered.
+Bruno Fernandes remains the key owned **monitor**: the official Man Utd update of 28 September said he missed Portugal v Norway and Portugal hoped for a 1 October return. The Premier League's official 29 September roundup says he is expected to be fit for Portugal v Denmark. Official FPL still lists Bruno as available (`status=a`) and unflagged, but soft `ep_next` **2.0** is treated as form noise during the IB rather than a medical flag. Keep Bruno in the XI; **Mitchell remains provisional vice-captain** until Bruno demonstrates normal involvement. A 30 September media report that Bruno trained fully is not admitted because no current Man Utd or Portugal original was recovered.
 
 The no-Haaland squad remains unchanged at five doubtful players plus Obi unavailable. Retained Gakpo/Isak doubtful tips matter for the LIV–MCI environment and transfer-candidate pool, not for owned XI moves today.
 
@@ -60,7 +60,7 @@ No owned-player price changed since 29 September.
 
 | player | official state | chance | published / news timestamp | observed_at | change / implication |
 |---|---|---:|---|---|---|
-| Bruno Fernandes | prior Man Utd fitness monitor; FPL unflagged `a` | FPL unflagged | Man Utd 2026-09-28 | 2026-09-30T07:41:44Z | unchanged monitor; provisional VC still Mitchell |
+| Bruno Fernandes | Man Utd fitness monitor; PL says expected fit for 1 Oct; FPL unflagged `a` | FPL unflagged | Man Utd 2026-09-28; Premier League 2026-09-29 | 2026-09-30T07:41:44Z | modest positive; still await demonstrated normal involvement before restoring VC |
 | Haaland | City confirm Norway start+goal | FPL `a` | City 2026-09-27T20:49:04Z; claim `model:2cb641ec…` | 2026-09-30T07:41:44Z | **new ledger available tip**; supports Haaland (C) on this arm |
 | Anderson (owned 7337262) | City confirm England start | FPL `a` | City 2026-09-29T20:51:29Z; claim `model:89750319…` | 2026-09-30T07:41:44Z | owned MID fitness corroboration |
 | Isak | thigh injury | 75% | FPL 2026-09-27T10:30:09Z; Liverpool 2026-09-27T09:38:00Z | 2026-09-30T07:41:44Z | unchanged; club assessment pending |
@@ -153,6 +153,7 @@ No FPL account action was executed.
 - Entry summaries: https://fantasy.premierleague.com/api/entry/8522487/ and https://fantasy.premierleague.com/api/entry/7337262/
 - Official histories: https://fantasy.premierleague.com/api/entry/8522487/history/ and https://fantasy.premierleague.com/api/entry/7337262/history/
 - Manchester United fitness update, published 28 September 2026: https://www.manutd.com/en/news/latest-on-dorgu-and-fernandes-fitness-28-sep-2026
+- Premier League international roundup, published 29 September 2026: https://www.premierleague.com/en/news/4727187/internationals-mixed-fortunes-for-premier-league-forwards
 - City Haaland Norway report: https://www.mancity.com/news/mens/norway-portugal-nations-league-match-report-63926139
 - City England/Croatia roundup: https://www.mancity.com/news/mens/marc-guehi-elliot-anderson-england-roundup-63926312
 - City Italy/France roundup: https://www.mancity.com/news/mens/man-city-international-roundup-donnarumma-cherki-63926225
