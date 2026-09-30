@@ -1,11 +1,11 @@
 # Live-entry evidence review — 2026-09-30
 
-- observed_at: 2026-09-30T07:45:00Z
+- observed_at: 2026-09-30T07:41:44Z
 - next_deadline: 2026-10-10T10:00:00Z
 - prior ledger tip: `f6ff62e7b1cdf886c6ef9e378c9f930b212a59c4f3d7bfd8924b5c32e2b0ff8e`
 - resulting ledger tip: `fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164`
 - new claims admitted by model run: 5
-- additional live-entry official finding: Bruno Fernandes fitness monitor (carried from 28–29 Sep; EN page still 403 for Lane A)
+- additional live-entry official finding: Bruno Fernandes fitness monitor carried from 28–29 September
 - account writes: false
 
 ## Review outcome
@@ -18,9 +18,9 @@ No transfer or chip is justified today. The no-Haaland team’s five-player doub
 
 ## Current official state
 
-- Entry 8522487: 292 points; current rank ~5,200,111.
-- Entry 7337262: 291 points; current rank ~5,320,595.
-- Sampled top-1,000 boundary: 414 (prior working figure).
+- Entry 8522487: 292 points; current rank 5,200,109.
+- Entry 7337262: 291 points; current rank 5,320,593.
+- Sampled top-1,000 boundary: 414, re-polled at 2026-09-30T07:41:44Z.
 - Next deadline: 2026-10-10T10:00:00Z.
 - Owned prices, public finances, chip histories and completed-GW scores are unchanged vs 29 Sep.
 - Current free transfers, pending moves, purchase prices and selling prices remain private.
@@ -35,14 +35,15 @@ No transfer or chip is justified today. The no-Haaland team’s five-player doub
 | Kovačić | Manchester City | 2026-09-29T20:51:29Z | Croatia start vs Spain | comparator |
 | Donnarumma | Manchester City | 2026-09-28T20:50:00Z | Italy captain / played vs Turkey | comparator |
 | Bruno Fernandes | Manchester United (prior) | 2026-09-28 | missed Portugal v Norway with a fitness problem; hoped 1 Oct return | owned; vice-captain and workload monitor |
-| owned squads | official FPL | observed 2026-09-30T07:45:00Z | completed picks, prices and statuses as recorded in companion report | live-entry authority |
+| owned squads | official FPL | observed 2026-09-30T07:41:44Z | completed picks, prices and statuses as recorded in companion report | live-entry authority |
 
 ## Rejected or unresolved
 
 | claim | disposition | reason |
 |---|---|---|
-| Bruno will miss GW6 | unresolved | prior Portugal hope for 1 October; FPL has not flagged him; EN page still 403 |
+| Bruno will miss GW6 | unresolved | prior Portugal hope for 1 October; FPL has not flagged him; the evidence pipeline could not retrieve the English page body |
 | Bruno has a specific diagnosed injury or recovery duration | rejected | official page gives a fitness problem, not a diagnosis |
+| Bruno's reported full Portugal training is an official clearance | unresolved | current report is media/community evidence; no 30 September Man Utd or Portugal original was recovered |
 | Isak is fully fit | rejected | conflicts with Liverpool assessment and FPL 75% flag |
 | Cherki started for France | rejected | City page states 77th-minute substitute only |
 | Guéhi started for England | unresolved | City headline pairs Guéhi with Anderson without clear Guéhi minutes |
@@ -54,7 +55,7 @@ No transfer or chip is justified today. The no-Haaland team’s five-player doub
 ## Changes since 29 September
 
 - Haaland / Anderson: new City IB available tips admitted.
-- Bruno: monitor unchanged; EN Lane A fetch still 403.
+- Bruno: monitor unchanged; no new official clearance, and the Lane A pipeline could not retrieve the English page body.
 - No-Haaland owned-player flags: unchanged.
 - Prices, points, public finances and chips: unchanged.
 - Transfer/chip action: unchanged; hold.
