@@ -1,0 +1,100 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-10-01T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "9dac25cfdfab2606931eb9db2368be7222c1d82fbd26e9649b78a0c335e53520",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 297
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-propose Haaland/Donnarumma/Gvardiol/Kova\u010di\u0107/Anderson/Gakpo/Isak",
+        "Stretch Gu\u00e9hi to started_match",
+        "Stretch Cherki France minutes to started_match",
+        "Admit Porro hamstring from 19 Sep page",
+        "Admit Van Hecke Netherlands start from 27 Sep Spurs page"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new claim candidates; all in-gate official leads are already on tip ledger or lack claimable minutes text",
+      "falsifiers": [
+        "Fresh timed Chelsea Pedro original",
+        "Man Utd English Bruno fitness original with ISO",
+        "Spurs official Van Hecke foot-update inside gate",
+        "City page clarifying Gu\u00e9hi start minutes"
+      ],
+      "rationale": "City England/Croatia, Donnarumma/Cherki, Gakpo, and prior Haaland/Isak pages are either already admitted or outside the actionable claim set for today; Gu\u00e9hi still lacks clear minutes; Cherki remains sub-only; Porro and Spurs Van Hecke IB win pages are outside the 72h gate; Chelsea still has no timed Pedro original.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Treat empty clubs as available",
+        "Skip clubs without watchlist players"
+      ],
+      "boundary_id": "coverage",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Mark discovery complete across all 21 catalogue clubs with empty arrays where no in-gate official lead survived",
+      "falsifiers": [
+        "Missed official-domain lead with recoverable published_at inside 72h"
+      ],
+      "rationale": "Catalogue search executed for every club_id; empty is recorded coverage, not an availability assertion.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Invent Spurs claim from bootstrap news string"
+      ],
+      "boundary_id": "van_hecke_bootstrap_flag",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit a Lane A claim from bootstrap foot flag alone; wait for Spurs timed original",
+      "falsifiers": [
+        "tottenhamhotspur.com timed foot/fitness update"
+      ],
+      "rationale": "Bootstrap shows Van Hecke status d / foot 75% with news_added 2026-09-30T16:00:09Z, but FPL bootstrap is not a registered club original for ledger admission.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "66a3d0ea73e3b05ee5f93b007bc92e6a2a3f477cc33ed26c1cc7298ff3cfa563",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "1fc9f1a5621dd52a6d5aa40d2576981ce0d251dabd774db9160f055cc3e27091",
+  "observed_at": "2026-10-01T07:05:00Z",
+  "prior_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "run_id": "composer-2.5:2026-10-01T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
