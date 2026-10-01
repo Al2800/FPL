@@ -1,0 +1,90 @@
+{
+  "accepted_claim_ids": [
+    "model:7a5cbe29bdbe03a2c6e9fc561697d19c93152bbd4a0931195aef5823bc116276"
+  ],
+  "available_at": "2026-09-25T07:20:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:haaland-norway-brace-2026-09-24": "model:7a5cbe29bdbe03a2c6e9fc561697d19c93152bbd4a0931195aef5823bc116276"
+  },
+  "content_sha256": "c1f80c69a864228faf6bf3c0beeb85568b87dc5180a607dfe77dea62c4664dcf",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 270
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit Porro update from 19 Sep Spurs page (outside 72h gate)",
+        "Emit Jo\u00e3o Pedro claim from unregistered/wrong-season Chelsea pages",
+        "Emit Xavi Simons ACL camp as availability claim (already bootstrap i; rehab feature only)"
+      ],
+      "boundary_id": "haaland-ib-fitness",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Haaland available via Norway start/brace as sole new claim",
+      "falsifiers": [
+        "City/Norway report Haaland withdrew injured mid-camp",
+        "Host ephemeral fetch fails domain/hash checks"
+      ],
+      "rationale": "City listing JSON-LD recovered full ISO 2026-09-24T21:00:00Z inside the 72h gate; article body confirms two Norway goals. Other City leads are awards/features without availability statements. Chelsea still lacks a timed Jo\u00e3o Pedro original (wrong-season Rosenior hits discarded). Spurs Porro hamstring page is 2026-09-19 (outside gate); tip ledger doubtful remains active.",
+      "supporting_claim_ids": [
+        "model:7a5cbe29bdbe03a2c6e9fc561697d19c93152bbd4a0931195aef5823bc116276"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Force Porro FT buy on community DEFCON rankings"
+      ],
+      "boundary_id": "porro-ft-stance-hold",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "Keep reject-Porro FT stance without a new claim",
+      "falsifiers": [
+        "Spurs publish clear-fit Porro update before GW6"
+      ],
+      "rationale": "No newer Spurs original inside today's 72h window updates Porro; tip-ledger doubtful hamstring + bootstrap d/75% remain the official signal.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "02ad9c756d5da778e9ffd58f465be0b00c85cb79d87ad1a18fcc81ecccdc9cc7",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "8defc8e2f2b6b2cbfdd65a7808f6b026dc202698596b8fa7c1888d423a356a4f",
+      "source_url": "https://www.mancity.com/news/mens/erling-haaland-norway-ruben-dias-portugal-abdukodir-khusanov-uzbekistan-round-up-63925880"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "bee577b3ab226ade0a5369f78acd50f5f796ccbc8766161623ab63d3370aace8",
+  "observed_at": "2026-09-25T07:20:00Z",
+  "prior_ledger_sha256": "1c0620f25f1b900933bd3aea56ca0e7580d5536d14a8d464e56c12fce130acb9",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "61779acc00e492604dc8da0818656b0090b1376719ec848bfaebdc8f6e751889",
+  "run_id": "composer-2.5:2026-09-25T072000Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 1,
+    "candidate_count": 1,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
