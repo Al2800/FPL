@@ -1,0 +1,196 @@
+{
+  "accepted_claim_ids": [
+    "model:4146189dad4e68501e9fab759c12c36885a520c82cb9ec8fc18c07136a15a13a",
+    "model:35ec6e194a1689ed3c3330eba81d538cb099c8df735aec6c5ca203e5d4691525",
+    "model:2b56179535480a4babb2ead8adde3af92172bb7d0c154c3df57721a2367582b2",
+    "model:1fc39a6aa4bedaca042c1d777bbba5ac1d0433c51cf2c1be947c0fa2eefc988a",
+    "model:0746c837d1b263296b9435d928c59c997821de8ba93a4afe888ab46b4e6c1394"
+  ],
+  "available_at": "2026-09-01T07:03:14Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-bruno-g-started-villa": "model:35ec6e194a1689ed3c3330eba81d538cb099c8df735aec6c5ca203e5d4691525",
+    "candidate-jackson-started-villa-vs-arsenal": "model:4146189dad4e68501e9fab759c12c36885a520c82cb9ec8fc18c07136a15a13a",
+    "candidate-konsa-debut-sub-villa": "model:2b56179535480a4babb2ead8adde3af92172bb7d0c154c3df57721a2367582b2",
+    "candidate-mosquera-precautionary-sub": "model:0746c837d1b263296b9435d928c59c997821de8ba93a4afe888ab46b4e6c1394",
+    "candidate-saka-started-scored-villa": "model:1fc39a6aa4bedaca042c1d777bbba5ac1d0433c51cf2c1be947c0fa2eefc988a"
+  },
+  "content_sha256": "5a35019b89725d68454910d4713317fc3f6ed5208dc465348231b8102cc3d8d9",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 193
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit stale 28 Aug Spurs Kudus / City Palace / Leeds Farke claims as fresh"
+      ],
+      "boundary_id": "72h-gate",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Retain Arsenal 31 Aug cluster and Chelsea 30 Aug report; drop Spurs/Leeds/City/Palace/Liverpool leads dated before 2026-08-29T07:03:14Z",
+      "falsifiers": [
+        "Host clock skew; published_at recovery error"
+      ],
+      "rationale": "maximum_result_age_hours=72 from observed_at 2026-09-01T07:03:14Z. Arsenal Villa report/team news/post-presser and Chelsea Brighton report remain inside the gate; 28 Aug Spurs/Leeds/City and 26\u201327 Aug Palace/Liverpool leads do not.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Keep Bruno G. doubtful despite debut minutes"
+      ],
+      "boundary_id": "bruno-g-minutes",
+      "confidence": 0.94,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Bruno G. available via started_match after PL debut as sub",
+      "falsifiers": [
+        "Later official corrects minutes; groin flare before GW3"
+      ],
+      "rationale": "Official match report confirms second-half debut appearance, upgrading the 30/31 Aug doubtful claim.",
+      "supporting_claim_ids": [
+        "model:35ec6e194a1689ed3c3330eba81d538cb099c8df735aec6c5ca203e5d4691525"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Force Konsa into the recommended 15 on debut-sub alone"
+      ],
+      "boundary_id": "konsa-def-watch",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Konsa available via late-sub debut; do not treat as nailed GW3 starter",
+      "falsifiers": [
+        "Named in Arsenal GW3 XI vs Chelsea; Mosquera fully fit and preferred"
+      ],
+      "rationale": "Official report confirms ~12-minute debut after Mosquera precautionary exit; community \u00a34.4m buy case needs a start sample, not only availability.",
+      "supporting_claim_ids": [
+        "model:2b56179535480a4babb2ead8adde3af92172bb7d0c154c3df57721a2367582b2",
+        "model:0746c837d1b263296b9435d928c59c997821de8ba93a4afe888ab46b4e6c1394"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Immediate Saka FT over Cherki path"
+      ],
+      "boundary_id": "saka-watch",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Saka started_match + goal; keep as watchlist premium, not forced into this 15",
+      "falsifiers": [
+        "Rest vs Chelsea; price lock blocks entry"
+      ],
+      "rationale": "Official report confirms start and winning goal; funds/structure still gate any Saka chase versus Cherki/Haaland core.",
+      "supporting_claim_ids": [
+        "model:1fc39a6aa4bedaca042c1d777bbba5ac1d0433c51cf2c1be947c0fa2eefc988a"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Auto-recommend Jackson into the 15 today"
+      ],
+      "boundary_id": "thiago-fwd-funding",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Jackson Villa debut start as optional FWD funding path metadata",
+      "falsifiers": [
+        "Jackson blanks / rotated; Watkins still occupies FPL slot without exit processing"
+      ],
+      "rationale": "Arsenal team news lists Jackson in Villa XI; useful only if Thiago is sold to unlock Cherki funds \u2014 not an automatic buy.",
+      "supporting_claim_ids": [
+        "model:4146189dad4e68501e9fab759c12c36885a520c82cb9ec8fc18c07136a15a13a"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Emit available/declared_fit solely because Arteta said he is fine"
+      ],
+      "boundary_id": "mosquera-minutes",
+      "confidence": 0.7,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Mosquera doubtful after precautionary late sub despite Arteta saying he is fine",
+      "falsifiers": [
+        "Named in GW3 XI; club clarifies no issue"
+      ],
+      "rationale": "Arteta explicitly framed the withdrawal as feeling about to have an issue; status doubtful better matches the minutes uncertainty than stretching to available.",
+      "supporting_claim_ids": [
+        "model:0746c837d1b263296b9435d928c59c997821de8ba93a4afe888ab46b4e6c1394"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Re-propose identical Chelsea XI claims"
+      ],
+      "boundary_id": "chelsea-duplicates",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Do not re-emit Jo\u00e3o Pedro/Palmer/Verbruggen/De Cuyper start claims from the still-fresh Chelsea report",
+      "falsifiers": [
+        "Host tip lacks those claims"
+      ],
+      "rationale": "Those four claims were host-admitted on 31 Aug from the same URL; re-emitting would only create duplicates without new signal.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Invent Bruno/Shaw/Gibbs-White official claims without hashable URLs"
+      ],
+      "boundary_id": "manutd-forest-fetch",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Man Utd and Forest as empty coverage; no hashable claim URLs",
+      "falsifiers": [
+        "Hashable official URLs become fetchable"
+      ],
+      "rationale": "manutd.com returns 403 to Lab UA; Forest pages remain unusable for Gibbs-White quotes. Live samples stay briefing-only.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "75f4fece0685947c8ba201d5c4bf61c4df08e599798223289baa2106c0396d2e",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "a29e0e52f8aad25c9128ac4339a65f56937d14e063541420abbc34f224dbf781",
+      "source_url": "https://www.arsenal.com/news/every-word-from-artetas-post-aston-villa-presser-an8Ge1h5cVQt"
+    },
+    {
+      "source_hash_sha256": "ff99847a9844363f95e1b572eda978c3a83c026476867fb3e5f00e35b43eba36",
+      "source_url": "https://www.arsenal.com/news/match-report-aston-villa-0-1-arsenal-aEx1E2V3f3gI"
+    },
+    {
+      "source_hash_sha256": "77e6030db7775f1d92c318a769a1d33c5ba14f33779add6e7f9759190ecea9bb",
+      "source_url": "https://www.arsenal.com/news/team-news-unchanged-side-for-villa-park-trip-awwBd2B7uYAC"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "c858b2941e7fedce869cd894c1520155c4b932081055d9093bcff7ac52cd9fa3",
+  "observed_at": "2026-09-01T07:03:14Z",
+  "prior_ledger_sha256": "d5174fb63274a92cf506585cd34b17b589d7124a92173940ada65bd825eff249",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "e2e7a0da7bf4565a671fafb85bcf3d29da097dc63b4c3ffa8b15af5ac1ee4ab2",
+  "run_id": "cursor-grok-4.5-high:2026-09-01T070314Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 8,
+    "decision_trace_linked_count": 5,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
