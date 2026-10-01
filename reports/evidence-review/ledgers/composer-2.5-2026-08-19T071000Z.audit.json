@@ -1,0 +1,119 @@
+{
+  "accepted_claim_ids": [
+    "model:fd23d8137b844d1bcd1abd0e3552b130df5156d97aa9880897ad45df9ecc042f",
+    "model:99e153d8e288c74fcef8863c4870c9cf4359253c9d40b5782ef938b44886cc5b",
+    "model:f00d79533be8e76ae812f9d26549caed9206af55526820c1ac66351b531f43dc",
+    "model:afd8ae808951415b78006b2fce03053f9d8d43105d657b82896c39e70748ec6e"
+  ],
+  "available_at": "2026-08-19T07:10:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "cand:2026-08-19:anderson-minutes-plan": "model:f00d79533be8e76ae812f9d26549caed9206af55526820c1ac66351b531f43dc",
+    "cand:2026-08-19:anderson-started": "model:fd23d8137b844d1bcd1abd0e3552b130df5156d97aa9880897ad45df9ecc042f",
+    "cand:2026-08-19:doku-minutes-plan": "model:afd8ae808951415b78006b2fce03053f9d8d43105d657b82896c39e70748ec6e",
+    "cand:2026-08-19:doku-started": "model:99e153d8e288c74fcef8863c4870c9cf4359253c9d40b5782ef938b44886cc5b"
+  },
+  "content_sha256": "1295774407e30d798b5670d4ae1de8015dffdeffcd2bb18d4deeb690865c5a13",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 115
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit 15 Aug Palace Freiburg lead after the gate moved",
+        "Invent Liverpool Como published_at from kick-off time",
+        "Emit Man Utd claims without a successful official-page hash"
+      ],
+      "boundary_id": "lane-a:2026-08-19:72h-gate",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Retain timed CS City/Arsenal leads and the 18 Aug PL injury index; keep other clubs empty.",
+      "falsifiers": [
+        "Host rejects a cited URL domain or publication time",
+        "A fresher official GW1 XI contradicts CS availability"
+      ],
+      "rationale": "Observed_at 2026-08-19T07:10:00Z implies cutoff 2026-08-16T07:10:00Z. Palace Freiburg (15 Aug) and Spurs Hoffenheim (14 Aug) fall outside. Liverpool Como lineup lacks machine-readable clock time so it was omitted rather than inventing published_at. Man Utd training pages remain Cloudflare-soft-blocked for ephemeral hash.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Re-propose identical Haaland/Semenyo/Saka fingerprints",
+        "Claim Guehi started_match despite only appearing as a 54\u2019 substitute"
+      ],
+      "boundary_id": "lane-a:2026-08-19:cs-followthrough",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Emit new Doku and Anderson available + minutes_role claims from CS pages; do not re-emit Haaland/Semenyo/Saka duplicates.",
+      "falsifiers": [
+        "Official City GW1 team news omits Doku or Anderson",
+        "Fresh calf/back setback reports before the deadline"
+      ],
+      "rationale": "Haaland/Semenyo/Saka CS claims are already on the tip ledger from 18 Aug. Doku and Anderson started CS and still lack host-admitted available claims, while bootstrap/packet still carry doubt/Asia-miss context.",
+      "supporting_claim_ids": [
+        "model:99e153d8e288c74fcef8863c4870c9cf4359253c9d40b5782ef938b44886cc5b",
+        "model:fd23d8137b844d1bcd1abd0e3552b130df5156d97aa9880897ad45df9ecc042f",
+        "model:afd8ae808951415b78006b2fce03053f9d8d43105d657b82896c39e70748ec6e",
+        "model:f00d79533be8e76ae812f9d26549caed9206af55526820c1ac66351b531f43dc"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Watchlist limited to the final recommended 15 only"
+      ],
+      "boundary_id": "lane-a:2026-08-19:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist to comparator arms, advisory 15, CS-named City/Arsenal players, and bootstrap injured/doubtful flags.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist; Doku/Anderson must be included even though they are absent from the Haaland-in advisory 15.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "a0e02771a8bff7d7f1e5af98fa5244a583d3a09c04626716738f50f4170046e5",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "e7ff86b91be7239777f791920ac97fa3d19333b969a8b77ef80465ff68709447",
+      "source_url": "https://www.mancity.com/news/mens/arsenal-manchester-city-community-shield-match-report-63922483"
+    },
+    {
+      "source_hash_sha256": "31cbdfb5e4ace29bfe134e764078d47d3424af6a4ea2b5b09b529ef603f182d1",
+      "source_url": "https://www.mancity.com/news/mens/maresca-community-shield-written-reaction-63922499"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "85b410a2243c9d3eacd607bd4eecf144227427547a71efc26feb3ed63b68ac09",
+  "observed_at": "2026-08-19T07:10:00Z",
+  "prior_ledger_sha256": "e271579611d250d6e09bd1ff5f37ff33ce8b59d5ac4faa3eec665436f67be52a",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "2039d04cd7859a174555bffcb8ee9eb81e7b78a1289db4d55ddf9d80ac50d521",
+  "run_id": "composer-2.5:2026-08-19T071000Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 4,
+    "candidate_count": 4,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
