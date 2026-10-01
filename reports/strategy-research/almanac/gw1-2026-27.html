@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GW1 almanac — 2026/27</title>
+  <style>
+    :root {
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #d6d3d1;
+      --paper: #fafaf9;
+      --card: #ffffff;
+      --up: #166534;
+      --down: #9f1239;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 15px/1.45 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    header, main, footer { max-width: 960px; margin: 0 auto; padding: 1.25rem 1rem; }
+    header { border-bottom: 2px solid var(--ink); }
+    h1 { font-size: 1.6rem; margin: 0 0 0.35rem; }
+    .meta { color: var(--muted); font-size: 0.92rem; }
+    .scoreboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+    @media (max-width: 700px) { .scoreboard { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+    }
+    .card h2 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+    .big { font-size: 2.2rem; font-variant-numeric: tabular-nums; }
+    .sub { color: var(--muted); font-size: 0.9rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.92rem;
+    }
+    th, td { padding: 0.28rem 0.4rem; border-bottom: 1px solid var(--line); text-align: left; }
+    th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); }
+    td.num, th.num { text-align: right; }
+    tr.pending td { color: var(--muted); font-style: italic; }
+    .badge {
+      display: inline-block;
+      margin-left: 0.35rem;
+      padding: 0 0.3rem;
+      border: 1px solid var(--ink);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+    }
+    .up { color: var(--up); }
+    .down { color: var(--down); }
+    .flat { color: var(--muted); }
+    h3 { margin: 1.4rem 0 0.4rem; font-size: 1rem; }
+    .note { color: var(--muted); font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .stance {
+      border-left: 3px solid var(--ink);
+      padding: 0.6rem 0.8rem;
+      margin: 1.2rem 0;
+      background: #fff;
+    }
+    footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.82rem; }
+    code { font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gameweek 1 almanac — 2026/27</h1>
+    <p class="meta">
+      provisional mid-GW1 · observed 2026-08-24T10:32:12Z ·
+      remaining: FUL v CHE · packet T-24h
+      <code>986423d293091bdd…</code>
+    </p>
+    <p class="meta">Record only. Not a transfer recommendation. Account writes: false.</p>
+  </header>
+  <main>
+    <section class="scoreboard">
+      <article class="card">
+        <h2>Haaland-in advisory</h2>
+        <div class="big">22</div>
+        <div class="sub">XI + captain so far · plan 55.0 · bench unused 12 · 1 XI still to play</div>
+        <p class="note">Live 15. Owner Bruno (C) / Haaland (VC). Bank £0.5m. No GW1 chip.</p>
+      </article>
+      <article class="card">
+        <h2>Robust no-Haaland</h2>
+        <div class="big">36</div>
+        <div class="sub">XI + captain so far · plan 62.8 · bench unused 8 · 2 XI still to play</div>
+        <p class="note">T-24h optimiser 15. Bruno (C) / Semenyo (VC). Bank £0.0. Not the live side.</p>
+      </article>
+    </section>
+
+    <div class="stance">
+      <strong>Owner stance.</strong> No change to the live 15. Do not retune
+      weights from this week. Minutes/starts first; shrink returns.
+      Official EP is a sense-check, not a new model.
+    </div>
+
+    <h3>Advisory XI</h3>
+    <p class="note">Our EP is T-24h live-faithful GW1. Official is FPL <code>ep_next</code> on 20 Aug. Δ is actual − our EP.</p>
+    <table>
+      <thead><tr>
+        <th>Player</th><th>Club</th><th>Pos</th>
+        <th class="num">Min</th><th class="num">Our EP</th><th class="num">Off. EP</th>
+        <th class="num">Act</th><th class="num">Δ</th><th class="num">xGI</th><th>Notes</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Verbruggen</td><td>BHA</td><td>GKP</td><td class='num'>90</td><td class='num'>2.28</td><td class='num'>1.90</td><td class='num'>6</td><td class='num'><span class="up">+3.72</span></td><td class='num'>0.00</td><td>CS</td></tr>
+<tr><td>Shaw</td><td>MUN</td><td>DEF</td><td class='num'>90</td><td class='num'>2.81</td><td class='num'>1.70</td><td class='num'>1</td><td class='num'><span class="down">-1.81</span></td><td class='num'>0.26</td><td></td></tr>
+<tr><td>Mitchell</td><td>CRY</td><td>DEF</td><td class='num'>90</td><td class='num'>2.56</td><td class='num'>1.70</td><td class='num'>1</td><td class='num'><span class="down">-1.56</span></td><td class='num'>0.01</td><td></td></tr>
+<tr><td>Van Hecke</td><td>TOT</td><td>DEF</td><td class='num'>90</td><td class='num'>2.36</td><td class='num'>2.20</td><td class='num'>1</td><td class='num'><span class="down">-1.36</span></td><td class='num'>0.03</td><td></td></tr>
+<tr><td>B.Fernandes<span class="badge">C</span></td><td>MUN</td><td>MID</td><td class='num'>90</td><td class='num'>7.20</td><td class='num'>4.00</td><td class='num'>2</td><td class='num'><span class="down">-5.20</span></td><td class='num'>0.34</td><td></td></tr>
+<tr><td>Gibbs-White</td><td>NFO</td><td>MID</td><td class='num'>90</td><td class='num'>4.73</td><td class='num'>2.80</td><td class='num'>2</td><td class='num'><span class="down">-2.73</span></td><td class='num'>0.19</td><td></td></tr>
+<tr><td>Wilson</td><td>LEE</td><td>MID</td><td class='num'>65</td><td class='num'>4.60</td><td class='num'>2.30</td><td class='num'>3</td><td class='num'><span class="down">-1.60</span></td><td class='num'>0.02</td><td>CS</td></tr>
+<tr><td>E.Le Fée</td><td>SUN</td><td>MID</td><td class='num'>79</td><td class='num'>2.88</td><td class='num'>2.10</td><td class='num'>2</td><td class='num'><span class="down">-0.88</span></td><td class='num'>0.03</td><td></td></tr>
+<tr><td>Haaland<span class="badge">VC</span></td><td>MCI</td><td>FWD</td><td class='num'>90</td><td class='num'>7.47</td><td class='num'>4.00</td><td class='num'>2</td><td class='num'><span class="down">-5.47</span></td><td class='num'>0.76</td><td></td></tr>
+<tr><td>Thiago</td><td>BRE</td><td>FWD</td><td class='num'>82</td><td class='num'>5.60</td><td class='num'>2.50</td><td class='num'>0</td><td class='num'><span class="down">-5.60</span></td><td class='num'>1.08</td><td>missed pen · CS</td></tr>
+<tr class="pending"><td>João Pedro</td><td>CHE</td><td>FWD</td><td class='num'>0</td><td class='num'>5.31</td><td class='num'>2.30</td><td class='num'>pend</td><td class='num'>—</td><td class='num'>0.00</td><td></td></tr>
+      </tbody>
+    </table>
+    <h3>Advisory bench</h3>
+    <table>
+      <thead><tr>
+        <th>Player</th><th>Club</th><th>Pos</th>
+        <th class="num">Min</th><th class="num">Our EP</th><th class="num">Off. EP</th>
+        <th class="num">Act</th><th class="num">Δ</th><th class="num">xGI</th><th>Notes</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Dubravka</td><td>TOT</td><td>GKP</td><td class='num'>0</td><td class='num'>1.57</td><td class='num'>1.00</td><td class='num'>0</td><td class='num'><span class="down">-1.57</span></td><td class='num'>0.00</td><td></td></tr>
+<tr><td>Xhaka</td><td>SUN</td><td>MID</td><td class='num'>90</td><td class='num'>2.53</td><td class='num'>2.00</td><td class='num'>9</td><td class='num'><span class="up">+6.47</span></td><td class='num'>0.09</td><td>1A · B2</td></tr>
+<tr><td>Diop</td><td>IPS</td><td>DEF</td><td class='num'>90</td><td class='num'>1.40</td><td class='num'>1.00</td><td class='num'>2</td><td class='num'><span class="up">+0.60</span></td><td class='num'>0.01</td><td></td></tr>
+<tr><td>van Ewijk</td><td>COV</td><td>DEF</td><td class='num'>90</td><td class='num'>0.92</td><td class='num'>1.00</td><td class='num'>1</td><td class='num'><span class="flat">+0.08</span></td><td class='num'>0.01</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Robust XI</h3>
+    <table>
+      <thead><tr>
+        <th>Player</th><th>Club</th><th>Pos</th>
+        <th class="num">Min</th><th class="num">Our EP</th><th class="num">Off. EP</th>
+        <th class="num">Act</th><th class="num">Δ</th><th class="num">xGI</th><th>Notes</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Raya</td><td>ARS</td><td>GKP</td><td class='num'>90</td><td class='num'>5.16</td><td class='num'>4.00</td><td class='num'>6</td><td class='num'><span class="up">+0.84</span></td><td class='num'>0.00</td><td>CS</td></tr>
+<tr><td>Gabriel</td><td>ARS</td><td>DEF</td><td class='num'>90</td><td class='num'>5.54</td><td class='num'>4.00</td><td class='num'>5</td><td class='num'><span class="down">-0.54</span></td><td class='num'>0.06</td><td>CS</td></tr>
+<tr><td>Guéhi</td><td>MCI</td><td>DEF</td><td class='num'>90</td><td class='num'>3.84</td><td class='num'>2.80</td><td class='num'>10</td><td class='num'><span class="up">+6.16</span></td><td class='num'>1.21</td><td>1G · B2</td></tr>
+<tr><td>Senesi</td><td>TOT</td><td>DEF</td><td class='num'>90</td><td class='num'>2.97</td><td class='num'>2.80</td><td class='num'>3</td><td class='num'><span class="flat">+0.03</span></td><td class='num'>0.02</td><td></td></tr>
+<tr><td>Truffert</td><td>BOU</td><td>DEF</td><td class='num'>90</td><td class='num'>2.94</td><td class='num'>2.50</td><td class='num'>1</td><td class='num'><span class="down">-1.94</span></td><td class='num'>0.00</td><td></td></tr>
+<tr><td>B.Fernandes<span class="badge">C</span></td><td>MUN</td><td>MID</td><td class='num'>90</td><td class='num'>7.20</td><td class='num'>4.00</td><td class='num'>2</td><td class='num'><span class="down">-5.20</span></td><td class='num'>0.34</td><td></td></tr>
+<tr><td>Semenyo<span class="badge">VC</span></td><td>MCI</td><td>MID</td><td class='num'>90</td><td class='num'>6.22</td><td class='num'>2.90</td><td class='num'>2</td><td class='num'><span class="down">-4.22</span></td><td class='num'>0.08</td><td></td></tr>
+<tr><td>Rice</td><td>ARS</td><td>MID</td><td class='num'>67</td><td class='num'>5.75</td><td class='num'>2.60</td><td class='num'>3</td><td class='num'><span class="down">-2.75</span></td><td class='num'>0.15</td><td>CS</td></tr>
+<tr class="pending"><td>Rogers</td><td>CHE</td><td>MID</td><td class='num'>0</td><td class='num'>5.43</td><td class='num'>2.60</td><td class='num'>pend</td><td class='num'>—</td><td class='num'>0.00</td><td></td></tr>
+<tr><td>Anderson</td><td>MCI</td><td>MID</td><td class='num'>62</td><td class='num'>5.21</td><td class='num'>2.30</td><td class='num'>2</td><td class='num'><span class="down">-3.21</span></td><td class='num'>0.25</td><td></td></tr>
+<tr class="pending"><td>João Pedro</td><td>CHE</td><td>FWD</td><td class='num'>0</td><td class='num'>5.31</td><td class='num'>2.30</td><td class='num'>pend</td><td class='num'>—</td><td class='num'>0.00</td><td></td></tr>
+      </tbody>
+    </table>
+    <h3>Robust bench</h3>
+    <table>
+      <thead><tr>
+        <th>Player</th><th>Club</th><th>Pos</th>
+        <th class="num">Min</th><th class="num">Our EP</th><th class="num">Off. EP</th>
+        <th class="num">Act</th><th class="num">Δ</th><th class="num">xGI</th><th>Notes</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Verbruggen</td><td>BHA</td><td>GKP</td><td class='num'>90</td><td class='num'>2.28</td><td class='num'>1.90</td><td class='num'>6</td><td class='num'><span class="up">+3.72</span></td><td class='num'>0.00</td><td>CS</td></tr>
+<tr><td>Shaw</td><td>MUN</td><td>DEF</td><td class='num'>90</td><td class='num'>2.81</td><td class='num'>1.70</td><td class='num'>1</td><td class='num'><span class="down">-1.81</span></td><td class='num'>0.26</td><td></td></tr>
+<tr><td>Beto</td><td>EVE</td><td>FWD</td><td class='num'>11</td><td class='num'>2.78</td><td class='num'>1.80</td><td class='num'>1</td><td class='num'><span class="down">-1.78</span></td><td class='num'>0.05</td><td></td></tr>
+<tr><td>Obi</td><td>MUN</td><td>FWD</td><td class='num'>0</td><td class='num'>1.00</td><td class='num'>1.00</td><td class='num'>0</td><td class='num'><span class="down">-1.00</span></td><td class='num'>0.00</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Engine on these two 15s</h3>
+    <p class="note">Completed players only (n=24). Whole-market figures stay in the markdown review; this page is the named sides.</p>
+    <table>
+      <thead><tr><th>Lens</th><th class="num">Mean</th><th class="num">Bias vs actual</th><th class="num">MAE</th></tr></thead>
+      <tbody>
+        <tr><td>Our EP</td><td class="num">3.76</td><td class="num">-1.05</td><td class="num">2.55</td></tr>
+        <tr><td>Official EP</td><td class="num">2.37</td><td class="num">+0.34</td><td class="num">1.63</td></tr>
+        <tr><td>Actual</td><td class="num">2.71</td><td class="num">—</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </main>
+  <footer>
+    Regenerated by <code>scripts/render_gw1_almanac.py</code>.
+    Event-live: <code>data/live-shadow/fpl/event-live/20260824T103200Z</code>.
+    Full write-up: <code>reports/strategy-research/2026-08-24-gw1-midweek-review.md</code>.
+  </footer>
+</body>
+</html>
