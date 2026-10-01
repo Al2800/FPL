@@ -1,0 +1,120 @@
+{
+  "accepted_claim_ids": [
+    "model:9c25d03a9fac3dfb333289b393a64b3a52f3bdedc397281ff900ca4e4477ac2f",
+    "model:8037487a0a890705853858e7ee348eb065cc678b7dda3bc1e158f735ae62f3b5",
+    "model:32be51fade9095f3b3010f1a9737452c9e2bb2cf62d1e4d45578a3870ca25e15"
+  ],
+  "available_at": "2026-08-25T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate:2026-08-25:joao-pedro-started-fulham-report": "model:8037487a0a890705853858e7ee348eb065cc678b7dda3bc1e158f735ae62f3b5",
+    "candidate:2026-08-25:mitchell-started-palace-report": "model:9c25d03a9fac3dfb333289b393a64b3a52f3bdedc397281ff900ca4e4477ac2f",
+    "candidate:2026-08-25:rogers-started-fulham-report": "model:32be51fade9095f3b3010f1a9737452c9e2bb2cf62d1e4d45578a3870ca25e15"
+  },
+  "content_sha256": "234b73367fd142964448413433f5aaec88a1e57eae67e4267478d6e9ccaf9d78",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 195
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit claims from Arsenal Coventry report despite age",
+        "Treat Spurs Porro page as still fresh"
+      ],
+      "boundary_id": "lane-a:2026-08-25:72h-gate",
+      "confidence": 0.94,
+      "conflicting_claim_ids": [],
+      "decision": "Retain Fulham Chelsea report, Leeds Wilson feature, City/Brighton/Liverpool/Brentford/Palace/Ipswich timed leads; drop Arsenal Coventry report and Spurs Porro team news as stale under observed_at-72h.",
+      "falsifiers": [
+        "Host age window differs from observed_at-72h",
+        "Fulham datetime attribute rejected by host parser"
+      ],
+      "rationale": "observed_at 2026-08-25T07:05:00Z implies cutoff 2026-08-22T07:05:00Z. Fulham report at 2026-08-24T21:14:07Z is the primary new Monday lead. Arsenal report published 2026-08-21T20:57:20Z and Spurs Porro news 2026-08-21T14:14:41Z fall outside the window.",
+      "supporting_claim_ids": [
+        "model:8037487a0a890705853858e7ee348eb065cc678b7dda3bc1e158f735ae62f3b5",
+        "model:32be51fade9095f3b3010f1a9737452c9e2bb2cf62d1e4d45578a3870ca25e15",
+        "model:9c25d03a9fac3dfb333289b393a64b3a52f3bdedc397281ff900ca4e4477ac2f"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Re-emit City Haaland/Semenyo claims",
+        "Skip Mitchell again for publish-time caution",
+        "Emit Robinson Fulham start without decision relevance"
+      ],
+      "boundary_id": "lane-a:2026-08-25:claim-emission",
+      "confidence": 0.91,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Jo\u00e3o Pedro and Rogers started_match from Fulham official lineup widget plus Mitchell started_match from Palace report; do not re-emit Haaland/Semenyo/Isak/Wilson/Verbruggen/Porro/VdV already on tip ledger.",
+      "falsifiers": [
+        "Host cannot hash Fulham/Palace bodies",
+        "Host rejects Fulham lineup widget as insufficient lineup evidence"
+      ],
+      "rationale": "Monday Fulham\u2013Chelsea completes GW1. The Fulham page publishes Chelsea awayTeamStarters including Jo\u00e3o Pedro and Rogers with ISO published_at. Palace report now carries machine-readable datetime suitable for Mitchell. Prior Sunday claims remain on tip 651c8d1e\u2026; re-emission would only duplicate.",
+      "supporting_claim_ids": [
+        "model:8037487a0a890705853858e7ee348eb065cc678b7dda3bc1e158f735ae62f3b5",
+        "model:32be51fade9095f3b3010f1a9737452c9e2bb2cf62d1e4d45578a3870ca25e15",
+        "model:9c25d03a9fac3dfb333289b393a64b3a52f3bdedc397281ff900ca4e4477ac2f"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Watchlist limited to final 15 only"
+      ],
+      "boundary_id": "lane-a:2026-08-25:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist of 195 UIDs covering advisory 15, comparator names, bootstrap flags/high ownership, and players named in today\u2019s official leads.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist. Jo\u00e3o Pedro and Rogers must be present for Fulham-report claims; Mitchell must be present for Palace.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "847f3b087280b3324288119a45063ff1d767b7da65e56509de55b1c3b79982e3",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "f9a61e53234e61b06d1e62bfe43beffbc3ca70031fdd3efbbfa1ba1b07a55314",
+      "source_url": "https://www.cpfc.co.uk/news/match-reports/match-report-highlights-everton-crystal-palace-august-2026/"
+    },
+    {
+      "source_hash_sha256": "3796fd122453cdbf95538bb694ff152f0ba312eaf39b764aba9a529358ddf2ae",
+      "source_url": "https://www.fulhamfc.com/news/2026/august/24/fulham-2-3-chelsea/"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "dfff7ba89164790f8d4e4a9420d312b66545a43dc78865225b0a57da348e2d42",
+  "observed_at": "2026-08-25T07:05:00Z",
+  "prior_ledger_sha256": "651c8d1e45b4f69da8489e8df79be51b426e9101370b43167bf6d360528a024b",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "6d163e8ab6682597d656e67f5af4420d9e7f9249458ae901dac28847e7eb33f7",
+  "run_id": "composer-2.5:2026-08-25T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 3,
+    "candidate_count": 3,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
