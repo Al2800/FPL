@@ -1,0 +1,114 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-10-02T07:00:41Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "22f08155f270aafa1877574afec29f1ebb38b9b7cc85d37ee2b6aa4ee946c1f3",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 321
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-propose Haaland started_match from City 1 Oct roundup",
+        "Stretch Guehi England feature to started_match",
+        "Admit Gakpo withdraw / Isak return outside 72h gate",
+        "Invent Chelsea Pedro or Spurs Van Hecke claims from bootstrap flags",
+        "Admit O'Reilly doubtful from FPL news_added alone"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new claim candidates; in-gate leads are non-claimable, duplicates of tip, or lack precise availability text",
+      "falsifiers": [
+        "Fresh timed Chelsea Pedro knee original",
+        "Spurs timed Van Hecke foot update",
+        "Man Utd English Bruno fitness original with ISO",
+        "City timed O'Reilly fitness original matching bootstrap flag"
+      ],
+      "rationale": "City 1 Oct international roundup confirms Haaland Norway involvement but tip already carries Haaland available; Guehi England feature still lacks clear start-minutes text; LFC Thursday roundup names Van Dijk/Wirtz only; Brentford Kayode debut and Leeds Gudmundsson pieces are fitness-positive for non-priority watch names without decision-relevant status change; Gakpo/Isak/Donnarumma-Cherki pages now outside 72h gate; Chelsea still lacks timed Pedro original; Man Utd Dorgu/Fernandes EN page outside gate/403; Spurs Van Hecke foot remains bootstrap-only.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Treat empty clubs as available",
+        "Skip clubs without watchlist players"
+      ],
+      "boundary_id": "coverage",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Mark discovery complete across all 21 catalogue clubs; empty arrays where no in-gate official lead survived",
+      "falsifiers": [
+        "Missed official-domain lead with recoverable published_at inside 72h"
+      ],
+      "rationale": "Catalogue search executed for every club_id; empty is recorded coverage, not an availability assertion.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Invent City O'Reilly claim from bootstrap news string"
+      ],
+      "boundary_id": "oreilly_bootstrap_flag",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit a Lane A claim from bootstrap O'Reilly unspecified injury flag alone",
+      "falsifiers": [
+        "mancity.com timed O'Reilly fitness/availability original"
+      ],
+      "rationale": "Bootstrap shows O'Reilly status d / 75% with news_added 2026-10-01T15:30:10Z, but FPL bootstrap is not a registered club original; City pages in gate do not state an O'Reilly club fitness call.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Invent Spurs claim from bootstrap news string"
+      ],
+      "boundary_id": "van_hecke_bootstrap_flag",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit a Lane A claim from bootstrap foot flag alone; wait for Spurs timed original",
+      "falsifiers": [
+        "tottenhamhotspur.com timed foot/fitness update"
+      ],
+      "rationale": "Bootstrap still shows Van Hecke status d / foot 75% (news_added 2026-09-30T16:00:09Z) without a Spurs timed original inside today's gate.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "dfc1402c4af3b0cf6fb7451e5622ce7b1a683ca66931c983c7f47df9183592ad",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "7e8092ce439e9f586395623b74e33ed18b5c0d28ea348f6a7be2e07377fbd490",
+  "observed_at": "2026-10-02T07:00:41Z",
+  "prior_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "run_id": "composer-2.5:2026-10-02T070041Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
