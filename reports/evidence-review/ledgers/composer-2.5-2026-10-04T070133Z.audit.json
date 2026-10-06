@@ -1,0 +1,115 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-10-04T07:01:33Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "b2fede29c8d922000e799e5f893ef7e804add9de284d01fd1a9bcb9640b5673e",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 321
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-propose Haaland/Guehi/Anderson/Donnarumma/Cherki from City IB roundups",
+        "Stretch Spurs Van Hecke no-travel note to foot-injury claim",
+        "Admit Mitchell started_match from Bristol City friendly as material status change",
+        "Invent Chelsea Pedro or City O'Reilly claims from bootstrap flags alone",
+        "Admit PL Scout injury-chaos pages without recoverable ISO published_at"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new claim candidates; in-gate leads are non-claimable, tip duplicates, or lack precise availability text",
+      "falsifiers": [
+        "Fresh timed Chelsea Pedro knee original",
+        "Spurs timed Van Hecke foot/fitness update",
+        "Man Utd English Bruno fitness original with ISO",
+        "City timed O'Reilly fitness original matching bootstrap flag"
+      ],
+      "rationale": "City 3 Oct Gu\u00e9hi/Anderson England feature and 2 Oct Donnarumma\u2013Cherki roundup duplicate tip fitness paths; City 1 Oct Haaland Norway roundup already tip-covered; Spurs 1 Oct notes Van Hecke did not travel to Greece without a foot/fitness diagnosis; CPFC Mitchell starts a mid-break friendly while already bootstrap-available; LFC/Brentford/Fulham/Ipswich/Arsenal pieces are women's, internationals, or non-status; Chelsea still lacks timed Pedro original; Man Utd EN pages 403/empty in gate; O'Reilly bootstrap d/75% still lacks mancity.com timed original.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Treat empty clubs as available",
+        "Skip clubs without watchlist players"
+      ],
+      "boundary_id": "coverage",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Mark discovery complete across all 21 catalogue clubs; empty arrays where no in-gate official lead survived",
+      "falsifiers": [
+        "Missed official-domain lead with recoverable published_at inside 72h"
+      ],
+      "rationale": "Catalogue search executed for every club_id; empty is recorded coverage, not an availability assertion. 18 in-gate leads retained after 72h filter (cutoff ~2026-10-01T07:01:33Z).",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Stretch City international roundups into an O'Reilly doubtful claim"
+      ],
+      "boundary_id": "oreilly_bootstrap_flag",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit a Lane A claim from bootstrap O'Reilly unspecified injury flag alone",
+      "falsifiers": [
+        "mancity.com timed O'Reilly fitness/availability original"
+      ],
+      "rationale": "Bootstrap still shows O'Reilly status d / 75% (news_added 2026-10-01T15:30:10Z) without a mancity.com timed fitness original inside today's gate; City IB pages name other squad members.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Treat no-travel as confirmed multi-week absence",
+        "Clear the foot flag from silence"
+      ],
+      "boundary_id": "van_hecke_bootstrap_flag",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit a Lane A claim from bootstrap foot flag or no-travel note alone; wait for Spurs timed original",
+      "falsifiers": [
+        "tottenhamhotspur.com timed foot/fitness update"
+      ],
+      "rationale": "Bootstrap still shows Van Hecke status d / foot 75% (news_added 2026-09-30T16:00:09Z). Spurs 1 Oct internationals page notes he did not travel to Greece but does not state a foot diagnosis or club availability call.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "24f88cab5ddde36b1abdf2c238e12e4249fd8e37641e4dbe3686d4d5bc0becc7",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "929b5c14b45cd7cfa8e57d986ae9eb340ce84a91023a678a1f28eeb6381cc094",
+  "observed_at": "2026-10-04T07:01:33Z",
+  "prior_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "run_id": "composer-2.5:2026-10-04T070133Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
