@@ -1,5 +1,10 @@
 # Daily strategy research briefings
 
+**GW1 intro pack for other models:** start at
+`reports/strategy-research/almanac/README.md`. That folder is the
+expected-vs-actual record of the live 15 and the robust comparator.
+It is a record only — not a transfer recommendation.
+
 Composer 2.5 morning briefings that rebuild chip / premium / captain / DEFCON
 situational understanding before the deterministic initial-squad checkpoint.
 
