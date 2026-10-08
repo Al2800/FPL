@@ -1,0 +1,2365 @@
+{
+  "schema_version": "1.0",
+  "kind": "five_path_spend_remaining_review",
+  "account_writes": false,
+  "packet_sha256": "53b889602cd7dbb8cb734c2890ed096d2f5f2faf605e9a7918c7fe5fb22b0e25",
+  "observed_at": "2026-08-19T13:28:05Z",
+  "paths": [
+    {
+      "path_id": "A-tight-ep-robust",
+      "title": "Tight expected points (robust optimiser)",
+      "bank": 0.0,
+      "spent": 100.0,
+      "current_robust": 255.878647,
+      "trapped_spend": [
+        {
+          "web_name": "Obi",
+          "position": "FWD",
+          "now_cost": 4.5,
+          "discounted_ep": 3.748,
+          "gw1_start_p": 0.0503,
+          "on_bench": true
+        },
+        {
+          "web_name": "Beto",
+          "position": "FWD",
+          "now_cost": 5.5,
+          "discounted_ep": 10.585,
+          "gw1_start_p": 0.4108,
+          "on_bench": true
+        },
+        {
+          "web_name": "Mitchell",
+          "position": "DEF",
+          "now_cost": 4.5,
+          "discounted_ep": 13.926,
+          "gw1_start_p": 0.8069,
+          "on_bench": true
+        },
+        {
+          "web_name": "Pickford",
+          "position": "GKP",
+          "now_cost": 5.5,
+          "discounted_ep": 16.307,
+          "gw1_start_p": 0.9421,
+          "on_bench": true
+        }
+      ],
+      "candidate_count": 0,
+      "scored": [],
+      "best": null
+    },
+    {
+      "path_id": "B-loose-ep-deterministic",
+      "title": "Loose expected points (deterministic optimiser)",
+      "bank": 0.0,
+      "spent": 100.0,
+      "current_robust": 255.625166,
+      "trapped_spend": [
+        {
+          "web_name": "Obi",
+          "position": "FWD",
+          "now_cost": 4.5,
+          "discounted_ep": 3.748,
+          "gw1_start_p": 0.0503,
+          "on_bench": true
+        },
+        {
+          "web_name": "Beto",
+          "position": "FWD",
+          "now_cost": 5.5,
+          "discounted_ep": 10.585,
+          "gw1_start_p": 0.4108,
+          "on_bench": true
+        },
+        {
+          "web_name": "Van Hecke",
+          "position": "DEF",
+          "now_cost": 5.0,
+          "discounted_ep": 15.52,
+          "gw1_start_p": 0.8054,
+          "on_bench": true
+        },
+        {
+          "web_name": "Donnarumma",
+          "position": "GKP",
+          "now_cost": 5.5,
+          "discounted_ep": 17.183,
+          "gw1_start_p": 0.9147,
+          "on_bench": true
+        }
+      ],
+      "candidate_count": 0,
+      "scored": [],
+      "best": null
+    },
+    {
+      "path_id": "C-premium-override-advisory",
+      "title": "Premium override (current advisory)",
+      "bank": 0.5,
+      "spent": 99.5,
+      "current_robust": 234.320568,
+      "trapped_spend": [
+        {
+          "web_name": "Diop",
+          "position": "DEF",
+          "now_cost": 4.0,
+          "discounted_ep": 5.478,
+          "gw1_start_p": 0.2571,
+          "on_bench": true
+        },
+        {
+          "web_name": "van Ewijk",
+          "position": "DEF",
+          "now_cost": 4.0,
+          "discounted_ep": 5.876,
+          "gw1_start_p": 0.2991,
+          "on_bench": true
+        },
+        {
+          "web_name": "Dubravka",
+          "position": "GKP",
+          "now_cost": 4.0,
+          "discounted_ep": 10.639,
+          "gw1_start_p": 0.7593,
+          "on_bench": true
+        },
+        {
+          "web_name": "Xhaka",
+          "position": "MID",
+          "now_cost": 5.5,
+          "discounted_ep": 14.053,
+          "gw1_start_p": 0.7406,
+          "on_bench": true
+        }
+      ],
+      "candidate_count": 80,
+      "scored": [
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "32",
+            "175",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "32",
+              "in_name": "Cash",
+              "out_id": "259",
+              "out_name": "Diop",
+              "extra": 0.5,
+              "ep_gain": 6.9968,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.9968,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.453693,
+          "bank": 0.0,
+          "proposal_sha256": "7dc2d85c1a67583a13b65657a07540142d6864e9a666e63ca86c8afbb37020ec",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Cash",
+            "van Ewijk"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "113",
+            "175",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "113",
+              "in_name": "F.Kad\u0131o\u011flu",
+              "out_id": "259",
+              "out_name": "Diop",
+              "extra": 0.5,
+              "ep_gain": 6.9791,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.9791,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.511112,
+          "bank": 0.0,
+          "proposal_sha256": "2943db3d707800e53d3abd8ea9c59653dd96414e570bd932890895503e3a80cc",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "F.Kad\u0131o\u011flu",
+            "van Ewijk"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "88",
+            "175",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "88",
+              "in_name": "Kayode",
+              "out_id": "259",
+              "out_name": "Diop",
+              "extra": 0.5,
+              "ep_gain": 6.8113,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.8113,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.353588,
+          "bank": 0.0,
+          "proposal_sha256": "81cb5776ffc0580e7b1aacac9775dd08092278071f9fea1141fafb693c6f9161",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Kayode",
+            "van Ewijk"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "259",
+            "32",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "32",
+              "in_name": "Cash",
+              "out_id": "175",
+              "out_name": "van Ewijk",
+              "extra": 0.5,
+              "ep_gain": 6.5984,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.5984,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.365095,
+          "bank": 0.0,
+          "proposal_sha256": "1859d3df67f0cd041a14ec4a39e2d514e1ed71df1c142fbadd0f65fb3ab85e0a",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Cash",
+            "Diop"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "259",
+            "113",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "113",
+              "in_name": "F.Kad\u0131o\u011flu",
+              "out_id": "175",
+              "out_name": "van Ewijk",
+              "extra": 0.5,
+              "ep_gain": 6.5807,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.5807,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.422551,
+          "bank": 0.0,
+          "proposal_sha256": "55286503134db8047fc6d5bc5e6ce980d18185643eb94528ef29fb4064bae4cf",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "F.Kad\u0131o\u011flu",
+            "Diop"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "153",
+            "175",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "153",
+              "in_name": "Disasi",
+              "out_id": "259",
+              "out_name": "Diop",
+              "extra": 0.5,
+              "ep_gain": 6.5758,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.5758,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.516906,
+          "bank": 0.0,
+          "proposal_sha256": "ee8051a095a39f18764921cf3a7237368a8dd29bb391a00eae5430bc79a7e21f",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Disasi",
+            "van Ewijk"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "534",
+            "175",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "534",
+              "in_name": "Hume",
+              "out_id": "259",
+              "out_name": "Diop",
+              "extra": 0.5,
+              "ep_gain": 6.5475,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.5475,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.085959,
+          "bank": 0.0,
+          "proposal_sha256": "1c1b2810b7349f7c6bfc50d44fb9707482a891b927a35f9d9cab97fbf2bc750d",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Hume",
+            "van Ewijk"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "259",
+            "88",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "88",
+              "in_name": "Kayode",
+              "out_id": "175",
+              "out_name": "van Ewijk",
+              "extra": 0.5,
+              "ep_gain": 6.4129,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.4129,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.265772,
+          "bank": 0.0,
+          "proposal_sha256": "6d0f131f01dd77c5a9674e63dd0375ededb41f7512f9a7fc29d06466e1279da4",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Kayode",
+            "Diop"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "329",
+            "175",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "329",
+              "in_name": "Rodon",
+              "out_id": "259",
+              "out_name": "Diop",
+              "extra": 0.5,
+              "ep_gain": 6.1978,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.1978,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.090742,
+          "bank": 0.0,
+          "proposal_sha256": "36b1b7af03a2d885ff83b6cd7c6ec65d1b4eba5da802d1945041b7ca87a83347",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Rodon",
+            "van Ewijk"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "497",
+            "112",
+            "204",
+            "423",
+            "259",
+            "153",
+            "426",
+            "480",
+            "542",
+            "260",
+            "544",
+            "411",
+            "165",
+            "106"
+          ],
+          "moves": [
+            {
+              "in_id": "153",
+              "in_name": "Disasi",
+              "out_id": "175",
+              "out_name": "van Ewijk",
+              "extra": 0.5,
+              "ep_gain": 6.1775,
+              "in_cost": 4.5
+            }
+          ],
+          "extra_spend": 0.5,
+          "bank_after": 0.0,
+          "ep_gain": 6.1775,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 236.426077,
+          "bank": 0.0,
+          "proposal_sha256": "c8994a57b05bfe66a06e819756f7a2db5043ab6ceb71edde3a57b3cb4b93538a",
+          "captain": "B.Fernandes",
+          "vice": "Haaland",
+          "xi": [
+            "Verbruggen",
+            "Van Hecke",
+            "Shaw",
+            "Mitchell",
+            "B.Fernandes",
+            "Gibbs-White",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Haaland",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Dubravka",
+            "Xhaka",
+            "Disasi",
+            "Diop"
+          ]
+        }
+      ],
+      "best": {
+        "squad_player_ids": [
+          "109",
+          "497",
+          "112",
+          "204",
+          "423",
+          "153",
+          "175",
+          "426",
+          "480",
+          "542",
+          "260",
+          "544",
+          "411",
+          "165",
+          "106"
+        ],
+        "moves": [
+          {
+            "in_id": "153",
+            "in_name": "Disasi",
+            "out_id": "259",
+            "out_name": "Diop",
+            "extra": 0.5,
+            "ep_gain": 6.5758,
+            "in_cost": 4.5
+          }
+        ],
+        "extra_spend": 0.5,
+        "bank_after": 0.0,
+        "ep_gain": 6.5758,
+        "exhausts_budget": true,
+        "ok": true,
+        "objective": 236.516906,
+        "bank": 0.0,
+        "proposal_sha256": "ee8051a095a39f18764921cf3a7237368a8dd29bb391a00eae5430bc79a7e21f",
+        "captain": "B.Fernandes",
+        "vice": "Haaland",
+        "xi": [
+          "Verbruggen",
+          "Van Hecke",
+          "Shaw",
+          "Mitchell",
+          "B.Fernandes",
+          "Gibbs-White",
+          "E.Le F\u00e9e",
+          "Wilson",
+          "Haaland",
+          "Thiago",
+          "Jo\u00e3o Pedro"
+        ],
+        "bench": [
+          "Dubravka",
+          "Xhaka",
+          "Disasi",
+          "van Ewijk"
+        ]
+      }
+    },
+    {
+      "path_id": "D-death-zone-playing-15",
+      "title": "Death-zone spine (mid-price engine + playing bench)",
+      "bank": 2.0,
+      "spent": 98.0,
+      "current_robust": 240.284717,
+      "trapped_spend": [
+        {
+          "web_name": "Kinsky",
+          "position": "GKP",
+          "now_cost": 4.5,
+          "discounted_ep": 4.07,
+          "gw1_start_p": 0.1893,
+          "on_bench": true
+        },
+        {
+          "web_name": "Shaw",
+          "position": "DEF",
+          "now_cost": 4.5,
+          "discounted_ep": 12.932,
+          "gw1_start_p": 0.8469,
+          "on_bench": true
+        },
+        {
+          "web_name": "Calvert-Lewin",
+          "position": "FWD",
+          "now_cost": 6.0,
+          "discounted_ep": 14.878,
+          "gw1_start_p": 0.6957,
+          "on_bench": true
+        },
+        {
+          "web_name": "Truffert",
+          "position": "DEF",
+          "now_cost": 5.5,
+          "discounted_ep": 16.546,
+          "gw1_start_p": 0.9006,
+          "on_bench": true
+        }
+      ],
+      "candidate_count": 763,
+      "scored": [
+        {
+          "squad_player_ids": [
+            "109",
+            "1",
+            "112",
+            "423",
+            "229",
+            "61",
+            "388",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "1",
+              "in_name": "Raya",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.5,
+              "ep_gain": 14.4443,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "388",
+              "in_name": "Gu\u00e9hi",
+              "out_id": "8",
+              "out_name": "Calafiori",
+              "extra": 0.5,
+              "ep_gain": 6.3609,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 20.8052,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 251.738616,
+          "bank": 0.0,
+          "proposal_sha256": "737d7996c5cbe7bbfc68a62780db4c944be3a810cda883539f3fae09514bdc78",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Gu\u00e9hi",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "1",
+            "112",
+            "423",
+            "229",
+            "61",
+            "498",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "1",
+              "in_name": "Raya",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.5,
+              "ep_gain": 14.4443,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "498",
+              "in_name": "Senesi",
+              "out_id": "8",
+              "out_name": "Calafiori",
+              "extra": 0.5,
+              "ep_gain": 6.1471,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 20.5914,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 251.522543,
+          "bank": 0.0,
+          "proposal_sha256": "0edc1df8d3bb5e680a06f4db3599e451eae0e5a0004547214a4b3b17f70e39a7",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Senesi",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "384",
+            "112",
+            "423",
+            "229",
+            "61",
+            "356",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "384",
+              "in_name": "Donnarumma",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.0,
+              "ep_gain": 13.1132,
+              "in_cost": 5.5
+            },
+            {
+              "in_id": "356",
+              "in_name": "Virgil",
+              "out_id": "8",
+              "out_name": "Calafiori",
+              "extra": 1.0,
+              "ep_gain": 6.5902,
+              "in_cost": 6.5
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 19.7034,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.804799,
+          "bank": 0.0,
+          "proposal_sha256": "a68a75fa90ec23c6664cff06529c10a111676d1c54ad41313b10a9041d058351",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Donnarumma",
+            "Virgil",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "226",
+            "112",
+            "423",
+            "229",
+            "61",
+            "356",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "226",
+              "in_name": "Pickford",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.0,
+              "ep_gain": 12.2369,
+              "in_cost": 5.5
+            },
+            {
+              "in_id": "356",
+              "in_name": "Virgil",
+              "out_id": "8",
+              "out_name": "Calafiori",
+              "extra": 1.0,
+              "ep_gain": 6.5902,
+              "in_cost": 6.5
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 18.8271,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.064922,
+          "bank": 0.0,
+          "proposal_sha256": "648b8dd336d398427027917ac7704c6bbaefd87a927fdbfc9df39b53514c42c9",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Pickford",
+            "Virgil",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "1",
+            "112",
+            "423",
+            "229",
+            "61",
+            "200",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "1",
+              "in_name": "Raya",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.5,
+              "ep_gain": 14.4443,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "200",
+              "in_name": "Lacroix",
+              "out_id": "8",
+              "out_name": "Calafiori",
+              "extra": 0.5,
+              "ep_gain": 4.0473,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 18.4916,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 249.847083,
+          "bank": 0.0,
+          "proposal_sha256": "1f209d301208171d7787e6f4736ac3738c88def8dec6f2bf67519393a5c8256a",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Tarkowski",
+            "Lacroix",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "1",
+            "112",
+            "423",
+            "229",
+            "388",
+            "8",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "1",
+              "in_name": "Raya",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.5,
+              "ep_gain": 14.4443,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "388",
+              "in_name": "Gu\u00e9hi",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 3.1646,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 17.6089,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 249.93827,
+          "bank": 0.0,
+          "proposal_sha256": "7653a1f8be1fb9b0774a80e8d568ef74880887c7010d186419012f47630c046b",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Gu\u00e9hi",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calafiori",
+            "Calvert-Lewin",
+            "Shaw"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "1",
+            "112",
+            "423",
+            "229",
+            "498",
+            "8",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "1",
+              "in_name": "Raya",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.5,
+              "ep_gain": 14.4443,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "498",
+              "in_name": "Senesi",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 2.9508,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 17.3951,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 249.725107,
+          "bank": 0.0,
+          "proposal_sha256": "ab2b8f60ddd183ccf2ceb9d2a658695608ab6c91c653e448c8e573abf91cfff8",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Senesi",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calafiori",
+            "Calvert-Lewin",
+            "Shaw"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "384",
+            "388",
+            "423",
+            "229",
+            "61",
+            "8",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "384",
+              "in_name": "Donnarumma",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.0,
+              "ep_gain": 13.1132,
+              "in_cost": 5.5
+            },
+            {
+              "in_id": "388",
+              "in_name": "Gu\u00e9hi",
+              "out_id": "112",
+              "out_name": "Van Hecke",
+              "extra": 1.0,
+              "ep_gain": 4.1899,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 17.3031,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.227582,
+          "bank": 0.0,
+          "proposal_sha256": "9fef7e812d4f17a517ea8d602b0f107fe7b40d6c71e0472fdc1a42f6e6c4e4bb",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Donnarumma",
+            "Gu\u00e9hi",
+            "Tarkowski",
+            "Calafiori",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "1",
+            "112",
+            "423",
+            "229",
+            "61",
+            "8",
+            "426",
+            "397",
+            "480",
+            "481",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "1",
+              "in_name": "Raya",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.5,
+              "ep_gain": 14.4443,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "481",
+              "in_name": "Anderson",
+              "out_id": "542",
+              "out_name": "E.Le F\u00e9e",
+              "extra": 0.5,
+              "ep_gain": 2.8438,
+              "in_cost": 6.5
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 17.2881,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 249.299098,
+          "bank": 0.0,
+          "proposal_sha256": "cd4368c6ecbcd58ee201db06aacba32688561e9cc2b7fc9745dce1cc86ae0ab2",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Tarkowski",
+            "Van Hecke",
+            "Calafiori",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "Anderson",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "109",
+            "384",
+            "498",
+            "423",
+            "229",
+            "61",
+            "8",
+            "426",
+            "397",
+            "480",
+            "542",
+            "260",
+            "165",
+            "106",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "384",
+              "in_name": "Donnarumma",
+              "out_id": "496",
+              "out_name": "Kinsky",
+              "extra": 1.0,
+              "ep_gain": 13.1132,
+              "in_cost": 5.5
+            },
+            {
+              "in_id": "498",
+              "in_name": "Senesi",
+              "out_id": "112",
+              "out_name": "Van Hecke",
+              "extra": 1.0,
+              "ep_gain": 3.9761,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 2.0,
+          "bank_after": 0.0,
+          "ep_gain": 17.0893,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.01518,
+          "bank": 0.0,
+          "proposal_sha256": "9d430106d16682be15d97a5f1e8c3dc19a51fe6ddf1f7b41a895bef7b51306cb",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Donnarumma",
+            "Senesi",
+            "Tarkowski",
+            "Calafiori",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Wilson",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Verbruggen",
+            "Calvert-Lewin",
+            "Shaw",
+            "Truffert"
+          ]
+        }
+      ],
+      "best": {
+        "squad_player_ids": [
+          "109",
+          "1",
+          "112",
+          "423",
+          "229",
+          "61",
+          "388",
+          "426",
+          "397",
+          "480",
+          "542",
+          "260",
+          "165",
+          "106",
+          "346"
+        ],
+        "moves": [
+          {
+            "in_id": "1",
+            "in_name": "Raya",
+            "out_id": "496",
+            "out_name": "Kinsky",
+            "extra": 1.5,
+            "ep_gain": 14.4443,
+            "in_cost": 6.0
+          },
+          {
+            "in_id": "388",
+            "in_name": "Gu\u00e9hi",
+            "out_id": "8",
+            "out_name": "Calafiori",
+            "extra": 0.5,
+            "ep_gain": 6.3609,
+            "in_cost": 6.0
+          }
+        ],
+        "extra_spend": 2.0,
+        "bank_after": 0.0,
+        "ep_gain": 20.8052,
+        "exhausts_budget": true,
+        "ok": true,
+        "objective": 251.738616,
+        "bank": 0.0,
+        "proposal_sha256": "737d7996c5cbe7bbfc68a62780db4c944be3a810cda883539f3fae09514bdc78",
+        "captain": "B.Fernandes",
+        "vice": "Gibbs-White",
+        "xi": [
+          "Raya",
+          "Gu\u00e9hi",
+          "Tarkowski",
+          "Van Hecke",
+          "B.Fernandes",
+          "Gibbs-White",
+          "Semenyo",
+          "E.Le F\u00e9e",
+          "Wilson",
+          "Thiago",
+          "Jo\u00e3o Pedro"
+        ],
+        "bench": [
+          "Verbruggen",
+          "Calvert-Lewin",
+          "Shaw",
+          "Truffert"
+        ]
+      }
+    },
+    {
+      "path_id": "E-minutes-first",
+      "title": "Minutes-first (start-probability over upside)",
+      "bank": 1.0,
+      "spent": 99.0,
+      "current_robust": 247.509262,
+      "trapped_spend": [
+        {
+          "web_name": "Mitchell",
+          "position": "DEF",
+          "now_cost": 4.5,
+          "discounted_ep": 13.926,
+          "gw1_start_p": 0.8069,
+          "on_bench": true
+        },
+        {
+          "web_name": "Calvert-Lewin",
+          "position": "FWD",
+          "now_cost": 6.0,
+          "discounted_ep": 14.878,
+          "gw1_start_p": 0.6957,
+          "on_bench": true
+        },
+        {
+          "web_name": "Truffert",
+          "position": "DEF",
+          "now_cost": 5.5,
+          "discounted_ep": 16.546,
+          "gw1_start_p": 0.9006,
+          "on_bench": true
+        },
+        {
+          "web_name": "Donnarumma",
+          "position": "GKP",
+          "now_cost": 5.5,
+          "discounted_ep": 17.183,
+          "gw1_start_p": 0.9147,
+          "on_bench": true
+        }
+      ],
+      "candidate_count": 118,
+      "scored": [
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "498",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "481",
+            "544",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "498",
+              "in_name": "Senesi",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 2.9508,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "481",
+              "in_name": "Anderson",
+              "out_id": "542",
+              "out_name": "E.Le F\u00e9e",
+              "extra": 0.5,
+              "ep_gain": 2.8438,
+              "in_cost": 6.5
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 5.7946,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 252.461762,
+          "bank": 0.0,
+          "proposal_sha256": "92e7e83818a71a119b601aec047704f94f6464823548c8f04e18b19d9ed3d4ef",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Senesi",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "Anderson",
+            "Xhaka",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Shaw",
+            "Mitchell"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "229",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "481",
+            "544",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "229",
+              "in_name": "Tarkowski",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 2.5991,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "481",
+              "in_name": "Anderson",
+              "out_id": "542",
+              "out_name": "E.Le F\u00e9e",
+              "extra": 0.5,
+              "ep_gain": 2.8438,
+              "in_cost": 6.5
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 5.4429,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 252.110023,
+          "bank": 0.0,
+          "proposal_sha256": "cc9462d8449a8421cffce1680cadadbe9f63d631abb59cd83795896e43dc56b7",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "Anderson",
+            "Xhaka",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Shaw",
+            "Mitchell"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "388",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "542",
+            "371",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "388",
+              "in_name": "Gu\u00e9hi",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 3.1646,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "371",
+              "in_name": "Gravenberch",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 0.5,
+              "ep_gain": 1.9618,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 5.1264,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 251.417177,
+          "bank": 0.0,
+          "proposal_sha256": "1601f09101f9f4ba5366cd0245bfad2f91863e9ff797b2169ec1ab5223095f85",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Gu\u00e9hi",
+            "Virgil",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Gravenberch",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Shaw",
+            "Mitchell"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "498",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "542",
+            "371",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "498",
+              "in_name": "Senesi",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 2.9508,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "371",
+              "in_name": "Gravenberch",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 0.5,
+              "ep_gain": 1.9618,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 4.9126,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 251.198538,
+          "bank": 0.0,
+          "proposal_sha256": "3c42e7f3b6886ea02711d4c29f58fe44de49e09ce91cd9d2377a0d64462a2ad1",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Senesi",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Gravenberch",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Shaw",
+            "Mitchell"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "61",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "542",
+            "481",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "481",
+              "in_name": "Anderson",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 1.0,
+              "ep_gain": 4.824,
+              "in_cost": 6.5
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 4.824,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 251.353453,
+          "bank": 0.0,
+          "proposal_sha256": "32362e9eae5f87635722a36ac423c7678d366b04d69d96299050a3d36c90c8f3",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Van Hecke",
+            "Shaw",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "Anderson",
+            "E.Le F\u00e9e",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Mitchell",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "388",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "542",
+            "525",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "388",
+              "in_name": "Gu\u00e9hi",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 3.1646,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "525",
+              "in_name": "Fernandes",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 0.5,
+              "ep_gain": 1.6577,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 4.8223,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 251.106427,
+          "bank": 0.0,
+          "proposal_sha256": "63684b8add1c53925587e59e4ed862f1bd2c26442ba4e61fd79d79088ea4b23a",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Gu\u00e9hi",
+            "Virgil",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Fernandes",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Shaw",
+            "Mitchell"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "61",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "481",
+            "371",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "481",
+              "in_name": "Anderson",
+              "out_id": "542",
+              "out_name": "E.Le F\u00e9e",
+              "extra": 0.5,
+              "ep_gain": 2.8438,
+              "in_cost": 6.5
+            },
+            {
+              "in_id": "371",
+              "in_name": "Gravenberch",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 0.5,
+              "ep_gain": 1.9618,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 4.8056,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.542705,
+          "bank": 0.0,
+          "proposal_sha256": "b53a275f9eb6c3bd63be2facb67a5797c1bb7b64ce94d64350634886a8793027",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Van Hecke",
+            "Shaw",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "Anderson",
+            "Gravenberch",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Mitchell",
+            "Truffert"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "498",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "542",
+            "525",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "498",
+              "in_name": "Senesi",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 2.9508,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "525",
+              "in_name": "Fernandes",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 0.5,
+              "ep_gain": 1.6577,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 4.6085,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.887788,
+          "bank": 0.0,
+          "proposal_sha256": "3c214cd1354b93a1379b3ec4952a1eb56fbe81139be88a78278cbc3c5a2ffaea",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Senesi",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Fernandes",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Shaw",
+            "Mitchell"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "229",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "542",
+            "371",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "229",
+              "in_name": "Tarkowski",
+              "out_id": "61",
+              "out_name": "Truffert",
+              "extra": 0.5,
+              "ep_gain": 2.5991,
+              "in_cost": 6.0
+            },
+            {
+              "in_id": "371",
+              "in_name": "Gravenberch",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 0.5,
+              "ep_gain": 1.9618,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 4.5609,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.846783,
+          "bank": 0.0,
+          "proposal_sha256": "d65fa2dc58ed46778bdc6e5962aef18c6e2d882c4360102065b9117ee6d8dcd1",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Tarkowski",
+            "Van Hecke",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "E.Le F\u00e9e",
+            "Gravenberch",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Shaw",
+            "Mitchell"
+          ]
+        },
+        {
+          "squad_player_ids": [
+            "1",
+            "384",
+            "356",
+            "112",
+            "61",
+            "423",
+            "204",
+            "426",
+            "397",
+            "480",
+            "481",
+            "525",
+            "106",
+            "165",
+            "346"
+          ],
+          "moves": [
+            {
+              "in_id": "481",
+              "in_name": "Anderson",
+              "out_id": "542",
+              "out_name": "E.Le F\u00e9e",
+              "extra": 0.5,
+              "ep_gain": 2.8438,
+              "in_cost": 6.5
+            },
+            {
+              "in_id": "525",
+              "in_name": "Fernandes",
+              "out_id": "544",
+              "out_name": "Xhaka",
+              "extra": 0.5,
+              "ep_gain": 1.6577,
+              "in_cost": 6.0
+            }
+          ],
+          "extra_spend": 1.0,
+          "bank_after": 0.0,
+          "ep_gain": 4.5015,
+          "exhausts_budget": true,
+          "ok": true,
+          "objective": 250.284109,
+          "bank": 0.0,
+          "proposal_sha256": "ecdde9e5404b09c4defc3b328e9fcbd0bbc8dc653d431303ae602da966ca363f",
+          "captain": "B.Fernandes",
+          "vice": "Gibbs-White",
+          "xi": [
+            "Raya",
+            "Virgil",
+            "Van Hecke",
+            "Shaw",
+            "B.Fernandes",
+            "Gibbs-White",
+            "Semenyo",
+            "Anderson",
+            "Fernandes",
+            "Thiago",
+            "Jo\u00e3o Pedro"
+          ],
+          "bench": [
+            "Donnarumma",
+            "Calvert-Lewin",
+            "Mitchell",
+            "Truffert"
+          ]
+        }
+      ],
+      "best": {
+        "squad_player_ids": [
+          "1",
+          "384",
+          "356",
+          "112",
+          "498",
+          "423",
+          "204",
+          "426",
+          "397",
+          "480",
+          "481",
+          "544",
+          "106",
+          "165",
+          "346"
+        ],
+        "moves": [
+          {
+            "in_id": "498",
+            "in_name": "Senesi",
+            "out_id": "61",
+            "out_name": "Truffert",
+            "extra": 0.5,
+            "ep_gain": 2.9508,
+            "in_cost": 6.0
+          },
+          {
+            "in_id": "481",
+            "in_name": "Anderson",
+            "out_id": "542",
+            "out_name": "E.Le F\u00e9e",
+            "extra": 0.5,
+            "ep_gain": 2.8438,
+            "in_cost": 6.5
+          }
+        ],
+        "extra_spend": 1.0,
+        "bank_after": 0.0,
+        "ep_gain": 5.7946,
+        "exhausts_budget": true,
+        "ok": true,
+        "objective": 252.461762,
+        "bank": 0.0,
+        "proposal_sha256": "92e7e83818a71a119b601aec047704f94f6464823548c8f04e18b19d9ed3d4ef",
+        "captain": "B.Fernandes",
+        "vice": "Gibbs-White",
+        "xi": [
+          "Raya",
+          "Virgil",
+          "Senesi",
+          "Van Hecke",
+          "B.Fernandes",
+          "Gibbs-White",
+          "Semenyo",
+          "Anderson",
+          "Xhaka",
+          "Thiago",
+          "Jo\u00e3o Pedro"
+        ],
+        "bench": [
+          "Donnarumma",
+          "Calvert-Lewin",
+          "Shaw",
+          "Mitchell"
+        ]
+      }
+    }
+  ]
+}
