@@ -1,0 +1,245 @@
+{
+  "account_writes": false,
+  "advisory_15": {
+    "bank_bootstrap": 0.5,
+    "bench_declared": [
+      "Dubravka",
+      "Xhaka",
+      "Diop",
+      "van Ewijk"
+    ],
+    "captain_declared": "B.Fernandes",
+    "formation_declared": "3-4-3",
+    "names": [
+      "Verbruggen",
+      "Dubravka",
+      "Van Hecke",
+      "Mitchell",
+      "Shaw",
+      "Diop",
+      "van Ewijk",
+      "B.Fernandes",
+      "Gibbs-White",
+      "E.Le Fée",
+      "Wilson",
+      "Xhaka",
+      "Haaland",
+      "João Pedro",
+      "Thiago"
+    ],
+    "source": "reports/strategy-research/2026-08-18.md",
+    "squad_cost_bootstrap": 99.5,
+    "vice_declared": "Haaland"
+  },
+  "baseline_host_scores_this_run": {
+    "deterministic": null,
+    "human_reference": null,
+    "robust": null
+  },
+  "blocker": {
+    "cannot_invent_ep": true,
+    "detail": "Live checkpoint input-packet is missing. The committed packet summary binds SHA 65eba1fe… but excludes EP vectors (ADR-0027 / publish_decision_packet_summary.py). Reconstruction would invent expected_points / start_probability / uncertainty. Host scoring stopped.",
+    "expected_live_path": "reports/live/2026-27/initial-squad/weekly-2026-08-11/input-packet.json",
+    "kind": "missing_packet_body",
+    "summary_checkpoint_input_packet_sha256": "c37b904feea84c45ce2564b32f08aa6c9b0b5642d1dee298a0b00e067defc389",
+    "summary_recommendation_input_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651"
+  },
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "challengers": {
+    "odegaard_in": {
+      "delta_vs_baseline": {
+        "deterministic": null,
+        "human_reference": null,
+        "robust": null
+      },
+      "intended_construction_current_prices_only": {
+        "add": ["Ødegaard"],
+        "drop": ["Wilson"],
+        "extra_swap": null,
+        "note": "Current official Ødegaard £6.5m matches Wilson £6.5m. Packet price unknown."
+      },
+      "scores": null,
+      "status": "blocked_missing_packet_body"
+    },
+    "tzolis_in": {
+      "delta_vs_baseline": {
+        "deterministic": null,
+        "human_reference": null,
+        "robust": null
+      },
+      "intended_construction_current_prices_only": {
+        "add": ["Tzolis"],
+        "drop": ["Wilson"],
+        "extra_swap": null,
+        "note": "Current official Tzolis £6.5m matches Wilson £6.5m. Community £4.5m ignored. Packet price unknown."
+      },
+      "scores": null,
+      "status": "blocked_missing_packet_body"
+    }
+  },
+  "checkpoint_id": "weekly-2026-08-11",
+  "current_official_bootstrap": {
+    "endpoint": "https://fantasy.premierleague.com/api/bootstrap-static/",
+    "note": "Identity and current price only. Not packet EP. Body not committed.",
+    "observed_date": "2026-08-18",
+    "players": {
+      "E.Le Fée": {
+        "club": "Sunderland",
+        "full_name": "Enzo Le Fée",
+        "now_cost": 6.0,
+        "player_id": "542",
+        "position": "MID",
+        "status": "a",
+        "web_name": "E.Le Fée"
+      },
+      "Tzolis": {
+        "club": "Arsenal",
+        "full_name": "Christos Tzolis",
+        "now_cost": 6.5,
+        "player_id": "557",
+        "position": "MID",
+        "status": "a",
+        "web_name": "Tzolis"
+      },
+      "Wilson": {
+        "club": "Leeds",
+        "full_name": "Harry Wilson",
+        "now_cost": 6.5,
+        "player_id": "260",
+        "position": "MID",
+        "status": "a",
+        "web_name": "Wilson"
+      },
+      "Xhaka": {
+        "club": "Sunderland",
+        "full_name": "Granit Xhaka",
+        "now_cost": 5.5,
+        "player_id": "544",
+        "position": "MID",
+        "status": "a",
+        "web_name": "Xhaka"
+      },
+      "Ødegaard": {
+        "club": "Arsenal",
+        "full_name": "Martin Ødegaard",
+        "now_cost": 6.5,
+        "player_id": "15",
+        "position": "MID",
+        "status": "a",
+        "web_name": "Ødegaard"
+      }
+    },
+    "sha256": "f7001dc5a4bd36cd936e4b3227de9111fd44dd55f98bc92d5379addf5cb55b5b",
+    "source_id": "fpl-official-endpoints"
+  },
+  "helper_script": "scripts/compare_tzolis_odegaard_challenger.py",
+  "official_citations": [
+    {
+      "published_at": "2026-08-16T12:45:22Z",
+      "published_at_source": "already-admitted discovery/ledger metadata",
+      "summary": "Official Community Shield team news: Tzolis and Odegaard start.",
+      "url": "https://www.arsenal.com/news/team-news-guimaraes-and-tzolis-start-community-shield-aGP3h9S4sdjJ"
+    },
+    {
+      "published_at": null,
+      "summary": "Official CS match report: Tzolis two assists; Odegaard scored the third.",
+      "url": "https://www.arsenal.com/news/report-arsenal-3-0-manchester-city-axOZ78a0LKZm"
+    },
+    {
+      "published_at": null,
+      "summary": "Official club analysis: Odegaard sharp for Friday; Tzolis almost certain to start vs Coventry.",
+      "url": "https://www.arsenal.com/feature/arsenal-analysed-how-the-community-shield-was-secured-aGfVG9A3KhDB"
+    },
+    {
+      "published_at": null,
+      "summary": "Arteta reaction: Tzolis/Guimaraes debuts; recover for Coventry Friday.",
+      "url": "https://www.arsenal.com/news/arteta-delighted-with-our-flying-start-to-the-season-a3A0K7F66PiJ"
+    },
+    {
+      "published_at": null,
+      "summary": "Arteta CS presser: Tzolis decisive; Odegaard fitness/momentum comments.",
+      "url": "https://www.arsenal.com/news/every-word-artetas-post-community-shield-presser-aATrq4Y4fosW"
+    },
+    {
+      "published_at": "2026-08-18",
+      "summary": "Current official FPL identities and prices for Tzolis, Ødegaard, Wilson, E.Le Fée, Xhaka.",
+      "url": "https://fantasy.premierleague.com/api/bootstrap-static/"
+    }
+  ],
+  "packet_binding_status": "hash_identified_body_missing",
+  "packet_summary_path": "reports/strategy-research/packets/weekly-2026-08-11.json",
+  "packet_summary_resolved": {
+    "E.Le Fée": {
+      "gw1_expected_points": null,
+      "gw1_start_p": null,
+      "in_summary_selected_or_alternatives": true,
+      "now_cost": 6.0,
+      "player_id": "542",
+      "web_name": "E.Le Fée"
+    },
+    "Tzolis": {
+      "gw1_expected_points": null,
+      "gw1_start_p": null,
+      "in_summary_selected_or_alternatives": false,
+      "now_cost": null,
+      "player_id": null,
+      "web_name": "Tzolis"
+    },
+    "Wilson": {
+      "gw1_expected_points": null,
+      "gw1_start_p": null,
+      "in_summary_selected_or_alternatives": true,
+      "now_cost": 6.5,
+      "player_id": "260",
+      "web_name": "Wilson"
+    },
+    "Xhaka": {
+      "gw1_expected_points": null,
+      "gw1_start_p": null,
+      "in_summary_selected_or_alternatives": false,
+      "now_cost": null,
+      "player_id": null,
+      "web_name": "Xhaka"
+    },
+    "Ødegaard": {
+      "gw1_expected_points": null,
+      "gw1_start_p": null,
+      "in_summary_selected_or_alternatives": false,
+      "now_cost": null,
+      "player_id": null,
+      "web_name": "Ødegaard"
+    }
+  },
+  "previously_quoted_packet_gw1": {
+    "E.Le Fée": {
+      "expected_points": 3.88,
+      "source": "reports/strategy-research/2026-08-17.md",
+      "start_p": 0.7615
+    },
+    "Wilson": {
+      "expected_points": 3.67,
+      "source": "reports/strategy-research/2026-08-18.md",
+      "start_p": 0.7342
+    },
+    "Xhaka": {
+      "expected_points": null,
+      "source": "reports/strategy-research/2026-08-18.md",
+      "start_p": 0.7406
+    }
+  },
+  "prior_same_packet_baseline_2026_08_12": {
+    "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+    "deterministic_objective": 220.007893,
+    "human_reference_objective": null,
+    "note": "Prior artefact for the same advisory 15; not a rescore on this run.",
+    "robust_bank": 0.5,
+    "robust_captain": "B.Fernandes",
+    "robust_objective": 215.705381,
+    "robust_vice": "Gibbs-White",
+    "source": "reports/strategy-research/2026-08-12-declared-15-host-score.md"
+  },
+  "recommendation": "keep_current_15_wait_for_gw1_presser_and_restore_live_packet",
+  "report_id": "strategy-tzolis-odegaard-challenger-2026-08-18",
+  "schema_version": "1.0",
+  "verdict": "neither_challenger_can_be_shown_to_beat_advisory_packet_body_missing"
+}
