@@ -1,0 +1,117 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-10-05T07:15:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "8a4ce9c191ec537f318ac8040d3b343cc76b2cab9fcbbcf9b4374c120a7a14b7",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 300
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-propose Haaland available from 4 Oct City IB minutes page",
+        "Re-propose Gu\u00e9hi/Anderson/Donnarumma/Cherki tip duplicates",
+        "Stretch Man Utd Portugal victory into Bruno fitness claim without English EN body confirmation",
+        "Admit Mitchell started_match from mid-break friendly as material status change",
+        "Invent Chelsea Pedro or City O'Reilly claims from bootstrap flags alone"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new claim candidates; in-gate leads are tip duplicates, women's/international features, or lack precise new availability text",
+      "falsifiers": [
+        "Fresh timed Chelsea Pedro knee original",
+        "Spurs timed Van Hecke foot/fitness update",
+        "Man Utd English Bruno fitness original with ISO and claimable text",
+        "City timed O'Reilly fitness original matching bootstrap flag"
+      ],
+      "rationale": "City 4 Oct roundup confirms Haaland played 67 minutes for Norway vs Portugal (Dias full 90) \u2014 Haaland tip model:2cb641ec\u2026 already admitted, do not re-propose. City 2\u20133 Oct Gu\u00e9hi/Anderson/Donnarumma/Cherki pages duplicate tip paths. Man Utd 2\u20133 Oct Portugal/Belgium internationals corroborate Bruno involvement without a new fitness claim. CPFC Mitchell Bristol City XI already bootstrap-available. LFC/Arsenal women's pieces and Fulham/Ipswich/Brentford international or friendly features are non-claimable for men's flagged watch. Spurs 1 Oct no-travel now outside 72h gate. Chelsea still lacks timed Jo\u00e3o Pedro original; O'Reilly bootstrap d/75% still lacks mancity.com timed original.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Treat empty clubs as available",
+        "Skip clubs without watchlist players",
+        "Keep 1 Oct Spurs no-travel lead after gate rolled forward"
+      ],
+      "boundary_id": "coverage",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Mark discovery complete across all 21 catalogue clubs; empty arrays where no in-gate official lead survived",
+      "falsifiers": [
+        "Missed official-domain lead with recoverable published_at inside 72h"
+      ],
+      "rationale": "Catalogue search executed for every club_id; empty is recorded coverage, not an availability assertion. 16 in-gate leads retained after 72h filter (cutoff ~2026-10-02T07:15:00Z). Spurs/Chelsea/Newcastle/Forest/Sunderland/Brighton/Villa/Bournemouth/Everton/Hull/Coventry/Leeds/PL empty after filter or undated for claimable availability.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Stretch City international roundups into an O'Reilly doubtful claim"
+      ],
+      "boundary_id": "oreilly_bootstrap_flag",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit a Lane A claim from bootstrap O'Reilly unspecified injury flag alone",
+      "falsifiers": [
+        "mancity.com timed O'Reilly fitness/availability original"
+      ],
+      "rationale": "Bootstrap still shows O'Reilly status d / 75% without a mancity.com timed fitness original inside today's gate; City 4 Oct IB page names Haaland/Dias/Bouaddi, not O'Reilly clearance.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Re-admit aged Spurs no-travel note",
+        "Clear the foot flag from silence",
+        "Treat unregistered Football London toe/pain reports as Lane A claims"
+      ],
+      "boundary_id": "van_hecke_bootstrap_flag",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit a Lane A claim from bootstrap foot flag alone; Spurs no-travel lead aged out of 72h gate",
+      "falsifiers": [
+        "tottenhamhotspur.com timed foot/fitness update"
+      ],
+      "rationale": "Bootstrap still shows Van Hecke status d / foot 75% (news_added 2026-09-30T16:00:09Z). Yesterday's Spurs 1 Oct no-travel lead is now outside the 72h cutoff; no fresh tottenhamhotspur.com timed foot/fitness original inside today's gate.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "a32f7928f5de80a4d105506523fd80d11d6232aa3c2979a78ec02001364a0ebb",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "753855f8be1af6b9dd92b5f29ca8f34ea4b29eede5e940ff3011f121aa7f62c6",
+  "observed_at": "2026-10-05T07:15:00Z",
+  "prior_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "run_id": "composer-2.5:2026-10-05T071500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
