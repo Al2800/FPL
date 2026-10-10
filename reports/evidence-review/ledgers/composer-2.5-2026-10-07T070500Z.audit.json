@@ -1,0 +1,126 @@
+{
+  "accepted_claim_ids": [
+    "model:03eca4c58c66807543b665734d252127d0d0949e86af7a88eb9e020704928291"
+  ],
+  "available_at": "2026-10-07T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:2026-10-07-damsgaard-denmark-injury-withdrawal": "model:03eca4c58c66807543b665734d252127d0d0949e86af7a88eb9e020704928291"
+  },
+  "content_sha256": "21e2db547676de0aedd5b9bf3a8ea00e495701a279179fc67cd921b391e374ee",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 314
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit Haaland 67' / Anderson-Gu\u00e9hi England / Lewis-O'Reilly as new claims",
+        "Admit Chelsea training gallery as Pedro or Palmer available",
+        "Admit PL Scout syndication as Pedro available for Bournemouth",
+        "Emit Van Hecke claim from bootstrap foot flag or aged no-travel alone",
+        "Emit Van de Ven doubtful from late-hand discomfort after full 90'"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit one Damsgaard doubtful candidate; withhold tip-duplicate City IB minutes and non-claim Chelsea/PL Pedro paths",
+      "falsifiers": [
+        "Host rejects Damsgaard claim on domain/hash/identity/expiry",
+        "Fresh Chelsea timed Pedro/Palmer fitness original appears",
+        "Spurs timed Van Hecke foot/fitness update appears"
+      ],
+      "rationale": "Brentford 5 Oct international round-up explicitly states Damsgaard was ruled out of Denmark v Wales through injury \u2014 first timed brentfordfc.com fitness original inside today's 72h gate aligning with bootstrap d/75%. City 6 Oct Anderson/Gu\u00e9hi and 4 Oct Haaland 67' corroborate existing tip paths without new status changes \u2014 do not re-propose. Chelsea 6 Oct training gallery names Palestra/Welbeck/Colwill/Fofana only \u2014 no Pedro/Palmer fitness statement. Spurs 4 Oct mixed fortunes covers Van de Ven hand discomfort after 90' (bootstrap still a) and does not update Van Hecke foot flag. PL Scout 6 Oct Pedro line still quotes aged GW5 Alonso \u2014 not a fresh Chelsea original. Arsenal Merino 7 Oct is an IB goals roundup, not a club fitness clearance for Havertz/Rice/Konsa.",
+      "supporting_claim_ids": [
+        "model:03eca4c58c66807543b665734d252127d0d0949e86af7a88eb9e020704928291"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Treat empty clubs as availability assertions",
+        "Invent published_at for undated PL/Forest/Villa/Newcastle hits"
+      ],
+      "boundary_id": "coverage",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Mark discovery complete across all 21 catalogue clubs",
+      "falsifiers": [
+        "Missed official-domain lead with recoverable published_at inside 72h"
+      ],
+      "rationale": "Catalogue search executed for every club_id; empty arrays recorded where no in-gate official lead with recoverable ISO published_at survived. 12 in-gate leads after 72h filter (cutoff ~2026-10-04T07:05:00Z). CPFC Mitchell friendly (3 Oct) and LFC Jacquet praise (3 Oct) aged out vs yesterday.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Stretch to unavailable without club ruling him out of GW6",
+        "Ignore because Damsgaard is outside the advisory named 15"
+      ],
+      "boundary_id": "damsgaard_ib_injury",
+      "confidence": 0.76,
+      "conflicting_claim_ids": [],
+      "decision": "Propose doubtful claim from Brentford international round-up",
+      "falsifiers": [
+        "Brentford declares Damsgaard fit / starts vs next opponent"
+      ],
+      "rationale": "Page states Damsgaard was ruled out of Denmark's Wales match through injury after featuring vs Portugal \u2014 claimable as doubtful (not unavailable) because club GW6 minutes remain unresolved and bootstrap already shows d/75%.",
+      "supporting_claim_ids": [
+        "model:03eca4c58c66807543b665734d252127d0d0949e86af7a88eb9e020704928291"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Treat training-gallery atmosphere as Pedro available",
+        "Admit PL Scout Alonso quote as available with declared_fit"
+      ],
+      "boundary_id": "pedro_chelsea_gap",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit Pedro claim from Chelsea training gallery or PL Scout aged quote",
+      "falsifiers": [
+        "Fresh chelseafc.com timed Pedro fitness original with ISO"
+      ],
+      "rationale": "Chelsea 6 Oct training gallery does not name Jo\u00e3o Pedro or Palmer. PL Scout 6 Oct still recycles Alonso's pre-Brentford GW5 expectation of a Bournemouth return \u2014 not a fresh timed Cobham original. Bootstrap knee d/75% remains briefing overlay only.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "aa5e46b6c5ea47bfece1aa9911d424bd934f72bb5f62778719a54c9cd277ca17",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "e4d6627f21f831445dfc04ec9026285298fccbc9dc9ded5a4e11b565ce633787",
+      "source_url": "https://www.brentfordfc.com/en/news/international-round-up-kristoffer-ajer-goal-portugal-2-norway-1"
+    }
+  ],
+  "model": {
+    "display_name": "composer-2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "c93ede701bf4ed1bfb57f7e9f2ff9e8f0142d564f567a836a37508b9777b6866",
+  "observed_at": "2026-10-07T07:05:00Z",
+  "prior_ledger_sha256": "5d89db6961115851c5666497c16fc26d1a99e86afc1224d336c07af49963d2eb",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "b7df36ea22521b154ff6bacd329a302deb7b40830974c149064bbc996ca074c9",
+  "run_id": "composer-2.5:2026-10-07T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 1,
+    "candidate_count": 1,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
