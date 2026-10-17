@@ -1,0 +1,107 @@
+{
+  "accepted_claim_ids": [
+    "model:bb7a63306c61c998f8ec8fba55a684d116b03d8bc3e5741baf64544a0608d69d",
+    "model:182761e09555744a32342a965797196c8f22b238111145f7927e9e975f2924a3",
+    "model:760fae797be1370eca5ab9e29993b22cd9fcf6cc3b51735e0de9ebbe362ee050",
+    "model:d488462394467aa405d267812820c2bdfc54427803278b44cccfe248408ab626"
+  ],
+  "available_at": "2026-10-13T07:03:16Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-hincapie-ankle-miss-lille-2026-10-12": "model:760fae797be1370eca5ab9e29993b22cd9fcf6cc3b51735e0de9ebbe362ee050",
+    "candidate-khalaili-started-forest-2026-10-11": "model:bb7a63306c61c998f8ec8fba55a684d116b03d8bc3e5741baf64544a0608d69d",
+    "candidate-mitchell-started-forest-2026-10-11": "model:182761e09555744a32342a965797196c8f22b238111145f7927e9e975f2924a3",
+    "candidate-zubimendi-ankle-miss-lille-2026-10-12": "model:d488462394467aa405d267812820c2bdfc54427803278b44cccfe248408ab626"
+  },
+  "content_sha256": "0f8e791e58161206e05fae1add850ff55264f96f900b4af4e87fc42f625bd1b2",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 295
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "re-admit City Anfield started_match claims",
+        "re-admit Szoboszlai unavailable",
+        "re-emit Schade doubtful",
+        "re-emit Chelsea Caicedo claims destined for HTTP 500",
+        "treat bootstrap flags alone as Lane A claims",
+        "stretch Saliba individual grass work to available"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Hincapie/Zubimendi unavailable (miss Lille; ankle scans) and Palace started_match for Khalaili/Mitchell; withhold duplicate City/LFC/Schade/Damsgaard; skip Chelsea re-emit (host 500)",
+      "falsifiers": [
+        "Arsenal scan clears Hincapie/Zubimendi for GW7",
+        "Palace XI page fetch fails host hash",
+        "Hincapie starts next PL match unexpectedly"
+      ],
+      "rationale": "Post-Monday GW6 complete morning. Fresh Arsenal originals harden Hincapie/Zubimendi out of Lille with scans pending. Palace official XI upgrades Khalaili and confirms Mitchell start. Prior tip 32d2b43e already holds Semenyo/Haaland/Cherki/O'Reilly started_match and Szoboszlai unavailable.",
+      "supporting_claim_ids": [
+        "model:760fae797be1370eca5ab9e29993b22cd9fcf6cc3b51735e0de9ebbe362ee050",
+        "model:d488462394467aa405d267812820c2bdfc54427803278b44cccfe248408ab626",
+        "model:bb7a63306c61c998f8ec8fba55a684d116b03d8bc3e5741baf64544a0608d69d",
+        "model:182761e09555744a32342a965797196c8f22b238111145f7927e9e975f2924a3"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "invent published_at from relative search snippets"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty dated official leads for premier-league, aston-villa, bournemouth, brighton, coventry, everton, fulham, hull, ipswich, leeds, newcastle, nottingham-forest, sunderland, tottenham",
+      "falsifiers": [
+        "Later official pages with recoverable ISO timestamps appear"
+      ],
+      "rationale": "All catalogue clubs searched; empty arrays where no ISO-dated official lead fell inside the 72h gate after 2026-10-10T07:03:16Z.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "f929439c49f8a7244857592b8b97d991f6fda9623eb20d5982beaa8a890bd953",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "de581c58071b2baa791cb992d27193f8f303c3c52ec417bf85537fc19cdf8b1c",
+      "source_url": "https://www.arsenal.com/news/artetas-injury-update-on-hincapie-zubimendi-and-saliba-aDJYC5B5SkSn"
+    },
+    {
+      "source_hash_sha256": "a7f65d7589b4800c0a87f0f9236f49eaacdc489396eaca2755ec95eedbc8b417",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-one-change-for-palace-against-forest/"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "5859233e66f983f99f8ad6a1638235de420626e0b690c093bc03dc71b9a2ea18",
+  "observed_at": "2026-10-13T07:03:16Z",
+  "prior_ledger_sha256": "32d2b43e535c2d79ab54b625dcdd29e78ad5ec077c9c8ab8c4b4758313437eff",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "a562be38680047bb1986b805de47f4746ea0c3c62de376017e5d2067457dae12",
+  "run_id": "composer-2.5:2026-10-13T070316Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 4,
+    "candidate_count": 4,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
