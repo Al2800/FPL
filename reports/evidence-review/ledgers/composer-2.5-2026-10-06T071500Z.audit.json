@@ -1,0 +1,123 @@
+{
+  "accepted_claim_ids": [
+    "model:054c0b7ebdd97b9bec6e6567637f67fbabe2d056304d54ef7d8aca60fcb11478"
+  ],
+  "available_at": "2026-10-06T07:15:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:2026-10-06-oreilly-england-withdrawal": "model:054c0b7ebdd97b9bec6e6567637f67fbabe2d056304d54ef7d8aca60fcb11478"
+  },
+  "content_sha256": "27d56aef5a1dc7c504fe3aff22785a6db9ddaea45e92e81c5e50bb2472df2a55",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 336
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit Haaland 67' / Cherki sub goal / Donnarumma Italy as new available claims",
+        "Admit PL syndication as Chelsea Pedro available for Bournemouth",
+        "Emit Van Hecke claim from bootstrap foot flag alone"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit one new O'Reilly doubtful candidate; withhold tip-duplicate City IB minutes pages",
+      "falsifiers": [
+        "Host rejects O'Reilly claim on domain/hash/identity/expiry",
+        "Fresh Chelsea timed Pedro original appears",
+        "Spurs timed Van Hecke foot/fitness update appears"
+      ],
+      "rationale": "City 4 Oct Rico Lewis call-up states O'Reilly withdrew from England after Spain \u2014 first mancity.com timed fitness original inside today's 72h gate aligning with bootstrap d/75%. City 5 Oct Cherki goal + Donnarumma Italy win and 4 Oct Haaland 67' pages corroborate existing tip paths (Cherki/Donnarumma/Haaland) without new status changes \u2014 do not re-propose. CPFC Mitchell friendly XI already bootstrap-available. Women's/international features (LFC/Arsenal/Spurs/Fulham) non-claimable for men's flagged watch. PL Alonso\u2192Chelsea Pedro pointer resolves to aged GW5 Brentford absentee piece, not a fresh timed original. Chelsea still lacks a fresh Jo\u00e3o Pedro original inside gate.",
+      "supporting_claim_ids": [
+        "model:054c0b7ebdd97b9bec6e6567637f67fbabe2d056304d54ef7d8aca60fcb11478"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Treat empty clubs as availability assertions",
+        "Invent published_at for undated Leeds/PL/Forest hits"
+      ],
+      "boundary_id": "coverage",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Mark discovery complete across all 21 catalogue clubs",
+      "falsifiers": [
+        "Missed official-domain lead with recoverable published_at inside 72h"
+      ],
+      "rationale": "Catalogue search executed for every club_id; empty arrays recorded where no in-gate official lead with recoverable ISO published_at survived. 12 in-gate leads after 72h filter (cutoff ~2026-10-03T07:15:00Z). City 2 Oct Donnarumma\u2013Cherki and Man Utd 2 Oct Portugal pages aged out vs yesterday.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Stretch to unavailable",
+        "Skip because bootstrap already flagged"
+      ],
+      "boundary_id": "oreilly_bootstrap_flag",
+      "confidence": 0.75,
+      "conflicting_claim_ids": [],
+      "decision": "Propose doubtful claim from City Lewis call-up original",
+      "falsifiers": [
+        "City declares O'Reilly fit / starts vs Liverpool"
+      ],
+      "rationale": "Unlike prior mornings that lacked a mancity.com timed O'Reilly fitness line, today's Rico Lewis call-up page explicitly records England withdrawal after Spain \u2014 claimable as doubtful (not unavailable) because club GW6 minutes remain unresolved.",
+      "supporting_claim_ids": [
+        "model:054c0b7ebdd97b9bec6e6567637f67fbabe2d056304d54ef7d8aca60fcb11478"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Admit available/declared_fit for GW6 BOU from aged quote"
+      ],
+      "boundary_id": "pedro_chelsea_gap",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit Pedro claim from PL pointer or aged Chelsea GW5 article",
+      "falsifiers": [
+        "Fresh chelseafc.com timed Pedro fitness original with ISO"
+      ],
+      "rationale": "premierleague.com 5 Oct teaser links an aged Chelsea original about expecting Pedro back vs Bournemouth spoken before Brentford (GW5). Not a fresh timed fitness confirmation inside gate; bootstrap knee d/75% remains briefing overlay only.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "20f18368acefd8d4ab36b66e1d93ab8ef2ec4fbec6a9521aeadff3608f018c91",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "4b2a0746ed9bd6a00213392328293d69b6186d76d87637e6ae1f51d3d5f2af93",
+      "source_url": "https://www.mancity.com/news/mens/rico-lewis-england-call-up-october-2026-63926717"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "c5465e5dcc63113be375c7833e2ff5b369570372b0fa756699dad306c07dce89",
+  "observed_at": "2026-10-06T07:15:00Z",
+  "prior_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "5d89db6961115851c5666497c16fc26d1a99e86afc1224d336c07af49963d2eb",
+  "run_id": "composer-2.5:2026-10-06T071500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 1,
+    "candidate_count": 1,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
