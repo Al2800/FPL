@@ -1,0 +1,110 @@
+{
+  "accepted_claim_ids": [
+    "model:7be900f534f3662db57c3bfd5f5807db8f6225b3cb7c051c765bf865cf1bf70a",
+    "model:6afa25fef6fc64c54e3c6ba7c52cceed88052d98586f5fc989d45fd4d3988a36",
+    "model:7b95fea3b4a7dbc8b4c467f4959ea31eff59056210a6ee3545546809ad80a031",
+    "model:213101fab6f3bee23d0ce86d6945dea626e8d55cb752b8703cdb6a98df826544",
+    "model:649dc779e84738c7e872ae95a2258649589ea1b3030b9af9dad4e8480d080ea1"
+  ],
+  "available_at": "2026-10-14T07:00:24Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-2026-10-14-gakpo-unavailable": "model:7be900f534f3662db57c3bfd5f5807db8f6225b3cb7c051c765bf865cf1bf70a",
+    "candidate-2026-10-14-hincapie-unavailable": "model:213101fab6f3bee23d0ce86d6945dea626e8d55cb752b8703cdb6a98df826544",
+    "candidate-2026-10-14-isak-unavailable": "model:6afa25fef6fc64c54e3c6ba7c52cceed88052d98586f5fc989d45fd4d3988a36",
+    "candidate-2026-10-14-szoboszlai-unavailable": "model:7b95fea3b4a7dbc8b4c467f4959ea31eff59056210a6ee3545546809ad80a031",
+    "candidate-2026-10-14-zubimendi-doubtful": "model:649dc779e84738c7e872ae95a2258649589ea1b3030b9af9dad4e8480d080ea1"
+  },
+  "content_sha256": "02fae9b75db6c57b492f5523d2b9197d34d37f34d9e1ba9c64f97891529a7796",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 254
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "re-emit Palace Mitchell/Khalaili started_match",
+        "re-emit Schade shoulder doubtful",
+        "emit Caicedo available via Chelsea (host 500)",
+        "treat City training photos as Haaland/Cherki available started_match",
+        "emit De Ligt available via manutd.com despite host 403"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Arsenal Hincapie unavailable (weeks) + Zubimendi doubtful (improving) from post-Lille presser; emit Liverpool Isak/Gakpo/Szoboszlai unavailable from LASK team news; withhold duplicate Palace Mitchell/Khalaili and Brentford Schade; skip Chelsea re-emit (host 500); skip Man Utd De Ligt (403 risk); skip City training gallery as minutes claim",
+      "falsifiers": [
+        "Zubimendi starts GW7",
+        "Isak or Szoboszlai trains fully and starts at Brentford",
+        "Hincapie cleared sooner than weeks",
+        "host ephemeral fetch fails on Arsenal/LFC originals"
+      ],
+      "rationale": "Fresh midweek official originals update Arsenal ankle timelines and confirm Liverpool attack midfield still not training with the group. Prior tip a562be38 already holds Palace started_match and earlier Hincapie/Zubimendi unavailable from pre-Lille; post-Lille differentiates Zubimendi toward doubtful.",
+      "supporting_claim_ids": [
+        "model:213101fab6f3bee23d0ce86d6945dea626e8d55cb752b8703cdb6a98df826544",
+        "model:649dc779e84738c7e872ae95a2258649589ea1b3030b9af9dad4e8480d080ea1",
+        "model:6afa25fef6fc64c54e3c6ba7c52cceed88052d98586f5fc989d45fd4d3988a36",
+        "model:7be900f534f3662db57c3bfd5f5807db8f6225b3cb7c051c765bf865cf1bf70a",
+        "model:7b95fea3b4a7dbc8b4c467f4959ea31eff59056210a6ee3545546809ad80a031"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "invent published_at for undated club pages"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty dated official leads for clubs without ISO-dated in-window hits",
+      "falsifiers": [
+        "Later official pages with recoverable ISO timestamps appear"
+      ],
+      "rationale": "All catalogue clubs searched; empty arrays where no eligible ISO-dated official lead fell inside the 72h gate after 2026-10-11T07:00:24Z.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "b9ff955be0cdd354dd4e8671444f17c067436c0a7a165a296579330c2c7f62d8",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "63589804ec5652e62bcdb2968ed2d9b6084779707cda48999e16117e9bb67d7e",
+      "source_url": "https://www.arsenal.com/news/every-word-from-artetas-post-lille-press-conference-ayoR26N8ce4k"
+    },
+    {
+      "source_hash_sha256": "7e183b279cfa3e68dd082fc6bc68112425be0da943c3902691c6bae2e535a853",
+      "source_url": "https://www.liverpoolfc.com/news/lask-v-liverpool-champions-league-team-news"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "e5ad7f46deadda6bba2ccc8182544a2b0dbd215af57c82985e723ca536b22bdd",
+  "observed_at": "2026-10-14T07:00:24Z",
+  "prior_ledger_sha256": "a562be38680047bb1986b805de47f4746ea0c3c62de376017e5d2067457dae12",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "bd9dab967a145b161ca2bf66c47d94f9e1f04fbf5ef581cf6b22ff56d16ab723",
+  "run_id": "composer-2.5:2026-10-14T070024Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
