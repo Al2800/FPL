@@ -1,7 +1,7 @@
 # X community digest — 2026-10-19
 
 - observed_at: 2026-10-19T08:10:00Z
-- source: X (Twitter) public search via Grok Bot built-in X reads (read-only); signed-in browser pass on @FPLabsPan run in parallel
+- source: X (Twitter) public search via Grok Bot built-in X reads (read-only)
 - role: community_signal_scan (advisory only; not ledger-admitted)
 - method: read-only recency/relevancy searches for price trackers (@PriceChangeFPL, @FPL_Alerts, @FPLLiveApp, @FPL_360), @OfficialFPL, @FFScout, @BenDinnery, plus injury / GW8 captaincy / transfer / wildcard searches. Window roughly Friday 16 October ~18:00 UK through Monday 19 October ~09:10 UK (whole GW7 weekend).
 - gameweek_context: **Monday after GW7 (Spurs v Coventry still to play tonight).** @FPLLiveApp flagged-players post (Sun ~16:55 UK) gives **GW8 deadline Fri 18:30 UK** — earlier than the usual Saturday 11:00; verify on fantasy.premierleague.com.
