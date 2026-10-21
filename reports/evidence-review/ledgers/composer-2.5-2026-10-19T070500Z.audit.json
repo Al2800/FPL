@@ -1,0 +1,143 @@
+{
+  "accepted_claim_ids": [
+    "model:0823a2cd9c8ec44bdc6bf63079cf5ad10659ed144da555651b4ed62a98c4bf3a",
+    "model:d7e900db8fa508756ada7528d1e5c7f4aa2cbf23fae054573140370bd6a87d1c",
+    "model:fd8b0df7237ad04bf5c829f091fae1e6a0543ad2a5880fcf136ac8571730c19c",
+    "model:a80460fec38bd9df5800825446dd4beaa3107bfa34e728b7a6280acb9b3c32a6",
+    "model:19f67fdecf17df17a3f7229178787b7d9ea2df177b4801345141412ab8a864fb",
+    "model:11438576544cfb8172a6b66e78cbaef7673b9a1de3282aa6b86c6e4195108a7d",
+    "model:cfa9ad857b614e11c652a275ad77621d4e1c011a4f95d79b2f92ba3f3fbd855e",
+    "model:459c61103133aaaa9c843d34886c3060963855266de240370e441c880d763494",
+    "model:cd0ae2e037cea0ccf764830e68d79b653d285656546541569feacb59f464d500"
+  ],
+  "available_at": "2026-10-19T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:cand-bergvall-unavail-20261019": "model:19f67fdecf17df17a3f7229178787b7d9ea2df177b4801345141412ab8a864fb",
+    "model:cand-kulusevski-avail-20261019": "model:459c61103133aaaa9c843d34886c3060963855266de240370e441c880d763494",
+    "model:cand-minteh-unavail-20261019": "model:0823a2cd9c8ec44bdc6bf63079cf5ad10659ed144da555651b4ed62a98c4bf3a",
+    "model:cand-mitoma-unavail-20261019": "model:d7e900db8fa508756ada7528d1e5c7f4aa2cbf23fae054573140370bd6a87d1c",
+    "model:cand-porro-doubtful-20261019": "model:11438576544cfb8172a6b66e78cbaef7673b9a1de3282aa6b86c6e4195108a7d",
+    "model:cand-savio-unavail-20261019": "model:cfa9ad857b614e11c652a275ad77621d4e1c011a4f95d79b2f92ba3f3fbd855e",
+    "model:cand-struijk-doubtful-20261019": "model:fd8b0df7237ad04bf5c829f091fae1e6a0543ad2a5880fcf136ac8571730c19c",
+    "model:cand-wieffer-unavail-20261019": "model:a80460fec38bd9df5800825446dd4beaa3107bfa34e728b7a6280acb9b3c32a6",
+    "model:cand-zubimendi-avail-20261019": "model:cd0ae2e037cea0ccf764830e68d79b653d285656546541569feacb59f464d500"
+  },
+  "content_sha256": "368cb931c93a52cde7f902997a93ed775bef6d8d4ee0cd80f11a9b5b347bd771",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 668
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Haaland/Foden started_match (already on tip)",
+        "Re-emit Szoboszlai/Frimpong unavailable (already on tip)",
+        "Emit Gibbs-White unavailable from Arsenal team-news URL (wrong club domain)",
+        "Emit Man Utd Shaw/Mainoo claims without recoverable host fetch"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Spurs Bergvall/S\u00e1vio unavailable, Kulusevski available (declared_fit), Porro doubtful; Arsenal Zubimendi available (declared_fit); Brighton Minteh/Wieffer/Mitoma unavailable and Struijk doubtful; retry Chelsea Reece James unavailable.",
+      "falsifiers": [
+        "Host rejects Chelsea 500 again so James not admitted",
+        "Host rejects Brighton claims for lacking stronger ISO/hash",
+        "Kulusevski available rejected if bench listing insufficient without declared_fit vocabulary match"
+      ],
+      "rationale": "Post-GW7 Sunday/Monday morning run after Spurs pre-Coventry presser and Arsenal/Brighton Sunday matchday pages. Do not re-emit Haaland/Foden available or LFC Szoboszlai/Frimpong unavailable already on tip 2c061448. Skip Man Utd (403). Skip Forest Gibbs-White (no Forest ISO; Arsenal line stating he misses is wrong-club source for Forest player). Skip Martinez re-emit already admitted. Schade/Damsgaard already available on tip.",
+      "supporting_claim_ids": [
+        "model:19f67fdecf17df17a3f7229178787b7d9ea2df177b4801345141412ab8a864fb",
+        "model:cfa9ad857b614e11c652a275ad77621d4e1c011a4f95d79b2f92ba3f3fbd855e",
+        "model:459c61103133aaaa9c843d34886c3060963855266de240370e441c880d763494",
+        "model:11438576544cfb8172a6b66e78cbaef7673b9a1de3282aa6b86c6e4195108a7d",
+        "model:cd0ae2e037cea0ccf764830e68d79b653d285656546541569feacb59f464d500",
+        "model:0823a2cd9c8ec44bdc6bf63079cf5ad10659ed144da555651b4ed62a98c4bf3a",
+        "model:a80460fec38bd9df5800825446dd4beaa3107bfa34e728b7a6280acb9b3c32a6",
+        "model:d7e900db8fa508756ada7528d1e5c7f4aa2cbf23fae054573140370bd6a87d1c",
+        "model:fd8b0df7237ad04bf5c829f091fae1e6a0543ad2a5880fcf136ac8571730c19c",
+        "model:cand-reece-james-unavail-20261019"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at for Ipswich/Leeds/Newcastle pages lacking JSON-LD"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty dated official leads for clubs without ISO-dated in-window hits after 2026-10-16T07:05:00Z cutoff.",
+      "falsifiers": [
+        "Later official pages with recoverable ISO timestamps appear"
+      ],
+      "rationale": "All 21 catalogue clubs searched; empty arrays where no eligible ISO-dated official lead cleared the 72h gate. Forest consent wall and Man Utd Cloudflare 403 blocked further claims.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "477e86bd47a1134b3a2605d26b5041b6ce5375b70d0b414de6b1d8fdaab7887e",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "ff2b5496586af99fc822550056ca9bf4358912ca6146fc6511c394cb7d9eeca8",
+      "source_url": "https://www.arsenal.com/news/team-news-havertz-saka-and-odegaard-return-v-forest-angba8L4ot3m"
+    },
+    {
+      "source_hash_sha256": "e45bdbf1d5c8c44f3d4118f7abd1c4425c6026bb059d205e00e922bbfb1ac485",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/mft-match-preview-bha-crystal-palace-pl-october-2026"
+    },
+    {
+      "source_hash_sha256": "2ac1a598933eb040dcdc7dabe26af511553b84e47d947e8a1b26a9b58353b8d4",
+      "source_url": "https://www.tottenhamhotspur.com/news/1178730/team-news-bergvall-savio-out-of-coventry-clash-porro-update"
+    },
+    {
+      "source_hash_sha256": "27e2c98e1d96f198e6099b0408bfbada8b301cc09a60235d1ff9c33747d24e3f",
+      "source_url": "https://www.tottenhamhotspur.com/news/1178751/team-news-dejan-kulusevski-back-on-the-bench-against-sky-blues"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "482ec300f6487bf4bec2fab172682b2a2982d2f39b67712e5e26c57947beb7b1",
+  "observed_at": "2026-10-19T07:05:00Z",
+  "prior_ledger_sha256": "2c061448fa9d3ae33ce1a9ffca039dc19e5d0f585271d0d28813123082b45757",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "model:cand-reece-james-unavail-20261019",
+      "claim_text": "Chelsea confirm captain Reece James has undergone successful minor knee surgery after a training injury and has begun rehabilitation with the club medical department; no return date is given.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:142",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/injury-update-reece-james: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/injury-update-reece-james",
+      "why_relevant": "Removes Reece James from near-term DEF/set-piece consideration for several weeks."
+    }
+  ],
+  "resulting_ledger_sha256": "3dc5e28f9b2014c8ee2fb774e40618c95b5fd27966564269016cde68a39320ad",
+  "run_id": "composer-2.5:2026-10-19T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.9,
+    "accepted_count": 9,
+    "candidate_count": 10,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 1,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
