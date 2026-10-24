@@ -1,0 +1,130 @@
+{
+  "accepted_claim_ids": [
+    "model:138caf467c727ca912baeb5d23901b384c8bb6d6d5ff2371f6ae80629f0623c8",
+    "model:5504f74d1419cb491899dfa366f3ed7b0418526ebba57e88b79a48545cbb672d"
+  ],
+  "available_at": "2026-10-22T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-chilwell-available-pre-besiktas-2026-10-22": "model:138caf467c727ca912baeb5d23901b384c8bb6d6d5ff2371f6ae80629f0623c8",
+    "candidate-haaland-aek-unused-sub-available-2026-10-22": "model:e1baf0f51c38f43079905fa6eb1bd977befd16ce8eaa3621f17fc47ec4a45571",
+    "candidate-tomiyasu-unavailable-pre-besiktas-2026-10-22": "model:5504f74d1419cb491899dfa366f3ed7b0418526ebba57e88b79a48545cbb672d"
+  },
+  "content_sha256": "bccd7450a2b5ced31d02ef3a055e1ed36734b0e7a60a0bb80c55f94298ba35ca",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 668
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Semenyo unavailable / Cherki start already on tip 107d24da",
+        "Emit Frimpong/Szoboszlai refresh already tipped",
+        "Emit claims from Chelsea training gallery without precise status",
+        "Invent Forest Gibbs-White official ISO (consent wall; bootstrap a/100% used in Lane B only)"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [
+        "model:6bd1088c9a3c5283784373ecf0b4c05c69eb33dc6599d4ed114877cb088aab15"
+      ],
+      "decision": "Emit Saka doubtful + Palace Chilwell available/Tomiyasu unavailable; retry Haaland available from AEK match-report unused sub",
+      "falsifiers": [
+        "Host again rejects Haaland available as not superseding doubtful tip",
+        "Friday City presser rules Haaland out of Villa",
+        "Later Arsenal MRI clears or worsens Saka beyond doubtful"
+      ],
+      "rationale": "In-window official ISO leads: Arteta post-Bayern confirms Saka quad doubt; Sage pre-Besiktas clears Chilwell and extends Tomiyasu out. Retry Haaland available via match-report unused-sub listing after yesterday's AEK-bench supersede was rejected. Do not re-emit Cherki/Semenyo/Zubimendi/Frimpong/Szoboszlai/Udogie already on tip 107d24da. Skip Shaw (Man Utd 403 / stale). Skip Forest consent wall. Skip Chelsea training gallery (no precise availability statement).",
+      "supporting_claim_ids": [
+        "candidate-saka-quad-doubtful-post-bayern-2026-10-22",
+        "model:138caf467c727ca912baeb5d23901b384c8bb6d6d5ff2371f6ae80629f0623c8",
+        "model:5504f74d1419cb491899dfa366f3ed7b0418526ebba57e88b79a48545cbb672d",
+        "model:e1baf0f51c38f43079905fa6eb1bd977befd16ce8eaa3621f17fc47ec4a45571"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at from relative '1 day ago' without ISO",
+        "Use non-official domains"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty ISO-dated official leads for clubs without in-window hits after 2026-10-19T07:05:00Z cutoff",
+      "falsifiers": [
+        "Later official pages with recoverable ISO timestamps appear"
+      ],
+      "rationale": "All 21 catalogue clubs searched; empty arrays where no eligible ISO-dated official lead cleared the 72h gate. Man Utd Cloudflare and Forest consent wall blocked further claims. PL.com hits lacked recoverable ISO.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "c2692afd758569da4471997280966027c006f919fb42f1b26091d4df171fd27a",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "3e32f3ee7f09985602843f7e245d7b987941232b1cecbc3e4548048204db6d62",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-updates-on-four-players-pre-besiktas/"
+    },
+    {
+      "source_hash_sha256": "701a933c9a71674be933db487f200caf1b5b4806a33b132c5d8c150aeee8276c",
+      "source_url": "https://www.mancity.com/news/mens/city-v-aek-athens-match-report-63928115"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "66eb87b59ca0c6a5c4e454a8943e45b315eb6cfcfb78d5ca4d33f989d84c8c0d",
+  "observed_at": "2026-10-22T07:05:00Z",
+  "prior_ledger_sha256": "107d24da2cba182f1725ffc9eb324f33c1de9f37eaba0fd9553fec7292bc18d9",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "candidate-haaland-aek-unused-sub-available-2026-10-22",
+      "claim_text": "Official City AEK Athens match report lists Erling Haaland among the unused substitutes in a 5-1 win (Cherki started and scored). Haaland was therefore available on the matchday squad after the prior Ipswich knock/doubtful framing.",
+      "club_id": "manchester-city",
+      "player_uid": "player:2026-27:411",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.mancity.com/news/mens/city-v-aek-athens-match-report-63928115",
+      "why_relevant": "Attempt to supersede still-unexpired Haaland doubtful tip model:6bd1088c\u2026 ahead of GW8 Villa; bootstrap already a/100% / ep_next 9.5."
+    },
+    {
+      "candidate_claim_id": "candidate-saka-quad-doubtful-post-bayern-2026-10-22",
+      "claim_text": "Mikel Arteta says Bukayo Saka sustained a quad injury early in Arsenal's Champions League draw at Bayern Munich and that 'it doesn't look good at all, but we have to wait and see' \u2014 no return timeframe given.",
+      "club_id": "arsenal",
+      "player_uid": "player:2026-27:12",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.arsenal.com/news/every-word-from-artetas-post-bayern-presser-azIsw7P3tdJO: HTTP Error 503: Service Unavailable"
+      ],
+      "source_url": "https://www.arsenal.com/news/every-word-from-artetas-post-bayern-presser-azIsw7P3tdJO",
+      "why_relevant": "Bootstrap already flags Saka d/50% into GW8 Everton (H); official post-match confirms fresh quad concern for premium mid ownership and market."
+    }
+  ],
+  "resulting_ledger_sha256": "06e3ff416fcb6f84841e2a43bf1896a80b24bdc19ed05a9817678886966b9150",
+  "run_id": "composer-2.5:2026-10-22T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.5,
+    "accepted_count": 2,
+    "candidate_count": 4,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 2,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
