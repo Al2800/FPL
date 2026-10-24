@@ -1,0 +1,140 @@
+{
+  "accepted_claim_ids": [
+    "model:a5ab153cdc2f8bd6c491255f0a17941168e57b051d0fd3e756625ba838521aed",
+    "model:cdeffceb100cd0d3d52dc37072586915943e79ac441839706ba34157eef62b56",
+    "model:fe15e2d0e7146b45f31794449e503483e05595221e95d7892d18a2bf1e17b56a",
+    "model:896c5c8ffc7ceba5dbae2427ae15419db63063b00f55651ca57ef51c44a1a9c4"
+  ],
+  "available_at": "2026-09-13T07:30:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-09-13-barcola-started-fulham": "model:cdeffceb100cd0d3d52dc37072586915943e79ac441839706ba34157eef62b56",
+    "2026-09-13-gakpo-bench-return-fulham": "model:30a04340e77e88c1ac069e40bf76aee45940e5f9b77bafe777e08514679e9519",
+    "2026-09-13-kinsky-started-everton": "model:fe15e2d0e7146b45f31794449e503483e05595221e95d7892d18a2bf1e17b56a",
+    "2026-09-13-rodon-still-out-leeds-newcastle": "model:a5ab153cdc2f8bd6c491255f0a17941168e57b051d0fd3e756625ba838521aed",
+    "2026-09-13-van-hecke-started-everton": "model:896c5c8ffc7ceba5dbae2427ae15419db63063b00f55651ca57ef51c44a1a9c4"
+  },
+  "content_sha256": "1ae73326923685d84a75d9529157d59b2c8919b63f82f4b2b673c5ac1308381a",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 285
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Force Gakpo for remaining GW4/GW5",
+        "Buy Barcola over Cherki on one start"
+      ],
+      "boundary_id": "gakpo-vs-cherki",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Cherki over forced Gakpo after confirmed Fulham lineup: Barcola starts, Gakpo only on the bench.",
+      "falsifiers": [
+        "Cherki omitted from United matchday squad",
+        "Gakpo starts and hauls vs Bournemouth GW5 while Cherki blanks SUN"
+      ],
+      "rationale": "Official confirmed XI places Gakpo among substitutes; Cherki+Wissa unlock remains preferred into the unfinished derby/Monday slate and GW5 City/Hull fixtures.",
+      "supporting_claim_ids": [
+        "model:cdeffceb100cd0d3d52dc37072586915943e79ac441839706ba34157eef62b56",
+        "model:30a04340e77e88c1ac069e40bf76aee45940e5f9b77bafe777e08514679e9519"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Replace Van Hecke with Collins",
+        "Move to another 4.5 GKP"
+      ],
+      "boundary_id": "spurs-def-stack",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Retain Kinsky and Van Hecke after confirmed Everton starts.",
+      "falsifiers": [
+        "Kinsky dropped for GW5",
+        "Van Hecke benched vs Villa"
+      ],
+      "rationale": "Official Spurs XI confirms both started GW4; Mudryk remains out from prior admission.",
+      "supporting_claim_ids": [
+        "model:fe15e2d0e7146b45f31794449e503483e05595221e95d7892d18a2bf1e17b56a",
+        "model:896c5c8ffc7ceba5dbae2427ae15419db63063b00f55651ca57ef51c44a1a9c4"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Buy Leeds DEF for Monday night"
+      ],
+      "boundary_id": "leeds-def-ignore",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Do not target Rodon; treat Leeds CB as unavailable through the Newcastle fixture.",
+      "falsifiers": [
+        "Surprise Rodon return named in XI"
+      ],
+      "rationale": "Official Farke update restates Rodon still out with no new injury concerns elsewhere.",
+      "supporting_claim_ids": [
+        "model:a5ab153cdc2f8bd6c491255f0a17941168e57b051d0fd3e756625ba838521aed"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "aee9e70f10a9f0526574d67f513e7a7484828479e7d32c4377fb9fda83f6e5d8",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "83d64a99a20f703b19d4711cae01948abc59401ca629d89c0f14131eee6b14ca",
+      "source_url": "https://www.leedsunited.com/en/news/daniel-farke-provides-update-on-duos-fitness-ahead-of-newcastle"
+    },
+    {
+      "source_hash_sha256": "bd373f10b856034f60288279e220670489fcef6b3f7fe9e6ede8903eddfb0bfa",
+      "source_url": "https://www.liverpoolfc.com/news/confirmed-liverpool-line-v-fulham-9"
+    },
+    {
+      "source_hash_sha256": "3d7fee5a6af99c51f2dffd8cf7f50b684c319bcd5a2f425f9c96be65fb7fee6b",
+      "source_url": "https://www.tottenhamhotspur.com/news/1089725/confirmed-line-ups-spurs-vs-everton"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "6122113f8f54a0e583b7026534f8ab64a4a8d635253ad162d423ed3d823de974",
+  "observed_at": "2026-09-13T07:30:00Z",
+  "prior_ledger_sha256": "7fffce4a4ba07b8bad5997e43c062dd71e43ebf64a7dfead0f534c425389bd93",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "2026-09-13-gakpo-bench-return-fulham",
+      "claim_text": "Official LFC confirmed lineup vs Fulham: Cody Gakpo returns to the matchday squad after a fitness issue and is named among the substitutes, not in the starting XI.",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:367",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/confirmed-liverpool-line-v-fulham-9",
+      "why_relevant": "Clears Friday doubtful toward available bench minutes rather than a Fulham start; supports retaining Cherki over a forced Gakpo buy for GW4/GW5 planning."
+    }
+  ],
+  "resulting_ledger_sha256": "7f4bd51b8cb458d4b9895db9ceb5a6bd4455a4c112e0351956c5b434035ee8eb",
+  "run_id": "composer-2.5:2026-09-13T073000Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.8,
+    "accepted_count": 4,
+    "candidate_count": 5,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 3,
+    "duplicate_count": 0,
+    "rejected_count": 1,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
