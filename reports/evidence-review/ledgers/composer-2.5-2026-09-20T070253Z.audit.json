@@ -1,0 +1,91 @@
+{
+  "accepted_claim_ids": [
+    "model:e3e53eb4912b1885a6421aea3706f36f50731528943e163df566280f580c6808"
+  ],
+  "available_at": "2026-09-20T07:02:53Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-09-20-porro-doubtful-hamstring-dezerbi-post-villa": "model:e3e53eb4912b1885a6421aea3706f36f50731528943e163df566280f580c6808"
+  },
+  "content_sha256": "3196698a9a8275f8c80d29549500953d0a07317ca7dfc638c359e885aee2c996",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 268
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Chase Porro on the back of yesterday's available claim",
+        "Ignore the post-match update until GW6 pressers"
+      ],
+      "boundary_id": "porro-ft-monitor",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Treat Porro as doubtful for the IB window; do not buy him as the Shaw replacement.",
+      "falsifiers": [
+        "Official Spurs declare Porro fit and starting in early IB friendlies / next PL XI"
+      ],
+      "rationale": "Official Spurs post-match confirms early withdrawal with suspected hamstring after he had only just been declared available for Villa.",
+      "supporting_claim_ids": [
+        "model:e3e53eb4912b1885a6421aea3706f36f50731528943e163df566280f580c6808"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Immediate Shaw\u2192Porro",
+        "Immediate Shaw\u2192Bogle for GW6"
+      ],
+      "boundary_id": "def-upgrade-path",
+      "confidence": 0.78,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Bogle as the preferred post-IB attacking DEF upgrade candidate over Porro; still defer past GW6 ARS (A).",
+      "falsifiers": [
+        "Bogle injured on IB duty; Porro cleared quickly with strong minutes"
+      ],
+      "rationale": "Porro's fresh hamstring doubt plus Leeds' GW6 Arsenal away keep the FT lean on hold; Bogle's live points remain the upside case after internationals.",
+      "supporting_claim_ids": [
+        "model:e3e53eb4912b1885a6421aea3706f36f50731528943e163df566280f580c6808"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "50fd24baf8e6b1a0f5f42e2500f8f5a6c883ff075347dd8b122faf14e16f95c1",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "537af1c675406e89be618bcbe93ec3931b0625d4f6a0eda8fe23fdee59a9eb29",
+      "source_url": "https://www.tottenhamhotspur.com/news/1091097/team-news-robertos-latest-on-pedro-porro"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "416401a0dbf17a9275e36e092d44a9a89448a0b02341bd7ee4ca1582a7df6609",
+  "observed_at": "2026-09-20T07:02:53Z",
+  "prior_ledger_sha256": "35d0c3b1a52d8e949869c5a65197f7a0224640816eeaa837e4fa898396d9306e",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "2f6f40eccfa1d6c0983d8b77144e27e3007461a00af1195560a50e54f3069572",
+  "run_id": "composer-2.5:2026-09-20T070253Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 1,
+    "candidate_count": 1,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
