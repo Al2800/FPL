@@ -1,0 +1,82 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-09-24T07:03:26Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "d85964aa6bb02098f3134466f1eed12e2b495e96ce0f523c680b7c1581f26190",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 178
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Invent published_at for Arsenal IB call-up page lacking datePublished",
+        "Admit undated or wrong-season Chelsea/Rosenior search hits as Pedro claims",
+        "Re-emit 19 Sep Spurs Porro/Kinsky/Van Hecke tips already on ledger"
+      ],
+      "boundary_id": "lane-a-empty-window",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new availability claims today",
+      "falsifiers": [
+        "chelseafc.com publishes a timed Jo\u00e3o Pedro fitness original",
+        "mancity.com becomes fetchable with ISO timestamps for IB/fitness copy",
+        "A catalogue club posts a fresh dated first-team injury/lineup note inside the 72h window"
+      ],
+      "rationale": "72h gate from 2026-09-21T07:03:26Z leaves only one retained Fulham U21 preview (2026-09-22) which does not support a first-team availability/lineup claim. Tip-ledger Spurs Porro doubtful and Kinsky/Van Hecke Villa starts remain outside the gate. City/Chelsea/Man Utd/PL searches did not yield ISO-dated official originals suitable for candidates without inventing publication times.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Force a new Porro available claim from stale pre-gate pages"
+      ],
+      "boundary_id": "porro-ft-stance-hold",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Keep reject-Porro FT stance from tip ledger without a new claim",
+      "falsifiers": [
+        "Spurs publish a clear-fit Porro update before GW6"
+      ],
+      "rationale": "Prior host-admitted doubtful Porro hamstring claim remains the active official signal; bootstrap still d/75%. No newer Spurs original inside today's window updates that status.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "7397b0bd04babbe79cf055141baac91d279c0499a6a7df0f98a8d01a22dfc932",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "d3957d9c8312326e62b352111c760a19036fcbf05d5a5b63281f6f8d922fcc74",
+  "observed_at": "2026-09-24T07:03:26Z",
+  "prior_ledger_sha256": "1c0620f25f1b900933bd3aea56ca0e7580d5536d14a8d464e56c12fce130acb9",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "1c0620f25f1b900933bd3aea56ca0e7580d5536d14a8d464e56c12fce130acb9",
+  "run_id": "composer-2.5:2026-09-24T070326Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
