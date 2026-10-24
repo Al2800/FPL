@@ -1,0 +1,142 @@
+{
+  "accepted_claim_ids": [
+    "model:f6f1a79248afbf04a6b628cfb2b000c2995314b3a06034215f21c1010efa8342",
+    "model:d730769328d708a32cb914ba2c32525fa2f293d32102e128f44bc44afc99bc5a",
+    "model:72967bbee78e6ec5965ed3f679c53eed350a9766be2bb2a263a95373c873b8f9",
+    "model:2c4a5b48d27d10d6090c9a656c70a54af914acc371a4219dde9ae73d1344e359"
+  ],
+  "available_at": "2026-09-12T07:23:08Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate:barcola-available-cramps-only-friday": "model:f6f1a79248afbf04a6b628cfb2b000c2995314b3a06034215f21c1010efa8342",
+    "candidate:collins-unavailable-before-international-break": "model:72967bbee78e6ec5965ed3f679c53eed350a9766be2bb2a263a95373c873b8f9",
+    "candidate:gakpo-still-doubtful-post-friday-presser": "model:d730769328d708a32cb914ba2c32525fa2f293d32102e128f44bc44afc99bc5a",
+    "candidate:mudryk-unavailable-ankle-everton": "model:2c4a5b48d27d10d6090c9a656c70a54af914acc371a4219dde9ae73d1344e359"
+  },
+  "content_sha256": "e83a4abb9e8837386e00e88c5bbf16aa5b5041688d90b3662b6d0abb597342fa",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 265
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Force Gakpo+Wissa on 75% bootstrap chance",
+        "Chase Barcola over Cherki"
+      ],
+      "boundary_id": "gakpo-vs-cherki",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Cherki+Wissa as primary GW4 unlock; do not force Gakpo after Friday presser.",
+      "falsifiers": [
+        "Official confirmation Gakpo starts Fulham",
+        "Cherki omitted from United matchday squad"
+      ],
+      "rationale": "Friday official LFC text still leaves Gakpo as a try-today / maybe-tomorrow call rather than a confirmed Fulham start.",
+      "supporting_claim_ids": [
+        "model:d730769328d708a32cb914ba2c32525fa2f293d32102e128f44bc44afc99bc5a",
+        "model:f6f1a79248afbf04a6b628cfb2b000c2995314b3a06034215f21c1010efa8342"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Hold both FTs",
+        "WC4 for Palmer/Rogers",
+        "Single FT only"
+      ],
+      "boundary_id": "gw4-transfers",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Execute or plan Wilson+Thiago\u2192Cherki+Wissa before 12:30Z deadline; hold locked names otherwise.",
+      "falsifiers": [
+        "Late Gakpo start confirmation",
+        "Wissa price break",
+        "Owner FT/chip state differs"
+      ],
+      "rationale": "Gakpo remains uncleared; bank maths still fit Cherki+Wissa; no new official City omission signal.",
+      "supporting_claim_ids": [
+        "model:d730769328d708a32cb914ba2c32525fa2f293d32102e128f44bc44afc99bc5a"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Buy Collins as DEFCON cheap"
+      ],
+      "boundary_id": "cheap-def-targets",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Do not buy Collins; keep funding DEFs Diop/van Ewijk and Mitchell hold.",
+      "falsifiers": [
+        "Late Collins surprise return"
+      ],
+      "rationale": "Official Brentford update rules Collins out until after the international break.",
+      "supporting_claim_ids": [
+        "model:72967bbee78e6ec5965ed3f679c53eed350a9766be2bb2a263a95373c873b8f9"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Buy Mudryk on debut hype"
+      ],
+      "boundary_id": "spurs-attack-ignore",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Ignore Mudryk as a GW4 differential; retain Kinsky and Van Hecke.",
+      "falsifiers": [
+        "Mudryk named in Everton XI"
+      ],
+      "rationale": "Official Spurs update rules Mudryk out with an ankle injury for Everton.",
+      "supporting_claim_ids": [
+        "model:2c4a5b48d27d10d6090c9a656c70a54af914acc371a4219dde9ae73d1344e359"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "c6647e134839845a6f1028ece0ed8063997b90698d801b2f4a69c277d537ed2f",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "e79b767a255d9e06a27541e9584bf5f4351690b3df5c34c9b4f3456a54853dc7",
+      "source_url": "https://www.brentfordfc.com/en/news/article/first-team-bournemouth-v-brentford-premier-league-keith-andrews-squad-news-update-nathan-collins"
+    },
+    {
+      "source_hash_sha256": "5ed8fdb339f0d58d94691fbccd70b51c422fd7de2fb36f03a13d3b58f2d4c2c0",
+      "source_url": "https://www.liverpoolfc.com/news/lfc-fitness-update-iraola-provides-latest-gakpo-barcola-and-ekitike"
+    },
+    {
+      "source_hash_sha256": "5cd52f19168cb546192c99a1e99d9fb603b6a99743f1196eb796470a400c9e70",
+      "source_url": "https://www.tottenhamhotspur.com/news/1089549/team-news-mudryk-injured-kulusevski-still-out"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "f6bab1be75bfb155c1eb7a1774d615ec28fa070271bfc94422cdb62a10aba58b",
+  "observed_at": "2026-09-12T07:23:08Z",
+  "prior_ledger_sha256": "ee1fe92b7b56ed3485d5d388601f76515083572ddaad82978ed3dcbafdf90244",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "7fffce4a4ba07b8bad5997e43c062dd71e43ebf64a7dfead0f534c425389bd93",
+  "run_id": "composer-2.5:2026-09-12T072308Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 4,
+    "candidate_count": 4,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 4,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
