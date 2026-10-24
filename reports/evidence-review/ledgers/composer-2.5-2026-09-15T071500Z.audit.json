@@ -1,0 +1,132 @@
+{
+  "accepted_claim_ids": [
+    "model:a8459a6be6975f11a16ab16f7c23623cbf428078ac74c953c78197ea49840f67",
+    "model:973c2ce0a366f738ae67477a43253e849884d3e512c427d5dfb74f2beedabc7a",
+    "model:2a6c2cc8ff1feb6528b36d22721697d8c87d7e05982f0f4202da8cdf9678db12",
+    "model:acecb413585a3ae0fa9c85586a5a435807220fe56da0c767cd9ba3546afe549f",
+    "model:2b37cb62f304a6ca5c664903a23a6d0ae26310c246f744ba3b424393662efbf2",
+    "model:4e202f98178b1e173df60c7d449e736b69929443123257d27aa06e0b5ffadbdf"
+  ],
+  "available_at": "2026-09-15T07:15:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "2026-09-15-bogle-started-newcastle": "model:973c2ce0a366f738ae67477a43253e849884d3e512c427d5dfb74f2beedabc7a",
+    "2026-09-15-calvert-lewin-started-newcastle": "model:2a6c2cc8ff1feb6528b36d22721697d8c87d7e05982f0f4202da8cdf9678db12",
+    "2026-09-15-gomez-available-carabao": "model:a8459a6be6975f11a16ab16f7c23623cbf428078ac74c953c78197ea49840f67",
+    "2026-09-15-hall-started-leeds": "model:2b37cb62f304a6ca5c664903a23a6d0ae26310c246f744ba3b424393662efbf2",
+    "2026-09-15-okafor-started-newcastle": "model:acecb413585a3ae0fa9c85586a5a435807220fe56da0c767cd9ba3546afe549f",
+    "2026-09-15-wissa-started-leeds": "model:4e202f98178b1e173df60c7d449e736b69929443123257d27aa06e0b5ffadbdf"
+  },
+  "content_sha256": "0200350a9f59c8163600ce58d3a0f73bec312f58887078bfd4ccdd161dda9c21",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 270
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Sell Wissa after blank",
+        "Pivot to Calvert-Lewin on one FT"
+      ],
+      "boundary_id": "wissa-hold",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Affirm Wissa hold after official Leeds report lists him in Newcastle XI; keep unlock into Hull (H).",
+      "falsifiers": [
+        "Wissa omitted vs Hull",
+        "Injury news before GW5 deadline"
+      ],
+      "rationale": "14 Sep falsifier was Wissa unused vs Leeds; official report clears that and live FPL shows 90\u2032/2pts.",
+      "supporting_claim_ids": [
+        "model:4e202f98178b1e173df60c7d449e736b69929443123257d27aa06e0b5ffadbdf"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Force Hall buy on blank",
+        "Force Palmer without second seller"
+      ],
+      "boundary_id": "shaw-ft",
+      "confidence": 0.78,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Diop as provisional third DEF; treat Shaw as first FT candidate; Bogle is the leading like-for-like DEF upgrade if selling Shaw.",
+      "falsifiers": [
+        "Shaw starts Fulham (A)",
+        "Official Man Utd clears Shaw for 90\u2032"
+      ],
+      "rationale": "Shaw still 0\u2032/bootstrap d; Bogle officially started and leads live DEF scoring; Hall also started but blanked.",
+      "supporting_claim_ids": [
+        "model:973c2ce0a366f738ae67477a43253e849884d3e512c427d5dfb74f2beedabc7a",
+        "model:2b37cb62f304a6ca5c664903a23a6d0ae26310c246f744ba3b424393662efbf2"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Calvert-Lewin for Wissa",
+        "Okafor differential FT"
+      ],
+      "boundary_id": "gw5-forward-structure",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Hold Haaland + Jo\u00e3o Pedro + Wissa; do not chase Calvert-Lewin/Okafor on a single FT.",
+      "falsifiers": [
+        "Wissa injured",
+        "Haaland rested vs SUN"
+      ],
+      "rationale": "Leeds haulers are real but the locked core already has Wissa into Hull (H) and Haaland into SUN (H).",
+      "supporting_claim_ids": [
+        "model:4e202f98178b1e173df60c7d449e736b69929443123257d27aa06e0b5ffadbdf",
+        "model:2a6c2cc8ff1feb6528b36d22721697d8c87d7e05982f0f4202da8cdf9678db12",
+        "model:acecb413585a3ae0fa9c85586a5a435807220fe56da0c767cd9ba3546afe549f"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d4a6da7e7a240fa1c8fa4f395d1a45221b13c67ee4088b0bfc96e727be1d80de",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "f8c940818aa35316ca3da30b8fcbecd657d7ad530e1c88241ced482fd2e79cac",
+      "source_url": "https://www.leedsunited.com/en/news/daniel-farke-names-team-for-monday-night-premier-league-clash"
+    },
+    {
+      "source_hash_sha256": "6149412ae83162356365f887db275a8bcf18022dc6831b342a98a1a38d9dcb7b",
+      "source_url": "https://www.leedsunited.com/en/news/whites-dismantle-magpies-in-memorable-elland-road-encounter"
+    },
+    {
+      "source_hash_sha256": "723e5649c5a42630d78f58af1854045d76fbc830ad8532af83917b08747054e7",
+      "source_url": "https://www.liverpoolfc.com/news/fitness-latest-joe-gomez-return-update-conor-bradley"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "a7a32850645b0516b904356c697ce9489b464b2045e454f566b17b00c8fcad5c",
+  "observed_at": "2026-09-15T07:15:00Z",
+  "prior_ledger_sha256": "0ac1aa17f2c0b6928a1decadaa90aa1d682e895511603bdac930f0793937fae6",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "0692af29bd8b8049044d68adf29404a8ddd9e5b279f8afd48098732d37ac2f04",
+  "run_id": "composer-2.5:2026-09-15T071500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 3,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
