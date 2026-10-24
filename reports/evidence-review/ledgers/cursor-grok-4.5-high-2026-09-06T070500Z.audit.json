@@ -1,0 +1,168 @@
+{
+  "accepted_claim_ids": [
+    "model:c9975d29288646e3e3c6f854e7ed5be46f59d0331173d93307409d501b57fee7",
+    "model:28cf786df0509e20abc9be8bc42e4d2bd5457696743ca4102ed0e70bdcb8f6eb",
+    "model:dfe71680d7ed1c57291990c55205aa09404f6099c0225ec2b866a600d3c77cf0",
+    "model:1c452502354d8ff5e705cbf953a876689e53e297a72bd0513e4fa0e6a42fcabb",
+    "model:436cc087f2c2722ebf6e9462af768ba97b1d3b21ef2c103ac6684d5bfec87081",
+    "model:926c9ff244795d4a4f1d8a640cc160a226f6db16cfd44f387fbcd769c5e084d2",
+    "model:aa282d9da79b0d26acb52c62e2da8928be725bfd9ade47e4d1ce0899b4338e71",
+    "model:c0b69625f43488207897bd08358f348e3f59802e34325dfe030d07fad7ab8d4a",
+    "model:f84635e571d84df95c175212da7135076d8b69c48648842feefb270e5757e6a7"
+  ],
+  "available_at": "2026-09-06T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-2026-09-06-collins-calf": "model:436cc087f2c2722ebf6e9462af768ba97b1d3b21ef2c103ac6684d5bfec87081",
+    "candidate-2026-09-06-enzo-started-coventry": "model:926c9ff244795d4a4f1d8a640cc160a226f6db16cfd44f387fbcd769c5e084d2",
+    "candidate-2026-09-06-gomez-still-out": "model:c9975d29288646e3e3c6f854e7ed5be46f59d0331173d93307409d501b57fee7",
+    "candidate-2026-09-06-haaland-started-coventry": "model:aa282d9da79b0d26acb52c62e2da8928be725bfd9ade47e4d1ce0899b4338e71",
+    "candidate-2026-09-06-mitchell-started-fulham": "model:28cf786df0509e20abc9be8bc42e4d2bd5457696743ca4102ed0e70bdcb8f6eb",
+    "candidate-2026-09-06-ndiaye-started-coventry": "model:1c452502354d8ff5e705cbf953a876689e53e297a72bd0513e4fa0e6a42fcabb",
+    "candidate-2026-09-06-oreilly-warm-up-out": "model:dfe71680d7ed1c57291990c55205aa09404f6099c0225ec2b866a600d3c77cf0",
+    "candidate-2026-09-06-savio-minutes-plan": "model:c0b69625f43488207897bd08358f348e3f59802e34325dfe030d07fad7ab8d4a",
+    "candidate-2026-09-06-udogie-minutes-plan": "model:f84635e571d84df95c175212da7135076d8b69c48648842feefb270e5757e6a7"
+  },
+  "content_sha256": "6b02dd86e72f93173412e73b90527228bde11d0919a96f7d15287a3f03f3d0e7",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 254
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Infer Cherki start from Haaland interview 'relationship on the pitch' alone",
+        "Mark O'Reilly unavailable long-term without extent"
+      ],
+      "boundary_id": "city-premium-confirmation",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Haaland/Ndiaye/Enzo started_match claims from official City Coventry reaction pages; mark O'Reilly doubtful from warm-up withdrawal.",
+      "falsifiers": [
+        "Later City update shows O'Reilly minor/available immediately",
+        "Match XI contradicts Ndiaye/Enzo starts"
+      ],
+      "rationale": "Pages explicitly state Haaland opener, Ndiaye/Enzo debuts/starts, and O'Reilly warm-up exit. No inventing Cherki XI without explicit start sentence.",
+      "supporting_claim_ids": [
+        "model:aa282d9da79b0d26acb52c62e2da8928be725bfd9ade47e4d1ce0899b4338e71",
+        "model:1c452502354d8ff5e705cbf953a876689e53e297a72bd0513e4fa0e6a42fcabb",
+        "model:926c9ff244795d4a4f1d8a640cc160a226f6db16cfd44f387fbcd769c5e084d2",
+        "model:dfe71680d7ed1c57291990c55205aa09404f6099c0225ec2b866a600d3c77cf0"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Ignore DEF attacking returns as noise"
+      ],
+      "boundary_id": "mitchell-retention",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Mitchell started_match from Palace Fulham match report after double contribution.",
+      "falsifiers": [
+        "Official correction that Mitchell did not start"
+      ],
+      "rationale": "Official report names Mitchell starting and scoring twice before substitution.",
+      "supporting_claim_ids": [
+        "model:28cf786df0509e20abc9be8bc42e4d2bd5457696743ca4102ed0e70bdcb8f6eb"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Treat S\u00e1vio as full-90 nailed after start",
+        "Mark either unavailable"
+      ],
+      "boundary_id": "spurs-minutes-management",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Admit S\u00e1vio and Udogie ~60-minute medical plans from De Zerbi post-match.",
+      "falsifiers": [
+        "Next Spurs presser removes minutes caps"
+      ],
+      "rationale": "Manager explicitly states pre-match minutes plan; status remains available with minutes_role ceiling.",
+      "supporting_claim_ids": [
+        "model:c0b69625f43488207897bd08358f348e3f59802e34325dfe030d07fad7ab8d4a",
+        "model:f84635e571d84df95c175212da7135076d8b69c48648842feefb270e5757e6a7"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Leave as doubtful only despite forced-off confirmation"
+      ],
+      "boundary_id": "collins-out",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Collins unavailable after confirmed calf strain forced substitution.",
+      "falsifiers": [
+        "Next Brentford update clears Collins quickly"
+      ],
+      "rationale": "Andrews confirms calf strain; extent unknown so expiry set to GW5 window rather than inventing return date.",
+      "supporting_claim_ids": [
+        "model:436cc087f2c2722ebf6e9462af768ba97b1d3b21ef2c103ac6684d5bfec87081"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "67e795e60df3b2bb9edbf0f797760a7d6306dfb5e1299f3d75492416fb57c77a",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "5cde43ba4d7ae89b7b9d6ea31c12b6a17ae097b9eabc19d3339ca0f6178b0532",
+      "source_url": "https://www.brentfordfc.com/en/news/article/first-team-nathan-collins-injury-update-brentford-v-sunderland-premier-league"
+    },
+    {
+      "source_hash_sha256": "596b23607ded13bba1eb1e8e5f74392a4073f0ad6a60f04e738776e15c310837",
+      "source_url": "https://www.cpfc.co.uk/news/match-reports/match-report-highlights-palace-fulham-september-2026/"
+    },
+    {
+      "source_hash_sha256": "d879990e565d4f26153d865cb15fc9ad6a0e677ac35ce5a493b72f61c8810213",
+      "source_url": "https://www.liverpoolfc.com/news/injury-news-iraola-provides-update-gomez-leoni-chiesa-bradley-and-ekitike"
+    },
+    {
+      "source_hash_sha256": "2d486fab32bcb10ecf7947c684c69f02712938711ab243f21e1201dd62c036ee",
+      "source_url": "https://www.mancity.com/citytv/mens/haaland-post-coventry-citytv-reaction-pl-5-sep-63924208"
+    },
+    {
+      "source_hash_sha256": "7fe6bb1b77ade0d24ef48fc7f91209e408c5929ec44e9700def4111372707298",
+      "source_url": "https://www.mancity.com/news/mens/enzo-maresca-coventry-city-reaction-63924225"
+    },
+    {
+      "source_hash_sha256": "7ac27b51b7b219e2eb569c708329120697cc69366417a1e85b726b5bfc3dc5c5",
+      "source_url": "https://www.mancity.com/news/mens/ndiaye-post-coventry-reaction-pl-5-sep-63924208"
+    },
+    {
+      "source_hash_sha256": "beb7d83677473c8285901d0835c91a3eadfb7d4964115798018e30b52ec2092d",
+      "source_url": "https://www.tottenhamhotspur.com/news/1088666/forest-0-0-spurs-every-word-of-roberto-de-zerbis-post-match-press-conference"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "cbb1994b72cf8a37a5559de3338dedfdd12422746539897e0c615819449372c0",
+  "observed_at": "2026-09-06T07:05:00Z",
+  "prior_ledger_sha256": "47bc8d8f9c6c44113712988ee9934a6a75d83b7941b4155d6f9812c9f9c77cef",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "8e2a20623f83ac8c4f73ffdaa372e4f802d3ee8d6cce2576b79f95445dcf3631",
+  "run_id": "cursor-grok-4.5-high:2026-09-06T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 9,
+    "candidate_count": 9,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 4,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
