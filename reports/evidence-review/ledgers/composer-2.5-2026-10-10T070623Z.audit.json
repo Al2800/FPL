@@ -1,0 +1,202 @@
+{
+  "accepted_claim_ids": [
+    "model:0cc3c0b49c984fe147c7104ef1b47183d481f08161791f7f7f9228affa3bad0b",
+    "model:abd411a70a599e9299a43935dd04422d07bf6c4dd43dcd2537fea74db25c8785",
+    "model:58c64d818c232edc1c8d99a3371f56298945fc033c7e39a963aec834a4c10fc4",
+    "model:a19e350b68fbeb0d3a2d90956df5c6acb770ccd11c4b2fde610ce0115939ac14",
+    "model:d71e4802b8dbe16c4d7c53e127557aecbd231363694d01723d9cf1b0d8366d64",
+    "model:a441ffc433a8bccfaf5dba258d2a3a9ffb327ee0f9eed680c54ab7ad28fe743b",
+    "model:6c9625fd325d73b5c620ffff9b99fae7a23410b14765f17330a31a0b82a7f4e4",
+    "model:7a49d02f10354e559f24419ec731bb642f1f2c8f71a118167c8c30cc7de9d095"
+  ],
+  "available_at": "2026-10-10T07:06:23Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:1ca76d22288ce8ec6a393082e369bfb5c3ba08a56c8f9e7173f130c54f0f4cbf": "model:6c9625fd325d73b5c620ffff9b99fae7a23410b14765f17330a31a0b82a7f4e4",
+    "model:2915e662cbbc542402b3b1ffad18dea5d4bda80f210e1dd99a0dc7bb0f64c0aa": "model:0cc3c0b49c984fe147c7104ef1b47183d481f08161791f7f7f9228affa3bad0b",
+    "model:4528c9c6de876dcdc605e0f4550023dae67ee5b14ddef816e523f4798d41314f": "model:abd411a70a599e9299a43935dd04422d07bf6c4dd43dcd2537fea74db25c8785",
+    "model:4b53596a47c0e45e051b4a0bc3ec3c0bf470a7d1d7d125949d550ddf2929200a": "model:7a49d02f10354e559f24419ec731bb642f1f2c8f71a118167c8c30cc7de9d095",
+    "model:6806f5cec6b9ce3808f870179eb2cc0da8b31ee4e4ceda85fff314f05cfc44c1": "model:a19e350b68fbeb0d3a2d90956df5c6acb770ccd11c4b2fde610ce0115939ac14",
+    "model:6adc22278f29b4b351e375f21979d8747a0bf6ed0ed688bafbf99035c6b38819": "model:d71e4802b8dbe16c4d7c53e127557aecbd231363694d01723d9cf1b0d8366d64",
+    "model:9cb7a9725a615685f1bb80163b9c93a8944bbfb0da2709621d9a67ae6357fd77": "model:58c64d818c232edc1c8d99a3371f56298945fc033c7e39a963aec834a4c10fc4",
+    "model:f8154c18571c1003a609b728075458b7ddfdf58095aa9a6d9f0900e2d039e9ff": "model:a441ffc433a8bccfaf5dba258d2a3a9ffb327ee0f9eed680c54ab7ad28fe743b"
+  },
+  "content_sha256": "09bd269e029302747875fd5e975046975003c7d0fa77e88b93373b0c621d3efd",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 324
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-propose Leeds Wilson/James/Bahoya",
+        "Admit Haaland available again from Maresca (duplicate tip path)",
+        "Admit Semenyo available from City training gallery photos",
+        "Admit Damsgaard available from soft Brentford 'on the grass' wording",
+        "Invent Bruno fitness from Man Utd pages without body"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Chelsea Pedro/Palmer available, LFC Isak/Gakpo out, Spurs Van Hecke/VdV available + Porro out, Jacquet available, Arsenal Havertz/Konsa doubtful; withhold Leeds tip re-proposes and Haaland available re-claim",
+      "falsifiers": [
+        "Host rejects on domain/hash/identity",
+        "Chelsea article fetch fails",
+        "Spurs/LFC page hash mismatch"
+      ],
+      "rationale": "Friday/Saturday-eve official originals inside the 72h gate clear Pedro/Palmer/Van Hecke and harden Isak/Gakpo to unavailable for GW6. Leeds Wilson/James/Bahoya already on tip 9e08244a. City Haaland already tipped available; Maresca Anfield readiness is briefing corroboration only. Man Utd Carrick pages lack recoverable Bruno fitness body under lab fetch.",
+      "supporting_claim_ids": [
+        "model:a202be4ed43d2e7c44905869010f7cb1b317f6e04bc9e26875b245fd5c5d033d",
+        "model:8b4ca339e2d281ac29dab65f35b6ce562745d8a6af4f1b109cd9981117640ea2",
+        "model:abd411a70a599e9299a43935dd04422d07bf6c4dd43dcd2537fea74db25c8785",
+        "model:0cc3c0b49c984fe147c7104ef1b47183d481f08161791f7f7f9228affa3bad0b",
+        "model:d71e4802b8dbe16c4d7c53e127557aecbd231363694d01723d9cf1b0d8366d64",
+        "model:a19e350b68fbeb0d3a2d90956df5c6acb770ccd11c4b2fde610ce0115939ac14",
+        "model:a441ffc433a8bccfaf5dba258d2a3a9ffb327ee0f9eed680c54ab7ad28fe743b",
+        "model:58c64d818c232edc1c8d99a3371f56298945fc033c7e39a963aec834a4c10fc4",
+        "model:7a49d02f10354e559f24419ec731bb642f1f2c8f71a118167c8c30cc7de9d095",
+        "model:6c9625fd325d73b5c620ffff9b99fae7a23410b14765f17330a31a0b82a7f4e4"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Keep Pedro doubtful without claim",
+        "Stretch gallery photos as clearance"
+      ],
+      "boundary_id": "pedro_chelsea_clearance",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Joao Pedro available \u2014 declared_fit for Bournemouth",
+      "falsifiers": [
+        "Pedro omitted from Chelsea matchday squad",
+        "Late Alonso reversal"
+      ],
+      "rationale": "Alonso states Pedro trained and is ready to go, closing the prior knee-flag gap that blocked admission from training galleries.",
+      "supporting_claim_ids": [
+        "model:a202be4ed43d2e7c44905869010f7cb1b317f6e04bc9e26875b245fd5c5d033d"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Keep Van Hecke benched on stale bootstrap foot flag alone"
+      ],
+      "boundary_id": "van_hecke_spurs_clearance",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Van Hecke available \u2014 declared_fit for Old Trafford",
+      "falsifiers": [
+        "Van Hecke omitted from Spurs matchday squad",
+        "Late Spurs withdrawal"
+      ],
+      "rationale": "De Zerbi explicitly says Van Hecke is available to play, clearing the soft foot/doubt that forced a provisional Shaw start.",
+      "supporting_claim_ids": [
+        "model:d71e4802b8dbe16c4d7c53e127557aecbd231363694d01723d9cf1b0d8366d64"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Leave prior doubtful tips without refresh",
+        "Treat day-to-day wording as available"
+      ],
+      "boundary_id": "isak_gakpo_lfc_out",
+      "confidence": 0.94,
+      "conflicting_claim_ids": [],
+      "decision": "Isak and Gakpo unavailable for City",
+      "falsifiers": [
+        "Either named in Liverpool matchday squad vs City"
+      ],
+      "rationale": "Iraola explicit will-not-play statements upgrade prior doubtful tips for the GW6 LIV-MCI fixture.",
+      "supporting_claim_ids": [
+        "model:abd411a70a599e9299a43935dd04422d07bf6c4dd43dcd2537fea74db25c8785",
+        "model:0cc3c0b49c984fe147c7104ef1b47183d481f08161791f7f7f9228affa3bad0b"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at for date-only PL/Villa/Forest pages"
+      ],
+      "boundary_id": "coverage",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Mark discovery complete across 21 catalogue clubs",
+      "falsifiers": [
+        "Missed official-domain lead with recoverable published_at inside 72h"
+      ],
+      "rationale": "All catalogue clubs searched; empty where no in-gate official lead with recoverable ISO published_at.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "389d170bbf8d498aec8196163e0d18b8cb919cea74e07b281159a932fb3e839d",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "153cb2d1b20bcc72174ee497cace4b40d49748d2e27cf96d3f50308c1ecc4bb2",
+      "source_url": "https://www.arsenal.com/news/every-word-of-artetas-pre-leeds-press-conference-aoTsx4n3uzOe"
+    },
+    {
+      "source_hash_sha256": "9b4f148ec45549dda22e4402552c186997c8d43462902a553e108d5f65b51600",
+      "source_url": "https://www.liverpoolfc.com/news/lfc-fitness-update-alexander-isak-cody-gakpo-federico-chiesa-and-jeremy-jacquet"
+    },
+    {
+      "source_hash_sha256": "88a13461753df13319329bd396f2b1e56895f0789c4adb20d5978c8faf1ffa5b",
+      "source_url": "https://www.tottenhamhotspur.com/news/1175437/team-news-van-de-ven-van-hecke-available-for-old-trafford"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "bfac9dfe9dd003fd0d81dae632ebc6ec790e5069a0ff4b0edf5c90d9bc86feb5",
+  "observed_at": "2026-10-10T07:06:23Z",
+  "prior_ledger_sha256": "9e08244a5dca4f210ea0303906301d9dd21b56d9a0beb5907b2ecfc3d8c77796",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "model:8b4ca339e2d281ac29dab65f35b6ce562745d8a6af4f1b109cd9981117640ea2",
+      "claim_text": "Chelsea manager Xabi Alonso says Cole Palmer has trained over the last week, feels better after struggling vs Brentford, and is among the group described as ready to go for Bournemouth.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:154",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/xabi-alonso-confirms-chelsea-team-news-for-bournemouth: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/xabi-alonso-confirms-chelsea-team-news-for-bournemouth",
+      "why_relevant": "Palmer was flagged through the IB; GW6 CHE-BOU (H) captain/differential debate and Chelsea attack minutes need official fitness confirmation."
+    },
+    {
+      "candidate_claim_id": "model:a202be4ed43d2e7c44905869010f7cb1b317f6e04bc9e26875b245fd5c5d033d",
+      "claim_text": "Chelsea manager Xabi Alonso, in the club's pre-Bournemouth team-news article, says Joao Pedro has trained ahead of the visit and is ready to go after withdrawing from Brazil duty with fitness concerns.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:165",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/xabi-alonso-confirms-chelsea-team-news-for-bournemouth: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/xabi-alonso-confirms-chelsea-team-news-for-bournemouth",
+      "why_relevant": "Joao Pedro is a high-owned FWD on the advisory 15; GW6 CHE-BOU (H) start/bench and hold-vs-sell turn on official clearance of the prior knee flag."
+    }
+  ],
+  "resulting_ledger_sha256": "7208a3ee9bff218a7a8e0cf9e75d04c0fd231f28270ed87f908b3be686a96364",
+  "run_id": "composer-2.5:2026-10-10T070623Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.8,
+    "accepted_count": 8,
+    "candidate_count": 10,
+    "decision_trace_count": 5,
+    "decision_trace_linked_count": 4,
+    "duplicate_count": 0,
+    "rejected_count": 2,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
