@@ -1,0 +1,149 @@
+{
+  "accepted_claim_ids": [
+    "model:370784d80be6af0034ffdadf4aa99fc55f49a35b555f8abbb57cce5e8a167f30",
+    "model:3fc9021dd2325b9f8f6a301333124ee1b348c68997d03f3a596b3de810b0f72e",
+    "model:362a79a5ac724b6da3931e7440d51a2878874473077cde83b39dae7b4dca0b25"
+  ],
+  "available_at": "2026-08-26T07:00:40Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-2026-08-26-gruev-training": "model:370784d80be6af0034ffdadf4aa99fc55f49a35b555f8abbb57cce5e8a167f30",
+    "candidate-2026-08-26-maddison-cup-doubt": "model:362a79a5ac724b6da3931e7440d51a2878874473077cde83b39dae7b4dca0b25",
+    "candidate-2026-08-26-porro-squad": "model:2ec925d48d3fd5324f50ed8b0faaef5447ab85a845870d74ead73ad84e2c0c5d",
+    "candidate-2026-08-26-vdv-squad": "model:9de5c163a145e2ae815de0c2aee271f44d64069270a2ffd4bbefa628336240f8",
+    "candidate-2026-08-26-wilson-no-new-injury": "model:3fc9021dd2325b9f8f6a301333124ee1b348c68997d03f3a596b3de810b0f72e"
+  },
+  "content_sha256": "44bcdf421d442db8e7057938ba9a987dce7859c54c6f2b83c92bf8ce27bf4089",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 180
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "emit claims from Arsenal Coventry 20 Aug presser",
+        "re-admit Palace Mitchell start from 22 Aug report"
+      ],
+      "boundary_id": "lane-a:2026-08-26:72h-gate",
+      "confidence": 0.93,
+      "conflicting_claim_ids": [],
+      "decision": "Retain Spurs Charlton preview (25 Aug 19:08Z), Leeds EFL Cup fitness (24 Aug 13:30Z), Liverpool Newcastle report (23 Aug 17:42Z), Fulham Chelsea report (24 Aug), City Bournemouth report (23 Aug 15:00Z); drop Arsenal Coventry presser (20 Aug) and Palace Everton report (22 Aug) as stale under observed_at-72h.",
+      "falsifiers": [
+        "Host age window differs from observed_at-72h"
+      ],
+      "rationale": "observed_at 2026-08-26T07:00:40Z implies cutoff 2026-08-23T07:00:40Z. Discovery retained five timed official leads inside the window.",
+      "supporting_claim_ids": [
+        "model:2ec925d48d3fd5324f50ed8b0faaef5447ab85a845870d74ead73ad84e2c0c5d",
+        "model:9de5c163a145e2ae815de0c2aee271f44d64069270a2ffd4bbefa628336240f8",
+        "model:362a79a5ac724b6da3931e7440d51a2878874473077cde83b39dae7b4dca0b25",
+        "model:3fc9021dd2325b9f8f6a301333124ee1b348c68997d03f3a596b3de810b0f72e",
+        "model:370784d80be6af0034ffdadf4aa99fc55f49a35b555f8abbb57cce5e8a167f30"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "admit Gibbs-White out from FFScout/YEP quotes",
+        "re-emit Liverpool Isak started_match"
+      ],
+      "boundary_id": "lane-a:2026-08-26:claim-emission",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Porro/VdV matchday-squad availability and Maddison cup doubt from Spurs preview; emit Wilson no-new-injury available and Gruev training-but-not-selected doubtful from Leeds; do not re-emit Haaland/Semenyo/Isak/Jo\u00e3o Pedro/Rogers/Mitchell already on tip ledger; no Forest Gibbs-White claim without official URL.",
+      "falsifiers": [
+        "Host cannot hash Spurs/Leeds bodies",
+        "Host rejects matchday-squad wording as insufficient for available"
+      ],
+      "rationale": "Fresh official pages support Spurs returnees and Leeds fitness. Forest Gibbs-White cup miss is only in unregistered press quotes today; bootstrap still d 75%. Prior tip claims remain on 6d163e8a\u2026",
+      "supporting_claim_ids": [
+        "model:2ec925d48d3fd5324f50ed8b0faaef5447ab85a845870d74ead73ad84e2c0c5d",
+        "model:9de5c163a145e2ae815de0c2aee271f44d64069270a2ffd4bbefa628336240f8",
+        "model:362a79a5ac724b6da3931e7440d51a2878874473077cde83b39dae7b4dca0b25",
+        "model:3fc9021dd2325b9f8f6a301333124ee1b348c68997d03f3a596b3de810b0f72e",
+        "model:370784d80be6af0034ffdadf4aa99fc55f49a35b555f8abbb57cce5e8a167f30"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "narrow watchlist to advisory 15 only"
+      ],
+      "boundary_id": "lane-a:2026-08-26:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist of 180 UIDs covering advisory 15, comparator names, bootstrap flags/high ownership, and players named in today\u2019s official leads.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist; Porro/VdV/Maddison/Wilson/Gruev must be present.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "f28bae94e0aadf1b50619a033a2d482c8f51e6d3b771c58f2686b2379ef8077b",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "34d6e36c6c223676ecf1e30ee1cb390701c896413b8d5c747163c5a12237381c",
+      "source_url": "https://www.leedsunited.com/en/news/efl-cup-daniel-farke-gives-fitness-update-ahead-of-forest-clash"
+    },
+    {
+      "source_hash_sha256": "723d3a1a2bd36acdcac2284ab5413b0e43423ee5cc22ced724a0bd30122b7bce",
+      "source_url": "https://www.tottenhamhotspur.com/news/1086806/spurs-vs-charlton-how-to-watch-team-news-kit-colours-key-information"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "c6635f80403d5b086f5f2713c85dc92e2f20138256707eadd9794bddad3e0870",
+  "observed_at": "2026-08-26T07:00:40Z",
+  "prior_ledger_sha256": "6d163e8ab6682597d656e67f5af4420d9e7f9249458ae901dac28847e7eb33f7",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "candidate-2026-08-26-porro-squad",
+      "claim_text": "Official Spurs Carabao Cup preview states Roberto De Zerbi has suggested Pedro Porro will be included in the matchday squad for the first time this season versus Charlton.",
+      "club_id": "tottenham",
+      "player_uid": "player:2026-27:499",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.tottenhamhotspur.com/news/1086806/spurs-vs-charlton-how-to-watch-team-news-kit-colours-key-information",
+      "why_relevant": "Porro availability for Spurs DEF/asset routes into GW2 Newcastle (H); prior packet/bootstrap doubt flags."
+    },
+    {
+      "candidate_claim_id": "candidate-2026-08-26-vdv-squad",
+      "claim_text": "Official Spurs Carabao Cup preview states Roberto De Zerbi has suggested Micky van de Ven will be included in the matchday squad for the first time this season versus Charlton.",
+      "club_id": "tottenham",
+      "player_uid": "player:2026-27:503",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.tottenhamhotspur.com/news/1086806/spurs-vs-charlton-how-to-watch-team-news-kit-colours-key-information",
+      "why_relevant": "Van de Ven minutes risk for Spurs DEF stack; bootstrap still doubtful."
+    }
+  ],
+  "resulting_ledger_sha256": "6761b56e9e869db725eee25163efc5b27987be612556c696a193bf265fce4bb2",
+  "run_id": "composer-2.5:2026-08-26T070040Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.6,
+    "accepted_count": 3,
+    "candidate_count": 5,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 2,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
