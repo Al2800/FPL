@@ -1,0 +1,83 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-09-17T07:20:33Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "260f84cf9f6a8210508b333a53115193e92802d9becc4e4fcf8d51809feeed79",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 262
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit duplicate Porro/Gomez/Gakpo fingerprints",
+        "Admit Jo\u00e3o Pedro unavailable from Reuters/Mail/Brazil social without catalogue official URL",
+        "Infer Elanga unavailable solely from Leeds XI omission"
+      ],
+      "boundary_id": "no-new-official-availability",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new claim candidates; retain prior tip claims for Gomez/Gakpo/Porro/Udogie/Tonali/Wissa/Bogle/Hall.",
+      "falsifiers": [
+        "Chelsea publish dated team news ruling Jo\u00e3o Pedro out or available before GW5",
+        "NUFC publish dated Elanga injury bulletin",
+        "City publish dated Haaland/Cherki minutes guidance for SUN (H)"
+      ],
+      "rationale": "In-window official leads (LFC cup XI, Spurs Porro/Udogie/Tonali, NUFC Leeds report, Leeds XI, City cup preview pages) either already fingerprint-match prior admissions or lack precise new availability statements. No Chelsea official URL dated in-window confirms Jo\u00e3o Pedro status despite bootstrap d/75%. Elanga has bootstrap i/0% but no NUFC official injury page in discovery.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Force unavailable claim without recovery_condition or official Chelsea source"
+      ],
+      "boundary_id": "joao-pedro-bootstrap-flag",
+      "confidence": 0.7,
+      "conflicting_claim_ids": [],
+      "decision": "Do not ledger-admit Jo\u00e3o Pedro status change; escalate to strategy briefing via bootstrap flag + unregistered media.",
+      "falsifiers": [
+        "Chelsea presser clears him for Brentford (A)",
+        "Bootstrap returns to a/100%"
+      ],
+      "rationale": "Official FPL bootstrap shows status d / 75% chance with unspecified injury. Wire reports of Brazil withdrawal are Lane B citations only under community/unregistered policy.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "9f5531483e0b32f8c00d35e126eeaf87e14986db14927494d6ed861b737faf4e",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "ae6f70bddad25dfcd9f88a31b5f8252a58e06f01bfc0613d1237174a528b450f",
+  "observed_at": "2026-09-17T07:20:33Z",
+  "prior_ledger_sha256": "380b6a6d92e32ed8466ece5ce50577a1777dc9e72f0d9c25b2cc2902f32fb0f6",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "380b6a6d92e32ed8466ece5ce50577a1777dc9e72f0d9c25b2cc2902f32fb0f6",
+  "run_id": "composer-2.5:2026-09-17T072033Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
