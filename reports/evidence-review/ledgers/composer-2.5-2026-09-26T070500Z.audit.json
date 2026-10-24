@@ -1,0 +1,108 @@
+{
+  "accepted_claim_ids": [
+    "model:e186ed872f9421b56b3bd4143c99c754e396d292f21d95cdd14abc3c1a1efa84",
+    "model:f5b2d72693a19fb8953715393d476e195253881202c317c960d50e1a4d7d7650"
+  ],
+  "available_at": "2026-09-26T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:cherki-france-nations-league-start-2026-09-25": "model:e186ed872f9421b56b3bd4143c99c754e396d292f21d95cdd14abc3c1a1efa84",
+    "model:donnarumma-italy-nations-league-start-2026-09-25": "model:f5b2d72693a19fb8953715393d476e195253881202c317c960d50e1a4d7d7650"
+  },
+  "content_sha256": "c82db0af1ea702bb79e39db9161cce86086acbe392614b59e5eb14839f5fad04",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 151
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit Haaland Norway brace (duplicate of model:7a5cbe29\u2026)",
+        "Stretch Semenyo POTM nomination into availability (awards-only; not minutes)",
+        "Invent Chelsea Jo\u00e3o Pedro claim without chelseafc.com timed original"
+      ],
+      "boundary_id": "cherki-ib-minutes",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Cherki available via France Nations League start as primary new claim",
+      "falsifiers": [
+        "City/France report Cherki withdrew injured mid-camp",
+        "Host ephemeral fetch fails domain/hash checks"
+      ],
+      "rationale": "City listing JSON-LD recovered full ISO 2026-09-25T20:55:00Z inside the 72h gate; article states Cherki featured from the start in France's 1-0 win in T\u00fcrkiye. Haaland Norway brace already ledger-admitted yesterday \u2014 do not re-propose. Awards/POTM/padel leads lack availability statements.",
+      "supporting_claim_ids": [
+        "model:e186ed872f9421b56b3bd4143c99c754e396d292f21d95cdd14abc3c1a1efa84"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Ignore Donnarumma because not in advisory 15"
+      ],
+      "boundary_id": "comparator-gk-availability",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Also propose Donnarumma available via Italy start from same City roundup",
+      "falsifiers": [
+        "Page does not actually state Donnarumma started"
+      ],
+      "rationale": "Same official page confirms Donnarumma started for Italy; useful for comparator-arm watchlist even though advisory 15 uses Kinsky/Verbruggen.",
+      "supporting_claim_ids": [
+        "model:f5b2d72693a19fb8953715393d476e195253881202c317c960d50e1a4d7d7650"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "File community 3.5-week ACL/MCL timeline as ledger claim"
+      ],
+      "boundary_id": "pedro-official-gap",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "No Jo\u00e3o Pedro candidate \u2014 Chelsea coverage empty inside gate",
+      "falsifiers": [
+        "Chelsea publish dated Pedro fitness/return original before GW6"
+      ],
+      "rationale": "Web search returned wrong-season Rosenior pages and no timed chelseafc.com original for the knee case; bootstrap d/75% remains briefing signal only.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "15eead3de09c3a08ff598e113193f98be916d280dbbd9823c8575b07796a4a58",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "86a6c66266e6873c847d6fd70d13bf7a05591293ff2e2618fa37483b030bd813",
+      "source_url": "https://www.mancity.com/news/mens/donnarumma-cherki-bouaddi-international-round-up-september-25-63925962"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "7d99fedff100c0a269e0c7840d63e4feb5f6544a83073a1a0f8da0e27550500f",
+  "observed_at": "2026-09-26T07:05:00Z",
+  "prior_ledger_sha256": "61779acc00e492604dc8da0818656b0090b1376719ec848bfaebdc8f6e751889",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "4f1b89f712fc858857816cb0d7ee743c5cc6081828756d70feb75d67a3df640a",
+  "run_id": "composer-2.5:2026-09-26T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 2,
+    "candidate_count": 2,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
