@@ -1,0 +1,112 @@
+{
+  "accepted_claim_ids": [
+    "model:6bd1088c9a3c5283784373ecf0b4c05c69eb33dc6599d4ed114877cb088aab15",
+    "model:607f24932b6d572748ffcbd7f749e530025afb6c99ab7bb554cf83f78e91bb0d",
+    "model:b5865dde63a35552788987606b07861e446a941009379508eafd3d7b3863609e",
+    "model:38dd129faa74ea80e9aaf221603b0856653903bc8ad7f4fbe25f66c035ce683c",
+    "model:0695335fa5188531b44fa234f1082453cb9f8798eb7ebd2b470a59a98f8bad1f"
+  ],
+  "available_at": "2026-10-20T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:cand-frimpong-unavail-20261020": "model:b5865dde63a35552788987606b07861e446a941009379508eafd3d7b3863609e",
+    "model:cand-haaland-doubtful-20261020": "model:6bd1088c9a3c5283784373ecf0b4c05c69eb33dc6599d4ed114877cb088aab15",
+    "model:cand-semenyo-unavail-20261020": "model:607f24932b6d572748ffcbd7f749e530025afb6c99ab7bb554cf83f78e91bb0d",
+    "model:cand-szoboszlai-unavail-20261020": "model:38dd129faa74ea80e9aaf221603b0856653903bc8ad7f4fbe25f66c035ce683c",
+    "model:cand-udogie-unavail-20261020": "model:0695335fa5188531b44fa234f1082453cb9f8798eb7ebd2b470a59a98f8bad1f"
+  },
+  "content_sha256": "e0e1b08559eb6ff72cb34e6cace6ab2731202b3d04f5f18b10536772cedcd2dd",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 668
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Spurs Bergvall/S\u00e1vio already on tip",
+        "Stretch Haaland to available without confirmed AEK start",
+        "Emit Chelsea Martinez without recoverable official fetch",
+        "Chase Brighton Anfield assets as availability claims"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit City Semenyo unavailable (8 weeks) and Haaland doubtful; Spurs Udogie unavailable for Coventry; refresh LFC Frimpong/Szoboszlai unavailable from 19 Oct Iraola briefing.",
+      "falsifiers": [
+        "Host rejects City Semenyo/Haaland fetch",
+        "Host rejects Haaland doubtful as conflicting with unexpired Ipswich started_match available without supersede path",
+        "Udogie page lacks durable ISO for host"
+      ],
+      "rationale": "Post-GW7 Tuesday morning after City AEK presser and LFC Villarreal availability notes. Do not re-emit Spurs Bergvall/S\u00e1vio/Porro/Kulusevski or Brighton Minteh set already on tip 3dc5e28f. Skip Chelsea Martinez (host 500) and Forest (consent wall). Skip Man Utd (403).",
+      "supporting_claim_ids": [
+        "model:607f24932b6d572748ffcbd7f749e530025afb6c99ab7bb554cf83f78e91bb0d",
+        "model:6bd1088c9a3c5283784373ecf0b4c05c69eb33dc6599d4ed114877cb088aab15",
+        "model:0695335fa5188531b44fa234f1082453cb9f8798eb7ebd2b470a59a98f8bad1f",
+        "model:b5865dde63a35552788987606b07861e446a941009379508eafd3d7b3863609e",
+        "model:38dd129faa74ea80e9aaf221603b0856653903bc8ad7f4fbe25f66c035ce683c"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at for undated Villa/Newcastle pages"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty dated official leads for clubs without ISO-dated in-window hits after 2026-10-17T07:05:00Z cutoff.",
+      "falsifiers": [
+        "Later official pages with recoverable ISO timestamps appear"
+      ],
+      "rationale": "All 21 catalogue clubs searched; empty arrays where no eligible ISO-dated official lead cleared the 72h gate. Forest consent wall and Man Utd Cloudflare 403 blocked further claims. Chelsea Martinez article returned HTTP 500 via lab UA.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "c2f36447e51c0e1e28b4a611622aabd085355144c960773b2be1dd9f873c792a",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "b012cf9bf9e2fcebbba8da9fa4e43d71f42f8a8031f5b199db80117026c08866",
+      "source_url": "https://www.liverpoolfc.com/news/injury-news-jeremie-frimpong-dominik-szoboszlai-liverpool-fc"
+    },
+    {
+      "source_hash_sha256": "4436fdadd56c1dde3cd78694019662a7c7a08727eaeb164134ef30af6c12565b",
+      "source_url": "https://www.mancity.com/news/mens/maresca-aek-athen-written-press-conference-63928003"
+    },
+    {
+      "source_hash_sha256": "e87418501c7a8d5e19e28cb5d1781a861434e5d83a1b5b58b62b1859c851a723",
+      "source_url": "https://www.tottenhamhotspur.com/news/1179150/update-destiny-udogie"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "c5282e686e4315ff783ecb8235ca595bc5f076a321cbab4287fc47779f20dd3c",
+  "observed_at": "2026-10-20T07:05:00Z",
+  "prior_ledger_sha256": "3dc5e28f9b2014c8ee2fb774e40618c95b5fd27966564269016cde68a39320ad",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "61c0a1b0fb01a98aeadc8a2e796625a05ba66c8d499e4a961750c5c29b8c623b",
+  "run_id": "composer-2.5:2026-10-20T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
