@@ -1,0 +1,169 @@
+{
+  "accepted_claim_ids": [
+    "model:9e31ceb74e968c8be7daa7bfb011ef87efc7319d14837eff0d42acd6331494ce",
+    "model:5525eeff5ac87554f19b0df4fbeb7bde11bb1d8fbb3fe9640d7433635123c0be",
+    "model:198091246d24044837cbc34c57ac199d469d1184e66106202344b7dce85520bd",
+    "model:8cbd6f6825bd2eed5ba60ab0e7d86b4d5ef79ceca555e1984f26a9d4aec87152",
+    "model:c358ba190f12f0c11e9e7164896f62ddb5a64333a692ebaf7aacc4400ee1e3c1",
+    "model:0ded2318bbf7555b44df860303939eb67dffa87d8877326332a0c193990d2e55"
+  ],
+  "available_at": "2026-08-29T07:08:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:bruno-g-doubtful-pre-villa-2026-08-27": "model:9e31ceb74e968c8be7daa7bfb011ef87efc7319d14837eff0d42acd6331494ce",
+    "model:cherki-gw2-palace-started-2026-08-28": "model:8cbd6f6825bd2eed5ba60ab0e7d86b4d5ef79ceca555e1984f26a9d4aec87152",
+    "model:haaland-gw2-palace-started-2026-08-28": "model:c358ba190f12f0c11e9e7164896f62ddb5a64333a692ebaf7aacc4400ee1e3c1",
+    "model:konsa-available-pre-villa-2026-08-27": "model:5525eeff5ac87554f19b0df4fbeb7bde11bb1d8fbb3fe9640d7433635123c0be",
+    "model:leeds-wilson-available-brentford-2026-08-28": "model:198091246d24044837cbc34c57ac199d469d1184e66106202344b7dce85520bd",
+    "model:semenyo-gw2-palace-started-2026-08-28": "model:0ded2318bbf7555b44df860303939eb67dffa87d8877326332a0c193990d2e55"
+  },
+  "content_sha256": "328e4f0e2ec80003dcc9ceff816b30620bf9f1bc279ffbed933202fd5b541649",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 259
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-using stale GW1 City/Liverpool reports as if fresh"
+      ],
+      "boundary_id": "72h-gate",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Retain timed leads on/after 2026-08-26T07:08:00Z; emit City GW2 + Arsenal Villa + Leeds Brentford cluster",
+      "falsifiers": [
+        "Host clock skew on published_at; BST conversion error on City page times"
+      ],
+      "rationale": "maximum_result_age_hours=72 from observed_at 2026-08-29T07:08:00Z. Palace pre-City (26 Aug 12:26Z), Liverpool Chiesa (27 Aug), Spurs Charlton (27 Aug), Arsenal Villa presser (27 Aug), Leeds Brentford fitness (28 Aug), City Palace match report/reactions (28 Aug evening) pass.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Rely only on bootstrap live points without official URL"
+      ],
+      "boundary_id": "haaland-cherki-gw2",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Haaland and Cherki available via started_match from official City match report",
+      "falsifiers": [
+        "Official report later corrected scorer/XI"
+      ],
+      "rationale": "Match report timestamps goals for both in the 4-1 Selhurst win; strongest official confirmation of GW2 starts/minutes.",
+      "supporting_claim_ids": [
+        "model:c358ba190f12f0c11e9e7164896f62ddb5a64333a692ebaf7aacc4400ee1e3c1",
+        "model:8cbd6f6825bd2eed5ba60ab0e7d86b4d5ef79ceca555e1984f26a9d4aec87152"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Skip Semenyo entirely; invent full XI"
+      ],
+      "boundary_id": "semenyo-feature",
+      "confidence": 0.72,
+      "conflicting_claim_ids": [],
+      "decision": "Emit lower-confidence Semenyo started_match from match-report cross mention",
+      "falsifiers": [
+        "Semenyo was only a substitute / did not feature"
+      ],
+      "rationale": "Report references Semenyo cross in first half but does not print a full numbered XI in recoverable text; confidence reduced vs Haaland/Cherki goal lines.",
+      "supporting_claim_ids": [
+        "model:0ded2318bbf7555b44df860303939eb67dffa87d8877326332a0c193990d2e55"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Stretch Bruno G. to available without recovery_condition certainty"
+      ],
+      "boundary_id": "arsenal-villa-availability",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Konsa available (declared_fit) and Bruno G. doubtful from Arteta pre-Villa update",
+      "falsifiers": [
+        "Monday XI omits Konsa for non-fitness reasons; Bruno starts 90"
+      ],
+      "rationale": "Arteta explicit 'available for selection' for Konsa; Bruno only 'potentially available' with load management \u2014 map to doubtful, not available.",
+      "supporting_claim_ids": [
+        "model:5525eeff5ac87554f19b0df4fbeb7bde11bb1d8fbb3fe9640d7433635123c0be",
+        "model:9e31ceb74e968c8be7daa7bfb011ef87efc7319d14837eff0d42acd6331494ce"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Admit from bootstrap flag alone; scrape unusable Forest pages"
+      ],
+      "boundary_id": "gibbs-white-no-official-url",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Do not emit Gibbs-White claim despite bootstrap a/100 and \u00a37.9m",
+      "falsifiers": [
+        "Forest publish official presser URL confirming status"
+      ],
+      "rationale": "Forest site still yields no hashable Glasner/team-news URL with Gibbs-White status; Lane A requires registered official URL.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Force Wilson sell before Brentford on form alone"
+      ],
+      "boundary_id": "wilson-leeds-available",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Wilson available from Farke 'all players available' Brentford presser",
+      "falsifiers": [
+        "Late Leeds XI omits Wilson"
+      ],
+      "rationale": "Squad-wide availability statement ahead of Sunday home Brentford; relevant to retaining Wilson through remaining GW2.",
+      "supporting_claim_ids": [
+        "model:198091246d24044837cbc34c57ac199d469d1184e66106202344b7dce85520bd"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "edf6e099e2eb89eb8d3efc0de15fed3f957b4ff0ce81dfc414f845e6a0397962",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "77744406dac2610ebced4cd11a9160d03f431161d29bde9d3cf305801d3623b1",
+      "source_url": "https://www.arsenal.com/news/arteta-issues-update-on-bruno-timber-and-saliba-aKfIr6V2lm7B"
+    },
+    {
+      "source_hash_sha256": "d4b9856dc13b386bb78e1be91267b219cbe0362b78a52fa1f0ff023e3f51343c",
+      "source_url": "https://www.leedsunited.com/en/news/daniel-farke-provides-fitness-update-ahead-of-brentford-h"
+    },
+    {
+      "source_hash_sha256": "be82175dad6c7267ae8eccb3883111eee59e7d58cf6033fb0b87160cd8d70ae6",
+      "source_url": "https://www.mancity.com/news/mens/crystal-palace-manchester-city-202627-match-report-63923537"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "17288fde2a9c8af41d40ac2ec7d206a2f144a99f82b67784562ee7d027b79c39",
+  "observed_at": "2026-08-29T07:08:00Z",
+  "prior_ledger_sha256": "b215fa0ba7ae8028743cfb04eeace2d672ee713e288f6d4bb9a2db3726be402a",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "fa45b7ec90858e18682cf0b2b8ced5cae5b54756d7c08c2ff1a2e6bfd60e4573",
+  "run_id": "composer-2.5:2026-08-29T070800Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 6,
+    "decision_trace_linked_count": 4,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
