@@ -1,0 +1,128 @@
+{
+  "accepted_claim_ids": [
+    "model:71d8fb4c378d224f6aed75de96650444346d3242582acccb3a138c877312f17e",
+    "model:be652e281747f9b59148bb8621b9f623c4735cdda4db65c19b803ae0496ab6da",
+    "model:c01121b6b94c35e56387bf8510418c5af8d3cdfbd3e65c95ddfab068990ded6e",
+    "model:04f828e09a2f40a7f2c58dc8be4089b4fa0fb28cb2cba6f0f82889c1a875dc80",
+    "model:1ef1154af2d0f6ead650bfe713d78d562715ab15a5a2cd11fca68351509a1398"
+  ],
+  "available_at": "2026-08-22T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "cand:2026-08-22:saka-declared-fit-prematch": "model:71d8fb4c378d224f6aed75de96650444346d3242582acccb3a138c877312f17e",
+    "cand:2026-08-22:saka-lineup-gw1": "model:04f828e09a2f40a7f2c58dc8be4089b4fa0fb28cb2cba6f0f82889c1a875dc80",
+    "cand:2026-08-22:saka-started-gw1": "model:1ef1154af2d0f6ead650bfe713d78d562715ab15a5a2cd11fca68351509a1398",
+    "cand:2026-08-22:saliba-out-gw1": "model:be652e281747f9b59148bb8621b9f623c4735cdda4db65c19b803ae0496ab6da",
+    "cand:2026-08-22:timber-out-gw1": "model:c01121b6b94c35e56387bf8510418c5af8d3cdfbd3e65c95ddfab068990ded6e"
+  },
+  "content_sha256": "8a3cc9fd6aa20fedb3a7e91674b45880c02539ec5578c728e0f0bfc75b88d20f",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 190
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit CS Haaland/Doku minutes claims already tip-ledgered and now outside 72h",
+        "Invent published_at for Palace Sage or Leeds Farke pages lacking machine-readable times",
+        "Treat Newcastle united.com URL as catalogue-eligible despite nufc.co.uk domain mismatch"
+      ],
+      "boundary_id": "lane-a:2026-08-22:72h-gate",
+      "confidence": 0.93,
+      "conflicting_claim_ids": [],
+      "decision": "Keep Arsenal Arteta (20 Aug) + GW1 match report (21 Aug); exclude CS City pages, Liverpool injury list (11 Aug), and City kick-off TV (17 Aug) as stale.",
+      "falsifiers": [
+        "Host age window differs from observed_at-72h",
+        "Fresher official City/Spurs XI pages with ISO timestamps appear before GW2 deadline"
+      ],
+      "rationale": "observed_at 2026-08-22T07:05:00Z implies cutoff 2026-08-19T07:05:00Z. Arsenal Arteta 14:56Z on 20 Aug and Arsenal report 20:57Z on 21 Aug sit inside the window. CS Maresca reaction (16 Aug) and Liverpool injury index (11 Aug) do not.",
+      "supporting_claim_ids": [
+        "model:1ef1154af2d0f6ead650bfe713d78d562715ab15a5a2cd11fca68351509a1398",
+        "model:c01121b6b94c35e56387bf8510418c5af8d3cdfbd3e65c95ddfab068990ded6e",
+        "model:be652e281747f9b59148bb8621b9f623c4735cdda4db65c19b803ae0496ab6da"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Emit Newcastle Livramento/Joelinton unavailable from newcastleunited.com",
+        "Emit Haaland minutes claims without a fresh City GW1 presser page",
+        "Stretch Palace/Leeds presser snippets into claims without published_at"
+      ],
+      "boundary_id": "lane-a:2026-08-22:claim-emission",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Arsenal Saka available/lineup plus Timber/Saliba unavailable candidates; do not emit Newcastle Livramento/Joelinton claims on domain-mismatched URL.",
+      "falsifiers": [
+        "Host rejects Arsenal report as insufficient for started_match",
+        "Host admits a Spurs/City GW1 XI claim that changes Kinsky/Haaland status"
+      ],
+      "rationale": "Arsenal.com pages hash under Lab UA and state precise statuses. Newcastle content is on newcastleunited.com while catalogue official_domain is nufc.co.uk, matching prior host rejects. PL.com remains 403 to Lab UA so injuries index stays metadata-only if any.",
+      "supporting_claim_ids": [
+        "model:1ef1154af2d0f6ead650bfe713d78d562715ab15a5a2cd11fca68351509a1398",
+        "model:04f828e09a2f40a7f2c58dc8be4089b4fa0fb28cb2cba6f0f82889c1a875dc80",
+        "model:71d8fb4c378d224f6aed75de96650444346d3242582acccb3a138c877312f17e",
+        "model:c01121b6b94c35e56387bf8510418c5af8d3cdfbd3e65c95ddfab068990ded6e",
+        "model:be652e281747f9b59148bb8621b9f623c4735cdda4db65c19b803ae0496ab6da"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Narrow watchlist to advisory 15 only",
+        "Omit injured bootstrap flags not in comparator arms"
+      ],
+      "boundary_id": "lane-a:2026-08-22:watchlist-contract",
+      "confidence": 0.95,
+      "conflicting_claim_ids": [],
+      "decision": "Bind watchlist of 190 UIDs covering advisory 15, comparator arms, bootstrap flags, and high-ownership/EP names.",
+      "falsifiers": [
+        "Bootstrap identity resolution fails for a declared UID"
+      ],
+      "rationale": "Host rejects claims outside the declared watchlist. Post-deadline GW1 pressers and match reports may name injured or returning players absent from the Haaland-in 15.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "953388d9fdbe3f0280baffd447770c210d278dea25afed351fcc057809759b11",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "9aa8f06cb0a9dec313dadaab80571e04c143170e665e42132622a5ac43c52b76",
+      "source_url": "https://www.arsenal.com/news/artetas-update-on-rice-saka-and-guimaraes-aynNJ9I4lir5"
+    },
+    {
+      "source_hash_sha256": "8cde4a4983b75ca13629a787fb6132b2ebcdb42494e31d3f05c89c001cc81a54",
+      "source_url": "https://www.arsenal.com/news/report-arsenal-3-0-coventry-city-an2Fq8x1O9cq"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "d59ff6a2a0128f038f5435f10da9ec5a9b40cb8763bd023003ef1e689d94e238",
+  "observed_at": "2026-08-22T07:05:00Z",
+  "prior_ledger_sha256": "2039d04cd7859a174555bffcb8ee9eb81e7b78a1289db4d55ddf9d80ac50d521",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "7724cc672dc486810192dd368fa1f0baa162e4d530b9c7b8918672d470a8754a",
+  "run_id": "composer-2.5:2026-08-22T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 3,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
