@@ -1,0 +1,102 @@
+{
+  "accepted_claim_ids": [
+    "model:222421b3a48095176879ab219a66ed31abb9401c3bb4329aff28c7090aa78a68",
+    "model:1c701b3a81dff647f4ab42a2c8375ba08e7132307cda0ebc3eb78e39e143c609",
+    "model:f9aedde59562bbba21d957f3a8c21dd26c3e62eefba4b158db9f51076dab25c3"
+  ],
+  "available_at": "2026-09-22T07:09:51Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate:kinsky-started-villa-2026-09-19": "model:222421b3a48095176879ab219a66ed31abb9401c3bb4329aff28c7090aa78a68",
+    "candidate:porro-hamstring-villa-2026-09-19": "model:f9aedde59562bbba21d957f3a8c21dd26c3e62eefba4b158db9f51076dab25c3",
+    "candidate:vanhecke-started-villa-2026-09-19": "model:1c701b3a81dff647f4ab42a2c8375ba08e7132307cda0ebc3eb78e39e143c609"
+  },
+  "content_sha256": "f61e1e24ab7d3ed3f08f1c00c38b581baccabf23e630fa4bcb99de8c6359e8cc",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 269
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Force Shaw/Porro upgrade FT during IB",
+        "Chase Porro on availability bounce"
+      ],
+      "boundary_id": "porro-ft-reject",
+      "confidence": 0.88,
+      "conflicting_claim_ids": [],
+      "decision": "Reject Porro as a GW6 FT destination; treat hamstring recurrence as official doubtful signal.",
+      "falsifiers": [
+        "Official Spurs declare Porro fit before GW6 MUN",
+        "MRI clears quick return"
+      ],
+      "rationale": "Official Spurs post-Villa update states Porro was withdrawn after 19 minutes with a suspected hamstring; bootstrap already shows d/75%.",
+      "supporting_claim_ids": [
+        "model:f9aedde59562bbba21d957f3a8c21dd26c3e62eefba4b158db9f51076dab25c3"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Dump Kinsky for premium GK on WC",
+        "Replace Van Hecke solely for Bogle points chase"
+      ],
+      "boundary_id": "spurs-core-hold",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Hold Kinsky and Van Hecke through IB on confirmed Villa starts.",
+      "falsifiers": [
+        "Official Spurs rest both for MUN",
+        "IB injury to either"
+      ],
+      "rationale": "Official Spurs Villa XI named both; supports retaining the Spurs GK/DEF spine into MUN (A).",
+      "supporting_claim_ids": [
+        "model:222421b3a48095176879ab219a66ed31abb9401c3bb4329aff28c7090aa78a68",
+        "model:1c701b3a81dff647f4ab42a2c8375ba08e7132307cda0ebc3eb78e39e143c609"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "4356654d9b1c7c93c8c7ae6120338598265603074deccf1f74ac7f40685002ff",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "99dafd0b52bd46a7ee5a25a2b0209be3a3c77bb32f38be16bcc46cb4ee3580d4",
+      "source_url": "https://www.tottenhamhotspur.com/news/1090959/confirmed-line-ups-spurs-vs-aston-villa"
+    },
+    {
+      "source_hash_sha256": "5da8e5cd35bd6bc2e3a599b69d6a9c3886d0df4fdde817ac0191302e4811b07c",
+      "source_url": "https://www.tottenhamhotspur.com/news/1091097/team-news-robertos-latest-on-pedro-porro"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "9a287643314df57e9e3b10f4118e74586729c0e87dad3c5c4cf92e1505581411",
+  "observed_at": "2026-09-22T07:09:51Z",
+  "prior_ledger_sha256": "21cd01adda6584badf0b24823f2f0f84e670a82bbebb8e74aad60396e2600265",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "1c0620f25f1b900933bd3aea56ca0e7580d5536d14a8d464e56c12fce130acb9",
+  "run_id": "composer-2.5:2026-09-22T070951Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 3,
+    "candidate_count": 3,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 2,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}

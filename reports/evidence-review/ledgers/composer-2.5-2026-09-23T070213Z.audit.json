@@ -1,0 +1,83 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-09-23T07:02:13Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "18fb1fe7d6e9ddd8f36eb3c2d448f5efcbf05150940631f12e091732e7c9c2af",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 187
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit 19 Sep Spurs leads outside the 72h window",
+        "Mint City claims from search snippets without recoverable ISO",
+        "Admit unregistered Jo\u00e3o Pedro severity timelines to the ledger"
+      ],
+      "boundary_id": "lane-a-empty-window",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new availability claims today",
+      "falsifiers": [
+        "chelseafc.com publishes a timed Jo\u00e3o Pedro fitness original",
+        "mancity.com becomes fetchable with ISO timestamps for IB/fitness copy",
+        "A catalogue club posts a fresh dated injury/lineup note inside the 72h window"
+      ],
+      "rationale": "72h gate from 2026-09-20T07:02:13Z excludes 19 Sep Spurs Porro/Kinsky/Van Hecke originals already on tip ledger. Manchester City and several other official domains returned 403 or undated shells, so no fresh ISO-dated official lead could be retained without inventing publication times. Jo\u00e3o Pedro still lacks a chelseafc.com timed original.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Force a duplicate Porro claim from the same 19 Sep URL",
+        "Treat bootstrap flag alone as a fresh ledger event"
+      ],
+      "boundary_id": "porro-ft-stance-hold",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Keep reject-Porro FT stance from tip ledger without a new claim",
+      "falsifiers": [
+        "Spurs publish a clear-fit Porro update before GW6"
+      ],
+      "rationale": "Prior host-admitted doubtful Porro hamstring claim remains the active official signal; bootstrap still d/75%. No newer Spurs original inside today's window updates that status.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "9685edaad8c8d923fe67a7c8fb6610d2ba434c7f0f97012f455ea5ce1856eed3",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "98e722e4100ba1c8d41bbec91493adab2e3d8d6ae4e9a63e81e3d9d99fe5489f",
+  "observed_at": "2026-09-23T07:02:13Z",
+  "prior_ledger_sha256": "1c0620f25f1b900933bd3aea56ca0e7580d5536d14a8d464e56c12fce130acb9",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "1c0620f25f1b900933bd3aea56ca0e7580d5536d14a8d464e56c12fce130acb9",
+  "run_id": "composer-2.5:2026-09-23T070213Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
