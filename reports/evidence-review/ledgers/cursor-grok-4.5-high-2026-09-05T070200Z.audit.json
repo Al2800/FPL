@@ -1,0 +1,196 @@
+{
+  "accepted_claim_ids": [
+    "model:40ddd6c38730885e972ee9cd0d2c5a6ac88b766381d945de5120d61748f57219",
+    "model:109dff4d5424b31013779945e6cca0096fb7e459c9042a8d54719d4f62765153",
+    "model:02fe43fb3d58a2f656e5a7f12c49ee09444e0bb0b18300bbb9d41e500e001439",
+    "model:310952ac7d9a68bd0292c0123d7b4ca4bb0e96d22254f8d8608198668145f5a6",
+    "model:c919bf4ec170f768af57d439a295f4dfa1ef1bc2c5192f55ee196b76c8c2c936",
+    "model:814d2361d47bc29c8487c70f650ac22f23836d394fd72e9177a2c42f371bad0d",
+    "model:f3e34640cb547777d65827e07c5e2282fb65ae9ca50daea2025bcaf425dc1fbb",
+    "model:4512bf9334bca97ae6c17625e1932e46f340c665099b331144894f32bd45a38c",
+    "model:78c45154604d98412a258854a05763618e122402c346dcda3dc3bef0451157c4",
+    "model:2a1fae401a78e5bb396c20dd0ae5201bb32dd0041371a124368c3d584345d273",
+    "model:452e059e273610f724e66c7da1c62876dcd324f0116adbecfbdbaeebbfa6bc01",
+    "model:a0fb28c2286762f1b588198d064474b6d48c599b150e7fca48c826780d2274b6",
+    "model:8cd488201e6c1f007840c936f55dfb8cdaa334da821cb1e346bd71faee639a9c",
+    "model:88d8ed6319cc119446d2b2499e3604424b942f19f377f3870ce6a44980777ccc",
+    "model:c130ac63a1071cd80827dbe7aa95130359d134364698a49ff90f8c696c0c1d4e"
+  ],
+  "available_at": "2026-09-05T07:02:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-2026-09-05-andres-available-leeds": "model:02fe43fb3d58a2f656e5a7f12c49ee09444e0bb0b18300bbb9d41e500e001439",
+    "candidate-2026-09-05-azeez-unavailable-leeds": "model:310952ac7d9a68bd0292c0123d7b4ca4bb0e96d22254f8d8608198668145f5a6",
+    "candidate-2026-09-05-barcola-started-ipswich": "model:c130ac63a1071cd80827dbe7aa95130359d134364698a49ff90f8c696c0c1d4e",
+    "candidate-2026-09-05-bruno-g-doubtful": "model:4512bf9334bca97ae6c17625e1932e46f340c665099b331144894f32bd45a38c",
+    "candidate-2026-09-05-konsa-available-chelsea": "model:78c45154604d98412a258854a05763618e122402c346dcda3dc3bef0451157c4",
+    "candidate-2026-09-05-maddison-unavailable-forest": "model:a0fb28c2286762f1b588198d064474b6d48c599b150e7fca48c826780d2274b6",
+    "candidate-2026-09-05-mateta-unavailable-fulham": "model:40ddd6c38730885e972ee9cd0d2c5a6ac88b766381d945de5120d61748f57219",
+    "candidate-2026-09-05-mitoma-unavailable": "model:c919bf4ec170f768af57d439a295f4dfa1ef1bc2c5192f55ee196b76c8c2c936",
+    "candidate-2026-09-05-mosquera-doubtful": "model:f3e34640cb547777d65827e07c5e2282fb65ae9ca50daea2025bcaf425dc1fbb",
+    "candidate-2026-09-05-mudryk-available-partial": "model:88d8ed6319cc119446d2b2499e3604424b942f19f377f3870ce6a44980777ccc",
+    "candidate-2026-09-05-saliba-unavailable": "model:2a1fae401a78e5bb396c20dd0ae5201bb32dd0041371a124368c3d584345d273",
+    "candidate-2026-09-05-sarr-unavailable-fulham": "model:109dff4d5424b31013779945e6cca0096fb7e459c9042a8d54719d4f62765153",
+    "candidate-2026-09-05-savio-available-forest": "model:8cd488201e6c1f007840c936f55dfb8cdaa334da821cb1e346bd71faee639a9c",
+    "candidate-2026-09-05-timber-doubtful-chelsea": "model:452e059e273610f724e66c7da1c62876dcd324f0116adbecfbdbaeebbfa6bc01",
+    "candidate-2026-09-05-wieffer-unavailable": "model:814d2361d47bc29c8487c70f650ac22f23836d394fd72e9177a2c42f371bad0d"
+  },
+  "content_sha256": "df508f1226b405423407e2028b0a986cb2c85aa61042949831a2b6ce82b02ef5",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 264
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit City Doku-only-unavailable claim from untrusted search synthesis without page text",
+        "Re-emit Liverpool 3 Sep injury cluster already on tip ledger without new evidence",
+        "Emit Man Utd Everton team-news claims despite manutd.com 403"
+      ],
+      "boundary_id": "72h-gate",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Liverpool post-Ipswich Barcola debut, Arsenal pre-Chelsea cluster, Brighton Leeds preview, Spurs Forest team news, and Palace Fulham Sage page; keep City Maresca/Dias Coventry pages as metadata-only (no hashable Doku/Haaland/Cherki minutes text on embargo preview).",
+      "falsifiers": [
+        "Host published_at recovery rejects a lead",
+        "City team-news page with Doku/Haaland text appears before kick-off"
+      ],
+      "rationale": "maximum_result_age_hours=72 from 2026-09-05T07:02:00Z implies cutoff 2026-09-02T07:02:00Z. Fresh claim-safe pages are Liverpool 4 Sep reaction, Arsenal 4 Sep presser, Brighton 4 Sep preview, Spurs 4 Sep team news, Palace 3 Sep Sage page, plus prior Leeds/Liverpool 3 Sep materials still inside the window. City embargo preview HTML recovered no Doku/Haaland/Cherki availability sentences for a claim.",
+      "supporting_claim_ids": [
+        "model:c130ac63a1071cd80827dbe7aa95130359d134364698a49ff90f8c696c0c1d4e",
+        "model:a0fb28c2286762f1b588198d064474b6d48c599b150e7fca48c826780d2274b6",
+        "model:8cd488201e6c1f007840c936f55dfb8cdaa334da821cb1e346bd71faee639a9c",
+        "model:88d8ed6319cc119446d2b2499e3604424b942f19f377f3870ce6a44980777ccc",
+        "model:78c45154604d98412a258854a05763618e122402c346dcda3dc3bef0451157c4",
+        "model:452e059e273610f724e66c7da1c62876dcd324f0116adbecfbdbaeebbfa6bc01",
+        "model:2a1fae401a78e5bb396c20dd0ae5201bb32dd0041371a124368c3d584345d273",
+        "model:4512bf9334bca97ae6c17625e1932e46f340c665099b331144894f32bd45a38c",
+        "model:f3e34640cb547777d65827e07c5e2282fb65ae9ca50daea2025bcaf425dc1fbb",
+        "model:310952ac7d9a68bd0292c0123d7b4ca4bb0e96d22254f8d8608198668145f5a6",
+        "model:814d2361d47bc29c8487c70f650ac22f23836d394fd72e9177a2c42f371bad0d",
+        "model:c919bf4ec170f768af57d439a295f4dfa1ef1bc2c5192f55ee196b76c8c2c936",
+        "model:02fe43fb3d58a2f656e5a7f12c49ee09444e0bb0b18300bbb9d41e500e001439",
+        "model:109dff4d5424b31013779945e6cca0096fb7e459c9042a8d54719d4f62765153",
+        "model:40ddd6c38730885e972ee9cd0d2c5a6ac88b766381d945de5120d61748f57219"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Claim Barcola started XI",
+        "Force Barcola into advisory 15 today"
+      ],
+      "boundary_id": "barcola-debut-minutes",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Upgrade Barcola to available with recovery_condition started_match after Ipswich substitute debut.",
+      "falsifiers": [
+        "Minutes total revised to zero",
+        "Manager later says debut was an emergency only"
+      ],
+      "rationale": "Official post-match presser states Barcola debuted as a second-half substitute (~30 minutes) and will have more chances; this is stronger than the prior declared_fit availability claim.",
+      "supporting_claim_ids": [
+        "model:c130ac63a1071cd80827dbe7aa95130359d134364698a49ff90f8c696c0c1d4e"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent Doku unavailable claim from search-snippet synthesis",
+        "Emit Cherki start claim without XI"
+      ],
+      "boundary_id": "city-presser-gap",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "No City Haaland/Cherki/Doku availability claims from the 4 Sep embargo preview page.",
+      "falsifiers": [
+        "Hashable City team-news transcript naming Doku/Haaland/Cherki appears"
+      ],
+      "rationale": "Fetched mancity.com embargo preview recovers no injury/availability sentences for Doku, Haaland or Cherki. Bootstrap still flags Doku as i / Expected back 5 Sep, but that is bootstrap tier, not a new official claim.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Mark Timber available with returned_to_training despite no Sunday clearance",
+        "Ignore Konsa availability for cheap DEF watchlist"
+      ],
+      "boundary_id": "arsenal-def-minutes",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Admit Konsa available; Timber/Mosquera/Bruno G. doubtful; Saliba unavailable ahead of Chelsea.",
+      "falsifiers": [
+        "Official XI starts Timber/Bruno G. despite doubtful flags"
+      ],
+      "rationale": "Arteta explicitly says Konsa is available in the squad, Timber decision waits on Saturday training, Bruno G. is being assessed after a knock, Mosquera is precautionary, and Saliba remains in a multi-week healing process.",
+      "supporting_claim_ids": [
+        "model:78c45154604d98412a258854a05763618e122402c346dcda3dc3bef0451157c4",
+        "model:452e059e273610f724e66c7da1c62876dcd324f0116adbecfbdbaeebbfa6bc01",
+        "model:2a1fae401a78e5bb396c20dd0ae5201bb32dd0041371a124368c3d584345d273",
+        "model:4512bf9334bca97ae6c17625e1932e46f340c665099b331144894f32bd45a38c",
+        "model:f3e34640cb547777d65827e07c5e2282fb65ae9ca50daea2025bcaf425dc1fbb"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "6bdef4dee4e82b58c9c99361018cb3390f07fa0d1dc02f3d2e67d7f6e4ac427f",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "64ad62456e4d14bc5ddf87fb68893663586236b4087e26e5c18bdbf910a8c0c9",
+      "source_url": "https://www.arsenal.com/news/arteta-delivers-update-on-timber-mosquera-and-saliba-aJhiV6J1zaCz"
+    },
+    {
+      "source_hash_sha256": "d01119fe71bf37644a707888b625bdc72afcc4143c0644bb8aa52bc295aeb6c6",
+      "source_url": "https://www.arsenal.com/news/every-word-from-artetas-pre-chelsea-presser-avVsQ4u1mzAa"
+    },
+    {
+      "source_hash_sha256": "8d8da858575c3bab946afa83ca8644cb9608c004662095729b7a35e03c98d50e",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/mft-match-preview-bha-leeds-united-pl-september-2026"
+    },
+    {
+      "source_hash_sha256": "28cee5df636d663f203378c0650041256638ce02aad9de42e03bdbb097d4263e",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-sage-updates-ahead-of-fulham/"
+    },
+    {
+      "source_hash_sha256": "68271c54d454fd6e55fa466fc0a6d38d0e20c9165dbec53e4cc1411970545a15",
+      "source_url": "https://www.liverpoolfc.com/news/andoni-iraola-press-conference-ipswich-0-2-liverpool-isak-gakpo-barcola-debut-and-more"
+    },
+    {
+      "source_hash_sha256": "d4a4110574ceb2b2c659181c02e6818aeb59bba42b56ee5adf2a783e1bed141c",
+      "source_url": "https://www.tottenhamhotspur.com/news/1088415/team-news-maddison-out-savio-available-for-forest-clash"
+    },
+    {
+      "source_hash_sha256": "8475714f525dbd559e349c6c07fb91eddabbf7cc6536f03e051d437d99daaa16",
+      "source_url": "https://www.tottenhamhotspur.com/news/1088421/team-news-roberto-on-mudryk-hes-ready-to-play-part-of-the-game"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "d1ed9146779d9c6b00dd837b229750fd22acb3f2583b9f3f8e22545590a53f6d",
+  "observed_at": "2026-09-05T07:02:00Z",
+  "prior_ledger_sha256": "e4d8c6d27945fdb31e5cca8e39d95a1c351f6f10cdf5fb52e93f3c8cdefcd7a7",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "47bc8d8f9c6c44113712988ee9934a6a75d83b7941b4155d6f9812c9f9c77cef",
+  "run_id": "cursor-grok-4.5-high:2026-09-05T070200Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 15,
+    "candidate_count": 15,
+    "decision_trace_count": 4,
+    "decision_trace_linked_count": 3,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
