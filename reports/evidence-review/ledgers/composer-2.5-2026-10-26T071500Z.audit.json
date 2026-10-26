@@ -1,0 +1,130 @@
+{
+  "accepted_claim_ids": [
+    "model:3671a2cc0c24ace12ee19bf67602b2c279796dbbce0d38522c6b7dc5525ae9ff",
+    "model:ae639e3d9abb8a366ebbed277d81091a5e2f635720b8d1e207208ab42710b0b7",
+    "model:da1219881eaa1d4c33710daa5094e3fa9c95e53dc4fa2c91ff1e6d91370291b3",
+    "model:bd942aeaa15de07afa6cda01d3533a42d0dd80ad97ac55d8a680eba812e9583e",
+    "model:14787e50d81360af4eb623c4bc854af78e334b78cc41ea89254b2aacec4a0980",
+    "model:6b7532ac09493c1ed16bfe3ac17a6680c3f86443d6d6433095f699db46124340",
+    "model:68ceb5289b779b2c120020527cf0e49eeb20d206f538a83f9ff892b49ee6bba8",
+    "model:cafd6c2c98ba6bb880cc66c41824b0e3886d8299a12ada31e18df83e39aa9690"
+  ],
+  "available_at": "2026-10-26T07:15:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-barcola-available-started-brighton-2026-10-26": "model:da1219881eaa1d4c33710daa5094e3fa9c95e53dc4fa2c91ff1e6d91370291b3",
+    "candidate-cherki-available-started-villa-2026-10-26": "model:3671a2cc0c24ace12ee19bf67602b2c279796dbbce0d38522c6b7dc5525ae9ff",
+    "candidate-haaland-available-started-villa-2026-10-26": "model:ae639e3d9abb8a366ebbed277d81091a5e2f635720b8d1e207208ab42710b0b7",
+    "candidate-isak-available-started-brighton-2026-10-26": "model:bd942aeaa15de07afa6cda01d3533a42d0dd80ad97ac55d8a680eba812e9583e",
+    "candidate-maddison-doubtful-post-chelsea-2026-10-26": "model:68ceb5289b779b2c120020527cf0e49eeb20d206f538a83f9ff892b49ee6bba8",
+    "candidate-munoz-unavailable-missed-brighton-2026-10-26": "model:14787e50d81360af4eb623c4bc854af78e334b78cc41ea89254b2aacec4a0980",
+    "candidate-schade-available-started-hull-2026-10-26": "model:6b7532ac09493c1ed16bfe3ac17a6680c3f86443d6d6433095f699db46124340",
+    "candidate-wirtz-doubtful-ankle-post-brighton-2026-10-26": "model:cafd6c2c98ba6bb880cc66c41824b0e3886d8299a12ada31e18df83e39aa9690"
+  },
+  "content_sha256": "ce0f14b84cd74a6768122d02616bb28b4edc38a8150c900df7ca98e5535adc83",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 669
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Jo\u00e3o Pedro doubtful ledger candidate without Chelsea discovery ISO",
+        "Mykolenko available from Arsenal XI while bootstrap doubtful",
+        "Porro/Hincapie available retries after prior supersede rejects",
+        "Semenyo refresh without new City original inside window"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Wirtz doubtful, Isak/Barcola/Haaland/Cherki/Schade available started_match, Maddison doubtful, Munoz unavailable; skip Jo\u00e3o Pedro and Mykolenko.",
+      "falsifiers": [
+        "Host rejects Haaland/Isak available for failing to supersede prior tips",
+        "Wirtz ruled out long-term midweek",
+        "Chelsea page ISO recovered admitting Jo\u00e3o Pedro status",
+        "Maddison cleared before GW9 deadline"
+      ],
+      "rationale": "72h cutoff 2026-10-23T07:15:00Z. Post-GW8 Sunday originals: Wirtz ankle assessment; LFC lineup confirms Isak/Barcola starts and Munoz absence; City Villa XI confirms Haaland/Cherki starts superseding knock tips; Brentford XI starts Schade; Spurs post-match flags Maddison medical check. Chelsea Jo\u00e3o Pedro pages still HTTP 500 without discovery ISO. Do not emit Mykolenko available from Arsenal XI while bootstrap flags him doubtful without a same-source recovery supersede path.",
+      "supporting_claim_ids": [
+        "model:cafd6c2c98ba6bb880cc66c41824b0e3886d8299a12ada31e18df83e39aa9690",
+        "model:bd942aeaa15de07afa6cda01d3533a42d0dd80ad97ac55d8a680eba812e9583e",
+        "model:da1219881eaa1d4c33710daa5094e3fa9c95e53dc4fa2c91ff1e6d91370291b3",
+        "model:ae639e3d9abb8a366ebbed277d81091a5e2f635720b8d1e207208ab42710b0b7",
+        "model:3671a2cc0c24ace12ee19bf67602b2c279796dbbce0d38522c6b7dc5525ae9ff",
+        "model:6b7532ac09493c1ed16bfe3ac17a6680c3f86443d6d6433095f699db46124340",
+        "model:68ceb5289b779b2c120020527cf0e49eeb20d206f538a83f9ff892b49ee6bba8",
+        "model:14787e50d81360af4eb623c4bc854af78e334b78cc41ea89254b2aacec4a0980"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at from relative search snippets"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty ISO leads for 14/21 clubs after 72h gate; Chelsea empty due to 500/no ISO.",
+      "falsifiers": [
+        "Later official pages with recoverable ISO appear before GW9 deadline"
+      ],
+      "rationale": "All 21 catalogue clubs searched. 17 leads retained across 7 clubs with verified timestamps. Man Utd Cloudflare; Forest consent wall; Villa/Brighton/PL/Newcastle/Ipswich lacked usable ISO inside window.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "84a64447cde5edf2738bb6509c8bc49ff2a881686dc78c73501901023972a3d3",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "791bf1af82c0606b190bb779878ef3b04af16d67dc1c6c343606e30b9c5ae31c",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-news-confirmed-hull-city-v-brentford-premier-league"
+    },
+    {
+      "source_hash_sha256": "99986745c8a40f5b62becfe9f5f71b388e1b3e0843b1960d8caf943918b76cc3",
+      "source_url": "https://www.liverpoolfc.com/news/florian-wirtz-injury-update-liverpool-brighton"
+    },
+    {
+      "source_hash_sha256": "4a6b5e67707b63d713c7b3e06a751df9857b1804cc56bd1ef16d7d927df1efa2",
+      "source_url": "https://www.liverpoolfc.com/news/team-news-confirmed-liverpool-line-up-v-brighton-and-hove-albion"
+    },
+    {
+      "source_hash_sha256": "818e5a2867d2be4be2d1d6859a199562c5045ff1e1b20ec031b56f1b4a05a948",
+      "source_url": "https://www.mancity.com/news/mens/aston-villa-v-city-premier-league-team-news-63928427"
+    },
+    {
+      "source_hash_sha256": "bdd6530a6b94492a7a5461c2e6d17d6d2e85b16127875a96387d37b362def004",
+      "source_url": "https://www.tottenhamhotspur.com/news/1180997/chelsea-0-2-spurs-every-word-of-roberto-de-zerbis-post-match-press-conference"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "205702882157857886307554adf289fabf015506466e8672c45111bc64149d90",
+  "observed_at": "2026-10-26T07:15:00Z",
+  "prior_ledger_sha256": "d9f6b080baf3afd8ed54f54f0b8c7caab5fd2d0c367ee4be951f40a2220b5610",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "6ff5bf9954abae469ed6f361e9f4789c7fdd1666562a0ef4facda67fe1cc08ce",
+  "run_id": "composer-2.5:2026-10-26T071500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 8,
+    "candidate_count": 8,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
