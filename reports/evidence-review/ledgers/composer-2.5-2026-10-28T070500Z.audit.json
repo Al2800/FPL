@@ -1,0 +1,133 @@
+{
+  "accepted_claim_ids": [
+    "model:0954ddee0a60955b5de217db39bf703860d9b6952d681aaa7e07cb3884cb4e48",
+    "model:5f1313f9dc469f0cde9e587857305dfe37a9d2825e60112bcb9569bb37dd5ebb",
+    "model:f80586f9687bf8fedd2a997b8091da376af47429679fce29efce11a6666b3528",
+    "model:581aef8666fc662edf71363cd4e97a4b978cdf7cb04fc2d8d233c2b0e873f8e2",
+    "model:ecae738df51cc8715916d44b7432ac4b1b9d47e72617c86066ba5238755f9214",
+    "model:55c193816923bf6b68c65ece892a7136a0430ebb6f3083bc1a8b84e07c3e58b0",
+    "model:bcd6b364d1c8c3ee56b2f1f10e64877628e001c611391932f203f289222e90fb",
+    "model:c0d5dfe46456b19d5e496b5f4e5abd041b9c1d930c16cf2f032375ad5264d0b6",
+    "model:d1c69f19d28b58be7b170794b685bcd6563c98b33fce7f3f8e76a7999661dd30",
+    "model:d1dbf69d414b03ab661b9cdc3bfe2bfe2243df3cafea80e215056935510c4431",
+    "model:5a8868a45b840d1ae0271764fffcc4a64de3e2483fe6b5f1055383d8fdcbb2cb"
+  ],
+  "available_at": "2026-10-28T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:378b772cea4fbb9b56d89809c5157c1fd9acff8a9783bc7828e80dfc1d1ef223": "model:ecae738df51cc8715916d44b7432ac4b1b9d47e72617c86066ba5238755f9214",
+    "model:462f3b02f88df9bbfe1d4f60a58f2d944c199a176664386b17db9dd57a749e36": "model:d1dbf69d414b03ab661b9cdc3bfe2bfe2243df3cafea80e215056935510c4431",
+    "model:7c7636b6b02fc6ab58c30e607f87cd0f08cc6cc77fcdacf2840bc2b24730f262": "model:55c193816923bf6b68c65ece892a7136a0430ebb6f3083bc1a8b84e07c3e58b0",
+    "model:8d5e7651882993cc6e2102df82fa5c1e5fda3fea7aaa5f04b0146cc1ad36b669": "model:c0d5dfe46456b19d5e496b5f4e5abd041b9c1d930c16cf2f032375ad5264d0b6",
+    "model:a0145e133a4e26c3fb8a8f736bd7cbbd058e681d64369aa16413274c690fb671": "model:bcd6b364d1c8c3ee56b2f1f10e64877628e001c611391932f203f289222e90fb",
+    "model:a9c75a39e8acea0f1ba6e47f9a1044ac23c16040d42c80f30df01ed08d72986c": "model:d1c69f19d28b58be7b170794b685bcd6563c98b33fce7f3f8e76a7999661dd30",
+    "model:b3b64ca0e33668d510c4059a418bf6738d231a52a62ede3b0e5cdab9bdb3c09e": "model:0954ddee0a60955b5de217db39bf703860d9b6952d681aaa7e07cb3884cb4e48",
+    "model:bdd7a72863fef45f67cf1d6c2a9b1d5d3920fe505aabf3561deb9597cbdcf68d": "model:5a8868a45b840d1ae0271764fffcc4a64de3e2483fe6b5f1055383d8fdcbb2cb",
+    "model:cacb9bd00f4f997f966417ca44c6ca6f25822f02df13aaaf334fb5e933174382": "model:5f1313f9dc469f0cde9e587857305dfe37a9d2825e60112bcb9569bb37dd5ebb",
+    "model:f805005fbe563997f02faee3d58f48f3a7d029d614a7c28f2078131532fcb173": "model:f80586f9687bf8fedd2a997b8091da376af47429679fce29efce11a6666b3528",
+    "model:fb7274250087f5a30999ca5c8eb32a4e9d42bb0feb742d704daf8e9da4799919": "model:581aef8666fc662edf71363cd4e97a4b978cdf7cb04fc2d8d233c2b0e873f8e2"
+  },
+  "content_sha256": "12669d06e8c9bf809540680cdd06ff0c4c461a3e4efc23c719fd26f4fa31ab33",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 669
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Stretch Wirtz to available declared_fit before final training assessment",
+        "Emit Haaland unavailable from three days off",
+        "Re-emit Maddison/Saka/Grealish/Mykolenko tips already on parent ledger"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit JP unavailable, Emegha/Damsgaard/Minteh/Wieffer available recoveries, Henry/Szoboszlai unavailable, Kadioglu/Andres/Munoz/Wirtz doubtful; skip Haaland rest and Maddison duplicate",
+      "falsifiers": [
+        "Host rejects Chelsea Emegha/JP page on fetch/ISO",
+        "Midweek clears flip Wirtz or Jo\u00e3o Pedro before GW9 deadline",
+        "Brighton cup XI shows Minteh/Wieffer unused with no further clear"
+      ],
+      "rationale": "72h cutoff 2026-10-25T07:05:00Z. Fresh ISO leads: Chelsea Emegha/JP (15:10Z), Brentford Henry/Damsgaard (13:15Z), Brighton Minteh/Wieffer/Kadioglu/Andres (10:15Z), LFC Wirtz/Munoz/Szoboszlai (12:44Z). City Haaland three days off is rest not injury \u2014 briefing only. Spurs Maddison medical already on tip 3c0820e9 \u2014 do not re-emit. Wirtz stays doubtful despite optimism pending later training.",
+      "supporting_claim_ids": [
+        "model:d1dbf69d414b03ab661b9cdc3bfe2bfe2243df3cafea80e215056935510c4431",
+        "model:5a8868a45b840d1ae0271764fffcc4a64de3e2483fe6b5f1055383d8fdcbb2cb",
+        "model:d1c69f19d28b58be7b170794b685bcd6563c98b33fce7f3f8e76a7999661dd30",
+        "model:c0d5dfe46456b19d5e496b5f4e5abd041b9c1d930c16cf2f032375ad5264d0b6",
+        "model:581aef8666fc662edf71363cd4e97a4b978cdf7cb04fc2d8d233c2b0e873f8e2",
+        "model:0954ddee0a60955b5de217db39bf703860d9b6952d681aaa7e07cb3884cb4e48",
+        "model:f80586f9687bf8fedd2a997b8091da376af47429679fce29efce11a6666b3528",
+        "model:5f1313f9dc469f0cde9e587857305dfe37a9d2825e60112bcb9569bb37dd5ebb",
+        "model:ecae738df51cc8715916d44b7432ac4b1b9d47e72617c86066ba5238755f9214",
+        "model:55c193816923bf6b68c65ece892a7136a0430ebb6f3083bc1a8b84e07c3e58b0",
+        "model:bcd6b364d1c8c3ee56b2f1f10e64877628e001c611391932f203f289222e90fb"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at for undated club pages"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty ISO leads for 15/21 clubs after 72h gate",
+      "falsifiers": [
+        "Later official pages with recoverable ISO appear before GW9 deadline"
+      ],
+      "rationale": "All 21 catalogue clubs searched. 7 leads retained across 6 clubs with verified timestamps. Man Utd Cloudflare; Forest consent wall; Villa/PL/Newcastle/Bournemouth/Fulham/Hull/Coventry/Sunderland/Ipswich/Leeds/Everton/Palace/Arsenal lacked usable in-window availability ISO for new claims today.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "378b29bd02e1404eb7b1c7c7212352fb695f350d04b1de78dd2816b19022f78f",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "0bd3870b2b8bdec206496d9ca40ce82e51b0be90596793f6d6ab359eb9b79929",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-news-sunderland-v-brentford-carabao-cup-rico-henry-injury-mikkel-damsgaard"
+    },
+    {
+      "source_hash_sha256": "7a3ac0a1ccb0d4386d781ff0c153e3c5b0df2feefe67379958167b4664246173",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/team-news-minteh-and-wieffer-in-contention-to-return-against-manchester-city"
+    },
+    {
+      "source_hash_sha256": "58fdc4cafcd6daaa6719f4dc0adcc0b964b066bde6cabf3b8c66fbd8d4f96963",
+      "source_url": "https://www.chelseafc.com/en/news/article/alonso-on-emeghas-special-qualities-and-striker-options"
+    },
+    {
+      "source_hash_sha256": "f8f1b1d25d40ac448c61318ab9a9b110e102d73dff47b07b0cfa4bff35e83335",
+      "source_url": "https://www.liverpoolfc.com/news/fitness-update-florian-wirtz-victor-munoz-dominik-szoboszlai-and-changes-against-chelsea"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "10870bdd29e394bf514d890445955166c4a90d29ed15cac74199819aa035cc77",
+  "observed_at": "2026-10-28T07:05:00Z",
+  "prior_ledger_sha256": "3c0820e9ba4f3bb70914e874f1060c66e5094cc45defb3f799ddf3f2e2c5b2df",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "ee92e3678b488676051b2e53edd4e5c72fa9fad54faf72d025b1308457568b03",
+  "run_id": "composer-2.5:2026-10-28T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 11,
+    "candidate_count": 11,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
