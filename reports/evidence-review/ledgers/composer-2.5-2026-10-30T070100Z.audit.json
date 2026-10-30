@@ -1,0 +1,107 @@
+{
+  "accepted_claim_ids": [
+    "model:39726ea793e48e155b4842354a569e1f0aeadf57e6eae2501598be91faee7395",
+    "model:7b0560edc3ab97a7c9b8eab7172c7c8a6e5521bed6a9decb66324bf04b0103b7",
+    "model:5a9ad1a085012d03c4f305bb41c2aa41607aa0739e01c6475bd2d22fc3c0d46b",
+    "model:12dd7f93cd0efcaa617923cd1f0d5443e892b86960a7742fd1ad4ace46f589f0",
+    "model:36ab7cf2816fd68bb1f997a4d27cf2c9e087c4b69c0418b65a0a5557ba6146b4",
+    "model:061daccdb1159a2762c1d4b1b0818c928d97da9e153d6d741efdc5d139065601",
+    "model:426d6b170f63180fe72b17e6aeb85ba58b9d0728a4c9de4d73166af5fbdb328d",
+    "model:5233a947e4d747b2dcc2485c06572e1652b0299b72e7040c382df6b13adf78e2"
+  ],
+  "available_at": "2026-10-30T07:01:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:09aa5ce7dd80e34d12a43704cd45c1e9132dfa0704c9413988b99814a03405da": "model:426d6b170f63180fe72b17e6aeb85ba58b9d0728a4c9de4d73166af5fbdb328d",
+    "model:7080b41c1aad75540e94b33ff4d9f4eecee77bd4326fdd89a41ef0ab3dd48a5d": "model:7b0560edc3ab97a7c9b8eab7172c7c8a6e5521bed6a9decb66324bf04b0103b7",
+    "model:8771acb7b89a2a8ab5963b2f9b78716ba4e1627369e1ec682bd10d1ca6e26196": "model:5a9ad1a085012d03c4f305bb41c2aa41607aa0739e01c6475bd2d22fc3c0d46b",
+    "model:b419123e9f685ffea489a7274cd038187ff0d90742caaab9a7eb619ffdd5a7e4": "model:39726ea793e48e155b4842354a569e1f0aeadf57e6eae2501598be91faee7395",
+    "model:c857cbee759793b59c35a553f31d1740e654487ba2ad2948a8d27e738c45cd14": "model:12dd7f93cd0efcaa617923cd1f0d5443e892b86960a7742fd1ad4ace46f589f0",
+    "model:d62ff67fcaf3a84e83b59f0087d6fcf38ee51f8d159a5eddf0192c1d1332f716": "model:36ab7cf2816fd68bb1f997a4d27cf2c9e087c4b69c0418b65a0a5557ba6146b4",
+    "model:ef23221468b38144639ad4b775d6b442ed9be011db940d6342dddfc4ac5ee4b9": "model:5233a947e4d747b2dcc2485c06572e1652b0299b72e7040c382df6b13adf78e2",
+    "model:fdb9eccfa60357c8802c540eb8584138b96e5730b42d30c89c7b062542a6966b": "model:061daccdb1159a2762c1d4b1b0818c928d97da9e153d6d741efdc5d139065601"
+  },
+  "content_sha256": "49049f306d811a707cc86c9f86237800ad4069fe650c8e8286f0818944ec1dda",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 260
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit Wirtz available from cup substitute appearance",
+        "Re-emit Chelsea Jo\u00e3o Pedro unavailable from 500-prone preview",
+        "Re-emit Minteh/Wieffer/Henry/Damsgaard/Emegha identical statuses",
+        "Emit Haaland unavailable from cup rest/rotation"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Palace Sarr unavailable + Mateta available + Henderson started_match + Strand Larsen/Timber doubtful; Everton Branthwaite/Grealish unavailable; Leeds Calvert-Lewin available; skip Wirtz available and Chelsea JP reinforce",
+      "falsifiers": [
+        "Host rejects Palace or Everton fetch",
+        "Sage later names Sarr in Tottenham XI",
+        "Farke omits Calvert-Lewin after declaring fully available"
+      ],
+      "rationale": "72h cutoff 2026-10-27T07:01:00Z. Fresh Palace Sage (13:41Z) upgrades Sarr to not able to play, clears Mateta for Tottenham, confirms Henderson cup start, keeps Strand Larsen/Timber minutes uncertain. Everton confirmed cup XI (18:30Z) keeps Branthwaite concussion and Grealish discipline out. Leeds Farke (13:30Z) declares Calvert-Lewin fully available after normal training. Skip Wirtz available again: cup appearance was a 58' substitute and prior host reject cited recovery supersede. Skip Chelsea JP reinforce: chelseafc.com still HTTP 500; prior unavailable tip model:d1dbf69d\u2026 stands. Skip duplicate Minteh/Wieffer/Henry/Damsgaard/Emegha statuses already on tip 4f9641be\u2026.",
+      "supporting_claim_ids": [
+        "model:061daccdb1159a2762c1d4b1b0818c928d97da9e153d6d741efdc5d139065601",
+        "model:7b0560edc3ab97a7c9b8eab7172c7c8a6e5521bed6a9decb66324bf04b0103b7",
+        "model:12dd7f93cd0efcaa617923cd1f0d5443e892b86960a7742fd1ad4ace46f589f0",
+        "model:5a9ad1a085012d03c4f305bb41c2aa41607aa0739e01c6475bd2d22fc3c0d46b",
+        "model:36ab7cf2816fd68bb1f997a4d27cf2c9e087c4b69c0418b65a0a5557ba6146b4",
+        "model:426d6b170f63180fe72b17e6aeb85ba58b9d0728a4c9de4d73166af5fbdb328d",
+        "model:5233a947e4d747b2dcc2485c06572e1652b0299b72e7040c382df6b13adf78e2",
+        "model:39726ea793e48e155b4842354a569e1f0aeadf57e6eae2501598be91faee7395"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "dd20357d4e1c5a1365e2abcfb940a01d6dfce3145c2566b0656be75c3f59f1a1",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "d0f1fd805b8696b54803467201d64d699b03b67b2a4052d852cfd54ced4a8c45",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-updates-on-mateta-sarr-strand-larsen-timber/"
+    },
+    {
+      "source_hash_sha256": "a665e8e5f2b4431e57b25c4dc6b4aec3428b27c53f8db932dd9bdde8139edf7e",
+      "source_url": "https://www.evertonfc.com/news/2026/october/29/everton-team-news-confirmed-for-newcastle-cup-clash/"
+    },
+    {
+      "source_hash_sha256": "14c416e24a04eae580fb93ad16c69bcc965c5ff7e90c5cd3de703d3507a78170",
+      "source_url": "https://www.leedsunited.com/en/news/daniel-farke-shares-latest-news-on-nico-elvedi-dominic-calvert-lewin-and-joe-rodon"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "36c5f2f6686aee6358b11e77960e00c01b503e6897391f92a315bab685aa2faf",
+  "observed_at": "2026-10-30T07:01:00Z",
+  "prior_ledger_sha256": "4f9641be201bef99fefddb69d19319229008ed11e3d28d4a505833fa39655519",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "7c7b72c7597b1970dfa60c7fb9bbf2b2c9b79eb30ba69ddb09b9180beb0dcfbb",
+  "run_id": "composer-2.5:2026-10-30T070100Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 8,
+    "candidate_count": 8,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
