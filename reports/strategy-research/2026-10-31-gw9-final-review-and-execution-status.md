@@ -7,7 +7,7 @@
 User authorises relevant changes for entries 8522487 and 7337262 by 09:00 UK. Official GW9 deadline: **2026-10-31T11:00:00Z**, confirmed in fresh bootstrap. This report is a manual execution handoff, not evidence of execution. The previous daily task's read-only scope does not revoke this separate authorisation.
 
 - Public capture observed_at: 2026-10-31T07:40:02Z.
-- News/repository review observed_at: approximately 07:39–07:50Z.
+- News/repository review observed_at: approximately 07:39–07:44Z.
 - effective_at: GW9 deadline, conditional on actual submission.
 - finalised_at: null for account changes; none observed.
 - Manager state: **degraded for both accounts**.
