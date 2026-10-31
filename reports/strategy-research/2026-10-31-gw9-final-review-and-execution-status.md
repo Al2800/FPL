@@ -1,6 +1,10 @@
 # GW9 final review and execution status — 31 October 2026
 
-## Outcome and authority
+## Execution update — 09:29 GMT
+
+**Both accounts are now completed and verified after reload.** See [the authoritative execution record](2026-10-31-gw9-execution.md). Entry 7337262: João Pedro to Jackson; Palmer C, Evanilson VC; £1.5m bank. Entry 8522487: João Pedro to Evanilson and Xhaka to Tavernier; Haaland C, Evanilson VC; £0.4m bank. All moves zero-hit, no chips, full XI/bench saved. The requested 09:00 target was missed; execution was completed before 11:00. The original review below is retained as point-in-time history; its blocked/degraded statements no longer describe current execution status.
+
+## Original 07:40 outcome and authority
 
 **Neither account changed in this review. Execution blocked by sign-in.** At approximately 07:39 UTC, the canonical FPL My Team page displayed Log in / Register, with no authenticated account identity or squad. No transfer, captain, bench, XI or chip submission occurred. No saved result can be claimed.
 
