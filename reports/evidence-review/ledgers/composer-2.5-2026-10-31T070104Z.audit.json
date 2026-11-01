@@ -1,0 +1,147 @@
+{
+  "accepted_claim_ids": [
+    "model:ada5743aa74900d6dfd19f0754e0eee47abffb545b1f48c673757e4880796096",
+    "model:e67b74ec0e5120081067f4422d497e2858ec2ff09d5e8ae2b537855ec093ad8a",
+    "model:e7d226e32a01d677cde07c8a7ffdbe5abd90613690f5cd0b5a35c07ff9337360",
+    "model:1f9febf6405cc5e3e63b4257458e2b00553cd3326696020f5af1d84aa0788489",
+    "model:a4e10b929a65c7c98dcde4bdf3fc179d59edd0d276a85cb4d492d1ea3218d744",
+    "model:a43a9ebaca7940af9cffc572dff3d379ea669428e271f70c0a5191674c0f7ac6",
+    "model:59f7221d621033479eb15ffd0776edc5943e4158d92d539208c269615c87df65"
+  ],
+  "available_at": "2026-10-31T07:01:04Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-bergvall-unavailable-2026-10-30": "model:a43a9ebaca7940af9cffc572dff3d379ea669428e271f70c0a5191674c0f7ac6",
+    "candidate-branthwaite-available-2026-10-30": "model:c50d4baa3447dc5ff294fe9215da01f6dc7359cc8d34ace3202b79f88fcb005f",
+    "candidate-goretzka-available-2026-10-30": "model:e7d226e32a01d677cde07c8a7ffdbe5abd90613690f5cd0b5a35c07ff9337360",
+    "candidate-maddison-available-2026-10-30": "model:c55047dc9a65dec3b8ba3769e0f7abea03d1c22870c0711efd33bcafc145bf90",
+    "candidate-madueke-doubtful-2026-10-30": "model:ada5743aa74900d6dfd19f0754e0eee47abffb545b1f48c673757e4880796096",
+    "candidate-munoz-doubtful-2026-10-30": "model:1f9febf6405cc5e3e63b4257458e2b00553cd3326696020f5af1d84aa0788489",
+    "candidate-saka-unavailable-2026-10-30": "model:e67b74ec0e5120081067f4422d497e2858ec2ff09d5e8ae2b537855ec093ad8a",
+    "candidate-savio-unavailable-2026-10-30": "model:59f7221d621033479eb15ffd0776edc5943e4158d92d539208c269615c87df65",
+    "candidate-szoboszlai-doubtful-2026-10-30": "model:a4e10b929a65c7c98dcde4bdf3fc179d59edd0d276a85cb4d492d1ea3218d744"
+  },
+  "content_sha256": "37596ffb9b2394b5200b97024a90cd14cd7eb9a04501516dc2e752ec839a98c1",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 139
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Palace Sarr/Mateta/Henderson/Strand Larsen/Timber already on tip",
+        "Emit Saka available from scan-improving comments",
+        "Emit Wirtz available from prior cup substitute",
+        "Emit Jo\u00e3o Pedro reinforce without reachable Chelsea page"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [
+        "model:426d6b170f63180fe72b17e6aeb85ba58b9d0728a4c9de4d73166af5fbdb328d"
+      ],
+      "decision": "Emit Branthwaite available supersede; Maddison available; Bergvall/S\u00e1vio unavailable; Szoboszlai/Munoz/Madueke doubtful; Saka unavailable; Goretzka started_match available; skip Palace/DCL/Minteh duplicates and Chelsea JP 500",
+      "falsifiers": [
+        "Branthwaite omitted from Newcastle PL XI after declared expected available",
+        "Maddison omitted despite available quote",
+        "Host rejects Everton/Spurs/LFC/Arsenal/Villa fetches"
+      ],
+      "rationale": "72h cutoff 2026-10-28T07:01:04Z. Fresh Everton Moyes (13:21Z) clears Branthwaite concussion for Monday PL. Spurs De Zerbi (14:38Z/16:23Z) clears Maddison, keeps Bergvall and S\u00e1vio out. Iraola (15:06Z) only gives Munoz/Szoboszlai a chance \u2014 doubtful not available. Arteta (14:32Z) improves Saka outlook but does not name him for Anfield; Madueke pending Saturday session. Emery (14:40Z) confirms Goretzka cup start. Skip re-emitting Palace Sage/DCL/Minteh already on tip 7c7b72c7\u2026. Skip Wirtz available (prior sub insufficient). Skip Chelsea JP reinforce (HTTP 500). Skip Man Utd (403).",
+      "supporting_claim_ids": [
+        "model:c50d4baa3447dc5ff294fe9215da01f6dc7359cc8d34ace3202b79f88fcb005f",
+        "model:c55047dc9a65dec3b8ba3769e0f7abea03d1c22870c0711efd33bcafc145bf90",
+        "model:a43a9ebaca7940af9cffc572dff3d379ea669428e271f70c0a5191674c0f7ac6",
+        "model:59f7221d621033479eb15ffd0776edc5943e4158d92d539208c269615c87df65",
+        "model:a4e10b929a65c7c98dcde4bdf3fc179d59edd0d276a85cb4d492d1ea3218d744",
+        "model:1f9febf6405cc5e3e63b4257458e2b00553cd3326696020f5af1d84aa0788489",
+        "model:ada5743aa74900d6dfd19f0754e0eee47abffb545b1f48c673757e4880796096",
+        "model:e67b74ec0e5120081067f4422d497e2858ec2ff09d5e8ae2b537855ec093ad8a",
+        "model:e7d226e32a01d677cde07c8a7ffdbe5abd90613690f5cd0b5a35c07ff9337360"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "02552723bb2e0f1638f5f66fae84ecdf92ad0aed6214b62c71f8d6a66c903680",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "8c932dbba816e224dcd511133e11511377689bf26f38ab49931deeb88c9167d7",
+      "source_url": "https://next.avfc.co.uk/news/2026/october/30/prematch-emery-looks-ahead-to-fulham-encounter/"
+    },
+    {
+      "source_hash_sha256": "43c1662917f5486e2a9e7459b197eb2b4d2927a7e18779322dc3d028d3eb5037",
+      "source_url": "https://www.arsenal.com/news/artetas-update-on-saka-madueke-and-tzolis-aUBU08J7oHpV"
+    },
+    {
+      "source_hash_sha256": "cbff6f0cd0de9e965799a0c668affb0d960251df7062b169fde0bf792bb7b880",
+      "source_url": "https://www.evertonfc.com/news/2026/october/30/branthwaite-fitness-update-ahead-of-second-newcastle-clash/"
+    },
+    {
+      "source_hash_sha256": "14d25b4c1e09a7651a1680b6d6e74a8d242bd3f47fb2770af2bcf951535dcbc7",
+      "source_url": "https://www.liverpoolfc.com/news/andoni-iraola-press-conference-every-word-liverpool-arsenal-injuries-analysis"
+    },
+    {
+      "source_hash_sha256": "2661530551462e2f26d3977ffa7a625608820215c5c1a07e692979df9466f839",
+      "source_url": "https://www.tottenhamhotspur.com/news/1182294/team-news-robertos-positive-update-on-special-maddison"
+    },
+    {
+      "source_hash_sha256": "b5b8aeae3be38900525e3606f75e5df555a106483b49d6f59b4f954491ac5eaa",
+      "source_url": "https://www.tottenhamhotspur.com/news/1182350/spurs-vs-palace-every-word-of-roberto-de-zerbis-pre-match-press-conference"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "d2738f740a4da5348c369f3d68c8e157f355709cccdd17e4c22759b5ddc50531",
+  "observed_at": "2026-10-31T07:01:04Z",
+  "prior_ledger_sha256": "7c7b72c7597b1970dfa60c7fb9bbf2b2c9b79eb30ba69ddb09b9180beb0dcfbb",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "candidate-branthwaite-available-2026-10-30",
+      "claim_text": "David Moyes after the Newcastle cup win: Jarrad Branthwaite 'should have recovered from his concussion and also the timescale which we had to abide by' and is expected available for Monday's Premier League rematch.",
+      "club_id": "everton",
+      "player_uid": "player:2026-27:230",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.evertonfc.com/news/2026/october/30/branthwaite-fitness-update-ahead-of-second-newcastle-clash/",
+      "why_relevant": "Supersedes prior cup-XI concussion unavailable tip ahead of GW9 Newcastle away; Everton DEF minutes risk clears."
+    },
+    {
+      "candidate_claim_id": "candidate-maddison-available-2026-10-30",
+      "claim_text": "De Zerbi pre-Palace: James Maddison 'didn't work like the other players' this week 'but, for tomorrow, he is available' versus Crystal Palace.",
+      "club_id": "tottenham",
+      "player_uid": "player:2026-27:515",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.tottenhamhotspur.com/news/1182294/team-news-robertos-positive-update-on-special-maddison",
+      "why_relevant": "Clears prior Maddison doubtful/unavailable ledger state for Spurs GW9 home vs Palace; minutes still managed."
+    }
+  ],
+  "resulting_ledger_sha256": "b359940502b9cb16b37722c4ab05a8d30f0c780149298f0a1a78fa14cdd37e23",
+  "run_id": "composer-2.5:2026-10-31T070104Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.777778,
+    "accepted_count": 7,
+    "candidate_count": 9,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 2,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
