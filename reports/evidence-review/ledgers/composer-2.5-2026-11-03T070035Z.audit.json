@@ -1,0 +1,107 @@
+{
+  "accepted_claim_ids": [
+    "model:3420f3f40feb25627911bcf2a6a08ab37f798fdeeb1a2a258a0095d08a07c5c3",
+    "model:44b1132a2169e9e361921364585a38c289e6d6c5b54d0c24a205b35c8290d654",
+    "model:f956dea1671fd1abbb6791f6f24d775ad7ee30eb77bbb09217ea442d5aad2c19",
+    "model:4e354efc36b72e54f9d790bf21704f1bd35417bf3da7786d9cb97147da370a95",
+    "model:08879f91763915b683f0864696d57afdb211b56aa1cd211be6def7a22136fb77",
+    "model:bf66add26bfc631c1c65cec8d19d0196b308b25b0a51a9e15ad2a5037f087e96"
+  ],
+  "available_at": "2026-11-03T07:00:35Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-frimpong-unavailable-liverpool-arsenal-preview-2026-10-31": "model:3420f3f40feb25627911bcf2a6a08ab37f798fdeeb1a2a258a0095d08a07c5c3",
+    "candidate-goretzka-started-villa-fulham-2026-10-31": "model:44b1132a2169e9e361921364585a38c289e6d6c5b54d0c24a205b35c8290d654",
+    "candidate-jackson-started-villa-fulham-2026-10-31": "model:f956dea1671fd1abbb6791f6f24d775ad7ee30eb77bbb09217ea442d5aad2c19",
+    "candidate-jtimber-started-arsenal-liverpool-2026-11-01": "model:4e354efc36b72e54f9d790bf21704f1bd35417bf3da7786d9cb97147da370a95",
+    "candidate-madueke-started-arsenal-liverpool-2026-11-01": "model:08879f91763915b683f0864696d57afdb211b56aa1cd211be6def7a22136fb77",
+    "candidate-tzolis-started-arsenal-liverpool-2026-11-01": "model:bf66add26bfc631c1c65cec8d19d0196b308b25b0a51a9e15ad2a5037f087e96"
+  },
+  "content_sha256": "8669ddcfde8f1a4af4e4396aa758e3f628c6c26aeb8ff3768f39864e652f1682",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 254
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Munoz/Szoboszlai available from LIV bench return",
+        "Re-emit Mateta started_match / Porro available duplicates",
+        "Emit Chelsea JP/Palmer claims despite HTTP 500",
+        "Emit Mainoo returned_to_training (Man Utd 403 / outside gate)",
+        "Emit Brighton Minteh/Wieffer available (outside 72h / no ISO)",
+        "Emit soft Damsgaard/Henry Brentford updates outside gate"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [
+        "model:d1dbf69d414b03ab661b9cdc3bfe2bfe2243df3cafea80e215056935510c4431",
+        "model:3eff1f5ca4113fc20468d78de8874ddf090be1abec80b48fb65f527fde901fae",
+        "model:f07dd0fe7e6a4489bcfa7429a0c05a9107859bb766f86b7c86c6243b5178dd7a"
+      ],
+      "decision": "Emit Madueke/Tzolis/J.Timber started_match from Arsenal Anfield XI; Jackson/Goretzka started_match from Villa-Fulham XI; Frimpong unavailable from LIV Arsenal preview. Skip Munoz/Szoboszlai re-emit; skip Mateta/Porro duplicates; skip Chelsea JP/Palmer (HTTP 500); skip soft/out-of-gate Brighton/Brentford/Man Utd/City.",
+      "falsifiers": [
+        "Host rejects Arsenal/Villa started_match as duplicate of bootstrap a-status",
+        "Chelsea pages become fetchable and overturn JP lock",
+        "Frimpong named in next Liverpool XI"
+      ],
+      "rationale": "72h cutoff 2026-10-31T07:00:35Z. Fresh Arsenal and Villa confirmed XIs are the strongest new ISO-dated official signals. Prior Munoz/Szoboszlai available candidates were host-rejected on recovery supersede; Mateta/Porro already admitted on tip 31ed619d. Chelsea official pages still return HTTP 500. Brighton Minteh/Wieffer and Brentford Henry pages fall before today's cutoff or lack usable ISO.",
+      "supporting_claim_ids": [
+        "model:08879f91763915b683f0864696d57afdb211b56aa1cd211be6def7a22136fb77",
+        "model:bf66add26bfc631c1c65cec8d19d0196b308b25b0a51a9e15ad2a5037f087e96",
+        "model:4e354efc36b72e54f9d790bf21704f1bd35417bf3da7786d9cb97147da370a95",
+        "model:f956dea1671fd1abbb6791f6f24d775ad7ee30eb77bbb09217ea442d5aad2c19",
+        "model:44b1132a2169e9e361921364585a38c289e6d6c5b54d0c24a205b35c8290d654",
+        "model:3420f3f40feb25627911bcf2a6a08ab37f798fdeeb1a2a258a0095d08a07c5c3"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "dc1b845914f2257ed00ba547c5bee4ea043f25fe2860acf12406606b0d0d4f1d",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "31a7d2588d98f68a958453a48d3979dbf38ca6f494c52ca893d0026b0016d449",
+      "source_url": "https://next.avfc.co.uk/news/2026/october/31/prematch-goretzka-starts-against-fulham/"
+    },
+    {
+      "source_hash_sha256": "aef9d22c683dbc30dee75818ac71ef052dc505dce433a11dfb827e4eaa2e87f1",
+      "source_url": "https://www.arsenal.com/news/team-news-tzolis-returns-to-action-at-anfield-a4e836x0Ta2C"
+    },
+    {
+      "source_hash_sha256": "d84b5da547ed560f82103098a70c403421c9b369b375608a9ab0c2456c2c95d8",
+      "source_url": "https://www.liverpoolfc.com/news/liverpool-v-arsenal-team-news-premier-league"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "25111ce1e1e21297b1335d4087d7b740e44d1b858717618da87565d275d0708d",
+  "observed_at": "2026-11-03T07:00:35Z",
+  "prior_ledger_sha256": "31ed619da762bc5669871ddcdaaf8a92f52524dc895eb2c37f15a427c8252911",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "f7a91f73784bfc02bc4178e5fad782fe4cda07a36b4c1000c696756056c2f398",
+  "run_id": "composer-2.5:2026-11-03T070035Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
