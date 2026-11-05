@@ -1,0 +1,105 @@
+{
+  "accepted_claim_ids": [
+    "model:87d4f8758328bb8d18ac434fb07040a9dcc5c8a4e97f865a312f8773d3e3af02",
+    "model:c1a87463435311d752b68a68dd56081eb4eae0b5d5072d49009146ab67009888",
+    "model:2ab1eb625e18f5fb402eedd050c8e6bfb047b82443f13b2e9e5d6f14ed7d3e90",
+    "model:65f016a4c2833b2633a9966ed04de4b5a898f0b27850dace7cab307cdb37bd6e",
+    "model:669fbe38b686ae1ab55051f833d58e79e2f2a469de1f4e9cd885fe20746cd916",
+    "model:a908b96b6d95c9528b00c8bc8a763675db646f50ec8d7fa9be50b600151bca0f"
+  ],
+  "available_at": "2026-11-05T07:04:17Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-azeez-unavailable-getafe-2026-11-04": "model:65f016a4c2833b2633a9966ed04de4b5a898f0b27850dace7cab307cdb37bd6e",
+    "candidate-branthwaite-started-newcastle-2026-11-02": "model:87d4f8758328bb8d18ac434fb07040a9dcc5c8a4e97f865a312f8773d3e3af02",
+    "candidate-kadioglu-doubtful-getafe-2026-11-04": "model:669fbe38b686ae1ab55051f833d58e79e2f2a469de1f4e9cd885fe20746cd916",
+    "candidate-strand-larsen-declared-fit-palace-hoffenheim-2026-11-04": "model:c1a87463435311d752b68a68dd56081eb4eae0b5d5072d49009146ab67009888",
+    "candidate-struijk-unavailable-getafe-2026-11-04": "model:a908b96b6d95c9528b00c8bc8a763675db646f50ec8d7fa9be50b600151bca0f",
+    "candidate-timber-declared-fit-palace-hoffenheim-2026-11-04": "model:2ab1eb625e18f5fb402eedd050c8e6bfb047b82443f13b2e9e5d6f14ed7d3e90"
+  },
+  "content_sha256": "ca43529e6612b5da2363f771c2f65355519a32cec303d529e855118be112d4c8",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 266
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Saliba declared_fit from Arsenal pages",
+        "Re-emit Gravenberch unavailable from Liverpool pages",
+        "Re-emit Villa Ruggeri/Wan-Bissaka/Onana unavailable",
+        "Re-emit Porro ready-to-start",
+        "Emit Baleba without ISO-Z manutd/PL lead",
+        "Emit Semenyo unavailable from City date-only page",
+        "Stretch Chelsea JP/Palmer training snippets despite HTTP 500"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Palace Timber/Strand Larsen declared_fit; Branthwaite started_match; Brighton Kadioglu doubtful + Struijk/Azeez unavailable. Skip Saliba/Gravenberch/Villa/Porro duplicates; skip Baleba (Man Utd 403 / PL lacking ISO Z); skip Chelsea JP/Palmer (HTTP 500); skip City Semenyo date-only outside gate.",
+      "falsifiers": [
+        "Host rejects Palace declared_fit as soft recovery wording",
+        "Kadioglu named in Brighton GW10 XI",
+        "Chelsea official pages become fetchable and overturn Jo\u00e3o Pedro lock",
+        "Branthwaite re-enters concussion protocols"
+      ],
+      "rationale": "72h cutoff 2026-11-02T07:04:17Z. Fresh ISO-dated Palace return statements and Brighton Getafe absences are new versus tip 8fe1f9b0\u2026; Everton XI confirms Branthwaite started after concussion protocols. Prior tip already covers Saliba declared_fit, Gravenberch heel, Villa Ruggeri/Wan-Bissaka/Onana; Porro ready still in window but already tipped. Man Utd Cloudflare 403; Chelsea pages still HTTP 500; City Semenyo page date-only 2026-10-30.",
+      "supporting_claim_ids": [
+        "model:2ab1eb625e18f5fb402eedd050c8e6bfb047b82443f13b2e9e5d6f14ed7d3e90",
+        "model:c1a87463435311d752b68a68dd56081eb4eae0b5d5072d49009146ab67009888",
+        "model:87d4f8758328bb8d18ac434fb07040a9dcc5c8a4e97f865a312f8773d3e3af02",
+        "model:669fbe38b686ae1ab55051f833d58e79e2f2a469de1f4e9cd885fe20746cd916",
+        "model:a908b96b6d95c9528b00c8bc8a763675db646f50ec8d7fa9be50b600151bca0f",
+        "model:65f016a4c2833b2633a9966ed04de4b5a898f0b27850dace7cab307cdb37bd6e"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d908d76f8bad7cb9ae4d5b14d442bd0ff1fe4b49f72f8944636ba3e596224ab2",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "d3b24bd0c93115fe02de973c04302866f9f15abec9e0c1066f910470a6b8fc0a",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/preview-three-absent-as-albion-take-on-getafe"
+    },
+    {
+      "source_hash_sha256": "2e3f26008dee18d3ca2ca93fc6a57b8c9f2a146bbc25fa14430c881b4173beae",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-updates-on-timber-strand-larsen/"
+    },
+    {
+      "source_hash_sha256": "90d3c2120e08ce735bfdae0b76c91c522873632d8b6cc035efed813f136f53b1",
+      "source_url": "https://www.evertonfc.com/news/2026/november/02/everton-xi-revealed-for-clash-at-newcastle/"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "dbed8a094f0bdff81cbc815a031312a9555f27d577ddf6d304bb4c8c0850dac9",
+  "observed_at": "2026-11-05T07:04:17Z",
+  "prior_ledger_sha256": "8fe1f9b00928a8f7babad88718896856cdb5dc4f3cee6b5c473b133c4d285791",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "dfb3263b97fbf95f81a7b6d64493c05e759cc248805b433ebf0d9b65c7a2c628",
+  "run_id": "composer-2.5:2026-11-05T070417Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
