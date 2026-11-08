@@ -1,0 +1,130 @@
+{
+  "accepted_claim_ids": [
+    "model:cc529275a1b0312cd321ce83f58a0b8a47a4bf3109d91cbf2636f059d17931b5",
+    "model:65a02a76307781ecbb4a7e193b04679809d1875b2ba6c615a4421aa3391b5b66",
+    "model:3c1fecbab15467dc31c06fa76b042aee73d45fa1a25383417e6174d557f33404"
+  ],
+  "available_at": "2026-10-29T07:04:35Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:3d0d0f8dd28ba68b80c500ec1aa98e5829162e862fff0d5215c84b22ad4e67aa": "model:cc529275a1b0312cd321ce83f58a0b8a47a4bf3109d91cbf2636f059d17931b5",
+    "model:8270e20a4206b3dd22e432e89d24bbe5746afc6d611b540ae6a76c995969f454": "model:eff58f5fc1df24bdfb92cabe9d5d76c27ccf178a1b36e9532ee25b6721a751c3",
+    "model:860086a5c2ec059d81cd65b3e9f83fdb6d72507dce6ae181da3744330ed7c423": "model:65a02a76307781ecbb4a7e193b04679809d1875b2ba6c615a4421aa3391b5b66",
+    "model:a30063420c090c4030b71cac170de37a847da5c45af0bf477364f02a3b4884b1": "model:3c1fecbab15467dc31c06fa76b042aee73d45fa1a25383417e6174d557f33404"
+  },
+  "content_sha256": "e45a7a4a9ca8d3aba800857586894d9d3896691a8d01ec59dbaffcd1531cfeb8",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 669
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit Haaland unavailable from cup rest/rotation",
+        "Stretch Wirtz recovery_condition to started_match for a substitute appearance",
+        "Re-emit Minteh/Wieffer/Emegha available tips unchanged",
+        "Chase Isak/Barcola buys solely because they featured as cup substitutes"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Wirtz available after cup appearance; Palace Sarr/Strand Larsen doubtful and Henderson available; reinforce Jo\u00e3o Pedro unavailable from Chelsea cup preview; skip Haaland rest and duplicate Minteh/Wieffer/Emegha/Henry tips",
+      "falsifiers": [
+        "Host rejects Chelsea preview on 500/ISO fetch",
+        "Wirtz unused again vs Arsenal after cup minutes",
+        "Unexpected Jo\u00e3o Pedro midweek clear contradicting i/0%"
+      ],
+      "rationale": "72h cutoff 2026-10-26T07:04:35Z. Fresh signal: LFC match report (22:20Z) shows Wirtz sub appearance upgrading prior doubtful tip; Palace Sage (13:30Z) gives Sarr groin / Strand Larsen ankle / Henderson positive; Chelsea preview (07:00Z) reconfirms JP thigh weeks. City Haaland three days off + cup rotation remains rest, not unavailable. Minteh/Wieffer/Emegha/Damsgaard/Henry/Szoboszlai/Munoz/Kadioglu/Andres already on tip ee92e367 \u2014 do not re-emit identical statuses.",
+      "supporting_claim_ids": [
+        "model:eff58f5fc1df24bdfb92cabe9d5d76c27ccf178a1b36e9532ee25b6721a751c3",
+        "model:cc529275a1b0312cd321ce83f58a0b8a47a4bf3109d91cbf2636f059d17931b5",
+        "model:65a02a76307781ecbb4a7e193b04679809d1875b2ba6c615a4421aa3391b5b66",
+        "model:3c1fecbab15467dc31c06fa76b042aee73d45fa1a25383417e6174d557f33404",
+        "model:e362bc177a2326b19bfc431b8b6cdc9cf008a423243cfdd4b517ab31910607e1"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at for undated Villa/Newcastle/Forest pages"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty ISO leads for 15/21 clubs after 72h gate",
+      "falsifiers": [
+        "Later official pages with recoverable ISO appear before GW9 deadline"
+      ],
+      "rationale": "All 21 catalogue clubs searched. 10 leads retained across 6 clubs with verified timestamps. Man Utd Cloudflare; Forest consent wall; Villa/PL/Newcastle/Bournemouth/Fulham/Hull/Coventry/Sunderland/Ipswich/Leeds/Everton/Arsenal/Spurs lacked usable in-window availability ISO for new claims today (Arsenal Hincapie/Saka pages dated 23 Oct outside gate).",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d9e638a2bc63fee0bed09012a79164ea639109997799be4b54202b2e9e3b1b80",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "3b1ab3b9a74fbf2797db94fe168176decd5d2cab871c919bce63851e7bcd5297",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/sage-on-fulham-and-possible-returning-player/"
+    },
+    {
+      "source_hash_sha256": "6e85cfdedde578d0f5bfea9a8a158818910897dc49900382c8eea8e0c04a2492",
+      "source_url": "https://www.liverpoolfc.com/news/match-report-liverpool-beat-chelsea-on-penalties-on-dramatic-night-at-anfield"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "5cefaae9fcaa638f0b85cee858b1afe08e1dc64da6062ee6fda1168b9c79bdf3",
+  "observed_at": "2026-10-29T07:04:35Z",
+  "prior_ledger_sha256": "ee92e3678b488676051b2e53edd4e5c72fa9fad54faf72d025b1308457568b03",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "model:e362bc177a2326b19bfc431b8b6cdc9cf008a423243cfdd4b517ab31910607e1",
+      "claim_text": "Chelsea preview confirms Alonso ruled Jo\u00e3o Pedro out with a thigh injury for the Carabao Cup at Liverpool after further tests; he will miss the next games for a few weeks.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:165",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/chelsea-vs-liverpool-all-you-need-to-know-26-27-lc: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/chelsea-vs-liverpool-all-you-need-to-know-26-27-lc",
+      "why_relevant": "Locks the Jo\u00e3o Pedro \u2192 Evanilson free-transfer thesis ahead of GW9; bootstrap remains i/0%."
+    },
+    {
+      "candidate_claim_id": "model:8270e20a4206b3dd22e432e89d24bbe5746afc6d611b540ae6a76c995969f454",
+      "claim_text": "Official Liverpool match report lists Florian Wirtz among the substitutes who entered in the Carabao Cup tie versus Chelsea (on for McConnell, 58'), confirming he featured after the earlier twisted-ankle doubt.",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:366",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/match-report-liverpool-beat-chelsea-on-penalties-on-dramatic-night-at-anfield",
+      "why_relevant": "Upgrades prior doubtful tip toward available for GW9 Arsenal planning; still not a forced buy into the advisory XV."
+    }
+  ],
+  "resulting_ledger_sha256": "4f9641be201bef99fefddb69d19319229008ed11e3d28d4a505833fa39655519",
+  "run_id": "composer-2.5:2026-10-29T070435Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.6,
+    "accepted_count": 3,
+    "candidate_count": 5,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 2,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
