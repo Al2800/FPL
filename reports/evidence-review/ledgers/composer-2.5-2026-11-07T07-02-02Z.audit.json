@@ -1,0 +1,117 @@
+{
+  "accepted_claim_ids": [
+    "model:e88c993f3aac000e37642d0777df81c6a2140b9f40315e9a89b8353177d010c4",
+    "model:656d4bfe12dec41d5da0faedcffc5d79b92dccb7d29d48478623e69638a77338",
+    "model:e500c8515972fb96d484f83b22f75418dff491301a8f63864b659ef13b5b2c60",
+    "model:766df5c4900531985e97b6e8e4cf2e6162e80d6e312dddb6cbd193a27d52a390",
+    "model:0413125c85df7f7a61a97e3fca6cbd1cfd748af6b02ab5c5967a59f3e901cfb1",
+    "model:e8e1cc7d7525b5cfedfb6a20729cffac44e0ee8a4eb6302e6514977cb406a49f",
+    "model:3dadb9114812fc5d7d26b87e3c36b363b543ecddbf75027a4b2f212343f4c9b2",
+    "model:3d3b12e5dc0da5725894d1e5d5b90e5330c91bb4deb9a444d362cdedf6555064",
+    "model:b1bc0dd1bc44d12cc2040c5376029259aa42233a4160685fd68045da7b61a7a2"
+  ],
+  "available_at": "2026-11-07T07:02:02Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:2d451b963376679de0d0f3ab444bb186f36847dc82b03b340edcf03006450b47": "model:e8e1cc7d7525b5cfedfb6a20729cffac44e0ee8a4eb6302e6514977cb406a49f",
+    "model:65ea65cef9adb2b62fbc9957218a1b0da33b0a92eeb62612ef1cef61db1b5147": "model:e88c993f3aac000e37642d0777df81c6a2140b9f40315e9a89b8353177d010c4",
+    "model:84da2d0fd22df1db30dbb99ca7d7b6a1ec746e20f2dce1a8b946de3f2d796c44": "model:3dadb9114812fc5d7d26b87e3c36b363b543ecddbf75027a4b2f212343f4c9b2",
+    "model:898d54af5ad384a73d22df5f70a6d0604ca98e5ed9793930f58227646a40d920": "model:3d3b12e5dc0da5725894d1e5d5b90e5330c91bb4deb9a444d362cdedf6555064",
+    "model:9449c234dfc3de616f813757e279725de5aced0df85eb340788c6c3114a613b1": "model:b1bc0dd1bc44d12cc2040c5376029259aa42233a4160685fd68045da7b61a7a2",
+    "model:b0794f6101ba8edab8126066cd65364ec97234a95ae17ddea0994d4e5a30f658": "model:e500c8515972fb96d484f83b22f75418dff491301a8f63864b659ef13b5b2c60",
+    "model:dfe5647b1474f82b80f0568a4b1cc20814915fe73f21648723008a8ecd3655ba": "model:766df5c4900531985e97b6e8e4cf2e6162e80d6e312dddb6cbd193a27d52a390",
+    "model:ee9e24e0d7adee4d12ada2be7652aef25afae1b33f18ae40695d763798acdc47": "model:656d4bfe12dec41d5da0faedcffc5d79b92dccb7d29d48478623e69638a77338",
+    "model:f190fac6627474636fb5983d129e723d325f3af53bdd3c1c8706ef3498472a4b": "model:0413125c85df7f7a61a97e3fca6cbd1cfd748af6b02ab5c5967a59f3e901cfb1"
+  },
+  "content_sha256": "b5071636c2638ba8ec4dd06cd3fe8606baea6ec806ce323c11101d9467bd8330",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 263
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Leeds DCL/Okafor/Stach/Rodon or Everton Branthwaite/Grealish duplicates",
+        "Emit Chelsea JP unavailable without verified published_at",
+        "Emit City Semenyo without ISO published_at",
+        "Chase Strand Larsen/Tosin/Konsa into advisory reconstructed XV"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [
+        "model:736474e84b47f6"
+      ],
+      "decision": "Emit Arsenal Saka unavailable + Konsa declared_fit; Liverpool Gravenberch doubtful update; Palace Sarr unavailable + Strand Larsen 60-75 mins; Spurs Tosin returned_to_training + Bergvall/Mudryk/S\u00e1vio unavailable. Skip Chelsea (HTTP 500/no ISO), Man Utd 403, City Semenyo date-only, Brighton/Leeds/Everton duplicates already on tip 04f74aed, Saliba duplicate available.",
+      "falsifiers": [
+        "Saka named in Arsenal XI vs Hull",
+        "Gravenberch starts and completes 90 at Palace",
+        "Sarr starts vs Liverpool despite Sage quote",
+        "Tosin unused and later ruled out again before Leeds KO"
+      ],
+      "rationale": "72h cutoff ~2026-11-04T07:02:02Z. Fresh ISO pages from Arsenal, Liverpool, Palace and Spurs change or reinforce watchlist statuses into GW10 matchday and the GW11 planning lock. Chelsea Alonso Sunderland team news is visible via search but club HTTP 500 blocks published_at verification so Jo\u00e3o Pedro/Hato/Lacroix/Martinez/Caicedo are not emitted. Prior tip already covers DCL/Okafor/Stach/Rodon/Branthwaite/Grealish and Brighton absences.",
+      "supporting_claim_ids": [
+        "model:766df5c4900531985e97b6e8e4cf2e6162e80d6e312dddb6cbd193a27d52a390",
+        "model:0413125c85df7f7a61a97e3fca6cbd1cfd748af6b02ab5c5967a59f3e901cfb1",
+        "model:e500c8515972fb96d484f83b22f75418dff491301a8f63864b659ef13b5b2c60",
+        "model:e88c993f3aac000e37642d0777df81c6a2140b9f40315e9a89b8353177d010c4",
+        "model:656d4bfe12dec41d5da0faedcffc5d79b92dccb7d29d48478623e69638a77338",
+        "model:3dadb9114812fc5d7d26b87e3c36b363b543ecddbf75027a4b2f212343f4c9b2",
+        "model:3d3b12e5dc0da5725894d1e5d5b90e5330c91bb4deb9a444d362cdedf6555064",
+        "model:b1bc0dd1bc44d12cc2040c5376029259aa42233a4160685fd68045da7b61a7a2",
+        "model:e8e1cc7d7525b5cfedfb6a20729cffac44e0ee8a4eb6302e6514977cb406a49f"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "2ca6bec3e5ea13f75844aba04c145a6f17f85039f9528cefc4d7976fddb51c02",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "b77dd7adf332c786ded851cc44dac28ec63c0f84e32941550b35337af706e929",
+      "source_url": "https://www.arsenal.com/news/artetas-update-on-saka-saliba-and-konsa-aopoW1X0hn87"
+    },
+    {
+      "source_hash_sha256": "38523fb707a4bb1570c10953433ca575ebd4639b5710005ed4fad81edf7e98b4",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/sage-on-sarr-strand-larsen-fitness-and-facing-liverpool/"
+    },
+    {
+      "source_hash_sha256": "a9717407f9f2d37628c558827c222a2418b4a3b045ba53585191f8fb2e345977",
+      "source_url": "https://www.liverpoolfc.com/news/ryan-gravenberch-fitness-latest-crystal-palace-iraola"
+    },
+    {
+      "source_hash_sha256": "fd674e274a04d2be2731203de2fa3b4eb72d5a965ec02a202f44e7ac7d2ae395",
+      "source_url": "https://www.tottenhamhotspur.com/news/1184421/team-news-bentancur-tosin-available-for-leeds-clash"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "975669ad89541bc84238b87f89dc2a4bb176a13be5f13167d195fcc1c7b3fdde",
+  "observed_at": "2026-11-07T07:02:02Z",
+  "prior_ledger_sha256": "04f74aed53efcb75e1859385f40d7f3f6d863282335d5d7c92f450731e8af045",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "d6b77a608dcc2b21bc9664b923787357467b15698bcc5def3afeabfdd48a2834",
+  "run_id": "composer-2.5:2026-11-07T07:02:02Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 9,
+    "candidate_count": 9,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
