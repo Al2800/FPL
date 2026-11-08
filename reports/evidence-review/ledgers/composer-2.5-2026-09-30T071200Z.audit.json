@@ -1,0 +1,268 @@
+{
+  "accepted_claim_ids": [
+    "model:2cb641ec3a62cf5b97665cb268a06e5475dbd100a4d7cb99eec629c0c0d75c8d",
+    "model:7ba2e01b9b2d37be3810a80f8ac220d3fffc5fad8f92f3a193cc191f49739d19",
+    "model:19c3752caa16939e66b3eaee2b5b1c4432d0e7ef2fddce384ac91ce3a1e8a2ca",
+    "model:0ae3242dc44d98dcd68acb80f67eb113745941dcbc0e7495fda61167f60ca4b0",
+    "model:89750319e250ed17fec2cc69e89f18b76174de7d9bea611615877da754a79604"
+  ],
+  "available_at": "2026-09-30T07:12:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-2026-09-30-384": "model:7ba2e01b9b2d37be3810a80f8ac220d3fffc5fad8f92f3a193cc191f49739d19",
+    "candidate-2026-09-30-391": "model:19c3752caa16939e66b3eaee2b5b1c4432d0e7ef2fddce384ac91ce3a1e8a2ca",
+    "candidate-2026-09-30-406": "model:0ae3242dc44d98dcd68acb80f67eb113745941dcbc0e7495fda61167f60ca4b0",
+    "candidate-2026-09-30-411": "model:2cb641ec3a62cf5b97665cb268a06e5475dbd100a4d7cb99eec629c0c0d75c8d",
+    "candidate-2026-09-30-481": "model:89750319e250ed17fec2cc69e89f18b76174de7d9bea611615877da754a79604"
+  },
+  "content_sha256": "b6ad23b7aaeb8e1fa84296607de64ab80a86fba69c734b8ccca00ca6ce2b3654",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 292
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Skip as duplicate of prior Anderson available tip without new ISO",
+        "Propose Gu\u00e9hi available from same page without explicit minutes"
+      ],
+      "boundary_id": "anderson-england-start-ib",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Propose Anderson available (started_match) from City England roundup",
+      "falsifiers": [
+        "City later report Anderson IB setback",
+        "Host ephemeral fetch fails domain/hash checks"
+      ],
+      "rationale": "City page dated 2026-09-29T20:51:29Z is inside the 72h gate and describes Anderson orchestrating from kick-off and being fouled for a 25th-minute red card \u2014 clear start evidence.",
+      "supporting_claim_ids": [
+        "model:89750319e250ed17fec2cc69e89f18b76174de7d9bea611615877da754a79604"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Force Gvardiol single-FT buy into LIV (A) from this tip alone"
+      ],
+      "boundary_id": "gvardiol-croatia-start-ib",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "Propose Gvardiol available (started_match) from same City IB roundup",
+      "falsifiers": [
+        "Club reports Gvardiol IB injury after this match"
+      ],
+      "rationale": "Page explicitly states Gvardiol started for Croatia vs Spain; ISO inside gate.",
+      "supporting_claim_ids": [
+        "model:19c3752caa16939e66b3eaee2b5b1c4432d0e7ef2fddce384ac91ce3a1e8a2ca"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Skip Kova\u010di\u0107 as not in advisory 15"
+      ],
+      "boundary_id": "kovacic-croatia-start-ib",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "Propose Kova\u010di\u0107 available (started_match) from same City IB roundup",
+      "falsifiers": [
+        "Club reports Kova\u010di\u0107 IB injury after this match"
+      ],
+      "rationale": "Page states Kova\u010di\u0107 started with Gvardiol for Croatia; ISO inside gate.",
+      "supporting_claim_ids": [
+        "model:0ae3242dc44d98dcd68acb80f67eb113745941dcbc0e7495fda61167f60ca4b0"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Also propose Cherki available from sub appearance only"
+      ],
+      "boundary_id": "donnarumma-italy-start-ib",
+      "confidence": 0.85,
+      "conflicting_claim_ids": [],
+      "decision": "Propose Donnarumma available (started_match) from City Italy/France roundup",
+      "falsifiers": [
+        "Host rejects datePublished format from City page body"
+      ],
+      "rationale": "City page 2026-09-28T20:50:00Z describes Donnarumma captaining Italy and being denied a clean sheet \u2014 he played.",
+      "supporting_claim_ids": [
+        "model:7ba2e01b9b2d37be3810a80f8ac220d3fffc5fad8f92f3a193cc191f49739d19"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Treat Haaland as rested/limited for GW6 based on IB minutes alone"
+      ],
+      "boundary_id": "haaland-norway-start-ib",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "Propose Haaland available (started_match) from City Norway match report",
+      "falsifiers": [
+        "City announce Haaland rest/limit vs Liverpool"
+      ],
+      "rationale": "City page 2026-09-27T20:49:04Z states Haaland was on target for Norway vs Portugal \u2014 started and scored inside gate.",
+      "supporting_claim_ids": [
+        "model:2cb641ec3a62cf5b97665cb268a06e5475dbd100a4d7cb99eec629c0c0d75c8d"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Re-emit identical Gakpo doubtful candidate"
+      ],
+      "boundary_id": "gakpo-already-admitted",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Do not re-propose Gakpo \u2014 tip already carries doubtful admit model:8134847f\u2026",
+      "falsifiers": [
+        "Fresh Liverpool page clears or worsens Gakpo beyond prior tip"
+      ],
+      "rationale": "LFC Gakpo withdrawal page remains inside gate as a discovery lead but claim already on tip f6ff62e7\u2026; avoid duplicate candidate.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Re-emit identical Havertz doubtful candidate"
+      ],
+      "boundary_id": "havertz-already-admitted",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Do not re-propose Havertz \u2014 tip already carries doubtful reinforcement model:706e27a4\u2026",
+      "falsifiers": [
+        "Arsenal publish clear available/declared_fit update"
+      ],
+      "rationale": "Arsenal NL squad-omission page remains inside gate; already admitted 29 Sep.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Re-emit identical Isak doubtful candidate"
+      ],
+      "boundary_id": "isak-already-admitted",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Do not re-propose Isak \u2014 tip already carries doubtful admit model:e30bb87a\u2026",
+      "falsifiers": [
+        "Fresh Liverpool page clears or worsens Isak beyond prior tip"
+      ],
+      "rationale": "Liverpool Isak IB return page remains inside gate as discovery lead; claim already on tip.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Admit PL.com Scout injury-chaos summary as Pedro ledger claim"
+      ],
+      "boundary_id": "pedro-chelsea-gap",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "No Jo\u00e3o Pedro candidate \u2014 Chelsea coverage empty inside gate",
+      "falsifiers": [
+        "chelseafc.com timed Pedro fitness original"
+      ],
+      "rationale": "Search again returned undated/wrong-season Chelsea pages without recoverable ISO for the current knee issue; bootstrap d/75% knee stays briefing-only.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Invent ISO from URL slug 28-sep-2026",
+        "Admit community Bruno doubt as ledger claim"
+      ],
+      "boundary_id": "manutd-bruno-403",
+      "confidence": 0.9,
+      "conflicting_claim_ids": [],
+      "decision": "No Bruno/Dorgu fitness candidate \u2014 manutd.com 403 and no recoverable published_at",
+      "falsifiers": [
+        "Host UA successfully fetches manutd.com with dated body"
+      ],
+      "rationale": "Search surfaced a 28 Sep Dorgu/Fernandes fitness URL but lab and Chrome UAs received HTTP 403 with empty body; do not invent published_at. Bootstrap still lists Bruno status=a.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Force Porro claim from relative search labels"
+      ],
+      "boundary_id": "porro-outside-gate",
+      "confidence": 0.92,
+      "conflicting_claim_ids": [],
+      "decision": "Do not re-propose Porro \u2014 Spurs hamstring page still outside 72h gate",
+      "falsifiers": [
+        "Spurs republish new ISO clearing/worsening hamstring"
+      ],
+      "rationale": "JSON-LD datePublished remains 2026-09-19T15:23:06Z; search relative timestamps ignored.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Stretch Gu\u00e9hi to available/started_match from squad mention alone"
+      ],
+      "boundary_id": "guehi-minutes-unclear",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Do not propose Gu\u00e9hi available from City England roundup",
+      "falsifiers": [
+        "City/England page clarifies Gu\u00e9hi started or was subbed on"
+      ],
+      "rationale": "Headline pairs Gu\u00e9hi with Anderson as 'key figures' but body text does not clearly state Gu\u00e9hi minutes/start; refuse to stretch to started_match.",
+      "supporting_claim_ids": []
+    },
+    {
+      "alternatives_rejected": [
+        "Stretch Cherki sub appearance to started_match"
+      ],
+      "boundary_id": "cherki-sub-only",
+      "confidence": 0.78,
+      "conflicting_claim_ids": [],
+      "decision": "Do not propose Cherki available from City France roundup",
+      "falsifiers": [
+        "City page confirms Cherki start or club declares him fit for GW6"
+      ],
+      "rationale": "Page states Cherki replaced Akliouche on 77 minutes \u2014 substitute appearance only; recovery_condition vocabulary requires started_match/declared_fit/returned_to_training and stretching started_match would overclaim.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "fa2c5206d7309d83264a0eb4fa4f2aef2ea602dc13e41e2d7c208dae7c118533",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "1a8a0aa1875cb67f3a3fffc67baa3c1173a5cacea3449d1c92e53ba762b57b17",
+      "source_url": "https://www.mancity.com/news/mens/man-city-international-roundup-donnarumma-cherki-63926225"
+    },
+    {
+      "source_hash_sha256": "46e7281d8d2c8c480b9b734281d88ac2125fa834a8cb23ebf6ea6e8a34e7d3e9",
+      "source_url": "https://www.mancity.com/news/mens/marc-guehi-elliot-anderson-england-roundup-63926312"
+    },
+    {
+      "source_hash_sha256": "a5f0e16f8f510af2dda1a42109ee1e018eaf09b8a7a4c20773d063cf00c37a51",
+      "source_url": "https://www.mancity.com/news/mens/norway-portugal-nations-league-match-report-63926139"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "592d1d2f40edab502e075d1ee52c8ead500dcd097ef2efa62913f13c91afcadf",
+  "observed_at": "2026-09-30T07:12:00Z",
+  "prior_ledger_sha256": "f6ff62e7b1cdf886c6ef9e378c9f930b212a59c4f3d7bfd8924b5c32e2b0ff8e",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "fdc0e882f45d811d5347623360ac548a36635a031fd987b93d13baf765a46164",
+  "run_id": "composer-2.5:2026-09-30T071200Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 13,
+    "decision_trace_linked_count": 5,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
