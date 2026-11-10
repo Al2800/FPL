@@ -1,0 +1,128 @@
+{
+  "accepted_claim_ids": [
+    "model:7b9f11bdf6e53c90b3fbf07281c3482c5779eec8a866fcec1b8aff0df049370b",
+    "model:f72fdb183a4d9932c3a4f7ae41f12bf0ed5fa89393b4da543b46726f61c9b33f",
+    "model:52ef5d7087b6126ffbe6fb55e854d1548e99a9ec198739e00ef13b0bdbde12d8",
+    "model:424e35f80aac97e5dcd97fcc73c6d8be26476ad457225b371c51abaa1e2866fa",
+    "model:01fee6160955a0b860ebf437a1ddf10db7e710a83fc36d690e88d374ee609a63"
+  ],
+  "available_at": "2026-10-25T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-barcola-available-declared-fit-brighton-2026-10-25": "model:7b9f11bdf6e53c90b3fbf07281c3482c5779eec8a866fcec1b8aff0df049370b",
+    "candidate-branthwaite-unavailable-arsenal-2026-10-25": "model:424e35f80aac97e5dcd97fcc73c6d8be26476ad457225b371c51abaa1e2866fa",
+    "candidate-calafiori-doubtful-post-everton-2026-10-25": "model:01fee6160955a0b860ebf437a1ddf10db7e710a83fc36d690e88d374ee609a63",
+    "candidate-munoz-doubtful-brighton-2026-10-25": "model:f72fdb183a4d9932c3a4f7ae41f12bf0ed5fa89393b4da543b46726f61c9b33f",
+    "candidate-szoboszlai-unavailable-brighton-2026-10-25": "model:52ef5d7087b6126ffbe6fb55e854d1548e99a9ec198739e00ef13b0bdbde12d8"
+  },
+  "content_sha256": "6778583a90eea4f459db6115c5006bc29378ffa470772e59e4c4c4bda059eccd",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 669
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Retry Porro available declared_fit",
+        "Retry Hincapie available declared_fit",
+        "Emit Joao Pedro unavailable without discovery ISO",
+        "Chase Schuster available solely on Hull preview title without clear fit quote"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Munoz doubtful, Barcola available declared_fit, Szoboszlai unavailable refresh, Calafiori doubtful, Branthwaite unavailable, Mykolenko doubtful. Skip Porro/Hincapie available retries and Joao Pedro ledger candidate.",
+      "falsifiers": [
+        "Host rejects Barcola available for lacking supersede of prior tip",
+        "Munoz starts vs Brighton",
+        "Late Chelsea page ISO recovered and Joao Pedro cleared for GW9"
+      ],
+      "rationale": "72h cutoff 2026-10-22T07:05:00Z. LFC Saturday team news strengthens Munoz doubt and Barcola clearance for Sunday Brighton. Arteta post-Everton flags Calafiori light issue. Everton XI/report give Branthwaite concussion absence and Mykolenko forced off. Do not retry Porro/Hincapie available after 24 Oct host supersede rejects. Joao Pedro absence confirmed via WebFetch of Chelsea matchday article but page returns 500 to lab UA and lacks recoverable ISO for discovery \u2014 strategy uses bootstrap d/75% without ledger candidate.",
+      "supporting_claim_ids": [
+        "model:f72fdb183a4d9932c3a4f7ae41f12bf0ed5fa89393b4da543b46726f61c9b33f",
+        "model:7b9f11bdf6e53c90b3fbf07281c3482c5779eec8a866fcec1b8aff0df049370b",
+        "model:52ef5d7087b6126ffbe6fb55e854d1548e99a9ec198739e00ef13b0bdbde12d8",
+        "model:01fee6160955a0b860ebf437a1ddf10db7e710a83fc36d690e88d374ee609a63",
+        "model:424e35f80aac97e5dcd97fcc73c6d8be26476ad457225b371c51abaa1e2866fa",
+        "candidate-mykolenko-doubtful-post-arsenal-2026-10-25"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at for Chelsea Joao Pedro article",
+        "Keep PL date-only midnight stamps"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty ISO leads for 12/21 clubs after 72h gate; Chelsea empty due to 500/no ISO; Man Utd Cloudflare; Forest consent wall; PL 403 date-only dropped.",
+      "falsifiers": [
+        "Later official pages with recoverable ISO appear before GW9 deadline"
+      ],
+      "rationale": "All 21 catalogue clubs searched. 16 leads retained across 8 clubs with verified timestamps.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d38b928042ac4331fa96897f5a2fb96c752e38e812a441e5d11e5fbfcc4fed0c",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "afee85d5d364cbdc6177aa58adbca310d78cff78237815a7a12e3f9a5d82d344",
+      "source_url": "https://www.arsenal.com/news/every-word-from-artetas-post-everton-press-conference-a35Bj5F4a2lz"
+    },
+    {
+      "source_hash_sha256": "4d3f45d8cf8ed8be86ec334d25c95969adee5b8781a0cd131407583aed59ece7",
+      "source_url": "https://www.evertonfc.com/news/2026/october/24/everton-starting-xi-confirmed-for-arsenal-clash/"
+    },
+    {
+      "source_hash_sha256": "007b468fa31d8b506731933bdd9acd2e7d1b8d7f41fb6e36e6a79a3699cf9cab",
+      "source_url": "https://www.liverpoolfc.com/news/liverpool-v-brighton-and-hove-albion-team-news-premier-league"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "d95d4c38ae994f74fc04c2bf686f1ef3d04498b7e45872fc1ae579e066927714",
+  "observed_at": "2026-10-25T07:05:00Z",
+  "prior_ledger_sha256": "3a60eb2511577c3a10642a9a17875a83f4d3c6954c06d60e1e5ac02f0a4df399",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "candidate-mykolenko-doubtful-post-arsenal-2026-10-25",
+      "claim_text": "Everton official match report states Vitalii Mykolenko was forced off with an injury during the 2-0 defeat at Arsenal; Garner filled in at left-back.",
+      "club_id": "everton",
+      "player_uid": "player:2026-27:233",
+      "reasons": [
+        "source_url_not_in_discovery_artifact"
+      ],
+      "source_url": "https://www.evertonfc.com/news/2026/october/24/everton-defeated-at-arsenal/",
+      "why_relevant": "Everton DEF hole for GW9 Newcastle away; bootstrap already doubtful 75%."
+    }
+  ],
+  "resulting_ledger_sha256": "d9f6b080baf3afd8ed54f54f0b8c7caab5fd2d0c367ee4be951f40a2220b5610",
+  "run_id": "composer-2.5:2026-10-25T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.833333,
+    "accepted_count": 5,
+    "candidate_count": 6,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 1,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
