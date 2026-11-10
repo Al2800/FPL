@@ -1,0 +1,104 @@
+{
+  "accepted_claim_ids": [
+    "model:6a5ee8944fd95d787d98c9f614d39cf0bd1fb4a8cf4e6e1c0047c17aa37dbe66",
+    "model:aaef82d3b8420fe46c6f02bb3c0ec0576f6f38fb8faffe8e064269506a0cde12",
+    "model:f075388011469beaf9660ecc0c950f7067f01043cb41cfc3beafc9f1484eaee6",
+    "model:44e45827ffb6444b6e67a8a17666b55f56197550793612b36d0e8997a0146840",
+    "model:54ca05f6f294f74ce4b503a73ff34c64d11d7105a91600c22da0c1eb7e177ccf",
+    "model:1dbcdef839effb58f259786099a9fcc01be7246a856b8e9cebdeb0bda861ac46"
+  ],
+  "available_at": "2026-11-06T07:05:31Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-branthwaite-doubtful-cramp-everton-2026-11-05": "model:54ca05f6f294f74ce4b503a73ff34c64d11d7105a91600c22da0c1eb7e177ccf",
+    "candidate-dcl-doubtful-foot-setback-leeds-2026-11-05": "model:6a5ee8944fd95d787d98c9f614d39cf0bd1fb4a8cf4e6e1c0047c17aa37dbe66",
+    "candidate-grealish-unavailable-everton-2026-11-05": "model:1dbcdef839effb58f259786099a9fcc01be7246a856b8e9cebdeb0bda861ac46",
+    "candidate-okafor-doubtful-leeds-2026-11-05": "model:aaef82d3b8420fe46c6f02bb3c0ec0576f6f38fb8faffe8e064269506a0cde12",
+    "candidate-rodon-returned-training-leeds-2026-11-05": "model:f075388011469beaf9660ecc0c950f7067f01043cb41cfc3beafc9f1484eaee6",
+    "candidate-stach-doubtful-leeds-2026-11-05": "model:44e45827ffb6444b6e67a8a17666b55f56197550793612b36d0e8997a0146840"
+  },
+  "content_sha256": "1c1283eef6b94fbc8b867db69bb6e5ba5339b481a3acf2c0b87e35f5cdb8173b",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 292
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Quinten Timber / Strand Larsen declared_fit",
+        "Re-emit Gravenberch heel unavailable (already tipped; reinforce only)",
+        "Re-emit Saliba declared_fit",
+        "Re-emit Porro ready-to-start",
+        "Emit Semenyo unavailable from City date-only page",
+        "Stretch Chelsea JP/Palmer despite HTTP 500",
+        "Emit Baleba without ISO-Z Man Utd page",
+        "Treat Farke carefully-optimistic DCL wording as declared_fit/available"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [
+        "model:87d4f8758328bb8d18ac434fb07040a9dcc5c8a4e97f865a312f8773d3e3af02"
+      ],
+      "decision": "Emit Leeds DCL/Okafor/Stach doubtful + Rodon returned_to_training; Everton Branthwaite doubtful after cramp + Grealish unavailable. Skip Palace Timber/Strand Larsen, Saliba, Gravenberch, Porro, Brighton absence duplicates; skip City Semenyo date-only; skip Chelsea HTTP 500 JP/Palmer; skip Man Utd Cloudflare Baleba.",
+      "falsifiers": [
+        "DCL named in Leeds starting XI vs Spurs",
+        "Host rejects Rodon available as soft recovery without superseding absence history",
+        "Grealish starts vs Coventry despite Moyes unavailable quote",
+        "Branthwaite starts and completes 90 vs Coventry with no minutes concern"
+      ],
+      "rationale": "72h cutoff ~2026-11-03T07:05:31Z. Fresh ISO-Z Leeds presser and Everton Coventry team news are new versus tip dfb3263b\u2026 and directly affect the preferred Wissa\u2192DCL FT. Prior tip already covers Timber/Strand Larsen declared_fit, Branthwaite started_match (now updated), Brighton Kadioglu/Struijk/Azeez, and earlier Saliba/Gravenberch.",
+      "supporting_claim_ids": [
+        "model:6a5ee8944fd95d787d98c9f614d39cf0bd1fb4a8cf4e6e1c0047c17aa37dbe66",
+        "model:aaef82d3b8420fe46c6f02bb3c0ec0576f6f38fb8faffe8e064269506a0cde12",
+        "model:44e45827ffb6444b6e67a8a17666b55f56197550793612b36d0e8997a0146840",
+        "model:f075388011469beaf9660ecc0c950f7067f01043cb41cfc3beafc9f1484eaee6",
+        "model:54ca05f6f294f74ce4b503a73ff34c64d11d7105a91600c22da0c1eb7e177ccf",
+        "model:1dbcdef839effb58f259786099a9fcc01be7246a856b8e9cebdeb0bda861ac46"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "01fb7287030e2ce1c4e83986ba4235cf413d369c0b72e5fe8791e5192dfe9433",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "d9b1e65b4903b4ea476b0e7cbb481f2be3d20f32e7a9d5b799d3d77aea21dc13",
+      "source_url": "https://www.evertonfc.com/news/2026/november/05/branthwaite-fitness-update---team-news-for-coventry-test/"
+    },
+    {
+      "source_hash_sha256": "8ea915d4ad59bfb3ba11370730919bd9f6b2982313ac556f546eb268462c04b0",
+      "source_url": "https://www.leedsunited.com/en/news/team-news-injury-updates-on-calvert-lewin-okafor-and-stach"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "582a5b50f940aa95fc8ea6184c397ca4a51f56c18c9b5b18d2264691f0114e2e",
+  "observed_at": "2026-11-06T07:05:31Z",
+  "prior_ledger_sha256": "dfb3263b97fbf95f81a7b6d64493c05e759cc248805b433ebf0d9b65c7a2c628",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "04f74aed53efcb75e1859385f40d7f3f6d863282335d5d7c92f450731e8af045",
+  "run_id": "composer-2.5:2026-11-06T07:05:31Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
