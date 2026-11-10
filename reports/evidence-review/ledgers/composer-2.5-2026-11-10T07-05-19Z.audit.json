@@ -1,0 +1,78 @@
+{
+  "accepted_claim_ids": [
+    "model:3f1268ae9f3f03ca156d24329ab948aeabbf14eb8f2a0b94028df8a24065ffee"
+  ],
+  "available_at": "2026-11-10T07:05:19Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:235e16dd5202a1085b588861063094945f436c4693df4b5a0f5bb78fb296c5a7": "model:3f1268ae9f3f03ca156d24329ab948aeabbf14eb8f2a0b94028df8a24065ffee"
+  },
+  "content_sha256": "9023b35e1ba43181754ad0a4ff42afc167cc4cfd7ae34c2b3fa68ca3fd677376",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 241
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Chelsea Jo\u00e3o Pedro unavailable already on tip 5a997ad3",
+        "Re-emit Spurs Tel doubtful already on tip",
+        "Force Ipswich thin team-news into a claim",
+        "City O'Reilly date-only page as Haaland/Gvardiol claim"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Liverpool Szoboszlai doubtful from post-Palace presser; skip tip duplicates and thin/out-of-gate pages",
+      "falsifiers": [
+        "Hungary confirm Szoboszlai starts IB fixtures fully fit",
+        "Liverpool post-IB presser clears him with no knee limitation before GW11",
+        "Host cannot hash Liverpoolfc.com URL"
+      ],
+      "rationale": "72h gate from 2026-11-10T07:05:19Z retains leads from ~2026-11-07T07:05Z. New precise availability delta is Iraola on Szoboszlai knee/not 100% after Palace. Skip Chelsea JP/Hato/Lacroix/Martinez/Acheampong already on tip 5a997ad3; Spurs Tel already doubtful on tip; Ipswich team-news page thin with no precise claim; Arsenal/Brighton/Leeds/Villa gallery/City date-only or prior tip; Man Utd 403; Forest/Newcastle/Sunderland/Bournemouth/Fulham/Hull/Coventry empty.",
+      "supporting_claim_ids": [
+        "model:3f1268ae9f3f03ca156d24329ab948aeabbf14eb8f2a0b94028df8a24065ffee"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "b759db6eb70b102af7e7ff8360065e6107c69c9b3dbf92980da9ba555164a2bb",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "3c6450d496fba836a0a81427fcbad617b6b5c12b8d38ced8649bf61430d4993f",
+      "source_url": "https://www.liverpoolfc.com/news/andoni-iraola-press-conference-or-every-word-after-crystal-palace-1-3-liverpool"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "74c48ad802155971e51828d66431c050d5b241e4b73b41b795b5267c913043b2",
+  "observed_at": "2026-11-10T07:05:19Z",
+  "prior_ledger_sha256": "5a997ad3991b312bd5e493d37d762ed686111aae7e4784959236d582fe214173",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "a11ca1d6a444170f9fbbb25f1555f1383081f699bb6e3aff5998d21cfe4e0a44",
+  "run_id": "composer-2.5:2026-11-10T07:05:19Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 1,
+    "candidate_count": 1,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
