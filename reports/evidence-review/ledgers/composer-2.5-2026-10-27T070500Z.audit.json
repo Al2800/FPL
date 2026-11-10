@@ -1,0 +1,102 @@
+{
+  "accepted_claim_ids": [
+    "model:1f4ae90ba9c95f86375c0763fa80d045737024c4406f6fc92b125e6ea984d6d8",
+    "model:0475b8955eed294bbda63e4ad12d1c1d1ae3915e1c8fc5ac9bea330a0c0067aa",
+    "model:b3c8a65a4c3f1005d69469675c7636b417b95ea400b68216777ea8bcc1a3b389"
+  ],
+  "available_at": "2026-10-27T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:56edb43d07832e9e6f4ee0f5121a436fb98683f4565b242f9ac720f26cb713da": "model:1f4ae90ba9c95f86375c0763fa80d045737024c4406f6fc92b125e6ea984d6d8",
+    "model:668e9bf8b4958c782c4401a460c283643cfc8b2f4ff579be1b3dc255fdbc7525": "model:0475b8955eed294bbda63e4ad12d1c1d1ae3915e1c8fc5ac9bea330a0c0067aa",
+    "model:c2f15bee836f6506cbde2c362793b7eedd3dda901f6bdabe36f3ffd5bffa8917": "model:b3c8a65a4c3f1005d69469675c7636b417b95ea400b68216777ea8bcc1a3b389"
+  },
+  "content_sha256": "b2fcaf8268269f93f17c913df6ad925267920d8e90a096e91619c70f9d2c4356",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 669
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Haaland/Cherki/Isak started_match tips already on tip ledger",
+        "Admit Jo\u00e3o Pedro doubtful without Chelsea published_at",
+        "Emit Calafiori available from Arsenal bench naming alone while hip flag remains",
+        "Emit Branthwaite unavailable against current bootstrap a/100%"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Mykolenko available started_match, Grealish unavailable, Saka unavailable; skip Jo\u00e3o Pedro and duplicate Sunday tips",
+      "falsifiers": [
+        "Host rejects Mykolenko available for failing to supersede prior tips",
+        "Chelsea recovers Jo\u00e3o Pedro ISO admitting a GW9 clear or longer absence",
+        "Midweek Everton page clears Grealish before Newcastle"
+      ],
+      "rationale": "72h cutoff 2026-10-24T07:05:00Z. New same-day originals: Everton Arsenal XI starts Mykolenko (recovery supersede) and omits Grealish (sickness); Arsenal Everton XI confirms Saka injured with Eze starting. Chelsea Jo\u00e3o Pedro pages still HTTP 500 without discovery ISO. Haaland/Cherki/Isak/Barcola/Schade/Wirtz/Maddison/Munoz already on tip 6ff5bf99 \u2014 do not re-emit duplicates.",
+      "supporting_claim_ids": [
+        "model:0475b8955eed294bbda63e4ad12d1c1d1ae3915e1c8fc5ac9bea330a0c0067aa",
+        "model:1f4ae90ba9c95f86375c0763fa80d045737024c4406f6fc92b125e6ea984d6d8",
+        "model:b3c8a65a4c3f1005d69469675c7636b417b95ea400b68216777ea8bcc1a3b389"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent publication times for Chelsea Alonso Jo\u00e3o Pedro pages"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.78,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty ISO leads for 15/21 clubs after 72h gate; Chelsea empty due to 500/no ISO",
+      "falsifiers": [
+        "Later official pages with recoverable ISO appear before GW9 deadline"
+      ],
+      "rationale": "All 21 catalogue clubs searched. 9 leads retained across 6 clubs with verified timestamps. Man Utd Cloudflare; Forest consent wall; Villa/Brighton/PL/Newcastle/Bournemouth/Fulham/Hull/Coventry/Sunderland/Ipswich lacked usable in-window availability ISO for claims.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "f34a693d3696749de977b44d6549371ed72f7740464f7becff355e5e24eb05ae",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "e03f32958c9d42639d2b1022f41837e6e7c2f900b1ccea7de3e01ef1be1aaed4",
+      "source_url": "https://www.arsenal.com/news/team-news-eze-one-of-five-changes-to-face-everton-aZIZd3e0c1Yj"
+    },
+    {
+      "source_hash_sha256": "7e9e04a4efd58c9a545292a4ff9f8a10476feb5337f555bf4883e5d73a0fe6e4",
+      "source_url": "https://www.evertonfc.com/news/2026/october/24/everton-starting-xi-confirmed-for-arsenal-clash/"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "ca756be30380ad9ffc380f40948e5f817e069962558c483a51bc0724f126bde4",
+  "observed_at": "2026-10-27T07:05:00Z",
+  "prior_ledger_sha256": "6ff5bf9954abae469ed6f361e9f4789c7fdd1666562a0ef4facda67fe1cc08ce",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "3c0820e9ba4f3bb70914e874f1060c66e5094cc45defb3f799ddf3f2e2c5b2df",
+  "run_id": "composer-2.5:2026-10-27T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 3,
+    "candidate_count": 3,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
