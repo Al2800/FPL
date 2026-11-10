@@ -1,0 +1,105 @@
+{
+  "accepted_claim_ids": [
+    "model:df06bb43b528dcb76d543dbb6b4d7c981d929bbdee1422660bb4d3207ebc6f11",
+    "model:533d47a2acbebf42cc804f396a76d53fec593c375e2c14e0ed3401d3609f4664",
+    "model:f837dfe13595ec8b589e80d95c851ff36c14e62f51d3434b933b6eaebab10c61",
+    "model:736474e84b47f62f74a23f1f9c7c49867d276414cc5aab04f1a10f5ce8947a4e",
+    "model:a518c1b25536af72c12777a6602817ab773560fbc87a45056907d324b2c9d879"
+  ],
+  "available_at": "2026-11-04T07:04:15Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-gravenberch-unavailable-heel-2026-11-03": "model:736474e84b47f62f74a23f1f9c7c49867d276414cc5aab04f1a10f5ce8947a4e",
+    "candidate-onana-unavailable-villa-barca-2026-11-03": "model:df06bb43b528dcb76d543dbb6b4d7c981d929bbdee1422660bb4d3207ebc6f11",
+    "candidate-ruggeri-unavailable-villa-barca-2026-11-03": "model:533d47a2acbebf42cc804f396a76d53fec593c375e2c14e0ed3401d3609f4664",
+    "candidate-saliba-declared-fit-pre-slavia-2026-11-03": "model:a518c1b25536af72c12777a6602817ab773560fbc87a45056907d324b2c9d879",
+    "candidate-wanbissaka-unavailable-villa-barca-2026-11-03": "model:f837dfe13595ec8b589e80d95c851ff36c14e62f51d3434b933b6eaebab10c61"
+  },
+  "content_sha256": "b211ec8b7b267bedd6089c9c08a80f9174b83bf5ce7ac70fd0b3b3f89ad45bcd",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 155
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Frimpong unavailable from updated injury list",
+        "Re-emit Porro ready-to-start from 1 Nov Spurs page",
+        "Emit Baleba without ISO-dated manutd.com lead",
+        "Emit Semenyo unavailable from City date-only 30 Oct page",
+        "Emit Tzimas/Carvalho from Brighton/Brentford pages outside 72h gate",
+        "Stretch Chelsea JP/Palmer training snippets despite HTTP 500"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [
+        "model:7ee0dbe5a41899",
+        "model:3420f3f40feb25627911bcf2a6a08ab37f798fdeeb1a2a258a0095d08a07c5c3",
+        "model:35e5466b4e933289ed7481e03ca1efaadd8fa4ecaa68e8c62ae1fa12aaf69fe3"
+      ],
+      "decision": "Emit Saliba declared_fit; Gravenberch unavailable heel; Villa Ruggeri/Wan-Bissaka/Onana unavailable. Skip Frimpong/Porro duplicates; skip Baleba (403/no ISO lead); skip out-of-gate Brighton/Brentford/City/Leeds; skip Chelsea JP/Palmer (HTTP 500).",
+      "falsifiers": [
+        "Host rejects Saliba declared_fit for failing recovery supersede of prior unavailable tips",
+        "Gravenberch named in Liverpool XI at Palace",
+        "Chelsea official pages become fetchable and overturn Jo\u00e3o Pedro lock",
+        "Villa name Ruggeri or Wan-Bissaka in next matchday squad"
+      ],
+      "rationale": "72h cutoff 2026-11-01T07:04:15Z. Fresh ISO-dated Arsenal Saliba return and Liverpool Gravenberch heel fracture are the strongest new signals; Villa Bar\u00e7a preview newly documents three absentees absent from the tip ledger. Prior Frimpong unavailable and Porro ready tips already on tip f7a91f73\u2026; Man Utd pages remain Cloudflare 403; Chelsea JP/Palmer pages still HTTP 500.",
+      "supporting_claim_ids": [
+        "model:a518c1b25536af72c12777a6602817ab773560fbc87a45056907d324b2c9d879",
+        "model:736474e84b47f62f74a23f1f9c7c49867d276414cc5aab04f1a10f5ce8947a4e",
+        "model:533d47a2acbebf42cc804f396a76d53fec593c375e2c14e0ed3401d3609f4664",
+        "model:f837dfe13595ec8b589e80d95c851ff36c14e62f51d3434b933b6eaebab10c61",
+        "model:df06bb43b528dcb76d543dbb6b4d7c981d929bbdee1422660bb4d3207ebc6f11"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "f02c51f89451a2f19fdf187bd6d254174aa5702fa774881ee08a4dcda91b801c",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "a3d4fb8707efc2c52a9233b6de27918043d272cea08dfe8cb56cdeacc02512af",
+      "source_url": "https://next.avfc.co.uk/news/2026/november/03/prematch-a-battle-with-barca-at-camp-nou/"
+    },
+    {
+      "source_hash_sha256": "2465da3ecfb5301d4b9e16a16af5741a0eb1dc3a2f38ece3f01ba95b09c3d7d2",
+      "source_url": "https://www.arsenal.com/news/arteta-delight-as-incredible-saliba-returns-aYZI10n4p72s"
+    },
+    {
+      "source_hash_sha256": "2e28eb9afdc34cb08efda3caad8f3d8a6b63129c770c8b8a30ab56a0835ef2ec",
+      "source_url": "https://www.liverpoolfc.com/news/andoni-iraola-explains-ryan-gravenberch-injury-and-timeframe"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "477e328026182147eb7a14757404e2f5b1264b25a665aa3d3f946683b2a8550f",
+  "observed_at": "2026-11-04T07:04:15Z",
+  "prior_ledger_sha256": "f7a91f73784bfc02bc4178e5fad782fe4cda07a36b4c1000c696756056c2f398",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "8fe1f9b00928a8f7babad88718896856cdb5dc4f3cee6b5c473b133c4d285791",
+  "run_id": "composer-2.5:2026-11-04T070415Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 5,
+    "candidate_count": 5,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
