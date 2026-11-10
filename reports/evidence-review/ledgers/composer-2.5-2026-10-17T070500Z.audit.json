@@ -1,0 +1,167 @@
+{
+  "accepted_claim_ids": [
+    "model:aba80a87244778d972b77388ec61e6137947b6c1dd925fa25c3b6ea02d0f6a4b",
+    "model:106072b2b6b2c0fd068b4c464d054e17bb00b9bd0ba13a4e628f5097488c585d",
+    "model:5dbf484aab17ab3de54b894b245fb70ce21611be816921c33e4b0fb12cb1d5ac",
+    "model:851846d77c5dbee40e0d8b3838d0305431dd707abe44a7bd12de73ef4090a65e",
+    "model:753c359b4cd3942aed598c30b17c54e276b413aebd3cc82db20a8efd9bab1378",
+    "model:790c6cad063c86cc5044222745e2f5dbe42ead58a140a2f7d0aa636a71e3a2d7",
+    "model:150f735dea73793b81a70392a3dc4248ef78112252541f7022f8a9853073db37",
+    "model:0fdfd471e916bd453f2f194bf678da4f7e754bb883554f01567cc7739e030f2d",
+    "model:bdce5975805ebf7731663e8c01b2b16e3c631afd45d96c3f8f6bf316c91175f4",
+    "model:7ee0dbe5a4189906b02143f55202187c7e4eb1c0222a3797071d5295b7dd89d6",
+    "model:824400bfb124fae807422a2e582775ee20c51ddfb31fabc0482dde34a10209a0",
+    "model:28da16e1cdf3f943b77f5e436682377a44446183b65bbf6a2f1d6e2d64ad3783"
+  ],
+  "available_at": "2026-10-17T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:cand-damsgaard-20261017": "model:150f735dea73793b81a70392a3dc4248ef78112252541f7022f8a9853073db37",
+    "model:cand-foden-20261017": "model:753c359b4cd3942aed598c30b17c54e276b413aebd3cc82db20a8efd9bab1378",
+    "model:cand-haaland-minutes-20261017": "model:790c6cad063c86cc5044222745e2f5dbe42ead58a140a2f7d0aa636a71e3a2d7",
+    "model:cand-haaland-squad-20261017": "model:cca35cee14b7d25c4cf8cc4ea85995d80511ee715970989edec5fe4f8b60ef28",
+    "model:cand-hincapie-20261017": "model:bdce5975805ebf7731663e8c01b2b16e3c631afd45d96c3f8f6bf316c91175f4",
+    "model:cand-minteh-20261017": "model:aba80a87244778d972b77388ec61e6137947b6c1dd925fa25c3b6ea02d0f6a4b",
+    "model:cand-mitoma-20261017": "model:106072b2b6b2c0fd068b4c464d054e17bb00b9bd0ba13a4e628f5097488c585d",
+    "model:cand-saliba-20261017": "model:7ee0dbe5a4189906b02143f55202187c7e4eb1c0222a3797071d5295b7dd89d6",
+    "model:cand-schade-20261017": "model:0fdfd471e916bd453f2f194bf678da4f7e754bb883554f01567cc7739e030f2d",
+    "model:cand-struijk-20261017": "model:5dbf484aab17ab3de54b894b245fb70ce21611be816921c33e4b0fb12cb1d5ac",
+    "model:cand-tzolis-20261017": "model:824400bfb124fae807422a2e582775ee20c51ddfb31fabc0482dde34a10209a0",
+    "model:cand-wieffer-20261017": "model:851846d77c5dbee40e0d8b3838d0305431dd707abe44a7bd12de73ef4090a65e",
+    "model:cand-zubimendi-20261017": "model:28da16e1cdf3f943b77f5e436682377a44446183b65bbf6a2f1d6e2d64ad3783"
+  },
+  "content_sha256": "c84ace62fc2ac71d0c35ddb8a474c6881dbdb4116f827a6a10dba134bd8c29cc",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 667
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit LFC Isak/Gakpo/Szoboszlai doubtful already on tip 6e57f02e",
+        "Re-emit Mateta doubtful already on tip",
+        "Emit Struijk available after suspension overturn (rejected yesterday)",
+        "Emit Chelsea Emegha/Gittens/James while host 500 persists",
+        "Emit Man Utd Shaw claim despite 403 fetch",
+        "Emit Forest Gibbs-White doubtful without official dated URL",
+        "Treat Haaland rest talk as unavailable for Ipswich despite in-squad confirmation"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [
+        "model:f501c247951f8deb90",
+        "model:ef06ce1728096ce04dcbcd965bd87785523631523cd74d04d5f3bfb8aef6482c",
+        "model:e63a6717"
+      ],
+      "decision": "Emit City Haaland in-squad available + minutes rest doubtful, Foden start doubtful, Arsenal Hincapie/Saliba/Tzolis unavailable + Zubimendi doubtful, Brighton Struijk doubtful (not available) + Minteh/Wieffer/Mitoma unavailable, Brentford Schade/Damsgaard doubtful.",
+      "falsifiers": [
+        "Haaland omitted from Ipswich XI / short minutes after rest talk",
+        "Foden starts and Cherki blanks",
+        "Struijk starts Palace after late clearance",
+        "Schade starts Liverpool fully fit",
+        "Official Forest page clears or rules out Gibbs-White with ISO timestamp"
+      ],
+      "rationale": "Friday City presser is the Haaland TC falsifier: squad confirmed with general rest talk. Do not re-emit LFC Isak/Gakpo/Szoboszlai or Palace Mateta (already on tip 6e57f02e). Do not re-attempt Struijk available after yesterday host reject. Skip Chelsea (lab UA 500). Skip Man Utd claim body (403). Forest Gibbs-White doubt is bootstrap/syndication only \u2014 no dated official Forest URL recoverable today.",
+      "supporting_claim_ids": [
+        "model:cca35cee14b7d25c4cf8cc4ea85995d80511ee715970989edec5fe4f8b60ef28",
+        "model:790c6cad063c86cc5044222745e2f5dbe42ead58a140a2f7d0aa636a71e3a2d7",
+        "model:753c359b4cd3942aed598c30b17c54e276b413aebd3cc82db20a8efd9bab1378",
+        "model:28da16e1cdf3f943b77f5e436682377a44446183b65bbf6a2f1d6e2d64ad3783",
+        "model:bdce5975805ebf7731663e8c01b2b16e3c631afd45d96c3f8f6bf316c91175f4",
+        "model:7ee0dbe5a4189906b02143f55202187c7e4eb1c0222a3797071d5295b7dd89d6",
+        "model:824400bfb124fae807422a2e582775ee20c51ddfb31fabc0482dde34a10209a0",
+        "model:5dbf484aab17ab3de54b894b245fb70ce21611be816921c33e4b0fb12cb1d5ac",
+        "model:aba80a87244778d972b77388ec61e6137947b6c1dd925fa25c3b6ea02d0f6a4b",
+        "model:851846d77c5dbee40e0d8b3838d0305431dd707abe44a7bd12de73ef4090a65e",
+        "model:106072b2b6b2c0fd068b4c464d054e17bb00b9bd0ba13a4e628f5097488c585d",
+        "model:0fdfd471e916bd453f2f194bf678da4f7e754bb883554f01567cc7739e030f2d",
+        "model:150f735dea73793b81a70392a3dc4248ef78112252541f7022f8a9853073db37"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at from relative search labels",
+        "Admit ESPN/BBC Gibbs-White quotes as official club originals"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty dated official leads for clubs without ISO-dated in-window hits after 2026-10-14T07:05:00Z cutoff.",
+      "falsifiers": [
+        "Later official pages with recoverable ISO timestamps appear"
+      ],
+      "rationale": "All 21 catalogue clubs searched; empty arrays where no eligible ISO-dated official lead cleared the 72h gate. Forest consent wall blocked Gibbs-White official citation.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "5dbd8f289eee1313d805dcf3b5e442c7d4b79d391cb8d872ca59f0ab11ef951e",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "4a99e984292bd176f2b14816d934c1bbe4f5965a15c7e68c537a818825579bf9",
+      "source_url": "https://www.arsenal.com/news/injury-latest-on-zubimendi-hincapie-tzolis-and-saliba-a2zDM9u0H6CB"
+    },
+    {
+      "source_hash_sha256": "4d555b79ec0ba3c9adcbe9fdbcf27d92c5ae2fa68529bb90d848cd8938d0c78a",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-news-brentford-v-liverpool-premier-league-kevin-schade-jannik-schuster"
+    },
+    {
+      "source_hash_sha256": "713bbb32caedb5cb71de1626d62896e9586cf672d0b2dd2ecd273d20312841db",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/mft-match-preview-bha-crystal-palace-pl-october-2026"
+    },
+    {
+      "source_hash_sha256": "ff799688269b41fd4627e772f05b0ffb83539f20eb1e01b02cdab7d1df1e3591",
+      "source_url": "https://www.mancity.com/news/mens/enzo-maresca-pre-ipswich-press-conference-written-63927744"
+    },
+    {
+      "source_hash_sha256": "5ac806e97a41b760f740b8ea4c4bc10b4f84f3e4aa33f3b73142c3044c4da795",
+      "source_url": "https://www.mancity.com/news/mens/maresca-written-ipswich-preview-63927753"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "52d331a846fe6080d25c4283a673cbe9fd0605276854ef9f1595f289f95798be",
+  "observed_at": "2026-10-17T07:05:00Z",
+  "prior_ledger_sha256": "6e57f02e39c48199d07fa0ab10f9f23acad530e4330af897f017b9633915b922",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "model:cand-haaland-squad-20261017",
+      "claim_text": "Enzo Maresca confirms Erling Haaland will be in the Manchester City squad for Saturday's Premier League home match versus Ipswich Town, while also saying that at some point City probably need to give him rest/days off amid a busy club-and-country schedule shared with other players.",
+      "club_id": "manchester-city",
+      "player_uid": "player:2026-27:411",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.mancity.com/news/mens/maresca-written-ipswich-preview-63927753",
+      "why_relevant": "GW7 Triple Captain / captain decision hinges on Haaland being in the Ipswich squad versus rest/rotation risk after PSG and internationals."
+    }
+  ],
+  "resulting_ledger_sha256": "911f9e51c7665a4c12788b0122cbc5e9484d0ba45155169a24934d3d76674fde",
+  "run_id": "composer-2.5:2026-10-17T070500Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.923077,
+    "accepted_count": 12,
+    "candidate_count": 13,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 1,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
