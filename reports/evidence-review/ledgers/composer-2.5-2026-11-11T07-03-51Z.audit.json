@@ -1,0 +1,78 @@
+{
+  "accepted_claim_ids": [
+    "model:31f79dc63e32f20d53fef54d8a63bfe1ea6848b0159c1eabeda8edf7fdd97312"
+  ],
+  "available_at": "2026-11-11T07:03:51Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:d17654c7c23cf17d191024380858f8f921c7422ce05313bc5a1e3d12a871b55d": "model:31f79dc63e32f20d53fef54d8a63bfe1ea6848b0159c1eabeda8edf7fdd97312"
+  },
+  "content_sha256": "92664eb7a069384097b9967f49850c6905c987b4bee60b36bf05ade2fcd978bf",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 289
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-admit Szoboszlai doubtful duplicate from LFC post-Palace presser",
+        "Emit Chelsea Martinez/Acheampong recovery as available without declared_fit/returned_to_training/started_match",
+        "Emit PL.com Xhaka update without recoverable article body",
+        "Treat Brighton Chema hope-to-be-fit as availability claim"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Leeds Gudmundsson doubtful from Sweden/Potter IB scan update; skip tip duplicates and thin/out-of-gate pages",
+      "falsifiers": [
+        "Sweden confirm Gudmundsson starts IB fixtures fully fit",
+        "Leeds post-IB presser clears him with no hamstring limitation before GW11",
+        "Host cannot hash leedsunited.com URL"
+      ],
+      "rationale": "72h gate from 2026-11-11T07:03:51Z retains leads from ~2026-11-08T07:03Z. Precise new availability delta is Potter on Gudmundsson hamstring scan positive with expected return to Sweden pitch midweek. Skip Chelsea Acheampong/Martinez already on tip a11ca1d6; Liverpool Szoboszlai already admitted model:3f1268ae\u2026; Brighton Chema/Gross pages lack precise FPL-relevant availability delta for watchlist core; PL.com Xhaka/Szoboszlai pages thin or syndication; Man Utd 403; Forest/Newcastle/Sunderland/Bournemouth/Fulham/Hull/Coventry/Everton/Brentford/Arsenal/Spurs/Villa/City empty or outside gate after verified published_at filter.",
+      "supporting_claim_ids": [
+        "model:31f79dc63e32f20d53fef54d8a63bfe1ea6848b0159c1eabeda8edf7fdd97312"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "c4914e230abc7546c52c875d69a7508d4ae02316d1e795085b0065fdfe1fe829",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "da17ddf2b90352a5493ad110b098bdd83757702df3635a77ebe13fe5d1d5b728",
+      "source_url": "https://www.leedsunited.com/en/news/international-boss-gives-positive-update-on-leeds-united-star-after-injury-scan"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "afbcc345cb4396e97b9e79db164e9576eea7bde138caae81c6e29f1122d30ae1",
+  "observed_at": "2026-11-11T07:03:51Z",
+  "prior_ledger_sha256": "a11ca1d6a444170f9fbbb25f1555f1383081f699bb6e3aff5998d21cfe4e0a44",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "1572959e247d2c22f9cf4d4a18d1f001e9f42173bcfdc74d51fde6fd8c2ba806",
+  "run_id": "composer-2.5:2026-11-11T07:03:51Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 1,
+    "candidate_count": 1,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
