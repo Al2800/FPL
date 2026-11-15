@@ -1,0 +1,69 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-11-12T07:03:24Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "7f2690f38d8a0d45e7a93936819342b8f0f2d8b01adf53d577b90fe7e4ab1d55",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 173
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Gudmundsson doubtful duplicate",
+        "Stretch Gross rest comment into unavailable/doubtful claim",
+        "Invent published_at for City O\u2019Reilly / PL Xhaka thin pages",
+        "Emit Spurs Tel / Chelsea / Liverpool pages outside 72h gate"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new candidates: retain tip Gudmundsson doubtful; skip Gross rest-praise and out-of-gate/tip-duplicate pages",
+      "falsifiers": [
+        "Official Sunderland Xhaka calf update with recoverable ISO published_at inside gate",
+        "City post-IB Haaland/Gvardiol/Gu\u00e9hi minutes update with verified ISO",
+        "Host later finds Gross page encodes a precise rest/unavailable status for GW11"
+      ],
+      "rationale": "72h gate from 2026-11-12T07:03:24Z retains leads from ~2026-11-09T07:03:24Z. Only verified in-gate official leads are Leeds Gudmundsson (already admitted model:31f79dc6\u2026 on tip 1572959e\u2026) and Brighton Gross recovery/rest praise without a precise FPL availability/minutes delta. Skip re-emitting tip duplicates (Chelsea Acheampong/Martinez; Liverpool Szoboszlai). Man Utd Cloudflare 403; Sunderland/Forest/Newcastle/Bournemouth/Fulham/Hull/Coventry empties; Arsenal/Palace/Everton/Brentford/Villa/Spurs/City/Ipswich/PL mostly outside gate, date-only, thin-body, or women-only.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "605e0a7ec92677df892039a1a09649b235f3a84b99248543824554edfcd41f2a",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "b907d7c755306b746bc8841b971501b35064db674b012c9bfb50a2c441e522c0",
+  "observed_at": "2026-11-12T07:03:24Z",
+  "prior_ledger_sha256": "1572959e247d2c22f9cf4d4a18d1f001e9f42173bcfdc74d51fde6fd8c2ba806",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "1572959e247d2c22f9cf4d4a18d1f001e9f42173bcfdc74d51fde6fd8c2ba806",
+  "run_id": "composer-2.5:2026-11-12T07:03:24Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
