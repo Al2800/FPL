@@ -1,0 +1,70 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-11-19T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "223cd5853d1b38849c78e95135a8fa1880964e05f2017d782f6d70fd13dc076a",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 302
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "re_emit_hinshelwood_available",
+        "stretch_wieffer_feature_to_availability_claim",
+        "emit_onana_recovery_as_available",
+        "emit_branthwaite_interview_as_available",
+        "emit_womens_pages_as_mens_claims"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.78,
+      "conflicting_claim_ids": [],
+      "decision": "emit_zero_new_candidates",
+      "falsifiers": [
+        "club ISO page inside gate stating Xhaka/Wissa/Haaland/Gvardiol/Gudmundsson minutes status with recovery_condition",
+        "City Friday presser transcript with recoverable ISO clarifying Haaland rest or fitness",
+        "SAFC Xhaka calf clear/worse with ISO published_at"
+      ],
+      "rationale": "In-gate official leads are Brighton Wieffer feature, Villa Onana contract/rehab interview, Everton Branthwaite fitness interview, Chelsea/Palace training galleries, Leeds LUTV schedule, plus Arsenal/Brighton/Spurs women\u2019s pages. No precise men\u2019s availability/minutes claim with recovery_condition inside 72h gate (~2026-11-16T07:05:00Z). Skip women\u2019s pages; do not stretch Onana long-term ACL rehab or Branthwaite already-available interview into new ledger claims; retain Hinshelwood tip. No City/Sunderland/Newcastle ISO men update for Haaland/Xhaka/Wissa.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d92647cfae4cc02427ce8edcc08696576eb64a5390195769cd429a7042bcc132",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "28ce42a57cdf4a79a2a0bcff6857f57c094e9283e654a6d9754b7b6f5667f3a4",
+  "observed_at": "2026-11-19T07:05:00Z",
+  "prior_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "run_id": "composer-2.5:2026-11-19T07:05:00Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
