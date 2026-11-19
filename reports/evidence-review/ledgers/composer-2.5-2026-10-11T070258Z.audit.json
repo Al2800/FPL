@@ -1,0 +1,159 @@
+{
+  "accepted_claim_ids": [
+    "model:d43a43364fdd97bf1e3cc5fd1281957c6209c7d9e61a5af32e0b53fa8caf4ca9",
+    "model:6db10baa0d9c4d27d8eb5cc7d05081b050ad7ec36f575690cef68376d7de7dbc",
+    "model:7bff1e77941617a02069df0f6a354373468971ebfac13d375a021c367823ce3f",
+    "model:7a051a02eef79b14c3641fa009c209c36b78cc04c5e751114d944920921ef5e4",
+    "model:9c99cbfdeb3acc9a6bbcdc8e9648b9c13fb90218d21ddb229813b77335325d9f",
+    "model:e63a6717b1b1de2de64fd050041e902f35fed2602e842fe3800e1036692faa32"
+  ],
+  "available_at": "2026-10-11T07:02:58Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate:damsgaard-unavailable-squad-2026-10-10": "model:9c99cbfdeb3acc9a6bbcdc8e9648b9c13fb90218d21ddb229813b77335325d9f",
+    "candidate:dunk-available-2026-10-09": "model:d43a43364fdd97bf1e3cc5fd1281957c6209c7d9e61a5af32e0b53fa8caf4ca9",
+    "candidate:khalaili-available-2026-10-09": "model:6db10baa0d9c4d27d8eb5cc7d05081b050ad7ec36f575690cef68376d7de7dbc",
+    "candidate:mateta-unavailable-2026-10-09": "model:7bff1e77941617a02069df0f6a354373468971ebfac13d375a021c367823ce3f",
+    "candidate:sarr-available-2026-10-09": "model:7a051a02eef79b14c3641fa009c209c36b78cc04c5e751114d944920921ef5e4",
+    "candidate:schade-doubtful-2026-10-10": "model:e63a6717b1b1de2de64fd050041e902f35fed2602e842fe3800e1036692faa32"
+  },
+  "content_sha256": "03c03d5e9b1c893fb6119c1b0ffda59c7272fc1d9881e9cf9e03752717908f36",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 120
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-propose Isak/Gakpo unavailable",
+        "Re-propose Van Hecke/VdV available and Porro out",
+        "Admit Haaland available again from Maresca",
+        "Admit Semenyo available from City training gallery",
+        "Invent Newcastle Wissa fitness without dated nufc.co.uk original"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit James unavailable + Caicedo/Pedro available (Chelsea Alonso 10 Oct), Schade doubtful + Damsgaard unavailable (Brentford), Mateta unavailable + Khalaili/Sarr available (Palace), Dunk available (Brighton); withhold duplicate Isak/Gakpo/Van Hecke/Haaland re-claims",
+      "falsifiers": [
+        "Chelsea ephemeral fetch HTTP 500 again",
+        "Host rejects Brighton datePublished recovery",
+        "Schade cleared before GW7"
+      ],
+      "rationale": "Post-GW6-deadline morning: new official originals after 72h cutoff harden James/Schade/Damsgaard/Mateta and clear Caicedo/Pedro/Khalaili/Sarr/Dunk. Prior tip 7208a3ee already holds LFC/Spurs/Arsenal Havertz-Konsa claims.",
+      "supporting_claim_ids": [
+        "candidate:james-unavailable-2026-10-10",
+        "candidate:caicedo-available-2026-10-10",
+        "candidate:pedro-available-corridor-2026-10-10",
+        "model:e63a6717b1b1de2de64fd050041e902f35fed2602e842fe3800e1036692faa32",
+        "model:9c99cbfdeb3acc9a6bbcdc8e9648b9c13fb90218d21ddb229813b77335325d9f",
+        "model:7bff1e77941617a02069df0f6a354373468971ebfac13d375a021c367823ce3f",
+        "model:6db10baa0d9c4d27d8eb5cc7d05081b050ad7ec36f575690cef68376d7de7dbc",
+        "model:7a051a02eef79b14c3641fa009c209c36b78cc04c5e751114d944920921ef5e4",
+        "model:d43a43364fdd97bf1e3cc5fd1281957c6209c7d9e61a5af32e0b53fa8caf4ca9"
+      ]
+    },
+    {
+      "alternatives_rejected": [
+        "Invent published_at from relative search snippets"
+      ],
+      "boundary_id": "coverage_gaps",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Record empty official dated leads for newcastle, nottingham-forest, sunderland, coventry, hull, everton, aston-villa, bournemouth, premier-league",
+      "falsifiers": [
+        "Later official pages with recoverable ISO timestamps appear"
+      ],
+      "rationale": "Searched all catalogue domains; several returned no ISO-dated current-window originals under lab retrieval.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "ec8f01d8c5ae87865203cd05581bdb50a2a8218bf96828939bacf4a7e2f4b07f",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "0549b35be10e416e3bc7cb19547fcee110d5252c3b063b26e97427ea71503ff6",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-confirmed-news-aston-villa-v-brentford-premier-league-el-hadji-malick-diouf"
+    },
+    {
+      "source_hash_sha256": "2e75e4e0d814c1d861456abdbf293db06cf8046f31edc144e4bda0cc69ab86e9",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-keith-andrews-kevin-schade-jannik-schuster-injury-update-brentford"
+    },
+    {
+      "source_hash_sha256": "f5873a7a1521da7dcb8495be5ead7849a1976f7b07d742f523c4e289aece6c41",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/mft-match-preview-sunderland-bha-pl-october-2026"
+    },
+    {
+      "source_hash_sha256": "65ce50849d4173d09645855e7d515c34261bcb17dfa10f3fa922b4a3392546cd",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-sage-updates-on-mateta-and-khalaili-ahead-of-forest/"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "5ff5c249b4d827afb82c9d28b1c7303697481ba4f076332bd0b76771e0f55429",
+  "observed_at": "2026-10-11T07:02:58Z",
+  "prior_ledger_sha256": "7208a3ee9bff218a7a8e0cf9e75d04c0fd231f28270ed87f908b3be686a96364",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "candidate:caicedo-available-2026-10-10",
+      "claim_text": "Xabi Alonso confirms Moises Caicedo is back in the Chelsea starting XI vs Bournemouth after recovering during the international break, saying the club is really happy Moi is back in the Premier League.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:159",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/alonso-on-caicedos-return-and-james-absence-against-bournemouth: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/alonso-on-caicedos-return-and-james-absence-against-bournemouth",
+      "why_relevant": "Chelsea midfield minutes and DEFCON/structure context; recovery after long absence."
+    },
+    {
+      "candidate_claim_id": "candidate:james-unavailable-2026-10-10",
+      "claim_text": "Chelsea manager Xabi Alonso says Reece James picked up a little injury the day before the Bournemouth fixture and is absent from today's matchday squad; further assessment in the coming days.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:142",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/alonso-on-caicedos-return-and-james-absence-against-bournemouth: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/alonso-on-caicedos-return-and-james-absence-against-bournemouth",
+      "why_relevant": "DEF/asset minutes risk for Chelsea rotation and set-piece roles into GW7 EVE (A); bootstrap already flags James doubtful."
+    },
+    {
+      "candidate_claim_id": "candidate:pedro-available-corridor-2026-10-10",
+      "claim_text": "Alonso groups Joao Pedro with Caicedo's international-break return work, stating 'the same for Joao as well' regarding using the break to restore Premier League readiness ahead of Bournemouth.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:165",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/alonso-on-caicedos-return-and-james-absence-against-bournemouth: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/alonso-on-caicedos-return-and-james-absence-against-bournemouth",
+      "why_relevant": "Advisory FWD on named 15; prior host reject on different Chelsea URL; corroborates start vs BOU."
+    }
+  ],
+  "resulting_ledger_sha256": "1e51a60049c187e4fb540bc440fca01c648d1b464c7b179e8f0d9ab149953dba",
+  "run_id": "composer-2.5:2026-10-11T070258Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.666667,
+    "accepted_count": 6,
+    "candidate_count": 9,
+    "decision_trace_count": 2,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 3,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
