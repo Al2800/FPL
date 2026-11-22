@@ -1,0 +1,70 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-11-14T07:03:02Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "d1bf2befe19c2eeb676298e48167d71fc76cf9df92516bbdd565a5b66f56998e",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 213
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "re-emit Hinshelwood available",
+        "stretch Villa gallery to available/returned_to_training",
+        "emit Ipswich claim without body",
+        "re-emit Gudmundsson outside gate"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.86,
+      "conflicting_claim_ids": [],
+      "decision": "Emit zero new candidates; retain Hinshelwood tip; skip Villa gallery and Ipswich thin pages",
+      "falsifiers": [
+        "Official Sunderland Xhaka calf update with recoverable ISO inside gate",
+        "City post-IB Haaland/Gvardiol/Gu\u00e9hi minutes update with verified ISO",
+        "Newcastle Wissa/Isak fitness update with verified ISO",
+        "Host later finds recoverable men's availability text on Ipswich Wright pages"
+      ],
+      "rationale": "72h gate from 2026-11-14T07:03:02Z retains leads from ~2026-11-11T07:03:02Z. Discovery kept Brighton Hinshelwood (already admitted available model:96335a3e\u2026 on tip c2550f93\u2026), Villa IB training gallery without precise availability status, and Ipswich Wright pages that are title/image-only without recoverable men's availability statements. Skip Hinshelwood re-emit. Skip Villa gallery (no status/minutes claim). Skip Ipswich thin pages. Leeds Gudmundsson 10 Nov is outside today's 72h gate; already doubtful on tip. Out-of-gate/stale Arsenal/Chelsea/Liverpool/Spurs/Palace/Everton/Brentford/PL Xhaka (08 Nov thin)/Man Utd thin; City men date-only; Sunderland/Forest/Newcastle/Bournemouth/Fulham/Hull/Coventry empties.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "f25731484e7c0a2953c72b52deb6ded064ae6a693b40f52c69ab98daa81ecb49",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "d20f176422f454472e5b8cd6fd51c6a40016ce2c795243f7756a31bed82be1fe",
+  "observed_at": "2026-11-14T07:03:02Z",
+  "prior_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "run_id": "composer-2.5:2026-11-14T07:03:02Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
