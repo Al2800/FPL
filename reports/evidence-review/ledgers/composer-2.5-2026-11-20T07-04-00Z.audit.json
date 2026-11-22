@@ -1,0 +1,71 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-11-20T07:04:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "86d25b3255958e488f454dac7c45bfa3e61d75352454d5c37a69ebcabdabf8d5",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 295
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "emit Xhaka unavailable from SAFC URL without recoverable published_at",
+        "stretch Onana contract interview into available recovery",
+        "emit Palace Sarr unavailable duplicate of bootstrap i/0%",
+        "emit women\u2019s Summanen/Lyon pages as men\u2019s claims",
+        "emit City Monday Marker / match preview with date-only published_at outside or failing ISO gate"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "emit_zero_new_candidates",
+      "falsifiers": [
+        "City Friday presser written recap with recoverable ISO clarifying Haaland/Gvardiol/Gu\u00e9hi minutes for Fulham",
+        "SAFC Xhaka/Brobbey page with recoverable ISO published_at and precise calf timeline",
+        "Leeds Farke Chelsea preview page with recoverable ISO for DCL/Stach/Okafor/Gudmundsson",
+        "Newcastle Howe ISO page for Wissa/Joelinton"
+      ],
+      "rationale": "In-gate official leads with recoverable ISO published_at: Palace Frank Sarr/Tomiyasu/Mateta notes, Villa Onana contract/rehab interview, Brentford v Everton preview, Liverpool Bradley/Leoni rehab photos, Arsenal/Spurs women\u2019s pages. SAFC Brobbey/Xhaka update URLs exist but no recoverable ISO published_at (cookie wall) so omitted from discovery leads. City Friday presser scheduled 10:30 UK on 20 Nov \u2014 not yet published at observed_at. Skip women\u2019s pages; do not stretch Onana long-term ACL rehab into available; Bradley photos are rehab imagery not a precise minutes/availability status change; Palace Sarr already bootstrap i/0% (no new claim). Retain Hinshelwood tip. Bootstrap alone shows Xhaka i/0% calf (strategy overlay, not a new ledger claim without official ISO).",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "4bb32d6a736f3d5965cc6da62578faab3977dbefbd9d73b8a884a49cc1a89b30",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "3cbd48475365063ebbb9f22488171f1c28885bd1fca5eba5a10863a5eb744ec4",
+  "observed_at": "2026-11-20T07:04:00Z",
+  "prior_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "run_id": "composer-2.5:2026-11-20T07:04:00Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
