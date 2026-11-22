@@ -1,0 +1,68 @@
+{
+  "accepted_claim_ids": [],
+  "available_at": "2026-11-16T07:02:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {},
+  "content_sha256": "ec7b47c4774c1d90e5318cf44e215bd49ee303ba90262c69a68697797d7db89e",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 422
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "re-emit Hinshelwood available already on tip c2550f93",
+        "emit women's availability as men's claims",
+        "stretch Verbruggen interview into available claim",
+        "invent Newcastle Wissa claim without fetchable official URL"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.72,
+      "conflicting_claim_ids": [],
+      "decision": "emit_zero_new_candidates",
+      "falsifiers": [
+        "club ISO page inside gate stating Xhaka/Wissa/Haaland/Gvardiol/Gudmundsson minutes status",
+        "resolvable NUFC Howe Wissa update with published_at and precise status"
+      ],
+      "rationale": "In-gate official leads are Verbruggen feature interview, Villa/Arsenal/City/Spurs women's pages, and Ipswich title-only preview; no precise men's availability/minutes claim with verified recovery_condition inside the 72h gate. Skip tip-duplicate Hinshelwood (out of gate at 05:00Z). Newcastle Wissa-related card not resolvable to a canonical URL with ISO published_at.",
+      "supporting_claim_ids": []
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "c765a1c8eea0ab10c94327e35d6c4248bf952484db94f41beeaf5dba53d6c734",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "b7a14c72da54b8d005259a79c1758ba0da9a7e05baabb38ab158f58f3eed57c6",
+  "observed_at": "2026-11-16T07:02:00Z",
+  "prior_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "c2550f93e26207cfd156b678508f8e2e28627437747faa10bff8c08c2131c544",
+  "run_id": "composer-2.5:2026-11-16T07:02:00Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.0,
+    "accepted_count": 0,
+    "candidate_count": 0,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 0,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": [
+      "decision_trace_has_no_claim_links"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
