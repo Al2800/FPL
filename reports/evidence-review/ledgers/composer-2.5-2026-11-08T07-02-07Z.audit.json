@@ -1,0 +1,141 @@
+{
+  "accepted_claim_ids": [
+    "model:cd0af303c7cff4c52c1a7aafa403037edcbf9eb611b20877f2cae951153f1ced",
+    "model:dfa65b520bdd8d2c51b461b091fb55c52bfddecb0742cfd23e62930a22662c11",
+    "model:239da6daf81b7ffe71445d656263416a9f805c4c61eee7cc78a1588543c585a1",
+    "model:946a12e69f8e3b6081299421ae9b6abe13bc0e41c7202302f43c4d9e4230aa81",
+    "model:0d9522e2b0cc143047e88b160a136cb17b7edf18e50c4ce6cdc4e3f0f4b20767",
+    "model:f9079adc5a5841aea2d1430afa83a502410b7c73c86d988bdd9f199f04b5ef2f",
+    "model:2e610221c2297a726d996c3d57a79d7a794fef450cd21aef1a5a539cab6c44a0"
+  ],
+  "available_at": "2026-11-08T07:02:07Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:01867c308618bb2867f475ae25168c0bc327849087b6a7aac035671df0e4dc44": "model:cd0af303c7cff4c52c1a7aafa403037edcbf9eb611b20877f2cae951153f1ced",
+    "model:26a22cb00539bd75c9345b2b707a8831b37582501680fb856b783abea4347e47": "model:cfe8eb7b7df7403b90a77a6d9404d5321581782d247af80860cf1732eadb3372",
+    "model:45e1f134ac2fa2156d7e87ffa54ddcc8abb125cec1e1bc0b2a6e4808725a2abe": "model:0d9522e2b0cc143047e88b160a136cb17b7edf18e50c4ce6cdc4e3f0f4b20767",
+    "model:4b5b6ac8f250b626e4d645c984cde19bb86d7edee630f7cb5f18f294e5c1718f": "model:2e610221c2297a726d996c3d57a79d7a794fef450cd21aef1a5a539cab6c44a0",
+    "model:7aeb254466822fc0bce10b5a36a336313a0eea002f9c00e7591f63220660a698": "model:946a12e69f8e3b6081299421ae9b6abe13bc0e41c7202302f43c4d9e4230aa81",
+    "model:9d1db47f106a78f72853b1cf71c227d86c88e66fab83e1a25740e0d08dcbab6f": "model:dfa65b520bdd8d2c51b461b091fb55c52bfddecb0742cfd23e62930a22662c11",
+    "model:a7abbe1ce89bc8c435f8c878e8f8a8e4e66fbffe89cae5c61dc1311fb114d2de": "model:239da6daf81b7ffe71445d656263416a9f805c4c61eee7cc78a1588543c585a1",
+    "model:df52ff4a713decee1942865eacc7da63a206f4fef27d08bc7ed8f4dc985a3b89": "model:f9079adc5a5841aea2d1430afa83a502410b7c73c86d988bdd9f199f04b5ef2f",
+    "model:e5f157e1273a5413c71ce740318aa739aaa724128f258903856f1641009473ee": "model:5dee3a8b12d35613385d1ae7932617498fd77ce57c90d955368e30824099c06c"
+  },
+  "content_sha256": "8a24c7c053df4179e128b593d27061d3bcd37b91535f9fc5b2d8f891e19cb7c9",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 298
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit Chelsea JP unavailable without verified published_at",
+        "Re-emit Saka/Konsa/Sarr/Gravenberch/Tosin claims already on tip d6b77a60",
+        "Admit mancity.com O'Reilly page with date-only published_at",
+        "Use premierleague.com injury roundups lacking machine ISO"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.8,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Tel/Villa/Leeds/Everton availability deltas; skip Chelsea without ISO and skip Arsenal/Palace/Brentford duplicates already on tip d6b77a60",
+      "falsifiers": [
+        "Chelsea pages return with ISO clearing or worsening Jo\u00e3o Pedro before GW11",
+        "Tel medical checks return only minor and he trains fully in IB",
+        "DCL suffers fresh setback on international duty"
+      ],
+      "rationale": "72h gate from 2026-11-08T07:02:07Z retains Nov 5\u20137 official pages. New signal is Tel ankle doubt, Villa absences, DCL/Okafor/Rodon/Branthwaite recovery upgrades, and Gudmundsson hamstring. Chelsea Alonso Sunderland pages remain HTTP 500 so Jo\u00e3o Pedro/Hato/Lacroix/Martinez/Caicedo stay search-only. City date-only pages skipped.",
+      "supporting_claim_ids": [
+        "model:f9079adc5a5841aea2d1430afa83a502410b7c73c86d988bdd9f199f04b5ef2f",
+        "model:dfa65b520bdd8d2c51b461b091fb55c52bfddecb0742cfd23e62930a22662c11",
+        "model:cd0af303c7cff4c52c1a7aafa403037edcbf9eb611b20877f2cae951153f1ced",
+        "model:239da6daf81b7ffe71445d656263416a9f805c4c61eee7cc78a1588543c585a1",
+        "model:5dee3a8b12d35613385d1ae7932617498fd77ce57c90d955368e30824099c06c",
+        "model:cfe8eb7b7df7403b90a77a6d9404d5321581782d247af80860cf1732eadb3372",
+        "model:0d9522e2b0cc143047e88b160a136cb17b7edf18e50c4ce6cdc4e3f0f4b20767",
+        "model:2e610221c2297a726d996c3d57a79d7a794fef450cd21aef1a5a539cab6c44a0",
+        "model:946a12e69f8e3b6081299421ae9b6abe13bc0e41c7202302f43c4d9e4230aa81"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d6b3c48cc1f689df71fc1a79c0e803e48c813d7729d1892dc8f4cfd407df337d",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "947001428d1fe3061d2974cc31529cb07927e870f708c41ad1a87cc4ba8cf397",
+      "source_url": "https://www.avfc.co.uk/news/2026/november/06/prematch-team-news-for-united-encounter/"
+    },
+    {
+      "source_hash_sha256": "b0b3d82607e0b06bfc720f3fcbfd19e166e2389306dab849e0c2183ef71e0a5d",
+      "source_url": "https://www.evertonfc.com/news/2026/november/06/everton-team-revealed-to-take-on-coventry/"
+    },
+    {
+      "source_hash_sha256": "33f040baf88af0f89903cae64d654bf0194512153111a52810c47ae59fdb0317",
+      "source_url": "https://www.leedsunited.com/en/news/daniel-farke-reveals-pre-game-feeling-on-substitute-and-how-spurs-victory-felt"
+    },
+    {
+      "source_hash_sha256": "2ae66b023e41253a9b8446400b2a9e31aba8f64bf275d6f01ee46a4c89790acd",
+      "source_url": "https://www.leedsunited.com/en/news/two-changes-and-pair-return-from-injury-as-farke-reveals-xi-to-face-tottenham-hotspur"
+    },
+    {
+      "source_hash_sha256": "d37599f3e38c38b12c79164bf1d19e3ed01a0535318fc233df068ea7b9d4d7db",
+      "source_url": "https://www.tottenhamhotspur.com/news/1184622/robertos-latest-on-mathys-tels-injury-from-elland-road"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "fe9fc15dd4ae60f71d32ab0e4d79c4c148d9ef59a869da53938d07c4617ae3e0",
+  "observed_at": "2026-11-08T07:02:07Z",
+  "prior_ledger_sha256": "d6b77a608dcc2b21bc9664b923787357467b15698bcc5def3afeabfdd48a2834",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "model:26a22cb00539bd75c9345b2b707a8831b37582501680fb856b783abea4347e47",
+      "claim_text": "Daniel Farke returns Noah Okafor to the Leeds matchday squad versus Tottenham after injury absence; Okafor is named among the substitutes.",
+      "club_id": "leeds",
+      "player_uid": "player:2026-27:336",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.leedsunited.com/en/news/two-changes-and-pair-return-from-injury-as-farke-reveals-xi-to-face-tottenham-hotspur",
+      "why_relevant": "Clears Okafor as available again after adductor issues flagged earlier in the week."
+    },
+    {
+      "candidate_claim_id": "model:e5f157e1273a5413c71ce740318aa739aaa724128f258903856f1641009473ee",
+      "claim_text": "Leeds United official lineup confirms Dominic Calvert-Lewin starts against Tottenham Hotspur at Elland Road after recent foot setback concerns.",
+      "club_id": "leeds",
+      "player_uid": "player:2026-27:346",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.leedsunited.com/en/news/two-changes-and-pair-return-from-injury-as-farke-reveals-xi-to-face-tottenham-hotspur",
+      "why_relevant": "Upgrades DCL from prior foot doubt to started-match availability ahead of any Wissa pivot debate."
+    }
+  ],
+  "resulting_ledger_sha256": "42e874cd918060105ac58ee216937bd6fcf4028e07075c0021a80cbe07a82392",
+  "run_id": "composer-2.5:2026-11-08T07:02:07Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.777778,
+    "accepted_count": 7,
+    "candidate_count": 9,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 2,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
