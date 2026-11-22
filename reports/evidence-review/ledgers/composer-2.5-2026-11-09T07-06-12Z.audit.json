@@ -1,0 +1,100 @@
+{
+  "accepted_claim_ids": [
+    "model:b5fa6626f92db249704547b8dd72302a8322392519a355b50346afdd3fe68afa",
+    "model:6b6e41afd6eafd56c5a9853b2f24655ea7bf1a31a59fbefe79f64b8955751fb2",
+    "model:0b399fdd95a95878b0bd00c3747e164246df952210f4e7c05ce4411f7a161ec8",
+    "model:c3a46265b677280082fc988a2edba496a20663aaae64f579b718af3b035f4863",
+    "model:ad1c3419f4df9e1c34435d20c4fc5dada1c3cd06470fdfd4a512390d216e23fd",
+    "model:6c39fb356bf292e84da7768d417622c223884c60cc8d2a572a98c6ac0e9c04ce"
+  ],
+  "available_at": "2026-11-09T07:06:12Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:3ea8c3aaed27e3448a22fadbcb48e8db2bedf71414aad48ab087dffc81e896c6": "model:c3a46265b677280082fc988a2edba496a20663aaae64f579b718af3b035f4863",
+    "model:6e44b638f51d33c954f90bbada1988f628fe7c5852d2e4b113500c39a966b6b7": "model:b5fa6626f92db249704547b8dd72302a8322392519a355b50346afdd3fe68afa",
+    "model:8e1a90de9e9e6c3e50f36058ca4c670162ec10c96e1a080bc650b8a2c5411b3d": "model:6b6e41afd6eafd56c5a9853b2f24655ea7bf1a31a59fbefe79f64b8955751fb2",
+    "model:ae5e4142fd6ef7ce2bf25b45806243cb95f5227b6c3a2c2c2d7304985bf2ec51": "model:0b399fdd95a95878b0bd00c3747e164246df952210f4e7c05ce4411f7a161ec8",
+    "model:b0ce8b038af3ed4e806f4edd98cabe2e849e6b898cee16c1bfb500db6f46eaf6": "model:6c39fb356bf292e84da7768d417622c223884c60cc8d2a572a98c6ac0e9c04ce",
+    "model:fc68489e0ec5967e565d5bf5bb8aa76cd79a020a28f613d86c0a68655c2da487": "model:ad1c3419f4df9e1c34435d20c4fc5dada1c3cd06470fdfd4a512390d216e23fd"
+  },
+  "content_sha256": "e5466efad6e6d95023b5ae99ce859640a939de2bbe135aed3a6598e09f18b496",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 180
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Tel/Villa/Leeds/Everton duplicates from tip 42e874cd",
+        "Force DCL/Okafor available recovery again despite supersede rejects",
+        "Admit City date-only pages without full ISO"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "Emit Chelsea Jo\u00e3o Pedro/Hato/Lacroix/Martinez/Acheampong availability deltas; skip tip duplicates and date-only City/Man Utd/Forest empties",
+      "falsifiers": [
+        "Chelsea pages return HTTP 500 again and host cannot hash ssoc=1 URLs",
+        "Official Chelsea update clears Jo\u00e3o Pedro for GW11 with strong minutes",
+        "Martinez starts for Argentina or Chelsea training confirms mask minutes"
+      ],
+      "rationale": "72h gate from 2026-11-09T07:06:12Z retains Nov 6\u20138 official pages. Chelsea ssoc=1 URLs now return ISO timestamps, closing yesterday\u2019s HTTP 500 gap for Jo\u00e3o Pedro. Skip Arsenal Saka/Konsa, Palace Sarr, Liverpool Gravenberch, Spurs Tel, Villa Wan-Bissaka/Ruggeri/Onana, Leeds Rodon/Gudmundsson and Everton Branthwaite already on tip 42e874cd. City remains date-only; Man Utd/Forest/Sunderland/Bournemouth/Newcastle empty after filters.",
+      "supporting_claim_ids": [
+        "model:6b6e41afd6eafd56c5a9853b2f24655ea7bf1a31a59fbefe79f64b8955751fb2",
+        "model:b5fa6626f92db249704547b8dd72302a8322392519a355b50346afdd3fe68afa",
+        "model:0b399fdd95a95878b0bd00c3747e164246df952210f4e7c05ce4411f7a161ec8",
+        "model:ad1c3419f4df9e1c34435d20c4fc5dada1c3cd06470fdfd4a512390d216e23fd",
+        "model:c3a46265b677280082fc988a2edba496a20663aaae64f579b718af3b035f4863",
+        "model:6c39fb356bf292e84da7768d417622c223884c60cc8d2a572a98c6ac0e9c04ce"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "a8d022b2fdc30e74c2c33e6cc1691dae54e0b527501b0617c7b14a76904831b8",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "6be850b5b6ee5a92965a77e6dae7aebe787780dd10d325f4f01fdc9503658179",
+      "source_url": "https://www.chelseafc.com/en/news/article/alonso-explains-acheampong-and-martinez-absences-against-sunderland?ssoc=1"
+    },
+    {
+      "source_hash_sha256": "9dadb32dca7003cab7d8467a416ab3fdaf678c0edac88e65b2d87b08d560cb79",
+      "source_url": "https://www.chelseafc.com/en/news/article/alonso-we-didnt-produce-enough-to-deserve-to-win?ssoc=1"
+    },
+    {
+      "source_hash_sha256": "499f6fd1063f096cb2be3d9af0201876191bf33cf7fe08074fb05503c7a2becc",
+      "source_url": "https://www.chelseafc.com/en/news/article/xabi-alonso-confirms-chelsea-team-news-for-sunderland?ssoc=1"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "2e889407c2d1de1f23d38ed0a6df995ac4ad7ef59fd26945e899b866c6ef3153",
+  "observed_at": "2026-11-09T07:06:12Z",
+  "prior_ledger_sha256": "42e874cd918060105ac58ee216937bd6fcf4028e07075c0021a80cbe07a82392",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "5a997ad3991b312bd5e493d37d762ed686111aae7e4784959236d582fe214173",
+  "run_id": "composer-2.5:2026-11-09T07:06:12Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
