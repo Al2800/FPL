@@ -1,0 +1,158 @@
+{
+  "accepted_claim_ids": [
+    "model:5fb793dd270c09f2a5c2cd65f1d8675cdde9ae021005c58e7c6ced3fdf532fff",
+    "model:35e5466b4e933289ed7481e03ca1efaadd8fa4ecaa68e8c62ae1fa12aaf69fe3"
+  ],
+  "available_at": "2026-11-02T07:10:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-mateta-started-palace-spurs-2026-10-31": "model:5fb793dd270c09f2a5c2cd65f1d8675cdde9ae021005c58e7c6ced3fdf532fff",
+    "candidate-munoz-available-liverpool-squad-2026-11-01": "model:3eff1f5ca4113fc20468d78de8874ddf090be1abec80b48fb65f527fde901fae",
+    "candidate-porro-available-ready-to-start-2026-11-01": "model:35e5466b4e933289ed7481e03ca1efaadd8fa4ecaa68e8c62ae1fa12aaf69fe3",
+    "candidate-szoboszlai-available-liverpool-squad-2026-11-01": "model:f07dd0fe7e6a4489bcfa7429a0c05a9107859bb766f86b7c86c6243b5178dd7a"
+  },
+  "content_sha256": "0da57ff144f9bb77d3327fd391e266dd2afd9f39b9d78c824ae8c3d9a48ebdfb",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 296
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Emit Branthwaite available from soft concussion-clear quote",
+        "Emit Mainoo returned_to_training (published before cutoff)",
+        "Re-emit Sarr/Carvalho/Bergvall/Savio/DCL/Minteh/Wieffer duplicates",
+        "Claim Munoz/Szoboszlai started_match from substitute appearances"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [
+        "model:1f9febf6405cc5e3e63b4257458e2b00553cd3326696020f5af1d84aa0788489",
+        "model:a4e10b929a65c7c98dcde4bdf3fc179d59edd0d276a85cb4d492d1ea3218d744",
+        "model:d1dbf69d414b03ab661b9cdc3bfe2bfe2243df3cafea80e215056935510c4431"
+      ],
+      "decision": "Emit Munoz/Szoboszlai available (bench return); Porro ready-to-start available; Mateta started_match; JP unavailable reinforce via Brighton + match report; Palmer hamstring unavailable. Skip soft Branthwaite; skip duplicate Sarr/Carvalho/Bergvall/Savio/Minteh/Wieffer/DCL/Saka; skip Mainoo (outside 72h).",
+      "falsifiers": [
+        "Host fetch fails Chelsea Rosenior/Brighton pages again",
+        "Mateta started_match rejected while bootstrap suspension remains authoritative",
+        "Munoz/Szoboszlai omitted from next Liverpool squad after bench return"
+      ],
+      "rationale": "72h cutoff 2026-10-30T07:10:00Z. Fresh Liverpool confirmed lineup (1 Nov) upgrades Munoz/Szoboszlai from prior doubtful tips without claiming started_match. Spurs De Zerbi says Porro is ready to start. Palace XI lists Mateta starting despite bootstrap suspension flag. Chelsea Rosenior Brighton page keeps JP out of squad and flags Palmer hamstring; match report backs JP thigh absence after yesterday's HTTP 500. Soft Everton Branthwaite 'should have recovered' skipped. Prior Brighton Minteh/Wieffer page fell before today's cutoff (already admitted).",
+      "supporting_claim_ids": [
+        "model:3eff1f5ca4113fc20468d78de8874ddf090be1abec80b48fb65f527fde901fae",
+        "model:f07dd0fe7e6a4489bcfa7429a0c05a9107859bb766f86b7c86c6243b5178dd7a",
+        "model:35e5466b4e933289ed7481e03ca1efaadd8fa4ecaa68e8c62ae1fa12aaf69fe3",
+        "model:5fb793dd270c09f2a5c2cd65f1d8675cdde9ae021005c58e7c6ced3fdf532fff",
+        "candidate-joao-pedro-unavailable-rosenior-brighton-2026-11-01",
+        "candidate-palmer-unavailable-hamstring-brighton-2026-11-01",
+        "candidate-joao-pedro-unavailable-match-report-2026-10-31"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "c8487e9820eb235e9976d9d4363517647148ddd03181d022911af668306b3c16",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "299a10d177c3973ccf8703b6321766debef429fb2968e3eb3b34b095267ee4fd",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-two-changes-from-last-league-game-as-palace-face-spurs/"
+    },
+    {
+      "source_hash_sha256": "e311fe9c77f539ef89c4cccac067b8bc448439f069eff91fb0b8b40908e1b7d2",
+      "source_url": "https://www.liverpoolfc.com/news/team-news-confirmed-liverpool-line-up-v-arsenal"
+    },
+    {
+      "source_hash_sha256": "4e1a16abc4b7e3f8667a1700a2f514e22c4ac4b7c08db5c5e72e8457ada67021",
+      "source_url": "https://www.tottenhamhotspur.com/news/1183274/roberto-on-when-pedro-and-destiny-will-be-ready-to-start-matches"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "7299525cb7e544ef6dd0078b0cc09cb65b5a9cb2526cf06494c9e723c26a5993",
+  "observed_at": "2026-11-02T07:10:00Z",
+  "prior_ledger_sha256": "4f20324e50307e14f3d90ee2f9589140493cdfe7e4dfc9bbae515e8ed79c67a7",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "candidate-joao-pedro-unavailable-match-report-2026-10-31",
+      "claim_text": "Chelsea match report: Delap started up front for Joao Pedro, 'who was absent due to a thigh injury' versus Manchester United.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:165",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/match-report-chelsea-0-1-manchester-united: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/match-report-chelsea-0-1-manchester-united",
+      "why_relevant": "Second source reinforcing JP unavailable after prior Rosenior page HTTP 500 on 1 Nov ingest."
+    },
+    {
+      "candidate_claim_id": "candidate-munoz-available-liverpool-squad-2026-11-01",
+      "claim_text": "Official Liverpool team news: Victor Munoz returns to the squad following injury and is named on the bench for the Premier League clash with Arsenal (not in the starting XI).",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:377",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/team-news-confirmed-liverpool-line-up-v-arsenal",
+      "why_relevant": "Supersedes prior Munoz doubtful tip for GW9/GW10 minutes clarity; watchlist only, not an advisory XV chase."
+    },
+    {
+      "candidate_claim_id": "candidate-szoboszlai-available-liverpool-squad-2026-11-01",
+      "claim_text": "Official Liverpool team news: Dominik Szoboszlai returns to the squad following injury and is named on the bench versus Arsenal (not starting).",
+      "club_id": "liverpool",
+      "player_uid": "player:2026-27:368",
+      "reasons": [
+        "recovery must supersede every unresolved absence or doubt"
+      ],
+      "source_url": "https://www.liverpoolfc.com/news/team-news-confirmed-liverpool-line-up-v-arsenal",
+      "why_relevant": "Supersedes prior Szoboszlai doubtful tip; minutes returning but not a started_match confirmation."
+    },
+    {
+      "candidate_claim_id": "candidate-joao-pedro-unavailable-rosenior-brighton-2026-11-01",
+      "claim_text": "Rosenior before Brighton: Joao Pedro not in the matchday squad; 'I think Joao Pedro will be good for Sunday, but this game has come too close for him.' Thigh issue continues; bootstrap still i/0%.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:165",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/liam-rosenior-provides-update-on-cole-palmer-and-joao-pedro-before-brighton: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/liam-rosenior-provides-update-on-cole-palmer-and-joao-pedro-before-brighton",
+      "why_relevant": "Reinforces locked Joao Pedro \u2192 Evanilson sell; prior Man United absence page failed host fetch with HTTP 500."
+    },
+    {
+      "candidate_claim_id": "candidate-palmer-unavailable-hamstring-brighton-2026-11-01",
+      "claim_text": "Rosenior: Cole Palmer 'had some tightness in his hamstring, which he's been carrying. He's going to be out for this game' (Brighton) and will be assessed for the next match window.",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:154",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/liam-rosenior-provides-update-on-cole-palmer-and-joao-pedro-before-brighton: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/liam-rosenior-provides-update-on-cole-palmer-and-joao-pedro-before-brighton",
+      "why_relevant": "Palmer short-term minutes risk for live-entry / community captain heat; advisory XV does not own Palmer."
+    }
+  ],
+  "resulting_ledger_sha256": "31ed619da762bc5669871ddcdaaf8a92f52524dc895eb2c37f15a427c8252911",
+  "run_id": "composer-2.5:2026-11-02T071000Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.285714,
+    "accepted_count": 2,
+    "candidate_count": 7,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 5,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}

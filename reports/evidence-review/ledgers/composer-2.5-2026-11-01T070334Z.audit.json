@@ -1,0 +1,130 @@
+{
+  "accepted_claim_ids": [
+    "model:63d145f056eefe741c2f6015e3c6a95dd7d5d6488159e6c6ad00adb1519d25d5",
+    "model:6282f498cf15cc9396730a3f528419a2a2ad44273a452017166568dc287687fa",
+    "model:3ef4c5cb35a49fed34c8896b8ace178c2dda542ea394a358c9e63d8738bdec86",
+    "model:a4b977f5c9837677ef701db0bc54b3ab43ce130d205b19c91b22e473605217c6",
+    "model:2b22440003529db7135aa4362b863ec51ce49b4a5edd5f11672dbd53509bb96c",
+    "model:ca9dc6f2ecea1bb282d57d0b069046b1e539c8296c3189545b86f25a96f11f21",
+    "model:0e4e4bb98de692b6b54ce34700fbca44ebcc9cfa4cd10098b51d70df24397dd2"
+  ],
+  "available_at": "2026-11-01T07:03:34Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-bergvall-doubtful-return-2026-10-31": "model:ca9dc6f2ecea1bb282d57d0b069046b1e539c8296c3189545b86f25a96f11f21",
+    "candidate-carvalho-unavailable-2026-10-30": "model:a4b977f5c9837677ef701db0bc54b3ab43ce130d205b19c91b22e473605217c6",
+    "candidate-dcl-started-bournemouth-2026-10-31": "model:2b22440003529db7135aa4362b863ec51ce49b4a5edd5f11672dbd53509bb96c",
+    "candidate-minteh-available-city-2026-10-30": "model:6282f498cf15cc9396730a3f528419a2a2ad44273a452017166568dc287687fa",
+    "candidate-sarr-unavailable-palace-spurs-2026-10-29": "model:63d145f056eefe741c2f6015e3c6a95dd7d5d6488159e6c6ad00adb1519d25d5",
+    "candidate-savio-unavailable-after-ib-2026-10-31": "model:0e4e4bb98de692b6b54ce34700fbca44ebcc9cfa4cd10098b51d70df24397dd2",
+    "candidate-wieffer-available-city-2026-10-30": "model:3ef4c5cb35a49fed34c8896b8ace178c2dda542ea394a358c9e63d8738bdec86"
+  },
+  "content_sha256": "f15382760d92827f14a3fcbf3dfa1d72d3ab209f31265e48bce8fa1cedf6867b",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 261
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Re-emit Branthwaite available before Newcastle PL start",
+        "Re-emit Maddison available after reduced training week",
+        "Re-emit Saka/Madueke/Munoz/Szoboszlai without new pages",
+        "Claim Mateta available after Spurs start (now suspended)"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [
+        "model:a43a9ebaca7940af9cffc572dff3d379ea669428e271f70c0a5191674c0f7ac6",
+        "model:d1dbf69d414b03ab661b9cdc3bfe2bfe2243df3cafea80e215056935510c4431"
+      ],
+      "decision": "Emit Bergvall doubtful return window; S\u00e1vio unavailable after IB; DCL started_match available; Minteh/Wieffer available after cup return; Carvalho unavailable; JP Rosenior unavailable reinforce; Sarr unavailable reinforce. Skip soft Branthwaite/Maddison available supersedes (host-rejected 31 Oct). Skip duplicate Saka/Madueke/Munoz/Szoboszlai/Goretzka.",
+      "falsifiers": [
+        "Bergvall omitted from Leeds squad after hopeful available quote",
+        "Host fetch fails Chelsea Rosenior page (500)",
+        "DCL substituted early / re-flagged after Bournemouth start"
+      ],
+      "rationale": "72h cutoff 2026-10-29T07:03:34Z. Fresh Spurs De Zerbi 31 Oct return timelines are new vs prior unavailable tip. Leeds XI confirms DCL started. Brighton H\u00fcrzeler confirms Minteh/Wieffer available after cup returns. Brentford Carvalho out until after IB. Chelsea Rosenior JP page indexed (may 500 on fetch). Soft Everton/Spurs available supersedes remain structurally weak.",
+      "supporting_claim_ids": [
+        "model:ca9dc6f2ecea1bb282d57d0b069046b1e539c8296c3189545b86f25a96f11f21",
+        "model:0e4e4bb98de692b6b54ce34700fbca44ebcc9cfa4cd10098b51d70df24397dd2",
+        "model:2b22440003529db7135aa4362b863ec51ce49b4a5edd5f11672dbd53509bb96c",
+        "model:6282f498cf15cc9396730a3f528419a2a2ad44273a452017166568dc287687fa",
+        "model:3ef4c5cb35a49fed34c8896b8ace178c2dda542ea394a358c9e63d8738bdec86",
+        "model:a4b977f5c9837677ef701db0bc54b3ab43ce130d205b19c91b22e473605217c6",
+        "candidate-joao-pedro-unavailable-rosenior-2026-10-31",
+        "model:63d145f056eefe741c2f6015e3c6a95dd7d5d6488159e6c6ad00adb1519d25d5"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "e5c44bc83fdf8827e71c583bd769320638de2555e18248fe50788ea5a0465922",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "e0014af90365179eca7f3f0f803afbb7c21bdbaaecb7d50b877966a6039207be",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-brentford-v-nottingham-forest-team-news-fabio-carvalho-injury"
+    },
+    {
+      "source_hash_sha256": "8e5f680c7a8a5599d99a41f7e66d6933832656625b36ccd2f5a7e4b60be0d8b1",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/team-news-chema-kostoulas-and-kadioglu-could-return-against-city"
+    },
+    {
+      "source_hash_sha256": "db39348b0a82f2bcf48b6bd0a28458096bf8d49607a700b43c00403af4a2bc11",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-updates-on-mateta-sarr-strand-larsen-timber/"
+    },
+    {
+      "source_hash_sha256": "e085ff09b83b59aa04dc40b0b96b383d149966cf672fc62a23b7184810c2230d",
+      "source_url": "https://www.leedsunited.com/en/news/daniel-farke-makes-two-changes-for-bournemouth-clash"
+    },
+    {
+      "source_hash_sha256": "de82d85ad430cad23384ab7e102a58b0b0e0f4d648dd8a44edfb60bd811ee32c",
+      "source_url": "https://www.tottenhamhotspur.com/news/1182782/de-zerbi-on-when-tosin-bergvall-mudryk-and-savio-could-return"
+    }
+  ],
+  "model": {
+    "display_name": "Composer 2.5",
+    "id": "composer-2.5"
+  },
+  "model_run_sha256": "0e3c65fec954d6073ee0ec6fab1898c4ca8f1c5e1f9ef91b21a4581700073957",
+  "observed_at": "2026-11-01T07:03:34Z",
+  "prior_ledger_sha256": "b359940502b9cb16b37722c4ab05a8d30f0c780149298f0a1a78fa14cdd37e23",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [
+    {
+      "candidate_claim_id": "candidate-joao-pedro-unavailable-rosenior-2026-10-31",
+      "claim_text": "Rosenior: Jo\u00e3o Pedro 'felt his thigh a few days ago. He was touch and go for this one' vs Man United and is absent with a thigh injury (bootstrap still i/0%).",
+      "club_id": "chelsea",
+      "player_uid": "player:2026-27:165",
+      "reasons": [
+        "ephemeral source fetch failed for https://www.chelseafc.com/en/news/article/liam-rosenior-explains-joao-pedro-absence-against-man-united: HTTP Error 500: Internal Server Error"
+      ],
+      "source_url": "https://www.chelseafc.com/en/news/article/liam-rosenior-explains-joao-pedro-absence-against-man-united",
+      "why_relevant": "Reinforces locked Jo\u00e3o Pedro \u2192 Evanilson path; prior unavailable tip model:d1dbf69d\u2026 still governs."
+    }
+  ],
+  "resulting_ledger_sha256": "4f20324e50307e14f3d90ee2f9589140493cdfe7e4dfc9bbae515e8ed79c67a7",
+  "run_id": "composer-2.5:2026-11-01T070334Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.875,
+    "accepted_count": 7,
+    "candidate_count": 8,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 1,
+    "review_flags": [
+      "model_candidates_rejected"
+    ]
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "degraded"
+}
