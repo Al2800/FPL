@@ -1,0 +1,124 @@
+{
+  "accepted_claim_ids": [
+    "model:814c818674f5e6b59c7f0b57e091a19aabf993735b17c8e2165edcf35bf451f2",
+    "model:dd1decbde800e518b70efda29c4130d441ab1d8eadda1010b36b434ded4d1985",
+    "model:09f1eaba589e633b08b8c7d9e3b296dc84048d160bd0295f5561d15b0310167d",
+    "model:eef05e6f690b80c19120b772c8b3bb777c44d4913717cfe23271e8f24e787681",
+    "model:9ac7f2e789ce5c161bb63cead984fa4473963f32fa27221abda9956e1e5c9406",
+    "model:f71e80643931f63a6e001423b638ec06a936b961668f7ac2df9b4e5bf572d3b9",
+    "model:7a7961f04e1b3295cad685b60c5f5052a223b06573ed43be0a9ef4c017b9d523",
+    "model:4330b952d6ccb6d72db90bc081cde9ccc51cabb116a82529230f710136e5e39b"
+  ],
+  "available_at": "2026-11-24T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate:barry-started-brentford-2026-11-23": "model:4330b952d6ccb6d72db90bc081cde9ccc51cabb116a82529230f710136e5e39b",
+    "candidate:cash-unavailable-galatasaray-2026-11-23": "model:9ac7f2e789ce5c161bb63cead984fa4473963f32fa27221abda9956e1e5c9406",
+    "candidate:gakpo-unavailable-2026-11-22": "model:09f1eaba589e633b08b8c7d9e3b296dc84048d160bd0295f5561d15b0310167d",
+    "candidate:gravenberch-doubtful-2026-11-22": "model:eef05e6f690b80c19120b772c8b3bb777c44d4913717cfe23271e8f24e787681",
+    "candidate:raya-doubtful-dortmund-2026-11-23": "model:f71e80643931f63a6e001423b638ec06a936b961668f7ac2df9b4e5bf572d3b9",
+    "candidate:savio-unavailable-2026-11-21": "model:dd1decbde800e518b70efda29c4130d441ab1d8eadda1010b36b434ded4d1985",
+    "candidate:thiago-unavailable-suspension-2026-11-23": "model:7a7961f04e1b3295cad685b60c5f5052a223b06573ed43be0a9ef4c017b9d523",
+    "candidate:wan-bissaka-started-sunderland-2026-11-21": "model:814c818674f5e6b59c7f0b57e091a19aabf993735b17c8e2165edcf35bf451f2"
+  },
+  "content_sha256": "0a517f5f22522fea1eaee214db8c823f7f12b8c7ae8d0982b3db897f24467274",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 271
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Invent City timezone ISO for Semenyo unavailable",
+        "Admit Chelsea Caicedo without recoverable published_at",
+        "Admit Palace Frank presser outside 72h gate",
+        "Stretch Ipswich team-news page without extractable status claim"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "emit_eight_candidates_raya_cash_focus",
+      "falsifiers": [
+        "Arteta clears Raya for Man City",
+        "Iraola clears Gakpo before GW12",
+        "Cash returns for Ipswich GW12",
+        "De Zerbi reports short Savio turnaround"
+      ],
+      "rationale": "72h ISO leads cover Arsenal/Villa/Liverpool/Spurs/Everton/Brentford/Ipswich. Headline NEW: Arteta Raya update (still doubtful; encouraging; City TBD) and Cash still out for Galatasaray. Refresh Gakpo/Gravenberch/Savio/Wan-Bissaka. Add Barry started_match and Thiago unavailable via confirmed XIs. Skip City date-only Semenyo page, Man Utd 403, Palace outside gate, Chelsea Caicedo NO_DATE, Brighton/SAFC/Forest/Fulham/Hull/Bournemouth/Coventry/Newcastle/PL empties or cookie walls, Ipswich thin body.",
+      "supporting_claim_ids": [
+        "model:f71e80643931f63a6e001423b638ec06a936b961668f7ac2df9b4e5bf572d3b9",
+        "model:9ac7f2e789ce5c161bb63cead984fa4473963f32fa27221abda9956e1e5c9406",
+        "model:09f1eaba589e633b08b8c7d9e3b296dc84048d160bd0295f5561d15b0310167d",
+        "model:eef05e6f690b80c19120b772c8b3bb777c44d4913717cfe23271e8f24e787681",
+        "model:dd1decbde800e518b70efda29c4130d441ab1d8eadda1010b36b434ded4d1985",
+        "model:814c818674f5e6b59c7f0b57e091a19aabf993735b17c8e2165edcf35bf451f2",
+        "model:4330b952d6ccb6d72db90bc081cde9ccc51cabb116a82529230f710136e5e39b",
+        "model:7a7961f04e1b3295cad685b60c5f5052a223b06573ed43be0a9ef4c017b9d523"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "5d98e0270f7032ae47969302059603a9b80bdd48196693c151428af09009aef0",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "27e5ce08451c421cc2fbee87227b5080b6cdfc75bb9ef438b18f7e35bedb64da",
+      "source_url": "https://www.arsenal.com/news/arteta-issues-fitness-update-on-david-raya-aRGAX6X1DQ1k"
+    },
+    {
+      "source_hash_sha256": "1cc14bcfbad686a21b00edf31d655edee1a9b02952174946b81989f998e7c3a5",
+      "source_url": "https://www.avfc.co.uk/news/2026/november/21/news-sunderland-team-news/"
+    },
+    {
+      "source_hash_sha256": "d0613ca6f189bd207e353c3767cb93e2c010f0e8210073791742a6eac39a8349",
+      "source_url": "https://www.avfc.co.uk/news/2026/november/23/prematch-team-news-for-galatasaray-encounter/"
+    },
+    {
+      "source_hash_sha256": "202e8e80913a0a235d61749453c666d4626ec6ac32eeace9dbddc35f379c607d",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-confirmed-everton-v-brentford-callum-wilson-premier-league-team-news-23-11-2026"
+    },
+    {
+      "source_hash_sha256": "849da9060c3e64d18410de723c87c001edf12e205024c2f2649abc8394cb790b",
+      "source_url": "https://www.evertonfc.com/news/2026/november/23/brentford-team-news/"
+    },
+    {
+      "source_hash_sha256": "18ab0c892cdc26e1a8b69844d5901f39753827ab485bb5049bce4fe7d07daa85",
+      "source_url": "https://www.liverpoolfc.com/news/cody-gakpo-and-ryan-gravenberch-injury-update"
+    },
+    {
+      "source_hash_sha256": "cb391349c6596a5cb89bfff4e88f7448ed2f948e71cb55da30f47e3d9f7fd8fc",
+      "source_url": "https://www.tottenhamhotspur.com/news/1267201/robertos-latest-on-savios-injury"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5 High",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "a00235b1a923ef36bca455c19034496fa8c266ef881e3ef2abeea0d8d40dc48c",
+  "observed_at": "2026-11-24T07:05:00Z",
+  "prior_ledger_sha256": "7c3a3fb39838fceaf7d0f9e25b58c2188c27b313ef5ccb4b9a69abddfc05a275",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "a953b4376824e1c47ce946b1ceac2af2f55fd10dd9ada8ef096d0e0c1ada9eed",
+  "run_id": "cursor-grok-4.5-high:2026-11-24T07:05:00Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 8,
+    "candidate_count": 8,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
