@@ -1,0 +1,108 @@
+{
+  "accepted_claim_ids": [
+    "model:b4b69c9f758946b8591ef3d1c8730ff489dc07b36be2fd80dfed404324ab216c",
+    "model:95c7711899babab0aefb9be251201c36682080b956fc503066302fdd6f8532cc",
+    "model:e92952846a74c6e3c1456d1cf48e2b238338628c3bf9fe2d9cd7f37bb3fa848b",
+    "model:9e537435c5822470158d9634b55542508d71e7d604acc7dfb8a0042e2868d12e",
+    "model:49f1dfc9557493f75e99ab68abec0272538e3a696953f56fb9994bb89e43d85e",
+    "model:ee13bc8736f987ff85138ae50f5134f7fd03de06306a0bedda41ae3ee03a79a6"
+  ],
+  "available_at": "2026-11-25T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "candidate-barry-available-2026-11-23-everton-xi": "model:9e537435c5822470158d9634b55542508d71e7d604acc7dfb8a0042e2868d12e",
+    "candidate-cash-unavailable-2026-11-23-villa-gala": "model:b4b69c9f758946b8591ef3d1c8730ff489dc07b36be2fd80dfed404324ab216c",
+    "candidate-gakpo-unavailable-2026-11-24-iraola": "model:49f1dfc9557493f75e99ab68abec0272538e3a696953f56fb9994bb89e43d85e",
+    "candidate-gravenberch-unavailable-2026-11-24-iraola": "model:ee13bc8736f987ff85138ae50f5134f7fd03de06306a0bedda41ae3ee03a79a6",
+    "candidate-raya-doubtful-2026-11-23-arteta-refresh": "model:95c7711899babab0aefb9be251201c36682080b956fc503066302fdd6f8532cc",
+    "candidate-thiago-unavailable-2026-11-23-brentford-xi": "model:e92952846a74c6e3c1456d1cf48e2b238338628c3bf9fe2d9cd7f37bb3fa848b"
+  },
+  "content_sha256": "5f2dddcd707b3a8656af740eee8bc7baff97b76bd2f7e17410183ebd0fa4b18c",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 282
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "admit City Semenyo from date-only mancity.com page",
+        "invent Chelsea Caicedo published_at",
+        "re-admit Spurs Savio after 72h expiry of that URL"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.84,
+      "conflicting_claim_ids": [],
+      "decision": "emit_six_candidates_gakpo_gravenberch_refresh_focus",
+      "falsifiers": [
+        "Iraola clears Gakpo before GW12 deadline",
+        "Arteta clears Raya for Man City",
+        "Cash returns for Ipswich GW12"
+      ],
+      "rationale": "72h ISO leads cover Arsenal/Villa/Liverpool/Everton/Brentford. Headline NEW: Iraola soleus/fascia refresh ruling Gakpo out for the weekend and Gravenberch not in a good place after missing Brugge. Refresh Raya doubtful, Cash unavailable, Thiago suspension and Barry started_match from in-window confirmed pages. Skip City date-only Semenyo/Nunes, Man Utd 403, Palace/Leeds outside gate, Chelsea NO_DATE, Spurs Savio outside gate, SAFC/Forest/Fulham/etc empties.",
+      "supporting_claim_ids": [
+        "model:49f1dfc9557493f75e99ab68abec0272538e3a696953f56fb9994bb89e43d85e",
+        "model:ee13bc8736f987ff85138ae50f5134f7fd03de06306a0bedda41ae3ee03a79a6",
+        "model:95c7711899babab0aefb9be251201c36682080b956fc503066302fdd6f8532cc",
+        "model:b4b69c9f758946b8591ef3d1c8730ff489dc07b36be2fd80dfed404324ab216c",
+        "model:e92952846a74c6e3c1456d1cf48e2b238338628c3bf9fe2d9cd7f37bb3fa848b",
+        "model:9e537435c5822470158d9634b55542508d71e7d604acc7dfb8a0042e2868d12e"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "604e049b7436544dfb407a86f582ad16689fcd3158992cae958dddc1b0ab3fae",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "7a2949e54ad53dd7847bb1e6d6896c4109de38098f140907d696d596651b8b5b",
+      "source_url": "https://www.arsenal.com/news/arteta-issues-fitness-update-on-david-raya-aRGAX6X1DQ1k"
+    },
+    {
+      "source_hash_sha256": "5be8d5f9b888439358d0a06ebfac75a4f596855407fd177d11aadec329b5c8cc",
+      "source_url": "https://www.avfc.co.uk/news/2026/november/23/prematch-team-news-for-galatasaray-encounter/"
+    },
+    {
+      "source_hash_sha256": "8f3d700415eb301288681eb7cdc451868aafed9dae4697089aa775225f4ac135",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-confirmed-everton-v-brentford-callum-wilson-premier-league-team-news-23-11-2026"
+    },
+    {
+      "source_hash_sha256": "484c735bffd3a4fa8646fa3e2c9ca3cf3062d639e597a119030dd55b19b8b897",
+      "source_url": "https://www.evertonfc.com/news/2026/november/23/brentford-team-news/"
+    },
+    {
+      "source_hash_sha256": "7c728ca1f9e863c766ec5489fd3f68e1d84197d974ba059b5493aba5acee82ab",
+      "source_url": "https://www.liverpoolfc.com/news/ryan-gravenberch-and-cody-gakpo-injury-update"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5 High",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "a02e3b96a19b1cb8e28546e530b07b79be9ad1e3187ba3503f321fd92089004d",
+  "observed_at": "2026-11-25T07:05:00Z",
+  "prior_ledger_sha256": "a953b4376824e1c47ce946b1ceac2af2f55fd10dd9ada8ef096d0e0c1ada9eed",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "876398e9d5c2ee393e458d0cce00174889af0e567b21b78606e74f6b609248dd",
+  "run_id": "cursor-grok-4.5-high:2026-11-25T07:05:00Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 6,
+    "candidate_count": 6,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
