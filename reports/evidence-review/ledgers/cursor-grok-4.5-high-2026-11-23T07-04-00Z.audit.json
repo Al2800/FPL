@@ -1,0 +1,135 @@
+{
+  "accepted_claim_ids": [
+    "model:10d64bad89e90d417e7e12b39d25c98a72dbfec51ca0a7522dd7b128bc37e2bc",
+    "model:f33b7ae657a64bc9be09d43912eb4a528a85144003bcd83c85abb3e5756b5f8e",
+    "model:2d55ac975f57386336c418d3c13158c8d077c15539656a5f93107c2a15818a6b",
+    "model:05df7975957c179eeaf5a59fe7e8c0e8b2b4716096f6fd4f53fdf1a1be1d1cf4",
+    "model:f24c987e946ae01c7e531a8d35e51234c72e30593edc68030d7f820c72654941",
+    "model:b65d94e5a9ebef832298c3f1b580c1b27731c21da9c96d02005a2d74c64a21d1",
+    "model:c54437d9f7f6018378f05d04519a0c94dc846a4a67851938ce7adb0f9328d2ed",
+    "model:7e6157ba2d48731c7f2cc8628fb5a01f9305c6b6a613986707fdfcd3a54dc793",
+    "model:e0b04f33923ba1be54ec27dbda544a93f75b2c8b642260c27e743d333708fed9"
+  ],
+  "available_at": "2026-11-23T07:04:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "cand-cash-unavailable-concussion": "model:f33b7ae657a64bc9be09d43912eb4a528a85144003bcd83c85abb3e5756b5f8e",
+    "cand-collins-unavailable-knee": "model:2d55ac975f57386336c418d3c13158c8d077c15539656a5f93107c2a15818a6b",
+    "cand-gakpo-unavailable-soleus": "model:7e6157ba2d48731c7f2cc8628fb5a01f9305c6b6a613986707fdfcd3a54dc793",
+    "cand-gravenberch-doubtful-pain": "model:e0b04f33923ba1be54ec27dbda544a93f75b2c8b642260c27e743d333708fed9",
+    "cand-hickey-unavailable-hamstring": "model:05df7975957c179eeaf5a59fe7e8c0e8b2b4716096f6fd4f53fdf1a1be1d1cf4",
+    "cand-joaopedro-unavailable-thigh": "model:10d64bad89e90d417e7e12b39d25c98a72dbfec51ca0a7522dd7b128bc37e2bc",
+    "cand-raya-doubtful-mri": "model:bfcc1caa036e774b513845091ccfe35da9a76871cd8e4927029db3b768bb311e",
+    "cand-savio-unavailable-reinjury": "model:c54437d9f7f6018378f05d04519a0c94dc846a4a67851938ce7adb0f9328d2ed",
+    "cand-tel-unavailable-ankle": "model:f24c987e946ae01c7e531a8d35e51234c72e30593edc68030d7f820c72654941",
+    "cand-wanbissaka-available-started": "model:b65d94e5a9ebef832298c3f1b580c1b27731c21da9c96d02005a2d74c64a21d1"
+  },
+  "content_sha256": "88195b3a3073558b5753e304e5763131756b737da958a54f5278dd66c69aa7a4",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 256
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "Invent City timezone ISO for Maresca presser",
+        "Stretch Caicedo knock without reachable ISO page",
+        "Admit Palace Frank Sarr update published before 72h cutoff",
+        "Claim Frimpong available refresh after United already played without new ISO"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "emit_ten_candidates_gakpo_gravenberch_focus",
+      "falsifiers": [
+        "Iraola clears Gakpo/Gravenberch before GW12",
+        "Raya MRI clears him for City",
+        "Alonso clears Joao Pedro before Forest",
+        "Savio short turnaround for Sunderland"
+      ],
+      "rationale": "72h ISO leads cover Arsenal/Villa/Brentford/Brighton/Chelsea/Everton/Ipswich/Liverpool/Spurs. Headline NEW claims: Gakpo unavailable (soleus) and Gravenberch doubtful after missing United. Refresh Raya doubtful, Savio/Joao Pedro/Cash/Tel unavailable, Wan-Bissaka available started_match, Hickey/Collins unavailable. Skip City 403/date-only, Man Utd 403, Palace Frank outside 72h, SAFC/Forest/Fulham/Hull/Bournemouth/Coventry/Newcastle/PL empties or cookie walls, women pages, Caicedo post-match page 500, Leeds pages without recoverable ISO.",
+      "supporting_claim_ids": [
+        "model:7e6157ba2d48731c7f2cc8628fb5a01f9305c6b6a613986707fdfcd3a54dc793",
+        "model:e0b04f33923ba1be54ec27dbda544a93f75b2c8b642260c27e743d333708fed9",
+        "model:bfcc1caa036e774b513845091ccfe35da9a76871cd8e4927029db3b768bb311e",
+        "model:c54437d9f7f6018378f05d04519a0c94dc846a4a67851938ce7adb0f9328d2ed",
+        "model:10d64bad89e90d417e7e12b39d25c98a72dbfec51ca0a7522dd7b128bc37e2bc",
+        "model:f33b7ae657a64bc9be09d43912eb4a528a85144003bcd83c85abb3e5756b5f8e",
+        "model:b65d94e5a9ebef832298c3f1b580c1b27731c21da9c96d02005a2d74c64a21d1",
+        "model:f24c987e946ae01c7e531a8d35e51234c72e30593edc68030d7f820c72654941",
+        "model:05df7975957c179eeaf5a59fe7e8c0e8b2b4716096f6fd4f53fdf1a1be1d1cf4",
+        "model:2d55ac975f57386336c418d3c13158c8d077c15539656a5f93107c2a15818a6b"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "d7f5e5058f2a9b2410b18ff7c7882be0e4f4bce53e8d32a04fb04c624e738376",
+  "duplicate_claim_ids": [
+    "model:bfcc1caa036e774b513845091ccfe35da9a76871cd8e4927029db3b768bb311e"
+  ],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "3a4d1f352b4479814da5dd72d671bea8d44e95242e3b435c0ca131358b4491ee",
+      "source_url": "https://www.arsenal.com/news/every-word-from-artetas-post-newcastle-press-conference-aop8h7I5pgzE"
+    },
+    {
+      "source_hash_sha256": "a539448acb5f1cb66abefb0fec5fa9e8152ba26732f71fd608e555076df02e1b",
+      "source_url": "https://www.avfc.co.uk/news/2026/november/20/prematch-team-news-for-black-cats-battle/"
+    },
+    {
+      "source_hash_sha256": "6ca4f5f3fd7ba97adba71fc46c42456c08d5588539d182683364cd95867ba4a5",
+      "source_url": "https://www.avfc.co.uk/news/2026/november/21/news-sunderland-team-news/"
+    },
+    {
+      "source_hash_sha256": "d533ab6448d64d029edd2d10432f12b2bc6146c9e9b23d952d9ec8218744ad60",
+      "source_url": "https://www.brentfordfc.com/en/news/first-team-brentford-v-everton-team-news-aaron-hickey-nathan-collins-injury-update"
+    },
+    {
+      "source_hash_sha256": "d703741dd03ba81d9a2906efd8b6bbfdb29536ae037cd49b0d202b5be13df77e",
+      "source_url": "https://www.chelseafc.com/en/news/article/xabi-alonso-confirms-chelsea-team-news-for-leeds?ssoc=1"
+    },
+    {
+      "source_hash_sha256": "5e23101527153594de0fc4617df7730e060b8f56defbe12b373956d21b58b618",
+      "source_url": "https://www.liverpoolfc.com/news/cody-gakpo-and-ryan-gravenberch-injury-update"
+    },
+    {
+      "source_hash_sha256": "42e2524c558d0267356b400e51bf42d94653e8129b75d1baf1a279c7f809426f",
+      "source_url": "https://www.tottenhamhotspur.com/news/1234486/team-news-bergvall-savio-udogie-available-tel-and-tosin-out-of-ipswich-clash"
+    },
+    {
+      "source_hash_sha256": "e4620b7ebcf367e7be00cc28051f8d5986d588293dfb8baf7902254d0abdfd13",
+      "source_url": "https://www.tottenhamhotspur.com/news/1267201/robertos-latest-on-savios-injury"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5 High",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "a16bb17bbd51623150826d95d473a6013cd3e01c378381ea85f4e38c6e57c260",
+  "observed_at": "2026-11-23T07:04:00Z",
+  "prior_ledger_sha256": "12b31604babf180275d95b9094f3a9bd3e0e51b98e25f93a622c1f88c3ef1b07",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "7c3a3fb39838fceaf7d0f9e25b58c2188c27b313ef5ccb4b9a69abddfc05a275",
+  "run_id": "cursor-grok-4.5-high:2026-11-23T07:04:00Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 0.9,
+    "accepted_count": 9,
+    "candidate_count": 10,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 1,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
