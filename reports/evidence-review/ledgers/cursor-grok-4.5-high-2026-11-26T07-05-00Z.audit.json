@@ -1,0 +1,124 @@
+{
+  "accepted_claim_ids": [
+    "model:344a368554bff38f612efb4708e8aa0ba31b05e649080268fb5e97f27f6a9967",
+    "model:d5076db3f96d7efca6f4607e10f3cf1df910912535a19db9875ae2a8064123d4",
+    "model:e5cbfc39d9194ec793d64eac811aad70cfd393e0593e1b3184648b4b032aa072",
+    "model:f30e2c54d2ca609d65897d9792baadec5f38455ebffa38163f5594796c860a6a",
+    "model:bda6322da9d4decd61632f661a430177e24ac9e9ef8c79c1bdc01d44a2366fe6",
+    "model:ee50696ebd9fedeef3c1a8dbaa28946f27722456ccd2baf97f1a5b58bc3003c8",
+    "model:7ad19f9ff23565915e894411510f2122fc59b78fccf205fc6f252a89703129f0",
+    "model:69fd218fbe931d6d0da762fde8ab3fb383b9238e8b4466592b9b67ee0c6bc6f1",
+    "model:9870337da5ab308809c23b9a0f069dc175fb1feec0210e04ee761bae230b9631"
+  ],
+  "available_at": "2026-11-26T07:05:00Z",
+  "bound_packet_sha256": "65eba1feb8c6f6f9707789e0cbf6533baf9fdffa57ac872e10b8bc6badcd3651",
+  "candidate_claim_bindings": {
+    "model:0702a62c4c39b8431e30e2a67efb35d2c93d7dc3b668a4b20089ced76fb1297a": "model:344a368554bff38f612efb4708e8aa0ba31b05e649080268fb5e97f27f6a9967",
+    "model:0945ab8c763d3d8d8301c0487614917fb2f81e708713775385e8d9a564251ee8": "model:69fd218fbe931d6d0da762fde8ab3fb383b9238e8b4466592b9b67ee0c6bc6f1",
+    "model:09627b13d5bdcef8eb71c836fa55d23420eb57746f013b5b01353fd7a7390c22": "model:7ad19f9ff23565915e894411510f2122fc59b78fccf205fc6f252a89703129f0",
+    "model:46086ce9d229925da4d79a5dc99f992ae1edb2b42d59eb72b261492ce02bae6f": "model:bda6322da9d4decd61632f661a430177e24ac9e9ef8c79c1bdc01d44a2366fe6",
+    "model:4c0a79cd11d452549482c4259b333fed34cf1ad53524a1556a21634a5e34d116": "model:f30e2c54d2ca609d65897d9792baadec5f38455ebffa38163f5594796c860a6a",
+    "model:69a99d2bd640e38641b8fd3b30e02134b95ef68162c22d5431c1245ce2ee0b98": "model:d5076db3f96d7efca6f4607e10f3cf1df910912535a19db9875ae2a8064123d4",
+    "model:6b7492421d668ba0c9b7c64ba0d0b183ae607b4769d3d28a9a5116891c9c391c": "model:9870337da5ab308809c23b9a0f069dc175fb1feec0210e04ee761bae230b9631",
+    "model:8927cc1153a76004b8ad3d3cb4082b67412f2fcad8ea5c17e2be1767d0e71d76": "model:e5cbfc39d9194ec793d64eac811aad70cfd393e0593e1b3184648b4b032aa072",
+    "model:bbde97e9a6ccc434a400da29c27aab74cfb9971135d3d3f284812b859a148e02": "model:ee50696ebd9fedeef3c1a8dbaa28946f27722456ccd2baf97f1a5b58bc3003c8"
+  },
+  "content_sha256": "a892fa159ec3e529c46357dd04870d27a3f5b544e6ebb9b4799cd6593a536d01",
+  "coverage": {
+    "catalogue_club_count": 21,
+    "coverage_gaps": [],
+    "searched_club_count": 21,
+    "watchlist_player_count": 283
+  },
+  "decision_trace": [
+    {
+      "alternatives_rejected": [
+        "claim Gomez unavailable for GW12 Newcastle",
+        "admit Everton Tarkowski without recoverable published_at",
+        "force Cash weekend unavailable without Ipswich presser",
+        "claim Tomiyasu available without declared_fit/returned_to_training",
+        "claim Munoz doubtful from Brugge presser without explicit injury quote"
+      ],
+      "boundary_id": "lane_a_candidate_selection",
+      "confidence": 0.82,
+      "conflicting_claim_ids": [],
+      "decision": "emit_nine_candidates_city_semenyo_brighton_yalcouye_palace_refresh",
+      "falsifiers": [
+        "Arteta clears Raya for Man City",
+        "Iraola clears Gakpo before GW12 deadline",
+        "City unexpectedly names Semenyo in GW12 squad",
+        "Frank declares Tomiyasu fit to start vs Hull"
+      ],
+      "rationale": "72h ISO leads include City (Semenyo still out; Matheus N. started), Brighton Yalcouye 6-10 weeks, Palace Sarr weeks / Tomiyasu closer-to-training, Liverpool injury-list refresh for Gakpo/Gravenberch, Arteta post-Dortmund Raya still unresolved, and Villa Cash concussion note still in window. Dropped Munoz candidate because the Brugge presser page did not contain a recoverable knee-knock statement. Skip Gomez unavailable (rested for Europe, expected for Newcastle), Everton Tarkowski without trusted published_at, United 403, and cookie-walled empties.",
+      "supporting_claim_ids": [
+        "model:f30e2c54d2ca609d65897d9792baadec5f38455ebffa38163f5594796c860a6a",
+        "model:d5076db3f96d7efca6f4607e10f3cf1df910912535a19db9875ae2a8064123d4",
+        "model:9870337da5ab308809c23b9a0f069dc175fb1feec0210e04ee761bae230b9631",
+        "model:69fd218fbe931d6d0da762fde8ab3fb383b9238e8b4466592b9b67ee0c6bc6f1",
+        "model:7ad19f9ff23565915e894411510f2122fc59b78fccf205fc6f252a89703129f0",
+        "model:bda6322da9d4decd61632f661a430177e24ac9e9ef8c79c1bdc01d44a2366fe6",
+        "model:ee50696ebd9fedeef3c1a8dbaa28946f27722456ccd2baf97f1a5b58bc3003c8",
+        "model:344a368554bff38f612efb4708e8aa0ba31b05e649080268fb5e97f27f6a9967",
+        "model:e5cbfc39d9194ec793d64eac811aad70cfd393e0593e1b3184648b4b032aa072"
+      ]
+    }
+  ],
+  "discovery_binding_verified": true,
+  "discovery_sha256": "8cc02ed88171cfd1e2c805dc0777fcc8b98717af03bc1a96acde2a2bc538093a",
+  "duplicate_claim_ids": [],
+  "fetched_documents": [
+    {
+      "source_hash_sha256": "6163a564106b306a566dd014a75f93b396c09971a58bf2580fcf4d833ff71d61",
+      "source_url": "https://www.arsenal.com/news/every-word-from-artetas-post-dortmund-presser-avnzH4W1NGom"
+    },
+    {
+      "source_hash_sha256": "c1991ada87acd39a5d6cc266e3d55cee1a28006e6cf44467752f7bd7cfccfb8a",
+      "source_url": "https://www.avfc.co.uk/news/2026/november/23/prematch-team-news-for-galatasaray-encounter/"
+    },
+    {
+      "source_hash_sha256": "e323da98f9930b76fef3843ce580b93bdc553c8796ad7ae966a22002b3023545",
+      "source_url": "https://www.brightonandhovealbion.com/media-article/team-news-boscagli-hadjam-gomez-and-yalcouye-all-missing-against-universitatea-craiova"
+    },
+    {
+      "source_hash_sha256": "bd03fa75c64323ee4e7fa0456ec37857c14877247794ad52062c905786468814",
+      "source_url": "https://www.cpfc.co.uk/news/first-team/team-news-frank-provides-an-update-ahead-of-real-sociedad/"
+    },
+    {
+      "source_hash_sha256": "897f2271b94ee3a62d022017fe6e15473a41ac87c0ecccc0cdf711ae81819764",
+      "source_url": "https://www.liverpoolfc.com/news/liverpools-injury-list-suspensions-and-availability"
+    },
+    {
+      "source_hash_sha256": "af55967751c74e5e0666e9eb44bf4b7bf3a9a17dc232a9410ad1f4afe8d426dd",
+      "source_url": "https://www.mancity.com/news/mens/manchester-city-v-napoli-uefa-champions-league-team-news-63931137"
+    }
+  ],
+  "model": {
+    "display_name": "Cursor Grok 4.5 High",
+    "id": "cursor-grok-4.5-high"
+  },
+  "model_run_sha256": "cba9eeb19759521f1059772c494a19374e353bae09f301f38690da59b0b8f793",
+  "observed_at": "2026-11-26T07:05:00Z",
+  "prior_ledger_sha256": "876398e9d5c2ee393e458d0cce00174889af0e567b21b78606e74f6b609248dd",
+  "prompt": {
+    "path": "prompts/daily-news-research/v1.md",
+    "sha256": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+    "version": "v1"
+  },
+  "prompt_sha256_verified": "aa16a74c772ee86f38f4b4224a62f1bcf63c5048169584e409d8cb4b85c4a380",
+  "rejected_claims": [],
+  "resulting_ledger_sha256": "3818e693dc9b99de40795f636fe3c6b7c7b4d0b0fbb9e6beaa5230eaae087be1",
+  "run_id": "cursor-grok-4.5-high:2026-11-26T07:05:00Z",
+  "schema_version": "model-evidence-ingest-audit-v1",
+  "signal_checks": {
+    "acceptance_rate": 1.0,
+    "accepted_count": 9,
+    "candidate_count": 9,
+    "decision_trace_count": 1,
+    "decision_trace_linked_count": 1,
+    "duplicate_count": 0,
+    "rejected_count": 0,
+    "review_flags": []
+  },
+  "source_policy": "model_assisted_ephemeral_citation",
+  "status": "complete"
+}
